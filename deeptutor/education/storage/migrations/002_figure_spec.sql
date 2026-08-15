@@ -1,0 +1,15 @@
+-- 002_figure_spec.sql — 给 assessment_items 挂上结构化图形规格
+--
+-- 背景（2026-08-15）：CEMC POTW 里 18 道题的关键信息全在图上（网格、条形图、
+-- 钟面……），题面文本单独看是无解的。此前这类题只能 status=retired 挡在门外。
+--
+-- 不存 PNG 路径而存 spec id，是因为位图有三个不可接受的后果：
+--   1. 讲解环节要模型"看懂"图，而本地 Qwen3-VL-8B 实测在精确网格定位上不可靠
+--      （把 4x7 迷宫读成 3x10，并幻觉出图上没有的文字）；存结构化 spec 后模型
+--      读的是 JSON，这个失败模式不存在。
+--   2. 位图不能按屏缩放，iPad 上要么糊要么裁。
+--   3. 位图不能程序化生成变式题（同模板换数字）。
+--
+-- 取值是 seeds/figures/<figure_spec_id>.json 的文件名主干；
+-- seeds/validate_graph.py 会校验被引用的 spec 文件真实存在，避免空引用。
+ALTER TABLE assessment_items ADD COLUMN figure_spec_id TEXT;

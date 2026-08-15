@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Math Practice</title>
+<style>
+  :root { color-scheme: light; }
+  body { margin: 0; font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+         background: #f6f7f9; color: #1c1f23; }
+  main { max-width: 640px; margin: 0 auto; padding: 24px 20px 60px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: #6b7280; font-size: 14px; margin-bottom: 20px; }
+  .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 20px; margin-bottom: 16px; }
+  .node { font-size: 13px; color: #6b7280; margin-bottom: 10px; }
+  .node b { color: #374151; }
+  .prompt { font-size: 19px; white-space: pre-wrap; margin-bottom: 18px; }
+  input[type=text] { width: 100%; box-sizing: border-box; font-size: 19px; padding: 12px 14px;
+                     border: 2px solid #d1d5db; border-radius: 10px; }
+  input[type=text]:focus { outline: none; border-color: #2563eb; }
+  button { font-size: 17px; padding: 12px 22px; border: 0; border-radius: 10px;
+           background: #2563eb; color: #fff; cursor: pointer; margin-top: 14px; }
+  button:disabled { background: #9ca3af; cursor: default; }
+  .who-grid { display: grid; gap: 12px; }
+  .who { display: block; width: 100%; text-align: left; background: #fff; color: #1c1f23;
+         border: 1px solid #e5e7eb; border-radius: 14px; padding: 18px 20px; font-size: 19px;
+         cursor: pointer; margin: 0; }
+  .who:hover { border-color: #2563eb; }
+  .who small { display: block; color: #6b7280; font-size: 13px; margin-top: 3px; }
+  .verdict { font-size: 18px; font-weight: 600; margin-top: 16px; }
+  .ok { color: #047857; } .no { color: #b91c1c; } .muted { color: #6b7280; font-weight: 400; font-size: 14px; }
+  .bar { height: 8px; background: #e5e7eb; border-radius: 99px; overflow: hidden; margin-top: 6px; }
+  .bar > span { display: block; height: 100%; background: #10b981; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  td { padding: 5px 0; border-bottom: 1px solid #f0f1f3; vertical-align: top; }
+  td.s { text-align: right; color: #6b7280; white-space: nowrap; }
+  .attrib { font-size: 11px; color: #9ca3af; margin-top: 14px; line-height: 1.4; }
+  .switch { font-size: 13px; color: #2563eb; cursor: pointer; text-decoration: underline; }
+  .pending { border-left: 3px solid #f59e0b; padding-left: 12px; margin-bottom: 14px; }
+  .pending .q { font-size: 14px; color: #6b7280; }
+  .pending .a { font-size: 15px; margin-top: 4px; white-space: pre-wrap; }
+  .judge-row { margin-top: 8px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .judge-row .j { font-size: 14px; padding: 6px 12px; margin-top: 0; background: #f3f4f6;
+                  color: #1c1f23; border: 1px solid #d1d5db; }
+  .judge-row .j:hover { border-color: #2563eb; }
+  .judge-row .result { font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Math Practice</h1>
+  <div class="sub" id="who"></div>
+
+  <!-- 落地页：先问谁在用。这不是登录（Access 已经确认过是家里人），
+       只是让系统知道这次的作答该记在谁名下。 -->
+  <div id="pickView" style="display:none">
+    <div class="card"><div class="node"><b>谁在用？</b></div>
+      <div class="who-grid" id="people"></div>
+    </div>
+  </div>
+
+  <div id="practiceView" style="display:none">
+    <div class="card">
+      <div class="node" id="node"></div>
+      <div class="prompt" id="prompt">Loading…</div>
+      <input type="text" id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Your answer">
+      <button id="submit">Check</button>
+      <div class="verdict" id="verdict"></div>
+      <div class="attrib" id="attrib"></div>
+    </div>
+    <div class="card">
+      <div class="node"><b>Progress</b> <span id="counts"></span></div>
+      <div class="bar"><span id="barFill" style="width:0%"></span></div>
+      <table id="progress"></table>
+    </div>
+  </div>
+
+  <div id="parentView" style="display:none">
+    <div class="card">
+      <div class="node"><b>待人工复核</b> <span class="muted">AI 判不了或没把握的作答</span></div>
+      <div id="pending"></div>
+    </div>
+    <div class="card">
+      <div class="node"><b>各人进度</b></div>
+      <div id="parentProgress"></div>
+    </div>
+  </div>
+</main>
+<script>
+const params = new URLSearchParams(location.search);
+const CV = params.get('cv') || 'cv-ccss-g4-1.0.0';
+const KEY = 'edu.person';
+let person = null;   // {id, display_name, role}
+let current = null;
+
+const $ = id => document.getElementById(id);
+// 凡是进 innerHTML 的动态值都过这里。孩子的作答是真正的用户输入：
+// 一句 <img src=x onerror=...> 就会在家长打开复核页时执行。题面与节点标题
+// 来自 seeds，风险低但同样转义 —— 逐个判断"这条可信吗"迟早会判错一次。
+const esc = s => String(s ?? '').replace(/[&<>"']/g,
+  c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+const show = v => ['pickView', 'practiceView', 'parentView']
+  .forEach(x => $(x).style.display = x === v ? '' : 'none');
+
+async function boot() {
+  const people = (await (await fetch('/api/edu/people')).json()).people;
+  const savedId = params.get('as') || localStorage.getItem(KEY);
+  const saved = people.find(p => p.id === savedId);
+  if (saved) return enter(saved, people);
+
+  $('people').innerHTML = '';
+  people.forEach(p => {
+    const b = document.createElement('button');
+    b.className = 'who';
+    b.innerHTML = `${esc(p.display_name)}<small>${p.role === 'parent' ? '只看进度，不做题' : '开始练习'}</small>`;
+    b.onclick = () => enter(p, people);
+    $('people').appendChild(b);
+  });
+  $('who').textContent = CV;
+  show('pickView');
+}
+
+function switcher(label) {
+  $('who').innerHTML = `${esc(label)} · <span class="switch" id="switchWho">换人</span>`;
+  $('switchWho').onclick = () => { localStorage.removeItem(KEY); location.href = location.pathname; };
+}
+
+function enter(p, people) {
+  person = p;
+  localStorage.setItem(KEY, p.id);
+  if (p.role === 'parent') { switcher('家长视角'); show('parentView'); loadParent(people); }
+  else { switcher(p.display_name); show('practiceView'); loadTask(); loadProgress(); }
+}
+
+// ---------- 孩子：练习 ----------
+async function loadTask() {
+  $('verdict').textContent = ''; $('answer').value = '';
+  const r = await fetch(`/api/edu/next?learner_id=${encodeURIComponent(person.id)}&course_version_id=${encodeURIComponent(CV)}`);
+  if (!r.ok) { $('prompt').textContent = `Error ${r.status}`; return; }
+  const d = await r.json();
+  if (d.done) { $('prompt').textContent = '🎉 Everything is mastered.'; current = null; return; }
+  $('node').innerHTML = `<b>${esc(d.node.title)}</b> · ${esc(d.node.code)}`
+    + `${d.node.standard_code ? ' · ' + esc(d.node.standard_code) : ''} · ${esc(d.node.status)}`;
+  if (!d.item) { $('prompt').textContent = d.message; $('submit').disabled = true; current = null; return; }
+  current = d.item;
+  $('submit').disabled = false;
+  $('prompt').textContent = d.item.prompt;
+  $('attrib').textContent = d.item.attribution || '';
+  $('answer').focus();
+}
+
+async function submit() {
+  if (!current) return;
+  $('submit').disabled = true;
+  const r = await fetch('/api/edu/attempt', {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      learner_id: person.id, course_version_id: CV, item_id: current.id,
+      response: $('answer').value,
+      client_attempt_id: `${person.id}:${current.id}:${Date.now()}`
+    })
+  });
+  const d = await r.json();
+  const v = $('verdict');
+  if (!r.ok) { v.className = 'verdict no'; v.textContent = d.detail; $('submit').disabled = false; return; }
+  if (d.needs_judgment) { v.className = 'verdict muted'; v.textContent = 'Saved — a grown-up will check this one.'; }
+  else if (d.is_correct) { v.className = 'verdict ok'; v.textContent = '✓ Correct'; }
+  else { v.className = 'verdict no'; v.textContent = '✗ Not yet — try the next one.'; }
+  if (d.mastery) v.innerHTML += ` <span class="muted">(${esc(d.mastery.status)}, ${d.mastery.score.toFixed(2)})</span>`;
+  await loadProgress();
+  setTimeout(loadTask, 1400);
+}
+
+async function loadProgress() {
+  const r = await fetch(`/api/edu/progress?learner_id=${encodeURIComponent(person.id)}&course_version_id=${encodeURIComponent(CV)}`);
+  if (!r.ok) return;
+  const d = await r.json();
+  const total = d.nodes.length, mastered = d.counts.mastered || 0;
+  $('counts').textContent = `${mastered}/${total} mastered · ${d.counts.learning || 0} learning`;
+  $('barFill').style.width = `${total ? (mastered / total * 100) : 0}%`;
+  $('progress').innerHTML = d.nodes.filter(n => n.status !== 'new').slice(0, 12)
+    .map(n => `<tr><td>${esc(n.title)}</td><td class="s">${esc(n.status)}${n.score !== null ? ' · ' + n.score : ''}</td></tr>`)
+    .join('') || '<tr><td class="s">还没有作答</td></tr>';
+}
+
+// ---------- 家长：只读 ----------
+async function loadParent(people) {
+  const q = await (await fetch(`/api/edu/review-queue?course_version_id=${encodeURIComponent(CV)}`)).json();
+  $('pending').innerHTML = q.pending.length ? q.pending.map(p => `
+    <div class="pending" data-attempt="${esc(p.attempt_id)}">
+      <div class="q"><b>${esc(p.learner_id)}</b> · ${esc(p.node)} · ${esc(p.submitted_at.slice(0, 16).replace('T', ' '))}</div>
+      <div class="q">${esc(p.prompt ? p.prompt.slice(0, 160) : '')}</div>
+      <div class="a">「${esc(p.answer)}」</div>
+      <div class="q">${p.judge ? `AI: ${esc(p.judge.verdict)} (${esc(p.judge.confidence)}) — ${esc(p.judge.rationale || '')}` : 'AI 未给出判定'}</div>
+      <div class="judge-row">
+        <button class="j" data-v="correct">判为对</button>
+        <button class="j" data-v="partial">部分对</button>
+        <button class="j" data-v="incorrect">判为错</button>
+        <span class="muted result"></span>
+      </div>
+    </div>`).join('') : '<div class="muted">没有待复核的作答</div>';
+
+  // 人的裁定是追加不是修改：AI 那条判定原样留在证据链里。
+  document.querySelectorAll('.pending .j').forEach(btn => {
+    btn.onclick = async () => {
+      const box = btn.closest('.pending');
+      box.querySelectorAll('.j').forEach(b => b.disabled = true);
+      const r = await fetch('/api/edu/review', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          reviewer: person.id, attempt_id: box.dataset.attempt, verdict: btn.dataset.v
+        })
+      });
+      const d = await r.json();
+      box.querySelector('.result').textContent = r.ok
+        ? `已记录：${d.verdict} → ${d.mastery.status} ${d.mastery.score.toFixed(2)}`
+        : `失败：${d.detail}`;
+      if (r.ok) setTimeout(() => loadParent(people), 1200);
+    };
+  });
+
+  const learners = people.filter(p => p.role === 'learner');
+  const blocks = await Promise.all(learners.map(async p => {
+    const d = await (await fetch(`/api/edu/progress?learner_id=${encodeURIComponent(p.id)}&course_version_id=${encodeURIComponent(CV)}`)).json();
+    const rows = d.nodes.filter(n => n.status !== 'new')
+      .map(n => `<tr><td>${esc(n.title)}</td><td class="s">${esc(n.status)}${n.score !== null ? ' · ' + n.score : ''}</td></tr>`).join('');
+    return `<div class="node" style="margin-top:14px"><b>${esc(p.display_name)}</b> · ${d.counts.mastered || 0} mastered · ${d.counts.learning || 0} learning</div>
+            <table>${rows || '<tr><td class="s">还没有作答</td></tr>'}</table>`;
+  }));
+  $('parentProgress').innerHTML = blocks.join('');
+}
+
+$('submit').addEventListener('click', submit);
+$('answer').addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+boot();
+</script>
+</body>
+</html>

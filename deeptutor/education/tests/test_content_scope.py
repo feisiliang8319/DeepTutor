@@ -300,7 +300,7 @@ def test_fixture_b_history_item_is_bundled_and_exportable(conn):
     from deeptutor.education.storage.repositories import CourseRepository
 
     now = to_iso_timestamp(time.time())
-    course = Course(id="course-history", subject_key="social_studies", title="Test History", created_at=now)
+    course = Course(id="course-history", subject_key="social_studies", title="Test History", created_at=now, level="G4")
     version = CourseVersion(
         id="cv-history-1",
         course_id=course.id,

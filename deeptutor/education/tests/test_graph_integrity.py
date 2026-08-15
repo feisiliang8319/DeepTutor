@@ -111,6 +111,167 @@ def test_edge_referencing_unknown_node_rejected(conn, course_version):
     assert conn.execute("SELECT COUNT(*) AS n FROM knowledge_nodes").fetchone()["n"] == 0
 
 
+# ---- incremental import: edges into nodes that already live in the DB -----
+#
+# 建全新库时"边的两端都必须在本批次里"是对的。但增量上新（给已有的知识图补
+# 一批新节点）必然出现「新节点 -> 库中已有节点」的边，那时该约束会把合法导入
+# 全部挡掉。allow_existing_nodes 放开的只是"端点可以来自库里"，环检测反而要
+# 变严：必须把库中已有的边一起纳入，否则新旧边合起来成的环没人看得见。
+
+
+def _seed_two_nodes(conn, cv: str) -> KnowledgeGraphRepository:
+    repo = KnowledgeGraphRepository(conn)
+    repo.import_nodes_and_edges(
+        course_version_id=cv, nodes=[_node(cv, "A", 1), _node(cv, "B", 2)], edges=[_edge(cv, "A", "B")]
+    )
+    return repo
+
+
+def test_cross_batch_edge_still_rejected_by_default(conn, course_version):
+    """默认行为不变：不开开关，指向库中已有节点的边照旧被拒。"""
+    cv = course_version.id
+    repo = _seed_two_nodes(conn, cv)
+    with pytest.raises(ImportRejected, match="unknown"):
+        repo.import_nodes_and_edges(
+            course_version_id=cv, nodes=[_node(cv, "C", 3)], edges=[_edge(cv, "B", "C")]
+        )
+    assert conn.execute("SELECT COUNT(*) AS n FROM knowledge_nodes").fetchone()["n"] == 2
+
+
+def test_cross_batch_edge_accepted_when_existing_nodes_allowed(conn, course_version):
+    cv = course_version.id
+    repo = _seed_two_nodes(conn, cv)
+    repo.import_nodes_and_edges(
+        course_version_id=cv,
+        nodes=[_node(cv, "C", 3)],
+        edges=[_edge(cv, "B", "C")],  # B 只存在于库里，不在本批次
+        allow_existing_nodes=True,
+    )
+    assert {n.code for n in repo.list_nodes(cv)} == {"A", "B", "C"}
+    assert {(e.from_node_id, e.to_node_id) for e in repo.list_all_edges(cv)} == {
+        ("node-A", "node-B"),
+        ("node-B", "node-C"),
+    }
+
+
+def test_cycle_formed_together_with_existing_edges_is_rejected(conn, course_version):
+    """负对照 —— 这一条才是开关的真正代价所在。
+
+    库里已有 A->B。新批次加 C，边 B->C 与 C->A 各自看都无环，只有把库里
+    那条 A->B 一起算进来才会看见 A->B->C->A。若实现只对本批次的边做环检测，
+    这个用例会通过导入，知识图出环，select_objective 会死循环。
+    """
+    cv = course_version.id
+    repo = _seed_two_nodes(conn, cv)
+    with pytest.raises(ImportRejected, match="cycle"):
+        repo.import_nodes_and_edges(
+            course_version_id=cv,
+            nodes=[_node(cv, "C", 3)],
+            edges=[_edge(cv, "B", "C"), _edge(cv, "C", "A")],
+            allow_existing_nodes=True,
+        )
+    # 整批回滚：新节点和两条新边都不能落库。
+    assert conn.execute("SELECT COUNT(*) AS n FROM knowledge_nodes").fetchone()["n"] == 2
+    assert conn.execute("SELECT COUNT(*) AS n FROM knowledge_edges").fetchone()["n"] == 1
+
+
+def test_truly_unknown_node_still_rejected_when_existing_nodes_allowed(conn, course_version):
+    """开关放开的是"库里有"，不是"随便什么 id 都行"。"""
+    cv = course_version.id
+    repo = _seed_two_nodes(conn, cv)
+    with pytest.raises(ImportRejected, match="unknown"):
+        repo.import_nodes_and_edges(
+            course_version_id=cv,
+            nodes=[_node(cv, "C", 3)],
+            edges=[_edge(cv, "GHOST", "C")],
+            allow_existing_nodes=True,
+        )
+    assert conn.execute("SELECT COUNT(*) AS n FROM knowledge_nodes").fetchone()["n"] == 2
+
+
+def test_reimporting_an_edge_that_already_exists_is_rejected(conn, course_version):
+    cv = course_version.id
+    repo = _seed_two_nodes(conn, cv)
+    with pytest.raises(ImportRejected, match="conflicts with existing data"):
+        repo.import_nodes_and_edges(
+            course_version_id=cv,
+            nodes=[_node(cv, "C", 3)],
+            edges=[_edge(cv, "A", "B"), _edge(cv, "B", "C")],  # A->B 库里已有
+            allow_existing_nodes=True,
+        )
+    assert conn.execute("SELECT COUNT(*) AS n FROM knowledge_nodes").fetchone()["n"] == 2
+    assert conn.execute("SELECT COUNT(*) AS n FROM knowledge_edges").fetchone()["n"] == 1
+
+
+def test_edge_only_import_into_existing_nodes(conn, course_version):
+    """只补边、不加节点，也应当走得通（补一条漏掉的前置关系）。"""
+    cv = course_version.id
+    repo = KnowledgeGraphRepository(conn)
+    repo.import_nodes_and_edges(
+        course_version_id=cv,
+        nodes=[_node(cv, "A", 1), _node(cv, "B", 2), _node(cv, "C", 3)],
+        edges=[_edge(cv, "A", "B")],
+    )
+    repo.import_nodes_and_edges(
+        course_version_id=cv, nodes=[], edges=[_edge(cv, "B", "C")], allow_existing_nodes=True
+    )
+    assert len(repo.list_all_edges(cv)) == 2
+
+
+def test_existing_node_colliding_with_batch_node_still_rejected(conn, course_version):
+    """开关不是"重复节点也放行"：code 撞车仍要整批回滚。"""
+    cv = course_version.id
+    repo = _seed_two_nodes(conn, cv)
+    with pytest.raises(ImportRejected, match="conflicts with existing data"):
+        repo.import_nodes_and_edges(
+            course_version_id=cv,
+            nodes=[_node(cv, "B", 2), _node(cv, "C", 3)],  # B 已在库里
+            edges=[_edge(cv, "B", "C")],
+            allow_existing_nodes=True,
+        )
+    assert conn.execute("SELECT COUNT(*) AS n FROM knowledge_nodes").fetchone()["n"] == 2
+
+
+def test_inconsistent_stored_edge_is_reported_not_crashed_into(conn, course_version):
+    """库里已有一条指向别的 course_version 节点的边时，增量导入要报
+    ImportRejected，而不是在环检测里抛裸 KeyError。
+
+    这种边靠 schema 拦不住：knowledge_edges 的外键只约束 from/to 指向
+    knowledge_nodes(id)，**不**要求该节点与边同属一个 course_version。所以
+    只能在这里 fail-closed。用裸 SQL 造这条脏数据是有意的——正常导入路径
+    造不出它，而我们要防的正是"库已经脏了"的情形。
+    """
+    cv = course_version.id
+    repo = _seed_two_nodes(conn, cv)
+    # 另建一个 course_version，把节点挂过去；边却仍登记在本 cv 名下。
+    conn.execute(
+        "INSERT INTO courses (id, subject_key, title, created_at)"
+        " VALUES ('course-elsewhere', 'math', 'Elsewhere', '2026-01-01T00:00:00Z')"
+    )
+    conn.execute(
+        "INSERT INTO course_versions (id, course_id, version, content_hash, status, created_at)"
+        " VALUES ('cv-elsewhere', 'course-elsewhere', '1.0.0', 'deadbeef', 'active',"
+        " '2026-01-01T00:00:00Z')"
+    )
+    conn.execute(
+        "INSERT INTO knowledge_nodes (id, course_version_id, code, node_type, title, sort_order)"
+        " VALUES ('node-OTHER', 'cv-elsewhere', 'OTHER', 'concept', 'node in another cv', 99)"
+    )
+    conn.execute(
+        "INSERT INTO knowledge_edges (course_version_id, from_node_id, to_node_id, edge_type)"
+        " VALUES (?, 'node-A', 'node-OTHER', 'PREREQUISITE')",
+        (cv,),
+    )
+
+    with pytest.raises(ImportRejected, match="inconsistent"):
+        repo.import_nodes_and_edges(
+            course_version_id=cv,
+            nodes=[_node(cv, "C", 3)],
+            edges=[_edge(cv, "B", "C")],
+            allow_existing_nodes=True,
+        )
+
+
 # ---- test #18 (import half): both fixtures import cleanly -----------------
 
 
@@ -148,7 +309,7 @@ def test_fixture_b_history_imports_cleanly_with_non_prerequisite_edges(conn):
     from deeptutor.education.tests.fixtures import content_hash
 
     now = to_iso_timestamp(time.time())
-    course = Course(id="course-history", subject_key="social_studies", title="Test History", created_at=now)
+    course = Course(id="course-history", subject_key="social_studies", title="Test History", created_at=now, level="G4")
     version = CourseVersion(
         id="cv-history-1",
         course_id=course.id,

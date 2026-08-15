@@ -70,8 +70,29 @@ class ReviewState:
     fsrs_step: int | None = None
 
 
+
+@dataclass(frozen=True, slots=True)
+class Enrollment:
+    """一个学习者选了某个课程版本。
+
+    这是学生与内容之间**唯一**的关联点。内容表（knowledge_nodes /
+    assessment_items / knowledge_edges）一概不认识学习者；加一个学生就是往
+    这里加一行，不动内容结构。
+
+    关联到 course_version_id 而非 course_id：学生的历史进度属于他当时学的那
+    一版教材，换版后旧版仍要能查。是否自动跟随最新版是产品决策，不由外键代答。
+    """
+
+    learner_id: str
+    course_version_id: str
+    status: str
+    enrolled_at: str
+    updated_at: str
+
+
 __all__ = [
     "MASTERY_STATUSES",
+    "Enrollment",
     "LearnerProfile",
     "MasterySnapshot",
     "ReviewState",

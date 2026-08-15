@@ -85,6 +85,9 @@ class Course:
     subject_key: str
     title: str
     created_at: str
+    # 年级/等级，与 subject_key 一起构成课程目录的查询键（'G4' / 'AP-HS'）。
+    # 不从 title 里解析：title 是给人看的展示串，改一次文案就会让查询失灵。
+    level: str | None = None
 
 
 @dataclass(frozen=True, slots=True)

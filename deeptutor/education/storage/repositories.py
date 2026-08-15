@@ -34,7 +34,12 @@ from deeptutor.education.domain.evidence import (
     StudentAttempt,
     Verdict,
 )
-from deeptutor.education.domain.learner import LearnerProfile, MasterySnapshot, ReviewState
+from deeptutor.education.domain.learner import (
+    Enrollment,
+    LearnerProfile,
+    MasterySnapshot,
+    ReviewState,
+)
 from deeptutor.education.storage.sqlite import transaction
 
 # CC-family licenses require attribution; anything else in license_note is
@@ -113,7 +118,13 @@ class LearnerRepository:
 
 
 def _row_to_course(row: sqlite3.Row) -> Course:
-    return Course(id=row["id"], subject_key=row["subject_key"], title=row["title"], created_at=row["created_at"])
+    return Course(
+        id=row["id"],
+        subject_key=row["subject_key"],
+        title=row["title"],
+        created_at=row["created_at"],
+        level=row["level"],
+    )
 
 
 def _row_to_course_version(row: sqlite3.Row) -> CourseVersion:
@@ -127,14 +138,96 @@ def _row_to_course_version(row: sqlite3.Row) -> CourseVersion:
     )
 
 
+def _row_to_enrollment(row: sqlite3.Row) -> Enrollment:
+    return Enrollment(
+        learner_id=row["learner_id"],
+        course_version_id=row["course_version_id"],
+        status=row["status"],
+        enrolled_at=row["enrolled_at"],
+        updated_at=row["updated_at"],
+    )
+
+
+class EnrollmentRepository:
+    """选课名册。学生 ↔ 课程版本的多对多关系，内容表一概不参与。"""
+
+    def __init__(self, conn: sqlite3.Connection) -> None:
+        self._conn = conn
+
+    def enroll(self, enrollment: Enrollment) -> None:
+        """幂等：重复选同一门课把它改回 active，而不是报错或插重复行。
+
+        退选再选回来是正常操作，作答记录一直都在（enrollment 行不是它们的
+        载体），所以复选不该丢任何东西。
+        """
+        self._conn.execute(
+            """
+            INSERT INTO enrollments
+                (learner_id, course_version_id, status, enrolled_at, updated_at)
+            VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT(learner_id, course_version_id) DO UPDATE SET
+                status = excluded.status,
+                updated_at = excluded.updated_at
+            """,
+            (
+                enrollment.learner_id,
+                enrollment.course_version_id,
+                enrollment.status,
+                enrollment.enrolled_at,
+                enrollment.updated_at,
+            ),
+        )
+
+    def set_status(self, learner_id: str, course_version_id: str, status: str, *, at: str) -> None:
+        self._conn.execute(
+            """
+            UPDATE enrollments SET status = ?, updated_at = ?
+            WHERE learner_id = ? AND course_version_id = ?
+            """,
+            (status, at, learner_id, course_version_id),
+        )
+
+    def list_for_learner(self, learner_id: str, *, active_only: bool = True) -> list[Enrollment]:
+        query = "SELECT * FROM enrollments WHERE learner_id = ?"
+        params: list[object] = [learner_id]
+        if active_only:
+            query += " AND status = 'active'"
+        query += " ORDER BY enrolled_at ASC, course_version_id ASC"
+        return [_row_to_enrollment(r) for r in self._conn.execute(query, params).fetchall()]
+
+    def list_learners(self, course_version_id: str, *, active_only: bool = True) -> list[str]:
+        query = "SELECT learner_id FROM enrollments WHERE course_version_id = ?"
+        params: list[object] = [course_version_id]
+        if active_only:
+            query += " AND status = 'active'"
+        query += " ORDER BY learner_id ASC"
+        return [r["learner_id"] for r in self._conn.execute(query, params).fetchall()]
+
+    def is_enrolled(self, learner_id: str, course_version_id: str) -> bool:
+        row = self._conn.execute(
+            "SELECT 1 FROM enrollments WHERE learner_id = ? AND course_version_id = ? "
+            "AND status = 'active'",
+            (learner_id, course_version_id),
+        ).fetchone()
+        return row is not None
+
+
 class CourseRepository:
     def __init__(self, conn: sqlite3.Connection) -> None:
         self._conn = conn
 
     def create_course(self, course: Course) -> None:
+        if not (course.level or "").strip():
+            # 数据库列可空（迁移 003 无法给已有行加 NOT NULL），所以由写入层
+            # 把关。留空的课进不了目录查询——它会成为一门"存在但谁也拉不到"
+            # 的课，且这个后果要等到有人按 (subject, level) 找不到它时才暴露。
+            raise ImportRejected(
+                f"course {course.id!r} 缺 level：课程目录按 (subject_key, level) 查询，"
+                "留空的课无法被拉取。数学四年级写 'G4'，AP 高中线写 'AP-HS'。"
+            )
         self._conn.execute(
-            "INSERT INTO courses (id, subject_key, title, created_at) VALUES (?, ?, ?, ?)",
-            (course.id, course.subject_key, course.title, course.created_at),
+            "INSERT INTO courses (id, subject_key, title, created_at, level) VALUES (?, ?, ?, ?, ?)",
+            (course.id, course.subject_key, course.title, course.created_at, course.level),
         )
 
     def create_course_version(self, version: CourseVersion) -> None:
@@ -160,6 +253,39 @@ class CourseRepository:
     def get_course_version(self, version_id: str) -> CourseVersion | None:
         row = self._conn.execute(
             "SELECT * FROM course_versions WHERE id = ?", (version_id,)
+        ).fetchone()
+        return _row_to_course_version(row) if row is not None else None
+
+    def find_courses(self, *, subject_key: str, level: str | None = None) -> list[Course]:
+        """课程目录查询：按学科（可再按等级）列出课程。
+
+        这是"根据学科类别去拉取对应的年级或等级"的读路径。刻意不接
+        ``learner_id``——内容拉取只由 (学科, 等级) 决定，学生是谁不参与；
+        一旦这里出现按人过滤，课程目录就退化成了每人一份的绑定关系。
+        """
+        query = "SELECT * FROM courses WHERE subject_key = ?"
+        params: list[object] = [subject_key]
+        if level is not None:
+            query += " AND level = ?"
+            params.append(level)
+        query += " ORDER BY level IS NULL, level ASC, id ASC"
+        return [_row_to_course(row) for row in self._conn.execute(query, params).fetchall()]
+
+    def find_active_version(self, *, subject_key: str, level: str) -> CourseVersion | None:
+        """(学科, 等级) → 当前 active 的课程版本，找不到返回 None。
+
+        一门课同时最多一个 active 版本是既有约定（course_versions.status），
+        这里不替它兜底成"随便挑一个"：真出现两个 active 是数据错误，宁可让
+        调用方拿到第一个后在别处炸出来，也不静默选一个看起来对的。
+        """
+        row = self._conn.execute(
+            """
+            SELECT cv.* FROM course_versions AS cv
+            JOIN courses AS c ON c.id = cv.course_id
+            WHERE c.subject_key = ? AND c.level = ? AND cv.status = 'active'
+            ORDER BY cv.created_at DESC, cv.id ASC
+            """,
+            (subject_key, level),
         ).fetchone()
         return _row_to_course_version(row) if row is not None else None
 
@@ -222,6 +348,40 @@ def _detect_cycle(node_ids: set[str], edges: Sequence[KnowledgeEdge]) -> list[st
     return sorted(nid for nid, degree in work.items() if degree > 0)
 
 
+def _reject_unknown_endpoints(edges: Sequence[KnowledgeEdge], known_ids: set[str]) -> None:
+    """Every edge endpoint must resolve to a node the import can see.
+
+    ``known_ids`` is the batch's own nodes for a fresh import, and the batch
+    plus the stored nodes for an incremental one — the check itself does not
+    change, only what counts as "known".
+    """
+    for edge in edges:
+        if edge.from_node_id not in known_ids or edge.to_node_id not in known_ids:
+            raise ImportRejected(
+                f"edge references an unknown node outside this import batch: "
+                f"{edge.from_node_id!r} -> {edge.to_node_id!r}"
+            )
+
+
+def _reject_dangling_stored_edges(
+    stored_edges: Sequence[KnowledgeEdge], known_ids: set[str]
+) -> None:
+    """Refuse to extend a graph whose own stored edges do not resolve."""
+    for edge in stored_edges:
+        if edge.from_node_id not in known_ids or edge.to_node_id not in known_ids:
+            raise ImportRejected(
+                f"stored edge {edge.from_node_id!r} -> {edge.to_node_id!r} points outside "
+                f"this course_version's nodes; the existing graph is inconsistent and "
+                f"cannot be extended safely"
+            )
+
+
+def _reject_cycle(node_ids: set[str], edges: Sequence[KnowledgeEdge]) -> None:
+    cyclic = _detect_cycle(node_ids, edges)
+    if cyclic:
+        raise ImportRejected(f"cycle detected in knowledge graph, involving nodes: {cyclic}")
+
+
 class KnowledgeGraphRepository:
     def __init__(self, conn: sqlite3.Connection) -> None:
         self._conn = conn
@@ -232,6 +392,7 @@ class KnowledgeGraphRepository:
         course_version_id: str,
         nodes: Sequence[KnowledgeNode],
         edges: Sequence[KnowledgeEdge],
+        allow_existing_nodes: bool = False,
     ) -> None:
         """All-or-nothing import of one course_version's knowledge graph.
 
@@ -240,6 +401,29 @@ class KnowledgeGraphRepository:
         Python objects already), then writes everything inside one
         transaction so a DB-level conflict (e.g. re-importing a node code
         that collides with a pre-existing row) rolls back cleanly too.
+
+        ``allow_existing_nodes`` switches on the *incremental* import mode.
+        The default (False) is the original build-a-fresh-graph contract:
+        every edge endpoint must be a node in this very batch. That is right
+        when the batch *is* the whole graph, but it rejects every legitimate
+        "new node depends on a node the DB already has" edge, which is what
+        adding a topic to a live graph looks like — and rebuilding the DB
+        instead is not an option once real attempt rows exist.
+
+        Turning it on relaxes exactly one thing — an endpoint may resolve to
+        a node already stored under this course_version — and *tightens*
+        another: cycle detection then runs over the union of the stored edges
+        and this batch's edges. It has to. A cycle can be formed by new edges
+        closing a path through old ones (DB has A->B; batch adds B->C and
+        C->A), and no per-batch check can see it. Missing that would put a
+        cycle into the knowledge graph, which ``select_objective`` walks
+        assuming a DAG.
+
+        Deliberately not offered as a caller-supplied ``existing_node_ids``
+        list: the set is read from the DB inside the same ``BEGIN IMMEDIATE``
+        transaction that does the writing, so a caller cannot widen it by
+        passing ids that are not really there, and nothing can slip in
+        between the check and the insert.
         """
         node_ids = {node.id for node in nodes}
         for node in nodes:
@@ -262,57 +446,73 @@ class KnowledgeGraphRepository:
             # that build edges some other way.
             if edge.from_node_id == edge.to_node_id:
                 raise ImportRejected(f"self-edge rejected: node {edge.from_node_id!r}")
-            if edge.from_node_id not in node_ids or edge.to_node_id not in node_ids:
-                raise ImportRejected(
-                    f"edge references an unknown node outside this import batch: "
-                    f"{edge.from_node_id!r} -> {edge.to_node_id!r}"
-                )
             key = (edge.from_node_id, edge.to_node_id, edge.edge_type.value)
             if key in seen_edges:
                 raise ImportRejected(f"duplicate edge in import batch: {key}")
             seen_edges.add(key)
 
-        cyclic = _detect_cycle(node_ids, edges)
-        if cyclic:
-            raise ImportRejected(f"cycle detected in knowledge graph, involving nodes: {cyclic}")
+        if not allow_existing_nodes:
+            _reject_unknown_endpoints(edges, node_ids)
+            _reject_cycle(node_ids, edges)
+            with transaction(self._conn):
+                self._write_batch(nodes, edges)
+            return
 
         with transaction(self._conn):
-            for node in nodes:
-                try:
-                    self._conn.execute(
-                        """
-                        INSERT INTO knowledge_nodes
-                            (id, course_version_id, code, node_type, title, sort_order,
-                             standard_code)
-                        VALUES (?, ?, ?, ?, ?, ?, ?)
-                        """,
-                        (
-                            node.id,
-                            node.course_version_id,
-                            node.code,
-                            node.node_type,
-                            node.title,
-                            node.sort_order,
-                            node.standard_code,
-                        ),
-                    )
-                except sqlite3.IntegrityError as exc:
-                    raise ImportRejected(f"node {node.id!r} conflicts with existing data: {exc}") from exc
-            for edge in edges:
-                try:
-                    self._conn.execute(
-                        """
-                        INSERT INTO knowledge_edges
-                            (course_version_id, from_node_id, to_node_id, edge_type)
-                        VALUES (?, ?, ?, ?)
-                        """,
-                        (edge.course_version_id, edge.from_node_id, edge.to_node_id, edge.edge_type.value),
-                    )
-                except sqlite3.IntegrityError as exc:
-                    raise ImportRejected(
-                        f"edge {edge.from_node_id!r}->{edge.to_node_id!r} conflicts with "
-                        f"existing data: {exc}"
-                    ) from exc
+            known_ids = node_ids | {node.id for node in self.list_nodes(course_version_id)}
+            stored_edges = self.list_all_edges(course_version_id)
+            _reject_unknown_endpoints(edges, known_ids)
+            # The stored edges are about to be fed to the cycle check, which
+            # indexes nodes by id and would raise a bare KeyError on an edge
+            # pointing outside this course_version's node set. That can only
+            # happen if the graph is already inconsistent — knowledge_edges'
+            # FK is on knowledge_nodes(id) alone and does not constrain the
+            # node to share the edge's course_version — so say so instead of
+            # crashing with a stack trace, and refuse the import either way.
+            _reject_dangling_stored_edges(stored_edges, known_ids)
+            _reject_cycle(known_ids, [*stored_edges, *edges])
+            self._write_batch(nodes, edges)
+
+    def _write_batch(
+        self, nodes: Sequence[KnowledgeNode], edges: Sequence[KnowledgeEdge]
+    ) -> None:
+        """Insert one already-validated batch. Caller owns the transaction."""
+        for node in nodes:
+            try:
+                self._conn.execute(
+                    """
+                    INSERT INTO knowledge_nodes
+                        (id, course_version_id, code, node_type, title, sort_order,
+                         standard_code)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        node.id,
+                        node.course_version_id,
+                        node.code,
+                        node.node_type,
+                        node.title,
+                        node.sort_order,
+                        node.standard_code,
+                    ),
+                )
+            except sqlite3.IntegrityError as exc:
+                raise ImportRejected(f"node {node.id!r} conflicts with existing data: {exc}") from exc
+        for edge in edges:
+            try:
+                self._conn.execute(
+                    """
+                    INSERT INTO knowledge_edges
+                        (course_version_id, from_node_id, to_node_id, edge_type)
+                    VALUES (?, ?, ?, ?)
+                    """,
+                    (edge.course_version_id, edge.from_node_id, edge.to_node_id, edge.edge_type.value),
+                )
+            except sqlite3.IntegrityError as exc:
+                raise ImportRejected(
+                    f"edge {edge.from_node_id!r}->{edge.to_node_id!r} conflicts with "
+                    f"existing data: {exc}"
+                ) from exc
 
     def get_node(self, node_id: str) -> KnowledgeNode | None:
         row = self._conn.execute("SELECT * FROM knowledge_nodes WHERE id = ?", (node_id,)).fetchone()
@@ -644,27 +844,38 @@ class AttemptRepository:
         ).fetchone()
         return int(row["n"])
 
-    def list_all_node_ids_with_attempts(self, learner_id: str) -> list[tuple[str, str]]:
+    def list_all_node_ids_with_attempts(
+        self, learner_id: str, *, course_version_id: str | None = None
+    ) -> list[tuple[str, str]]:
         """Distinct (learner_id, knowledge_node_id) pairs that have at
-        least one non-demo attempt — the work list for a full rebuild."""
-        rows = self._conn.execute(
-            """
-            SELECT DISTINCT learner_id, knowledge_node_id
-            FROM student_attempts
-            WHERE learner_id = ? AND source != 'demo'
-            """,
-            (learner_id,),
-        ).fetchall()
+        least one non-demo attempt — the work list for a full rebuild.
+
+        ``course_version_id`` 收口到单门课。多学科同库后（2026-08-15 起数学
+        与 AP 世界史并存），不带它就会把另一门课的节点也拖进重算范围。
+        """
+        query = (
+            "SELECT DISTINCT learner_id, knowledge_node_id FROM student_attempts "
+            "WHERE learner_id = ? AND source != 'demo'"
+        )
+        params: list[object] = [learner_id]
+        if course_version_id is not None:
+            query += " AND course_version_id = ?"
+            params.append(course_version_id)
+        rows = self._conn.execute(query, params).fetchall()
         return [(row["learner_id"], row["knowledge_node_id"]) for row in rows]
 
-    def list_all_learner_node_pairs(self) -> list[tuple[str, str]]:
-        rows = self._conn.execute(
-            """
-            SELECT DISTINCT learner_id, knowledge_node_id
-            FROM student_attempts
-            WHERE source != 'demo'
-            """
-        ).fetchall()
+    def list_all_learner_node_pairs(
+        self, *, course_version_id: str | None = None
+    ) -> list[tuple[str, str]]:
+        query = (
+            "SELECT DISTINCT learner_id, knowledge_node_id FROM student_attempts "
+            "WHERE source != 'demo'"
+        )
+        params: list[object] = []
+        if course_version_id is not None:
+            query += " AND course_version_id = ?"
+            params.append(course_version_id)
+        rows = self._conn.execute(query, params).fetchall()
         return [(row["learner_id"], row["knowledge_node_id"]) for row in rows]
 
 
@@ -742,7 +953,9 @@ class JudgmentRepository:
         ).fetchall()
         return [_row_to_judgment(row) for row in rows]
 
-    def list_needs_review(self, *, confidence_floor: float | None = None) -> list[JudgmentRecord]:
+    def list_needs_review(
+        self, *, confidence_floor: float | None = None, course_version_id: str | None = None
+    ) -> list[JudgmentRecord]:
         """The human-review queue P0-DESIGN.md §2.6 requires ("进人工复核
         队列"): every attempt whose *most recent* judgment is unresolved —
         an explicit ``verdict='needs_review'``, or (when ``confidence_floor``
@@ -756,10 +969,23 @@ class JudgmentRepository:
         attempt stops appearing here even though its old needs_review row
         is still in the table (2026-08-14 audit finding: this method did
         not previously exist — needs_review was written but never queryable).
+
+        ``course_version_id`` 收口到单门课：复核队列是给人看的工作清单，
+        多学科同库后（2026-08-15）不收口就会把数学和文科的待复核混成一锅，
+        复核者拿到的队列跨学科、无法分派。收口在**取行时**而不是取完再滤，
+        否则"最近一条判定"会被另一门课的行影响（同一 attempt 不跨课，但
+        全表扫描的成本和语义都没必要背着别的课）。
         """
-        rows = self._conn.execute(
-            "SELECT * FROM judgment_records ORDER BY created_at ASC, rowid ASC"
-        ).fetchall()
+        query = "SELECT j.* FROM judgment_records AS j"
+        params: list[object] = []
+        if course_version_id is not None:
+            query += (
+                " JOIN student_attempts AS a ON a.id = j.attempt_id"
+                " WHERE a.course_version_id = ?"
+            )
+            params.append(course_version_id)
+        query += " ORDER BY j.created_at ASC, j.rowid ASC"
+        rows = self._conn.execute(query, params).fetchall()
         latest_by_attempt: dict[str, JudgmentRecord] = {}
         for row in rows:
             judgment = _row_to_judgment(row)

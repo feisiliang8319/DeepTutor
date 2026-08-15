@@ -47,7 +47,7 @@ def learner(conn) -> LearnerProfile:
 @pytest.fixture
 def course_version(conn) -> CourseVersion:
     now = to_iso_timestamp(time.time())
-    course = Course(id="course-math", subject_key="mathematics", title="Test Math", created_at=now)
+    course = Course(id="course-math", subject_key="mathematics", title="Test Math", created_at=now, level="G4")
     version = CourseVersion(
         id="cv-math-1",
         course_id=course.id,

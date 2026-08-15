@@ -73,7 +73,7 @@ def judge_db(tmp_path: Path) -> Path:
     conn = edu_sqlite.open_database(db_path)
     now = to_iso_timestamp(time.time())
     CourseRepository(conn).create_course(
-        Course(id="c-j", subject_key="mathematics", title="J", created_at=now)
+        Course(id="c-j", subject_key="mathematics", title="J", created_at=now, level="G4")
     )
     CourseRepository(conn).create_course_version(
         CourseVersion(id=CV, course_id="c-j", version="1.0.0", content_hash="0" * 64,

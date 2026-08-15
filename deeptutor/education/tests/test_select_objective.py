@@ -103,7 +103,7 @@ def test_selection_is_deterministic_across_repeated_calls(conn, learner, course_
 
 def test_planner_ignores_non_prerequisite_edges_fixture_b(conn, learner):
     now = to_iso_timestamp(time.time())
-    course = Course(id="course-history", subject_key="social_studies", title="Test History", created_at=now)
+    course = Course(id="course-history", subject_key="social_studies", title="Test History", created_at=now, level="G4")
     version = CourseVersion(
         id="cv-history-1",
         course_id=course.id,

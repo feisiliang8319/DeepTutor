@@ -46,7 +46,7 @@ def web_db(tmp_path: Path) -> Path:
     conn = edu_sqlite.open_database(db_path)
     now = to_iso_timestamp(time.time())
     CourseRepository(conn).create_course(
-        Course(id="c-web", subject_key="mathematics", title="Web", created_at=now)
+        Course(id="c-web", subject_key="mathematics", title="Web", created_at=now, level="G4")
     )
     CourseRepository(conn).create_course_version(
         CourseVersion(
@@ -182,7 +182,7 @@ def test_empty_item_bank_node_is_skipped_and_reported(tmp_path: Path):
     conn = edu_sqlite.open_database(db_path)
     now = to_iso_timestamp(time.time())
     CourseRepository(conn).create_course(
-        Course(id="c-skip", subject_key="mathematics", title="Skip", created_at=now)
+        Course(id="c-skip", subject_key="mathematics", title="Skip", created_at=now, level="G4")
     )
     CourseRepository(conn).create_course_version(
         CourseVersion(id=CV, course_id="c-skip", version="1.0.0", content_hash="0" * 64,

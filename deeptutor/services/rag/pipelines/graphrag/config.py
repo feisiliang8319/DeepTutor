@@ -121,9 +121,13 @@ def build_settings(*, llm_cfg: Any = None, embedding_cfg: Any = None) -> dict[st
     :class:`GraphRagNotConfiguredError` if either side has no usable model.
     """
     if llm_cfg is None:
-        from deeptutor.services.config import resolve_llm_runtime_config
+        # GraphRAG's indexing pass runs entity/community extraction over the whole
+        # corpus, so it takes the ingestion tier rather than the interactive model
+        # (see ``services/llm/tiering.py``). With no tier configured this resolves
+        # to the active model, i.e. the previous behaviour.
+        from deeptutor.services.llm.tiering import INGESTION, resolve_tier_config
 
-        llm_cfg = resolve_llm_runtime_config()
+        llm_cfg = resolve_tier_config(INGESTION)
     if embedding_cfg is None:
         from deeptutor.services.embedding import get_embedding_config
 

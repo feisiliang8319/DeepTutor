@@ -258,7 +258,9 @@ def test_lightrag_llm_adapter_preserves_messages_and_drops_extra_kwargs(
 
             return model_func
 
-    monkeypatch.setattr("deeptutor.services.llm.get_llm_client", lambda: _Client())
+    monkeypatch.setattr(
+        "deeptutor.services.llm.tiering.get_tier_llm_client", lambda _tier: _Client()
+    )
 
     bridge = _RecordingBridge()
     func = lr_config.build_llm_model_func(io_bridge=bridge)
@@ -296,7 +298,9 @@ def test_lightrag_vision_adapter_preserves_messages(monkeypatch) -> None:
 
             return model_func
 
-    monkeypatch.setattr("deeptutor.services.llm.get_llm_client", lambda: _Client())
+    monkeypatch.setattr(
+        "deeptutor.services.llm.tiering.get_tier_llm_client", lambda _tier: _Client()
+    )
 
     bridge = _RecordingBridge()
     func = lr_config.build_vision_model_func(io_bridge=bridge)

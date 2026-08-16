@@ -22,7 +22,7 @@ from llama_index.core import Document
 from llama_index.core.schema import ImageNode
 
 from deeptutor.services.embedding import get_embedding_client
-from deeptutor.services.llm.client import get_llm_client
+from deeptutor.services.llm.tiering import INGESTION, get_tier_llm_client
 from deeptutor.services.rag.file_routing import FileTypeRouter
 from deeptutor.utils.document_validator import DocumentValidator
 
@@ -146,7 +146,11 @@ class LlamaIndexDocumentLoader:
 
     async def _load_image_nodes(self, sources: list[_ImageSource]) -> list[ImageNode]:
         embedding_client = get_embedding_client()
-        llm_client = get_llm_client()
+        # Image description is bulk ingestion work, not an interactive turn, so it
+        # runs on the ingestion tier (see services/llm/tiering.py). The capability
+        # gate below must therefore ask *that* client about vision support, not
+        # the interactive one.
+        llm_client = get_tier_llm_client(INGESTION)
 
         unsupported_reasons = []
         if not embedding_client.supports_multimodal_contents():
@@ -237,7 +241,7 @@ class LlamaIndexDocumentLoader:
         return nodes
 
     async def _describe_image(self, file_path: Path, image_base64: str, mimetype: str) -> str:
-        llm_client = get_llm_client()
+        llm_client = get_tier_llm_client(INGESTION)
         response = await llm_client.complete(
             IMAGE_DESCRIPTION_PROMPT,
             system_prompt=IMAGE_DESCRIPTION_SYSTEM_PROMPT,

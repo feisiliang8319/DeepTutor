@@ -90,10 +90,14 @@ def build_llm_model_func(*, io_bridge: OwnerLoopBridge | None = None):
     """Wrap DeepTutor's unified LLM callable for LightRAG.
 
     Drops LightRAG's internal kwargs while preserving explicit ``messages``.
-    """
-    from deeptutor.services.llm import get_llm_client
 
-    base = get_llm_client().get_model_func()
+    LightRAG calls this while *building* the graph — entity extraction over every
+    chunk of every document — so it runs on the ingestion tier rather than the
+    interactive model (see ``services/llm/tiering.py``).
+    """
+    from deeptutor.services.llm.tiering import INGESTION, get_tier_llm_client
+
+    base = get_tier_llm_client(INGESTION).get_model_func()
 
     async def llm_model_func(
         prompt="",
@@ -117,9 +121,9 @@ def build_llm_model_func(*, io_bridge: OwnerLoopBridge | None = None):
 
 def build_vision_model_func(*, io_bridge: OwnerLoopBridge | None = None):
     """Wrap DeepTutor's vision-capable callable for RAG-Anything's image step."""
-    from deeptutor.services.llm import get_llm_client
+    from deeptutor.services.llm.tiering import INGESTION, get_tier_llm_client
 
-    base = get_llm_client().get_vision_model_func()
+    base = get_tier_llm_client(INGESTION).get_vision_model_func()
 
     async def vision_model_func(
         prompt="",

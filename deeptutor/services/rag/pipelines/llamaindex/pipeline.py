@@ -156,12 +156,56 @@ class LlamaIndexPipeline:
         try:
             loop = asyncio.get_running_loop()
             top_k = kwargs.get("top_k") or default_top_k()
+            standard_code = kwargs.get("standard_code") or None
+            # Only widen the call when a scope was actually requested, so the
+            # unscoped path keeps its original signature for callers and tests
+            # that wrap it.
+            scope_kwargs = {"standard_code": standard_code} if standard_code else {}
             nodes = await loop.run_in_executor(
                 None,
-                lambda: storage.retrieve_nodes(storage_dir, query, top_k=top_k),
+                lambda: storage.retrieve_nodes(storage_dir, query, top_k=top_k, **scope_kwargs),
             )
 
+            scope_applied = bool(standard_code) and await loop.run_in_executor(
+                None, lambda: storage.is_curriculum_aware(storage_dir)
+            )
+
+            if standard_code and not scope_applied:
+                # The caller asked to scope but this knowledge base carries no
+                # standards alignment. Returning unscoped passages is fine —
+                # what is not fine is labelling them as that standard's
+                # material, so the result says plainly that no scope was applied.
+                result = self._nodes_to_result(query, nodes)
+                result["standard_code"] = standard_code
+                result["standard_scope_applied"] = False
+                result["warning"] = (
+                    f"Knowledge base '{kb_name}' has no curriculum alignment, so "
+                    f"results were not restricted to standard '{standard_code}'."
+                )
+                return result
+
+            if standard_code and not nodes:
+                # An empty result under a scope is information, not a failure:
+                # either no lesson addresses that standard or none of its
+                # passages match the query. Saying so beats silently widening
+                # the search and handing back off-standard material.
+                return {
+                    "query": query,
+                    "answer": (
+                        f"No indexed lesson content addresses standard "
+                        f"'{standard_code}' for this query."
+                    ),
+                    "content": "",
+                    "provider": "llamaindex",
+                    "standard_code": standard_code,
+                    "standard_scope_applied": True,
+                    "sources": [],
+                }
+
             result = self._nodes_to_result(query, nodes)
+            if standard_code:
+                result["standard_code"] = standard_code
+                result["standard_scope_applied"] = True
             if embedding_mismatch_warning:
                 result["warning"] = embedding_mismatch_warning
             return result
@@ -212,6 +256,10 @@ class LlamaIndexPipeline:
                     "score": round(node.score, 4) if node.score is not None else "",
                 }
             )
+            lesson_key = meta.get("curriculum_lesson_key")
+            if lesson_key:
+                sources[-1]["lesson_key"] = lesson_key
+                sources[-1]["standards"] = meta.get("curriculum_standards", "")
 
         content = "\n\n".join(context_parts) if context_parts else ""
         return {
@@ -220,6 +268,68 @@ class LlamaIndexPipeline:
             "content": content,
             "sources": sources,
             "provider": "llamaindex",
+        }
+
+    async def lookup_standard(
+        self, standard_code: str, kb_name: str, *, limit: int = 20, **kwargs
+    ) -> Dict[str, Any]:
+        """Resolve a CCSS standard code to the lessons and passages teaching it.
+
+        This is a table lookup against the curriculum sidecar, not a search:
+        given a diagnosis ("stuck on 4.NF.B.3") it returns exactly the lesson
+        content addressing that standard. There is no query parameter, by
+        design — a caller cannot accidentally degrade it into fuzzy search.
+        """
+        self._configure_settings()
+        standard_code = (standard_code or "").strip()
+        if not standard_code:
+            raise ValueError("standard_code must be a non-empty string.")
+
+        kb_dir = resolve_kb_dir(self.kb_base_dir, kb_name)
+        signature = self._current_signature()
+        storage_dir = resolve_storage_dir_for_read(kb_dir, signature)
+        if storage_dir is None or not (storage_dir / "docstore.json").exists():
+            return {
+                "standard_code": standard_code,
+                "lessons": [],
+                "passages": [],
+                "available": False,
+                "reason": "This knowledge base has no index for the active embedding model.",
+            }
+
+        loop = asyncio.get_running_loop()
+        lesson_keys = await loop.run_in_executor(
+            None, lambda: storage.resolve_lesson_keys(storage_dir, standard_code)
+        )
+        if not lesson_keys:
+            return {
+                "standard_code": standard_code,
+                "lessons": [],
+                "passages": [],
+                "available": True,
+                "reason": (
+                    f"No indexed lesson in '{kb_name}' addresses standard '{standard_code}'."
+                ),
+            }
+
+        nodes = await loop.run_in_executor(
+            None, lambda: storage.fetch_lesson_nodes(storage_dir, lesson_keys, limit=limit)
+        )
+        passages = [
+            {
+                "chunk_id": getattr(node, "node_id", "") or getattr(node, "id_", ""),
+                "lesson_key": (node.metadata or {}).get("curriculum_lesson_key", ""),
+                "standards": (node.metadata or {}).get("curriculum_standards", ""),
+                "source": (node.metadata or {}).get("file_name", ""),
+                "text": node.get_content() if hasattr(node, "get_content") else "",
+            }
+            for node in nodes
+        ]
+        return {
+            "standard_code": standard_code,
+            "lessons": lesson_keys,
+            "passages": passages,
+            "available": True,
         }
 
     async def add_documents(self, kb_name: str, file_paths: List[str], **kwargs) -> bool:

@@ -125,7 +125,13 @@ def test_exclusive_compose_drops_builtins_but_keeps_coexisting_rag() -> None:
         capability_owned=["consult_subagent"],
         exclusive=True,
     )
-    assert set(composed) == {"consult_subagent", "rag", "kb_files", "ask_user"}
+    assert set(composed) == {
+        "consult_subagent",
+        "rag",
+        "kb_files",
+        "curriculum_lessons",
+        "ask_user",
+    }
 
 
 def test_exclusive_compose_pure_subagent_mounts_no_rag() -> None:

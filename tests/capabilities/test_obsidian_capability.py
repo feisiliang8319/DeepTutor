@@ -194,6 +194,7 @@ def test_exclusive_compose_drops_builtins_but_keeps_coexisting_rag() -> None:
         "obsidian_read",
         "rag",
         "kb_files",
+        "curriculum_lessons",
         "ask_user",
     }
 

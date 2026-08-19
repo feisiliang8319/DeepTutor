@@ -5,13 +5,16 @@ from __future__ import annotations
 from collections import OrderedDict
 from dataclasses import dataclass
 import json
+import logging
 from pathlib import Path
+import re
 import shutil
 import threading
 import time
 from typing import Any
 
 from deeptutor.services.embedding.validation import validate_embedding_batch
+from deeptutor.services.rag.curriculum import standard_index as curriculum_index
 from deeptutor.services.rag.index_versioning import (
     EmbeddingSignature,
     find_matching_version,
@@ -20,6 +23,8 @@ from deeptutor.services.rag.index_versioning import (
 )
 
 from . import ingestion, retrievers, vector_store
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -85,11 +90,33 @@ def resolve_add_storage_plan(kb_dir: Path, signature: EmbeddingSignature | None)
     return AddStoragePlan(existing_storage=existing_storage, storage_dir=storage_dir)
 
 
+def persist_curriculum_index(index: Any, storage_dir: Path) -> bool:
+    """Rebuild the curriculum sidecar from everything currently in the index.
+
+    Derived from the persisted docstore rather than from the batch just
+    ingested, so a knowledge base built up over several ``add_documents`` calls
+    ends with one sidecar describing all of it. Absence of curriculum metadata
+    simply yields no sidecar.
+    """
+    docstore = getattr(index, "docstore", None)
+    docs = getattr(docstore, "docs", None)
+    if not isinstance(docs, dict) or not docs:
+        return False
+    try:
+        return curriculum_index.persist(
+            curriculum_index.build_from_nodes(list(docs.values())), Path(storage_dir)
+        )
+    except Exception as exc:  # pragma: no cover - sidecar must never break indexing
+        logger.warning("Failed to persist curriculum index in %s: %s", storage_dir, exc)
+        return False
+
+
 def create_index(documents: list[Any], storage_dir: Path, *, show_progress: bool = True) -> int:
     index, count = ingestion.create_index_from_documents(
         documents, storage_dir, show_progress=show_progress
     )
     retrievers.persist_bm25_retriever(index, storage_dir, top_k=20)
+    persist_curriculum_index(index, storage_dir)
     return count
 
 
@@ -105,6 +132,7 @@ def insert_documents(existing_storage: Path, storage_dir: Path, documents: list[
         count = len(documents)
     index.storage_context.persist(persist_dir=str(storage_dir))
     retrievers.persist_bm25_retriever(index, storage_dir, top_k=20)
+    persist_curriculum_index(index, storage_dir)
     return count
 
 
@@ -279,10 +307,145 @@ def prune_index_cache() -> int:
         return before - len(_INDEX_CACHE)
 
 
-def retrieve_nodes(storage_dir: Path, query: str, *, top_k: int = 5) -> list[Any]:
+# How many extra candidates to pull before a curriculum filter is applied.
+# Neither FAISS nor BM25 can filter during retrieval, so scoping to a standard
+# means over-fetching and discarding — this factor decides how deep to dig
+# before giving up on filling top_k.
+_FILTER_OVERSAMPLE = 8
+_FILTER_MIN_CANDIDATES = 40
+
+
+def _lesson_key_of(node: Any) -> str | None:
+    """Read the lesson key off a retrieved node or its wrapper."""
+    metadata = getattr(node, "metadata", None)
+    if not isinstance(metadata, dict):
+        inner = getattr(node, "node", None)
+        metadata = getattr(inner, "metadata", None)
+    if not isinstance(metadata, dict):
+        return None
+    value = metadata.get(curriculum_index.LESSON_KEY)
+    return str(value) if value else None
+
+
+def is_curriculum_aware(storage_dir: Path) -> bool:
+    """Whether this index carries curriculum alignment at all.
+
+    Distinguishes "no lesson teaches that standard" from "this knowledge base
+    has no notion of standards", which callers must not conflate: the first is
+    an answer, the second means a requested scope was never applied.
+    """
+    return curriculum_index.load(Path(storage_dir)) is not None
+
+
+def resolve_lesson_keys(storage_dir: Path, standard_code: str) -> list[str]:
+    """Lesson keys teaching ``standard_code``; empty when none or no sidecar."""
+    sidecar = curriculum_index.load(Path(storage_dir))
+    if sidecar is None:
+        return []
+    return sidecar.lessons_for_standard(standard_code)
+
+
+def fetch_lesson_nodes(storage_dir: Path, lesson_keys: list[str], *, limit: int = 20) -> list[Any]:
+    """Return a lesson's chunks directly, with no similarity search involved.
+
+    Resolving "the learner is stuck on 4.NF.B.3" to the passages that teach it
+    is a lookup, not a ranking problem; routing it through the retriever would
+    reintroduce exactly the guesswork this bridge exists to remove.
+    """
+    if not lesson_keys:
+        return []
+    sidecar = curriculum_index.load(Path(storage_dir))
+    if sidecar is None:
+        return []
+    allowed = sidecar.node_ids_for_lessons(lesson_keys)
+    if not allowed:
+        return []
+
     index = _cached_index(Path(storage_dir))
-    retriever = retrievers.build_retriever(index, Path(storage_dir), top_k=top_k)
-    return retriever.retrieve(query)
+    docs = getattr(getattr(index, "docstore", None), "docs", None)
+    if not isinstance(docs, dict):
+        return []
+
+    # Docstore order is an artefact of how the index was built, so passages are
+    # re-ordered into teaching order — unit, then lesson, then the order the
+    # chunks appear within that lesson. A truncated result is then the start of
+    # the earliest relevant lesson rather than an arbitrary slice.
+    ordering = {key: position for position, key in enumerate(lesson_keys)}
+    selected = [
+        (position, node)
+        for position, (node_id, node) in enumerate(docs.items())
+        if node_id in allowed
+    ]
+    selected.sort(
+        key=lambda item: (
+            _sort_key_for_lesson(_lesson_key_of(item[1]), ordering),
+            item[0],
+        )
+    )
+    return [node for _, node in selected[: max(1, int(limit))]]
+
+
+def _sort_key_for_lesson(lesson_key: str | None, ordering: dict[str, int]) -> tuple[int, int, int]:
+    """Order lessons by unit then lesson number, falling back to request order."""
+    if not lesson_key:
+        return (1, 0, 0)
+    match = re.fullmatch(r"U(\d+)L(\d+)", lesson_key)
+    if match:
+        return (0, int(match.group(1)), int(match.group(2)))
+    return (1, 0, ordering.get(lesson_key, 0))
+
+
+def retrieve_nodes(
+    storage_dir: Path,
+    query: str,
+    *,
+    top_k: int = 5,
+    standard_code: str | None = None,
+    lesson_keys: list[str] | None = None,
+) -> list[Any]:
+    """Retrieve for ``query``, optionally scoped to one curriculum standard.
+
+    Without a scope this is the original unfiltered path, byte for byte. With
+    one, candidates are over-fetched and then filtered on chunk metadata, since
+    the FAISS and BM25 backends accept no filters of their own.
+    """
+    storage_dir = Path(storage_dir)
+    index = _cached_index(storage_dir)
+
+    scope: set[str] = set(lesson_keys or [])
+    curriculum_aware = False
+    if standard_code:
+        sidecar = curriculum_index.load(storage_dir)
+        if sidecar is not None:
+            # The knowledge base knows about standards, so the scope is
+            # authoritative: an unknown code means "nothing here teaches it",
+            # not "search everything". Widening here would hand back
+            # off-standard passages under the label of a standard — the exact
+            # guesswork this scoping exists to remove.
+            curriculum_aware = True
+            scope.update(sidecar.lessons_for_standard(standard_code))
+
+    if not scope:
+        if curriculum_aware:
+            return []
+        retriever = retrievers.build_retriever(index, storage_dir, top_k=top_k)
+        return retriever.retrieve(query)
+
+    candidates = max(top_k * _FILTER_OVERSAMPLE, _FILTER_MIN_CANDIDATES)
+    retriever = retrievers.build_retriever(index, storage_dir, top_k=candidates)
+    matched = [node for node in retriever.retrieve(query) if _lesson_key_of(node) in scope]
+    if matched:
+        return matched[:top_k]
+
+    # The over-fetch window is a heuristic: content that genuinely teaches the
+    # standard can rank below it and be filtered out, leaving nothing. Reporting
+    # "no lesson covers this standard" would then be a false statement, because
+    # the sidecar knows exactly which passages do. Fall back to that lookup —
+    # scored as None, since these were not ranked against the query.
+    from llama_index.core.schema import NodeWithScore
+
+    fallback = fetch_lesson_nodes(storage_dir, sorted(scope), limit=top_k)
+    return [NodeWithScore(node=node, score=None) for node in fallback]
 
 
 def delete_kb_dir(kb_dir: Path) -> bool:

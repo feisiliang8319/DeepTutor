@@ -231,6 +231,99 @@ def _kb_files_limit(raw: Any) -> int:
     return min(requested, KB_FILES_MAX_LIMIT)
 
 
+class CurriculumLessonsTool(_PromptHintsMixin, BaseTool):
+    """Resolve a curriculum standard code to the lessons that teach it.
+
+    Separate from ``rag`` on purpose. Retrieval answers "what text resembles
+    this question"; a diagnosis produces a standard code and needs "what do we
+    teach for exactly this standard" — a lookup whose right answer does not
+    depend on phrasing. Giving that job to ``rag`` would mean asking the model
+    to smuggle a standard code into a similarity query and hope the matching
+    passages come back, which is the guesswork this tool removes.
+
+    It therefore exposes no ``query`` parameter at all: it cannot be degraded
+    into a fuzzy search by a model that reaches for the nearest familiar tool.
+    """
+
+    def get_definition(self) -> ToolDefinition:
+        return ToolDefinition(
+            name="curriculum_lessons",
+            description=(
+                "Look up the lesson content that teaches a specific curriculum "
+                "standard code (for example '4.NF.B.3'). Use this — never rag — "
+                "when you already know which standard the learner is working on "
+                "or struggling with, and you want the passages that address it. "
+                "Returns nothing when no indexed lesson covers that standard, "
+                "which means the knowledge base does not teach it."
+            ),
+            parameters=[
+                ToolParameter(
+                    name="standard_code",
+                    type="string",
+                    description=(
+                        "Curriculum standard code, e.g. '4.NF.B.3'. A coarser "
+                        "code such as '4.NF.B' matches every standard beneath it."
+                    ),
+                ),
+                ToolParameter(
+                    name="kb_name",
+                    type="string",
+                    description=(
+                        "Knowledge base to look in. Must be one of the attached knowledge bases."
+                    ),
+                ),
+            ],
+        )
+
+    async def execute(self, **kwargs: Any) -> ToolResult:
+        from deeptutor.tools.rag_tool import lookup_lessons_for_standard
+
+        standard_code = str(kwargs.get("standard_code") or "").strip()
+        if not standard_code:
+            raise ValueError("curriculum_lessons requires a standard_code.")
+        kb_name = str(kwargs.get("kb_name") or "").strip()
+        if not kb_name:
+            raise ValueError("curriculum_lessons requires an explicit kb_name.")
+
+        result = await lookup_lessons_for_standard(
+            standard_code=standard_code,
+            kb_name=kb_name,
+            limit=_curriculum_limit(kwargs.get("limit")),
+        )
+
+        passages = result.get("passages") or []
+        if not passages:
+            reason = result.get("reason") or (
+                f"No indexed lesson in '{kb_name}' addresses standard '{standard_code}'."
+            )
+            return ToolResult(content=reason, metadata=result)
+
+        rendered = "\n\n".join(
+            f"[{passage.get('lesson_key', '?')} · {passage.get('standards', '')}]\n"
+            f"{passage.get('text', '')}"
+            for passage in passages
+        )
+        return ToolResult(
+            content=(
+                f"Standard {standard_code} is addressed by "
+                f"{len(result.get('lessons') or [])} lesson(s).\n\n{rendered}"
+            ),
+            metadata=result,
+        )
+
+
+def _curriculum_limit(raw: Any) -> int:
+    """Clamp the passage count so one lookup cannot flood the turn's context."""
+    default, maximum = 12, 40
+    try:
+        requested = int(raw)
+    except (TypeError, ValueError):
+        return default
+    if requested <= 0:
+        return default
+    return min(requested, maximum)
+
+
 class WebSearchTool(_PromptHintsMixin, BaseTool):
     def get_definition(self) -> ToolDefinition:
         return ToolDefinition(
@@ -1563,6 +1656,7 @@ BUILTIN_TOOL_TYPES: tuple[type[BaseTool], ...] = (
     BrainstormTool,
     RAGTool,
     KbFilesTool,
+    CurriculumLessonsTool,
     WebSearchTool,
     CodeExecutionTool,
     ReasonTool,
@@ -1647,6 +1741,7 @@ USER_TOGGLEABLE_TOOL_NAMES: tuple[str, ...] = (
 CONFIGURABLE_BUILTIN_TOOL_NAMES: tuple[str, ...] = (
     "rag",
     "kb_files",
+    "curriculum_lessons",
     "code_execution",
     "read_source",
     "read_memory",
@@ -1686,6 +1781,7 @@ __all__ = [
     "GeoGebraAnalysisTool",
     "GithubTool",
     "KbFilesTool",
+    "CurriculumLessonsTool",
     "ImagegenTool",
     "VideogenTool",
     "ListNotebookTool",

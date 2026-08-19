@@ -51,6 +51,40 @@ async def rag_search(
     )
 
 
+async def lookup_lessons_for_standard(
+    standard_code: str,
+    kb_name: str,
+    provider: Optional[str] = None,
+    kb_base_dir: Optional[str] = None,
+    limit: int = 20,
+) -> dict:
+    """Return the lesson passages that teach ``standard_code``.
+
+    Deliberately narrow: there is no ``query`` parameter, so this cannot be
+    misused as a fuzzy search. It answers the one question the tutor could not
+    previously ask — "the learner is stuck on this standard, what do we teach
+    for it?" — as a deterministic lookup.
+    """
+    standard_code = standard_code.strip() if isinstance(standard_code, str) else ""
+    kb_name = kb_name.strip() if isinstance(kb_name, str) else ""
+    if not standard_code:
+        raise ValueError("standard_code must be a non-empty string.")
+    if not kb_name:
+        raise ValueError("Curriculum lookup requires an explicit kb_name.")
+
+    if kb_base_dir is None:
+        from deeptutor.multi_user.knowledge_access import resolve_for_rag
+
+        resource = resolve_for_rag(kb_name)
+        if resource is None:
+            raise ValueError(f"Knowledge base '{kb_name}' is not accessible.")
+        kb_base_dir = str(resource.base_dir)
+        kb_name = resource.name
+
+    service = RAGService(kb_base_dir=kb_base_dir, provider=provider)
+    return await service.lookup_standard(standard_code=standard_code, kb_name=kb_name, limit=limit)
+
+
 async def initialize_rag(
     kb_name: str,
     documents: List[str],

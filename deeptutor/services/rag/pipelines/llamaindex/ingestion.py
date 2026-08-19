@@ -14,6 +14,7 @@ from llama_index.core.ingestion import IngestionPipeline
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.core.schema import BaseNode
 
+from ...curriculum.enricher import CurriculumLessonEnricher
 from . import vector_store
 
 
@@ -27,6 +28,10 @@ def build_ingestion_pipeline() -> IngestionPipeline:
 
     return IngestionPipeline(
         transformations=[
+            # Runs before splitting so a chunk never straddles two lessons and
+            # every chunk inherits its lesson's CCSS codes. No-op for corpora
+            # without lesson markers.
+            CurriculumLessonEnricher(),
             SentenceSplitter(
                 chunk_size=Settings.chunk_size,
                 chunk_overlap=Settings.chunk_overlap,

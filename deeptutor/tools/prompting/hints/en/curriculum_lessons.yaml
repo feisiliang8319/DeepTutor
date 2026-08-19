@@ -1,0 +1,6 @@
+short_description: "Look up the lesson content that teaches a given curriculum standard code."
+when_to_use: "Use when the learner's difficulty is already pinned to a standard code — from a diagnosis, a mastery report, or the standard attached to a problem — and you need the material that actually teaches it."
+input_format: "{\"standard_code\": \"a curriculum standard such as '4.NF.B.3'\", \"kb_name\": \"one of the attached knowledge base names\"}."
+guideline: "Prefer this over rag whenever you have a standard code. Retrieval matches wording, so asking rag for '4.NF.B.3' returns passages that happen to mention similar text, not the lessons that address the standard; this tool resolves the code against the curriculum's own alignment. An empty result is a real answer — it means no indexed lesson teaches that standard, so do not retry the same lookup through rag and present whatever comes back as the standard's material."
+note: "Only knowledge bases built from a standards-aligned curriculum carry this alignment; others return nothing. A coarse code such as '4.NF.B' matches every standard beneath it."
+phase: "exploration"

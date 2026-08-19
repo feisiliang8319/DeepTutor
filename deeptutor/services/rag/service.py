@@ -81,6 +81,24 @@ class RAGService:
             return await pipeline.initialize(kb_name=kb_name, file_paths=file_paths, **kwargs)
         return await pipeline.add_documents(kb_name=kb_name, file_paths=file_paths, **kwargs)
 
+    async def lookup_standard(
+        self, standard_code: str, kb_name: str, *, limit: int = 20, **kwargs
+    ) -> Dict[str, Any]:
+        """Resolve a curriculum standard code to lesson content, without searching."""
+        provider = self._resolve_provider(kb_name)
+        pipeline = self._get_pipeline(provider)
+        if not hasattr(pipeline, "lookup_standard"):
+            return {
+                "standard_code": standard_code,
+                "lessons": [],
+                "passages": [],
+                "available": False,
+                "reason": f"Provider '{provider}' does not expose curriculum lookups.",
+            }
+        return await pipeline.lookup_standard(
+            standard_code=standard_code, kb_name=kb_name, limit=limit, **kwargs
+        )
+
     async def search(
         self,
         query: str,

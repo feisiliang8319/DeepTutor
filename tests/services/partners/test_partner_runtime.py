@@ -734,3 +734,237 @@ class TestPartnerCommands:
 
         assert "Started a new conversation" in reply
         assert len(fake_orchestrator.seen_contexts) == 1
+
+
+MATH_ANSWER_DUMP = "The factor pairs of 36 are: 1 × 36, 2 × 18, 3 × 12, 4 × 9, 6 × 6"
+COMPLIANT_REWRITE = "One pair is 1 × 36. What number completes 2 × ___ = 36?"
+
+
+def _gated_runner(partners_root, *, complete_fn=None) -> PartnerRunner:
+    runner = _runner(partners_root, PartnerConfig(name="Ada", socratic_gate=True))
+    if complete_fn is not None:
+        runner._gate_complete = complete_fn  # type: ignore[method-assign]
+    return runner
+
+
+class TestSocraticGateIntegration:
+    """Wiring tests for the socratic_gate hook inside _execute_turn /
+    on_event suppression — pure-function behaviour is covered by
+    test_socratic_gate.py; these prove the integration actually calls it."""
+
+    @pytest.mark.asyncio
+    async def test_ungated_partner_is_unaffected(self, partners_root, fake_orchestrator):
+        """Regression guard: socratic_gate=False (the dataclass default)
+        must reproduce byte-for-byte the pre-gate behaviour."""
+        fake_orchestrator.script = _finish(MATH_ANSWER_DUMP)
+        runner = _runner(partners_root)  # default config: socratic_gate=False
+        final = await runner.process_message(_msg("factor pairs of 36 please"))
+        assert final == MATH_ANSWER_DUMP
+
+    @pytest.mark.asyncio
+    async def test_compliant_reply_passes_through_without_calling_llm(
+        self, partners_root, fake_orchestrator
+    ):
+        calls = []
+
+        async def fail_if_called(system, user):
+            calls.append((system, user))
+            raise AssertionError("gate should not call the LLM for a compliant reply")
+
+        fake_orchestrator.script = _finish(COMPLIANT_REWRITE)
+        runner = _gated_runner(partners_root, complete_fn=fail_if_called)
+        final = await runner.process_message(_msg("factor pairs of 36 please"))
+        assert final == COMPLIANT_REWRITE
+        assert calls == []
+
+    @pytest.mark.asyncio
+    async def test_violating_reply_is_rewritten(self, partners_root, fake_orchestrator):
+        async def fake_complete(system, user):
+            assert MATH_ANSWER_DUMP in user
+            return COMPLIANT_REWRITE
+
+        fake_orchestrator.script = _finish(MATH_ANSWER_DUMP)
+        runner = _gated_runner(partners_root, complete_fn=fake_complete)
+        final = await runner.process_message(_msg("factor pairs of 36 please"))
+        assert final == COMPLIANT_REWRITE
+
+    @pytest.mark.asyncio
+    async def test_still_violating_rewrite_is_truncated_deterministically(
+        self, partners_root, fake_orchestrator
+    ):
+        async def still_bad(system, user):
+            return MATH_ANSWER_DUMP  # rewrite "tries again" but fails again
+
+        fake_orchestrator.script = _finish(MATH_ANSWER_DUMP)
+        runner = _gated_runner(partners_root, complete_fn=still_bad)
+        final = await runner.process_message(_msg("factor pairs of 36 please"))
+
+        from deeptutor.services.partners import socratic_gate as gate
+
+        assert gate.has_answer_dump(final) is False
+        assert final.rstrip().endswith(("?", "？"))
+        assert final != MATH_ANSWER_DUMP
+
+    @pytest.mark.asyncio
+    async def test_rewrite_call_failure_falls_back_to_truncation(
+        self, partners_root, fake_orchestrator
+    ):
+        async def boom(system, user):
+            raise RuntimeError("model unreachable")
+
+        fake_orchestrator.script = _finish(MATH_ANSWER_DUMP)
+        runner = _gated_runner(partners_root, complete_fn=boom)
+        final = await runner.process_message(_msg("factor pairs of 36 please"))
+
+        from deeptutor.services.partners import socratic_gate as gate
+
+        assert gate.has_answer_dump(final) is False
+        assert final.rstrip().endswith(("?", "？"))
+
+    @pytest.mark.asyncio
+    async def test_exempt_handoff_reply_skips_gate_entirely(
+        self, partners_root, fake_orchestrator
+    ):
+        handoff = (
+            "That's fourth-grade fractions — Study Buddy has the actual course "
+            "materials for that. Bring me the competition version any time."
+        )
+
+        async def fail_if_called(system, user):
+            raise AssertionError("gate should not touch an exempt hand-off reply")
+
+        fake_orchestrator.script = _finish(handoff)
+        runner = _gated_runner(partners_root, complete_fn=fail_if_called)
+        final = await runner.process_message(_msg("what's 2+2"))
+        assert final == handoff
+
+    @pytest.mark.asyncio
+    async def test_gated_partner_never_forwards_live_content_events(
+        self, partners_root, fake_orchestrator
+    ):
+        """The web socket forwards every on_event() call verbatim as a
+        stream_event frame (see partners/{id}/ws + PartnerChat.tsx). A
+        gated partner must never let a CONTENT event reach on_event live —
+        only the terminal, already-gated final_text may reach the caller."""
+
+        async def fake_complete(system, user):
+            return COMPLIANT_REWRITE
+
+        fake_orchestrator.script = _finish(MATH_ANSWER_DUMP)
+        runner = _gated_runner(partners_root, complete_fn=fake_complete)
+
+        forwarded: list[StreamEvent] = []
+
+        async def on_event(event: StreamEvent) -> None:
+            forwarded.append(event)
+
+        final = await runner.process_message(_msg("factor pairs of 36 please"), on_event=on_event)
+
+        assert final == COMPLIANT_REWRITE
+        content_events = [e for e in forwarded if e.type == StreamEventType.CONTENT]
+        assert content_events == [], (
+            "a CONTENT event reached on_event live for a gated partner — this is "
+            "exactly the websocket leak the gate is supposed to close"
+        )
+        # RESULT/DONE (non-answer-bearing-text event types) still forward —
+        # only the answer-carrying events are held back.
+        assert any(e.type == StreamEventType.RESULT for e in forwarded)
+        assert any(e.type == StreamEventType.DONE for e in forwarded)
+
+    @pytest.mark.asyncio
+    async def test_ungated_partner_still_forwards_live_content_events(
+        self, partners_root, fake_orchestrator
+    ):
+        """Regression guard paired with the test above: on_event suppression
+        must be conditional on socratic_gate, not a blanket change."""
+        fake_orchestrator.script = _finish("The answer is 4.")
+        runner = _runner(partners_root)  # socratic_gate=False
+
+        forwarded: list[StreamEvent] = []
+
+        async def on_event(event: StreamEvent) -> None:
+            forwarded.append(event)
+
+        await runner.process_message(_msg("what is 2+2?"), on_event=on_event)
+
+        content_events = [e for e in forwarded if e.type == StreamEventType.CONTENT]
+        assert len(content_events) == 1
+        assert content_events[0].content == "The answer is 4."
+
+    @pytest.mark.asyncio
+    async def test_gated_partner_forces_buffered_delivery_on_im_channels(
+        self, partners_root, fake_orchestrator
+    ):
+        """A gated partner must never use the runner's own live IM streaming
+        (_publish_stream_delta) either — even if the channel asked for it via
+        _wants_stream — since that's the same "chunk before the gate can see
+        the whole reply" leak, just over IM instead of the web socket."""
+        fake_orchestrator.script = [
+            _event(
+                StreamEventType.CONTENT,
+                content=MATH_ANSWER_DUMP,
+                metadata={"call_id": "c-finish"},
+            ),
+            _event(
+                StreamEventType.PROGRESS,
+                metadata={
+                    "trace_kind": "call_status",
+                    "call_state": "complete",
+                    "call_role": "finish",
+                    "call_id": "c-finish",
+                },
+            ),
+            _event(StreamEventType.RESULT, metadata={"response": MATH_ANSWER_DUMP}),
+            _event(StreamEventType.DONE),
+        ]
+
+        async def fake_complete(system, user):
+            return COMPLIANT_REWRITE
+
+        runner = _gated_runner(partners_root, complete_fn=fake_complete)
+        msg = _msg("factor pairs of 36 please", channel="telegram")
+        msg.metadata["_wants_stream"] = True
+
+        final = await runner.process_message(msg)
+        # The gated text, not the raw draft — proves the gate ran even on
+        # the runner's own IM streaming path (which process_message() alone
+        # exercises; the final reply is published separately by
+        # _handle_inbound, exercised in the assertion below).
+        assert final == COMPLIANT_REWRITE
+
+        # process_message() itself only ever publishes _progress /
+        # _stream_delta frames directly to the bus (the final reply is
+        # published by _handle_inbound). None should have reached the bus
+        # with the raw ungated text — confirms wants_stream was forced off.
+        drained = []
+        while not runner.bus.outbound.empty():
+            drained.append(runner.bus.outbound.get_nowait())
+        stream_deltas = [m for m in drained if m.metadata.get("_stream_delta")]
+        assert stream_deltas == []
+        assert all(MATH_ANSWER_DUMP not in (m.content or "") for m in drained)
+
+        # Confirm the full inbound→outbound path also publishes the gated
+        # (not raw) text as the single final message.
+        fake_orchestrator.script = [
+            _event(
+                StreamEventType.CONTENT,
+                content=MATH_ANSWER_DUMP,
+                metadata={"call_id": "c-finish"},
+            ),
+            _event(
+                StreamEventType.PROGRESS,
+                metadata={
+                    "trace_kind": "call_status",
+                    "call_state": "complete",
+                    "call_role": "finish",
+                    "call_id": "c-finish",
+                },
+            ),
+            _event(StreamEventType.RESULT, metadata={"response": MATH_ANSWER_DUMP}),
+            _event(StreamEventType.DONE),
+        ]
+        msg2 = _msg("factor pairs of 36 please again", channel="telegram")
+        msg2.metadata["_wants_stream"] = True
+        await runner._handle_inbound(msg2)
+        published = await runner.bus.outbound.get()
+        assert published.content == COMPLIANT_REWRITE

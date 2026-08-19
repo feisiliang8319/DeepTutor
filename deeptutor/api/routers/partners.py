@@ -131,6 +131,10 @@ class CreatePartnerRequest(BaseModel):
     # Omitting ``mcp_tools`` creates the partner with MCP off (the config
     # default); ``null`` is the deliberate opt-in to every configured MCP tool.
     mcp_tools: list[str] | None = []
+    # Deterministic answer-withholding gate for Socratic-method tutoring
+    # partners (see deeptutor.services.partners.socratic_gate). Omitted →
+    # PartnerConfig's fail-closed default (off).
+    socratic_gate: bool | None = None
     assets: AssetSpec | None = None
     start: bool = True
 
@@ -148,6 +152,7 @@ class UpdatePartnerRequest(BaseModel):
     enabled_tools: list[str] | None = None
     builtin_tools: list[str] | None = None
     mcp_tools: list[str] | None = None
+    socratic_gate: bool | None = None
 
 
 class SoulUpdateBody(BaseModel):
@@ -474,6 +479,7 @@ async def create_partner(payload: CreatePartnerRequest):
         enabled_tools=payload.enabled_tools,
         builtin_tools=payload.builtin_tools,
         mcp_tools=payload.mcp_tools,
+        socratic_gate=bool(payload.socratic_gate),
     )
     mgr.save_config(partner_id, config, auto_start=bool(payload.start))
     write_soul(partner_id, soul_content)
@@ -528,6 +534,7 @@ def _stopped_partner_dict(
         "enabled_tools": cfg.enabled_tools,
         "builtin_tools": cfg.builtin_tools,
         "mcp_tools": cfg.mcp_tools,
+        "socratic_gate": cfg.socratic_gate,
         "running": False,
         "started_at": None,
         "last_reload_error": None,
@@ -584,6 +591,8 @@ def _apply_update(cfg: PartnerConfig, payload: UpdatePartnerRequest) -> None:
         cfg.builtin_tools = payload.builtin_tools
     if "mcp_tools" in payload.model_fields_set:
         cfg.mcp_tools = payload.mcp_tools
+    if payload.socratic_gate is not None:
+        cfg.socratic_gate = payload.socratic_gate
 
 
 @router.patch("/{partner_id}")

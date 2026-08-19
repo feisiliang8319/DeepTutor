@@ -36,6 +36,7 @@ from deeptutor.multi_user.paths import user_context
 from deeptutor.partners.bus.events import InboundMessage, OutboundMessage
 from deeptutor.partners.bus.queue import MessageBus
 from deeptutor.partners.helpers import detect_image_mime
+from deeptutor.services.partners import socratic_gate
 from deeptutor.services.partners.commands import PartnerCommandHandler
 from deeptutor.services.partners.scope import partner_user
 from deeptutor.services.partners.sessions import PartnerSessionStore
@@ -251,6 +252,8 @@ class PartnerRunner:
         errors: list[str] = []
         turn_events: list[dict[str, Any]] = []
         wants_stream = False
+        gate_active = False
+        context: UnifiedContext | None = None
 
         # Turn setup (context assembly + LLM-selection resolution) runs INSIDE
         # the try so a setup failure folds into the error list instead of
@@ -274,9 +277,21 @@ class PartnerRunner:
                 msg.channel, "send_tool_hints", default=True
             )
             is_im = msg.channel != "web"
+            # Deterministic answer-withholding gate (see socratic_gate.py):
+            # active only for partners whose owner opted in. The gate needs
+            # the COMPLETE reply to judge it (an enumerated list or a missing
+            # "?" can't be seen from a partial token stream), so a gated
+            # partner never gets live per-token delivery — see the on_event
+            # suppression below and the forced-buffered wants_stream here.
+            gate_active = bool(getattr(self.config, "socratic_gate", False))
             # Streaming requires send_progress: narration rounds stream live as
             # they happen, so with progress muted we keep buffered delivery.
-            wants_stream = is_im and send_progress and bool(msg.metadata.get("_wants_stream"))
+            wants_stream = (
+                is_im
+                and send_progress
+                and bool(msg.metadata.get("_wants_stream"))
+                and not gate_active
+            )
 
             _config, llm_token = activate_llm_selection(selection)
             # Everything — rag / skills / notebooks AND memory — resolves to the
@@ -290,9 +305,24 @@ class PartnerRunner:
             with user_context(partner_user(self.partner_id, name=self.config.name)):
                 orchestrator = ChatOrchestrator()
                 async for event in orchestrator.handle(context):
-                    if on_event is not None:
-                        await on_event(event)
                     meta = event.metadata or {}
+                    # For a gated partner, don't forward answer-bearing events
+                    # to on_event live: the web socket (partners/{id}/ws)
+                    # relays every stream_event verbatim and the browser
+                    # accumulates CONTENT deltas into the live-typing draft
+                    # (see web/components/partners/PartnerChat.tsx) *before*
+                    # this loop finishes and the gate below ever runs — a
+                    # post-hoc check on final_text alone cannot stop a
+                    # violation the student already watched stream in. Tool
+                    # calls / non-answer progress still forward live so the
+                    # "thinking" trace keeps animating; only the two event
+                    # shapes that feed the visible answer are held back.
+                    is_answer_bearing = event.type == StreamEventType.CONTENT or (
+                        event.type == StreamEventType.PROGRESS
+                        and meta.get("answer_visible") is True
+                    )
+                    if on_event is not None and not (gate_active and is_answer_bearing):
+                        await on_event(event)
 
                     # Capture the trace for rehydration — mirror product chat's
                     # persisted ``assistant_events`` (everything but done/session).
@@ -370,6 +400,51 @@ class PartnerRunner:
             ):
                 final_text = f"{display_prefix}\n\n{final_text}"
 
+        # ── deterministic answer-withholding gate ───────────────────
+        # Runs on the COMPLETE reply, after every merge above — this is the
+        # single choke point every delivery path (HTTP /chat, the SSE
+        # endpoint's terminal "content" frame, IM buffered publish, and the
+        # web socket's turn.finish "content" frame) reads final_text from.
+        # It does NOT cover the web socket's live stream_event frames on its
+        # own; that leak is closed separately by suppressing on_event above.
+        if gate_active and final_text and context is not None:
+            decision = socratic_gate.evaluate(msg.content, final_text)
+            if decision.violated and not decision.exempt:
+                logger.warning(
+                    "[socratic_gate] partner=%s rule=%s attempt=1/2 draft=%r",
+                    self.partner_id,
+                    decision.violation_reason,
+                    final_text[:200],
+                )
+                rewritten = ""
+                try:
+                    rewritten = await socratic_gate.rewrite_once(
+                        student_message=msg.content,
+                        draft_reply=final_text,
+                        violation_reason=decision.violation_reason,
+                        persona=context.persona_context,
+                        complete_fn=self._gate_complete,
+                    )
+                except Exception:
+                    logger.exception(
+                        "[socratic_gate] rewrite call failed for partner %s", self.partner_id
+                    )
+                redecision = (
+                    socratic_gate.evaluate(msg.content, rewritten) if rewritten else decision
+                )
+                if not rewritten or (redecision.violated and not redecision.exempt):
+                    logger.warning(
+                        "[socratic_gate] partner=%s rule=%s attempt=2/2 still violating "
+                        "after rewrite (or rewrite failed) — truncating deterministically; "
+                        "text=%r",
+                        self.partner_id,
+                        redecision.violation_reason or decision.violation_reason,
+                        (rewritten or final_text)[:200],
+                    )
+                    final_text = socratic_gate.truncate_to_safe_step(rewritten or final_text)
+                else:
+                    final_text = rewritten
+
         # Close any stream segments still open (the finish round, or partial
         # rounds after a crash) so channels can flush their edit buffers.
         for call_id in streamed_rounds:
@@ -385,6 +460,19 @@ class PartnerRunner:
                     delivery_meta["_streamed"] = True
 
         return final_text, errors, turn_events
+
+    async def _gate_complete(self, system: str, user: str) -> str:
+        """Tool-free, single-shot LLM call used only by the socratic_gate
+        rewrite pass (see ``_execute_turn`` above). Instantiated fresh (no
+        cached client) and called while the caller's ``activate_llm_selection``
+        scope is still active, so ``LLMClient()``'s default ``get_llm_config()``
+        resolves to the SAME model/profile the turn just ran on (the scoped
+        config is a contextvar — see
+        ``deeptutor.services.llm.config.get_llm_config``), not an unrelated
+        deployment default."""
+        from deeptutor.services.llm.client import LLMClient
+
+        return await LLMClient().complete(user, system_prompt=system)
 
     # ── context assembly ──────────────────────────────────────────
 

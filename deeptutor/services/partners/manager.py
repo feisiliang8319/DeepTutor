@@ -206,6 +206,18 @@ class PartnerConfig:
     # missing grant must not hand a real account the deployment's servers, while
     # a partner's ``None`` is an owner's deliberate "allow everything".
     mcp_tools: list[str] | None = field(default_factory=list)
+    # Deterministic post-generation gate (deeptutor.services.partners.
+    # socratic_gate) that blocks a Socratic-method tutoring partner from
+    # handing a student a complete answer, backstopping the SOUL.md hard
+    # rules the model itself only follows probabilistically. Defaults to
+    # ``False`` (fail-closed for anything but the two known tutoring
+    # partners): a new partner is not necessarily a tutor, and the gate's
+    # rewrite/truncate path adds latency and can only ever be *correct* for
+    # a soul that actually promises "one step, then a question" — turning
+    # it on for an unrelated partner would silently mangle replies that
+    # were never supposed to follow that shape. See runtime.py
+    # PartnerRunner._execute_turn for the enforcement point.
+    socratic_gate: bool = False
 
 
 @dataclass
@@ -309,6 +321,7 @@ class PartnerInstance:
             "enabled_tools": self.config.enabled_tools,
             "builtin_tools": self.config.builtin_tools,
             "mcp_tools": self.config.mcp_tools,
+            "socratic_gate": self.config.socratic_gate,
             "running": self.running,
             "started_at": self.started_at.isoformat(),
             "last_reload_error": self.last_reload_error,
@@ -366,6 +379,7 @@ class PartnerManager:
         "enabled_tools",
         "builtin_tools",
         "mcp_tools",
+        "socratic_gate",
     )
 
     def load_config(self, partner_id: str) -> PartnerConfig | None:
@@ -389,6 +403,9 @@ class PartnerManager:
                 enabled_tools=_optional_str_list(data.get("enabled_tools")),
                 builtin_tools=_optional_str_list(data.get("builtin_tools")),
                 mcp_tools=_mcp_tools_setting(data),
+                # Absent key (config written before this field existed) reads
+                # as False — the fail-closed default, not an accidental opt-in.
+                socratic_gate=bool(data.get("socratic_gate", False)),
             )
         except Exception:
             logger.exception("Failed to load partner config %s", partner_id)
@@ -418,6 +435,7 @@ class PartnerManager:
             "avatar": config.avatar,
             "soul_origin": config.soul_origin,
             "auto_start": auto_start,
+            "socratic_gate": bool(config.socratic_gate),
         }
         if config.llm_selection:
             data["llm_selection"] = config.llm_selection

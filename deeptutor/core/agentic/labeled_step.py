@@ -35,6 +35,7 @@ from __future__ import annotations
 import asyncio
 from contextlib import suppress
 from dataclasses import dataclass, field
+import logging
 import re
 from typing import Any
 
@@ -90,6 +91,9 @@ _USAGE_TRAILER_GRACE_TIMEOUT_S = 1.0
 # Defensive fallback for gateways that never emit ``finish_reason`` but have
 # already sent a final-label answer and then leave the stream idle.
 _FINAL_LABEL_IDLE_TIMEOUT_S = 8.0
+
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -387,6 +391,12 @@ async def run_labeled_step(
                 retry_kwargs.pop("stream_options", None)
                 return await client.chat.completions.create(**retry_kwargs)
             if tool_schemas and is_tool_schema_unsupported(exc):
+                logger.warning(
+                    "Tool schemas rejected by provider; retrying without tools. "
+                    "Original error: %s",
+                    exc,
+                    exc_info=True,
+                )
                 await stream.progress(
                     "Provider rejected native tool schemas; retrying without tools.",
                     source=source,

@@ -804,6 +804,15 @@ class AgentLoop:
                 retry_kwargs.pop("stream_options", None)
                 return await self.client.chat.completions.create(**retry_kwargs)
             if kwargs.get("tools") and is_tool_schema_unsupported(exc):
+                # Without this the provider error vanishes: the turn silently
+                # continues tool-less and the user just sees a weaker answer.
+                # (2026-08-19: a 400 hid here for hours because nothing logged it.)
+                logger.warning(
+                    "Tool schemas rejected by provider; retrying without tools. "
+                    "Original error: %s",
+                    exc,
+                    exc_info=True,
+                )
                 await self.stream.progress(
                     self.pipeline._t(
                         "notices.tool_schema_fallback",

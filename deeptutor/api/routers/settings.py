@@ -42,6 +42,7 @@ from deeptutor.services.config.runtime_settings import (
 from deeptutor.services.embedding.client import reset_embedding_client
 from deeptutor.services.llm.client import reset_llm_client
 from deeptutor.services.llm.config import clear_llm_config_cache
+from deeptutor.services.llm.tiering import reset_tier_clients
 from deeptutor.services.model_selection import list_llm_options
 from deeptutor.services.path_service import get_path_service
 from deeptutor.services.settings.interface_settings import (
@@ -291,6 +292,12 @@ def _invalidate_runtime_caches() -> None:
     clear_llm_config_cache()
     reset_llm_client()
     reset_embedding_client()
+    # Ingestion-tier clients are cached separately (services/llm/tiering.py) and
+    # keyed only by (tier, model, base_url). A catalog edit that leaves those three
+    # identical but changes anything else about the profile -- a rotated API key,
+    # or the same model id moved under a different profile -- would otherwise keep
+    # serving the superseded client until the process restarts.
+    reset_tier_clients()
 
 
 def load_ui_settings() -> dict[str, Any]:

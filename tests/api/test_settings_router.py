@@ -18,6 +18,7 @@ from deeptutor.services.embedding import client as embedding_client_module
 from deeptutor.services.embedding import config as embedding_config_module
 from deeptutor.services.llm import client as llm_client_module
 from deeptutor.services.llm import config as llm_config_module
+from deeptutor.services.llm import tiering as tiering_module
 
 
 def test_load_ui_settings_migrates_legacy_language_to_response_language(
@@ -700,6 +701,130 @@ async def test_apply_catalog_invalidates_runtime_caches(monkeypatch: pytest.Monk
     assert new_llm_client.config.base_url == "https://after-apply-llm.example/v1"
     assert new_embedding_client is not old_embedding_client
     assert new_embedding_client.config.model == "text-embedding-after-apply"
+
+
+def _tiered_catalog(*, tier_api_key: str) -> dict[str, Any]:
+    """Catalog whose ingestion tier points at a fixed model/base_url.
+
+    Only ``api_key`` varies between the before/after catalogs, so the tier cache
+    key -- ``(tier, model, base_url)`` -- is byte-identical across the Apply.
+    That is the exact shape that a cache reset is the *only* defence against.
+    """
+    return {
+        "version": 1,
+        "services": {
+            "llm": {
+                "active_profile_id": "cloud",
+                "active_model_id": "big",
+                "tiers": {"ingestion": {"profile_id": "local", "model_id": "small"}},
+                "profiles": [
+                    {
+                        "id": "cloud",
+                        "name": "Cloud",
+                        "binding": "openai",
+                        "base_url": "https://api.openai.com/v1",
+                        "api_key": "cloud-key",
+                        "api_version": "",
+                        "extra_headers": {},
+                        "models": [{"id": "big", "name": "Big", "model": "gpt-expensive"}],
+                    },
+                    {
+                        "id": "local",
+                        "name": "Local",
+                        "binding": "openai",
+                        "base_url": "http://127.0.0.1:8001/v1",
+                        "api_key": tier_api_key,
+                        "api_version": "",
+                        "extra_headers": {},
+                        "models": [{"id": "small", "name": "Small", "model": "qwen-cheap"}],
+                    },
+                ],
+            }
+        },
+    }
+
+
+@pytest.fixture
+def _tier_cache_reset():
+    tiering_module.reset_tier_clients()
+    yield
+    tiering_module.reset_tier_clients()
+
+
+@pytest.mark.asyncio
+async def test_update_catalog_rebuilds_the_ingestion_tier_client(
+    monkeypatch: pytest.MonkeyPatch, _tier_cache_reset
+) -> None:
+    """Apply must invalidate the ingestion-tier client, not just the interactive one.
+
+    ``_invalidate_runtime_caches`` resets the LLM and embedding singletons. Tier
+    clients (``services/llm/tiering.py``) live in a separate cache that those
+    resets do not touch, so an admin who rotates a tier profile's key while
+    leaving its model and base_url alone would keep ingesting through a client
+    built from the superseded key until the backend process restarts.
+    """
+    service = _FakeCatalogService(_tiered_catalog(tier_api_key="old-tier-key"))
+    monkeypatch.setattr(settings_router, "get_model_catalog_service", lambda: service)
+
+    class _Service:
+        def load(self):
+            return service.load()
+
+    monkeypatch.setattr(tiering_module, "get_model_catalog_service", lambda: _Service())
+    real_resolve = tiering_module.resolve_llm_runtime_config
+    monkeypatch.setattr(
+        tiering_module,
+        "resolve_llm_runtime_config",
+        lambda *args, **kwargs: real_resolve(service.load(), **kwargs),
+    )
+
+    old_client = tiering_module.get_tier_llm_client(tiering_module.INGESTION)
+    assert old_client.config.api_key == "old-tier-key"
+
+    await settings_router.update_catalog(
+        settings_router.CatalogPayload(catalog=_tiered_catalog(tier_api_key="new-tier-key"))
+    )
+
+    new_client = tiering_module.get_tier_llm_client(tiering_module.INGESTION)
+    assert new_client is not old_client
+    assert new_client.config.api_key == "new-tier-key"
+    # The cache key really was identical -- i.e. the rebuild came from the reset,
+    # not from the key happening to change.
+    assert new_client.config.model == old_client.config.model == "qwen-cheap"
+    assert new_client.config.base_url == old_client.config.base_url
+
+
+@pytest.mark.asyncio
+async def test_apply_catalog_rebuilds_the_ingestion_tier_client(
+    monkeypatch: pytest.MonkeyPatch, _tier_cache_reset
+) -> None:
+    """Same guarantee for the /apply endpoint, which shares the invalidation path."""
+    service = _FakeCatalogService(_tiered_catalog(tier_api_key="before-apply-tier-key"))
+    monkeypatch.setattr(settings_router, "get_model_catalog_service", lambda: service)
+
+    class _Service:
+        def load(self):
+            return service.load()
+
+    monkeypatch.setattr(tiering_module, "get_model_catalog_service", lambda: _Service())
+    real_resolve = tiering_module.resolve_llm_runtime_config
+    monkeypatch.setattr(
+        tiering_module,
+        "resolve_llm_runtime_config",
+        lambda *args, **kwargs: real_resolve(service.load(), **kwargs),
+    )
+
+    old_client = tiering_module.get_tier_llm_client(tiering_module.INGESTION)
+
+    await settings_router.apply_catalog(
+        settings_router.CatalogPayload(
+            catalog=_tiered_catalog(tier_api_key="after-apply-tier-key")
+        )
+    )
+
+    new_client = tiering_module.get_tier_llm_client(tiering_module.INGESTION)
+    assert new_client is not old_client
+    assert new_client.config.api_key == "after-apply-tier-key"
 
 
 @pytest.mark.asyncio

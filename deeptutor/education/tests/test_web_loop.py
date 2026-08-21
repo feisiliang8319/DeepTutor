@@ -236,13 +236,13 @@ def test_resubmitting_the_same_set_does_not_double_count(client: TestClient):
     卷子，两次提交是两次货真价实的作答。改为直接把同一张卷子交两遍。
     """
     issued = _issue(client).json()
-    body = _submit_all(client, issued, SECRET_ANSWER, "k1").json()
+    body = _submit_all(client, issued, SECRET_ANSWER).json()
     assert body["summary"]["answered"] == len(issued["items"])
     # 判据是"重放前后不变"，不是"等于 1"：一组里同一个知识点上有几道题，
     # 首次提交本来就会把该节点的复习次数推进几次。
     before = {r["item_id"]: (r["review"] or {}).get("reps") for r in body["results"]}
 
-    again = _submit_all(client, issued, SECRET_ANSWER, "k2").json()
+    again = _submit_all(client, issued, SECRET_ANSWER).json()
     after = {r["item_id"]: (r["review"] or {}).get("reps") for r in again["results"]}
     assert after == before, f"重放把复习次数又推了一遍：{before} -> {after}"
 
@@ -816,7 +816,7 @@ def test_default_set_has_more_than_one_question(client: TestClient):
 # 复用 client_attempt_id 时两次传的是**相同** response（于是回显错配测不出来）。
 
 
-def _submit_all(client: TestClient, issued: dict, response: str, key: str):
+def _submit_all(client: TestClient, issued: dict, response: str):
     return client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
         "answers": [{"item_id": i["id"], "response": response} for i in issued["items"]]})
@@ -828,7 +828,7 @@ def test_resubmitting_a_submitted_set_never_regrades(client: TestClient, web_db:
     重放必须原样返回**第一次**那份复盘：不写新作答、不重新判分。
     """
     issued = _issue(client).json()
-    first = _submit_all(client, issued, "definitely-wrong", "try-1").json()
+    first = _submit_all(client, issued, "definitely-wrong").json()
     assert first["summary"]["correct"] == 0
     answers = {r["item_id"]: r["correct_answer"] for r in first["results"]}
 
@@ -883,14 +883,18 @@ def test_only_one_open_set_per_course_even_under_concurrency(client: TestClient,
     assert open_rows == 1
 
 
-def test_replayed_client_attempt_id_echoes_what_was_stored(client: TestClient):
-    """CRITICAL-3：复用同一个 client_attempt_id 配一段新乱码。
+def test_replay_echoes_the_stored_answer_not_the_new_payload(client: TestClient):
+    """重放同一组、换一段新乱码，回显必须是**落库的那条**。
 
-    底层幂等地保留首次作答（正确），但响应曾把"新乱码 + 旧判分"拼在一起回吐，
-    构成"乱打也算对"的展示层假象。回显必须取落库的那条。
+    （原名 test_replayed_client_attempt_id_echoes_what_was_stored。幂等键已于
+    2026-08-21 改由服务端从 (set_id, item_id) 派生，`client_attempt_id` 字段
+    也已从请求体移除，名字里再提它会误导后来的读者。不变量本身没变。）
+
+    第四轮质检席 CRITICAL-3：底层幂等地保留了首次作答（正确），但响应把
+    "新乱码 + 旧判分"拼在一起回吐，构成"乱打也算对"的展示层假象。
     """
     issued = _issue(client).json()
-    _submit_all(client, issued, SECRET_ANSWER, "same-key")
+    _submit_all(client, issued, SECRET_ANSWER)
     replay = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
         "answers": [{"item_id": i["id"], "response": "garbage-!!!"} for i in issued["items"]]})
@@ -1104,7 +1108,7 @@ def test_attempt_ids_are_derived_by_the_server_from_set_and_item(
     保护不了这条不变量。
     """
     issued = _issue(client).json()
-    _submit_all(client, issued, SECRET_ANSWER, "k")
+    _submit_all(client, issued, SECRET_ANSWER)
     conn = edu_sqlite.open_database(web_db)
     ids = {r["id"] for r in conn.execute(
         "SELECT id FROM student_attempts WHERE learner_id = ?", (LEARNER,))}
@@ -1119,7 +1123,7 @@ def test_one_review_state_per_node_is_reported_consistently(client: TestClient):
     同一份复盘里同一个知识点出现两个数。终态统一在循环结束后取。
     """
     issued = _issue(client).json()
-    body = _submit_all(client, issued, SECRET_ANSWER, "k").json()
+    body = _submit_all(client, issued, SECRET_ANSWER).json()
     per_node: dict[str, set] = {}
     for row, item in zip(body["results"], issued["items"]):
         code = item["node"]["code"]
@@ -1127,3 +1131,26 @@ def test_one_review_state_per_node_is_reported_consistently(client: TestClient):
             None if row["review"] is None else row["review"]["reps"])
     for code, values in per_node.items():
         assert len(values) == 1, f"知识点 {code} 在同一份复盘里报了 {values}"
+
+
+def test_a_smuggled_client_attempt_id_is_ignored(client: TestClient, web_db: Path):
+    """请求体里夹带 client_attempt_id 必须无效。
+
+    该字段已从 `SetAnswer` 移除，pydantic 默认把多余字段静默丢掉 —— 行为是对的，
+    但"对"是默认配置给的，没有任何测试钉住它。哪天有人给模型加上
+    `model_config = ConfigDict(extra="allow")`，或顺手把字段加回来，客户端就又能
+    自选去重键了（第五轮质检席那条 CRITICAL 的入口）。这条负面测试就是那颗钉子。
+    """
+    issued = _issue(client).json()
+    r = client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER,
+                     "client_attempt_id": f"smuggled-{i['id']}"} for i in issued["items"]]})
+    assert r.status_code == 200
+
+    conn = edu_sqlite.open_database(web_db)
+    ids = {row["id"] for row in conn.execute(
+        "SELECT id FROM student_attempts WHERE learner_id = ?", (LEARNER,))}
+    conn.close()
+    assert ids == {f"{issued['set_id']}:{i['id']}" for i in issued["items"]}
+    assert not any(i.startswith("smuggled-") for i in ids), "夹带的键不该成为落库主键"

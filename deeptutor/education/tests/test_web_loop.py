@@ -24,11 +24,12 @@ from deeptutor.education.domain.course import (
     KnowledgeEdge,
     KnowledgeNode,
 )
-from deeptutor.education.domain.learner import LearnerProfile
+from deeptutor.education.domain.learner import Enrollment, LearnerProfile
 from deeptutor.education.storage import sqlite as edu_sqlite
 from deeptutor.education.storage.repositories import (
     AssessmentItemRepository,
     CourseRepository,
+    EnrollmentRepository,
     KnowledgeGraphRepository,
     LearnerRepository,
 )
@@ -373,3 +374,47 @@ def test_progress_reports_status_per_node(client: TestClient):
     assert by_code["A"]["status"] in ("learning", "mastered")
     assert by_code["B"]["status"] == "new"
     assert "expected_answer" not in json.dumps(body)
+
+
+# ---- 课程目录：前端唯一的课程来源 -----------------------------------------
+#
+# 这三个测试补的是一个曾经真实存在的缺口：enrollments 表在运行时**没有任何
+# 消费方**，前端把 `cv-ccss-g4-1.0.0` 写死。给谁选了课都不影响任何人看到什么，
+# 直到第二门课上线才暴露（2026-08-21）。
+
+
+def test_courses_lists_only_active_enrollments(client: TestClient, web_db: Path):
+    conn = edu_sqlite.open_database(web_db)
+    now = to_iso_timestamp(time.time())
+    CourseRepository(conn).create_course(
+        Course(id="c-hist", subject_key="history", title="History", created_at=now, level="AP-HS")
+    )
+    CourseRepository(conn).create_course_version(
+        CourseVersion(id="cv-hist-1", course_id="c-hist", version="1.0.0", content_hash="1" * 64,
+                      status=CourseVersionStatus.ACTIVE, created_at=now)
+    )
+    repo = EnrollmentRepository(conn)
+    earlier = to_iso_timestamp(time.time() - 86400)
+    repo.enroll(Enrollment(LEARNER, CV, "active", earlier, earlier))
+    repo.enroll(Enrollment(LEARNER, "cv-hist-1", "active", now, now))
+    conn.commit()
+    titles = [c["title"] for c in client.get(
+        "/api/edu/courses", params={"learner_id": LEARNER}).json()["courses"]]
+    # "cv-hist-1" < "cv-web-1"：若排序退回按 course_version_id，这里会翻成 History 在前。
+    # 同一时刻选的多门课才按 id 决胜负 —— 那种情况下本就没有数据能说谁是默认课。
+    assert titles == ["Web", "History"], "应按选课时间排序：新课不该把默认课挤掉"
+
+    repo.set_status(LEARNER, "cv-hist-1", "withdrawn", at=now)
+    conn.commit()
+    conn.close()
+    titles = [c["title"] for c in client.get(
+        "/api/edu/courses", params={"learner_id": LEARNER}).json()["courses"]]
+    assert titles == ["Web"], "退选的课不该继续出现在课表里"
+
+
+def test_courses_is_empty_without_enrollment(client: TestClient):
+    assert client.get("/api/edu/courses", params={"learner_id": LEARNER}).json()["courses"] == []
+
+
+def test_courses_unknown_learner_is_404(client: TestClient):
+    assert client.get("/api/edu/courses", params={"learner_id": "nobody"}).status_code == 404

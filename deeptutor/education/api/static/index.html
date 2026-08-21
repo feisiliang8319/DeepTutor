@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Math Practice</title>
+<title>Practice</title>
 <style>
   :root { color-scheme: light; }
   body { margin: 0; font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
@@ -48,8 +48,10 @@
 </head>
 <body>
 <main>
-  <h1>Math Practice</h1>
+  <h1 id="h1title">Practice</h1>
   <div class="sub" id="who"></div>
+  <!-- 选了多门课才出现的课程切换条；只有一门时留空，界面和以前一样 -->
+  <div class="sub" id="courseBar"></div>
 
   <!-- 落地页：先问谁在用。这不是登录（Access 已经确认过是家里人），
        只是让系统知道这次的作答该记在谁名下。 -->
@@ -88,7 +90,12 @@
 </main>
 <script>
 const params = new URLSearchParams(location.search);
-const CV = params.get('cv') || 'cv-ccss-g4-1.0.0';
+const CVKEY = 'edu.cv';
+// 课表拿不到时的退路：回到本文件从前写死的那门课。宁可退回"只有数学"，
+// 也不能让孩子开屏看到空白。
+const FALLBACK_CV = 'cv-ccss-g4-1.0.0';
+let CV = params.get('cv') || localStorage.getItem(CVKEY) || FALLBACK_CV;
+let courses = [];
 const KEY = 'edu.person';
 let person = null;   // {id, display_name, role}
 let current = null;
@@ -116,7 +123,6 @@ async function boot() {
     b.onclick = () => enter(p, people);
     $('people').appendChild(b);
   });
-  $('who').textContent = CV;
   show('pickView');
 }
 
@@ -125,9 +131,38 @@ function switcher(label) {
   $('switchWho').onclick = () => { localStorage.removeItem(KEY); location.href = location.pathname; };
 }
 
-function enter(p, people) {
+// 课程来自 enrollments，不再写死。在这以前 enrollments 表运行时没有任何消费方：
+// 给谁选了课都不影响任何人看到什么。
+async function loadCourses() {
+  try {
+    const r = await fetch(`/api/edu/courses?learner_id=${encodeURIComponent(person.id)}`);
+    courses = r.ok ? (await r.json()).courses : [];
+  } catch (e) { courses = []; }
+  if (!courses.length) { CV = params.get('cv') || FALLBACK_CV; return; }
+  const want = params.get('cv') || localStorage.getItem(CVKEY);
+  CV = courses.some(c => c.course_version_id === want) ? want : courses[0].course_version_id;
+  localStorage.setItem(CVKEY, CV);
+}
+
+function renderCourses() {
+  const cur = courses.find(c => c.course_version_id === CV);
+  $('h1title').textContent = cur ? cur.title : 'Practice';
+  document.title = cur ? cur.title : 'Practice';
+  if (courses.length < 2) { $('courseBar').innerHTML = ''; return; }
+  $('courseBar').innerHTML = courses.map(c => c.course_version_id === CV
+    ? `<b>${esc(c.title)}</b>`
+    : `<span class="switch" data-cv="${esc(c.course_version_id)}">${esc(c.title)}</span>`).join(' · ');
+  $('courseBar').querySelectorAll('[data-cv]').forEach(el => el.onclick = () => {
+    localStorage.setItem(CVKEY, el.dataset.cv);
+    location.href = location.pathname;  // 换课整页重来，免得半截状态串到别的课上
+  });
+}
+
+async function enter(p, people) {
   person = p;
   localStorage.setItem(KEY, p.id);
+  await loadCourses();
+  renderCourses();
   if (p.role === 'parent') { switcher('家长视角'); show('parentView'); loadParent(people); }
   else { switcher(p.display_name); show('practiceView'); loadTask(); loadProgress(); }
 }

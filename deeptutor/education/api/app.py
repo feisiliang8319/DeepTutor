@@ -130,6 +130,33 @@ def create_app(
         finally:
             conn.close()
 
+    @app.get("/api/edu/courses")
+    def courses(learner_id: str) -> dict[str, Any]:
+        """这个人选了哪几门课。
+
+        在此之前 enrollments 表在运行时**一个消费方都没有**（只有测试和建库脚本
+        读它），前端把课程 id 写死成 `cv-ccss-g4-1.0.0`。结果是给谁选了课都不影响
+        任何人看到什么 —— 第二门课上线后这一点才暴露出来。
+        前端的课程切换器只能从这里取，不许再硬编码课程 id。
+        """
+        conn = connect()
+        try:
+            require_learner(conn, learner_id)
+            rows = conn.execute(
+                """
+                SELECT cv.id AS course_version_id, c.title, c.subject_key, c.level
+                FROM enrollments e
+                JOIN course_versions cv ON cv.id = e.course_version_id
+                JOIN courses c ON c.id = cv.course_id
+                WHERE e.learner_id = ? AND e.status = 'active' AND cv.status = 'active'
+                ORDER BY e.enrolled_at, cv.id
+                """,
+                (learner_id,),
+            ).fetchall()
+            return {"courses": [dict(r) for r in rows]}
+        finally:
+            conn.close()
+
     @app.get("/api/edu/review-queue")
     def review_queue(course_version_id: str) -> dict[str, Any]:
         """待大人看的作答：LLM 判不了或没把握的那些。

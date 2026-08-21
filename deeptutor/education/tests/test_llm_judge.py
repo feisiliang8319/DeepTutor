@@ -127,8 +127,7 @@ def submit(client: TestClient, answer: str, key: str = "k1"):
     ids = [i["id"] for i in issued.get("items", [])] or [ITEM]
     resp = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": issued.get("set_id"),
-        "answers": [{"item_id": i, "response": answer if i == ITEM else "",
-                     "client_attempt_id": f"{key}:{i}"} for i in ids],
+        "answers": [{"item_id": i, "response": answer if i == ITEM else ""} for i in ids],
     })
     if resp.status_code != 200:
         return resp

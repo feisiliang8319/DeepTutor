@@ -145,8 +145,7 @@ def _attempt(client: TestClient, item_id: str, response: str, key: str):
         ids = ids + [item_id]
     resp = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": d["set_id"],
-        "answers": [{"item_id": i, "response": response if i == item_id else "",
-                     "client_attempt_id": f"{key}:{i}"} for i in ids],
+        "answers": [{"item_id": i, "response": response if i == item_id else ""} for i in ids],
     })
     if resp.status_code != 200:
         return resp
@@ -228,11 +227,24 @@ def test_least_attempted_item_is_served_next(client: TestClient):
     assert {"item-A-1", "item-A-2"} <= set(ids), "同节点两道题都没做过，应该都出现"
 
 
-def test_same_client_attempt_id_is_idempotent(client: TestClient):
-    item_id = _next(client)["item"]["id"]
-    _attempt(client, item_id, SECRET_ANSWER, "same-key")
-    body = _attempt(client, item_id, SECRET_ANSWER, "same-key").json()
-    assert body["review"]["reps"] == 1, "a replayed submission must not double-count"
+def test_resubmitting_the_same_set_does_not_double_count(client: TestClient):
+    """重放一次提交不该把复习次数记两遍。
+
+    2026-08-21 改写：原用例叫 test_same_client_attempt_id_is_idempotent，靠
+    `_attempt(..., "same-key")` 连调两次来表达"重放"。幂等键改由服务端从
+    (组, 题) 派生之后，那个写法已经**不再是重放** —— helper 每次都会领一张新
+    卷子，两次提交是两次货真价实的作答。改为直接把同一张卷子交两遍。
+    """
+    issued = _issue(client).json()
+    body = _submit_all(client, issued, SECRET_ANSWER, "k1").json()
+    assert body["summary"]["answered"] == len(issued["items"])
+    # 判据是"重放前后不变"，不是"等于 1"：一组里同一个知识点上有几道题，
+    # 首次提交本来就会把该节点的复习次数推进几次。
+    before = {r["item_id"]: (r["review"] or {}).get("reps") for r in body["results"]}
+
+    again = _submit_all(client, issued, SECRET_ANSWER, "k2").json()
+    after = {r["item_id"]: (r["review"] or {}).get("reps") for r in again["results"]}
+    assert after == before, f"重放把复习次数又推了一遍：{before} -> {after}"
 
 
 # ---- fail closed ----------------------------------------------------------
@@ -324,7 +336,7 @@ def test_parent_account_cannot_answer(web_db: Path):
     client = TestClient(create_app(web_db))
     r = client.post("/api/edu/set/submit", json={
         "learner_id": "parent-x", "course_version_id": CV, "set_id": "set-whatever",
-        "answers": [{"item_id": "item-A-1", "response": "42", "client_attempt_id": "p1"}]})
+        "answers": [{"item_id": "item-A-1", "response": "42"}]})
     assert r.status_code == 403
     conn = edu_sqlite.open_database(web_db)
     try:
@@ -523,8 +535,7 @@ def test_withdrawn_learner_cannot_fetch_or_answer(client: TestClient, web_db: Pa
     # 拿着退选**之前**领到的那张卷子交，也必须被挡下 —— 领卷时有权限不代表交卷时还有。
     assert client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
-        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER,
-                     "client_attempt_id": f"k-withdrawn:{i['id']}"}
+        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER}
                     for i in issued["items"]]}).status_code == 403
 
 
@@ -551,8 +562,7 @@ def test_attempt_checks_the_items_course_not_the_payload_field(client: TestClien
     r = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": "cv-other",   # 谎报一门他选了的课
         "set_id": issued["set_id"],
-        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER,
-                     "client_attempt_id": f"k-theater:{i['id']}"} for i in issued["items"]]})
+        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER} for i in issued["items"]]})
     assert r.status_code == 403, "按 payload 校验＝校验剧场；必须按 item 实际所属课程判"
 
 
@@ -612,8 +622,7 @@ def test_set_submit_returns_answer_explanation_and_knowledge_point(client: TestC
     body = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
         "answers": [{"item_id": i["id"],
-                     "response": "A" if i["id"] == "item-A-choice" else "",
-                     "client_attempt_id": f"set-1:{i['id']}"} for i in issued["items"]],
+                     "response": "A" if i["id"] == "item-A-choice" else ""} for i in issued["items"]],
     }).json()
     assert any(i["id"] == "item-A-choice" for i in issued["items"])
 
@@ -637,8 +646,7 @@ def test_set_submit_records_every_answer_as_a_real_attempt(client: TestClient, w
     picked = issued["items"]
     client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
-        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER,
-                     "client_attempt_id": f"set-2:{i['id']}"} for i in picked],
+        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER} for i in picked],
     })
     conn = edu_sqlite.open_database(web_db)
     stored = {r["assessment_item_id"] for r in conn.execute(
@@ -677,9 +685,8 @@ def test_set_submit_rejects_an_item_from_another_course(client: TestClient, web_
     conn.close()
 
     issued = _issue(client).json()
-    answers = [{"item_id": i["id"], "response": SECRET_ANSWER,
-                "client_attempt_id": f"mix:{i['id']}"} for i in issued["items"]]
-    answers.append({"item_id": "item-X", "response": "2", "client_attempt_id": "mix-x"})
+    answers = [{"item_id": i["id"], "response": SECRET_ANSWER} for i in issued["items"]]
+    answers.append({"item_id": "item-X", "response": "2"})
     r = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV,
         "set_id": issued["set_id"], "answers": answers})
@@ -702,7 +709,7 @@ def test_parent_cannot_submit_a_set(client: TestClient, web_db: Path):
     conn.commit(); conn.close()
     r = client.post("/api/edu/set/submit", json={
         "learner_id": "parent-s", "course_version_id": CV, "set_id": "set-whatever",
-        "answers": [{"item_id": "item-A-1", "response": "42", "client_attempt_id": "p-1"}]})
+        "answers": [{"item_id": "item-A-1", "response": "42"}]})
     assert r.status_code == 403
 
 
@@ -733,8 +740,7 @@ def test_partial_submission_gets_no_answers(client: TestClient, web_db: Path):
     assert len(issued["items"]) >= 2, "这条用例需要一组至少两题"
     r = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
-        "answers": [{"item_id": issued["items"][0]["id"], "response": SECRET_ANSWER,
-                     "client_attempt_id": "partial-1"}]})
+        "answers": [{"item_id": issued["items"][0]["id"], "response": SECRET_ANSWER}]})
     assert r.status_code == 400
     assert "必须整组一起交" in r.json()["detail"]
     assert "correct_answer" not in r.text
@@ -756,8 +762,7 @@ def test_cannot_submit_someone_elses_set(client: TestClient, web_db: Path):
     mine = _issue(client).json()
     r = client.post("/api/edu/set/submit", json={
         "learner_id": "learner-other", "course_version_id": CV, "set_id": mine["set_id"],
-        "answers": [{"item_id": i["id"], "response": "x",
-                     "client_attempt_id": f"steal:{i['id']}"} for i in mine["items"]]})
+        "answers": [{"item_id": i["id"], "response": "x"} for i in mine["items"]]})
     assert r.status_code == 404, "别人的卷子不能拿来交，否则等于拿别人的题问答案"
 
 
@@ -774,8 +779,7 @@ def test_a_new_set_is_issued_after_the_previous_one_is_submitted(client: TestCli
     first = _issue(client).json()
     client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": first["set_id"],
-        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER,
-                     "client_attempt_id": f"done:{i['id']}"} for i in first["items"]]})
+        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER} for i in first["items"]]})
     second = _issue(client).json()
     assert second["set_id"] != first["set_id"]
 
@@ -815,8 +819,7 @@ def test_default_set_has_more_than_one_question(client: TestClient):
 def _submit_all(client: TestClient, issued: dict, response: str, key: str):
     return client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
-        "answers": [{"item_id": i["id"], "response": response,
-                     "client_attempt_id": f"{key}:{i['id']}"} for i in issued["items"]]})
+        "answers": [{"item_id": i["id"], "response": response} for i in issued["items"]]})
 
 
 def test_resubmitting_a_submitted_set_never_regrades(client: TestClient, web_db: Path):
@@ -835,7 +838,7 @@ def test_resubmitting_a_submitted_set_never_regrades(client: TestClient, web_db:
 
     cheat = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
-        "answers": [{"item_id": i, "response": a or "", "client_attempt_id": f"cheat:{i}"}
+        "answers": [{"item_id": i, "response": a or ""}
                     for i, a in answers.items()]})
     assert cheat.status_code == 200
     assert cheat.json()["summary"]["correct"] == 0, "抄了答案重交也不该改判"
@@ -890,8 +893,7 @@ def test_replayed_client_attempt_id_echoes_what_was_stored(client: TestClient):
     _submit_all(client, issued, SECRET_ANSWER, "same-key")
     replay = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
-        "answers": [{"item_id": i["id"], "response": "garbage-!!!",
-                     "client_attempt_id": f"same-key:{i['id']}"} for i in issued["items"]]})
+        "answers": [{"item_id": i["id"], "response": "garbage-!!!"} for i in issued["items"]]})
     assert replay.status_code == 200
     for row in replay.json()["results"]:
         assert row["your_response"] != "garbage-!!!"
@@ -918,8 +920,7 @@ def test_concurrent_submit_of_one_set_grades_once(client: TestClient, web_db: Pa
         c = TestClient(create_app(web_db))
         r = c.post("/api/edu/set/submit", json={
             "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
-            "answers": [{"item_id": i, "response": tag,
-                         "client_attempt_id": f"{tag}:{i}"} for i in ids]})
+            "answers": [{"item_id": i, "response": tag} for i in ids]})
         with lock:
             codes.append(r.status_code)
 
@@ -967,8 +968,7 @@ def test_retired_item_at_submit_time_does_not_burn_the_set(client: TestClient, w
 
     r = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
-        "answers": [{"item_id": i, "response": SECRET_ANSWER,
-                     "client_attempt_id": f"burn:{i}"} for i in ids]})
+        "answers": [{"item_id": i, "response": SECRET_ANSWER} for i in ids]})
     assert r.status_code == 409
 
     conn = edu_sqlite.open_database(web_db)
@@ -987,3 +987,143 @@ def test_issuing_a_set_is_a_post_not_a_get(client: TestClient):
     """发卷会 INSERT 一行；挂在 GET 上曾让两个人在"只读复验"时写进生产库。"""
     assert client.get("/api/edu/set", params={
         "learner_id": LEARNER, "course_version_id": CV}).status_code == 405
+
+
+# ---- 自愈分支（补齐上次没写完的题）本身的并发 ---------------------------
+#
+# 2026-08-21 第五轮质检席（CRITICAL）：为修"僵尸组"引入的自愈分支，在**题**这一层
+# 原样复刻了刚在**组**这一层用 CAS 修掉的反模式 —— `stored` 快照只在函数入口读
+# 一次，循环内逐题拿它判断"缺不缺"，两路并发都判"缺"、都去写。
+# 实测 3 路即触发（两个标签页 / 一次网络自动重试撞上原生提交就够），
+# 16 路时一道题落 5~6 条矛盾作答，review_states.lapses 被推到 11。
+
+
+def _force_partial_submission(web_db: Path, set_id: str, keep: int) -> None:
+    """把一组做成"已标记已交、但只写了前 keep 题"，且时间戳退到宽限期之外。"""
+    conn = edu_sqlite.open_database(web_db)
+    row = conn.execute("SELECT item_ids_json FROM task_sets WHERE id = ?", (set_id,)).fetchone()
+    ids = json.loads(row["item_ids_json"])
+    long_ago = to_iso_timestamp(time.time() - 3600)
+    for item_id in ids[:keep]:
+        record_attempt(conn, NewAttemptInput(
+            learner_id=LEARNER, assessment_item_id=item_id, response="partial",
+            started_at=long_ago, submitted_at=long_ago, source="web",
+            client_attempt_id=f"{set_id}:{item_id}"))
+    conn.execute("UPDATE task_sets SET submitted_at = ? WHERE id = ?", (long_ago, set_id))
+    conn.commit(); conn.close()
+
+
+def test_self_heal_writes_each_missing_item_exactly_once_under_concurrency(
+        client: TestClient, web_db: Path):
+    import threading
+    issued = _issue(client).json()
+    ids = [i["id"] for i in issued["items"]]
+    _force_partial_submission(web_db, issued["set_id"], keep=1)
+
+    barrier = threading.Barrier(8)
+
+    def go(tag: str):
+        c = TestClient(create_app(web_db))
+        barrier.wait()
+        c.post("/api/edu/set/submit", json={
+            "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+            "answers": [{"item_id": i, "response": f"race-{tag}"} for i in ids]})
+
+    threads = [threading.Thread(target=go, args=(str(i),)) for i in range(8)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    conn = edu_sqlite.open_database(web_db)
+    rows = list(conn.execute(
+        "SELECT assessment_item_id, COUNT(*) c FROM student_attempts "
+        "WHERE learner_id = ? GROUP BY 1", (LEARNER,)))
+    lapses = [r["lapses"] for r in conn.execute(
+        "SELECT lapses FROM review_states WHERE learner_id = ?", (LEARNER,))]
+    conn.close()
+    dupes = {r["assessment_item_id"]: r["c"] for r in rows if r["c"] > 1}
+    assert not dupes, f"同一题落了多条作答：{dupes}"
+    assert len(rows) == len(ids), f"补齐后应恰好每题一条：{rows}"
+    assert all(n <= len(ids) for n in lapses), f"FSRS 状态被重复写入推高了：{lapses}"
+
+
+def test_within_grace_period_a_partial_set_asks_you_to_wait(client: TestClient, web_db: Path):
+    """宽限期内残缺 = 另一路正在写，让它重试，别去补写。"""
+    issued = _issue(client).json()
+    ids = [i["id"] for i in issued["items"]]
+    conn = edu_sqlite.open_database(web_db)
+    now = to_iso_timestamp(time.time())
+    record_attempt(conn, NewAttemptInput(
+        learner_id=LEARNER, assessment_item_id=ids[0], response="x",
+        started_at=now, submitted_at=now, source="web",
+        client_attempt_id=f"{issued['set_id']}:{ids[0]}"))
+    conn.execute("UPDATE task_sets SET submitted_at = ? WHERE id = ?", (now, issued["set_id"]))
+    conn.commit(); conn.close()
+
+    r = client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+        "answers": [{"item_id": i, "response": "y"} for i in ids]})
+    assert r.status_code == 409
+    assert "稍等" in r.json()["detail"]
+
+    conn = edu_sqlite.open_database(web_db)
+    n = conn.execute("SELECT COUNT(*) c FROM student_attempts").fetchone()["c"]
+    conn.close()
+    assert n == 1, "宽限期内不该补写任何作答"
+
+
+def test_self_heal_never_regrades_the_items_already_stored(client: TestClient, web_db: Path):
+    """补齐缺的题时，已落库的那几题必须原样回读 —— 否则"先探再补"就成了新预言机。"""
+    issued = _issue(client).json()
+    ids = [i["id"] for i in issued["items"]]
+    _force_partial_submission(web_db, issued["set_id"], keep=2)
+
+    body = client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+        "answers": [{"item_id": i, "response": SECRET_ANSWER} for i in ids]}).json()
+    by_id = {r["item_id"]: r for r in body["results"]}
+    for i in ids[:2]:
+        assert by_id[i]["your_response"] == "partial", "已落库的题不该被这次答案覆盖"
+        assert by_id[i]["is_correct"] is False
+    for i in ids[2:]:
+        assert by_id[i]["your_response"] == SECRET_ANSWER
+
+
+def test_attempt_ids_are_derived_by_the_server_from_set_and_item(
+        client: TestClient, web_db: Path):
+    """去重键必须由服务端派生，不能由客户端自选。
+
+    `student_attempts.id` 就是幂等键，`AttemptRepository.insert` 用
+    `INSERT OR IGNORE` 在主键上做去重 —— 机制一直都在，但只要客户端每次重试
+    都换个新键，它就等于自己把去重关掉了（第五轮质检席的并发攻击正是这么打的）。
+
+    这条断言是**确定性**的：它不依赖能不能在测试里复现出真并发，直接检查
+    落库的主键形状。上一版只写了并发用例，而 TestClient 下的多线程实际被
+    SQLite 串行化，把"幂等键换回客户端可控"注进去也照样绿 —— 那样的用例
+    保护不了这条不变量。
+    """
+    issued = _issue(client).json()
+    _submit_all(client, issued, SECRET_ANSWER, "k")
+    conn = edu_sqlite.open_database(web_db)
+    ids = {r["id"] for r in conn.execute(
+        "SELECT id FROM student_attempts WHERE learner_id = ?", (LEARNER,))}
+    conn.close()
+    assert ids == {f"{issued['set_id']}:{i['id']}" for i in issued["items"]}
+
+
+def test_one_review_state_per_node_is_reported_consistently(client: TestClient):
+    """同一知识点上的几道题，复盘里报的复习次数必须一致。
+
+    循环内逐题读会读到**中途快照**：先落库的那几行拿到的是还没数完的值，
+    同一份复盘里同一个知识点出现两个数。终态统一在循环结束后取。
+    """
+    issued = _issue(client).json()
+    body = _submit_all(client, issued, SECRET_ANSWER, "k").json()
+    per_node: dict[str, set] = {}
+    for row, item in zip(body["results"], issued["items"]):
+        code = item["node"]["code"]
+        per_node.setdefault(code, set()).add(
+            None if row["review"] is None else row["review"]["reps"])
+    for code, values in per_node.items():
+        assert len(values) == 1, f"知识点 {code} 在同一份复盘里报了 {values}"

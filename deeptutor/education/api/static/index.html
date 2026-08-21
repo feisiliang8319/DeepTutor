@@ -264,10 +264,11 @@ function collectAnswers() {
   return setItems.map((item, i) => {
     const picked = document.querySelector(`input[name="q${i}"]:checked`);
     const typed = $(`a${i}`);
+    // 幂等键由服务端从 (组, 题) 派生 —— 客户端自选的话，重试时换个新键就等于
+    // 自己把去重关掉了（第五轮质检席实测：3 路并发即让同一题落 2 条矛盾作答）。
     return {
       item_id: item.id,
       response: picked ? picked.value : (typed ? typed.value : ''),
-      client_attempt_id: `${person.id}:${setId}:${item.id}`,
     };
   });
 }

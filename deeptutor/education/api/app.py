@@ -90,7 +90,6 @@ class ReviewRequest(BaseModel):
 class SetAnswer(BaseModel):
     item_id: str = Field(min_length=1)
     response: str
-    client_attempt_id: str = Field(min_length=1)
     started_at: str | None = None
 
 
@@ -314,6 +313,17 @@ def create_app(
             # 时间戳解析不了就按"还在写"处理：宁可让孩子重试一次，
             # 也不要在看不清状态时去补写作答。
             return True
+
+    def _stored_attempt_row(conn: sqlite3.Connection, learner_id: str,
+                            item_id: str, submitted_at: str | None):
+        """这一次提交里，这道题有没有已落库的作答（逐题现查，不吃入口那份快照）。"""
+        if submitted_at is None:
+            return None
+        return conn.execute(
+            "SELECT * FROM student_attempts WHERE learner_id = ? "
+            "AND assessment_item_id = ? AND submitted_at = ?",
+            (learner_id, item_id, submitted_at),
+        ).fetchone()
 
     def _stored_judgment(conn: sqlite3.Connection, attempt_id: str):
         """取这条作答已落库的判定。
@@ -614,7 +624,19 @@ def create_app(
             results = []
             for ans, item in resolved:
                 judgment = None
-                row = stored.get(item.id)
+                # `stored` 是函数入口读的一次快照。自愈分支（补齐上次没写完的题）
+                # 拿它逐题判断"这题缺不缺"，两路并发就会都判定"缺"、都去写 ——
+                # 这正是刚在组这一层用 CAS 修掉的那个反模式，在题这一层复刻了一遍
+                # （第五轮质检席，3 路并发即触发；16 路时一道题落 5~6 条矛盾作答，
+                #  review_states.lapses 被推到 11，FSRS 调度被污染）。
+                # 真正关掉它的是**服务端派生的幂等键**（见下方 client_attempt_id）：
+                # student_attempts.id 就是那个键，INSERT OR IGNORE 在主键上去重，
+                # 并发下第二路直接被忽略并走 record_attempt 既有的重放分支。
+                # 下面这句逐题现查**只是省一次判分调用**（已答过的题不必再喊 LLM），
+                # 不是闸门 —— 把它去掉不会产生重复作答，破坏注入实测也确实不失败。
+                # 别把它当成安全保证。
+                row = stored.get(item.id) or _stored_attempt_row(
+                    conn, learner_id, item.id, issued["submitted_at"])
                 if row is not None:
                     # 这一题已经有落库的作答 —— 回读，绝不重判。
                     outcome = _ReplayedOutcome(row, MasterySnapshotRepository(conn).get(
@@ -637,7 +659,16 @@ def create_app(
                                 # 题若打上新时间戳，下次就再也回读不到它。
                                 submitted_at=issued["submitted_at"] or now,
                                 source="web",
-                                client_attempt_id=ans.client_attempt_id,
+                                # 幂等键由**服务端**从 (组, 题) 派生，不用客户端传来的。
+                                # student_attempts.id 就是这个键，AttemptRepository
+                                # 用 INSERT OR IGNORE 在主键上做去重 —— 机制一直都在，
+                                # 但只要客户端每次重试都换个新键，它就等于自己把去重
+                                # 关掉了。第五轮质检席的并发攻击正是这么打的：3 路并发
+                                # 各带不同 client_attempt_id，同一题落 2 条矛盾作答，
+                                # FSRS 的 review_states.lapses 被推到 11。
+                                # 派生之后：同一组同一题无论交多少次、几路并发，
+                                # 落库的都是同一个主键，第一路写入、其余走重放分支。
+                                client_attempt_id=f"{payload.set_id}:{item.id}",
                                 judgment=judgment,
                             ),
                         )
@@ -645,11 +676,9 @@ def create_app(
                         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
                 node = nodes.get(item.knowledge_node_id)
-                snapshot = outcome.mastery_snapshot
-                review = ReviewStateRepository(conn).get(
-                    learner_id, outcome.attempt.knowledge_node_id
-                )
                 results.append({
+                    # 掌握度与复习状态在循环结束后统一回填 —— 见下方说明。
+                    "_node_id": item.knowledge_node_id,
                     "item_id": item.id,
                     "prompt": item.prompt,
                     # 回显落库的那条，不是这次 payload。
@@ -669,19 +698,29 @@ def create_app(
                         "code": node.code, "title": node.title,
                         "standard_code": node.standard_code,
                     },
-                    "mastery": None if snapshot is None else {
-                        "score": snapshot.score, "status": snapshot.status,
-                    },
                     # 判定理由（rationale）是写给大人的，且 rubric 绝不出网线，
                     # 所以这里只给 verdict 与置信度。
                     "judged": None if judgment is None else {
                         "verdict": judgment.verdict.value, "confidence": judgment.confidence,
                     },
-                    "review": None if review is None else {
-                        "due_at": review.due_at, "reps": review.reps, "lapses": review.lapses,
-                    },
                     "pending_recompute": outcome.pending_recompute,
                 })
+
+            # 一组里往往有好几道题落在同一个知识点上。若在循环内逐题读掌握度/
+            # 复习状态，先落库的那几行读到的是**循环中途**的快照，同一份复盘里会
+            # 出现同一个知识点的两个不同数值；重放时再读又都变成终态，看起来像
+            # "重放把状态又推了一遍"（实际库里没变）。给孩子和家长看的应该是这一组
+            # 交完之后的终态，所以统一放到循环之后取。
+            for row in results:
+                node_id = row.pop("_node_id")
+                snapshot = MasterySnapshotRepository(conn).get(learner_id, node_id)
+                review = ReviewStateRepository(conn).get(learner_id, node_id)
+                row["mastery"] = None if snapshot is None else {
+                    "score": snapshot.score, "status": snapshot.status,
+                }
+                row["review"] = None if review is None else {
+                    "due_at": review.due_at, "reps": review.reps, "lapses": review.lapses,
+                }
 
             graded = [r for r in results if r["is_correct"] is not None]
             return {

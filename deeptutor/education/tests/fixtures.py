@@ -16,6 +16,8 @@ copyrighted question (P0-DESIGN.md §5: "fixture 只含合成数据").
 
 from __future__ import annotations
 
+import json
+
 from dataclasses import dataclass
 import hashlib
 
@@ -113,6 +115,20 @@ def build_fixture_a_math(course_version_id: str) -> FixtureBundle:
             "reviewed_at": None,
             "content_hash": content_hash(item_id + prompt),
             "status": "production",
+            # choice 题必须带结构化选项（2026-08-21 起 import 闸门强制）：
+            # 没有它前端只能把选项当散文渲染，孩子得手打字母。
+            #
+            # 这里的选项是**占位文本，不含正确答案**，两个理由：
+            #   1. 本 fixture 的 choice 题沿用了"expected_answer = 选项正文"的
+            #      老写法（如 "42"），与生产 MCQ 的"expected_answer = 选项字母"
+            #      不同；把答案正文塞进某个选项会让 test_leak_prevention 的
+            #      长答案子串检查命中 —— 那条检查是对的，不该为它让路。
+            #   2. 这批 fixture 考的是判分/掌握度/FSRS 机制，不是 MCQ 语义。
+            # 贴近生产形态的 MCQ（字母答案 + 散文选项）另见
+            # test_leak_prevention.py::test_choices_ship_but_never_mark_the_right_one。
+            **({"choices_json": json.dumps(
+                [{"label": L, "text": f"Option {L}"} for L in "ABCD"], ensure_ascii=False)}
+               if item_type == "choice" else {}),
         }
 
     item_rows = [

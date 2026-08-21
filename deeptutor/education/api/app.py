@@ -24,6 +24,7 @@ from __future__ import annotations
 from pathlib import Path
 import sqlite3
 import time
+import json
 from typing import Any
 
 from fastapi import FastAPI, HTTPException
@@ -50,6 +51,7 @@ from deeptutor.education.domain.evidence import Verdict
 from deeptutor.education.storage import sqlite as edu_sqlite
 from deeptutor.education.storage.repositories import (
     AssessmentItemRepository,
+    EnrollmentRepository,
     KnowledgeGraphRepository,
     LearnerRepository,
     MasterySnapshotRepository,
@@ -76,6 +78,26 @@ class ReviewRequest(BaseModel):
     attempt_id: str = Field(min_length=1)
     verdict: str = Field(pattern="^(correct|incorrect|partial)$")
     note: str | None = None
+
+
+class SetAnswer(BaseModel):
+    item_id: str = Field(min_length=1)
+    response: str
+    client_attempt_id: str = Field(min_length=1)
+    started_at: str | None = None
+
+
+class SetSubmission(BaseModel):
+    """一整组题的作答。
+
+    Sol 2026-08-21：出题时不给答案，答案要等**全部**提交之后才出现，并且要
+    讲清楚为什么以及关联哪个知识点。所以判分结果不再逐题即时回吐 ——
+    整组交上来才一次性给复盘。
+    """
+
+    learner_id: str = Field(min_length=1)
+    course_version_id: str = Field(min_length=1)
+    answers: list[SetAnswer] = Field(min_length=1)
 
 
 class AttemptRequest(BaseModel):
@@ -108,6 +130,22 @@ def create_app(
         if LearnerRepository(conn).get(learner_id) is None:
             raise HTTPException(status_code=404, detail=f"unknown learner {learner_id!r}")
         return learner_id
+
+    def require_enrollment(
+        conn: sqlite3.Connection, learner_id: str, course_version_id: str
+    ) -> None:
+        """选课是**访问边界**，不只是"前端该显示哪几门课"。
+
+        2026-08-21 质检席 F-1：/next、/attempt、/progress 此前只校验 learner 存在。
+        把一个 learner 的选课置 withdrawn 之后，他照样能取到该课的题、照样能把作答
+        写进去 —— 掌握度证据继续长在一门已经退掉的课上，而课程列表里已经看不见它。
+        当时 commit message 写的"enrollments 首次真正通电"只在 UI 层成立。
+        """
+        if not EnrollmentRepository(conn).is_enrolled(learner_id, course_version_id):
+            raise HTTPException(
+                status_code=403,
+                detail=f"{learner_id!r} 未选修 {course_version_id!r}",
+            )
 
     @app.get("/api/edu/people")
     def people() -> dict[str, Any]:
@@ -259,6 +297,7 @@ def create_app(
         conn = connect()
         try:
             require_learner(conn, learner_id)
+            require_enrollment(conn, learner_id, course_version_id)
             objectives = list_available_objectives(conn, learner_id, course_version_id)
             if not objectives:
                 return {"done": True, "message": "every node is mastered"}
@@ -318,6 +357,174 @@ def create_app(
         finally:
             conn.close()
 
+    def _public_item(item, node) -> dict[str, Any]:
+        """出题面。答案、讲解、rubric 一律不在这里。
+
+        `to_public_payload()` 是白名单式的（新字段默认**不**公开），这里再从
+        中挑出题需要的几项。choices 解析成数组直接给前端 —— 前端拿字符串还得
+        自己 JSON.parse，多一处出错的地方。
+        """
+        pub = item.to_public_payload()
+        return {
+            "id": pub["id"],
+            "prompt": pub["prompt"],
+            "item_type": pub["item_type"],
+            "difficulty": pub["difficulty"],
+            "attribution": pub["attribution_text"],
+            "figure_spec_id": pub["figure_spec_id"],
+            "choices": json.loads(pub["choices_json"]) if pub["choices_json"] else None,
+            "node": {"code": node.code, "title": node.title,
+                     "standard_code": node.standard_code},
+        }
+
+    @app.get("/api/edu/set")
+    def task_set(learner_id: str, course_version_id: str, size: int = 5) -> dict[str, Any]:
+        """一次发一组题，全部答完再提交。
+
+        与 /api/edu/next 的区别不只是数量：那条路是"答一题→立刻告诉你对不对
+        →1.4 秒后下一题"，孩子在整组做完之前就已经知道每题的对错。Sol 要的是
+        考完再讲，所以组卷与判分必须分成两个来回。
+        """
+        if not 1 <= size <= 20:
+            raise HTTPException(status_code=400, detail="size 必须在 1..20 之间")
+        conn = connect()
+        try:
+            require_learner(conn, learner_id)
+            require_enrollment(conn, learner_id, course_version_id)
+            objectives = list_available_objectives(conn, learner_id, course_version_id)
+            if not objectives:
+                return {"done": True, "items": [], "message": "every node is mastered"}
+
+            picked: list[dict[str, Any]] = []
+            chosen_ids: set[str] = set()
+            skipped: list[str] = []
+            # 轮转着取：先给每个待学节点各出一题，不够再回头补第二轮。
+            # 一口气把一个节点抽干会让整组题挤在同一个知识点上。
+            progressed = True
+            while len(picked) < size and progressed:
+                progressed = False
+                for candidate in objectives:
+                    if len(picked) >= size:
+                        break
+                    found = select_next_item(
+                        conn, learner_id, course_version_id, candidate.node.id,
+                        include_judgeable=judge is not None, exclude=chosen_ids,
+                    )
+                    if found is None:
+                        if not chosen_ids and candidate.node.code not in skipped:
+                            # 只在第一轮记"这个节点一道题都没有"；第二轮取不到
+                            # 通常只是本组已经把它抽完了，不是内容缺口。
+                            skipped.append(candidate.node.code)
+                        continue
+                    chosen_ids.add(found.item.id)
+                    picked.append(_public_item(found.item, candidate.node))
+                    progressed = True
+
+            return {
+                "done": False,
+                "items": picked,
+                "requested": size,
+                "skipped_empty_nodes": skipped,
+                "message": None if picked else "no auto-gradable item on any unblocked node yet",
+            }
+        finally:
+            conn.close()
+
+    @app.post("/api/edu/set/submit")
+    def submit_set(payload: SetSubmission) -> dict[str, Any]:
+        """整组提交，然后**才**给答案 + 讲解 + 关联知识点。
+
+        这是全流程里唯一允许 `expected_answer` 出网线的出口，而且只在作答已经
+        落库之后。rubric_json 仍然一步都不出去：它是阅卷口径，讲解另有 explanation
+        列（migration 004）。
+        """
+        conn = connect()
+        try:
+            learner_id = require_learner(conn, payload.learner_id)
+            if learner_id.startswith(PARENT_PREFIX):
+                raise HTTPException(
+                    status_code=403,
+                    detail="家长账号只读：替孩子作答会污染她的掌握度证据",
+                )
+            seen = [a.item_id for a in payload.answers]
+            if len(set(seen)) != len(seen):
+                raise HTTPException(status_code=400, detail="同一题在一组里提交了多次")
+
+            items_repo = AssessmentItemRepository(conn)
+            nodes = {
+                n.id: n
+                for n in KnowledgeGraphRepository(conn).list_nodes(payload.course_version_id)
+            }
+            now = to_iso_timestamp(time.time())
+
+            # 先校验整组，再落库任何一条：一组题里混进一道别的课的题，应该整组
+            # 拒绝，而不是先写进去几条再报错。
+            resolved = []
+            for ans in payload.answers:
+                item = items_repo.get(ans.item_id)
+                if item is None:
+                    raise HTTPException(status_code=404, detail=f"unknown item {ans.item_id!r}")
+                require_enrollment(conn, learner_id, item.course_version_id)
+                resolved.append((ans, item))
+
+            results = []
+            for ans, item in resolved:
+                judgment = None
+                if judge is not None and item.item_type in JUDGEABLE:
+                    judgment = judge_open_response(judge, item, ans.response, model_ref=judge_ref)
+                try:
+                    outcome = record_attempt(
+                        conn,
+                        NewAttemptInput(
+                            learner_id=learner_id,
+                            assessment_item_id=item.id,
+                            response=ans.response,
+                            started_at=ans.started_at or now,
+                            submitted_at=now,
+                            source="web",
+                            client_attempt_id=ans.client_attempt_id,
+                            judgment=judgment,
+                        ),
+                    )
+                except ValidationError as exc:
+                    raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+                node = nodes.get(item.knowledge_node_id)
+                snapshot = outcome.mastery_snapshot
+                results.append({
+                    "item_id": item.id,
+                    "prompt": item.prompt,
+                    "your_response": ans.response,
+                    "is_correct": outcome.attempt.is_correct,
+                    "needs_judgment": outcome.attempt.is_correct is None,
+                    # ↓ 全组已落库，到这一步才允许出现
+                    "correct_answer": item.expected_answer,
+                    "choices": json.loads(item.choices_json) if item.choices_json else None,
+                    "explanation": item.explanation,
+                    "explanation_source": item.explanation_source,
+                    "knowledge_point": None if node is None else {
+                        "code": node.code, "title": node.title,
+                        "standard_code": node.standard_code,
+                    },
+                    "mastery": None if snapshot is None else {
+                        "score": snapshot.score, "status": snapshot.status,
+                    },
+                    "pending_recompute": outcome.pending_recompute,
+                })
+
+            graded = [r for r in results if r["is_correct"] is not None]
+            return {
+                "results": results,
+                "summary": {
+                    "answered": len(results),
+                    "auto_graded": len(graded),
+                    "correct": sum(1 for r in graded if r["is_correct"]),
+                    "awaiting_review": sum(1 for r in results if r["needs_judgment"]),
+                },
+            }
+        finally:
+            conn.close()
+
     @app.post("/api/edu/attempt")
     def submit_attempt(payload: AttemptRequest) -> dict[str, Any]:
         conn = connect()
@@ -336,6 +543,10 @@ def create_app(
             # only its verdict is returned to the browser.
             judgment = None
             item = AssessmentItemRepository(conn).get(payload.item_id)
+            if item is not None:
+                # 按 item 实际所属课程校验，不按 payload 里那个字段：后者不参与落库
+                # （record_attempt 从 item 反查 course_version_id），照它校验等于没校验。
+                require_enrollment(conn, learner_id, item.course_version_id)
             if judge is not None and item is not None and item.item_type in JUDGEABLE:
                 judgment = judge_open_response(
                     judge, item, payload.response, model_ref=judge_ref
@@ -386,6 +597,7 @@ def create_app(
         conn = connect()
         try:
             require_learner(conn, learner_id)
+            require_enrollment(conn, learner_id, course_version_id)
             nodes = {n.id: n for n in KnowledgeGraphRepository(conn).list_nodes(course_version_id)}
             snapshots = {
                 s.knowledge_node_id: s

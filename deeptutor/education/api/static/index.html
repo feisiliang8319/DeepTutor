@@ -44,6 +44,22 @@
                   color: #1c1f23; border: 1px solid #d1d5db; }
   .judge-row .j:hover { border-color: #2563eb; }
   .judge-row .result { font-size: 13px; }
+  .qnum { font-size: 12px; color: #9ca3af; letter-spacing: .04em; text-transform: uppercase; }
+  .opt { display: flex; gap: 10px; align-items: flex-start; padding: 11px 13px; margin-top: 8px;
+         border: 1px solid #e5e7eb; border-radius: 10px; cursor: pointer; font-size: 16px; }
+  .opt:hover { border-color: #2563eb; }
+  .opt input { margin-top: 4px; flex: none; }
+  .opt.picked { border-color: #2563eb; background: #eff6ff; }
+  .opt .lab { font-weight: 600; flex: none; }
+  .rev { border-left: 3px solid #e5e7eb; padding-left: 12px; margin-bottom: 16px; }
+  .rev.ok { border-left-color: #047857; } .rev.no { border-left-color: #b91c1c; }
+  .rev.wait { border-left-color: #f59e0b; }
+  .rev .q { font-size: 15px; white-space: pre-wrap; margin-bottom: 6px; }
+  .rev .line { font-size: 14px; margin-top: 3px; }
+  .rev .exp { font-size: 14px; background: #f9fafb; border-radius: 8px; padding: 10px 12px;
+              margin-top: 8px; white-space: pre-wrap; }
+  .rev .kp { font-size: 12px; color: #6b7280; margin-top: 6px; }
+  .todo { color: #b45309; }
 </style>
 </head>
 <body>
@@ -61,20 +77,28 @@
     </div>
   </div>
 
+  <!-- 一次一组题，全部答完再提交；答案与讲解在提交之后的 reviewView 里给 -->
   <div id="practiceView" style="display:none">
+    <div id="questions"></div>
     <div class="card">
-      <div class="node" id="node"></div>
-      <div class="prompt" id="prompt">Loading…</div>
-      <input type="text" id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Your answer">
-      <button id="submit">Check</button>
-      <div class="verdict" id="verdict"></div>
-      <div class="attrib" id="attrib"></div>
+      <button id="submit">提交这一组</button>
+      <div class="verdict muted" id="submitHint"></div>
     </div>
     <div class="card">
       <div class="node"><b>Progress</b> <span id="counts"></span></div>
       <div class="bar"><span id="barFill" style="width:0%"></span></div>
       <table id="progress"></table>
     </div>
+  </div>
+
+  <!-- 复盘：整组交完之后才出现的答案 + 讲解 + 关联知识点 -->
+  <div id="reviewView" style="display:none">
+    <div class="card">
+      <div class="node"><b>这一组的结果</b></div>
+      <div class="verdict" id="score"></div>
+    </div>
+    <div id="reviewList"></div>
+    <div class="card"><button id="again">再来一组</button></div>
   </div>
 
   <div id="parentView" style="display:none">
@@ -98,7 +122,6 @@ let CV = params.get('cv') || localStorage.getItem(CVKEY) || FALLBACK_CV;
 let courses = [];
 const KEY = 'edu.person';
 let person = null;   // {id, display_name, role}
-let current = null;
 
 const $ = id => document.getElementById(id);
 // 凡是进 innerHTML 的动态值都过这里。孩子的作答是真正的用户输入：
@@ -106,7 +129,9 @@ const $ = id => document.getElementById(id);
 // 来自 seeds，风险低但同样转义 —— 逐个判断"这条可信吗"迟早会判错一次。
 const esc = s => String(s ?? '').replace(/[&<>"']/g,
   c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
-const show = v => ['pickView', 'practiceView', 'parentView']
+// 新增视图必须同时加进这张表，否则 show('新视图') 会把所有视图一起藏起来、
+// 且不报任何错（2026-08-21 实测踩到：复盘页写好了、内容也渲染了，就是不显示）。
+const show = v => ['pickView', 'practiceView', 'reviewView', 'parentView']
   .forEach(x => $(x).style.display = x === v ? '' : 'none');
 
 async function boot() {
@@ -164,46 +189,147 @@ async function enter(p, people) {
   await loadCourses();
   renderCourses();
   if (p.role === 'parent') { switcher('家长视角'); show('parentView'); loadParent(people); }
-  else { switcher(p.display_name); show('practiceView'); loadTask(); loadProgress(); }
+  else { switcher(p.display_name); loadSet(); loadProgress(); }
 }
 
-// ---------- 孩子：练习 ----------
-async function loadTask() {
-  $('verdict').textContent = ''; $('answer').value = '';
-  const r = await fetch(`/api/edu/next?learner_id=${encodeURIComponent(person.id)}&course_version_id=${encodeURIComponent(CV)}`);
-  if (!r.ok) { $('prompt').textContent = `Error ${r.status}`; return; }
-  const d = await r.json();
-  if (d.done) { $('prompt').textContent = '🎉 Everything is mastered.'; current = null; return; }
-  $('node').innerHTML = `<b>${esc(d.node.title)}</b> · ${esc(d.node.code)}`
-    + `${d.node.standard_code ? ' · ' + esc(d.node.standard_code) : ''} · ${esc(d.node.status)}`;
-  if (!d.item) { $('prompt').textContent = d.message; $('submit').disabled = true; current = null; return; }
-  current = d.item;
-  $('submit').disabled = false;
-  $('prompt').textContent = d.item.prompt;
-  $('attrib').textContent = d.item.attribution || '';
-  $('answer').focus();
-}
+// ---------- 孩子：一组题 ----------
+//
+// Sol 2026-08-21：出题时不给答案，答案要等**整组**提交之后才给，而且要说清
+// 为什么、关联哪个知识点。所以这里不再是"答一题→立刻判对错→自动跳下一题"，
+// 而是 组卷 → 全部作答 → 一次提交 → 复盘。
+const SET_SIZE = 5;
+let setItems = [];      // 本组题面（不含答案）
+let setId = null;       // 拼幂等键用：同一组重复提交不会写两遍作答
+let blankConfirms = 0;
 
-async function submit() {
-  if (!current) return;
+async function loadSet() {
+  show('practiceView');
+  $('questions').innerHTML = '<div class="card"><div class="prompt">Loading…</div></div>';
+  $('submitHint').textContent = '';
   $('submit').disabled = true;
-  const r = await fetch('/api/edu/attempt', {
+  blankConfirms = 0;
+  const r = await fetch(`/api/edu/set?learner_id=${encodeURIComponent(person.id)}`
+    + `&course_version_id=${encodeURIComponent(CV)}&size=${SET_SIZE}`);
+  if (!r.ok) {
+    $('questions').innerHTML = `<div class="card"><div class="prompt">Error ${r.status}</div></div>`;
+    return;
+  }
+  const d = await r.json();
+  setItems = d.items || [];
+  setId = `${Date.now()}`;
+  if (!setItems.length) {
+    $('questions').innerHTML = '<div class="card"><div class="prompt">'
+      + (d.done ? '🎉 Everything is mastered.' : esc(d.message || '暂时没有可做的题'))
+      + '</div></div>';
+    return;
+  }
+  $('questions').innerHTML = setItems.map(renderQuestion).join('');
+  wireOptions();
+  $('submit').disabled = false;
+}
+
+function renderQuestion(item, i) {
+  const kp = item.node
+    ? `<div class="node"><b>${esc(item.node.title)}</b> · ${esc(item.node.code)}`
+      + `${item.node.standard_code ? ' · ' + esc(item.node.standard_code) : ''}</div>`
+    : '';
+  // 选择题发单选按钮。此前选项拼在 prompt 散文里，孩子只能手打字母。
+  const body = item.choices
+    ? item.choices.map(c => `<label class="opt">`
+        + `<input type="radio" name="q${i}" value="${esc(c.label)}">`
+        + `<span class="lab">${esc(c.label)}</span><span>${esc(c.text)}</span></label>`).join('')
+    : `<input type="text" id="a${i}" autocomplete="off" autocapitalize="off"
+              spellcheck="false" placeholder="Your answer">`;
+  return `<div class="card">
+    <div class="qnum">Question ${i + 1} / ${setItems.length}</div>
+    ${kp}
+    <div class="prompt">${esc(item.prompt)}</div>
+    ${body}
+    ${item.attribution ? `<div class="attrib">${esc(item.attribution)}</div>` : ''}
+  </div>`;
+}
+
+function wireOptions() {
+  document.querySelectorAll('.opt input').forEach(input => {
+    input.addEventListener('change', () => {
+      document.querySelectorAll(`.opt input[name="${input.name}"]`)
+        .forEach(o => o.closest('.opt').classList.toggle('picked', o.checked));
+    });
+  });
+}
+
+function collectAnswers() {
+  return setItems.map((item, i) => {
+    const picked = document.querySelector(`input[name="q${i}"]:checked`);
+    const typed = $(`a${i}`);
+    return {
+      item_id: item.id,
+      response: picked ? picked.value : (typed ? typed.value : ''),
+      client_attempt_id: `${person.id}:${setId}:${item.id}`,
+    };
+  });
+}
+
+async function submitSet() {
+  if (!setItems.length) return;
+  const answers = collectAnswers();
+  const blank = answers.filter(a => !a.response.trim()).length;
+  // 不硬拦空白：留白本身也是证据。但要让孩子确认这是有意的，别手滑交白卷。
+  if (blank && ++blankConfirms < 2) {
+    $('submitHint').textContent = `还有 ${blank} 题没作答。再点一次就按空白交上去。`;
+    $('submit').textContent = '确认提交（含空白）';
+    return;
+  }
+  $('submit').disabled = true;
+  $('submitHint').textContent = '判分中…';
+  const r = await fetch('/api/edu/set/submit', {
     method: 'POST', headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      learner_id: person.id, course_version_id: CV, item_id: current.id,
-      response: $('answer').value,
-      client_attempt_id: `${person.id}:${current.id}:${Date.now()}`
-    })
+    body: JSON.stringify({learner_id: person.id, course_version_id: CV, answers}),
   });
   const d = await r.json();
-  const v = $('verdict');
-  if (!r.ok) { v.className = 'verdict no'; v.textContent = d.detail; $('submit').disabled = false; return; }
-  if (d.needs_judgment) { v.className = 'verdict muted'; v.textContent = 'Saved — a grown-up will check this one.'; }
-  else if (d.is_correct) { v.className = 'verdict ok'; v.textContent = '✓ Correct'; }
-  else { v.className = 'verdict no'; v.textContent = '✗ Not yet — try the next one.'; }
-  if (d.mastery) v.innerHTML += ` <span class="muted">(${esc(d.mastery.status)}, ${d.mastery.score.toFixed(2)})</span>`;
+  if (!r.ok) {
+    $('submitHint').textContent = d.detail || `Error ${r.status}`;
+    $('submit').disabled = false;
+    return;
+  }
+  renderReview(d);
   await loadProgress();
-  setTimeout(loadTask, 1400);
+}
+
+const SOURCE_LABEL = {
+  publisher_official: '出版社官方解答', authored: '自撰', derived: '由推导答案倒推',
+};
+
+function renderReview(d) {
+  const s = d.summary;
+  $('score').innerHTML = `答对 ${s.correct} / ${s.auto_graded}`
+    + (s.awaiting_review ? ` <span class="muted">· ${s.awaiting_review} 题等大人看</span>` : '');
+  $('reviewList').innerHTML = d.results.map((r, i) => {
+    const cls = r.needs_judgment ? 'wait' : (r.is_correct ? 'ok' : 'no');
+    const mark = r.needs_judgment ? '等大人看' : (r.is_correct ? '✓ 对' : '✗ 错');
+    const label = v => {
+      const c = (r.choices || []).find(x => x.label === v);
+      return c ? `${esc(v)}. ${esc(c.text)}` : esc(v || '（空白）');
+    };
+    // 讲解缺了就明说，不编：全库 179 题只有 19 题有出版社官方解答。
+    const exp = r.explanation
+      ? `<div class="exp">${esc(r.explanation)}</div><div class="kp">讲解来源：`
+        + `${esc(SOURCE_LABEL[r.explanation_source] || r.explanation_source || '未标注')}</div>`
+      : '<div class="exp todo">讲解待补 —— 这道题还没有可信的讲解，先看下面的知识点。</div>';
+    const kp = r.knowledge_point
+      ? `<div class="kp">关联知识点：<b>${esc(r.knowledge_point.title)}</b> · `
+        + `${esc(r.knowledge_point.code)}`
+        + `${r.knowledge_point.standard_code ? ' · ' + esc(r.knowledge_point.standard_code) : ''}</div>`
+      : '';
+    return `<div class="card"><div class="rev ${cls}">
+      <div class="qnum">Question ${i + 1} · ${mark}</div>
+      <div class="q">${esc(r.prompt)}</div>
+      <div class="line">你的答案：${label(r.your_response)}</div>
+      ${r.needs_judgment ? '' : `<div class="line">正确答案：${label(r.correct_answer)}</div>`}
+      ${exp}${kp}
+    </div></div>`;
+  }).join('');
+  show('reviewView');
 }
 
 async function loadProgress() {
@@ -265,8 +391,8 @@ async function loadParent(people) {
   $('parentProgress').innerHTML = blocks.join('');
 }
 
-$('submit').addEventListener('click', submit);
-$('answer').addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+$('submit').addEventListener('click', submitSet);
+$('again').addEventListener('click', () => { $('submit').textContent = '提交这一组'; loadSet(); });
 boot();
 </script>
 </body>

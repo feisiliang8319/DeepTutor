@@ -12,6 +12,7 @@ on SQLite's own atomicity for the one statement.
 from __future__ import annotations
 
 from collections.abc import Iterable, Mapping, Sequence
+import json
 import sqlite3
 
 from deeptutor.education.domain.course import (
@@ -565,7 +566,62 @@ def _row_to_item(row: sqlite3.Row) -> AssessmentItem:
         content_hash=row["content_hash"],
         status=ItemStatus(row["status"]),
         figure_spec_id=row["figure_spec_id"],
+        choices_json=row["choices_json"],
+        explanation=row["explanation"],
+        explanation_source=row["explanation_source"],
     )
+
+
+_EXPLANATION_SOURCES = {"publisher_official", "authored", "derived"}
+
+# 选项对象里出现这些键，一律拒收：它们就是 expected_answer 换个名字送到浏览器。
+# 选择题的选项必须**送到孩子面前**才能作答，所以 choices_json 在
+# ``_ITEM_PUBLIC_FIELDS`` 白名单里；正因为它必然出网线，"哪个是对的"绝不能
+# 藏在里面。这是本次新增字段带来的新泄漏面，靠 import 闸门堵死而非靠自觉。
+_FORBIDDEN_CHOICE_KEYS = {
+    "is_correct", "correct", "answer", "expected", "expected_answer",
+    "score", "points", "rubric", "explanation", "why", "rationale", "solution",
+}
+
+
+def _validate_choices(item_id: str, item_type: ItemType, raw: object) -> str | None:
+    if raw is None:
+        if item_type is ItemType.CHOICE:
+            raise ImportRejected(
+                f"item {item_id!r}: choice 题必须带 choices_json —— 否则前端只能"
+                "把选项当散文渲染，孩子仍得手打字母"
+            )
+        return None
+    if item_type is not ItemType.CHOICE:
+        raise ImportRejected(f"item {item_id!r}: 非 choice 题不得带 choices_json")
+
+    text = raw if isinstance(raw, str) else json.dumps(raw, ensure_ascii=False)
+    try:
+        parsed = json.loads(text)
+    except (TypeError, ValueError) as exc:
+        raise ImportRejected(f"item {item_id!r}: choices_json 不是合法 JSON: {exc}") from exc
+    if not isinstance(parsed, list) or len(parsed) < 2:
+        raise ImportRejected(f"item {item_id!r}: choices_json 必须是至少 2 项的数组")
+
+    labels = []
+    for entry in parsed:
+        if not isinstance(entry, dict):
+            raise ImportRejected(f"item {item_id!r}: 选项必须是对象 {{label, text}}")
+        leaked = sorted(_FORBIDDEN_CHOICE_KEYS & {str(k).lower() for k in entry})
+        if leaked:
+            raise ImportRejected(
+                f"item {item_id!r}: 选项里带了 {leaked} —— 选项必然要送到孩子的浏览器，"
+                "任何指向正确答案的字段都等于泄题"
+            )
+        label, choice_text = entry.get("label"), entry.get("text")
+        if not isinstance(label, str) or not label.strip():
+            raise ImportRejected(f"item {item_id!r}: 选项缺 label")
+        if not isinstance(choice_text, str) or not choice_text.strip():
+            raise ImportRejected(f"item {item_id!r}: 选项 {label!r} 缺 text")
+        labels.append(label.strip())
+    if len(set(labels)) != len(labels):
+        raise ImportRejected(f"item {item_id!r}: 选项 label 重复: {labels}")
+    return json.dumps(parsed, ensure_ascii=False)
 
 
 def _validate_item_row(row: Mapping[str, object]) -> AssessmentItem:
@@ -636,6 +692,20 @@ def _validate_item_row(row: Mapping[str, object]) -> AssessmentItem:
                     f"{_SELF_AUTHORED_PREFIX!r}) if it has no external provenance"
                 )
 
+    choices_json = _validate_choices(item_id, item_type, row.get("choices_json"))
+
+    explanation_source = row.get("explanation_source")
+    if explanation_source is not None and explanation_source not in _EXPLANATION_SOURCES:
+        raise ImportRejected(
+            f"item {item_id!r}: explanation_source={explanation_source!r} 不在 "
+            f"{sorted(_EXPLANATION_SOURCES)} 内"
+        )
+    if row.get("explanation") and explanation_source is None:
+        raise ImportRejected(
+            f"item {item_id!r}: 有讲解就必须写 explanation_source —— "
+            "「这段讲解权威不权威」直接决定家长该不该信它，不许留空"
+        )
+
     return AssessmentItem(
         id=item_id,
         course_version_id=str(row["course_version_id"]),
@@ -655,6 +725,9 @@ def _validate_item_row(row: Mapping[str, object]) -> AssessmentItem:
         content_hash=str(row["content_hash"]),
         status=ItemStatus(row.get("status", "candidate")),
         figure_spec_id=row.get("figure_spec_id"),
+        choices_json=choices_json,
+        explanation=row.get("explanation"),
+        explanation_source=explanation_source,
     )
 
 
@@ -684,8 +757,9 @@ class AssessmentItemRepository:
                     id, course_version_id, knowledge_node_id, item_type, prompt,
                     expected_answer, rubric_json, difficulty, content_scope, source_ref,
                     license_note, attribution_text, derived_from_item_id, reviewer,
-                    reviewed_at, content_hash, status, figure_spec_id
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    reviewed_at, content_hash, status, figure_spec_id,
+                    choices_json, explanation, explanation_source
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     item.id,
@@ -706,6 +780,9 @@ class AssessmentItemRepository:
                     item.content_hash,
                     item.status.value,
                     item.figure_spec_id,
+                    item.choices_json,
+                    item.explanation,
+                    item.explanation_source,
                 ),
             )
         except sqlite3.IntegrityError as exc:

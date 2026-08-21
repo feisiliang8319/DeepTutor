@@ -94,6 +94,10 @@ def web_db(tmp_path: Path) -> Path:
             },
         ]
     )
+    # 选课不是装饰：/next、/attempt、/progress 都以它为访问边界（2026-08-21 起）。
+    # 这些 fixture 原先一条选课都没有却能取题作答，正是那个缺口的化石。
+    EnrollmentRepository(conn).enroll(Enrollment(LEARNER, CV, "active", now, now))
+    conn.commit()
     conn.close()
     return db_path
 
@@ -193,6 +197,7 @@ def test_empty_item_bank_node_is_skipped_and_reported(tmp_path: Path):
         LearnerProfile(id=LEARNER, deep_tutor_user_id="d", display_name="K",
                        locale="en-US", created_at=now, updated_at=now)
     )
+    EnrollmentRepository(conn).enroll(Enrollment(LEARNER, CV, "active", now, now))
     KnowledgeGraphRepository(conn).import_nodes_and_edges(
         course_version_id=CV,
         nodes=[
@@ -412,9 +417,202 @@ def test_courses_lists_only_active_enrollments(client: TestClient, web_db: Path)
     assert titles == ["Web"], "退选的课不该继续出现在课表里"
 
 
-def test_courses_is_empty_without_enrollment(client: TestClient):
-    assert client.get("/api/edu/courses", params={"learner_id": LEARNER}).json()["courses"] == []
+def test_courses_is_empty_without_enrollment(client: TestClient, web_db: Path):
+    conn = edu_sqlite.open_database(web_db)
+    now = to_iso_timestamp(time.time())
+    LearnerRepository(conn).create(LearnerProfile(
+        id="learner-unenrolled", deep_tutor_user_id="dtu-un", display_name="No Courses",
+        locale="en-US", created_at=now, updated_at=now))
+    conn.commit(); conn.close()
+    assert client.get(
+        "/api/edu/courses", params={"learner_id": "learner-unenrolled"}).json()["courses"] == []
+
+
+# ---- 选课是访问边界，不只是课程列表（质检席 F-1）--------------------------
+
+
+def test_withdrawn_learner_cannot_fetch_or_answer(client: TestClient, web_db: Path):
+    item_id = _next(client)["item"]["id"]          # 退选前正常
+    conn = edu_sqlite.open_database(web_db)
+    EnrollmentRepository(conn).set_status(
+        LEARNER, CV, "withdrawn", at=to_iso_timestamp(time.time()))
+    conn.commit(); conn.close()
+
+    assert client.get("/api/edu/next", params={
+        "learner_id": LEARNER, "course_version_id": CV}).status_code == 403
+    assert client.get("/api/edu/progress", params={
+        "learner_id": LEARNER, "course_version_id": CV}).status_code == 403
+    # 最要紧的一条：退选后不能再往这门课写作答，否则掌握度证据会长在已退的课上
+    assert _attempt(client, item_id, SECRET_ANSWER, "k-withdrawn").status_code == 403
+
+
+def test_attempt_checks_the_items_course_not_the_payload_field(client: TestClient, web_db: Path):
+    """防"校验剧场"：payload.course_version_id 不参与落库，照它校验等于没校验。
+
+    record_attempt 从 item 反查 course_version_id，所以这里必须按 item 实际所属
+    课程判。构造：learner 退掉了 item 所在的课，却在 payload 里报一门他确实选了
+    的课 —— 若校验打在 payload 上，这一条会被放行。
+    """
+    item_id = _next(client)["item"]["id"]
+    conn = edu_sqlite.open_database(web_db)
+    now = to_iso_timestamp(time.time())
+    CourseRepository(conn).create_course(
+        Course(id="c-other", subject_key="history", title="Other", created_at=now, level="AP-HS"))
+    CourseRepository(conn).create_course_version(
+        CourseVersion(id="cv-other", course_id="c-other", version="1.0.0", content_hash="2" * 64,
+                      status=CourseVersionStatus.ACTIVE, created_at=now))
+    repo = EnrollmentRepository(conn)
+    repo.enroll(Enrollment(LEARNER, "cv-other", "active", now, now))
+    repo.set_status(LEARNER, CV, "withdrawn", at=now)
+    conn.commit(); conn.close()
+
+    r = client.post("/api/edu/attempt", json={
+        "learner_id": LEARNER, "course_version_id": "cv-other",   # 谎报一门他选了的课
+        "item_id": item_id, "response": SECRET_ANSWER, "client_attempt_id": "k-theater"})
+    assert r.status_code == 403, "按 payload 校验＝校验剧场；必须按 item 实际所属课程判"
 
 
 def test_courses_unknown_learner_is_404(client: TestClient):
     assert client.get("/api/edu/courses", params={"learner_id": "nobody"}).status_code == 404
+
+
+# ---- 成组出题：答案与讲解只在整组提交之后出现 ----------------------------
+#
+# Sol 2026-08-21：「出题后不能附答案！答案必须在所有答题提交后再给出，给出的
+# 答案必须解释答案的原因与关联的知识点。」
+# 旧路径 /api/edu/next + /api/edu/attempt 是"答一题→立刻告知对错→1.4 秒后
+# 下一题"，孩子在整组做完之前就知道每题对错，与上面这条冲突。
+
+
+def _seed_explained_choice(web_db: Path) -> None:
+    conn = edu_sqlite.open_database(web_db)
+    AssessmentItemRepository(conn).import_items([{
+        "id": "item-A-choice", "course_version_id": CV, "knowledge_node_id": "node-A",
+        "item_type": "choice", "prompt": "Which one is 40 + 2?",
+        "expected_answer": "B", "rubric_json": json.dumps({"note": SECRET_RUBRIC}),
+        "difficulty": 1, "content_scope": "BUNDLED", "source_ref": "self-authored (test)",
+        "license_note": None, "attribution_text": None, "derived_from_item_id": None,
+        "reviewer": None, "reviewed_at": None,
+        "content_hash": content_hash("item-A-choice"), "status": "candidate",
+        # 选项用英文数词而非阿拉伯数字：MCQ 的正确选项正文天然**就是**答案，
+        # 若写成 "42" 会与本文件其他题的 SECRET_ANSWER 撞串，让泄漏断言产生
+        # 无意义的假阳性。真正的保证是"不出现 expected_answer/correct_answer
+        # 这些字段"，不是"答案的字面值不许出现在任何地方"。
+        "choices_json": json.dumps([{"label": "A", "text": "forty-one"},
+                                    {"label": "B", "text": "forty-two"}]),
+        "explanation": "40 加 2 就是 42。", "explanation_source": "authored",
+    }])
+    conn.close()
+
+
+def test_task_set_ships_choices_but_no_answer_or_explanation(client: TestClient, web_db: Path):
+    _seed_explained_choice(web_db)
+    body = client.get("/api/edu/set", params={
+        "learner_id": LEARNER, "course_version_id": CV, "size": 3}).json()
+
+    assert 1 <= len(body["items"]) <= 3
+    choice = next(i for i in body["items"] if i["id"] == "item-A-choice")
+    assert [c["label"] for c in choice["choices"]] == ["A", "B"], "选项必须结构化，否则渲染不出单选按钮"
+    assert choice["node"]["code"] == "A", "出题时就带上知识点，复盘页不用再查一次"
+
+    raw = json.dumps(body, ensure_ascii=False)
+    assert "expected_answer" not in raw
+    assert "correct_answer" not in raw
+    assert "explanation" not in raw, "讲解必须等到整组提交之后"
+    assert SECRET_RUBRIC not in raw
+
+
+def test_set_submit_returns_answer_explanation_and_knowledge_point(client: TestClient, web_db: Path):
+    _seed_explained_choice(web_db)
+    body = client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV,
+        "answers": [{"item_id": "item-A-choice", "response": "A",
+                     "client_attempt_id": "set-1:item-A-choice"}],
+    }).json()
+
+    row = body["results"][0]
+    assert row["is_correct"] is False
+    assert row["your_response"] == "A"
+    assert row["correct_answer"] == "B", "整组交完之后，答案才给"
+    assert row["explanation"] == "40 加 2 就是 42。"
+    assert row["explanation_source"] == "authored", "讲解必须带出处，家长才知道能不能信"
+    assert row["knowledge_point"] == {
+        "code": "A", "title": "Node A", "standard_code": "4.OA.B.4"}
+    assert body["summary"] == {
+        "answered": 1, "auto_graded": 1, "correct": 0, "awaiting_review": 0}
+    # rubric 仍然一步都不出去 —— 讲解走 explanation 列，不是把 rubric 放行
+    assert SECRET_RUBRIC not in json.dumps(body, ensure_ascii=False)
+
+
+def test_set_submit_records_every_answer_as_a_real_attempt(client: TestClient, web_db: Path):
+    _seed_explained_choice(web_db)
+    picked = client.get("/api/edu/set", params={
+        "learner_id": LEARNER, "course_version_id": CV, "size": 3}).json()["items"]
+    client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV,
+        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER,
+                     "client_attempt_id": f"set-2:{i['id']}"} for i in picked],
+    })
+    conn = edu_sqlite.open_database(web_db)
+    stored = {r["assessment_item_id"] for r in conn.execute(
+        "SELECT assessment_item_id FROM student_attempts WHERE learner_id = ?", (LEARNER,))}
+    conn.close()
+    assert stored == {i["id"] for i in picked}, "复盘页好看不算数，作答必须真落库"
+
+
+def test_set_has_no_duplicate_items(client: TestClient, web_db: Path):
+    _seed_explained_choice(web_db)
+    ids = [i["id"] for i in client.get("/api/edu/set", params={
+        "learner_id": LEARNER, "course_version_id": CV, "size": 10}).json()["items"]]
+    assert len(ids) == len(set(ids)), "同一张卷子上不该出现两道一模一样的题"
+
+
+def test_set_submit_rejects_an_item_from_another_course(client: TestClient, web_db: Path):
+    """一组里混进别的课的题：整组拒绝，不能先写进去几条再报错。"""
+    conn = edu_sqlite.open_database(web_db)
+    now = to_iso_timestamp(time.time())
+    CourseRepository(conn).create_course(
+        Course(id="c-x", subject_key="history", title="X", created_at=now, level="AP-HS"))
+    CourseRepository(conn).create_course_version(
+        CourseVersion(id="cv-x", course_id="c-x", version="1.0.0", content_hash="3" * 64,
+                      status=CourseVersionStatus.ACTIVE, created_at=now))
+    KnowledgeGraphRepository(conn).import_nodes_and_edges(
+        course_version_id="cv-x",
+        nodes=[KnowledgeNode(id="node-X", course_version_id="cv-x", code="X",
+                             node_type="concept", title="X", sort_order=1,
+                             standard_code="9.X.1")], edges=[])
+    AssessmentItemRepository(conn).import_items([{
+        "id": "item-X", "course_version_id": "cv-x", "knowledge_node_id": "node-X",
+        "item_type": "numeric", "prompt": "1+1?", "expected_answer": "2",
+        "rubric_json": None, "difficulty": 1, "content_scope": "BUNDLED",
+        "source_ref": "self-authored (test)", "license_note": None, "attribution_text": None,
+        "derived_from_item_id": None, "reviewer": None, "reviewed_at": None,
+        "content_hash": content_hash("item-X"), "status": "candidate"}])
+    conn.close()
+
+    good = _next(client)["item"]["id"]
+    r = client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV,
+        "answers": [
+            {"item_id": good, "response": SECRET_ANSWER, "client_attempt_id": "mix-1"},
+            {"item_id": "item-X", "response": "2", "client_attempt_id": "mix-2"},
+        ]})
+    assert r.status_code == 403
+    conn = edu_sqlite.open_database(web_db)
+    n = conn.execute("SELECT COUNT(*) c FROM student_attempts").fetchone()["c"]
+    conn.close()
+    assert n == 0, "整组校验必须在落库之前，否则前半组已经写进去了"
+
+
+def test_parent_cannot_submit_a_set(client: TestClient, web_db: Path):
+    conn = edu_sqlite.open_database(web_db)
+    now = to_iso_timestamp(time.time())
+    LearnerRepository(conn).create(LearnerProfile(
+        id="parent-s", deep_tutor_user_id="dtu-ps", display_name="家长",
+        locale="en-US", created_at=now, updated_at=now))
+    EnrollmentRepository(conn).enroll(Enrollment("parent-s", CV, "active", now, now))
+    conn.commit(); conn.close()
+    r = client.post("/api/edu/set/submit", json={
+        "learner_id": "parent-s", "course_version_id": CV,
+        "answers": [{"item_id": "item-A-1", "response": "42", "client_attempt_id": "p-1"}]})
+    assert r.status_code == 403

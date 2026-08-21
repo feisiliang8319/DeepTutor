@@ -76,6 +76,10 @@ _ITEM_PUBLIC_FIELDS: tuple[str, ...] = (
     "derived_from_item_id",
     "status",
     "figure_spec_id",
+    # 选项进白名单，讲解**不进**：选项是答题必需（不给就没法作答），讲解按 Sol
+    # 2026-08-21 的要求只能在全部提交之后出现，所以它走 review 专用出口，
+    # 不搭这班车。见 api/app.py 的 /api/edu/set/submit。
+    "choices_json",
 )
 
 
@@ -158,6 +162,17 @@ class AssessmentItem:
     # seeds/figures/cemc-books-books-books.json for the one case where a
     # naive transcription would have leaked part (a)'s answer into the spec.
     figure_spec_id: str | None = None
+    # 选择题的选项，JSON 数组：[{"label": "A", "text": "…"}, …]。
+    # 此前选项是拼进 prompt 散文的，前端只能拿到一坨文本，渲染不出单选按钮，
+    # 孩子只好手打字母。**结构里绝不标哪个是对的** —— 那等于把 expected_answer
+    # 换个字段名送到浏览器；import 时有闸门强制（repositories._validate_item_row）。
+    choices_json: str | None = None
+    # 讲解：给孩子看的"为什么是这个答案"。与 rubric_json 分开存，因为 rubric
+    # 是阅卷口径且有"永不出服务端"的硬不变量；讲解本来就是要给人看的，只是
+    # 要等全部提交之后。explanation_source 记权威性：publisher_official 是
+    # 出版社原文，authored 是自撰，derived 是从推导答案倒推的（最不可信）。
+    explanation: str | None = None
+    explanation_source: str | None = None
 
     def to_public_payload(self) -> dict[str, object]:
         """Whitelist serialization for anything that isn't the grading path.

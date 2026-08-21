@@ -13,6 +13,8 @@ front of a child mid-thought.
 
 from __future__ import annotations
 
+from collections.abc import Container
+
 from dataclasses import dataclass
 import sqlite3
 
@@ -44,11 +46,15 @@ def select_next_item(
     knowledge_node_id: str,
     *,
     include_judgeable: bool = False,
+    exclude: Container[str] = (),
 ) -> SelectedItem | None:
     """Least-attempted auto-gradable item on this node, ``None`` if none exist.
 
     Least-attempted first spreads practice over the whole pool before
     repeating anything; ``id`` breaks ties so the choice is stable.
+
+    ``exclude`` skips items already picked for the current set — 组卷时同一张
+    卷子上不该出现两道一模一样的题（2026-08-21 加，服务 /api/edu/set）。
     """
     servable = AUTO_GRADABLE + (JUDGEABLE if include_judgeable else ())
     items = [
@@ -60,6 +66,7 @@ def select_next_item(
         # Auto-graded types need a reference answer; judged types do not
         # (their whole point is that there is no single right string).
         and (item.expected_answer is not None or item.item_type in JUDGEABLE)
+        and item.id not in exclude
     ]
     if not items:
         return None

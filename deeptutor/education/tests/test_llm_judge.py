@@ -34,11 +34,12 @@ from deeptutor.education.domain.course import (
     KnowledgeNode,
 )
 from deeptutor.education.domain.evidence import JudgeKind, Verdict
-from deeptutor.education.domain.learner import LearnerProfile
+from deeptutor.education.domain.learner import Enrollment, LearnerProfile
 from deeptutor.education.storage import sqlite as edu_sqlite
 from deeptutor.education.storage.repositories import (
     AssessmentItemRepository,
     CourseRepository,
+    EnrollmentRepository,
     JudgmentRepository,
     KnowledgeGraphRepository,
     LearnerRepository,
@@ -102,6 +103,9 @@ def judge_db(tmp_path: Path) -> Path:
             "reviewed_at": None, "content_hash": content_hash(ITEM), "status": "candidate",
         }]
     )
+    # 选课是访问边界（2026-08-21 起）：没有这一行，/next 与 /attempt 一律 403。
+    EnrollmentRepository(conn).enroll(Enrollment(LEARNER, CV, "active", now, now))
+    conn.commit()
     conn.close()
     return db_path
 

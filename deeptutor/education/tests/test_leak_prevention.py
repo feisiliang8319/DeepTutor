@@ -10,10 +10,13 @@ import json
 from dataclasses import replace
 import logging
 
+import pytest
+
 from deeptutor.education.application import record_attempt as record_attempt_module
 from deeptutor.education.application.record_attempt import NewAttemptInput, record_attempt
 from deeptutor.education.storage.repositories import (
     AssessmentItemRepository,
+    ImportRejected,
     KnowledgeGraphRepository,
 )
 from deeptutor.education.tests.fixtures import build_fixture_a_math, content_hash
@@ -136,3 +139,103 @@ def test_post_commit_failure_log_never_contains_expected_answer(conn, learner, c
     full_log_text = "\n".join(record.getMessage() for record in caplog.records)
     full_log_text += "\n".join(str(getattr(record, "error", "")) for record in caplog.records)
     assert _SECRET not in full_log_text
+
+
+# ---- 选项必须出网线，但绝不能标出哪个是对的 -----------------------------
+#
+# 2026-08-21 新增 choices_json 时开的新泄漏面：选择题的选项**必然**要送到孩子
+# 的浏览器（不给就没法作答），所以它在 `_ITEM_PUBLIC_FIELDS` 白名单里。正因为
+# 必然出网线，任何"哪个是对的"的痕迹藏在里面都等于把 expected_answer 换个字段名
+# 发出去。import 闸门 fail-closed，这里做回归。
+
+
+_MCQ_CHOICES = [
+    {"label": "A", "text": "Foreigners were not welcome in Chinese trading cities."},
+    {"label": "B", "text": "Hangzhou was accessible by the Grand Canal for internal trade."},
+    {"label": "C", "text": "Chinese governments limited the number of markets."},
+    {"label": "D", "text": "Most traders were Europeans on the Silk Roads."},
+]
+
+
+def _mcq_row(course_version_id: str, **overrides) -> dict:
+    row = {
+        "id": "item-mcq-1",
+        "course_version_id": course_version_id,
+        "knowledge_node_id": "node-G3.MULT.BASIC",
+        "item_type": "choice",
+        # 生产形态：答案是**字母**，选项是散文（apwh-u1-t11-mcq1 即如此）
+        "prompt": "Based on the passage, which statement is most accurate?",
+        "expected_answer": "B",
+        "rubric_json": None,
+        "difficulty": 3,
+        "content_scope": "BUNDLED",
+        "source_ref": "self-authored (test)",
+        "license_note": None,
+        "attribution_text": None,
+        "derived_from_item_id": None,
+        "reviewer": None,
+        "reviewed_at": None,
+        "content_hash": content_hash("item-mcq-1"),
+        "status": "candidate",
+        "choices_json": json.dumps(_MCQ_CHOICES, ensure_ascii=False),
+    }
+    row.update(overrides)
+    return row
+
+
+def _seed_mcq_node(conn, course_version):
+    bundle = build_fixture_a_math(course_version.id)
+    KnowledgeGraphRepository(conn).import_nodes_and_edges(
+        course_version_id=course_version.id, nodes=bundle.nodes, edges=bundle.edges
+    )
+
+
+def test_choices_ship_but_never_mark_the_right_one(conn, course_version):
+    _seed_mcq_node(conn, course_version)
+    item = AssessmentItemRepository(conn).import_items([_mcq_row(course_version.id)])[0]
+    payload = item.to_public_payload()
+
+    assert json.loads(payload["choices_json"]) == _MCQ_CHOICES, "选项必须送到孩子面前"
+    body = json.dumps(payload, ensure_ascii=False)
+    assert "expected_answer" not in body
+    assert "explanation" not in body, "讲解只能在全部提交之后出现，不能搭出题这班车"
+    for marker in ("is_correct", "correct", "rationale", "solution"):
+        assert marker not in body
+
+
+@pytest.mark.parametrize(
+    "bad_choices,why",
+    [
+        ([{"label": "A", "text": "x", "is_correct": True}], "布尔标记"),
+        ([{"label": "A", "text": "x", "score": 1}, {"label": "B", "text": "y"}], "分值"),
+        ([{"label": "A", "text": "x", "explanation": "因为…"}, {"label": "B", "text": "y"}], "讲解"),
+        ([{"label": "A", "text": "x"}], "只有一个选项"),
+        ([{"label": "A", "text": "x"}, {"label": "A", "text": "y"}], "label 重复"),
+        ("not json at all", "不是合法 JSON"),
+    ],
+)
+def test_choice_rows_that_hint_at_the_answer_are_rejected(conn, course_version, bad_choices, why):
+    _seed_mcq_node(conn, course_version)
+    payload = bad_choices if isinstance(bad_choices, str) else json.dumps(bad_choices)
+    with pytest.raises(ImportRejected):
+        AssessmentItemRepository(conn).import_items(
+            [_mcq_row(course_version.id, choices_json=payload)]
+        )
+
+
+def test_choice_item_without_structured_choices_is_rejected(conn, course_version):
+    """没有结构化选项的 choice 题就是"孩子只能手打字母"那个缺陷本身。"""
+    _seed_mcq_node(conn, course_version)
+    with pytest.raises(ImportRejected):
+        AssessmentItemRepository(conn).import_items(
+            [_mcq_row(course_version.id, choices_json=None)]
+        )
+
+
+def test_explanation_without_a_source_is_rejected(conn, course_version):
+    """讲解必须带出处：权威不权威直接决定家长该不该信它。"""
+    _seed_mcq_node(conn, course_version)
+    with pytest.raises(ImportRejected):
+        AssessmentItemRepository(conn).import_items(
+            [_mcq_row(course_version.id, explanation="因为运河通内陆。")]
+        )

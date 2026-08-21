@@ -121,7 +121,7 @@ def submit(client: TestClient, answer: str, key: str = "k1"):
     就能逐次问出答案"的判分预言机（第二轮质检席 G-1）。这里改走成组接口，
     断言的对象（judged/mastery/rubric 不外泄）不变。
     """
-    issued = client.get(
+    issued = client.post(
         "/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV}
     ).json()
     ids = [i["id"] for i in issued.get("items", [])] or [ITEM]
@@ -278,14 +278,14 @@ def test_open_items_are_not_served_without_a_judge(judge_db: Path):
     """Without a judge the only open item must not be offered: answering it
     would store evidence that can never resolve."""
     no_judge = TestClient(create_app(judge_db))
-    body = no_judge.get(
+    body = no_judge.post(
         "/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV}
     ).json()
     assert body["items"] == []
     assert body["skipped_empty_nodes"] == ["OPEN"]
 
     with_judge = client_with(judge_db, StubJudge('{"verdict":"partial","confidence":0.7}'))
-    served = with_judge.get(
+    served = with_judge.post(
         "/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV}
     ).json()
     assert [i["id"] for i in served["items"]] == [ITEM]

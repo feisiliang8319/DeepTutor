@@ -209,8 +209,9 @@ async function loadSet() {
   $('submitHint').textContent = '';
   $('submit').disabled = true;
   blankConfirms = 0;
+  // POST 不是 GET：发卷会在服务端落一行 task_sets，GET 语义上应当是安全的。
   const r = await fetch(`/api/edu/set?learner_id=${encodeURIComponent(person.id)}`
-    + `&course_version_id=${encodeURIComponent(CV)}`);
+    + `&course_version_id=${encodeURIComponent(CV)}`, {method: 'POST'});
   if (!r.ok) {
     $('questions').innerHTML = `<div class="card"><div class="prompt">Error ${r.status}</div></div>`;
     return;

@@ -109,7 +109,7 @@ def client(web_db: Path) -> TestClient:
 
 
 def _issue(client: TestClient, learner: str = LEARNER, cv: str = CV):
-    return client.get("/api/edu/set", params={"learner_id": learner, "course_version_id": cv})
+    return client.post("/api/edu/set", params={"learner_id": learner, "course_version_id": cv})
 
 
 def _next(client: TestClient) -> dict:
@@ -283,7 +283,7 @@ def test_empty_item_bank_node_is_skipped_and_reported(tmp_path: Path):
     )
     conn.close()
 
-    body = TestClient(create_app(db_path)).get(
+    body = TestClient(create_app(db_path)).post(
         "/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV}
     ).json()
     assert [i["node"]["code"] for i in body["items"]] == ["HAS"], \
@@ -515,7 +515,7 @@ def test_withdrawn_learner_cannot_fetch_or_answer(client: TestClient, web_db: Pa
         LEARNER, CV, "withdrawn", at=to_iso_timestamp(time.time()))
     conn.commit(); conn.close()
 
-    assert client.get("/api/edu/set", params={
+    assert client.post("/api/edu/set", params={
         "learner_id": LEARNER, "course_version_id": CV}).status_code == 403
     assert client.get("/api/edu/progress", params={
         "learner_id": LEARNER, "course_version_id": CV}).status_code == 403
@@ -591,7 +591,7 @@ def _seed_explained_choice(web_db: Path) -> None:
 
 def test_task_set_ships_choices_but_no_answer_or_explanation(client: TestClient, web_db: Path):
     _seed_explained_choice(web_db)
-    body = client.get("/api/edu/set", params={
+    body = client.post("/api/edu/set", params={
         "learner_id": LEARNER, "course_version_id": CV, "size": 3}).json()
 
     assert 1 <= len(body["items"]) <= 3
@@ -788,12 +788,12 @@ def test_size_is_server_side_not_a_query_parameter(web_db: Path):
     环境变量注入），请求里带 size 一律无效。
     """
     small = TestClient(create_app(web_db, set_size=1))
-    body = small.get("/api/edu/set", params={
+    body = small.post("/api/edu/set", params={
         "learner_id": LEARNER, "course_version_id": CV}).json()
     assert len(body["items"]) == 1, "题量由服务端配置决定"
 
     # 同一组还没交，带上 size=10 也只能拿回原组
-    ignored = small.get("/api/edu/set", params={
+    ignored = small.post("/api/edu/set", params={
         "learner_id": LEARNER, "course_version_id": CV, "size": 10}).json()
     assert len(ignored["items"]) == 1, "size 参数必须被忽略"
     assert ignored["set_id"] == body["set_id"]
@@ -861,7 +861,7 @@ def test_only_one_open_set_per_course_even_under_concurrency(client: TestClient,
 
     def grab():
         c = TestClient(create_app(web_db))
-        r = c.get("/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV})
+        r = c.post("/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV})
         with lock:
             results.append(r.json())
 
@@ -896,3 +896,94 @@ def test_replayed_client_attempt_id_echoes_what_was_stored(client: TestClient):
     for row in replay.json()["results"]:
         assert row["your_response"] != "garbage-!!!"
         assert row["your_response"] == SECRET_ANSWER
+
+
+# ---- 第四轮质检席：交卷这一步自己的竞态，以及"交到一半失败"的僵尸态 --------
+
+
+def test_concurrent_submit_of_one_set_grades_once(client: TestClient, web_db: Path):
+    """A-新1：并发提交同一组曾被评分两遍。
+
+    根因是 `already_submitted` 在函数入口读一次就不再复核 —— 那句
+    `UPDATE ... WHERE submitted_at IS NULL` 虽然对输掉竞态的一路静默 no-op，
+    它仍然照走"新作答"分支。**双击提交按钮就能触发，不需要恶意脚本。**
+    """
+    import threading
+    issued = _issue(client).json()
+    ids = [i["id"] for i in issued["items"]]
+    codes: list[int] = []
+    lock = threading.Lock()
+
+    def go(tag: str):
+        c = TestClient(create_app(web_db))
+        r = c.post("/api/edu/set/submit", json={
+            "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+            "answers": [{"item_id": i, "response": tag,
+                         "client_attempt_id": f"{tag}:{i}"} for i in ids]})
+        with lock:
+            codes.append(r.status_code)
+
+    threads = [threading.Thread(target=go, args=(t,)) for t in ("AAAA", "BBBB")]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    conn = edu_sqlite.open_database(web_db)
+    n = conn.execute("SELECT COUNT(*) c FROM student_attempts").fetchone()["c"]
+    responses = {r["response"] for r in conn.execute("SELECT response FROM student_attempts")}
+    conn.close()
+    assert n == len(ids), f"同一组被评分了不止一次：{n} 条作答，期望 {len(ids)}"
+    assert len(responses) == 1, f"两路作答都落了库：{responses}"
+    assert sorted(codes) == [200, 409] or codes == [200, 200], codes
+
+
+def test_retired_item_voids_the_open_set_instead_of_reissuing_it(
+        client: TestClient, web_db: Path):
+    """A-新2 前半：组里有题被下架，重发时必须整组作废，而不是照发。
+
+    照发的后果不是"少一道题"，而是孩子答完提交时才在判分层炸掉，
+    而那时这一组已被标记已交 —— 永久卡死、那次复盘丢失。
+    """
+    issued = _issue(client).json()
+    victim = issued["items"][0]["id"]
+    conn = edu_sqlite.open_database(web_db)
+    conn.execute("UPDATE assessment_items SET status = 'retired' WHERE id = ?", (victim,))
+    conn.commit(); conn.close()
+
+    again = _issue(client).json()
+    assert again["set_id"] != issued["set_id"], "含下架题的组必须作废重发"
+    assert victim not in [i["id"] for i in again["items"]]
+
+
+def test_retired_item_at_submit_time_does_not_burn_the_set(client: TestClient, web_db: Path):
+    """A-新2 后半：即使下架发生在领卷之后、提交之前，也必须在**认领这一组之前**
+    就拒绝，让孩子还能重来。"""
+    issued = _issue(client).json()
+    ids = [i["id"] for i in issued["items"]]
+    conn = edu_sqlite.open_database(web_db)
+    conn.execute("UPDATE assessment_items SET status = 'retired' WHERE id = ?", (ids[1],))
+    conn.commit(); conn.close()
+
+    r = client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+        "answers": [{"item_id": i, "response": SECRET_ANSWER,
+                     "client_attempt_id": f"burn:{i}"} for i in ids]})
+    assert r.status_code == 409
+
+    conn = edu_sqlite.open_database(web_db)
+    row = conn.execute("SELECT submitted_at FROM task_sets WHERE id = ?",
+                       (issued["set_id"],)).fetchone()
+    n = conn.execute("SELECT COUNT(*) c FROM student_attempts").fetchone()["c"]
+    conn.close()
+    assert row["submitted_at"] is None, "被拒的提交不该把这一组标记成已交"
+    assert n == 0, "被拒的提交不该留下半组作答"
+
+    fresh = _issue(client).json()          # 还能继续用
+    assert fresh["set_id"] != issued["set_id"]
+
+
+def test_issuing_a_set_is_a_post_not_a_get(client: TestClient):
+    """发卷会 INSERT 一行；挂在 GET 上曾让两个人在"只读复验"时写进生产库。"""
+    assert client.get("/api/edu/set", params={
+        "learner_id": LEARNER, "course_version_id": CV}).status_code == 405

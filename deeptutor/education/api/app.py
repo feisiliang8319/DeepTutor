@@ -27,6 +27,7 @@ import sqlite3
 import time
 import json
 from typing import Any
+from datetime import datetime
 import uuid
 
 from fastapi import FastAPI, HTTPException
@@ -49,6 +50,7 @@ from deeptutor.education.application.record_attempt import (
 )
 from deeptutor.education.application.select_item import JUDGEABLE, select_next_item
 from deeptutor.education.application.select_objective import list_available_objectives
+from deeptutor.education.domain.course import ItemStatus
 from deeptutor.education.domain.evidence import Verdict
 from deeptutor.education.storage import sqlite as edu_sqlite
 from deeptutor.education.storage.repositories import (
@@ -301,6 +303,40 @@ def create_app(
         finally:
             conn.close()
 
+    def _within_grace(claimed_at: str | None, now_iso: str, seconds: int = 60) -> bool:
+        """认领时间距现在是否还在宽限期内（判断"另一路正在写"还是"它死了"）。"""
+        if not claimed_at:
+            return False
+        try:
+            return (datetime.fromisoformat(now_iso)
+                    - datetime.fromisoformat(claimed_at)).total_seconds() < seconds
+        except ValueError:
+            # 时间戳解析不了就按"还在写"处理：宁可让孩子重试一次，
+            # 也不要在看不清状态时去补写作答。
+            return True
+
+    def _stored_judgment(conn: sqlite3.Connection, attempt_id: str):
+        """取这条作答已落库的判定。
+
+        第四轮质检席 A-6：回读分支里 judgment 恒为 None，于是任何被 LLM 判过的
+        题一进回读，判分依据就从复盘里消失了。
+        """
+        row = conn.execute(
+            "SELECT verdict, confidence FROM judgment_records WHERE attempt_id = ? "
+            "ORDER BY created_at DESC LIMIT 1",
+            (attempt_id,),
+        ).fetchone()
+        return None if row is None else _StoredJudgment(row)
+
+    class _StoredJudgment:
+        def __init__(self, row):
+            self.verdict = _EnumLike(row["verdict"])
+            self.confidence = row["confidence"]
+
+    class _EnumLike:
+        def __init__(self, value):
+            self.value = value
+
     class _ReplayedOutcome:
         """由已落库的作答重建的"评分结果"，形状与 record_attempt 的返回一致。
 
@@ -316,6 +352,7 @@ def create_app(
 
     class _StoredAttempt:
         def __init__(self, row):
+            self.id = row["id"]
             self.response = row["response"]
             self.is_correct = None if row["is_correct"] is None else bool(row["is_correct"])
             self.knowledge_node_id = row["knowledge_node_id"]
@@ -340,9 +377,13 @@ def create_app(
                      "standard_code": node.standard_code},
         }
 
-    @app.get("/api/edu/set")
+    @app.post("/api/edu/set")
     def task_set(learner_id: str, course_version_id: str) -> dict[str, Any]:
         """发一组题；组由**服务端**发、服务端记。
+
+        **是 POST 不是 GET**：这个端点会 INSERT 一行 task_sets。挂在 GET 上曾让
+        两个人（第四轮质检席、以及我自己）在"只读复验"时意外写进生产库 ——
+        HTTP 语义里 GET 应当是安全的，任何巡检/监控/重试都可能打它。
 
         题量是服务端配置（EDU_SET_SIZE，默认 5），**不是请求参数**：让客户端
         自选"这一组就一道题"，交上去立刻拿答案，等于逐题即时反馈 —— 那正是
@@ -368,13 +409,20 @@ def create_app(
                 items_repo = AssessmentItemRepository(conn)
                 nodes = {n.id: n for n in
                          KnowledgeGraphRepository(conn).list_nodes(course_version_id)}
-                reissued = []
-                for item_id in json.loads(open_set["item_ids_json"]):
-                    item = items_repo.get(item_id)
-                    if item is not None:
-                        reissued.append(_public_item(item, nodes.get(item.knowledge_node_id)))
-                if reissued:
-                    return {"done": False, "set_id": open_set["id"], "items": reissued,
+                wanted = json.loads(open_set["item_ids_json"])
+                fetched = [items_repo.get(i) for i in wanted]
+                # 组里有题在发卷之后被下架/删掉了，就整组作废重发。
+                # 第四轮质检席 A-新2：原先照发不误，孩子答完提交时才在
+                # record_attempt 里炸出 "is retired and cannot be attempted"，
+                # 而那时这一组已经被标记成已交 —— 永久卡死、复盘丢失。
+                # 未作答的组删掉是安全的：没有任何作答记录引用它。
+                if any(it is None or it.status is ItemStatus.RETIRED for it in fetched):
+                    with conn:
+                        conn.execute("DELETE FROM task_sets WHERE id = ?", (open_set["id"],))
+                else:
+                    return {"done": False, "set_id": open_set["id"],
+                            "items": [_public_item(it, nodes.get(it.knowledge_node_id))
+                                      for it in fetched],
                             "reissued": True, "skipped_empty_nodes": [], "message": None}
 
             objectives = list_available_objectives(conn, learner_id, course_version_id)
@@ -482,7 +530,6 @@ def create_app(
                     detail=f"没有发给 {learner_id!r} 的这一组题：{payload.set_id!r}",
                 )
             issued_ids = list(json.loads(issued["item_ids_json"]))
-            already_submitted = issued["submitted_at"] is not None
             if set(seen) != set(issued_ids):
                 missing = sorted(set(issued_ids) - set(seen))
                 extra = sorted(set(seen) - set(issued_ids))
@@ -508,6 +555,14 @@ def create_app(
                 require_enrollment(conn, learner_id, item.course_version_id)
                 resolved.append((ans, item))
 
+            # 落库之前先把整组过一遍：有一题不可作答（已下架/已删）就整组拒绝，
+            # **在认领这一组之前**。否则会重演 A-新2：标记已交了，评分循环才炸。
+            for _, item in resolved:
+                if item.status is ItemStatus.RETIRED:
+                    raise HTTPException(
+                        status_code=409,
+                        detail=f"{item.id!r} 已下架，这一组作废；重新领一组即可")
+
             # ---- 已交过的组：只回读，绝不重新评分 ----
             # 第三轮质检席 CRITICAL-1：原先查 issued 时没过滤 submitted_at，
             # 那句 `UPDATE ... WHERE submitted_at IS NULL` 静默 no-op 之后代码照常
@@ -518,16 +573,24 @@ def create_app(
             # 不直接 409 拒掉，是因为提交成功但响应丢包时，孩子会永久看不到自己的
             # 复盘（作答已落库、卷子已标记已交）。所以：重放返回**同一份**复盘，
             # 由已落库的作答重建，一条新作答都不写、一次判分都不跑。
-            if not already_submitted:
-                with conn:
-                    conn.execute(
-                        "UPDATE task_sets SET submitted_at = ? WHERE id = ? "
-                        "AND submitted_at IS NULL",
-                        (now, payload.set_id),
-                    )
-                    issued = conn.execute(
-                        "SELECT * FROM task_sets WHERE id = ?", (payload.set_id,)
-                    ).fetchone()
+            # 「这一组归谁评」必须由一次原子的 compare-and-swap 决定，不能由函数
+            # 顶部那次 SELECT 决定。
+            # 第四轮质检席 A-新1：原先 already_submitted 在入口读一次就不再复核，
+            # 于是并发提交时那句 UPDATE 虽然因 `WHERE submitted_at IS NULL` 静默
+            # no-op，输掉竞态的一路仍然走"新作答"分支 —— 同一组被评分两遍，
+            # 掌握度被推进两次，其中一路的作答永久落库却永不可能再被读出
+            # （回读按 learner_id + submitted_at 精确匹配，时间戳对不上）。
+            # 双击提交按钮就能触发，不需要恶意脚本。
+            with conn:
+                claimed = conn.execute(
+                    "UPDATE task_sets SET submitted_at = ? WHERE id = ? "
+                    "AND submitted_at IS NULL",
+                    (now, payload.set_id),
+                ).rowcount == 1
+            issued = conn.execute(
+                "SELECT * FROM task_sets WHERE id = ?", (payload.set_id,)
+            ).fetchone()
+            already_submitted = not claimed
 
             stored = {}
             if already_submitted:
@@ -536,19 +599,27 @@ def create_app(
                     (learner_id, issued["submitted_at"]),
                 ):
                     stored[row["assessment_item_id"]] = row
+                missing = [i for i in issued_ids if i not in stored]
+                if missing:
+                    # 认领成功的那一路还没写完（并发），或者它中途死了。
+                    # 两种情况必须分开：前者稍后重试就好，后者不能让孩子永远卡住。
+                    if _within_grace(issued["submitted_at"], now):
+                        raise HTTPException(
+                            status_code=409,
+                            detail="这一组正在判分，请稍等几秒再试")
+                    # 过了宽限期仍残缺 = 上一次提交没写完就断了。放行让它补齐
+                    # 缺的那几题：已落库的题一律回读、不重判，所以补不出便宜可占。
+                    already_submitted = False
 
             results = []
             for ans, item in resolved:
                 judgment = None
-                if already_submitted:
-                    row = stored.get(item.id)
-                    if row is None:
-                        raise HTTPException(
-                            status_code=409,
-                            detail=f"这一组已提交过，但 {item.id!r} 没有对应的作答记录，"
-                                   "无法重建复盘")
+                row = stored.get(item.id)
+                if row is not None:
+                    # 这一题已经有落库的作答 —— 回读，绝不重判。
                     outcome = _ReplayedOutcome(row, MasterySnapshotRepository(conn).get(
                         learner_id, row["knowledge_node_id"]))
+                    judgment = _stored_judgment(conn, row["id"])
                 else:
                     if judge is not None and item.item_type in JUDGEABLE:
                         judgment = judge_open_response(
@@ -561,7 +632,10 @@ def create_app(
                                 assessment_item_id=item.id,
                                 response=ans.response,
                                 started_at=ans.started_at or now,
-                                submitted_at=now,
+                                # 用这一组的提交时间，不是"此刻" —— 回读靠
+                                # learner_id + submitted_at 认这一组的作答，补写的
+                                # 题若打上新时间戳，下次就再也回读不到它。
+                                submitted_at=issued["submitted_at"] or now,
                                 source="web",
                                 client_attempt_id=ans.client_attempt_id,
                                 judgment=judgment,

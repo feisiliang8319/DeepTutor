@@ -802,3 +802,97 @@ def test_size_is_server_side_not_a_query_parameter(web_db: Path):
 def test_default_set_has_more_than_one_question(client: TestClient):
     """默认题量 > 1 —— 一组一题等于逐题即时反馈。"""
     assert len(_issue(client).json()["items"]) > 1
+
+
+# ---- 状态机边界：已终结的资源要真的终结，并发下不能造出孪生资源 ----------
+#
+# 2026-08-21 第三轮质检席三条 CRITICAL 的回归。它们的共同点：功能测试全绿时
+# 完全不可见 —— 只有对「资源生命周期状态转换」做重放与并发注入才会暴露。
+# 上一轮测试有精确对应的覆盖缺口：全文件对"重复交/已交"零命中、无并发用例、
+# 复用 client_attempt_id 时两次传的是**相同** response（于是回显错配测不出来）。
+
+
+def _submit_all(client: TestClient, issued: dict, response: str, key: str):
+    return client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+        "answers": [{"item_id": i["id"], "response": response,
+                     "client_attempt_id": f"{key}:{i['id']}"} for i in issued["items"]]})
+
+
+def test_resubmitting_a_submitted_set_never_regrades(client: TestClient, web_db: Path):
+    """CRITICAL-1：先交垃圾骗出答案，再换一批 key 照抄正确答案交同一组。
+
+    重放必须原样返回**第一次**那份复盘：不写新作答、不重新判分。
+    """
+    issued = _issue(client).json()
+    first = _submit_all(client, issued, "definitely-wrong", "try-1").json()
+    assert first["summary"]["correct"] == 0
+    answers = {r["item_id"]: r["correct_answer"] for r in first["results"]}
+
+    conn = edu_sqlite.open_database(web_db)
+    n_before = conn.execute("SELECT COUNT(*) c FROM student_attempts").fetchone()["c"]
+    conn.close()
+
+    cheat = client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+        "answers": [{"item_id": i, "response": a or "", "client_attempt_id": f"cheat:{i}"}
+                    for i, a in answers.items()]})
+    assert cheat.status_code == 200
+    assert cheat.json()["summary"]["correct"] == 0, "抄了答案重交也不该改判"
+    for row in cheat.json()["results"]:
+        assert row["your_response"] == "definitely-wrong", "回显必须是落库的那条"
+
+    conn = edu_sqlite.open_database(web_db)
+    n_after = conn.execute("SELECT COUNT(*) c FROM student_attempts").fetchone()["c"]
+    conn.close()
+    assert n_after == n_before, "重放不该再写一条作答"
+
+
+def test_only_one_open_set_per_course_even_under_concurrency(client: TestClient, web_db: Path):
+    """CRITICAL-2：并发发卷曾造出两个 set_id、题面相同的孪生卷子。
+
+    孪生卷子让"同一组不许重复交"那条补丁失效 —— 两张卷子各交一次都合法，
+    先用 A 骗答案、再用 B 照抄。所以唯一性必须由数据库强制（migration 006），
+    应用层的先查后写只能收窄窗口，收窄不等于关闭。
+    """
+    import threading
+    results: list[dict] = []
+    lock = threading.Lock()
+
+    def grab():
+        c = TestClient(create_app(web_db))
+        r = c.get("/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV})
+        with lock:
+            results.append(r.json())
+
+    threads = [threading.Thread(target=grab) for _ in range(6)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    assert len({r["set_id"] for r in results}) == 1, \
+        f"并发下发出了多张卷子: {sorted({r['set_id'] for r in results})}"
+    conn = edu_sqlite.open_database(web_db)
+    open_rows = conn.execute(
+        "SELECT COUNT(*) c FROM task_sets WHERE submitted_at IS NULL").fetchone()["c"]
+    conn.close()
+    assert open_rows == 1
+
+
+def test_replayed_client_attempt_id_echoes_what_was_stored(client: TestClient):
+    """CRITICAL-3：复用同一个 client_attempt_id 配一段新乱码。
+
+    底层幂等地保留首次作答（正确），但响应曾把"新乱码 + 旧判分"拼在一起回吐，
+    构成"乱打也算对"的展示层假象。回显必须取落库的那条。
+    """
+    issued = _issue(client).json()
+    _submit_all(client, issued, SECRET_ANSWER, "same-key")
+    replay = client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+        "answers": [{"item_id": i["id"], "response": "garbage-!!!",
+                     "client_attempt_id": f"same-key:{i['id']}"} for i in issued["items"]]})
+    assert replay.status_code == 200
+    for row in replay.json()["results"]:
+        assert row["your_response"] != "garbage-!!!"
+        assert row["your_response"] == SECRET_ANSWER

@@ -301,6 +301,25 @@ def create_app(
         finally:
             conn.close()
 
+    class _ReplayedOutcome:
+        """由已落库的作答重建的"评分结果"，形状与 record_attempt 的返回一致。
+
+        重放路径**不跑判分、不写库**，所以这里只是把 DB 行包一层，让下面构造
+        复盘的代码不必分叉。
+        """
+
+        def __init__(self, row, snapshot):
+            self.attempt = _StoredAttempt(row)
+            self.mastery_snapshot = snapshot
+            self.pending_recompute = bool(
+                snapshot is not None and snapshot.status == "pending_recompute")
+
+    class _StoredAttempt:
+        def __init__(self, row):
+            self.response = row["response"]
+            self.is_correct = None if row["is_correct"] is None else bool(row["is_correct"])
+            self.knowledge_node_id = row["knowledge_node_id"]
+
     def _public_item(item, node) -> dict[str, Any]:
         """出题面。答案、讲解、rubric 一律不在这里。
 
@@ -395,13 +414,36 @@ def create_app(
 
             set_id = f"set-{uuid.uuid4().hex}"
             now = to_iso_timestamp(time.time())
-            with conn:
-                conn.execute(
-                    "INSERT INTO task_sets (id, learner_id, course_version_id, "
-                    "item_ids_json, issued_at) VALUES (?, ?, ?, ?, ?)",
-                    (set_id, learner_id, course_version_id,
-                     json.dumps(chosen_ids), now),
-                )
+            try:
+                with conn:
+                    conn.execute(
+                        "INSERT INTO task_sets (id, learner_id, course_version_id, "
+                        "item_ids_json, issued_at) VALUES (?, ?, ?, ?, ?)",
+                        (set_id, learner_id, course_version_id,
+                         json.dumps(chosen_ids), now),
+                    )
+            except sqlite3.IntegrityError:
+                # 上面那句"有未交的组就重发"的检查在事务外，是 TOCTOU：并发的两个
+                # 请求会各自查到"没有未交的组"，造出两个 set_id 相同题面的孪生卷子
+                # ——先用 A 交垃圾骗答案、再用 B 照抄拿满分，绕过整个设计目标。
+                # 唯一索引（migration 006）把它变成结构上不可能；撞上就说明另一个
+                # 请求先建好了，回读那一组重发即可（fail-closed 地回到正确路径）。
+                row = conn.execute(
+                    "SELECT id, item_ids_json FROM task_sets WHERE learner_id = ? "
+                    "AND course_version_id = ? AND submitted_at IS NULL",
+                    (learner_id, course_version_id),
+                ).fetchone()
+                if row is None:
+                    raise
+                items_repo = AssessmentItemRepository(conn)
+                nodes = {n.id: n for n in
+                         KnowledgeGraphRepository(conn).list_nodes(course_version_id)}
+                reissued = [_public_item(it, nodes.get(it.knowledge_node_id))
+                            for it in (items_repo.get(i)
+                                       for i in json.loads(row["item_ids_json"]))
+                            if it is not None]
+                return {"done": False, "set_id": row["id"], "items": reissued,
+                        "reissued": True, "skipped_empty_nodes": [], "message": None}
             return {"done": False, "set_id": set_id, "items": picked,
                     "reissued": False, "skipped_empty_nodes": skipped, "message": None}
         finally:
@@ -440,6 +482,7 @@ def create_app(
                     detail=f"没有发给 {learner_id!r} 的这一组题：{payload.set_id!r}",
                 )
             issued_ids = list(json.loads(issued["item_ids_json"]))
+            already_submitted = issued["submitted_at"] is not None
             if set(seen) != set(issued_ids):
                 missing = sorted(set(issued_ids) - set(seen))
                 extra = sorted(set(seen) - set(issued_ids))
@@ -465,33 +508,67 @@ def create_app(
                 require_enrollment(conn, learner_id, item.course_version_id)
                 resolved.append((ans, item))
 
-            with conn:
-                conn.execute(
-                    "UPDATE task_sets SET submitted_at = ? WHERE id = ? AND submitted_at IS NULL",
-                    (now, payload.set_id),
-                )
+            # ---- 已交过的组：只回读，绝不重新评分 ----
+            # 第三轮质检席 CRITICAL-1：原先查 issued 时没过滤 submitted_at，
+            # 那句 `UPDATE ... WHERE submitted_at IS NULL` 静默 no-op 之后代码照常
+            # 往下评分。于是"先用错答案交一次骗出 correct_answer，再换一批
+            # client_attempt_id 照抄正确答案交同一个 set_id"整条路畅通，
+            # 而且比修前更隐蔽 —— 不必暴力枚举，一次就够。
+            #
+            # 不直接 409 拒掉，是因为提交成功但响应丢包时，孩子会永久看不到自己的
+            # 复盘（作答已落库、卷子已标记已交）。所以：重放返回**同一份**复盘，
+            # 由已落库的作答重建，一条新作答都不写、一次判分都不跑。
+            if not already_submitted:
+                with conn:
+                    conn.execute(
+                        "UPDATE task_sets SET submitted_at = ? WHERE id = ? "
+                        "AND submitted_at IS NULL",
+                        (now, payload.set_id),
+                    )
+                    issued = conn.execute(
+                        "SELECT * FROM task_sets WHERE id = ?", (payload.set_id,)
+                    ).fetchone()
+
+            stored = {}
+            if already_submitted:
+                for row in conn.execute(
+                    "SELECT * FROM student_attempts WHERE learner_id = ? AND submitted_at = ?",
+                    (learner_id, issued["submitted_at"]),
+                ):
+                    stored[row["assessment_item_id"]] = row
 
             results = []
             for ans, item in resolved:
                 judgment = None
-                if judge is not None and item.item_type in JUDGEABLE:
-                    judgment = judge_open_response(judge, item, ans.response, model_ref=judge_ref)
-                try:
-                    outcome = record_attempt(
-                        conn,
-                        NewAttemptInput(
-                            learner_id=learner_id,
-                            assessment_item_id=item.id,
-                            response=ans.response,
-                            started_at=ans.started_at or now,
-                            submitted_at=now,
-                            source="web",
-                            client_attempt_id=ans.client_attempt_id,
-                            judgment=judgment,
-                        ),
-                    )
-                except ValidationError as exc:
-                    raise HTTPException(status_code=400, detail=str(exc)) from exc
+                if already_submitted:
+                    row = stored.get(item.id)
+                    if row is None:
+                        raise HTTPException(
+                            status_code=409,
+                            detail=f"这一组已提交过，但 {item.id!r} 没有对应的作答记录，"
+                                   "无法重建复盘")
+                    outcome = _ReplayedOutcome(row, MasterySnapshotRepository(conn).get(
+                        learner_id, row["knowledge_node_id"]))
+                else:
+                    if judge is not None and item.item_type in JUDGEABLE:
+                        judgment = judge_open_response(
+                            judge, item, ans.response, model_ref=judge_ref)
+                    try:
+                        outcome = record_attempt(
+                            conn,
+                            NewAttemptInput(
+                                learner_id=learner_id,
+                                assessment_item_id=item.id,
+                                response=ans.response,
+                                started_at=ans.started_at or now,
+                                submitted_at=now,
+                                source="web",
+                                client_attempt_id=ans.client_attempt_id,
+                                judgment=judgment,
+                            ),
+                        )
+                    except ValidationError as exc:
+                        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
                 node = nodes.get(item.knowledge_node_id)
                 snapshot = outcome.mastery_snapshot
@@ -501,7 +578,12 @@ def create_app(
                 results.append({
                     "item_id": item.id,
                     "prompt": item.prompt,
-                    "your_response": ans.response,
+                    # 回显落库的那条，不是这次 payload。
+                    # 第三轮质检席 CRITICAL-3：复用同一个 client_attempt_id 配一段新
+                    # 乱码，底层正确地保持首次作答不变（幂等），但响应把"新乱码 +
+                    # 旧判分"拼在一起回吐，构成"乱打也算对"的展示层假象 —— 任何只信
+                    # 这次响应、不回查库的下游（家长复盘页、截图取证）都会被骗。
+                    "your_response": outcome.attempt.response,
                     "is_correct": outcome.attempt.is_correct,
                     "needs_judgment": outcome.attempt.is_correct is None,
                     # ↓ 全组已落库，到这一步才允许出现

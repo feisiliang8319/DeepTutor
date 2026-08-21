@@ -13,6 +13,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Mapping, Sequence
 import json
+import re
 import sqlite3
 
 from deeptutor.education.domain.course import (
@@ -574,14 +575,22 @@ def _row_to_item(row: sqlite3.Row) -> AssessmentItem:
 
 _EXPLANATION_SOURCES = {"publisher_official", "authored", "derived"}
 
-# 选项对象里出现这些键，一律拒收：它们就是 expected_answer 换个名字送到浏览器。
+# 选项只允许这两个键 —— **白名单，不是黑名单**。
+#
+# 2026-08-21 第二轮质检席 E 项 FAIL：上一版用的是禁止键清单（is_correct /
+# score / explanation …）且做精确小写匹配，实测 `answerKey`、`isCorrect`、
+# `CorrectAnswer`、`"is correct"`（带空格）、中文 `"正确"` 全部放行。
+# 字段级黑名单必须假设"同义变体"攻击面：泄漏字段有价值，人会换名字而不是放弃。
+# 白名单则相反 —— 新键默认拒收，想加必须有人来改这一行。
+#
 # 选择题的选项必须**送到孩子面前**才能作答，所以 choices_json 在
 # ``_ITEM_PUBLIC_FIELDS`` 白名单里；正因为它必然出网线，"哪个是对的"绝不能
-# 藏在里面。这是本次新增字段带来的新泄漏面，靠 import 闸门堵死而非靠自觉。
-_FORBIDDEN_CHOICE_KEYS = {
-    "is_correct", "correct", "answer", "expected", "expected_answer",
-    "score", "points", "rubric", "explanation", "why", "rationale", "solution",
-}
+# 藏在里面。
+_ALLOWED_CHOICE_KEYS = {"label", "text"}
+
+# label 只能是 A/B/C/D、1/2/3/4 这种短记号。否则答案可以直接编进 label
+# （质检席实测的 `"A (correct)"`），白名单也拦不住。
+_LABEL_RE = re.compile(r"^[A-Za-z0-9]{1,4}$")
 
 
 def _validate_choices(item_id: str, item_type: ItemType, raw: object) -> str | None:
@@ -607,15 +616,19 @@ def _validate_choices(item_id: str, item_type: ItemType, raw: object) -> str | N
     for entry in parsed:
         if not isinstance(entry, dict):
             raise ImportRejected(f"item {item_id!r}: 选项必须是对象 {{label, text}}")
-        leaked = sorted(_FORBIDDEN_CHOICE_KEYS & {str(k).lower() for k in entry})
-        if leaked:
+        extra = sorted(set(map(str, entry)) - _ALLOWED_CHOICE_KEYS)
+        if extra:
             raise ImportRejected(
-                f"item {item_id!r}: 选项里带了 {leaked} —— 选项必然要送到孩子的浏览器，"
-                "任何指向正确答案的字段都等于泄题"
+                f"item {item_id!r}: 选项里出现了 label/text 之外的键 {extra} —— "
+                "选项必然要送到孩子的浏览器，多一个键就多一条泄题的路；"
+                f"确需新增请先改 _ALLOWED_CHOICE_KEYS"
             )
         label, choice_text = entry.get("label"), entry.get("text")
-        if not isinstance(label, str) or not label.strip():
-            raise ImportRejected(f"item {item_id!r}: 选项缺 label")
+        if not isinstance(label, str) or not _LABEL_RE.match(label.strip()):
+            raise ImportRejected(
+                f"item {item_id!r}: 选项 label 必须是 1–4 位字母数字（A/B/C/D 这种），"
+                f"实际 {label!r} —— 否则答案可以直接编进 label"
+            )
         if not isinstance(choice_text, str) or not choice_text.strip():
             raise ImportRejected(f"item {item_id!r}: 选项 {label!r} 缺 text")
         labels.append(label.strip())

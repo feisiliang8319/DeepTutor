@@ -16,6 +16,7 @@ from fastapi.testclient import TestClient
 import pytest
 
 from deeptutor.education.api.app import create_app
+from deeptutor.education.application.record_attempt import NewAttemptInput, record_attempt
 from deeptutor.education.application import to_iso_timestamp
 from deeptutor.education.domain.course import (
     Course,
@@ -107,43 +108,98 @@ def client(web_db: Path) -> TestClient:
     return TestClient(create_app(web_db))
 
 
+def _issue(client: TestClient, learner: str = LEARNER, cv: str = CV):
+    return client.get("/api/edu/set", params={"learner_id": learner, "course_version_id": cv})
+
+
 def _next(client: TestClient) -> dict:
-    r = client.get("/api/edu/next", params={"learner_id": LEARNER, "course_version_id": CV})
+    """发一组，把第一题包成旧 /api/edu/next 的形状。
+
+    旧端点已删（它能不交卷就问出答案，见 G-1）。helper 保留同名，是为了让那些
+    真正想断言"规划器先给哪个节点""同一节点先出哪道题"的用例不必改写 —— 它们
+    考的是选题逻辑，不是端点形状。
+    """
+    r = _issue(client)
     assert r.status_code == 200, r.text
-    return r.json()
+    d = r.json()
+    if not d.get("items"):
+        return {"done": d.get("done", False), "item": None, "node": None,
+                "message": d.get("message"),
+                "skipped_empty_nodes": d.get("skipped_empty_nodes", [])}
+    first = d["items"][0]
+    return {"done": False, "node": first["node"], "item": first,
+            "set_id": d["set_id"], "items": d["items"],
+            "skipped_empty_nodes": d.get("skipped_empty_nodes", [])}
 
 
 def _attempt(client: TestClient, item_id: str, response: str, key: str):
-    return client.post(
-        "/api/edu/attempt",
-        json={"learner_id": LEARNER, "course_version_id": CV, "item_id": item_id,
-              "response": response, "client_attempt_id": key},
-    )
+    """把当前这一组整组交上去，目标题用给定答案，其余留空。
+
+    整组交是硬要求：服务端只在"交的恰好等于发出去的那一组"时才判分并给答案。
+    """
+    r = _issue(client)
+    assert r.status_code == 200, r.text
+    d = r.json()
+    ids = [i["id"] for i in d["items"]]
+    if item_id not in ids:          # 目标题不在本组（跨课注入等用例）
+        ids = ids + [item_id]
+    resp = client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": d["set_id"],
+        "answers": [{"item_id": i, "response": response if i == item_id else "",
+                     "client_attempt_id": f"{key}:{i}"} for i in ids],
+    })
+    if resp.status_code != 200:
+        return resp
+    row = next(r for r in resp.json()["results"] if r["item_id"] == item_id)
+    return _Merged(resp, row)
+
+
+class _Merged:
+    """让旧断言 `_attempt(...).json()["is_correct"]` 继续读得通：
+    对外表现成一个只含目标题那一行的响应。"""
+
+    def __init__(self, resp, row):
+        self._resp, self._row = resp, row
+        self.status_code = resp.status_code
+        self.text = resp.text
+
+    def json(self):
+        return self._row
 
 
 # ---- the leak invariant ---------------------------------------------------
 
 
-def test_next_task_never_ships_the_answer_or_rubric(client: TestClient):
-    r = client.get("/api/edu/next", params={"learner_id": LEARNER, "course_version_id": CV})
+def test_task_set_never_ships_the_answer_or_rubric(client: TestClient):
+    """出题面的字段是白名单挑出来的：新加一个字段默认**不**公开。
+
+    （原 test_next_task_never_ships_the_answer_or_rubric。/api/edu/next 已于
+    2026-08-21 删除 —— 它配合 /api/edu/attempt 构成"不交卷就能问出答案"的
+    判分预言机，见 G-1。这条断言迁到 /api/edu/set 上继续守同一件事。）
+    """
+    r = _issue(client)
     body = r.text
     assert "expected_answer" not in body
     assert "rubric" not in body
-    # The answer string itself must not appear anywhere in the payload —
-    # not under another key, not inside the prompt echo.
+    assert "explanation" not in body, "讲解必须等整组提交之后"
     assert SECRET_RUBRIC not in body
-    payload = r.json()
-    assert payload["item"]["prompt"] == "What is 40 + 2?"
-    assert set(payload["item"]) == {"id", "prompt", "item_type", "difficulty", "attribution"}
+    first = r.json()["items"][0]
+    assert first["prompt"] == "What is 40 + 2?"
+    assert set(first) == {
+        "id", "prompt", "item_type", "difficulty", "attribution",
+        "figure_spec_id", "choices", "node",
+    }
 
 
-def test_attempt_response_never_ships_the_answer_or_rubric(client: TestClient):
+def test_submit_response_ships_the_answer_but_never_the_rubric(client: TestClient):
+    """交卷之后**可以**给答案（这正是需求），但 rubric 仍然一步都不出去。"""
     item_id = _next(client)["item"]["id"]
     r = _attempt(client, item_id, "999", "k1")
     assert r.status_code == 200, r.text
-    assert "expected_answer" not in r.text
+    assert "expected_answer" not in r.text, "字段名不该出现；答案走 correct_answer"
     assert SECRET_RUBRIC not in r.text
     assert r.json()["is_correct"] is False
+    assert r.json()["correct_answer"] == SECRET_ANSWER
 
 
 # ---- the loop actually turns ---------------------------------------------
@@ -163,10 +219,13 @@ def test_planner_serves_the_unblocked_node_first(client: TestClient):
 
 
 def test_least_attempted_item_is_served_next(client: TestClient):
-    first = _next(client)["item"]["id"]
-    _attempt(client, first, "1", "k-a")
-    second = _next(client)["item"]["id"]
-    assert second != first, "second visit should serve the untouched item"
+    """同一节点上先出没做过的题。
+
+    成组之后这条更明显：一组里就该把该节点没做过的题铺开，而不是重复同一道。
+    """
+    ids = [i["id"] for i in _issue(client).json()["items"]]
+    assert len(ids) == len(set(ids))
+    assert {"item-A-1", "item-A-2"} <= set(ids), "同节点两道题都没做过，应该都出现"
 
 
 def test_same_client_attempt_id_is_idempotent(client: TestClient):
@@ -225,10 +284,11 @@ def test_empty_item_bank_node_is_skipped_and_reported(tmp_path: Path):
     conn.close()
 
     body = TestClient(create_app(db_path)).get(
-        "/api/edu/next", params={"learner_id": LEARNER, "course_version_id": CV}
+        "/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV}
     ).json()
-    assert body["node"]["code"] == "HAS", "should walk past the empty node, not dead-end on it"
-    assert body["item"]["id"] == "item-has-1"
+    assert [i["node"]["code"] for i in body["items"]] == ["HAS"], \
+        "should walk past the empty node, not dead-end on it"
+    assert body["items"][0]["id"] == "item-has-1"
     assert body["skipped_empty_nodes"] == ["EMPTY"], "the content gap must be reported, not hidden"
 
 
@@ -239,10 +299,16 @@ def test_unknown_learner_is_404_not_an_empty_task(web_db: Path):
     assert r.status_code == 404
 
 
-def test_unknown_item_is_400(client: TestClient):
+def test_item_outside_the_issued_set_is_rejected(client: TestClient):
+    """交一道没发给你的题 —— 无论它存不存在，都在成员校验这一步就被挡下。
+
+    这条比原来的"未知题 400"更靠前也更重要：能往组里塞题，就能拿到没发给自己
+    的题的答案。（原 test_unknown_item_is_400。）
+    """
     r = _attempt(client, "item-does-not-exist", "1", "k-bad")
     assert r.status_code == 400
-    assert "unknown assessment_item_id" in r.json()["detail"]
+    assert "必须整组一起交" in r.json()["detail"]
+    assert "item-does-not-exist" in r.json()["detail"]
 
 
 def test_parent_account_cannot_answer(web_db: Path):
@@ -256,9 +322,9 @@ def test_parent_account_cannot_answer(web_db: Path):
     )
     conn.close()
     client = TestClient(create_app(web_db))
-    r = client.post("/api/edu/attempt", json={
-        "learner_id": "parent-x", "course_version_id": CV, "item_id": "item-A-1",
-        "response": "42", "client_attempt_id": "p1"})
+    r = client.post("/api/edu/set/submit", json={
+        "learner_id": "parent-x", "course_version_id": CV, "set_id": "set-whatever",
+        "answers": [{"item_id": "item-A-1", "response": "42", "client_attempt_id": "p1"}]})
     assert r.status_code == 403
     conn = edu_sqlite.open_database(web_db)
     try:
@@ -281,12 +347,27 @@ def test_people_endpoint_labels_roles(web_db: Path):
     assert roles[LEARNER] == "learner"
 
 
+def _seed_pending_attempt(db_path: Path, response: str, key: str) -> None:
+    """直接经应用层写一条待复核作答。
+
+    不走 HTTP：开放题没接 judge 时不会被出题，因而进不了发出去的那一组。
+    这三条用例要的是"队列里有一条待复核"，作答从哪来无关紧要。
+    """
+    conn = edu_sqlite.open_database(db_path)
+    now = to_iso_timestamp(time.time())
+    try:
+        record_attempt(conn, NewAttemptInput(
+            learner_id=LEARNER, assessment_item_id="item-open", response=response,
+            started_at=now, submitted_at=now, source="web", client_attempt_id=key))
+        conn.commit()
+    finally:
+        conn.close()
+
+
 def test_review_queue_surfaces_unresolved_attempts(judge_free_db: Path):
     """needs_review 不该是个没人消费的状态：家长视角靠这个队列看到它。"""
+    _seed_pending_attempt(judge_free_db, "I drew it on paper", "q1")
     client = TestClient(create_app(judge_free_db))
-    client.post("/api/edu/attempt", json={
-        "learner_id": LEARNER, "course_version_id": CV, "item_id": "item-open",
-        "response": "I drew it on paper", "client_attempt_id": "q1"})
     body = client.get("/api/edu/review-queue", params={"course_version_id": CV}).json()
     assert len(body["pending"]) == 1
     assert body["pending"][0]["answer"] == "I drew it on paper"
@@ -319,10 +400,8 @@ def test_parent_review_resolves_a_pending_attempt(judge_free_db: Path):
                        locale="en-US", created_at=now, updated_at=now)
     )
     conn.close()
+    _seed_pending_attempt(judge_free_db, "I drew all four rectangles", "r1")
     client = TestClient(create_app(judge_free_db))
-    client.post("/api/edu/attempt", json={
-        "learner_id": LEARNER, "course_version_id": CV, "item_id": "item-open",
-        "response": "I drew all four rectangles", "client_attempt_id": "r1"})
     pending = client.get("/api/edu/review-queue", params={"course_version_id": CV}).json()["pending"]
     assert len(pending) == 1
 
@@ -345,10 +424,8 @@ def test_parent_review_resolves_a_pending_attempt(judge_free_db: Path):
 
 
 def test_child_cannot_review_their_own_work(judge_free_db: Path):
+    _seed_pending_attempt(judge_free_db, "trust me", "r2")
     client = TestClient(create_app(judge_free_db))
-    client.post("/api/edu/attempt", json={
-        "learner_id": LEARNER, "course_version_id": CV, "item_id": "item-open",
-        "response": "trust me", "client_attempt_id": "r2"})
     pending = client.get("/api/edu/review-queue", params={"course_version_id": CV}).json()["pending"]
     r = client.post("/api/edu/review", json={
         "reviewer": LEARNER, "attempt_id": pending[0]["attempt_id"], "verdict": "correct"})
@@ -432,18 +509,23 @@ def test_courses_is_empty_without_enrollment(client: TestClient, web_db: Path):
 
 
 def test_withdrawn_learner_cannot_fetch_or_answer(client: TestClient, web_db: Path):
-    item_id = _next(client)["item"]["id"]          # 退选前正常
+    issued = _issue(client).json()                  # 退选前正常领到一组
     conn = edu_sqlite.open_database(web_db)
     EnrollmentRepository(conn).set_status(
         LEARNER, CV, "withdrawn", at=to_iso_timestamp(time.time()))
     conn.commit(); conn.close()
 
-    assert client.get("/api/edu/next", params={
+    assert client.get("/api/edu/set", params={
         "learner_id": LEARNER, "course_version_id": CV}).status_code == 403
     assert client.get("/api/edu/progress", params={
         "learner_id": LEARNER, "course_version_id": CV}).status_code == 403
-    # 最要紧的一条：退选后不能再往这门课写作答，否则掌握度证据会长在已退的课上
-    assert _attempt(client, item_id, SECRET_ANSWER, "k-withdrawn").status_code == 403
+    # 最要紧的一条：退选后不能再往这门课写作答，否则掌握度证据会长在已退的课上。
+    # 拿着退选**之前**领到的那张卷子交，也必须被挡下 —— 领卷时有权限不代表交卷时还有。
+    assert client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER,
+                     "client_attempt_id": f"k-withdrawn:{i['id']}"}
+                    for i in issued["items"]]}).status_code == 403
 
 
 def test_attempt_checks_the_items_course_not_the_payload_field(client: TestClient, web_db: Path):
@@ -453,7 +535,7 @@ def test_attempt_checks_the_items_course_not_the_payload_field(client: TestClien
     课程判。构造：learner 退掉了 item 所在的课，却在 payload 里报一门他确实选了
     的课 —— 若校验打在 payload 上，这一条会被放行。
     """
-    item_id = _next(client)["item"]["id"]
+    issued = _issue(client).json()
     conn = edu_sqlite.open_database(web_db)
     now = to_iso_timestamp(time.time())
     CourseRepository(conn).create_course(
@@ -466,9 +548,11 @@ def test_attempt_checks_the_items_course_not_the_payload_field(client: TestClien
     repo.set_status(LEARNER, CV, "withdrawn", at=now)
     conn.commit(); conn.close()
 
-    r = client.post("/api/edu/attempt", json={
+    r = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": "cv-other",   # 谎报一门他选了的课
-        "item_id": item_id, "response": SECRET_ANSWER, "client_attempt_id": "k-theater"})
+        "set_id": issued["set_id"],
+        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER,
+                     "client_attempt_id": f"k-theater:{i['id']}"} for i in issued["items"]]})
     assert r.status_code == 403, "按 payload 校验＝校验剧场；必须按 item 实际所属课程判"
 
 
@@ -524,13 +608,16 @@ def test_task_set_ships_choices_but_no_answer_or_explanation(client: TestClient,
 
 def test_set_submit_returns_answer_explanation_and_knowledge_point(client: TestClient, web_db: Path):
     _seed_explained_choice(web_db)
+    issued = _issue(client).json()
     body = client.post("/api/edu/set/submit", json={
-        "learner_id": LEARNER, "course_version_id": CV,
-        "answers": [{"item_id": "item-A-choice", "response": "A",
-                     "client_attempt_id": "set-1:item-A-choice"}],
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+        "answers": [{"item_id": i["id"],
+                     "response": "A" if i["id"] == "item-A-choice" else "",
+                     "client_attempt_id": f"set-1:{i['id']}"} for i in issued["items"]],
     }).json()
+    assert any(i["id"] == "item-A-choice" for i in issued["items"])
 
-    row = body["results"][0]
+    row = next(r for r in body["results"] if r["item_id"] == "item-A-choice")
     assert row["is_correct"] is False
     assert row["your_response"] == "A"
     assert row["correct_answer"] == "B", "整组交完之后，答案才给"
@@ -538,18 +625,18 @@ def test_set_submit_returns_answer_explanation_and_knowledge_point(client: TestC
     assert row["explanation_source"] == "authored", "讲解必须带出处，家长才知道能不能信"
     assert row["knowledge_point"] == {
         "code": "A", "title": "Node A", "standard_code": "4.OA.B.4"}
-    assert body["summary"] == {
-        "answered": 1, "auto_graded": 1, "correct": 0, "awaiting_review": 0}
+    assert body["summary"]["answered"] == len(issued["items"])
+    assert body["summary"]["correct"] == 0
     # rubric 仍然一步都不出去 —— 讲解走 explanation 列，不是把 rubric 放行
     assert SECRET_RUBRIC not in json.dumps(body, ensure_ascii=False)
 
 
 def test_set_submit_records_every_answer_as_a_real_attempt(client: TestClient, web_db: Path):
     _seed_explained_choice(web_db)
-    picked = client.get("/api/edu/set", params={
-        "learner_id": LEARNER, "course_version_id": CV, "size": 3}).json()["items"]
+    issued = _issue(client).json()
+    picked = issued["items"]
     client.post("/api/edu/set/submit", json={
-        "learner_id": LEARNER, "course_version_id": CV,
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
         "answers": [{"item_id": i["id"], "response": SECRET_ANSWER,
                      "client_attempt_id": f"set-2:{i['id']}"} for i in picked],
     })
@@ -562,8 +649,7 @@ def test_set_submit_records_every_answer_as_a_real_attempt(client: TestClient, w
 
 def test_set_has_no_duplicate_items(client: TestClient, web_db: Path):
     _seed_explained_choice(web_db)
-    ids = [i["id"] for i in client.get("/api/edu/set", params={
-        "learner_id": LEARNER, "course_version_id": CV, "size": 10}).json()["items"]]
+    ids = [i["id"] for i in _issue(client).json()["items"]]
     assert len(ids) == len(set(ids)), "同一张卷子上不该出现两道一模一样的题"
 
 
@@ -590,14 +676,16 @@ def test_set_submit_rejects_an_item_from_another_course(client: TestClient, web_
         "content_hash": content_hash("item-X"), "status": "candidate"}])
     conn.close()
 
-    good = _next(client)["item"]["id"]
+    issued = _issue(client).json()
+    answers = [{"item_id": i["id"], "response": SECRET_ANSWER,
+                "client_attempt_id": f"mix:{i['id']}"} for i in issued["items"]]
+    answers.append({"item_id": "item-X", "response": "2", "client_attempt_id": "mix-x"})
     r = client.post("/api/edu/set/submit", json={
         "learner_id": LEARNER, "course_version_id": CV,
-        "answers": [
-            {"item_id": good, "response": SECRET_ANSWER, "client_attempt_id": "mix-1"},
-            {"item_id": "item-X", "response": "2", "client_attempt_id": "mix-2"},
-        ]})
-    assert r.status_code == 403
+        "set_id": issued["set_id"], "answers": answers})
+    # 成员校验先于一切落库：多塞一道别的课的题，整组拒绝
+    assert r.status_code == 400
+    assert "多出" in r.json()["detail"]
     conn = edu_sqlite.open_database(web_db)
     n = conn.execute("SELECT COUNT(*) c FROM student_attempts").fetchone()["c"]
     conn.close()
@@ -613,6 +701,104 @@ def test_parent_cannot_submit_a_set(client: TestClient, web_db: Path):
     EnrollmentRepository(conn).enroll(Enrollment("parent-s", CV, "active", now, now))
     conn.commit(); conn.close()
     r = client.post("/api/edu/set/submit", json={
-        "learner_id": "parent-s", "course_version_id": CV,
+        "learner_id": "parent-s", "course_version_id": CV, "set_id": "set-whatever",
         "answers": [{"item_id": "item-A-1", "response": "42", "client_attempt_id": "p-1"}]})
     assert r.status_code == 403
+
+
+# ---- 判分预言机：不交卷就不许拿到答案 ------------------------------------
+#
+# 2026-08-21 第二轮质检席 G-1（CRITICAL）：旧的 /api/edu/next + /api/edu/attempt
+# 还活着，直接 POST 就能对同一道选择题连猜 A/B/C/D 逐次拿 is_correct，四次以内
+# 必中，而且每次猜测都写进 append-only 的掌握度证据表。当时的 commit message
+# 自己写了"旧路径与这条要求冲突"，代码却没动 —— 这是最危险的一种言行不一。
+
+
+@pytest.mark.parametrize("method,path", [
+    ("get", "/api/edu/next"),
+    ("post", "/api/edu/attempt"),
+])
+def test_the_old_per_question_endpoints_are_gone(client: TestClient, method, path):
+    """旧路由必须**物理下线**，不是"前端不再调用它"就算数。
+
+    可达性与使用习惯是两条完全不同的边界：前端不调它，任何 HTTP 客户端仍能调。
+    """
+    r = getattr(client, method)(path, **({"json": {}} if method == "post" else {}))
+    assert r.status_code == 404, f"{path} 仍然可达"
+
+
+def test_partial_submission_gets_no_answers(client: TestClient, web_db: Path):
+    """少交几题就想拿答案 = 逐题即时反馈，必须整组拒绝且一条都不落库。"""
+    issued = _issue(client).json()
+    assert len(issued["items"]) >= 2, "这条用例需要一组至少两题"
+    r = client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
+        "answers": [{"item_id": issued["items"][0]["id"], "response": SECRET_ANSWER,
+                     "client_attempt_id": "partial-1"}]})
+    assert r.status_code == 400
+    assert "必须整组一起交" in r.json()["detail"]
+    assert "correct_answer" not in r.text
+    conn = edu_sqlite.open_database(web_db)
+    n = conn.execute("SELECT COUNT(*) c FROM student_attempts").fetchone()["c"]
+    conn.close()
+    assert n == 0, "被拒的提交不该留下任何作答痕迹"
+
+
+def test_cannot_submit_someone_elses_set(client: TestClient, web_db: Path):
+    conn = edu_sqlite.open_database(web_db)
+    now = to_iso_timestamp(time.time())
+    LearnerRepository(conn).create(LearnerProfile(
+        id="learner-other", deep_tutor_user_id="dtu-o", display_name="Other",
+        locale="en-US", created_at=now, updated_at=now))
+    EnrollmentRepository(conn).enroll(Enrollment("learner-other", CV, "active", now, now))
+    conn.commit(); conn.close()
+
+    mine = _issue(client).json()
+    r = client.post("/api/edu/set/submit", json={
+        "learner_id": "learner-other", "course_version_id": CV, "set_id": mine["set_id"],
+        "answers": [{"item_id": i["id"], "response": "x",
+                     "client_attempt_id": f"steal:{i['id']}"} for i in mine["items"]]})
+    assert r.status_code == 404, "别人的卷子不能拿来交，否则等于拿别人的题问答案"
+
+
+def test_an_open_set_is_reissued_not_rerolled(client: TestClient):
+    """没交就刷新，应该拿回同一组；否则"这组做完再讲"变成"挑到会做的为止"。"""
+    first = _issue(client).json()
+    again = _issue(client).json()
+    assert again["set_id"] == first["set_id"]
+    assert again["reissued"] is True
+    assert [i["id"] for i in again["items"]] == [i["id"] for i in first["items"]]
+
+
+def test_a_new_set_is_issued_after_the_previous_one_is_submitted(client: TestClient):
+    first = _issue(client).json()
+    client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": first["set_id"],
+        "answers": [{"item_id": i["id"], "response": SECRET_ANSWER,
+                     "client_attempt_id": f"done:{i['id']}"} for i in first["items"]]})
+    second = _issue(client).json()
+    assert second["set_id"] != first["set_id"]
+
+
+def test_size_is_server_side_not_a_query_parameter(web_db: Path):
+    """题量不能由客户端说了算。
+
+    能自选"这一组就一道题"，交上去立刻拿答案 —— 那就是逐题即时反馈换了个入口，
+    正是 Sol 要求去掉的东西。所以 size 是 create_app 的参数（生产由 EDU_SET_SIZE
+    环境变量注入），请求里带 size 一律无效。
+    """
+    small = TestClient(create_app(web_db, set_size=1))
+    body = small.get("/api/edu/set", params={
+        "learner_id": LEARNER, "course_version_id": CV}).json()
+    assert len(body["items"]) == 1, "题量由服务端配置决定"
+
+    # 同一组还没交，带上 size=10 也只能拿回原组
+    ignored = small.get("/api/edu/set", params={
+        "learner_id": LEARNER, "course_version_id": CV, "size": 10}).json()
+    assert len(ignored["items"]) == 1, "size 参数必须被忽略"
+    assert ignored["set_id"] == body["set_id"]
+
+
+def test_default_set_has_more_than_one_question(client: TestClient):
+    """默认题量 > 1 —— 一组一题等于逐题即时反馈。"""
+    assert len(_issue(client).json()["items"]) > 1

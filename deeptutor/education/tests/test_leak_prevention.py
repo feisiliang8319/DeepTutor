@@ -206,9 +206,19 @@ def test_choices_ship_but_never_mark_the_right_one(conn, course_version):
 @pytest.mark.parametrize(
     "bad_choices,why",
     [
-        ([{"label": "A", "text": "x", "is_correct": True}], "布尔标记"),
+        # 原报的三种（黑名单时代就拦得住的）
+        ([{"label": "A", "text": "x", "is_correct": True}, {"label": "B", "text": "y"}], "布尔标记"),
         ([{"label": "A", "text": "x", "score": 1}, {"label": "B", "text": "y"}], "分值"),
         ([{"label": "A", "text": "x", "explanation": "因为…"}, {"label": "B", "text": "y"}], "讲解"),
+        # ↓ 2026-08-21 第二轮质检席 E 项实测能绕过黑名单的同义变体，
+        #   改白名单后应全部拒收。字段级黑名单必须假设"换个名字"攻击面。
+        ([{"label": "A", "text": "x", "answerKey": "A"}, {"label": "B", "text": "y"}], "驼峰 answerKey"),
+        ([{"label": "A", "text": "x", "isCorrect": True}, {"label": "B", "text": "y"}], "驼峰 isCorrect"),
+        ([{"label": "A", "text": "x", "CorrectAnswer": "A"}, {"label": "B", "text": "y"}], "首字母大写"),
+        ([{"label": "A", "text": "x", "is correct": True}, {"label": "B", "text": "y"}], "带空格"),
+        ([{"label": "A", "text": "x", "正确": True}, {"label": "B", "text": "y"}], "中文键"),
+        # 答案编进 label 也拦掉
+        ([{"label": "A (correct)", "text": "x"}, {"label": "B", "text": "y"}], "答案编进 label"),
         ([{"label": "A", "text": "x"}], "只有一个选项"),
         ([{"label": "A", "text": "x"}, {"label": "A", "text": "y"}], "label 重复"),
         ("not json at all", "不是合法 JSON"),

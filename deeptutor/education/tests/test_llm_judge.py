@@ -115,11 +115,36 @@ def client_with(db: Path, judge) -> TestClient:
 
 
 def submit(client: TestClient, answer: str, key: str = "k1"):
-    return client.post(
-        "/api/edu/attempt",
-        json={"learner_id": LEARNER, "course_version_id": CV, "item_id": ITEM,
-              "response": answer, "client_attempt_id": key},
-    )
+    """领一组、整组交，返回目标题那一行。
+
+    /api/edu/attempt 已于 2026-08-21 删除 —— 它配合 /api/edu/next 构成"不交卷
+    就能逐次问出答案"的判分预言机（第二轮质检席 G-1）。这里改走成组接口，
+    断言的对象（judged/mastery/rubric 不外泄）不变。
+    """
+    issued = client.get(
+        "/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV}
+    ).json()
+    ids = [i["id"] for i in issued.get("items", [])] or [ITEM]
+    resp = client.post("/api/edu/set/submit", json={
+        "learner_id": LEARNER, "course_version_id": CV, "set_id": issued.get("set_id"),
+        "answers": [{"item_id": i, "response": answer if i == ITEM else "",
+                     "client_attempt_id": f"{key}:{i}"} for i in ids],
+    })
+    if resp.status_code != 200:
+        return resp
+    return _Row(resp, next(r for r in resp.json()["results"] if r["item_id"] == ITEM))
+
+
+class _Row:
+    """把整组响应收窄成目标题那一行，好让原有断言继续读得通。"""
+
+    def __init__(self, resp, row):
+        self._resp, self._row = resp, row
+        self.status_code = resp.status_code
+        self.text = resp.text
+
+    def json(self):
+        return self._row
 
 
 # ---- every failure mode lands on NEEDS_REVIEW -----------------------------
@@ -254,13 +279,13 @@ def test_open_items_are_not_served_without_a_judge(judge_db: Path):
     would store evidence that can never resolve."""
     no_judge = TestClient(create_app(judge_db))
     body = no_judge.get(
-        "/api/edu/next", params={"learner_id": LEARNER, "course_version_id": CV}
+        "/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV}
     ).json()
-    assert body["item"] is None
+    assert body["items"] == []
     assert body["skipped_empty_nodes"] == ["OPEN"]
 
     with_judge = client_with(judge_db, StubJudge('{"verdict":"partial","confidence":0.7}'))
     served = with_judge.get(
-        "/api/edu/next", params={"learner_id": LEARNER, "course_version_id": CV}
+        "/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV}
     ).json()
-    assert served["item"]["id"] == ITEM
+    assert [i["id"] for i in served["items"]] == [ITEM]

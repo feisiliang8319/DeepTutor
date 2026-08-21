@@ -197,9 +197,10 @@ async function enter(p, people) {
 // Sol 2026-08-21：出题时不给答案，答案要等**整组**提交之后才给，而且要说清
 // 为什么、关联哪个知识点。所以这里不再是"答一题→立刻判对错→自动跳下一题"，
 // 而是 组卷 → 全部作答 → 一次提交 → 复盘。
-const SET_SIZE = 5;
+// 题量由服务端定（EDU_SET_SIZE，默认 5）。前端不再传 size：让客户端自选
+// "这一组就一道题"、交上去立刻拿答案，等于逐题即时反馈。
 let setItems = [];      // 本组题面（不含答案）
-let setId = null;       // 拼幂等键用：同一组重复提交不会写两遍作答
+let setId = null;       // 服务端发的组 id；交卷时必须原样带回
 let blankConfirms = 0;
 
 async function loadSet() {
@@ -209,14 +210,14 @@ async function loadSet() {
   $('submit').disabled = true;
   blankConfirms = 0;
   const r = await fetch(`/api/edu/set?learner_id=${encodeURIComponent(person.id)}`
-    + `&course_version_id=${encodeURIComponent(CV)}&size=${SET_SIZE}`);
+    + `&course_version_id=${encodeURIComponent(CV)}`);
   if (!r.ok) {
     $('questions').innerHTML = `<div class="card"><div class="prompt">Error ${r.status}</div></div>`;
     return;
   }
   const d = await r.json();
   setItems = d.items || [];
-  setId = `${Date.now()}`;
+  setId = d.set_id;
   if (!setItems.length) {
     $('questions').innerHTML = '<div class="card"><div class="prompt">'
       + (d.done ? '🎉 Everything is mastered.' : esc(d.message || '暂时没有可做的题'))
@@ -284,7 +285,7 @@ async function submitSet() {
   $('submitHint').textContent = '判分中…';
   const r = await fetch('/api/edu/set/submit', {
     method: 'POST', headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({learner_id: person.id, course_version_id: CV, answers}),
+    body: JSON.stringify({learner_id: person.id, course_version_id: CV, set_id: setId, answers}),
   });
   const d = await r.json();
   if (!r.ok) {

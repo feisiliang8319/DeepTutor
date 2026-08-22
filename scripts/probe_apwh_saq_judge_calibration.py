@@ -56,7 +56,9 @@ ANSWERS: dict[str, dict[str, str]] = {
         "thin": "The Sufis prayed a lot, which was different from other Muslims.",
         "wrong": "The Sufis were Christian priests who rejected Islam.",
     },
-    "apwh-u1-t12-saq2b": {
+    # 2026-08-22：原 apwh-u1-t12-saq2b 因设问时段与史实冲突已 retired，改期版
+    # apwh-u1-t12-saq2b-r2（711–1031）接替。校准要打在真正会发给孩子的那条上。
+    "apwh-u1-t12-saq2b-r2": {
         "should_score":
             "The Umayyads of Cordoba turned the city into a centre of learning and "
             "wealth: they built the Great Mosque, funded libraries and translation of "

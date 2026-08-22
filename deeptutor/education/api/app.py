@@ -21,13 +21,13 @@ something to leak, screenshot and revoke.
 
 from __future__ import annotations
 
+from datetime import datetime
+import json
 import os
 from pathlib import Path
 import sqlite3
 import time
-import json
 from typing import Any
-from datetime import datetime
 import uuid
 
 from fastapi import FastAPI, HTTPException
@@ -35,6 +35,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from deeptutor.education.application import to_iso_timestamp
+from deeptutor.education.application.grading_policy import needs_judgment
 from deeptutor.education.application.llm_judge import (
     DEFAULT_MODEL,
     JudgeClient,
@@ -48,7 +49,7 @@ from deeptutor.education.application.record_attempt import (
     ValidationError,
     record_attempt,
 )
-from deeptutor.education.application.select_item import JUDGEABLE, select_next_item
+from deeptutor.education.application.select_item import select_next_item
 from deeptutor.education.application.select_objective import list_available_objectives
 from deeptutor.education.domain.course import ItemStatus
 from deeptutor.education.domain.evidence import Verdict
@@ -643,7 +644,13 @@ def create_app(
                         learner_id, row["knowledge_node_id"]))
                     judgment = _stored_judgment(conn, row["id"])
                 else:
-                    if judge is not None and item.item_type in JUDGEABLE:
+                    # Judge exactly what the deterministic grader cannot
+                    # settle — the same predicate select_item used to decide
+                    # this item was servable in the first place. Keying off
+                    # item_type instead (as this did until 2026-08-21) sent
+                    # every `short` item to string comparison, including the
+                    # ones whose reference answer is a paragraph.
+                    if judge is not None and needs_judgment(item):
                         judgment = judge_open_response(
                             judge, item, ans.response, model_ref=judge_ref)
                     try:

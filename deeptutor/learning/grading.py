@@ -9,6 +9,14 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from deeptutor.learning.models import ErrorType
 
+# Above this length a ``short`` expected answer stops being an exact-match key
+# and becomes prose, which this grader cannot compare: the fuzzy branch is
+# skipped and only a byte-exact reply can pass. Callers that decide *whether an
+# item is auto-gradable at all* must read this number rather than re-deriving
+# it — an item whose reference answer is longer than this needs a judge, not
+# this function (see ``education.application.grading_policy.needs_judgment``).
+SHORT_FUZZY_MAX_CHARS = 30
+
 
 def grade_answer(user_answer: str, expected_answer: str, question_type: str = "short") -> bool:
     """Grade user answer against expected answer.
@@ -35,7 +43,7 @@ def grade_answer(user_answer: str, expected_answer: str, question_type: str = "s
     if question_type == "short":
         if user == expected:
             return True
-        if len(expected) <= 30:
+        if len(expected) <= SHORT_FUZZY_MAX_CHARS:
             return SequenceMatcher(None, user, expected).ratio() >= 0.85
         return False
 
@@ -61,4 +69,4 @@ def classify_error(user_answer: str) -> ErrorType:
     return ErrorType.METACOGNITIVE if not user_answer.strip() else ErrorType.APPLICATION_ERROR
 
 
-__all__ = ["grade_answer", "classify_error"]
+__all__ = ["SHORT_FUZZY_MAX_CHARS", "classify_error", "grade_answer"]

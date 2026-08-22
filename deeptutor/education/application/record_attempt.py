@@ -49,6 +49,7 @@ import time
 import uuid
 
 from deeptutor.education.application import to_iso_timestamp
+from deeptutor.education.application.grading_policy import needs_judgment
 from deeptutor.education.application.rebuild_mastery import POLICY_VERSION, rebuild_learner_node
 from deeptutor.education.application.review_scheduler import (
     FSRS_PARAMS_VER,
@@ -157,14 +158,16 @@ class RecordAttemptResult:
 
 
 def _grade(item: AssessmentItem, response: str) -> tuple[bool | None, float | None]:
-    """Deterministic grading for the item types that support it.
-    ``(None, None)`` means this item type needs a human/LLM judgment
-    instead (multi_step / visual_model / paper_ref), or the item has no
-    ``expected_answer`` to grade against.
+    """Deterministic grading for the items that support it.
+
+    ``(None, None)`` means nothing here can settle this item and a
+    human/LLM judgment has to: an open task, an item with no reference
+    answer, or a ``short`` item whose reference answer is prose rather than
+    an exact-match key. That last case used to fall through to
+    ``grade_answer`` and come back ``False`` for every possible reply —
+    see ``grading_policy`` for what that cost.
     """
-    if item.item_type in (ItemType.MULTI_STEP, ItemType.VISUAL_MODEL, ItemType.PAPER_REF):
-        return None, None
-    if item.expected_answer is None:
+    if needs_judgment(item):
         return None, None
     if item.item_type is ItemType.NUMERIC:
         try:

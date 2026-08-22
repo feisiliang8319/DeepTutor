@@ -14,22 +14,12 @@ front of a child mid-thought.
 from __future__ import annotations
 
 from collections.abc import Container
-
 from dataclasses import dataclass
 import sqlite3
 
-from deeptutor.education.domain.course import AssessmentItem, ItemStatus, ItemType
+from deeptutor.education.application.grading_policy import is_servable
+from deeptutor.education.domain.course import AssessmentItem, ItemStatus
 from deeptutor.education.storage.repositories import AssessmentItemRepository
-
-# Item types the deterministic grader can actually score. Everything else
-# needs a human/LLM judgment the web loop does not have yet, so serving it
-# to a child would produce a question nobody can mark.
-AUTO_GRADABLE = (ItemType.NUMERIC, ItemType.SHORT, ItemType.CHOICE)
-
-# Open tasks a deterministic grader cannot mark. Servable only when a judge
-# is wired in, otherwise a child would answer into a void: the attempt would
-# be stored with is_correct=None and never resolve.
-JUDGEABLE = (ItemType.MULTI_STEP, ItemType.VISUAL_MODEL)
 
 
 @dataclass(frozen=True, slots=True)
@@ -48,7 +38,11 @@ def select_next_item(
     include_judgeable: bool = False,
     exclude: Container[str] = (),
 ) -> SelectedItem | None:
-    """Least-attempted auto-gradable item on this node, ``None`` if none exist.
+    """Least-attempted servable item on this node, ``None`` if none exist.
+
+    ``include_judgeable`` means "a judge is wired in". With one, items that
+    no string comparison can settle (open tasks, and ``short`` items whose
+    reference answer is prose rather than a key) become servable too.
 
     Least-attempted first spreads practice over the whole pool before
     repeating anything; ``id`` breaks ties so the choice is stable.
@@ -56,16 +50,15 @@ def select_next_item(
     ``exclude`` skips items already picked for the current set — 组卷时同一张
     卷子上不该出现两道一模一样的题（2026-08-21 加，服务 /api/edu/set）。
     """
-    servable = AUTO_GRADABLE + (JUDGEABLE if include_judgeable else ())
     items = [
         item
         for item in AssessmentItemRepository(conn).list_for_version(course_version_id)
         if item.knowledge_node_id == knowledge_node_id
         and item.status is not ItemStatus.RETIRED
-        and item.item_type in servable
-        # Auto-graded types need a reference answer; judged types do not
-        # (their whole point is that there is no single right string).
-        and (item.expected_answer is not None or item.item_type in JUDGEABLE)
+        # Servability is one question with one answer, and it lives in
+        # grading_policy — "can anything mark this?" — not a type whitelist
+        # plus a null check that disagreed with how grading actually works.
+        and is_servable(item, judge_available=include_judgeable)
         and item.id not in exclude
     ]
     if not items:

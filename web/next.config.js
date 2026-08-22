@@ -44,6 +44,13 @@ function localNetworkHosts() {
   return hosts;
 }
 
+// 练习服务（deeptutor.education）的本机地址。改端口只需动这一处，或用同名
+// 环境变量覆盖。
+const EDU_ORIGIN = firstNonEmpty(
+  process.env.EDU_ORIGIN,
+  "http://127.0.0.1:8025",
+);
+
 const SETTINGS_DIR = path.resolve(__dirname, "..", "data", "user", "settings");
 const SYSTEM_SETTINGS = readJsonFile(path.join(SETTINGS_DIR, "system.json"));
 const AUTH_SETTINGS = readJsonFile(path.join(SETTINGS_DIR, "auth.json"));
@@ -126,6 +133,20 @@ const nextConfig = {
 
   // Transpile mermaid and related packages for proper ESM handling
   transpilePackages: ["mermaid"],
+
+  // 练习页（education loop）跑在自己的进程/端口上，绑死 127.0.0.1:8025。
+  // 这里把它反代到主应用下面，理由是"一个门"：
+  //   - 局域网：http://<mac-mini>:3782/practice 也能用，不必把 8025 暴露到
+  //     0.0.0.0（那会让 WiFi 上任何设备绕开 Cloudflare Access 直连）
+  //   - 远程：mytutors.cc/practice 走同一条路径，Access 照常拦在前面
+  // 侧边栏的 Practice 入口必须是整页跳转（<a> 而非 <Link>）：这不是 Next 路由，
+  // 客户端 RSC 导航拿到的是普通 HTML，路由器会把它当 404。
+  async rewrites() {
+    return [
+      { source: "/practice", destination: `${EDU_ORIGIN}/practice` },
+      { source: "/api/edu/:path*", destination: `${EDU_ORIGIN}/api/edu/:path*` },
+    ];
+  },
 
   // Next.js 16 blocks cross-origin access to /_next/* dev resources (HMR
   // WebSocket, fonts, dev-only scripts) unless the request host is on this

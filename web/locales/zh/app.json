@@ -1841,6 +1841,7 @@
   "Book tooltip": "生成交互式 AI 书籍。",
   "Knowledge tooltip": "管理文档与教学人设。",
   "Space tooltip": "你的个人学习空间。",
+  "Practice tooltip": "做一组题，整组交完再看答案和讲解。",
   "Memory tooltip": "助手跨会话保留的长期记忆。",
   "Browse L1 trace for this surface": "浏览该面的 L1 原始事件",
   "L1 trace · {{surface}}": "L1 原始事件 · {{surface}}",

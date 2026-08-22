@@ -8,6 +8,7 @@ import {
   isAuthExempt,
   isBackendPath,
   isCodexCallbackPath,
+  isEducationPath,
 } from "./lib/proxy-policy";
 
 // Backend base URL for `/api/*` and `/ws/*` rewrites. The container entrypoint
@@ -53,6 +54,13 @@ export function proxy(req: NextRequest): NextResponse {
   //    rather than baked into the frontend bundle.
   if (isBackendPath(pathname)) {
     return NextResponse.rewrite(new URL(pathname + search, API_BASE_URL));
+  }
+
+  // 1b. 练习页走 next.config.js 的 rewrite 到 education 服务，且不过主应用的
+  //     登录闸门：孩子没有主应用账号，身份是练习页自己用 ?learner= 选的。
+  //     远程一侧挡在前面的是 Cloudflare Access。
+  if (isEducationPath(pathname)) {
+    return NextResponse.next();
   }
 
   // 2. Auth gate — multi-user mode only. Disabled by default, and never blocks

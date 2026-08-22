@@ -15,6 +15,7 @@ import {
   isAuthExempt,
   isBackendPath,
   isCodexCallbackPath,
+  isEducationPath,
 } from "../lib/proxy-policy";
 
 function makeToken(payload: Record<string, unknown>): string {
@@ -29,6 +30,24 @@ test("isBackendPath matches /api and /ws paths only", () => {
   assert.equal(isBackendPath("/home"), false);
   assert.equal(isBackendPath("/apidocs"), false); // no trailing slash → not backend
   assert.equal(isBackendPath("/logo.png"), false);
+});
+
+// 钉住"练习页不被主后端截走"。中间件跑在 next.config.js 的 rewrite 之前，
+// 所以 /api/edu/* 一旦被 isBackendPath 认领，就会被转到 8011（那里没有这些
+// 路由），练习页上每一道题都 404。这条断言防的就是有人日后把 isBackendPath
+// 改回裸的 startsWith("/api/")。
+test("education paths are exempt from the backend bridge", () => {
+  assert.equal(isEducationPath("/practice"), true);
+  assert.equal(isEducationPath("/api/edu/set"), true);
+  assert.equal(isEducationPath("/api/edu/people"), true);
+  assert.equal(isEducationPath("/practice-notes"), false); // 前缀相同但不是它
+  assert.equal(isEducationPath("/api/education/x"), false);
+  assert.equal(isEducationPath("/api/v1/knowledge/list"), false);
+
+  // 关键回归：这两条以 /api/ 开头，但**不能**被当成主后端路径。
+  assert.equal(isBackendPath("/api/edu/set"), false);
+  assert.equal(isBackendPath("/api/edu/people"), false);
+  assert.equal(isBackendPath("/api/v1/knowledge/list"), true);
 });
 
 test("isCodexCallbackPath matches only the exact public callback path", () => {

@@ -3,7 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useState,
+  type AnchorHTMLAttributes,
+  type ReactNode,
+} from "react";
 import { useAppShell } from "@/context/AppShellContext";
 import {
   BookOpen,
@@ -20,6 +25,7 @@ import {
   PanelLeftClose,
   PanelLeftOpen,
   PenLine,
+  PencilRuler,
   Settings,
   type LucideIcon,
 } from "lucide-react";
@@ -40,6 +46,39 @@ interface NavEntry {
   tooltipKey?: string;
   /** Model capability this feature needs; locked when the user lacks it. */
   requires?: Capability;
+  /**
+   * 该入口不是 Next 路由，而是 next.config.js 里 rewrite 到另一个服务的路径。
+   * 必须整页跳转：<Link> 走客户端 RSC 导航，拿回来的是普通 HTML，路由器会当
+   * 成 404。渲染时改用 <a>。
+   */
+  external?: boolean;
+}
+
+/**
+ * 导航项的容器。内部路由渲染成 next/link 的组件，走客户端导航；标了 external
+ * 的渲染成原生 anchor 元素，走整页跳转。两个 PRIMARY_NAV 渲染点（折叠竖条 /
+ * 展开侧栏）都经由它，避免只改一处。
+ */
+function NavAnchor({
+  item,
+  children,
+  ...rest
+}: {
+  item: NavEntry;
+  children: ReactNode;
+} & AnchorHTMLAttributes<HTMLAnchorElement>) {
+  if (item.external) {
+    return (
+      <a href={item.href} {...rest}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={item.href} {...rest}>
+      {children}
+    </Link>
+  );
 }
 
 const PRIMARY_NAV: NavEntry[] = [
@@ -86,6 +125,16 @@ const PRIMARY_NAV: NavEntry[] = [
     label: "Learning Space",
     icon: LayoutGrid,
     tooltipKey: "Space tooltip",
+  },
+  {
+    // 做题闭环（education loop）。不是 Next 页面，由 next.config.js 的 rewrite
+    // 反代到 127.0.0.1:8025 —— 所以 external，见 NavAnchor 的注释。
+    // 不做 capability 门控：它不调主应用的模型，判分是确定性的。
+    href: "/practice",
+    label: "Practice",
+    icon: PencilRuler,
+    tooltipKey: "Practice tooltip",
+    external: true,
   },
 ];
 
@@ -269,10 +318,10 @@ export function SidebarShell({
                 description={description}
                 side="right"
               >
-                <Link
-                  href={item.href}
+                <NavAnchor
+                  item={item}
                   onClick={item.href === "/home" ? handleHomeClick : undefined}
-                  aria-label={t(item.label)}
+                  aria-label={t(item.label) as string}
                   className={`relative flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-150 ${
                     active
                       ? "bg-[var(--accent)] text-[var(--foreground)] shadow-sm"
@@ -280,7 +329,7 @@ export function SidebarShell({
                   }`}
                 >
                   <item.icon size={18} strokeWidth={active ? 2 : 1.6} />
-                </Link>
+                </NavAnchor>
               </Tooltip>
             );
           })}
@@ -395,9 +444,9 @@ export function SidebarShell({
               );
             }
             return (
-              <Link
+              <NavAnchor
                 key={item.href}
-                href={item.href}
+                item={item}
                 onClick={
                   item.href === "/home" ? handleHomeClick : closeDrawerOnNav
                 }
@@ -409,7 +458,7 @@ export function SidebarShell({
               >
                 <item.icon size={16} strokeWidth={active ? 1.9 : 1.5} />
                 <span>{t(item.label)}</span>
-              </Link>
+              </NavAnchor>
             );
           })}
         </div>

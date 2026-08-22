@@ -15,11 +15,22 @@ export function isCodexCallbackPath(pathname: string): boolean {
   return pathname === CODEX_CALLBACK_PATH;
 }
 
+// The education loop (`deeptutor.education`) is a separate service on its own
+// port; `next.config.js` rewrites `/practice` and `/api/edu/*` to it. Those API
+// paths start with `/api/`, so without this exemption the middleware would
+// claim them first and forward them to the main backend — which has no such
+// routes — and every question in the practice page would 404. Middleware runs
+// **before** next.config rewrites, so the exemption has to live here.
+export function isEducationPath(pathname: string): boolean {
+  return pathname === "/practice" || pathname.startsWith("/api/edu/");
+}
+
 // Paths whose responses come from the backend, not the Next app. The middleware
 // rewrites these to DEEPTUTOR_API_BASE_URL so the browser can use frontend-
 // relative URLs (e.g. `:3782/api/v1/...` or `.../ws`) and let the rewrite
 // bridge the origin gap.
 export function isBackendPath(pathname: string): boolean {
+  if (isEducationPath(pathname)) return false;
   return pathname.startsWith("/api/") || pathname.startsWith("/ws/");
 }
 

@@ -769,4 +769,18 @@ def create_app(
     def index() -> FileResponse:
         return FileResponse(STATIC_DIR / "index.html")
 
+    @app.get("/practice")
+    def practice() -> FileResponse:
+        """远程入口（2026-08-21 Sol 批准）。
+
+        与 ``/`` 返回同一个页面，存在的唯一理由是 Cloudflare Tunnel 的 ingress
+        按**路径**分流：``mytutors.cc/`` 归主应用（3782），这里再挂一个不与主应用
+        冲突的路径，孩子在任何设备上只需记 mytutors.cc 一个网址。
+
+        cloudflared 的 ingress 不改写路径，所以这个路由必须真实存在 —— 不能靠
+        把 ``/practice`` 映射到 ``/``。页面自身是单文件、无外链资源，它发出的
+        ``/api/edu/*`` 请求由同一份 ingress 的另一条规则送到本服务。
+        """
+        return FileResponse(STATIC_DIR / "index.html")
+
     return app

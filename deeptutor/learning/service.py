@@ -22,6 +22,9 @@ if TYPE_CHECKING:
     from deeptutor.learning.scheduler import SpacedRepetitionScheduler
 
 
+from deeptutor.learning.freshness import projection_staleness
+
+
 class LearningService:
     def __init__(self, store: LearningStore | None = None) -> None:
         self._store = store or LearningStore()
@@ -266,6 +269,7 @@ class LearningService:
                 display_name = ""
                 if progress.modules:
                     display_name = progress.modules[0].name or ""
+                stale = projection_staleness(progress.book_id, progress.updated_at)
                 summaries.append(
                     {
                         "book_id": progress.book_id,
@@ -280,6 +284,9 @@ class LearningService:
                         if total_kps
                         else 0,
                         "updated_at": progress.updated_at,
+                        # 只有投影来的书会是 True；tutor 自己写的书安静是正常的。
+                        "stale": stale is not None,
+                        "stale_minutes": stale.age_minutes if stale else 0,
                     }
                 )
             except Exception:

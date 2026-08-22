@@ -71,6 +71,9 @@ _ALLOWED_KP_TYPES = {t.value for t in KnowledgeType}
 logger = logging.getLogger(__name__)
 
 
+from deeptutor.learning.freshness import projection_staleness
+
+
 def _new_service() -> LearningService:
     from deeptutor.learning.service import LearningService
     from deeptutor.learning.storage import LearningStore
@@ -268,11 +271,20 @@ class MasteryStatusTool(BaseTool):
                 },
                 meta_key="mastery_status",
             )
-        payload = {
+        payload: dict[str, Any] = {
             "status": "active",
             "next": next_objective(progress).to_dict(),
             "map": map_summary(progress),
         }
+        # 投影来的掌握度是外部同步的快照，同步停了不会报错，只会静止。
+        # 在模型看得见的地方说出来，否则它会拿着旧数据断言"你还没练过"。
+        stale = projection_staleness(progress.book_id, progress.updated_at)
+        if stale is not None:
+            payload["data_freshness"] = {
+                "stale": True,
+                "age_minutes": stale.age_minutes,
+                "warning": stale.message(),
+            }
         return _json_result(payload, meta_key="mastery_status")
 
 

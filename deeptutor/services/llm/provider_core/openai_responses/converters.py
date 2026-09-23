@@ -132,6 +132,13 @@ def adapt_chat_kwargs_to_responses(extra_kwargs: Mapping[str, Any]) -> dict[str,
         for key, value in extra_kwargs.items()
         if value is not None and key not in _CHAT_TOKEN_LIMIT_ALIASES
     }
+    response_format = result.pop("response_format", None)
+    if response_format is not None:
+        text_format = response_format_to_text_format(response_format)
+        if text_format is not None:
+            text = dict(result.get("text") or {})
+            text.setdefault("format", text_format)
+            result["text"] = text
     if "max_output_tokens" in result:
         return result
 
@@ -141,3 +148,36 @@ def adapt_chat_kwargs_to_responses(extra_kwargs: Mapping[str, Any]) -> dict[str,
             result["max_output_tokens"] = value
             break
     return result
+
+
+def response_format_to_text_format(response_format: Any) -> dict[str, Any] | None:
+    """Map a Chat Completions ``response_format`` to Responses ``text.format``.
+
+    ``responses.create`` has no ``response_format`` keyword, so passing it
+    through made the SDK raise ``TypeError`` before any request was sent — every
+    JSON-mode caller (Book, Visualize, …) failed outright on GPT-5 models routed
+    to the Responses API. The json_schema shape is flattened: Chat nests
+    ``name``/``schema``/``strict`` under ``json_schema``, Responses takes them
+    beside ``type``. Unknown shapes return ``None`` (dropped) rather than
+    guessing, which degrades to free-text output instead of failing the call.
+    """
+    if not isinstance(response_format, Mapping):
+        return None
+    fmt_type = response_format.get("type")
+    if fmt_type in {"json_object", "text"}:
+        return {"type": fmt_type}
+    if fmt_type == "json_schema":
+        spec = response_format.get("json_schema")
+        if not isinstance(spec, Mapping):
+            return None
+        converted: dict[str, Any] = {
+            "type": "json_schema",
+            "name": spec.get("name") or "response",
+            "schema": spec.get("schema") or {},
+        }
+        if "strict" in spec:
+            converted["strict"] = spec["strict"]
+        if spec.get("description"):
+            converted["description"] = spec["description"]
+        return converted
+    return None

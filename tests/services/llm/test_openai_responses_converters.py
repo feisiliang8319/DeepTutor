@@ -7,6 +7,56 @@ from deeptutor.services.llm.provider_core.openai_responses import (
 )
 
 
+class TestResponseFormatTranslation:
+    """``responses.create`` has no ``response_format`` keyword; passing it made
+    the SDK raise TypeError and failed every JSON-mode call on GPT-5 models."""
+
+    def test_json_object_becomes_text_format(self) -> None:
+        result = adapt_chat_kwargs_to_responses(
+            {"response_format": {"type": "json_object"}, "temperature": 0.2}
+        )
+        assert result == {"text": {"format": {"type": "json_object"}}, "temperature": 0.2}
+        assert "response_format" not in result
+
+    def test_json_schema_is_flattened(self) -> None:
+        schema = {"type": "object", "properties": {"a": {"type": "string"}}}
+        result = adapt_chat_kwargs_to_responses(
+            {
+                "response_format": {
+                    "type": "json_schema",
+                    "json_schema": {"name": "spine", "schema": schema, "strict": True},
+                }
+            }
+        )
+        assert result == {
+            "text": {
+                "format": {"type": "json_schema", "name": "spine", "schema": schema, "strict": True}
+            }
+        }
+
+    def test_unknown_shape_is_dropped_not_passed_through(self) -> None:
+        result = adapt_chat_kwargs_to_responses({"response_format": "json"})
+        assert result == {}
+
+    def test_existing_text_options_are_kept(self) -> None:
+        result = adapt_chat_kwargs_to_responses(
+            {"response_format": {"type": "json_object"}, "text": {"verbosity": "low"}}
+        )
+        assert result == {"text": {"verbosity": "low", "format": {"type": "json_object"}}}
+
+    def test_sdk_accepts_translated_kwargs(self) -> None:
+        # Bind against the real SDK signature: the original bug was a TypeError
+        # raised by the SDK before any HTTP request, so this needs no network.
+        import inspect
+
+        from openai.resources.responses import AsyncResponses
+
+        params = inspect.signature(AsyncResponses.create).parameters
+        result = adapt_chat_kwargs_to_responses({"response_format": {"type": "json_object"}})
+        assert "response_format" not in params
+        assert set(result) <= set(params)
+
+
 class TestAdaptChatKwargsToResponses:
     def test_passes_through_unrelated_kwargs(self) -> None:
         result = adapt_chat_kwargs_to_responses({"temperature": 0.2, "tool_choice": "auto"})

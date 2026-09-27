@@ -105,7 +105,7 @@ def web_db(tmp_path: Path) -> Path:
 
 @pytest.fixture
 def client(web_db: Path) -> TestClient:
-    return TestClient(create_app(web_db))
+    return TestClient(create_app(web_db, content_mode="trial"))
 
 
 def _issue(client: TestClient, learner: str = LEARNER, cv: str = CV):
@@ -186,7 +186,7 @@ def test_task_set_never_ships_the_answer_or_rubric(client: TestClient):
     assert first["prompt"] == "What is 40 + 2?"
     assert set(first) == {
         "id", "prompt", "item_type", "difficulty", "attribution",
-        "figure_spec_id", "choices", "node",
+        "figure_spec_id", "figure_url", "choices", "node",
     }
 
 
@@ -295,7 +295,7 @@ def test_empty_item_bank_node_is_skipped_and_reported(tmp_path: Path):
     )
     conn.close()
 
-    body = TestClient(create_app(db_path)).post(
+    body = TestClient(create_app(db_path, content_mode="trial")).post(
         "/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV}
     ).json()
     assert [i["node"]["code"] for i in body["items"]] == ["HAS"], \
@@ -305,7 +305,7 @@ def test_empty_item_bank_node_is_skipped_and_reported(tmp_path: Path):
 
 
 def test_unknown_learner_is_404_not_an_empty_task(web_db: Path):
-    r = TestClient(create_app(web_db)).get(
+    r = TestClient(create_app(web_db, content_mode="trial")).get(
         "/api/edu/next", params={"learner_id": "nobody", "course_version_id": CV}
     )
     assert r.status_code == 404
@@ -333,7 +333,7 @@ def test_parent_account_cannot_answer(web_db: Path):
                        locale="en-US", created_at=now, updated_at=now)
     )
     conn.close()
-    client = TestClient(create_app(web_db))
+    client = TestClient(create_app(web_db, content_mode="trial"))
     r = client.post("/api/edu/set/submit", json={
         "learner_id": "parent-x", "course_version_id": CV, "set_id": "set-whatever",
         "answers": [{"item_id": "item-A-1", "response": "42"}]})
@@ -353,7 +353,7 @@ def test_people_endpoint_labels_roles(web_db: Path):
                        locale="en-US", created_at=now, updated_at=now)
     )
     conn.close()
-    body = TestClient(create_app(web_db)).get("/api/edu/people").json()
+    body = TestClient(create_app(web_db, content_mode="trial")).get("/api/edu/people").json()
     roles = {p["id"]: p["role"] for p in body["people"]}
     assert roles["parent-y"] == "parent"
     assert roles[LEARNER] == "learner"
@@ -379,7 +379,11 @@ def _seed_pending_attempt(db_path: Path, response: str, key: str) -> None:
 def test_review_queue_surfaces_unresolved_attempts(judge_free_db: Path):
     """needs_review 不该是个没人消费的状态：家长视角靠这个队列看到它。"""
     _seed_pending_attempt(judge_free_db, "I drew it on paper", "q1")
-    client = TestClient(create_app(judge_free_db))
+    conn = edu_sqlite.open_database(judge_free_db)
+    now = to_iso_timestamp(time.time())
+    LearnerRepository(conn).create(LearnerProfile(id="parent-q", deep_tutor_user_id="dtu-pq", display_name="Parent", locale="en-US", created_at=now, updated_at=now))
+    conn.close()
+    client = TestClient(create_app(judge_free_db, content_mode="trial", parent_identity=lambda request: "parent-q"))
     body = client.get("/api/edu/review-queue", params={"course_version_id": CV}).json()
     assert len(body["pending"]) == 1
     assert body["pending"][0]["answer"] == "I drew it on paper"
@@ -413,7 +417,7 @@ def test_parent_review_resolves_a_pending_attempt(judge_free_db: Path):
     )
     conn.close()
     _seed_pending_attempt(judge_free_db, "I drew all four rectangles", "r1")
-    client = TestClient(create_app(judge_free_db))
+    client = TestClient(create_app(judge_free_db, content_mode="trial", parent_identity=lambda request: "parent-r"))
     pending = client.get("/api/edu/review-queue", params={"course_version_id": CV}).json()["pending"]
     assert len(pending) == 1
 
@@ -437,10 +441,10 @@ def test_parent_review_resolves_a_pending_attempt(judge_free_db: Path):
 
 def test_child_cannot_review_their_own_work(judge_free_db: Path):
     _seed_pending_attempt(judge_free_db, "trust me", "r2")
-    client = TestClient(create_app(judge_free_db))
-    pending = client.get("/api/edu/review-queue", params={"course_version_id": CV}).json()["pending"]
+    client = TestClient(create_app(judge_free_db, content_mode="trial", parent_identity=lambda request: LEARNER))
+    assert client.get("/api/edu/review-queue", params={"course_version_id": CV}).status_code == 403
     r = client.post("/api/edu/review", json={
-        "reviewer": LEARNER, "attempt_id": pending[0]["attempt_id"], "verdict": "correct"})
+        "reviewer": LEARNER, "attempt_id": "r2", "verdict": "correct"})
     assert r.status_code == 403
 
 
@@ -452,7 +456,7 @@ def test_review_of_unknown_attempt_is_404(judge_free_db: Path):
                        locale="en-US", created_at=now, updated_at=now)
     )
     conn.close()
-    r = TestClient(create_app(judge_free_db)).post("/api/edu/review", json={
+    r = TestClient(create_app(judge_free_db, content_mode="trial", parent_identity=lambda request: "parent-z")).post("/api/edu/review", json={
         "reviewer": "parent-z", "attempt_id": "no-such-attempt", "verdict": "correct"})
     assert r.status_code == 404
 
@@ -791,7 +795,7 @@ def test_size_is_server_side_not_a_query_parameter(web_db: Path):
     正是 Sol 要求去掉的东西。所以 size 是 create_app 的参数（生产由 EDU_SET_SIZE
     环境变量注入），请求里带 size 一律无效。
     """
-    small = TestClient(create_app(web_db, set_size=1))
+    small = TestClient(create_app(web_db, content_mode="trial", set_size=1))
     body = small.post("/api/edu/set", params={
         "learner_id": LEARNER, "course_version_id": CV}).json()
     assert len(body["items"]) == 1, "题量由服务端配置决定"
@@ -863,7 +867,7 @@ def test_only_one_open_set_per_course_even_under_concurrency(client: TestClient,
     lock = threading.Lock()
 
     def grab():
-        c = TestClient(create_app(web_db))
+        c = TestClient(create_app(web_db, content_mode="trial"))
         r = c.post("/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV})
         with lock:
             results.append(r.json())
@@ -921,7 +925,7 @@ def test_concurrent_submit_of_one_set_grades_once(client: TestClient, web_db: Pa
     lock = threading.Lock()
 
     def go(tag: str):
-        c = TestClient(create_app(web_db))
+        c = TestClient(create_app(web_db, content_mode="trial"))
         r = c.post("/api/edu/set/submit", json={
             "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],
             "answers": [{"item_id": i, "response": tag} for i in ids]})
@@ -1027,7 +1031,7 @@ def test_self_heal_writes_each_missing_item_exactly_once_under_concurrency(
     barrier = threading.Barrier(8)
 
     def go(tag: str):
-        c = TestClient(create_app(web_db))
+        c = TestClient(create_app(web_db, content_mode="trial"))
         barrier.wait()
         c.post("/api/edu/set/submit", json={
             "learner_id": LEARNER, "course_version_id": CV, "set_id": issued["set_id"],

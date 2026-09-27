@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "lessons": {
+    "number-structure": {
+      "unit": "advanced-number-structure",
+      "lesson": 1,
+      "unit_title": "From Factors to the Structure of Numbers",
+      "standards": [
+        "4.OA.B.4"
+      ],
+      "course": {
+        "subject_key": "mathematics",
+        "level": "G4"
+      },
+      "node_codes": [
+        "G4.OA.B4.FACTOR_PAIRS",
+        "G4.OA.B4.PRIME_COMPOSITE",
+        "PS.COUNTING.SYSTEMATIC_ENUM"
+      ],
+      "status": "candidate",
+      "format": "text/html",
+      "sha256": "e2ddaea72a5df5878ad7f4ad0721f99ae6bfc1d4d9878b40a6cf23f5698acf1a"
+    }
+  },
+  "lesson_node_ids": {}
+}

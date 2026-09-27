@@ -14,8 +14,9 @@ _cas_lock = threading.Lock()
 
 
 class LearningStore:
-    def __init__(self, root: Path | None = None) -> None:
+    def __init__(self, root: Path | None = None, *, education_projection_writer: bool = False) -> None:
         self._root = root or (get_path_service().get_workspace_dir() / "learning")
+        self._education_projection_writer = education_projection_writer
         self._root.mkdir(parents=True, exist_ok=True)
 
     def _path(self, book_id: str) -> Path:
@@ -24,6 +25,8 @@ class LearningStore:
         return self._root / f"{book_id}.json"
 
     def save(self, progress: LearningProgress) -> None:
+        if progress.book_id.startswith("edu-") and not self._education_projection_writer:
+            raise ValueError("Education progress is a read-only projection; use the education service")
         with _cas_lock:
             progress.updated_at = time.time()
             progress.version += 1
@@ -39,6 +42,8 @@ class LearningStore:
         return LearningProgress.model_validate(data)
 
     def delete(self, book_id: str) -> None:
+        if book_id.startswith("edu-"):
+            raise ValueError("Education progress is a read-only projection; use the education service")
         with _cas_lock:
             path = self._path(book_id)
             if path.exists():

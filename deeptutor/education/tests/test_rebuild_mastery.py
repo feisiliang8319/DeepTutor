@@ -306,7 +306,7 @@ def test_human_reported_alone_cannot_reach_mastered(conn, learner, one_item):
     assert snapshot.status != "mastered"  # ...but status is capped without system_graded backing
 
 
-def test_one_system_graded_attempt_unlocks_mastered_when_score_clears_gate(conn, learner, one_item):
+def test_system_grade_does_not_make_repetition_independent(conn, learner, one_item):
     node, item = one_item
     for i in range(4):
         _insert_attempt(
@@ -330,7 +330,7 @@ def test_one_system_graded_attempt_unlocks_mastered_when_score_clears_gate(conn,
         evidence_strength=EvidenceStrength.SYSTEM_GRADED,
     )
     snapshot = rebuild_learner_node(conn, learner.id, node.id)
-    assert snapshot.status == "mastered"
+    assert snapshot.status == "learning"
 
 
 def test_hinted_and_imitated_evidence_counts_as_touched_not_correct(conn, learner, one_item):

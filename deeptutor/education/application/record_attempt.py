@@ -49,6 +49,7 @@ import time
 import uuid
 
 from deeptutor.education.application import to_iso_timestamp
+from deeptutor.education.application.effective_grade import effective_correctness
 from deeptutor.education.application.grading_policy import needs_judgment
 from deeptutor.education.application.rebuild_mastery import POLICY_VERSION, rebuild_learner_node
 from deeptutor.education.application.review_scheduler import (
@@ -124,7 +125,7 @@ class NewAttemptInput:
     duration_ms: int | None = None
     evidence_strength: EvidenceStrength = EvidenceStrength.SYSTEM_GRADED
     provenance: Provenance = Provenance.NATIVE
-    grader_version: str = "p0-v1"
+    grader_version: str = "edu-exact-math-v2"
     # For item types the deterministic grader cannot score (multi_step /
     # visual_model / paper_ref), or a caller that already has a human
     # result (e.g. a paper_ref outcome phoned in by a parent).
@@ -170,6 +171,10 @@ def _grade(item: AssessmentItem, response: str) -> tuple[bool | None, float | No
     if needs_judgment(item):
         return None, None
     if item.item_type is ItemType.NUMERIC:
+        from deeptutor.learning.exact_math import grade_math
+        exact = grade_math(response, item.expected_answer)
+        if exact is True:
+            return True, 1.0
         try:
             correct = abs(float(response) - float(item.expected_answer)) <= _NUMERIC_TOLERANCE
         except (TypeError, ValueError):
@@ -274,15 +279,17 @@ def replay_review_state(
     against whatever is currently stored online. Never writes anything.
     """
     attempts = AttemptRepository(conn).list_for_node(learner_id, knowledge_node_id)
+    judgments = {j.attempt_id: j for j in JudgmentRepository(conn).list_for_attempts([a.id for a in attempts])}
     state: ReviewMath | None = None
     touched = False
     for attempt in attempts:
-        if attempt.is_correct is None:
+        correct = effective_correctness(attempt.is_correct, judgments.get(attempt.id))
+        if correct is None or attempt.evidence_strength in (EvidenceStrength.HINTED, EvidenceStrength.IMITATED):
             continue
         # Replay uses each attempt's own submitted_at, exactly as the online
         # path did, so an unchanged attempt history reproduces the schedule
         # rather than merely resembling it.
-        state = step_review(state, is_correct=attempt.is_correct, reviewed_at=attempt.submitted_at)
+        state = step_review(state, is_correct=correct, reviewed_at=attempt.submitted_at)
         touched = True
 
     online = ReviewStateRepository(conn).get(learner_id, knowledge_node_id)
@@ -311,6 +318,20 @@ def replay_review_state(
             "moves the schedule without any attempt changing."
         ),
     )
+
+
+def rebuild_review_state(conn: sqlite3.Connection, learner_id: str, knowledge_node_id: str) -> None:
+    state = replay_review_state(conn, learner_id, knowledge_node_id).replayed
+    if state is None:
+        conn.execute("DELETE FROM review_states WHERE learner_id=? AND knowledge_node_id=?",
+                     (learner_id, knowledge_node_id))
+        return
+    ReviewStateRepository(conn).upsert(ReviewState(
+        learner_id=learner_id, knowledge_node_id=knowledge_node_id,
+        stability=state.stability, difficulty=state.difficulty, due_at=state.due_at,
+        last_review_at=state.last_review_at, reps=state.reps, lapses=state.lapses,
+        fsrs_state=state.state, fsrs_step=state.step, fsrs_params_ver=FSRS_PARAMS_VER,
+    ))
 
 
 def record_attempt(conn: sqlite3.Connection, params: NewAttemptInput) -> RecordAttemptResult:
@@ -427,7 +448,8 @@ def record_attempt(conn: sqlite3.Connection, params: NewAttemptInput) -> RecordA
                 conn,
                 params.learner_id,
                 item.knowledge_node_id,
-                is_correct=attempt.is_correct,
+                is_correct=(None if attempt.evidence_strength in (EvidenceStrength.HINTED, EvidenceStrength.IMITATED)
+                            else effective_correctness(attempt.is_correct, params.judgment)),
                 reviewed_at=attempt.submitted_at,
             )
     except Exception as exc:  # noqa: BLE001 - any failure here must not undo step 3's commit

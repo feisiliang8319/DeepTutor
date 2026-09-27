@@ -1,5 +1,4 @@
-import WorkspaceSidebar from "@/components/sidebar/WorkspaceSidebar";
-import AppShell from "@/components/layout/AppShell";
+import AccountShell from "@/components/layout/AccountShell";
 import { CapabilityAccessProvider } from "@/components/access/CapabilityAccessContext";
 import CapabilityGate from "@/components/access/CapabilityGate";
 import { UnifiedChatProvider } from "@/context/UnifiedChatContext";
@@ -12,9 +11,9 @@ export default function WorkspaceLayout({
   return (
     <CapabilityAccessProvider>
       <UnifiedChatProvider>
-        <AppShell sidebar={<WorkspaceSidebar />}>
+        <AccountShell area="workspace">
           <CapabilityGate>{children}</CapabilityGate>
-        </AppShell>
+        </AccountShell>
       </UnifiedChatProvider>
     </CapabilityAccessProvider>
   );

@@ -5,6 +5,7 @@ from __future__ import annotations
 from difflib import SequenceMatcher
 import re
 from typing import TYPE_CHECKING
+from deeptutor.learning.exact_math import grade_math
 
 if TYPE_CHECKING:
     from deeptutor.learning.models import ErrorType
@@ -41,8 +42,14 @@ def grade_answer(user_answer: str, expected_answer: str, question_type: str = "s
         return user_norm == expected_norm
 
     if question_type == "short":
+        mathematical = grade_math(user, expected)
+        if mathematical is not None:
+            return mathematical
         if user == expected:
             return True
+        # A one-digit or comparison-sign typo changes the mathematics.
+        if re.search(r"[\d<>=]", user + expected):
+            return False
         if len(expected) <= SHORT_FUZZY_MAX_CHARS:
             return SequenceMatcher(None, user, expected).ratio() >= 0.85
         return False

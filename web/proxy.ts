@@ -56,9 +56,8 @@ export function proxy(req: NextRequest): NextResponse {
     return NextResponse.rewrite(new URL(pathname + search, API_BASE_URL));
   }
 
-  // 1b. 练习页走 next.config.js 的 rewrite 到 education 服务，且不过主应用的
-  //     登录闸门：孩子没有主应用账号，身份是练习页自己用 ?learner= 选的。
-  //     远程一侧挡在前面的是 Cloudflare Access。
+  // Education rewrites to its own service. That service validates the shared
+  // application session and the learner/parent scope; a profile URL grants no access.
   if (isEducationPath(pathname)) {
     return NextResponse.next();
   }

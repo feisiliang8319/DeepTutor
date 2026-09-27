@@ -210,8 +210,8 @@ def policy_db(tmp_path: Path) -> Path:
 def test_selector_withholds_judged_items_until_a_judge_exists(policy_db):
     conn = edu_sqlite.open_database(policy_db)
     try:
-        assert select_next_item(conn, LEARNER, CV, NODE, include_judgeable=False) is None
-        with_judge = select_next_item(conn, LEARNER, CV, NODE, include_judgeable=True)
+        assert select_next_item(conn, LEARNER, CV, NODE, include_judgeable=False, content_mode="trial") is None
+        with_judge = select_next_item(conn, LEARNER, CV, NODE, include_judgeable=True, content_mode="trial")
         assert with_judge is not None
         # Both items are reachable, not just the one missing an answer —
         # the prose-answer item is the half that used to be served *and*
@@ -263,7 +263,7 @@ def test_api_sends_prose_referenced_short_items_to_the_judge(policy_db):
             seen.append(user)
             return '{"verdict": "correct", "confidence": 0.9, "rationale": "ok"}'
 
-    client = TestClient(create_app(policy_db, judge=StubJudge(), judge_ref="stub"))
+    client = TestClient(create_app(policy_db, content_mode="trial", judge=StubJudge(), judge_ref="stub"))
     issued = client.post(
         "/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV}
     ).json()

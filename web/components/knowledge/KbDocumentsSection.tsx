@@ -17,6 +17,7 @@ import type { HistoryEntry } from "@/hooks/useKnowledgeHistory";
 import ProcessLogs from "@/components/common/ProcessLogs";
 import FileDropZone from "./FileDropZone";
 import KbUpdateHistory from "./KbUpdateHistory";
+import TrialLessonImport from "./TrialLessonImport";
 
 interface KbDocumentsSectionProps {
   kb: KnowledgeBase;
@@ -167,6 +168,16 @@ export default function KbDocumentsSection({
             </button>
           )}
         </div>
+      )}
+
+      {!kb.read_only && kb.statistics?.rag_provider === "llamaindex" && (
+        <TrialLessonImport
+          selected={files.some((file) => file.name === "deeptutor-trial-number-structure.md")}
+          disabled={!canUpload || submitting || Boolean(task?.executing)}
+          onSelect={(file) => setFiles((current) => [
+            ...current.filter((item) => item.name !== file.name), file,
+          ])}
+        />
       )}
 
       <FileDropZone

@@ -244,8 +244,10 @@ class LlamaIndexPipeline:
         context_parts: list[str] = []
         sources: list[dict[str, Any]] = []
         for i, node in enumerate(nodes):
-            context_parts.append(node.node.text)
             meta = node.node.metadata or {}
+            status = meta.get("curriculum_content_status")
+            prefix = "[Trial teaching material; pending human review]\n" if status == "trial_pending_review" else ""
+            context_parts.append(prefix + node.node.text)
             sources.append(
                 {
                     "title": meta.get("file_name", meta.get("title", f"Document {i + 1}")),
@@ -260,6 +262,9 @@ class LlamaIndexPipeline:
             if lesson_key:
                 sources[-1]["lesson_key"] = lesson_key
                 sources[-1]["standards"] = meta.get("curriculum_standards", "")
+                if status:
+                    sources[-1]["content_status"] = status
+                    sources[-1]["lesson_url"] = meta.get("curriculum_lesson_url", "")
 
         content = "\n\n".join(context_parts) if context_parts else ""
         return {
@@ -321,6 +326,8 @@ class LlamaIndexPipeline:
                 "lesson_key": (node.metadata or {}).get("curriculum_lesson_key", ""),
                 "standards": (node.metadata or {}).get("curriculum_standards", ""),
                 "source": (node.metadata or {}).get("file_name", ""),
+                "content_status": (node.metadata or {}).get("curriculum_content_status", ""),
+                "lesson_url": (node.metadata or {}).get("curriculum_lesson_url", ""),
                 "text": node.get_content() if hasattr(node, "get_content") else "",
             }
             for node in nodes

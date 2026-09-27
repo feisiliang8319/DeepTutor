@@ -1,0 +1,58 @@
+{
+  "cemc-shape-sums.svg": {
+    "item_ids": [
+      "cemc-potwa-2025-p22-shape-sums"
+    ],
+    "sha256": "7f10f7f99cdf022a296ed98d7886e455919c92dcc22921672973bcb588ab2270",
+    "spec_sha256": "de8e686aac31fc55661430b2f6ba1c1a9b36ac6fc4644e2671b5df5f57b09b24",
+    "source": "CEMC POTW A 2025 p.22",
+    "item_id": "cemc-potwa-2025-p22-shape-sums"
+  },
+  "cemc-test-results.svg": {
+    "item_ids": [
+      "cemc-potwa-2025-p56-test-results"
+    ],
+    "sha256": "fecfae306521ec65483bea034c40700dc2ab3997f247c11f9113a59c7ebd6155",
+    "spec_sha256": "47244f9677e297f286a667ee86dbb1b927aef4ecc993096bd4ec912f31ec6bc4",
+    "source": "CEMC POTW A 2025 p.56",
+    "item_id": "cemc-potwa-2025-p56-test-results"
+  },
+  "cemc-tracking-temperatures.svg": {
+    "item_ids": [
+      "cemc-potwa-2024-p36-tracking-temperatures"
+    ],
+    "sha256": "b159214ecbc1f0c85bbdf64ccbe73b914df5246fe956ace8fbd070a060666120",
+    "spec_sha256": "120f7b240f1d5e4ce4c9b409bd36978dad157c28f6bbfecd233c58701026fc34",
+    "source": "CEMC POTW A 2024 p.36",
+    "item_id": "cemc-potwa-2024-p36-tracking-temperatures"
+  },
+  "cemc-books-books-books.svg": {
+    "item_ids": [
+      "cemc-potwa-2024-p34-books-books-books"
+    ],
+    "sha256": "da0f5d6169cd0626483571cb5f3230ab42b949b3a44ebb9ff3380e8be06ee328",
+    "spec_sha256": "df0f31feda54faeeadc3c1f3287ff4faf12fda2f54534aba705c65bac110fe11",
+    "source": "CEMC POTW A 2024 p.34",
+    "item_id": "cemc-potwa-2024-p34-books-books-books"
+  },
+  "cemc-time-after-time.svg": {
+    "item_ids": [
+      "cemc-potwa-2024-p47-time-after-time"
+    ],
+    "sha256": "ad13c2946b34d5c5e3ba887ca86fd78d04d4cf599afb58be04f75647a11ca890",
+    "spec_sha256": "9f1d19960ae2a24a32444f75f53c52b31d2c0bb11f18ab25296e2eef0c12802c",
+    "source": "CEMC POTW A 2024 p.47",
+    "item_id": "cemc-potwa-2024-p47-time-after-time"
+  },
+  "diagnostic-ribbon-line-plot.svg": {
+    "item_ids": [
+      "diagnostic-20260926-g4-md-b4-line_plot-1",
+      "diagnostic-20260926-g4-md-b4-line_plot-2",
+      "diagnostic-20260926-g4-md-b4-line_plot-3"
+    ],
+    "sha256": "8a28f29f362f9579e3a181c4298f15f07f77631cdc4634fdedc160f5e8d39ef0",
+    "spec_sha256": "25fefac8288c5e553b409f65ebbd55e0adc02e347f6f1507738505e359104c20",
+    "source": "self-authored (DeepTutor diagnostic, 2026-09-26)",
+    "item_id": "diagnostic-20260926-g4-md-b4-line_plot-3"
+  }
+}

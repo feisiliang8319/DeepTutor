@@ -112,7 +112,9 @@ async def list_all_progress():
 async def get_progress(book_id: str):
     _validate_book_id(book_id)
     service = get_learning_service()
-    progress = service.get_or_create(book_id)
+    progress = LearningStore().load(book_id) if book_id.startswith("edu-") else service.get_or_create(book_id)
+    if progress is None:
+        raise HTTPException(status_code=404, detail="Education projection not found")
     return progress.model_dump()
 
 
@@ -123,7 +125,9 @@ async def get_progress_map(book_id: str):
     lives in ``learning.policy`` so the dashboard and the tutor agree."""
     _validate_book_id(book_id)
     service = get_learning_service()
-    progress = service.get_or_create(book_id)
+    progress = LearningStore().load(book_id) if book_id.startswith("edu-") else service.get_or_create(book_id)
+    if progress is None:
+        raise HTTPException(status_code=404, detail="Education projection not found")
     return {
         "book_id": book_id,
         "next": learning_policy.next_objective(progress).to_dict(),
@@ -134,6 +138,8 @@ async def get_progress_map(book_id: str):
 @router.post("/progress/{book_id}/init-modules")
 async def init_modules(book_id: str, body: InitModulesRequest):
     _validate_book_id(book_id)
+    if book_id.startswith("edu-"):
+        raise HTTPException(status_code=409, detail="Education progress is read-only here; use the education service")
     modules = _parse_modules(body.modules)
     _validate_runnable_modules(modules)
     await _cancel_active_learning_turn(book_id)
@@ -149,6 +155,8 @@ async def init_modules(book_id: str, body: InitModulesRequest):
 @router.post("/progress/{book_id}/import-from-book")
 async def import_from_book(book_id: str, body: ImportFromBookRequest):
     _validate_book_id(book_id)
+    if book_id.startswith("edu-"):
+        raise HTTPException(status_code=409, detail="Education progress is read-only here; use the education service")
     modules = []
     for i, ch in enumerate(body.chapters):
         kps = [
@@ -183,6 +191,8 @@ async def import_from_book(book_id: str, body: ImportFromBookRequest):
 @router.delete("/progress/{book_id}")
 async def delete_progress(book_id: str):
     _validate_book_id(book_id)
+    if book_id.startswith("edu-"):
+        raise HTTPException(status_code=409, detail="Education progress is read-only here; use the education service")
     store = LearningStore()
     if not store.exists(book_id):
         raise HTTPException(status_code=404, detail="Progress not found")
@@ -193,6 +203,8 @@ async def delete_progress(book_id: str):
 @router.post("/progress/{book_id}/redo")
 async def redo_progress(book_id: str):
     _validate_book_id(book_id)
+    if book_id.startswith("edu-"):
+        raise HTTPException(status_code=409, detail="Education progress is read-only here; use the education service")
     store = LearningStore()
     progress = store.load(book_id)
     if progress is None:
@@ -231,6 +243,8 @@ class GenerateFromNotebookRequest(BaseModel):
 @router.post("/progress/{book_id}/generate-from-notebook")
 async def generate_from_notebook(book_id: str, body: GenerateFromNotebookRequest):
     _validate_book_id(book_id)
+    if book_id.startswith("edu-"):
+        raise HTTPException(status_code=409, detail="Education progress is read-only here; use the education service")
     if not body.records:
         raise HTTPException(status_code=400, detail="No records provided")
 

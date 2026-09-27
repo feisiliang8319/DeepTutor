@@ -198,3 +198,16 @@ class TestAtomicWrite:
         assert not target.exists()
         leftovers = [p for p in tmp_path.iterdir() if ".tmp." in p.name]
         assert leftovers == []
+
+
+def test_education_projection_is_read_only_to_native_store(tmp_path):
+    writer = LearningStore(root=tmp_path, education_projection_writer=True)
+    writer.save(LearningProgress(book_id='edu-fixture'))
+    native = LearningStore(root=tmp_path)
+    progress = native.load('edu-fixture')
+    original = progress.model_dump()
+    with pytest.raises(ValueError, match='education'):
+        native.save(progress)
+    with pytest.raises(ValueError, match='education'):
+        native.delete('edu-fixture')
+    assert native.load('edu-fixture').model_dump() == original

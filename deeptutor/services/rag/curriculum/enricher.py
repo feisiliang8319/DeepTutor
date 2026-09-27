@@ -111,6 +111,9 @@ class CurriculumLessonEnricher(TransformComponent):
         for segment in segments:
             metadata = dict(node.metadata or {})
             metadata.update(segment_metadata(segment))
+            if segment.unit == "deeptutor-trial":
+                metadata["curriculum_content_status"] = "trial_pending_review"
+                metadata["curriculum_lesson_url"] = f"/api/edu/lessons/{segment.lesson}"
             excluded_embed = list(node.excluded_embed_metadata_keys or [])
             excluded_llm = list(node.excluded_llm_metadata_keys or [])
             for key in CURRICULUM_METADATA_KEYS:

@@ -108,6 +108,8 @@ cli = [
     "defusedxml>=0.7.1",
 ]
 
+education = ["fsrs==6.3.2"]
+
 # CodeBuddy chat works over HTTP with the login state the IDE plugin / CLI
 # already stores. This extra adds the Agent SDK (a ~130 MB bundled headless
 # CLI) for in-app browser login and CLI-driven agent tools.
@@ -277,6 +279,10 @@ deeptutor = [
     "**/*.sh",
     "**/*.j2",
     "**/*.jinja",
+    "education/storage/migrations/*.sql",
+    "education/api/static/*.html",
+    "education/api/static/figures/*.svg",
+    "education/api/static/lessons/*.html",
 ]
 deeptutor_cli = ["**/*.md"]
 deeptutor_web = ["**/*", ".next/**/*"]

@@ -111,7 +111,7 @@ def judge_db(tmp_path: Path) -> Path:
 
 
 def client_with(db: Path, judge) -> TestClient:
-    return TestClient(create_app(db, judge=judge, judge_ref="stub-model"))
+    return TestClient(create_app(db, content_mode="trial", judge=judge, judge_ref="stub-model"))
 
 
 def submit(client: TestClient, answer: str, key: str = "k1"):
@@ -276,7 +276,7 @@ def test_needs_review_does_not_reach_mastered(judge_db: Path):
 def test_open_items_are_not_served_without_a_judge(judge_db: Path):
     """Without a judge the only open item must not be offered: answering it
     would store evidence that can never resolve."""
-    no_judge = TestClient(create_app(judge_db))
+    no_judge = TestClient(create_app(judge_db, content_mode="trial"))
     body = no_judge.post(
         "/api/edu/set", params={"learner_id": LEARNER, "course_version_id": CV}
     ).json()

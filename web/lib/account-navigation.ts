@@ -1,0 +1,44 @@
+import type { AuthStatus } from "./auth";
+
+type Session = Pick<AuthStatus, "enabled" | "authenticated" | "role">;
+export type AccountArea = "workspace" | "utility" | "management";
+
+// These are resource configuration surfaces, not learning activities.
+const MANAGEMENT_PATHS = [
+  "/admin", "/settings", "/knowledge", "/profile",
+  "/space/skills", "/space/mcp", "/space/personas", "/space/cli-apps",
+];
+
+export function isManagementSession(status: Session): boolean {
+  return status.enabled && status.authenticated && status.role === "admin";
+}
+
+export function isManagementPath(pathname: string): boolean {
+  return MANAGEMENT_PATHS.some(path => pathname === path || pathname.startsWith(path + "/"));
+}
+
+function localDestination(value: string | null): string | null {
+  if (!value || !value.startsWith("/") || value.startsWith("//") || /[\\\u0000-\u0020]/.test(value)) return null;
+  const base = "https://deeptutor.invalid";
+  const url = new URL(value, base);
+  if (url.origin !== base || /^\/(login|register)(\/|$)/.test(url.pathname)) return null;
+  return url.pathname + url.search + url.hash;
+}
+
+export function accountDestination(status: Session, requested: string | null = null): string {
+  const destination = localDestination(requested);
+  const pathname = destination ? new URL(destination, "https://deeptutor.invalid").pathname : "/";
+  if (isManagementSession(status)) {
+    return destination && isManagementPath(pathname) ? destination : "/admin";
+  }
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) return "/home";
+  return destination && pathname !== "/" && pathname !== "/practice" ? destination : "/home";
+}
+
+export function accountAreaRedirect(status: Session, area: AccountArea, pathname: string): string | null {
+  if (status.enabled && !status.authenticated) return "/login?next=" + encodeURIComponent(pathname);
+  const management = isManagementSession(status);
+  if (area === "management" && !management) return accountDestination(status);
+  if (management && (area === "workspace" || !isManagementPath(pathname))) return "/admin";
+  return null;
+}

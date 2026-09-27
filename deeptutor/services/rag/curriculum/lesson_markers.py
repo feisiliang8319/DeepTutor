@@ -39,6 +39,25 @@ MARKER_RE = re.compile(
     re.MULTILINE,
 )
 
+# First-party trial material has its own namespace, independent of course numbering.
+TRIAL_MARKER_RE = re.compile(
+    r"^\*\*\[DeepTutor trial lesson (?P<lesson_id>[a-zA-Z0-9_-]{1,100}): "
+    r"(?P<unit_title>[^\r\n]+?)\]\*\*\s*$",
+    re.MULTILINE,
+)
+
+
+def _markers(text: str):
+    return sorted([*MARKER_RE.finditer(text), *TRIAL_MARKER_RE.finditer(text)],
+                  key=lambda match: match.start())
+
+
+def _identity(match):
+    if match.re is TRIAL_MARKER_RE:
+        return "deeptutor-trial", match.group("lesson_id")
+    return int(match.group("unit")), int(match.group("lesson"))
+
+
 CCSS_HEADING = "CCSS Standards"
 
 # A standard code such as 4.OA.B.4, 4.NF.B.4.a, or the coarse form 3.MD.C.
@@ -55,10 +74,10 @@ _BUCKETS = {
 class LessonSegment:
     """One lesson's contiguous span of a course document."""
 
-    unit: int
-    lesson: int
+    unit: int | str
+    lesson: int | str
     unit_title: str
-    grade: int
+    grade: int | None
     text: str
     building_on: list[str] = field(default_factory=list)
     addressing: list[str] = field(default_factory=list)
@@ -71,6 +90,8 @@ class LessonSegment:
         Deliberately *not* derived from a node id, a file path or an ingestion
         timestamp — re-indexing the same corpus must produce the same key.
         """
+        if self.unit == "deeptutor-trial":
+            return f"deeptutor-trial:{self.lesson}"
         return f"U{self.unit}L{self.lesson}"
 
 
@@ -120,9 +141,10 @@ def split_preamble(text: str) -> tuple[str, str]:
     Returns ``("", text)`` when there is no marker at all, so a non-curriculum
     document passes through untouched.
     """
-    match = MARKER_RE.search(text)
-    if match is None:
+    matches = _markers(text)
+    if not matches:
         return "", text
+    match = matches[0]
     return text[: match.start()], text[match.start() :]
 
 
@@ -142,14 +164,14 @@ def segment_by_lesson(text: str) -> list[LessonSegment]:
     Returns an empty list when the corpus carries no markers, which is the
     signal that this document is not a curriculum export.
     """
-    matches = list(MARKER_RE.finditer(text))
+    matches = _markers(text)
     if not matches:
         return []
 
     # Collapse runs of markers that name the same lesson into one boundary.
-    boundaries: list[tuple[int, re.Match[str]]] = []
+    boundaries = []
     for match in matches:
-        key = (int(match.group("unit")), int(match.group("lesson")))
+        key = _identity(match)
         if boundaries and boundaries[-1][0] == key:
             continue
         boundaries.append((key, match))  # type: ignore[arg-type]
@@ -165,7 +187,7 @@ def segment_by_lesson(text: str) -> list[LessonSegment]:
                 unit=key[0],
                 lesson=key[1],
                 unit_title=match.group("unit_title"),
-                grade=int(match.group("grade")),
+                grade=int(match.group("grade")) if match.re is MARKER_RE else None,
                 text=body,
                 **standards,
             )
@@ -181,9 +203,9 @@ def merge_segments(segments: list[LessonSegment]) -> list[LessonSegment]:
     ``(unit, lesson)`` can legitimately appear more than once. Text is
     concatenated in encounter order and standards are unioned.
     """
-    merged: dict[tuple[int, int], LessonSegment] = {}
+    merged: dict[str, LessonSegment] = {}
     for segment in segments:
-        key = (segment.unit, segment.lesson)
+        key = segment.lesson_key
         existing = merged.get(key)
         if existing is None:
             merged[key] = segment

@@ -46,9 +46,13 @@ export default function MasteryPathPage() {
   const [detail, setDetail] = useState<MasteryMapResult | null>(null);
   const [loadingList, setLoadingList] = useState(true);
   const [loadingDetail, setLoadingDetail] = useState(false);
+  const [detailError, setDetailError] = useState("");
+  const [detailRetry, setDetailRetry] = useState(0);
+  const [listError, setListError] = useState("");
 
   const loadList = useCallback(async () => {
     setLoadingList(true);
+    setListError("");
     try {
       const result = await fetchAllProgress();
       const withContent = result.summaries
@@ -57,11 +61,12 @@ export default function MasteryPathPage() {
       setPaths(withContent);
       setSelected((prev) => prev ?? withContent[0]?.book_id ?? null);
     } catch {
+      setListError(tr("学习路径暂时无法读取，请重试。", "Learning paths could not load. Please retry."));
       setPaths([]);
     } finally {
       setLoadingList(false);
     }
-  }, []);
+  }, [tr]);
 
   useEffect(() => {
     loadList();
@@ -74,12 +79,16 @@ export default function MasteryPathPage() {
     }
     let cancelled = false;
     setLoadingDetail(true);
+    setDetailError("");
     fetchMasteryMap(selected)
       .then((result) => {
         if (!cancelled) setDetail(result);
       })
       .catch(() => {
-        if (!cancelled) setDetail(null);
+        if (!cancelled) {
+          setDetail(null);
+          setDetailError(tr("进度暂时无法读取，不影响选择学习内容。", "Progress could not load. You can still choose learning materials."));
+        }
       })
       .finally(() => {
         if (!cancelled) setLoadingDetail(false);
@@ -87,7 +96,7 @@ export default function MasteryPathPage() {
     return () => {
       cancelled = true;
     };
-  }, [selected]);
+  }, [selected, detailRetry, tr]);
 
   const handleDelete = useCallback(
     async (pathId: string) => {
@@ -135,8 +144,8 @@ export default function MasteryPathPage() {
           </div>
           <p className="mt-1 text-xs text-[var(--muted-foreground)]">
             {tr(
-              "掌握式学习：硬门槛 + 间隔复习",
-              "Mastery-based learning: hard gate + spaced review",
+                "自由选择学习内容，进度只作参考",
+                "Choose what to learn. Progress is a guide.",
             )}
           </p>
         </header>
@@ -144,6 +153,11 @@ export default function MasteryPathPage() {
           {loadingList ? (
             <div className="flex items-center justify-center py-8 text-[var(--muted-foreground)]">
               <Loader2 className="w-4 h-4 animate-spin" />
+            </div>
+          ) : listError ? (
+            <div className="px-2 py-3 text-sm" role="alert">
+              <p>{listError}</p>
+              <button className="mt-2 underline" onClick={loadList}>{tr("重试", "Retry")}</button>
             </div>
           ) : paths.length === 0 ? (
             <p className="px-2 py-3 text-xs text-[var(--muted-foreground)] leading-relaxed">
@@ -191,6 +205,14 @@ export default function MasteryPathPage() {
           <div className="flex items-center justify-center h-full text-[var(--muted-foreground)]">
             <Loader2 className="w-5 h-5 animate-spin" />
           </div>
+        ) : detailError ? (
+          <div className="p-6" role="alert">
+            <p>{detailError}</p>
+            <button className="mt-3 underline" onClick={() => setDetailRetry((n) => n + 1)}>{tr("重试", "Retry")}</button>
+            {selected?.startsWith("edu-") && (
+              <a className="ml-4 underline" href={`/practice?cv=${encodeURIComponent(selected.slice(4))}`}>{tr("讲义与主题", "Materials and topics")}</a>
+            )}
+          </div>
         ) : !detail ? (
           <div className="flex flex-col items-center justify-center h-full text-center px-6 text-[var(--muted-foreground)]">
             <GraduationCap className="w-10 h-10 mb-3 opacity-40" />
@@ -207,7 +229,9 @@ export default function MasteryPathPage() {
             zh={!!zh}
             tr={tr}
             onContinue={() =>
-              selected && router.push(newMasteryPathChatUrl(selected))
+              selected && (selected.startsWith("edu-")
+                ? window.location.assign(`/practice?cv=${encodeURIComponent(selected.slice(4))}`)
+                : router.push(newMasteryPathChatUrl(selected)))
             }
             onRedo={() => selected && handleRedo(selected)}
             onDelete={() => selected && handleDelete(selected)}
@@ -266,6 +290,7 @@ function MapView({
   onDelete: () => void;
 }) {
   const { map, next } = result;
+  const education = result.book_id.startsWith("edu-");
   const pct = map.counts.total
     ? Math.round((map.counts.mastered / map.counts.total) * 100)
     : 0;
@@ -282,7 +307,7 @@ function MapView({
           <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
             <span>
               {map.counts.mastered}/{map.counts.total}{" "}
-              {tr("已掌握", "mastered")}
+              {education ? tr("已有练习证据", "with practice evidence") : tr("已掌握", "mastered")}
             </span>
             {map.due_reviews > 0 && (
               <span className="text-yellow-600">
@@ -297,7 +322,7 @@ function MapView({
             />
           </div>
         </div>
-        <div className="flex items-center gap-1.5 shrink-0">
+        {!education && <div className="flex items-center gap-1.5 shrink-0">
           <button
             onClick={onRedo}
             title={tr("重置进度", "Reset progress")}
@@ -312,7 +337,7 @@ function MapView({
           >
             <Trash2 className="w-4 h-4" />
           </button>
-        </div>
+        </div>}
       </div>
 
       {/* Next step */}
@@ -321,15 +346,15 @@ function MapView({
         className="mt-4 w-full text-left rounded-lg border border-[var(--border)] hover:border-[var(--primary)]/40 hover:bg-[var(--accent)] p-3 transition-colors cursor-pointer"
       >
         <div className="text-xs text-[var(--muted-foreground)]">
-          {tr("接下来", "Next")}
+          {education ? tr("自主学习", "Explore at your own pace") : tr("建议", "Suggestion")}
         </div>
         <div className="mt-0.5 text-sm font-medium text-[var(--foreground)]">
-          {next.action === "complete"
+          {education ? tr("选择讲义、主题或可选练习", "Choose materials, topics or optional practice") : next.action === "complete"
             ? tr(action.cn, action.en)
             : `${next.knowledge_point_name} — ${tr(action.cn, action.en)}`}
         </div>
         <div className="mt-1 text-xs text-[var(--primary)]">
-          {tr("在对话中继续辅导 →", "Continue tutoring in Chat →")}
+          {education ? tr("打开课程 →", "Open course →") : tr("在对话中继续辅导 →", "Continue tutoring in Chat →")}
         </div>
       </button>
 

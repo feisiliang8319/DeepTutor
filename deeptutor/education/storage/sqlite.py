@@ -93,14 +93,26 @@ def transaction(conn: sqlite3.Connection) -> Iterator[sqlite3.Connection]:
     instead of relying on sqlite3's implicit-transaction heuristics, which
     is what makes the migration/attempt failure-injection tests in this
     package's test suite possible to write deterministically."""
-    conn.execute("BEGIN IMMEDIATE")
+    # Repository batch imports may be composed into a whole-course import.
+    # A savepoint keeps the outer transaction's ownership intact.
+    nested = conn.in_transaction
+    if nested:
+        import uuid
+        savepoint = "education_" + uuid.uuid4().hex
+        conn.execute(f"SAVEPOINT {savepoint}")
+    else:
+        conn.execute("BEGIN IMMEDIATE")
     try:
         yield conn
     except BaseException:
-        conn.execute("ROLLBACK")
+        if nested:
+            conn.execute(f"ROLLBACK TO {savepoint}")
+            conn.execute(f"RELEASE {savepoint}")
+        else:
+            conn.execute("ROLLBACK")
         raise
     else:
-        conn.execute("COMMIT")
+        conn.execute(f"RELEASE {savepoint}" if nested else "COMMIT")
 
 
 def _table_exists(conn: sqlite3.Connection, name: str) -> bool:
@@ -119,7 +131,10 @@ def check_trigger_integrity(conn: sqlite3.Connection) -> frozenset[str]:
             "SELECT name FROM sqlite_master WHERE type = 'trigger'"
         ).fetchall()
     }
-    return frozenset(REQUIRED_TRIGGERS - present)
+    required = REQUIRED_TRIGGERS
+    if _table_exists(conn, "task_set_submissions"):
+        required = required | {"task_set_submissions_no_update", "task_set_submissions_no_delete"}
+    return frozenset(required - present)
 
 
 def _iter_statements(sql_text: str) -> Iterator[str]:

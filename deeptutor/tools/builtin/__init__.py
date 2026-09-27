@@ -299,7 +299,8 @@ class CurriculumLessonsTool(_PromptHintsMixin, BaseTool):
             return ToolResult(content=reason, metadata=result)
 
         rendered = "\n\n".join(
-            f"[{passage.get('lesson_key', '?')} · {passage.get('standards', '')}]\n"
+            f"[{passage.get('lesson_key', '?')} · {passage.get('standards', '')}"
+            f"{' · ' + passage['content_status'] if passage.get('content_status') else ''}]\n"
             f"{passage.get('text', '')}"
             for passage in passages
         )
@@ -309,6 +310,13 @@ class CurriculumLessonsTool(_PromptHintsMixin, BaseTool):
                 f"{len(result.get('lessons') or [])} lesson(s).\n\n{rendered}"
             ),
             metadata=result,
+            sources=[{
+                "type": "rag", "kb_name": kb_name,
+                "file_name": passage.get("source", ""),
+                "lesson_key": passage.get("lesson_key", ""),
+                "content_status": passage.get("content_status", ""),
+                "url": passage.get("lesson_url", ""),
+            } for passage in passages],
         )
 
 

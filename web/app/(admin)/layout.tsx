@@ -1,7 +1,10 @@
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <div className="min-h-screen bg-[var(--background)]">{children}</div>;
+import AccountShell from "@/components/layout/AccountShell";
+import { CapabilityAccessProvider } from "@/components/access/CapabilityAccessContext";
+
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <CapabilityAccessProvider>
+      <AccountShell area="management">{children}</AccountShell>
+    </CapabilityAccessProvider>
+  );
 }

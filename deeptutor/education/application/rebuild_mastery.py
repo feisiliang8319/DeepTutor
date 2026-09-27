@@ -26,10 +26,14 @@ the exact status arithmetic):
 * A judgment overrides its attempt's raw ``is_correct`` (a later verdict —
   e.g. an LLM grading a Feynman explanation — has the final say);
   ``PARTIAL`` is treated conservatively as not-correct.
-* A node can only reach ``mastered`` if the recency-weighted score clears
-  ``MASTERY_GATE`` *and* at least one ``SYSTEM_GRADED`` attempt is among
+* A node can only reach the current-practice ``mastered`` criterion if at
+  least three distinct items' latest usable evidence is correct, the
+  recency-weighted score clears ``MASTERY_GATE``,
+  *and* at least one ``SYSTEM_GRADED`` attempt is among
   the evidence — human-reported (e.g. paper_ref) correctness alone cannot
   carry a mastered verdict (P0-DESIGN.md §2.5).
+* This criterion does not establish delayed retention or transfer; those
+  evidence dimensions are exposed separately by ``learning_evidence``.
 * The most recent judgment on the node having low confidence also caps the
   status below ``mastered``, regardless of the score.
 """
@@ -42,6 +46,7 @@ import time
 import uuid
 
 from deeptutor.education.application import to_iso_timestamp
+from deeptutor.education.application.effective_grade import effective_correctness
 from deeptutor.education.domain.evidence import EvidenceStrength, JudgeKind, JudgmentRecord, Verdict
 from deeptutor.education.domain.learner import MasterySnapshot
 from deeptutor.education.storage.repositories import (
@@ -52,7 +57,7 @@ from deeptutor.education.storage.repositories import (
 from deeptutor.education.storage.sqlite import transaction
 from deeptutor.learning.mastery import compute_mastery
 
-POLICY_VERSION = "edu-p0-v1"
+POLICY_VERSION = "edu-distinct-correct-items-v3"
 
 # Mirrors deeptutor.learning.policy.QUANTITATIVE_GATE's default (0.9). Not
 # imported from there: coupling this package to deeptutor/learning is a
@@ -69,11 +74,7 @@ def _effective_correctness(is_correct: bool | None, judgment: JudgmentRecord | N
     """What one attempt actually contributes to the correctness tally,
     after a judgment (if any) has the final say. ``None`` means "not usable
     evidence yet" (ungraded, or awaiting review)."""
-    if judgment is None:
-        return is_correct
-    if judgment.verdict is Verdict.NEEDS_REVIEW:
-        return None
-    return judgment.verdict is Verdict.CORRECT
+    return effective_correctness(is_correct, judgment)
 
 
 @dataclass(frozen=True, slots=True)
@@ -107,6 +108,9 @@ def compute_node_mastery(
         latest_by_attempt[judgment.attempt_id] = judgment
 
     counted: list[bool] = []
+    # Repeated practice contributes to score, but cannot satisfy the
+    # minimum number of distinct items required for mastery.
+    independent: dict[str, bool] = {}
     has_strong_evidence = False
     touched = False
     needs_review_pending = False
@@ -121,7 +125,10 @@ def compute_node_mastery(
             touched = True
             continue
 
-        if judgment is not None and judgment.verdict is Verdict.NEEDS_REVIEW:
+        if judgment is not None and (
+            judgment.verdict is Verdict.NEEDS_REVIEW
+            or (judgment.confidence is not None and judgment.confidence < LOW_CONFIDENCE_FLOOR)
+        ):
             touched = True
             needs_review_pending = True
             continue
@@ -129,14 +136,16 @@ def compute_node_mastery(
         effective = _effective_correctness(attempt.is_correct, judgment)
         if effective is None:
             touched = True
+            needs_review_pending = True
             continue
 
         touched = True
         counted.append(effective)
+        independent[attempt.assessment_item_id] = effective
         if attempt.evidence_strength is EvidenceStrength.SYSTEM_GRADED:
             has_strong_evidence = True
 
-    latest_judgment_overall = max(all_judgments, key=lambda j: j.created_at, default=None)
+    latest_judgment_overall = all_judgments[-1] if all_judgments else None
     low_confidence_pending = (
         latest_judgment_overall is not None
         and latest_judgment_overall.confidence is not None
@@ -149,7 +158,7 @@ def compute_node_mastery(
         status = "new"
     elif needs_review_pending or low_confidence_pending:
         status = "learning"
-    elif score >= MASTERY_GATE and has_strong_evidence:
+    elif score >= MASTERY_GATE and has_strong_evidence and sum(independent.values()) >= 3:
         status = "mastered"
     else:
         status = "learning"
@@ -250,6 +259,10 @@ def append_human_judgment_and_recompute(
     with transaction(conn):
         JudgmentRepository(conn).insert(record)
         snapshot = rebuild_learner_node(conn, attempt.learner_id, attempt.knowledge_node_id)
+        # A delayed correction must replay using original answer times,
+        # rather than adding a new review at the time of the correction.
+        from deeptutor.education.application.record_attempt import rebuild_review_state
+        rebuild_review_state(conn, attempt.learner_id, attempt.knowledge_node_id)
     return snapshot
 
 

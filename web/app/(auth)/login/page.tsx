@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { login, fetchAuthStatus, checkIsFirstUser } from "@/lib/auth";
+import { accountDestination } from "@/lib/account-navigation";
 
 function LoginPageContent() {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ function LoginPageContent() {
     // If already authenticated, skip login
     fetchAuthStatus().then((status) => {
       if (status?.authenticated) {
-        router.replace(next);
+        window.location.replace(accountDestination(status, next));
         return;
       }
       // No users registered yet — send straight to the registration page
@@ -41,7 +42,13 @@ function LoginPageContent() {
     const result = await login(username, password);
 
     if (result.ok) {
-      router.replace(next);
+      const status = await fetchAuthStatus();
+      if (!status?.authenticated) {
+        setError(t("Unable to verify your account. Please retry."));
+        setLoading(false);
+        return;
+      }
+      window.location.replace(accountDestination(status, next));
     } else {
       setError(result.error ?? t("Login failed"));
       setLoading(false);

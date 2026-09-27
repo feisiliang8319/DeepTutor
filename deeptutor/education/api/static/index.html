@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Practice</title>
+<title>Learning</title>
 <style>
-  :root { color-scheme: light; }
+  :root { color-scheme: light; --action: #2563eb; --line: #d1d5db; --paper: #fff; --ink: #1c1f23; }
   body { margin: 0; font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
          background: #f6f7f9; color: #1c1f23; }
   main { max-width: 640px; margin: 0 auto; padding: 24px 20px 60px; }
@@ -60,25 +60,50 @@
               margin-top: 8px; white-space: pre-wrap; }
   .rev .kp { font-size: 12px; color: #6b7280; margin-top: 6px; }
   .todo { color: #b45309; }
+  select { width: 100%; box-sizing: border-box; padding: 12px; font: inherit; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  button.secondary { background: var(--paper); color: var(--action); border: 1px solid var(--line); }
+  button:focus-visible, select:focus-visible, a:focus-visible { outline: 3px solid var(--action); outline-offset: 3px; }
+  #pageError { color: #b91c1c; padding: 12px 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
 <main>
-  <h1 id="h1title">Practice</h1>
+  <h1 id="h1title">Learning</h1>
   <div class="sub" id="who"></div>
   <!-- 选了多门课才出现的课程切换条；只有一门时留空，界面和以前一样 -->
   <div class="sub" id="courseBar"></div>
+  <div id="pageError" role="alert" hidden></div>
 
-  <!-- 落地页：先问谁在用。这不是登录（Access 已经确认过是家里人），
-       只是让系统知道这次的作答该记在谁名下。 -->
+  <!-- Native account mode selects the server-verified profile automatically. -->
   <div id="pickView" style="display:none">
     <div class="card"><div class="node"><b>谁在用？</b></div>
       <div class="who-grid" id="people"></div>
     </div>
   </div>
 
-  <!-- 一次一组题，全部答完再提交；答案与讲解在提交之后的 reviewView 里给 -->
+  <div id="studyView" style="display:none">
+    <div class="card">
+      <div class="node"><b>Choose what to explore</b></div>
+      <p>先读讲义，或直接选择感兴趣的主题。练习是可选的，学习记录只提供建议，不锁定下一课。</p>
+      <div id="courseContent" aria-live="polite"></div>
+    </div>
+    <div class="card">
+      <label for="topic"><b>选择主题</b></label>
+      <p class="muted">没有先修闯关要求。暂无练习的主题仍可阅读相关讲义。</p>
+      <select id="topic"><option value="">正在读取主题…</option></select>
+      <div class="actions">
+        <button id="startPractice">开始可选练习</button>
+        <button id="resumePractice" class="secondary" hidden>继续未提交练习</button>
+        <button id="familyReview" class="secondary" hidden>家长复核与进度</button>
+      </div>
+      <p class="muted" id="topicHint"></p>
+    </div>
+  </div>
+
+  <!-- Optional exercise; leaving it never fabricates completed learning evidence. -->
   <div id="practiceView" style="display:none">
+    <button class="secondary backToStudy">返回讲义与主题</button>
     <div id="questions"></div>
     <div class="card">
       <button id="submit">提交这一组</button>
@@ -98,10 +123,11 @@
       <div class="verdict" id="score"></div>
     </div>
     <div id="reviewList"></div>
-    <div class="card"><button id="again">再来一组</button></div>
+    <div class="card actions"><button id="again">继续自选练习</button><button class="secondary backToStudy">返回讲义与主题</button></div>
   </div>
 
   <div id="parentView" style="display:none">
+    <button class="secondary backToStudy">讲义与学习内容</button>
     <div class="card">
       <div class="node"><b>待人工复核</b> <span class="muted">AI 判不了或没把握的作答</span></div>
       <div id="pending"></div>
@@ -115,13 +141,15 @@
 <script>
 const params = new URLSearchParams(location.search);
 const CVKEY = 'edu.cv';
-// 课表拿不到时的退路：回到本文件从前写死的那门课。宁可退回"只有数学"，
-// 也不能让孩子开屏看到空白。
-const FALLBACK_CV = 'cv-ccss-g4-1.0.0';
-let CV = params.get('cv') || localStorage.getItem(CVKEY) || FALLBACK_CV;
+// The enrolled course list validates this initial preference before use.
+let CV = params.get('cv') || localStorage.getItem(CVKEY);
 let courses = [];
 const KEY = 'edu.person';
 let person = null;   // {id, display_name, role}
+let signedIn = false;
+let allPeople = [];
+let openSetId = null;
+let selectedTopic = null;
 
 const $ = id => document.getElementById(id);
 // 凡是进 innerHTML 的动态值都过这里。孩子的作答是真正的用户输入：
@@ -131,12 +159,30 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g,
   c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 // 新增视图必须同时加进这张表，否则 show('新视图') 会把所有视图一起藏起来、
 // 且不报任何错（2026-08-21 实测踩到：复盘页写好了、内容也渲染了，就是不显示）。
-const show = v => ['pickView', 'practiceView', 'reviewView', 'parentView']
+const show = v => ['pickView', 'studyView', 'practiceView', 'reviewView', 'parentView']
   .forEach(x => $(x).style.display = x === v ? '' : 'none');
 
+function showError(error) {
+  $('pageError').textContent = error?.message || '暂时无法加载，请刷新重试。';
+  $('pageError').hidden = false;
+}
+async function apiFetch(url, options) {
+  const response = await window.fetch(url, {credentials: 'same-origin', ...options});
+  if (response.status === 401) {
+    location.href = '/login?next=%2Fpractice';
+    throw new Error('请登录后继续学习');
+  }
+  return response;
+}
+
 async function boot() {
-  const people = (await (await fetch('/api/edu/people')).json()).people;
-  const savedId = params.get('as') || localStorage.getItem(KEY);
+  const response = await apiFetch('/api/edu/people');
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.detail || '无法读取学习档案');
+  const people = data.people;
+  allPeople = people;
+  signedIn = data.account_authenticated;
+  const savedId = data.signed_in_profile_id || params.get('as') || localStorage.getItem(KEY);
   const saved = people.find(p => p.id === savedId);
   if (saved) return enter(saved, people);
 
@@ -144,26 +190,36 @@ async function boot() {
   people.forEach(p => {
     const b = document.createElement('button');
     b.className = 'who';
-    b.innerHTML = `${esc(p.display_name)}<small>${p.role === 'parent' ? '只看进度，不做题' : '开始练习'}</small>`;
-    b.onclick = () => enter(p, people);
+    b.innerHTML = `${esc(p.display_name)}<small>${p.role === 'parent' ? '讲义、进度与复核' : '选择讲义与主题'}</small>`;
+    b.onclick = () => enter(p, people).catch(showError);
     $('people').appendChild(b);
   });
   show('pickView');
 }
 
 function switcher(label) {
-  $('who').innerHTML = `${esc(label)} · <span class="switch" id="switchWho">换人</span>`;
-  $('switchWho').onclick = () => { localStorage.removeItem(KEY); location.href = location.pathname; };
+  $('who').innerHTML = `${esc(label)} · <a class="switch" id="switchWho" href="/login?next=%2Fpractice">${signedIn ? '切换账号' : '换人'}</a>`;
+  $('switchWho').onclick = async e => {
+    e.preventDefault();
+    try {
+      if (signedIn) {
+        const r = await apiFetch('/api/v1/auth/logout', {method: 'POST'});
+        if (!r.ok) throw new Error('暂时无法退出登录');
+      }
+      localStorage.removeItem(KEY);
+      location.href = signedIn ? '/login?next=%2Fpractice' : location.pathname;
+    } catch (error) { showError(error); }
+  };
 }
 
 // 课程来自 enrollments，不再写死。在这以前 enrollments 表运行时没有任何消费方：
 // 给谁选了课都不影响任何人看到什么。
 async function loadCourses() {
-  try {
-    const r = await fetch(`/api/edu/courses?learner_id=${encodeURIComponent(person.id)}`);
-    courses = r.ok ? (await r.json()).courses : [];
-  } catch (e) { courses = []; }
-  if (!courses.length) { CV = params.get('cv') || FALLBACK_CV; return; }
+  const r = await apiFetch(`/api/edu/courses?learner_id=${encodeURIComponent(person.id)}`);
+  const data = await r.json();
+  if (!r.ok) throw new Error(data.detail || '课程暂时无法读取');
+  courses = data.courses;
+  if (!courses.length) throw new Error('当前账号尚未选课，请由家长安排课程。');
   const want = params.get('cv') || localStorage.getItem(CVKEY);
   CV = courses.some(c => c.course_version_id === want) ? want : courses[0].course_version_id;
   localStorage.setItem(CVKEY, CV);
@@ -188,9 +244,51 @@ async function enter(p, people) {
   localStorage.setItem(KEY, p.id);
   await loadCourses();
   renderCourses();
-  if (p.role === 'parent') { switcher('家长视角'); show('parentView'); loadParent(people); }
-  else { switcher(p.display_name); loadSet(); loadProgress(); }
+  switcher(p.role === 'parent' ? '家长视角' : p.display_name);
+  await loadStudy();
 }
+
+async function loadStudy() {
+  $('pageError').hidden = true;
+  show('studyView');
+  await loadCourseContent();
+  const query = `learner_id=${encodeURIComponent(person.id)}&course_version_id=${encodeURIComponent(CV)}`;
+  const response = await apiFetch('/api/edu/topics?' + query);
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.detail || '主题暂时无法读取');
+  openSetId = data.open_set_id;
+  $('topic').innerHTML = '<option value="">请选择想探索的主题</option>' + data.topics.map(t =>
+    `<option value="${esc(t.id)}" ${t.practice_items ? '' : 'disabled'}>${esc(t.title)} · ${t.practice_items ? t.practice_items + ' 道可选练习' : '暂无练习'}</option>`).join('');
+  if (selectedTopic) $('topic').value = selectedTopic;
+  const parent = person.role === 'parent';
+  $('startPractice').hidden = parent;
+  $('resumePractice').hidden = parent || (!openSetId && !data.pending_submission);
+  $('resumePractice').textContent = data.pending_submission ? '查看已保存答案的判分' : '继续未提交练习';
+  $('familyReview').hidden = !parent;
+  $('topicHint').textContent = parent ? '家长可以查看讲义与进度，练习记录由学生自己的账号提交。' : '可以随时返回讲义、放下练习或更换主题。';
+}
+
+$('startPractice').onclick = async () => {
+  $('startPractice').disabled = true;
+  try {
+    const topic = $('topic').value;
+    if (!topic) { $('topic').focus(); throw new Error('先选择你想探索的主题。'); }
+    if (openSetId) {
+      const hasDraft = Array.from(document.querySelectorAll('#questions input')).some(i => i.type === 'radio' ? i.checked : i.value.trim());
+      if (hasDraft && !window.confirm('切换主题会放下当前未提交的答案。继续吗？')) return;
+      const skipped = await apiFetch('/api/edu/set/skip', {method:'POST', headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({learner_id:person.id,course_version_id:CV,set_id:openSetId})});
+      if (!skipped.ok) throw new Error((await skipped.json()).detail || '无法切换练习');
+      openSetId = null;
+    }
+    selectedTopic = topic;
+    await loadSet();
+  } catch (error) { showError(error); }
+  finally { $('startPractice').disabled = false; }
+};
+$('resumePractice').onclick = () => { selectedTopic = null; loadSet().catch(showError); };
+$('familyReview').onclick = () => { show('parentView'); loadParent(allPeople).catch(showError); };
+document.querySelectorAll('.backToStudy').forEach(button => button.onclick = () => loadStudy().catch(showError));
 
 // ---------- 孩子：一组题 ----------
 //
@@ -209,25 +307,60 @@ async function loadSet() {
   $('submitHint').textContent = '';
   $('submit').disabled = true;
   blankConfirms = 0;
+  $('pageError').hidden = true;
   // POST 不是 GET：发卷会在服务端落一行 task_sets，GET 语义上应当是安全的。
-  const r = await fetch(`/api/edu/set?learner_id=${encodeURIComponent(person.id)}`
-    + `&course_version_id=${encodeURIComponent(CV)}`, {method: 'POST'});
+  const r = await apiFetch(`/api/edu/set?learner_id=${encodeURIComponent(person.id)}`
+    + `&course_version_id=${encodeURIComponent(CV)}` + (selectedTopic ? `&topic_id=${encodeURIComponent(selectedTopic)}` : ''), {method: 'POST'});
   if (!r.ok) {
     $('questions').innerHTML = `<div class="card"><div class="prompt">Error ${r.status}</div></div>`;
     return;
   }
   const d = await r.json();
+  if (d.pending_submission) {
+    const recovered = await apiFetch('/api/edu/set/recover', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({learner_id: person.id, course_version_id: CV, set_id: d.set_id}),
+    });
+    const result = await recovered.json();
+    if (recovered.ok) {
+      renderReview(result);
+      await loadProgress();
+    } else {
+      $('questions').innerHTML = `<div class="card"><div class="prompt">${esc(result.detail || '已保存作答，判分尚未完成')}</div><button id="retrySaved">重试已保存的作答</button></div>`;
+      $('retrySaved').onclick = loadSet;
+    }
+    return;
+  }
   setItems = d.items || [];
   setId = d.set_id;
+  openSetId = setId;
   if (!setItems.length) {
     $('questions').innerHTML = '<div class="card"><div class="prompt">'
-      + (d.done ? '🎉 Everything is mastered.' : esc(d.message || '暂时没有可做的题'))
+      + esc(d.message || '暂时没有可做的题，可以返回讲义或选择其他主题。')
       + '</div></div>';
     return;
   }
   $('questions').innerHTML = setItems.map(renderQuestion).join('');
   wireOptions();
   $('submit').disabled = false;
+  await loadProgress();
+}
+
+async function loadCourseContent() {
+  const query = `learner_id=${encodeURIComponent(person.id)}&course_version_id=${encodeURIComponent(CV)}`;
+  try {
+    const [lr, rr] = await Promise.all([apiFetch('/api/edu/lessons?' + query), apiFetch('/api/edu/readiness?' + query)]);
+    if (!lr.ok || !rr.ok) throw new Error('课程材料状态暂时不可用');
+    const [l, r] = await Promise.all([lr.json(), rr.json()]);
+    const links = l.lessons.map(x => `<p><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)} · 讲解与例题</a></p>`).join('');
+    $('courseContent').innerHTML = `<div class="node"><b>Learning materials</b>${r.content_mode === 'trial' ? ' · 内容试用' : ''}</div>`
+      + (links || '<p class="muted">本课程的讲解材料尚未发布。</p>')
+      + (r.gaps.length ? `<details><summary>${r.gaps.length} 个主题暂未提供可选练习</summary><ul>${r.gaps.map(g => `<li>${esc(g.title)}</li>`).join('')}</ul></details>` : '');
+  } catch (e) { $('courseContent').textContent = e.message; }
+}
+
+function renderFigure(url, i) {
+  return url ? `<figure style="margin:1rem 0"><img class="question-figure" src="${esc(url)}" alt="Diagram for question ${i + 1}" style="display:block;max-width:100%;height:auto"><figcaption><a href="${esc(url)}" target="_blank" rel="noopener">放大查看图形</a></figcaption></figure>` : '';
 }
 
 function renderQuestion(item, i) {
@@ -246,6 +379,7 @@ function renderQuestion(item, i) {
     <div class="qnum">Question ${i + 1} / ${setItems.length}</div>
     ${kp}
     <div class="prompt">${esc(item.prompt)}</div>
+    ${renderFigure(item.figure_url, i)}
     ${body}
     ${item.attribution ? `<div class="attrib">${esc(item.attribution)}</div>` : ''}
   </div>`;
@@ -285,7 +419,7 @@ async function submitSet() {
   }
   $('submit').disabled = true;
   $('submitHint').textContent = '判分中…';
-  const r = await fetch('/api/edu/set/submit', {
+  const r = await apiFetch('/api/edu/set/submit', {
     method: 'POST', headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({learner_id: person.id, course_version_id: CV, set_id: setId, answers}),
   });
@@ -327,6 +461,7 @@ function renderReview(d) {
     return `<div class="card"><div class="rev ${cls}">
       <div class="qnum">Question ${i + 1} · ${mark}</div>
       <div class="q">${esc(r.prompt)}</div>
+      ${renderFigure(r.figure_url, i)}
       <div class="line">你的答案：${label(r.your_response)}</div>
       ${r.needs_judgment ? '' : `<div class="line">正确答案：${label(r.correct_answer)}</div>`}
       ${exp}${kp}
@@ -335,21 +470,35 @@ function renderReview(d) {
   show('reviewView');
 }
 
+function evidenceLabel(e) {
+  if (!e) return '';
+  return `不同题答对 ${e.distinct_correct_items} · 间隔 ${e.delay_hours} 小时后答对 ${e.delayed_correct_items} · 迁移尚未评估`
+    + (e.model_judged_attempts ? ' · 模型评分尚未校准' : '');
+}
+function practiceStatus(status) {
+  return ({mastered:'当前练习达标', learning:'练习中', new:'尚未作答'})[status] || status;
+}
 async function loadProgress() {
-  const r = await fetch(`/api/edu/progress?learner_id=${encodeURIComponent(person.id)}&course_version_id=${encodeURIComponent(CV)}`);
+  const r = await apiFetch(`/api/edu/progress?learner_id=${encodeURIComponent(person.id)}&course_version_id=${encodeURIComponent(CV)}`);
   if (!r.ok) return;
   const d = await r.json();
   const total = d.nodes.length, mastered = d.counts.mastered || 0;
-  $('counts').textContent = `${mastered}/${total} mastered · ${d.counts.learning || 0} learning`;
+  $('counts').textContent = `${mastered}/${total} 当前练习达标 · ${d.counts.learning || 0} 练习中`;
   $('barFill').style.width = `${total ? (mastered / total * 100) : 0}%`;
   $('progress').innerHTML = d.nodes.filter(n => n.status !== 'new').slice(0, 12)
-    .map(n => `<tr><td>${esc(n.title)}</td><td class="s">${esc(n.status)}${n.score !== null ? ' · ' + n.score : ''}</td></tr>`)
+    .map(n => `<tr><td>${esc(n.title)}<div class="muted">${esc(evidenceLabel(n.learning_evidence))}</div></td><td class="s">${esc(practiceStatus(n.status))}${n.score !== null ? ' · ' + n.score : ''}</td></tr>`)
     .join('') || '<tr><td class="s">还没有作答</td></tr>';
 }
 
 // ---------- 家长：只读 ----------
 async function loadParent(people) {
-  const q = await (await fetch(`/api/edu/review-queue?course_version_id=${encodeURIComponent(CV)}`)).json();
+  const response = await apiFetch(`/api/edu/review-queue?course_version_id=${encodeURIComponent(CV)}`);
+  const q = await response.json();
+  if (!response.ok) {
+    $('pending').textContent = q.detail || '家长身份验证失败';
+    $('parentProgress').textContent = '';
+    return;
+  }
   $('pending').innerHTML = q.pending.length ? q.pending.map(p => `
     <div class="pending" data-attempt="${esc(p.attempt_id)}">
       <div class="q"><b>${esc(p.learner_id)}</b> · ${esc(p.node)} · ${esc(p.submitted_at.slice(0, 16).replace('T', ' '))}</div>
@@ -369,7 +518,7 @@ async function loadParent(people) {
     btn.onclick = async () => {
       const box = btn.closest('.pending');
       box.querySelectorAll('.j').forEach(b => b.disabled = true);
-      const r = await fetch('/api/edu/review', {
+      const r = await apiFetch('/api/edu/review', {
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           reviewer: person.id, attempt_id: box.dataset.attempt, verdict: btn.dataset.v
@@ -377,7 +526,7 @@ async function loadParent(people) {
       });
       const d = await r.json();
       box.querySelector('.result').textContent = r.ok
-        ? `已记录：${d.verdict} → ${d.mastery.status} ${d.mastery.score.toFixed(2)}`
+        ? `已记录：${d.verdict} → ${practiceStatus(d.mastery.status)} ${d.mastery.score.toFixed(2)}`
         : `失败：${d.detail}`;
       if (r.ok) setTimeout(() => loadParent(people), 1200);
     };
@@ -385,18 +534,18 @@ async function loadParent(people) {
 
   const learners = people.filter(p => p.role === 'learner');
   const blocks = await Promise.all(learners.map(async p => {
-    const d = await (await fetch(`/api/edu/progress?learner_id=${encodeURIComponent(p.id)}&course_version_id=${encodeURIComponent(CV)}`)).json();
+    const d = await (await apiFetch(`/api/edu/progress?learner_id=${encodeURIComponent(p.id)}&course_version_id=${encodeURIComponent(CV)}`)).json();
     const rows = d.nodes.filter(n => n.status !== 'new')
-      .map(n => `<tr><td>${esc(n.title)}</td><td class="s">${esc(n.status)}${n.score !== null ? ' · ' + n.score : ''}</td></tr>`).join('');
-    return `<div class="node" style="margin-top:14px"><b>${esc(p.display_name)}</b> · ${d.counts.mastered || 0} mastered · ${d.counts.learning || 0} learning</div>
+      .map(n => `<tr><td>${esc(n.title)}<div class="muted">${esc(evidenceLabel(n.learning_evidence))}</div></td><td class="s">${esc(practiceStatus(n.status))}${n.score !== null ? ' · ' + n.score : ''}</td></tr>`).join('');
+    return `<div class="node" style="margin-top:14px"><b>${esc(p.display_name)}</b> · ${d.counts.mastered || 0} 当前练习达标 · ${d.counts.learning || 0} 练习中</div>
             <table>${rows || '<tr><td class="s">还没有作答</td></tr>'}</table>`;
   }));
   $('parentProgress').innerHTML = blocks.join('');
 }
 
-$('submit').addEventListener('click', submitSet);
-$('again').addEventListener('click', () => { $('submit').textContent = '提交这一组'; loadSet(); });
-boot();
+$('submit').addEventListener('click', () => submitSet().catch(error => { $('submit').disabled = false; showError(error); }));
+$('again').addEventListener('click', () => loadStudy().catch(showError));
+boot().catch(showError);
 </script>
 </body>
 </html>

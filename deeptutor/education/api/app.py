@@ -11,31 +11,33 @@ server log and the child's browser (2026-08-13); this loop must not
 recreate that. Grading happens server-side and only the verdict crosses
 the wire.
 
-Authentication is deliberately **not** here. The service is reachable only
-via Cloudflare Access (three whitelisted family addresses) or from
-localhost; anyone who gets this far is already the household. ``learner_id``
-therefore says *which child is practising*, which is a choice, not a claim
-to defend — a second credential in front of the first one would only add
-something to leak, screenshot and revoke.
+The outer household access control protects entry. Parent judgments additionally
+require a verified identity mapped by server configuration to a parent profile;
+choosing a profile in the browser never grants review permission.
 """
 
 from __future__ import annotations
 
 from datetime import datetime
 import json
+import hashlib
 import os
+import re
 from pathlib import Path
 import sqlite3
 import time
 from typing import Any
 import uuid
 
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from pydantic import BaseModel, Field
 
 from deeptutor.education.application import to_iso_timestamp
-from deeptutor.education.application.grading_policy import needs_judgment
+from deeptutor.education.application.grading_policy import needs_judgment, is_servable
+from deeptutor.education.application.effective_grade import effective_correctness
+from deeptutor.education.application.content_readiness import admitted, course_readiness
+from deeptutor.education.application.learning_evidence import learning_evidence
 from deeptutor.education.application.llm_judge import (
     DEFAULT_MODEL,
     JudgeClient,
@@ -50,12 +52,13 @@ from deeptutor.education.application.record_attempt import (
     record_attempt,
 )
 from deeptutor.education.application.select_item import select_next_item
-from deeptutor.education.application.select_objective import list_available_objectives
+from deeptutor.education.application.select_objective import SelectedObjective
 from deeptutor.education.domain.course import ItemStatus
 from deeptutor.education.domain.evidence import Verdict
 from deeptutor.education.storage import sqlite as edu_sqlite
 from deeptutor.education.storage.repositories import (
     AssessmentItemRepository,
+    JudgmentRepository,
     EnrollmentRepository,
     KnowledgeGraphRepository,
     LearnerRepository,
@@ -110,6 +113,12 @@ class SetSubmission(BaseModel):
     answers: list[SetAnswer] = Field(min_length=1)
 
 
+class RecoverSubmission(BaseModel):
+    learner_id: str = Field(min_length=1)
+    course_version_id: str = Field(min_length=1)
+    set_id: str = Field(min_length=1)
+
+
 class AttemptRequest(BaseModel):
     learner_id: str = Field(min_length=1)
     course_version_id: str = Field(min_length=1)
@@ -125,19 +134,70 @@ def create_app(
     judge: JudgeClient | None = None,
     judge_ref: str = DEFAULT_MODEL,
     set_size: int = DEFAULT_SET_SIZE,
+    content_mode: str | None = None,
+    parent_identity=None,
+    account_access=None,
 ) -> FastAPI:
     """    ``judge`` enables open-response items. Without one they are not served
     at all: an unjudgeable question is worse than no question, because the
     attempt lands as permanently unresolved evidence.
     """
+    content_mode = content_mode or os.environ.get("EDU_CONTENT_MODE", "production")
+    if content_mode not in {"production", "trial"}:
+        raise ValueError("EDU_CONTENT_MODE must be production or trial")
+    if account_access is None:
+        from deeptutor.education.api.account_identity import from_environment as account_from_environment
+        account_access = account_from_environment()
+    if parent_identity is None and account_access is None:
+        from deeptutor.education.api.parent_identity import from_environment
+        parent_identity = from_environment()
     app = FastAPI(title="DeepTutor Education Loop", docs_url=None, redoc_url=None)
+
+    @app.middleware('http')
+    async def account_boundary(request: Request, call_next):
+        if account_access is not None:
+            try:
+                request.state.education_account = account_access.authenticate(request)
+                if (request.method in {'GET', 'HEAD'} and request.url.path in {'/', '/practice'}
+                        and request.state.education_account.role == 'admin'):
+                    return RedirectResponse('/admin', status_code=303,
+                                            headers={'Cache-Control': 'private, no-store'})
+                if request.method not in {'GET', 'HEAD', 'OPTIONS'}:
+                    # Cookie authentication must not admit cross-site writes.
+                    origin = request.headers.get('origin')
+                    expected_origin = os.environ.get('EDU_PUBLIC_ORIGIN', str(request.base_url)).rstrip('/')
+                    if ((not origin and not request.headers.get('authorization'))
+                            or request.headers.get('sec-fetch-site') == 'cross-site'
+                            or (origin and origin.rstrip('/') != expected_origin)):
+                        raise HTTPException(403, '不接受跨站写入')
+            except HTTPException as exc:
+                if exc.status_code == 401 and request.url.path in {'/', '/practice'}:
+                    return RedirectResponse('/login?next=%2Fpractice', status_code=303)
+                return JSONResponse({'detail': exc.detail}, status_code=exc.status_code,
+                                    headers={'Cache-Control': 'no-store'})
+        response = await call_next(request)
+        if account_access is not None:
+            response.headers['Cache-Control'] = 'private, no-store'
+        return response
 
     def connect() -> sqlite3.Connection:
         # One connection per request: SQLite objects are not safe to share
         # across threads, and the app is single-family scale.
         return edu_sqlite.open_database(db_path)
 
-    def require_learner(conn: sqlite3.Connection, learner_id: str) -> str:
+    def account_profiles(conn, request):
+        account = request.state.education_account
+        return [r['id'] for r in conn.execute(
+            'SELECT id FROM learner_profiles WHERE deep_tutor_user_id=?', (account.username,))]
+
+    def require_learner(conn: sqlite3.Connection, learner_id: str, request: Request, *, write=False) -> str:
+        if account_access is not None:
+            profiles = account_profiles(conn, request)
+            parent = any(p.startswith(PARENT_PREFIX) for p in profiles)
+            if learner_id not in profiles and (write or not parent):
+                raise HTTPException(403, '只能访问当前账号的学习记录')
+            if write and parent:
+                raise HTTPException(403, '家长账号不代替学生提交作答')
         if LearnerRepository(conn).get(learner_id) is None:
             raise HTTPException(status_code=404, detail=f"unknown learner {learner_id!r}")
         return learner_id
@@ -159,14 +219,22 @@ def create_app(
             )
 
     @app.get("/api/edu/people")
-    def people() -> dict[str, Any]:
+    def people(request: Request) -> dict[str, Any]:
         """落地页用：谁在用这台设备。不是登录，是选身份。"""
         conn = connect()
         try:
             rows = conn.execute(
                 "SELECT id, display_name FROM learner_profiles ORDER BY id"
             ).fetchall()
+            own = account_profiles(conn, request) if account_access is not None else []
+            if account_access is not None:
+                if not own:
+                    raise HTTPException(403, '当前账号尚未关联学习档案')
+                if not any(p.startswith(PARENT_PREFIX) for p in own):
+                    rows = [r for r in rows if r['id'] in own]
             return {
+                'signed_in_profile_id': own[0] if own else None,
+                'account_authenticated': account_access is not None,
                 "people": [
                     {
                         "id": r["id"],
@@ -180,7 +248,7 @@ def create_app(
             conn.close()
 
     @app.get("/api/edu/courses")
-    def courses(learner_id: str) -> dict[str, Any]:
+    def courses(learner_id: str, request: Request) -> dict[str, Any]:
         """这个人选了哪几门课。
 
         在此之前 enrollments 表在运行时**一个消费方都没有**（只有测试和建库脚本
@@ -190,7 +258,7 @@ def create_app(
         """
         conn = connect()
         try:
-            require_learner(conn, learner_id)
+            require_learner(conn, learner_id, request)
             rows = conn.execute(
                 """
                 SELECT cv.id AS course_version_id, c.title, c.subject_key, c.level
@@ -206,8 +274,142 @@ def create_app(
         finally:
             conn.close()
 
+    def require_parent(request: Request, conn):
+        if account_access is not None:
+            parents = [p for p in account_profiles(conn, request) if p.startswith(PARENT_PREFIX)]
+            if len(parents) != 1:
+                raise HTTPException(403, '当前登录账号没有家长复核权限')
+            return parents[0]
+        if parent_identity is None:
+            raise HTTPException(503, "家长复核身份尚未配置；切换使用者不授予裁定权限")
+        reviewer = parent_identity(request)
+        if not reviewer or not reviewer.startswith(PARENT_PREFIX):
+            raise HTTPException(403, "需要经过验证的家长身份")
+        require_learner(conn, reviewer, request)
+        return reviewer
+
+    def lesson_catalog():
+        path = STATIC_DIR / "lessons" / "curriculum_index.json"
+        return json.loads(path.read_text())["lessons"]
+
+    def lesson_allowed(meta):
+        if content_mode == "trial" and meta.get("status") == "candidate":
+            return True
+        return (meta.get("status") == "production" and bool(meta.get("reviewer"))
+                and bool(meta.get("reviewed_at")) and meta.get("reviewed_sha256") == meta.get("sha256"))
+
+    @app.get("/api/edu/lessons")
+    def lessons(learner_id: str, course_version_id: str, request: Request):
+        conn = connect()
+        try:
+            require_learner(conn, learner_id, request)
+            require_enrollment(conn, learner_id, course_version_id)
+            course = conn.execute("SELECT c.subject_key,c.level FROM courses c JOIN course_versions v ON v.course_id=c.id WHERE v.id=?", (course_version_id,)).fetchone()
+            codes = {n.code for n in KnowledgeGraphRepository(conn).list_nodes(course_version_id)}
+            entries = []
+            for key, meta in lesson_catalog().items():
+                if (lesson_allowed(meta) and meta["course"] == dict(course)
+                        and codes.intersection(meta["node_codes"])):
+                    entries.append({"id": key, "title": meta["unit_title"],
+                                    "url": f"/api/edu/lessons/{key}", "status": meta["status"],
+                                    "standards": meta["standards"]})
+            return {"lessons": entries, "content_mode": content_mode}
+        finally:
+            conn.close()
+
+    def verified_lesson(lesson_id: str):
+        if not re.fullmatch(r"[a-zA-Z0-9_-]{1,100}", lesson_id):
+            raise HTTPException(404, "lesson not found")
+        meta = lesson_catalog().get(lesson_id)
+        if meta is None or not lesson_allowed(meta):
+            raise HTTPException(404, "lesson not available")
+        path = STATIC_DIR / "lessons" / f"{lesson_id}.html"
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != meta["sha256"]:
+            raise HTTPException(503, "lesson asset does not match its release")
+        return meta, path
+
+    @app.get("/api/edu/lessons/{lesson_id}/source")
+    def lesson_source(lesson_id: str):
+        from fastapi.responses import PlainTextResponse
+        from .lesson_source import export_lesson_source
+
+        meta, path = verified_lesson(lesson_id)
+        return PlainTextResponse(
+            export_lesson_source(lesson_id, meta, path.read_text(encoding="utf-8")),
+            media_type="text/markdown",
+            headers={"Content-Disposition": f'attachment; filename="deeptutor-trial-{lesson_id}.md"',
+                     "X-Content-Type-Options": "nosniff", "Cache-Control": "private, no-store"},
+        )
+
+    @app.get("/api/edu/lessons/{lesson_id}")
+    def lesson_document(lesson_id: str):
+        _, path = verified_lesson(lesson_id)
+        return FileResponse(path, media_type="text/html", headers={
+            "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'self'",
+            "X-Content-Type-Options": "nosniff",
+        })
+
+    @app.get("/api/edu/readiness")
+    def readiness(learner_id: str, course_version_id: str, request: Request):
+        conn = connect()
+        try:
+            require_learner(conn, learner_id, request)
+            require_enrollment(conn, learner_id, course_version_id)
+            return course_readiness(conn, course_version_id, content_mode=content_mode,
+                                    judge_available=judge is not None)
+        finally:
+            conn.close()
+
+    @app.get('/api/edu/topics')
+    def topics(learner_id: str, course_version_id: str, request: Request):
+        conn = connect()
+        try:
+            require_learner(conn, learner_id, request)
+            require_enrollment(conn, learner_id, course_version_id)
+            counts = {}
+            for item in AssessmentItemRepository(conn).list_for_version(course_version_id):
+                if admitted(item, content_mode) and is_servable(item, judge_available=judge is not None):
+                    counts[item.knowledge_node_id] = counts.get(item.knowledge_node_id, 0) + 1
+            current = conn.execute(
+                'SELECT id FROM task_sets WHERE learner_id=? AND course_version_id=? '
+                'AND submitted_at IS NULL AND skipped_at IS NULL', (learner_id, course_version_id),
+            ).fetchone()
+            pending = conn.execute(
+                'SELECT 1 FROM task_sets t JOIN task_set_submissions s ON s.set_id=t.id '
+                'WHERE t.learner_id=? AND t.course_version_id=? AND EXISTS ('
+                'SELECT 1 FROM json_each(t.item_ids_json) i WHERE NOT EXISTS ('
+                "SELECT 1 FROM student_attempts a WHERE a.id=t.id || ':' || i.value)) LIMIT 1",
+                (learner_id, course_version_id),
+            ).fetchone()
+            return {'learning_mode': 'free', 'open_set_id': current['id'] if current else None,
+                    'pending_submission': pending is not None,
+                    'topics': [{'id': node.id, 'code': node.code, 'title': node.title,
+                                'practice_items': counts.get(node.id, 0)}
+                               for node in KnowledgeGraphRepository(conn).list_nodes(course_version_id)]}
+        finally:
+            conn.close()
+
+    @app.post('/api/edu/set/skip')
+    def skip_set(payload: RecoverSubmission, request: Request):
+        conn = connect()
+        try:
+            require_learner(conn, payload.learner_id, request, write=True)
+            require_enrollment(conn, payload.learner_id, payload.course_version_id)
+            with edu_sqlite.transaction(conn):
+                changed = conn.execute(
+                    'UPDATE task_sets SET skipped_at=? WHERE id=? AND learner_id=? AND course_version_id=? '
+                    'AND submitted_at IS NULL AND skipped_at IS NULL AND NOT EXISTS '
+                    '(SELECT 1 FROM task_set_submissions WHERE set_id=task_sets.id)',
+                    (to_iso_timestamp(time.time()), payload.set_id, payload.learner_id, payload.course_version_id),
+                ).rowcount
+                if changed != 1:
+                    raise HTTPException(409, '已提交或已离开的练习不能再次跳过；已保存答案仍保留')
+            return {'skipped': True, 'set_id': payload.set_id}
+        finally:
+            conn.close()
+
     @app.get("/api/edu/review-queue")
-    def review_queue(course_version_id: str) -> dict[str, Any]:
+    def review_queue(course_version_id: str, request: Request) -> dict[str, Any]:
         """待大人看的作答：LLM 判不了或没把握的那些。
 
         家长视角的实际用途 —— 没有这个，``needs_review`` 只是数据库里一个
@@ -215,6 +417,7 @@ def create_app(
         """
         conn = connect()
         try:
+            require_parent(request, conn)
             # "待复核" = 确定性判分给不出结果，且**最新一条**判定也没解决它。
             #
             # 判据不能只看 a.is_correct：student_attempts 是 append-only，人的
@@ -227,10 +430,8 @@ def create_app(
                 WITH latest AS (
                     SELECT j.attempt_id, j.verdict, j.confidence, j.rationale
                     FROM judgment_records j
-                    JOIN (
-                        SELECT attempt_id, MAX(created_at) AS created_at
-                        FROM judgment_records GROUP BY attempt_id
-                    ) m ON m.attempt_id = j.attempt_id AND m.created_at = j.created_at
+                    WHERE j.rowid = (SELECT j2.rowid FROM judgment_records j2
+                        WHERE j2.attempt_id=j.attempt_id ORDER BY j2.created_at DESC, j2.rowid DESC LIMIT 1)
                 )
                 SELECT a.id AS attempt_id, a.learner_id, a.response, a.submitted_at,
                        i.prompt, n.title AS node_title,
@@ -240,8 +441,8 @@ def create_app(
                 JOIN knowledge_nodes n ON n.id = a.knowledge_node_id
                 LEFT JOIN latest ON latest.attempt_id = a.id
                 WHERE a.course_version_id = ?
-                  AND a.is_correct IS NULL
-                  AND (latest.verdict IS NULL OR latest.verdict = 'needs_review')
+                  AND ((a.is_correct IS NULL AND latest.verdict IS NULL)
+                       OR latest.verdict = 'needs_review' OR latest.confidence < 0.6)
                 ORDER BY a.submitted_at DESC
                 LIMIT 50
                 """,
@@ -268,7 +469,7 @@ def create_app(
             conn.close()
 
     @app.post("/api/edu/review")
-    def review(payload: ReviewRequest) -> dict[str, Any]:
+    def review(payload: ReviewRequest, request: Request) -> dict[str, Any]:
         """人类裁定一条 needs_review 的作答，并立即重算掌握度。
 
         判定是**追加**不是修改：之前那条 AI 判定原样留在
@@ -277,8 +478,8 @@ def create_app(
         """
         conn = connect()
         try:
-            require_learner(conn, payload.reviewer)
-            if not payload.reviewer.startswith(PARENT_PREFIX):
+            reviewer = require_parent(request, conn)
+            if payload.reviewer != reviewer:
                 raise HTTPException(
                     status_code=403, detail="只有家长账号可以裁定作答"
                 )
@@ -286,7 +487,7 @@ def create_app(
                 snapshot = append_human_judgment_and_recompute(
                     conn,
                     attempt_id=payload.attempt_id,
-                    judge_ref=payload.reviewer,
+                    judge_ref=reviewer,
                     verdict=Verdict(payload.verdict),
                     # 人给的判定就是最终答案，不留置信度余地 —— 下游
                     # 的 low-confidence 封顶规则不该把它压回 learning。
@@ -332,21 +533,7 @@ def create_app(
         第四轮质检席 A-6：回读分支里 judgment 恒为 None，于是任何被 LLM 判过的
         题一进回读，判分依据就从复盘里消失了。
         """
-        row = conn.execute(
-            "SELECT verdict, confidence FROM judgment_records WHERE attempt_id = ? "
-            "ORDER BY created_at DESC LIMIT 1",
-            (attempt_id,),
-        ).fetchone()
-        return None if row is None else _StoredJudgment(row)
-
-    class _StoredJudgment:
-        def __init__(self, row):
-            self.verdict = _EnumLike(row["verdict"])
-            self.confidence = row["confidence"]
-
-    class _EnumLike:
-        def __init__(self, value):
-            self.value = value
+        return JudgmentRepository(conn).latest_for_attempt(attempt_id)
 
     class _ReplayedOutcome:
         """由已落库的作答重建的"评分结果"，形状与 record_attempt 的返回一致。
@@ -368,6 +555,18 @@ def create_app(
             self.is_correct = None if row["is_correct"] is None else bool(row["is_correct"])
             self.knowledge_node_id = row["knowledge_node_id"]
 
+    @app.get("/api/edu/figures/{figure_id}")
+    def practice_figure(figure_id: str):
+        if not re.fullmatch(r"[a-zA-Z0-9_-]{1,100}", figure_id):
+            raise HTTPException(status_code=404, detail="figure not found")
+        path = STATIC_DIR / "figures" / f"{figure_id}.svg"
+        if not path.is_file():
+            raise HTTPException(status_code=404, detail="figure not found")
+        return FileResponse(path, media_type="image/svg+xml", headers={
+            "Content-Security-Policy": "default-src 'none'; sandbox",
+            "X-Content-Type-Options": "nosniff",
+        })
+
     def _public_item(item, node) -> dict[str, Any]:
         """出题面。答案、讲解、rubric 一律不在这里。
 
@@ -376,6 +575,10 @@ def create_app(
         自己 JSON.parse，多一处出错的地方。
         """
         pub = item.to_public_payload()
+        figure_id = pub["figure_spec_id"]
+        if figure_id and (not re.fullmatch(r"[a-zA-Z0-9_-]{1,100}", figure_id)
+                          or not (STATIC_DIR / "figures" / f"{figure_id}.svg").is_file()):
+            raise HTTPException(status_code=503, detail="This item is missing its teaching figure")
         return {
             "id": pub["id"],
             "prompt": pub["prompt"],
@@ -383,13 +586,15 @@ def create_app(
             "difficulty": pub["difficulty"],
             "attribution": pub["attribution_text"],
             "figure_spec_id": pub["figure_spec_id"],
+            "figure_url": f"/api/edu/figures/{figure_id}" if figure_id else None,
             "choices": json.loads(pub["choices_json"]) if pub["choices_json"] else None,
             "node": {"code": node.code, "title": node.title,
                      "standard_code": node.standard_code},
         }
 
     @app.post("/api/edu/set")
-    def task_set(learner_id: str, course_version_id: str) -> dict[str, Any]:
+    def task_set(learner_id: str, course_version_id: str, request: Request,
+                 topic_id: str | None = None) -> dict[str, Any]:
         """发一组题；组由**服务端**发、服务端记。
 
         **是 POST 不是 GET**：这个端点会 INSERT 一行 task_sets。挂在 GET 上曾让
@@ -400,18 +605,35 @@ def create_app(
         自选"这一组就一道题"，交上去立刻拿答案，等于逐题即时反馈 —— 那正是
         Sol 要求去掉的东西（2026-08-21 第二轮质检席 G-1）。
 
-        同一门课有未交的组时，把原组原样发回去，不另抽一组：否则刷新页面就能
-        换一批题，"这组做完再讲"变成"挑到会做的为止"。
+        同一门课保留一组未交练习以便恢复。学生可以随时放下该组，换主题或阅读
+        讲义；放下练习不产生作答或掌握度证据。
         """
         conn = connect()
         try:
-            require_learner(conn, learner_id)
+            require_learner(conn, learner_id, request, write=True)
             require_enrollment(conn, learner_id, course_version_id)
+            nodes_by_id = {n.id: n for n in KnowledgeGraphRepository(conn).list_nodes(course_version_id)}
+            if topic_id is not None and topic_id not in nodes_by_id:
+                raise HTTPException(404, '所选主题不属于这门课程')
+
+            unfinished = conn.execute(
+                "SELECT t.id FROM task_sets t JOIN task_set_submissions s ON s.set_id=t.id "
+                "WHERE t.learner_id=? AND t.course_version_id=? AND EXISTS ("
+                "SELECT 1 FROM json_each(t.item_ids_json) i WHERE NOT EXISTS ("
+                "SELECT 1 FROM student_attempts a WHERE a.id=t.id || ':' || i.value)) "
+                "ORDER BY t.issued_at LIMIT 1", (learner_id, course_version_id),
+            ).fetchone()
+            # Recover saved grading when explicitly resuming. A delayed judge
+            # must never prevent the learner from choosing another topic.
+            if unfinished is not None and topic_id is None:
+                return {"done": False, "set_id": unfinished["id"], "items": [],
+                        "pending_submission": True,
+                        "message": "Your saved answers are waiting for grading to finish."}
 
             open_set = conn.execute(
                 """
                 SELECT id, item_ids_json FROM task_sets
-                WHERE learner_id = ? AND course_version_id = ? AND submitted_at IS NULL
+                WHERE learner_id = ? AND course_version_id = ? AND submitted_at IS NULL AND skipped_at IS NULL
                 ORDER BY issued_at DESC LIMIT 1
                 """,
                 (learner_id, course_version_id),
@@ -422,24 +644,41 @@ def create_app(
                          KnowledgeGraphRepository(conn).list_nodes(course_version_id)}
                 wanted = json.loads(open_set["item_ids_json"])
                 fetched = [items_repo.get(i) for i in wanted]
+                if topic_id is not None and any(it and it.knowledge_node_id != topic_id for it in fetched):
+                    raise HTTPException(409, {'message': '可以先放下未提交的练习，再选择其他主题',
+                                              'open_set_id': open_set['id']})
                 # 组里有题在发卷之后被下架/删掉了，就整组作废重发。
                 # 第四轮质检席 A-新2：原先照发不误，孩子答完提交时才在
                 # record_attempt 里炸出 "is retired and cannot be attempted"，
                 # 而那时这一组已经被标记成已交 —— 永久卡死、复盘丢失。
                 # 未作答的组删掉是安全的：没有任何作答记录引用它。
-                if any(it is None or it.status is ItemStatus.RETIRED for it in fetched):
+                if any(it is None or not admitted(it, content_mode) for it in fetched):
                     with conn:
                         conn.execute("DELETE FROM task_sets WHERE id = ?", (open_set["id"],))
                 else:
                     return {"done": False, "set_id": open_set["id"],
                             "items": [_public_item(it, nodes.get(it.knowledge_node_id))
                                       for it in fetched],
-                            "reissued": True, "skipped_empty_nodes": [], "message": None}
+                            "reissued": True, "skipped_empty_nodes": [], "content_mode": content_mode, "message": None}
 
-            objectives = list_available_objectives(conn, learner_id, course_version_id)
+            # Every topic is selectable, including one with unmet prerequisites
+            # or existing practice evidence. Recommendations never lock access.
+            objectives = [SelectedObjective(node, 'optional') for node in nodes_by_id.values()
+                          if topic_id is None or node.id == topic_id]
+            due_ids = [r["knowledge_node_id"] for r in conn.execute(
+                "SELECT r.knowledge_node_id FROM review_states r JOIN knowledge_nodes n "
+                "ON n.id=r.knowledge_node_id WHERE r.learner_id=? AND n.course_version_id=? "
+                "AND julianday(r.due_at)<=julianday(?) ORDER BY r.due_at, n.sort_order, n.id",
+                (learner_id, course_version_id, to_iso_timestamp(time.time())),
+            )]
+            if topic_id is None:
+                objectives = [SelectedObjective(nodes_by_id[i], "review") for i in due_ids] + [
+                    o for o in objectives if o.node.id not in due_ids]
+
             if not objectives:
                 return {"done": True, "set_id": None, "items": [],
-                        "message": "every node is mastered"}
+                        "state": "content_unavailable", "content_mode": content_mode,
+                        "message": "当前课程尚未提供主题。"}
 
             picked: list[dict[str, Any]] = []
             chosen_ids: list[str] = []
@@ -455,6 +694,7 @@ def create_app(
                     found = select_next_item(
                         conn, learner_id, course_version_id, candidate.node.id,
                         include_judgeable=judge is not None, exclude=set(chosen_ids),
+                        content_mode=content_mode,
                     )
                     if found is None:
                         if not chosen_ids and candidate.node.code not in skipped:
@@ -469,7 +709,8 @@ def create_app(
             if not picked:
                 return {"done": False, "set_id": None, "items": [],
                         "skipped_empty_nodes": skipped,
-                        "message": "no auto-gradable item on any unblocked node yet"}
+                        "state": "content_unavailable", "content_mode": content_mode,
+                        "message": "这个主题暂无可用练习；可以阅读讲义或选择其他主题。"}
 
             set_id = f"set-{uuid.uuid4().hex}"
             now = to_iso_timestamp(time.time())
@@ -489,7 +730,7 @@ def create_app(
                 # 请求先建好了，回读那一组重发即可（fail-closed 地回到正确路径）。
                 row = conn.execute(
                     "SELECT id, item_ids_json FROM task_sets WHERE learner_id = ? "
-                    "AND course_version_id = ? AND submitted_at IS NULL",
+                    "AND course_version_id = ? AND submitted_at IS NULL AND skipped_at IS NULL",
                     (learner_id, course_version_id),
                 ).fetchone()
                 if row is None:
@@ -497,19 +738,39 @@ def create_app(
                 items_repo = AssessmentItemRepository(conn)
                 nodes = {n.id: n for n in
                          KnowledgeGraphRepository(conn).list_nodes(course_version_id)}
+                fetched = [items_repo.get(i) for i in json.loads(row["item_ids_json"])]
+                if topic_id is not None and any(it and it.knowledge_node_id != topic_id for it in fetched):
+                    raise HTTPException(409, {'message': '可以先放下未提交的练习，再选择其他主题',
+                                              'open_set_id': row['id']})
                 reissued = [_public_item(it, nodes.get(it.knowledge_node_id))
-                            for it in (items_repo.get(i)
-                                       for i in json.loads(row["item_ids_json"]))
-                            if it is not None]
+                            for it in fetched if it is not None]
                 return {"done": False, "set_id": row["id"], "items": reissued,
-                        "reissued": True, "skipped_empty_nodes": [], "message": None}
+                        "reissued": True, "skipped_empty_nodes": [], "content_mode": content_mode, "message": None}
             return {"done": False, "set_id": set_id, "items": picked,
-                    "reissued": False, "skipped_empty_nodes": skipped, "message": None}
+                    "reissued": False, "skipped_empty_nodes": skipped, "content_mode": content_mode, "message": None}
         finally:
             conn.close()
 
+    @app.post("/api/edu/set/recover")
+    def recover_submission(payload: RecoverSubmission, request: Request) -> dict[str, Any]:
+        conn = connect()
+        try:
+            require_learner(conn, payload.learner_id, request, write=True)
+            row = conn.execute(
+                "SELECT s.answers_json, t.course_version_id FROM task_set_submissions s "
+                "JOIN task_sets t ON t.id=s.set_id WHERE t.id=? AND t.learner_id=?",
+                (payload.set_id, payload.learner_id),
+            ).fetchone()
+            if row is None:
+                raise HTTPException(status_code=404, detail="Saved submission not found")
+            require_enrollment(conn, payload.learner_id, row["course_version_id"])
+            answers = json.loads(row["answers_json"])
+        finally:
+            conn.close()
+        return submit_set(SetSubmission(**payload.model_dump(), answers=answers), request)
+
     @app.post("/api/edu/set/submit")
-    def submit_set(payload: SetSubmission) -> dict[str, Any]:
+    def submit_set(payload: SetSubmission, request: Request) -> dict[str, Any]:
         """整组提交，然后**才**给答案 + 讲解 + 关联知识点。
 
         这是全流程里唯一允许 `expected_answer` 出网线的出口，而且只在作答已经
@@ -518,7 +779,7 @@ def create_app(
         """
         conn = connect()
         try:
-            learner_id = require_learner(conn, payload.learner_id)
+            learner_id = require_learner(conn, payload.learner_id, request, write=True)
             if learner_id.startswith(PARENT_PREFIX):
                 raise HTTPException(
                     status_code=403,
@@ -540,6 +801,11 @@ def create_app(
                     status_code=404,
                     detail=f"没有发给 {learner_id!r} 的这一组题：{payload.set_id!r}",
                 )
+            if issued['skipped_at'] is not None:
+                raise HTTPException(409, '这组练习已放下，请重新选择主题')
+            require_enrollment(conn, learner_id, issued["course_version_id"])
+            if issued["course_version_id"] != payload.course_version_id:
+                raise HTTPException(status_code=400, detail="task set belongs to another course")
             issued_ids = list(json.loads(issued["item_ids_json"]))
             if set(seen) != set(issued_ids):
                 missing = sorted(set(issued_ids) - set(seen))
@@ -569,6 +835,8 @@ def create_app(
             # 落库之前先把整组过一遍：有一题不可作答（已下架/已删）就整组拒绝，
             # **在认领这一组之前**。否则会重演 A-新2：标记已交了，评分循环才炸。
             for _, item in resolved:
+                if issued["submitted_at"] is None and not admitted(item, content_mode):
+                    raise HTTPException(409, "题目已不符合当前内容准入条件，请重新领取题组")
                 if item.status is ItemStatus.RETIRED:
                     raise HTTPException(
                         status_code=409,
@@ -592,12 +860,27 @@ def create_app(
             # 掌握度被推进两次，其中一路的作答永久落库却永不可能再被读出
             # （回读按 learner_id + submitted_at 精确匹配，时间戳对不上）。
             # 双击提交按钮就能触发，不需要恶意脚本。
-            with conn:
+            with edu_sqlite.transaction(conn):
                 claimed = conn.execute(
                     "UPDATE task_sets SET submitted_at = ? WHERE id = ? "
-                    "AND submitted_at IS NULL",
+                    "AND submitted_at IS NULL AND skipped_at IS NULL",
                     (now, payload.set_id),
                 ).rowcount == 1
+                if not claimed and conn.execute('SELECT skipped_at FROM task_sets WHERE id=?',
+                                                (payload.set_id,)).fetchone()['skipped_at'] is not None:
+                    raise HTTPException(409, '这组练习已放下，请重新选择主题')
+                if claimed:
+                    conn.execute(
+                        "INSERT INTO task_set_submissions (set_id, answers_json, received_at) VALUES (?, ?, ?)",
+                        (payload.set_id, json.dumps([a.model_dump() for a in payload.answers]), now),
+                    )
+            durable = conn.execute("SELECT answers_json FROM task_set_submissions WHERE set_id=?",
+                                   (payload.set_id,)).fetchone()
+            if durable is not None:
+                # A retry can recover unfinished grading, but cannot replace
+                # any original response after answers have been disclosed.
+                resolved = [(SetAnswer(**a), items_repo.get(a["item_id"]))
+                            for a in json.loads(durable["answers_json"])]
             issued = conn.execute(
                 "SELECT * FROM task_sets WHERE id = ?", (payload.set_id,)
             ).fetchone()
@@ -688,14 +971,16 @@ def create_app(
                     "_node_id": item.knowledge_node_id,
                     "item_id": item.id,
                     "prompt": item.prompt,
+                    "figure_url": f"/api/edu/figures/{item.figure_spec_id}" if item.figure_spec_id else None,
                     # 回显落库的那条，不是这次 payload。
                     # 第三轮质检席 CRITICAL-3：复用同一个 client_attempt_id 配一段新
                     # 乱码，底层正确地保持首次作答不变（幂等），但响应把"新乱码 +
                     # 旧判分"拼在一起回吐，构成"乱打也算对"的展示层假象 —— 任何只信
                     # 这次响应、不回查库的下游（家长复盘页、截图取证）都会被骗。
                     "your_response": outcome.attempt.response,
-                    "is_correct": outcome.attempt.is_correct,
-                    "needs_judgment": outcome.attempt.is_correct is None,
+                    "is_correct": effective_correctness(outcome.attempt.is_correct, judgment),
+                    "raw_is_correct": outcome.attempt.is_correct,
+                    "needs_judgment": effective_correctness(outcome.attempt.is_correct, judgment) is None,
                     # ↓ 全组已落库，到这一步才允许出现
                     "correct_answer": item.expected_answer,
                     "choices": json.loads(item.choices_json) if item.choices_json else None,
@@ -725,6 +1010,7 @@ def create_app(
                 row["mastery"] = None if snapshot is None else {
                     "score": snapshot.score, "status": snapshot.status,
                 }
+                row["learning_evidence"] = learning_evidence(conn, learner_id, node_id)
                 row["review"] = None if review is None else {
                     "due_at": review.due_at, "reps": review.reps, "lapses": review.lapses,
                 }
@@ -743,10 +1029,10 @@ def create_app(
             conn.close()
 
     @app.get("/api/edu/progress")
-    def progress(learner_id: str, course_version_id: str) -> dict[str, Any]:
+    def progress(learner_id: str, course_version_id: str, request: Request) -> dict[str, Any]:
         conn = connect()
         try:
-            require_learner(conn, learner_id)
+            require_learner(conn, learner_id, request)
             require_enrollment(conn, learner_id, course_version_id)
             nodes = {n.id: n for n in KnowledgeGraphRepository(conn).list_nodes(course_version_id)}
             snapshots = {
@@ -763,6 +1049,7 @@ def create_app(
                         "standard_code": node.standard_code,
                         "status": snap.status if snap else "new",
                         "score": round(snap.score, 3) if snap else None,
+                        "learning_evidence": learning_evidence(conn, learner_id, node_id),
                     }
                 )
             counts: dict[str, int] = {}

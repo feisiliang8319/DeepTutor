@@ -18,6 +18,7 @@ from dataclasses import dataclass
 import sqlite3
 
 from deeptutor.education.application.grading_policy import is_servable
+from deeptutor.education.application.content_readiness import admitted
 from deeptutor.education.domain.course import AssessmentItem, ItemStatus
 from deeptutor.education.storage.repositories import AssessmentItemRepository
 
@@ -37,6 +38,7 @@ def select_next_item(
     *,
     include_judgeable: bool = False,
     exclude: Container[str] = (),
+    content_mode: str = "production",
 ) -> SelectedItem | None:
     """Least-attempted servable item on this node, ``None`` if none exist.
 
@@ -54,7 +56,7 @@ def select_next_item(
         item
         for item in AssessmentItemRepository(conn).list_for_version(course_version_id)
         if item.knowledge_node_id == knowledge_node_id
-        and item.status is not ItemStatus.RETIRED
+        and admitted(item, content_mode)
         # Servability is one question with one answer, and it lives in
         # grading_policy — "can anything mark this?" — not a type whitelist
         # plus a null check that disagreed with how grading actually works.

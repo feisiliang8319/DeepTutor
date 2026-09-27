@@ -12,6 +12,8 @@ export interface AuthStatusState {
   isAdmin: boolean;
   /** True until the first status fetch resolves. */
   loading: boolean;
+  /** Unavailable status is never treated as disabled authentication. */
+  error: boolean;
 }
 
 const INITIAL: AuthStatusState = {
@@ -19,6 +21,7 @@ const INITIAL: AuthStatusState = {
   authenticated: false,
   isAdmin: false,
   loading: true,
+  error: false,
 };
 
 /**
@@ -45,6 +48,7 @@ function loadAuthStatus(): Promise<AuthStatusState> {
         authenticated: Boolean(status?.authenticated),
         isAdmin: status?.role === "admin",
         loading: false,
+        error: status === null,
       }))
       .finally(() => {
         inflight = null;

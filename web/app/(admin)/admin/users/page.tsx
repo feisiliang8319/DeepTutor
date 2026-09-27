@@ -182,12 +182,12 @@ export default function AdminUsersPage() {
   const filteredUsers = filterUsersByQuery(users, query);
 
   return (
-    <div className="h-screen overflow-y-auto bg-[var(--background)] px-4 py-10 [scrollbar-gutter:stable]">
+    <div className="h-full overflow-y-auto bg-[var(--background)] px-4 py-10 [scrollbar-gutter:stable]">
       <div className="mx-auto max-w-3xl">
         {/* Header */}
         <div className="mb-8">
           <Link
-            href="/"
+            href="/admin"
             className="mb-4 inline-flex items-center gap-1.5 text-sm text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
           >
             <ArrowLeft size={16} />

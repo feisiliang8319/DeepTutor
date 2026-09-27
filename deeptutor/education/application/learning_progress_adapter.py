@@ -212,7 +212,7 @@ def sync_learner(
     progress = build_progress(
         conn, learner_id=learner_id, course_version_id=course_version_id, book_id=book
     )
-    store = LearningStore(root=learning_root)
+    store = LearningStore(root=learning_root, education_projection_writer=True)
     store.save(progress)
 
     return SyncReport(

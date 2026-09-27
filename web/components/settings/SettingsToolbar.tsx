@@ -10,7 +10,7 @@ import { useSettings } from "./SettingsContext";
 // Sticky toolbar above the sub-page content. Save Draft / Apply only show
 // when there's actually something to save — keeps the bar quiet for the
 // majority of sessions that just visit Appearance.
-export function SettingsToolbar() {
+export function SettingsToolbar({ allowTour = true }: { allowTour?: boolean }) {
   const { t } = useTranslation();
   const pathname = usePathname() ?? "";
   const storagePath = storagePathFor(pathname);
@@ -63,13 +63,13 @@ export function SettingsToolbar() {
         )}
       </p>
       <div className="flex items-center gap-2">
-        <button
+        {allowTour && <button
           onClick={startTour}
           className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--border)]/50 px-3 py-1.5 text-[12px] font-medium text-[var(--muted-foreground)] transition-colors hover:border-[var(--border)] hover:text-[var(--foreground)]"
         >
           <Rocket className="h-3 w-3" />
           {t("Tour")}
-        </button>
+        </button>}
         <button
           onClick={saveCatalog}
           disabled={saving || !hasUnsavedChanges}

@@ -1,6 +1,18 @@
 import type { AuthStatus } from "./auth";
 
-type Session = Pick<AuthStatus, "enabled" | "authenticated" | "role">;
+type Session = Pick<AuthStatus, "enabled" | "authenticated" | "role" | "product_mode">;
+
+function teachingPath(role: string | undefined, pathname: string): boolean {
+  if (pathname === "/profile") return true;
+  if (role === "student") return /^\/(home(?:\/|$)|quiz(?:\/|$))/.test(pathname);
+  if (role === "parent") return /^\/parent(?:\/|$)/.test(pathname);
+  if (role === "admin") return /^\/(admin(?:\/|$)|knowledge(?:\/|$)|settings\/(?:models|llm|embedding|search)(?:\/|$))/.test(pathname);
+  return false;
+}
+
+export function teachingHome(role: string | undefined): string {
+  return role === "admin" ? "/admin" : role === "parent" ? "/parent" : "/home";
+}
 export type AccountArea = "workspace" | "utility" | "management";
 
 // These are resource configuration surfaces, not learning activities.
@@ -28,6 +40,9 @@ function localDestination(value: string | null): string | null {
 export function accountDestination(status: Session, requested: string | null = null): string {
   const destination = localDestination(requested);
   const pathname = destination ? new URL(destination, "https://deeptutor.invalid").pathname : "/";
+  if (status.product_mode === "teaching") {
+    return destination && teachingPath(status.role, pathname) ? destination : teachingHome(status.role);
+  }
   if (isManagementSession(status)) {
     return destination && isManagementPath(pathname) ? destination : "/admin";
   }
@@ -37,6 +52,9 @@ export function accountDestination(status: Session, requested: string | null = n
 
 export function accountAreaRedirect(status: Session, area: AccountArea, pathname: string): string | null {
   if (status.enabled && !status.authenticated) return "/login?next=" + encodeURIComponent(pathname);
+  if (status.product_mode === "teaching") {
+    return teachingPath(status.role, pathname) ? null : teachingHome(status.role);
+  }
   const management = isManagementSession(status);
   if (area === "management" && !management) return accountDestination(status);
   if (management && (area === "workspace" || !isManagementPath(pathname))) return "/admin";

@@ -78,6 +78,16 @@ def _cookie_attrs() -> dict:
     }
 
 
+def _teaching_mode() -> bool:
+    from deeptutor.multi_user.teaching_identity import active
+    return active()
+
+
+def _validate_teaching_auth() -> None:
+    if _teaching_mode() and (not AUTH_ENABLED or POCKETBASE_ENABLED):
+        raise HTTPException(503, "Teaching mode requires native account authentication")
+
+
 # ---------------------------------------------------------------------------
 # Schemas
 # ---------------------------------------------------------------------------
@@ -120,6 +130,17 @@ class RegisterRequest(BaseModel):
         return v
 
 
+class CreateUserRequest(RegisterRequest):
+    role: str = "user"
+    parent_id: str | None = None
+
+
+class TeachingAccountUpdate(BaseModel):
+    role: str
+    parent_id: str | None = None
+    disabled: bool = False
+
+
 class SetRoleRequest(BaseModel):
     """Payload for the PUT /users/{username}/role endpoint."""
 
@@ -138,6 +159,7 @@ class AuthStatusResponse(BaseModel):
 
     enabled: bool
     authenticated: bool
+    product_mode: str = "legacy"
     user_id: str | None = None
     username: str | None = None
     role: str | None = None
@@ -154,6 +176,7 @@ class UserInfo(BaseModel):
     created_at: str
     disabled: bool = False
     avatar: str = ""
+    parent_id: str | None = None
 
 
 # Markers settable through PUT /profile. Image markers ("img:<version>") are
@@ -235,6 +258,7 @@ def _install_current_user(payload: TokenPayload | None) -> _CtxToken:
 
 
 async def require_auth(
+    request: Request = None,
     authorization: str | None = Header(default=None, alias="Authorization"),
     dt_token: str | None = Cookie(default=None, alias=_COOKIE_NAME),
 ) -> TokenPayload | None:
@@ -260,6 +284,7 @@ async def require_auth(
     endpoint to read the unset default. That regression was the root cause
     of #481.
     """
+    _validate_teaching_auth()
     if not AUTH_ENABLED:
         _install_current_user(None)
         return None
@@ -280,6 +305,9 @@ async def require_auth(
             headers={"WWW-Authenticate": "Bearer"},
         )
 
+    if request is not None:
+        from deeptutor.multi_user.teaching_access import authorize
+        authorize(request.url.path, request.method, payload.role)
     _install_current_user(payload)
     return payload
 
@@ -312,6 +340,7 @@ async def ws_require_auth(ws: WebSocket) -> _CtxToken | _WsAuthFailed:
         finally:
             reset_current_user(user_token)
     """
+    _validate_teaching_auth()
     if not AUTH_ENABLED:
         return _install_current_user(None)
 
@@ -321,6 +350,12 @@ async def ws_require_auth(ws: WebSocket) -> _CtxToken | _WsAuthFailed:
         await ws.close(code=4001)
         return ws_auth_failed
 
+    from deeptutor.multi_user.teaching_access import authorize
+    try:
+        authorize(ws.url.path, "WS", payload.role)
+    except HTTPException:
+        await ws.close(code=4003)
+        return ws_auth_failed
     return _install_current_user(payload)
 
 
@@ -337,6 +372,7 @@ async def require_admin(
     the event loop and the user ContextVar set by ``require_auth`` is visible
     to the endpoint.
     """
+    _validate_teaching_auth()
     if not AUTH_ENABLED:
         return _local_admin_token_payload()
 
@@ -405,6 +441,7 @@ async def auth_status(
     dt_token: str | None = Cookie(default=None, alias=_COOKIE_NAME),
 ) -> AuthStatusResponse:
     """Return whether auth is enabled and whether the current request is authenticated."""
+    _validate_teaching_auth()
     if not AUTH_ENABLED:
         return AuthStatusResponse(
             enabled=False,
@@ -425,6 +462,7 @@ async def auth_status(
     return AuthStatusResponse(
         enabled=True,
         authenticated=payload is not None,
+        product_mode="teaching" if _teaching_mode() else "legacy",
         user_id=payload.user_id if payload else None,
         username=payload.username if payload else None,
         role=payload.role if payload else None,
@@ -436,6 +474,7 @@ async def auth_status(
 @router.post("/login")
 async def login(body: LoginRequest, response: Response) -> dict:
     """Validate credentials and set a JWT cookie."""
+    _validate_teaching_auth()
     if not AUTH_ENABLED:
         return {"ok": True, "message": "Auth is disabled — no login required."}
 
@@ -502,6 +541,7 @@ async def register(body: RegisterRequest) -> dict:
 
     Only available when AUTH_ENABLED=true.
     """
+    _validate_teaching_auth()
     if not AUTH_ENABLED:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -757,8 +797,8 @@ async def get_users(_: TokenPayload = Depends(require_admin)) -> list[UserInfo]:
 
 @router.post("/users", status_code=status.HTTP_201_CREATED)
 async def admin_create_user(
-    body: RegisterRequest,
-    current: TokenPayload = Depends(require_admin),
+    body: CreateUserRequest,
+    current: TokenPayload = Depends(require_auth),
 ) -> dict:
     """Admin-only: create a new user account.
 
@@ -766,11 +806,22 @@ async def admin_create_user(
     new account is always created with role=``user``; admins can promote
     later via ``PUT /users/{username}/role``.
     """
+    _validate_teaching_auth()
     if not AUTH_ENABLED:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Auth is disabled — user creation is not available.",
         )
+
+    if _teaching_mode():
+        if current.role == "admin" and body.role == "parent" and body.parent_id is None:
+            pass
+        elif current.role == "parent" and body.role == "student":
+            body.parent_id = current.user_id
+        else:
+            raise HTTPException(403, "Administrators create parents; parents create their own students")
+    elif current.role != "admin":
+        raise HTTPException(403, "Admin access required")
 
     if POCKETBASE_ENABLED:
         result = register_pb(username=body.username, email=body.username, password=body.password)
@@ -798,7 +849,11 @@ async def admin_create_user(
             detail="Username already taken",
         )
 
-    add_user(body.username, body.password)
+    try:
+        add_user(body.username, body.password, role=body.role,
+                 parent_id=body.parent_id, actor_id=current.user_id)
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
     user_id = ""
     role = "user"
     for item in list_users():
@@ -834,7 +889,10 @@ async def remove_user(
     # Capture the id before the record disappears so the avatar file can go too.
     info = get_user_info(username)
 
-    removed = delete_user(username)
+    try:
+        removed = delete_user(username)
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
     if not removed:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
@@ -861,7 +919,10 @@ async def update_user_role(
             detail="You cannot change your own role",
         )
 
-    updated = set_role(username, body.role)
+    try:
+        updated = set_role(username, body.role)
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
     if not updated:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
@@ -869,3 +930,29 @@ async def update_user_role(
         f"Admin '{current.username if current else 'local'}' set '{username}' role to {body.role!r}"
     )
     return {"ok": True, "username": username, "role": body.role}
+
+
+@router.put("/users/{username}/teaching")
+async def update_teaching_account(username: str, body: TeachingAccountUpdate,
+                                  current: TokenPayload = Depends(require_auth)) -> dict:
+    from deeptutor.multi_user import teaching_identity
+    if not teaching_identity.active():
+        raise HTTPException(409, "Teaching identity migration is required")
+    target = get_user_info(username)
+    if not target:
+        raise HTTPException(404, "User not found")
+    if current.role == "admin":
+        permitted = target["role"] == "parent" and body.role == "parent" and body.parent_id is None
+    else:
+        permitted = (current.role == "parent" and target["role"] == "student" and body.role == "student"
+                     and target.get("parent_id") == current.user_id and body.parent_id == current.user_id)
+    if not permitted:
+        raise HTTPException(403, "Only the linked parent manages student accounts")
+    try:
+        updated = teaching_identity.update_user(username, role=body.role,
+            parent_id=body.parent_id, disabled=body.disabled, actor_id=current.user_id)
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
+    if not updated:
+        raise HTTPException(404, "User not found")
+    return {"ok": True}

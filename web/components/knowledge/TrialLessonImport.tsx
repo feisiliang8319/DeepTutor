@@ -20,7 +20,7 @@ export default function TrialLessonImport({
   const auth = useAuthStatus();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  if (auth.loading || auth.error || (auth.enabled && !auth.isAdmin)) return null;
+  if (auth.loading || auth.error || auth.productMode === "teaching" || (auth.enabled && !auth.isAdmin)) return null;
 
   const selectLesson = async () => {
     if (loading || disabled) return;

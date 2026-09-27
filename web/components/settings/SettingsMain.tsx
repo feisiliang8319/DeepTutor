@@ -1,5 +1,8 @@
 "use client";
 
+import Link from "next/link";
+import { useAuthStatus } from "@/hooks/useAuthStatus";
+import { t, useTeachingLocale } from "@/components/teaching/teaching-i18n";
 import { usePathname } from "next/navigation";
 
 import SettingsBreadcrumb from "@/components/settings/SettingsBreadcrumb";
@@ -16,6 +19,9 @@ import { SETTINGS_HUB_HREF, isNavOnlyRoute } from "@/lib/settings-nav";
 export default function SettingsMain({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  useTeachingLocale();
+  const { productMode } = useAuthStatus();
+  const teaching = productMode === "teaching";
   const pathname = usePathname() ?? "";
   const isHub = pathname === SETTINGS_HUB_HREF;
 
@@ -33,11 +39,11 @@ export default function SettingsMain({
 
   return (
     <div className="flex h-full min-w-0 flex-col overflow-hidden bg-[var(--background)]">
-      <div className="mx-auto w-full max-w-5xl px-10 pt-5">
-        <SettingsBreadcrumb />
+      <div className="mx-auto w-full max-w-5xl px-5 md:px-10 pt-5">
+        {teaching ? <Link href={pathname === "/settings/models" ? "/admin" : "/settings/models"} className="inline-block py-2 text-sm underline">{pathname === "/settings/models" ? t("管理总览") : t("模型与服务")}</Link> : <SettingsBreadcrumb />}
         {showToolbar && (
           <div className="mt-2">
-            <SettingsToolbar />
+            <SettingsToolbar allowTour={!teaching}/>
           </div>
         )}
         <SettingsLoadStatusBanner />
@@ -48,7 +54,7 @@ export default function SettingsMain({
           scrolls. ``min-h-0`` is required for the flex child to constrain to
           remaining space — without it, ``overflow-y-auto`` would never clip. */}
       <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden [scrollbar-gutter:stable]">
-        <div className="mx-auto w-full max-w-5xl px-10 pb-16">
+        <div className="mx-auto w-full max-w-5xl px-5 md:px-10 pb-16">
           <div className="mt-4">{children}</div>
         </div>
       </div>

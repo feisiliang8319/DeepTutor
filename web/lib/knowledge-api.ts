@@ -514,7 +514,13 @@ async function readErrorDetail(
 ): Promise<string> {
   try {
     const body = await res.json();
-    if (body?.detail) return String(body.detail);
+    if (typeof body?.detail === "string") return body.detail;
+    if (Array.isArray(body?.detail)) {
+      const messages = body.detail.map((item: { loc?: unknown[]; msg?: string }) =>
+        `${item.loc?.join(".") || "request"}: ${item.msg || fallback}`);
+      if (messages.length) return messages.join("; ");
+    }
+    if (typeof body?.detail?.message === "string") return body.detail.message;
   } catch {
     // body wasn't JSON; fall through
   }

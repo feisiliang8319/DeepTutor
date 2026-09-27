@@ -13,6 +13,7 @@ export interface AuthStatus {
   user_id?: string;
   username?: string;
   role?: string;
+  product_mode?: "legacy" | "teaching";
   is_admin?: boolean;
   /** Avatar marker: "", "icon:<name>:<color>", or "img:<version>". */
   avatar?: string;

@@ -130,44 +130,46 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.warning(f"Failed to start EventBus: {e}")
 
-    try:
-        from deeptutor.services.partners import get_partner_manager
+    from deeptutor.multi_user.teaching_identity import active as teaching_active
+    if not teaching_active():
+        try:
+            from deeptutor.services.partners import get_partner_manager
 
-        await get_partner_manager().auto_start_partners()
-    except Exception as e:
-        logger.warning(f"Failed to auto-start partners: {e}")
+            await get_partner_manager().auto_start_partners()
+        except Exception as e:
+            logger.warning(f"Failed to auto-start partners: {e}")
 
-    try:
-        from deeptutor.services.cron import get_cron_service
+        try:
+            from deeptutor.services.cron import get_cron_service
 
-        await get_cron_service().start()
-    except Exception as e:
-        logger.warning(f"Failed to start cron service: {e}")
+            await get_cron_service().start()
+        except Exception as e:
+            logger.warning(f"Failed to start cron service: {e}")
 
-    # Ping PocketBase if configured — logs a warning (not an error) if unreachable
-    try:
-        from deeptutor.services.pocketbase_client import ping_pocketbase
+        # Ping PocketBase if configured — logs a warning (not an error) if unreachable
+        try:
+            from deeptutor.services.pocketbase_client import ping_pocketbase
 
-        await ping_pocketbase()
-    except Exception as e:
-        logger.warning(f"PocketBase startup check failed: {e}")
+            await ping_pocketbase()
+        except Exception as e:
+            logger.warning(f"PocketBase startup check failed: {e}")
 
-    # Migrate any v1 memory files (PROFILE.md / SUMMARY.md) into a
-    # backup folder so the v2 three-layer subsystem starts clean.
-    try:
-        from deeptutor.services.memory import (
-            migrate_partner_surface_if_needed,
-            migrate_v1_if_needed,
-        )
+        # Migrate any v1 memory files (PROFILE.md / SUMMARY.md) into a
+        # backup folder so the v2 three-layer subsystem starts clean.
+        try:
+            from deeptutor.services.memory import (
+                migrate_partner_surface_if_needed,
+                migrate_v1_if_needed,
+            )
 
-        backup = migrate_v1_if_needed()
-        if backup is not None:
-            logger.info("v1 memory archived to %s", backup)
-        # Rename the legacy ``tutorbot`` memory surface (footnote refs, L2
-        # doc, snapshot/trace dirs, L3 meta keys) to ``partner``.
-        migrate_partner_surface_if_needed()
-    except Exception as e:
-        logger.warning(f"v1 memory migration failed: {e}")
+            backup = migrate_v1_if_needed()
+            if backup is not None:
+                logger.info("v1 memory archived to %s", backup)
+            # Rename the legacy ``tutorbot`` memory surface (footnote refs, L2
+            # doc, snapshot/trace dirs, L3 meta keys) to ``partner``.
+            migrate_partner_surface_if_needed()
+        except Exception as e:
+            logger.warning(f"v1 memory migration failed: {e}")
 
     yield
 
@@ -366,6 +368,9 @@ app.include_router(
     tags=["multi-user"],
     dependencies=_auth,
 )
+
+from deeptutor.api.routers import teaching as teaching_router
+app.include_router(teaching_router.router, prefix="/api/v1/teaching", tags=["teaching"], dependencies=_auth)
 
 app.include_router(chat.router, prefix="/api/v1", tags=["chat"], dependencies=_auth)
 app.include_router(

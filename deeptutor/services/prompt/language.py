@@ -11,6 +11,8 @@ _LANGUAGE_LABELS: dict[str, str] = {
     "zh": "中文（简体）",
     "zh-cn": "中文（简体）",
     "zh-tw": "繁體中文",
+    "zh-hant": "繁體中文",
+    "zh-hk": "繁體中文",
     "en": "English",
     "ja": "日本語",
     "ko": "한국어",

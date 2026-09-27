@@ -680,6 +680,8 @@ class TurnRuntimeManager:
             await self._fail_orphan_running_turn(turn)
 
     async def start_turn(self, payload: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+        from deeptutor.multi_user.teaching_policy import prepare_turn
+        payload = prepare_turn(payload)
         capability = str(payload.get("capability") or "chat")
         if not payload.get("language"):
             from deeptutor.services.settings.interface_settings import (
@@ -1225,6 +1227,7 @@ class TurnRuntimeManager:
         seen_artifact_urls: set[str] = set()
         stream_done_sent = False
         llm_scope_token: Token[LLMConfig | None] | None = None
+        teaching_policy_token = None
         reset_active_llm_selection: Callable[[Token[LLMConfig | None] | None], None] | None = None
         # One queue per turn for ``ask_user`` style pause-resume.
         # Created here (BEFORE the orchestrator runs) so the pipeline can
@@ -1700,9 +1703,18 @@ class TurnRuntimeManager:
                 },
             )
 
+            from deeptutor.multi_user.teaching_policy import apply_context
+            teaching_policy_token = apply_context(context, payload)
             orch = ChatOrchestrator()
             pending_done_event: StreamEvent | None = None
             async for event in orch.handle(context):
+                from deeptutor.multi_user.teaching_identity import active as teaching_active
+                if teaching_active():
+                    from deeptutor.multi_user.teaching_policy import require_student_access
+                    access = require_student_access()
+                    choice = payload.get("llm_selection") or {}
+                    if not any(m.profile_id == choice.get("profile_id") and m.model_id == choice.get("model_id") for m in access.models):
+                        raise RuntimeError("Teaching model access changed during this reply")
                 if event.type == StreamEventType.SESSION:
                     continue
                 if event.type == StreamEventType.DONE:
@@ -1894,6 +1906,9 @@ class TurnRuntimeManager:
                     await self._flush_buffered_events(execution)
                 await self.store.update_turn_status(turn_id, "failed", str(exc))
         finally:
+            if teaching_policy_token is not None:
+                from deeptutor.multi_user.teaching_policy import reset_turn_policy
+                reset_turn_policy(teaching_policy_token)
             if llm_scope_token is not None and reset_active_llm_selection is not None:
                 reset_active_llm_selection(llm_scope_token)
             # Drop the reply queue first — any in-flight ``submit_user_reply``

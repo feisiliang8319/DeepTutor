@@ -1,6 +1,7 @@
 "use client";
 
-export type AppLanguage = "en" | "zh";
+import { normalizeLanguage as normalizeLocale, type AppLanguage } from "@/i18n/init";
+export type { AppLanguage };
 
 export const ACTIVE_SESSION_STORAGE_KEY = "deeptutor.activeSessionId.tab";
 export const LANGUAGE_STORAGE_KEY = "deeptutor-language";
@@ -64,14 +65,14 @@ export const CODE_BLOCK_SETTINGS_EVENT = "deeptutor:code-block-settings";
 export function normalizeLanguage(
   value: string | null | undefined,
 ): AppLanguage {
-  return value === "zh" ? "zh" : "en";
+  return normalizeLocale(value);
 }
 
 export function resolveResponseLanguage(
   value: string | null | undefined,
   legacyLanguage: string | null | undefined = "en",
 ): AppLanguage {
-  return value === "zh" || value === "en"
+  return value === "zh" || value === "zh-Hant" || value === "en"
     ? value
     : normalizeLanguage(legacyLanguage);
 }

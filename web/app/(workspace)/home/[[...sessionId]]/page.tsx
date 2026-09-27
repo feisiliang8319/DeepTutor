@@ -1,6 +1,8 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useAuthStatus } from "@/hooks/useAuthStatus";
+import TeachingChat from "@/components/teaching/TeachingChat";
 import {
   type KeyboardEvent,
   useCallback,
@@ -340,7 +342,13 @@ function readContextBudget(
 /*  Chat page                                                         */
 /* ------------------------------------------------------------------ */
 
-export default function ChatPage() {
+export default function ChatEntry() {
+  const auth = useAuthStatus();
+  if (auth.loading || auth.error) return null;
+  return auth.productMode === "teaching" ? <TeachingChat/> : <ChatPage/>;
+}
+
+function ChatPage() {
   const params = useParams<{ sessionId?: string[] }>();
   const router = useRouter();
   const { t } = useTranslation();

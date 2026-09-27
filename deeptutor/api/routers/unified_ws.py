@@ -103,6 +103,15 @@ async def unified_websocket(ws: WebSocket) -> None:
     try:
         while not closed:
             raw = await ws.receive_text()
+            from deeptutor.multi_user.teaching_identity import active as teaching_active
+            if teaching_active():
+                from deeptutor.multi_user.teaching_policy import require_student_access
+                try:
+                    require_student_access()
+                except RuntimeError:
+                    await ws.close(code=1008, reason="Teaching access changed; sign in again")
+                    closed = True
+                    break
             try:
                 msg = json.loads(raw)
             except json.JSONDecodeError:

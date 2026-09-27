@@ -40,3 +40,21 @@ test("unverified, disabled auth and cross-origin return URLs never select parent
   }
   assert.equal(accountDestination({ ...parent, enabled: false }), "/home");
 });
+
+test("teaching roles keep only their own entry points and working model configuration links", () => {
+  const status = { enabled: true, authenticated: true, product_mode: "teaching" as const };
+  const admin = { ...status, role: "admin" };
+  const family = { ...status, role: "parent" };
+  const learner = { ...status, role: "student" };
+  for (const path of ["/settings/models", "/settings/llm", "/settings/embedding", "/settings/search", "/admin/materials"]) {
+    assert.equal(accountAreaRedirect(admin, "utility", path), null);
+    assert.equal(accountAreaRedirect(family, "utility", path), "/parent");
+    assert.equal(accountAreaRedirect(learner, "utility", path), "/home");
+  }
+  for (const path of ["/settings/image", "/settings/video", "/space/mcp", "/settings/tools"]) {
+    assert.equal(accountDestination(admin, path), "/admin");
+  }
+  assert.equal(accountDestination(family, "/quiz"), "/parent");
+  assert.equal(accountDestination(learner, "/quiz"), "/quiz");
+  assert.equal(accountDestination(learner, "/parent"), "/home");
+});

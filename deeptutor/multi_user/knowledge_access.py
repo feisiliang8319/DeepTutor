@@ -68,6 +68,10 @@ def _assigned_admin_names() -> set[str]:
 
 def resolve_kb(kb_ref: str, *, require_write: bool = False) -> KnowledgeResource:
     user = get_current_user()
+    from .teaching_identity import active
+    if active() and kb_ref.startswith("family:"):
+        from .teaching_materials import resolve
+        return resolve(kb_ref, require_write=require_write)
     requested_source, name = _strip_resource_prefix(kb_ref)
 
     if user.is_admin:
@@ -84,6 +88,13 @@ def resolve_kb(kb_ref: str, *, require_write: bool = False) -> KnowledgeResource
 
     user_manager = current_kb_manager()
     assigned_names = _assigned_admin_names()
+    if active() and user.role == "student":
+        # Old self-created libraries are not an alternate grant authority.
+        # Family resources were handled above; shared resources require the
+        # current parent -> student grant even when a bare name is supplied.
+        if require_write or requested_source == "user" or name not in assigned_names:
+            raise HTTPException(403,"Student materials are assigned by the linked parent")
+        return KnowledgeResource(id=f"admin:kb:{name}",name=name,base_dir=admin_kb_base_dir(),source="admin",assigned=True,read_only=True)
 
     if requested_source == "admin":
         if name not in assigned_names:
@@ -171,8 +182,10 @@ def manager_for_resource(resource: KnowledgeResource) -> KnowledgeBaseManager:
 def list_visible_knowledge_bases() -> list[dict[str, Any]]:
     user = get_current_user()
     manager = current_kb_manager()
+    from .teaching_identity import active
     items: list[dict[str, Any]] = []
-    for name in manager.list_knowledge_bases():
+    own_names = [] if active() and user.role == "student" else manager.list_knowledge_bases()
+    for name in own_names:
         items.append(
             {
                 "id": f"admin:kb:{name}" if user.is_admin else f"user:kb:{name}",
@@ -184,6 +197,17 @@ def list_visible_knowledge_bases() -> list[dict[str, Any]]:
             }
         )
 
+    from .teaching_identity import active
+    if active():
+        from .teaching_materials import catalog
+        items.extend(catalog())
+        if not user.is_admin:
+            existing={item["id"] for item in items}
+            available=set(admin_kb_manager().list_knowledge_bases())
+            for name in sorted(_assigned_admin_names()):
+                rid=f"admin:kb:{name}"
+                if rid not in existing:
+                    items.append({"id":rid,"name":name,"source":"admin","read_only":True,"assigned":True,"available":name in available,"provenance_label":"Main teaching catalog"})
     if user.is_admin:
         return items
 

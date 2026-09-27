@@ -41,7 +41,9 @@ def _normalize_language(language: Any, default: str = "en") -> str:
         s = language.lower().strip()
         if s in {"en", "english"}:
             return "en"
-        if s in {"zh", "chinese", "cn"}:
+        if s in {"zh-hant", "zh-tw", "zh-hk"}:
+            return "zh-Hant"
+        if s in {"zh", "zh-hans", "zh-cn", "chinese", "cn"}:
             return "zh"
 
     # Fall back to default

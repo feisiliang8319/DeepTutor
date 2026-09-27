@@ -19,10 +19,12 @@ function LoginPageContent() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [teaching,setTeaching]=useState(false);
 
   useEffect(() => {
     // If already authenticated, skip login
     fetchAuthStatus().then((status) => {
+      setTeaching(status?.product_mode === "teaching");
       if (status?.authenticated) {
         window.location.replace(accountDestination(status, next));
         return;
@@ -147,7 +149,7 @@ function LoginPageContent() {
         </form>
       </div>
 
-      <p className="mt-6 text-center text-sm text-[var(--muted-foreground)]">
+      {teaching ? <p className="mt-6 text-center text-sm text-[var(--muted-foreground)]">{t("Your parent or administrator provides your account.")}</p> : <p className="mt-6 text-center text-sm text-[var(--muted-foreground)]">
         {t("Don't have an account?")}{" "}
         <Link
           href="/register"
@@ -155,7 +157,7 @@ function LoginPageContent() {
         >
           {t("Create one")}
         </Link>
-      </p>
+      </p>}
 
       <p className="mt-3 text-center text-xs text-[var(--muted-foreground)]">
         DeepTutor · Agent-Native Learning

@@ -78,6 +78,10 @@ PARENT_PREFIX = "parent-"
 
 
 
+class StudentCoursesRequest(BaseModel):
+    course_versions: list[str] = Field(default_factory=list,max_length=100)
+
+
 class ReviewRequest(BaseModel):
     """大人对一条作答的裁定。
 
@@ -158,9 +162,11 @@ def create_app(
         if account_access is not None:
             try:
                 request.state.education_account = account_access.authenticate(request)
+                from deeptutor.multi_user.teaching_identity import active as teaching_active
                 if (request.method in {'GET', 'HEAD'} and request.url.path in {'/', '/practice'}
-                        and request.state.education_account.role == 'admin'):
-                    return RedirectResponse('/admin', status_code=303,
+                        and (teaching_active() or request.state.education_account.role == 'admin')):
+                    destination = {'admin':'/admin','parent':'/parent','student':'/quiz'}.get(request.state.education_account.role,'/home')
+                    return RedirectResponse(destination, status_code=303,
                                             headers={'Cache-Control': 'private, no-store'})
                 if request.method not in {'GET', 'HEAD', 'OPTIONS'}:
                     # Cookie authentication must not admit cross-site writes.
@@ -185,13 +191,32 @@ def create_app(
         # across threads, and the app is single-family scale.
         return edu_sqlite.open_database(db_path)
 
-    def account_profiles(conn, request):
+    def teaching_mode():
+        from deeptutor.multi_user.teaching_identity import active
+        return active()
+
+    def account_profiles(conn, request, *, write=False):
         account = request.state.education_account
+        if teaching_mode():
+            from deeptutor.multi_user.teaching_identity import visible_students
+            ids = visible_students(account.user_id, write=write)
+            if not ids:
+                return []
+            marks = ','.join('?' for _ in ids)
+            return [r['id'] for r in conn.execute(
+                f'SELECT id FROM learner_profiles WHERE deep_tutor_user_id IN ({marks})', tuple(sorted(ids)))]
         return [r['id'] for r in conn.execute(
             'SELECT id FROM learner_profiles WHERE deep_tutor_user_id=?', (account.username,))]
 
     def require_learner(conn: sqlite3.Connection, learner_id: str, request: Request, *, write=False) -> str:
-        if account_access is not None:
+        if account_access is not None and teaching_mode():
+            if write:
+                from deeptutor.multi_user.teaching_grants import effective
+                if "quiz" not in effective(request.state.education_account.user_id).features:
+                    raise HTTPException(403, "Quiz access has not been enabled by your parent")
+            if learner_id not in account_profiles(conn, request, write=write):
+                raise HTTPException(403, '只能访问关联学生的学习记录；作答必须由学生本人提交')
+        elif account_access is not None:
             profiles = account_profiles(conn, request)
             parent = any(p.startswith(PARENT_PREFIX) for p in profiles)
             if learner_id not in profiles and (write or not parent):
@@ -218,27 +243,81 @@ def create_app(
                 detail=f"{learner_id!r} 未选修 {course_version_id!r}",
             )
 
+    def require_linked_parent(request: Request, student_id: str):
+        from deeptutor.multi_user.identity import get_user_by_id
+        if account_access is None or not teaching_mode():
+            raise HTTPException(409,"Teaching account migration is required")
+        actor=request.state.education_account
+        target=get_user_by_id(student_id)
+        if actor.role != "parent" or not target or target[1].get("parent_id") != actor.user_id:
+            raise HTTPException(403,"Only the linked parent manages student courses")
+        return target
+
+    @app.get("/api/edu/students/{student_id}/courses")
+    def student_courses(student_id: str, request: Request):
+        require_linked_parent(request,student_id)
+        from deeptutor.multi_user.teaching_grants import effective
+        if "quiz" not in effective(request.state.education_account.user_id).features:
+            raise HTTPException(403,"Quiz access has not been allocated to this parent")
+        conn=connect()
+        try:
+            selected=[r[0] for r in conn.execute("SELECT e.course_version_id FROM enrollments e JOIN learner_profiles l ON l.id=e.learner_id WHERE l.deep_tutor_user_id=? AND e.status='active'",(student_id,))]
+            courses=[dict(r) for r in conn.execute("SELECT cv.id AS course_version_id,c.title,c.subject_key,c.level FROM course_versions cv JOIN courses c ON c.id=cv.course_id WHERE cv.status='active' ORDER BY c.title,cv.version")]
+            return {"courses":courses,"selected":selected}
+        finally:
+            conn.close()
+
+    @app.put("/api/edu/students/{student_id}/courses")
+    def set_student_courses(student_id: str, body: StudentCoursesRequest, request: Request):
+        target=require_linked_parent(request,student_id)
+        from deeptutor.multi_user.teaching_grants import effective
+        if "quiz" not in effective(request.state.education_account.user_id).features:
+            raise HTTPException(403,"Quiz access has not been allocated to this parent")
+        conn=connect()
+        try:
+            conn.execute("BEGIN IMMEDIATE")
+            available={r[0] for r in conn.execute("SELECT id FROM course_versions WHERE status='active'")}
+            selected=set(body.course_versions)
+            if not selected<=available:
+                raise HTTPException(400,"Select a currently published course")
+            row=conn.execute("SELECT id FROM learner_profiles WHERE deep_tutor_user_id=?",(student_id,)).fetchone()
+            learner_id=row[0] if row else "learner-"+student_id
+            now=to_iso_timestamp(time.time())
+            if row is None:
+                conn.execute("INSERT INTO learner_profiles(id,deep_tutor_user_id,display_name,locale,created_at,updated_at) VALUES(?,?,?,?,?,?)",(learner_id,student_id,target[0],"en",now,now))
+            conn.execute("UPDATE enrollments SET status='withdrawn',updated_at=? WHERE learner_id=? AND status='active'",(now,learner_id))
+            for version in sorted(selected):
+                conn.execute("INSERT INTO enrollments VALUES(?,?,?,?,?) ON CONFLICT(learner_id,course_version_id) DO UPDATE SET status='active',updated_at=excluded.updated_at",(learner_id,version,"active",now,now))
+            conn.commit()
+            return {"learner_id":learner_id,"selected":sorted(selected)}
+        finally:
+            conn.close()
+
     @app.get("/api/edu/people")
     def people(request: Request) -> dict[str, Any]:
         """落地页用：谁在用这台设备。不是登录，是选身份。"""
         conn = connect()
         try:
             rows = conn.execute(
-                "SELECT id, display_name FROM learner_profiles ORDER BY id"
+                "SELECT id, display_name, deep_tutor_user_id FROM learner_profiles ORDER BY id"
             ).fetchall()
             own = account_profiles(conn, request) if account_access is not None else []
-            if account_access is not None:
+            if account_access is not None and teaching_mode():
+                rows = [r for r in rows if r['id'] in own]
+            elif account_access is not None:
                 if not own:
                     raise HTTPException(403, '当前账号尚未关联学习档案')
                 if not any(p.startswith(PARENT_PREFIX) for p in own):
                     rows = [r for r in rows if r['id'] in own]
             return {
-                'signed_in_profile_id': own[0] if own else None,
+                'signed_in_profile_id': own[0] if own and (not teaching_mode() or request.state.education_account.role == 'student') else None,
+                'account_role': request.state.education_account.role if account_access else None,
                 'account_authenticated': account_access is not None,
                 "people": [
                     {
                         "id": r["id"],
                         "display_name": r["display_name"],
+                        **({"user_id":r["deep_tutor_user_id"]} if teaching_mode() else {}),
                         "role": "parent" if str(r["id"]).startswith(PARENT_PREFIX) else "learner",
                     }
                     for r in rows
@@ -275,6 +354,11 @@ def create_app(
             conn.close()
 
     def require_parent(request: Request, conn):
+        if account_access is not None and teaching_mode():
+            account = request.state.education_account
+            if account.role not in {'parent', 'admin'}:
+                raise HTTPException(403, '需要家长或管理员权限')
+            return account.user_id
         if account_access is not None:
             parents = [p for p in account_profiles(conn, request) if p.startswith(PARENT_PREFIX)]
             if len(parents) != 1:
@@ -418,6 +502,10 @@ def create_app(
         conn = connect()
         try:
             require_parent(request, conn)
+            visible = account_profiles(conn, request) if teaching_mode() else None
+            if visible == []:
+                return {"pending": []}
+            scope_sql = (" AND a.learner_id IN (" + ",".join("?" for _ in visible) + ")") if visible is not None else ""
             # "待复核" = 确定性判分给不出结果，且**最新一条**判定也没解决它。
             #
             # 判据不能只看 a.is_correct：student_attempts 是 append-only，人的
@@ -426,7 +514,7 @@ def create_app(
             # test_parent_review_resolves_a_pending_attempt 抓到的就是这个）。
             # 取"每条 attempt 的最新判定"与 rebuild_mastery 的口径一致。
             rows = conn.execute(
-                """
+                f"""
                 WITH latest AS (
                     SELECT j.attempt_id, j.verdict, j.confidence, j.rationale
                     FROM judgment_records j
@@ -440,13 +528,13 @@ def create_app(
                 JOIN assessment_items i ON i.id = a.assessment_item_id
                 JOIN knowledge_nodes n ON n.id = a.knowledge_node_id
                 LEFT JOIN latest ON latest.attempt_id = a.id
-                WHERE a.course_version_id = ?
+                WHERE a.course_version_id = ? {scope_sql}
                   AND ((a.is_correct IS NULL AND latest.verdict IS NULL)
                        OR latest.verdict = 'needs_review' OR latest.confidence < 0.6)
                 ORDER BY a.submitted_at DESC
                 LIMIT 50
                 """,
-                (course_version_id,),
+                (course_version_id, *(visible or [])),
             ).fetchall()
             return {
                 "pending": [
@@ -483,6 +571,10 @@ def create_app(
                 raise HTTPException(
                     status_code=403, detail="只有家长账号可以裁定作答"
                 )
+            if teaching_mode():
+                attempt = conn.execute('SELECT learner_id FROM student_attempts WHERE id=?', (payload.attempt_id,)).fetchone()
+                if attempt is None or attempt['learner_id'] not in account_profiles(conn, request):
+                    raise HTTPException(403, '无法复核未关联学生的作答')
             try:
                 snapshot = append_human_judgment_and_recompute(
                     conn,
@@ -496,11 +588,36 @@ def create_app(
                 )
             except ValueError as exc:
                 raise HTTPException(status_code=404, detail=str(exc)) from exc
+            delivery = {}
+            if teaching_mode():
+                from deeptutor.education.application.quiz_chat import handoff_review
+                try:
+                    delivery["chat_handoff"] = handoff_review(conn, payload.attempt_id)
+                except (ValueError, RuntimeError, OSError, sqlite3.DatabaseError) as exc:
+                    # The judgment already committed. Make the delivery failure
+                    # visible, and retry delivery without another judgment.
+                    delivery["chat_handoff_error"] = str(exc)
             return {
+                **delivery,
                 "attempt_id": payload.attempt_id,
                 "verdict": payload.verdict,
                 "mastery": {"score": snapshot.score, "status": snapshot.status},
             }
+        finally:
+            conn.close()
+
+    @app.post("/api/edu/review/{attempt_id}/chat")
+    def retry_review_chat(attempt_id: str, request: Request) -> dict[str, Any]:
+        if not teaching_mode():
+            raise HTTPException(409, "Teaching mode is required")
+        conn = connect()
+        try:
+            require_parent(request, conn)
+            attempt = conn.execute("SELECT learner_id FROM student_attempts WHERE id=?", (attempt_id,)).fetchone()
+            if attempt is None or attempt["learner_id"] not in account_profiles(conn, request):
+                raise HTTPException(403, "This attempt is not available to your account")
+            from deeptutor.education.application.quiz_chat import handoff_review
+            return {"chat_handoff": handoff_review(conn, attempt_id)}
         finally:
             conn.close()
 
@@ -1015,9 +1132,19 @@ def create_app(
                     "due_at": review.due_at, "reps": review.reps, "lapses": review.lapses,
                 }
 
+            chat_handoff = None
+            if teaching_mode():
+                from deeptutor.education.application.quiz_chat import handoff
+                # A failure is observable; submitted answers remain durable and
+                # recover/retry replays the same grades before retrying delivery.
+                chat_handoff = handoff(conn, learner_id, payload.set_id, results)
             graded = [r for r in results if r["is_correct"] is not None]
+            public_results = results if not teaching_mode() else [
+                {key: row[key] for key in ("item_id", "prompt", "your_response", "is_correct", "needs_judgment", "correct_answer")}
+                for row in results]
             return {
-                "results": results,
+                "results": public_results,
+                **({"chat_handoff": chat_handoff} if chat_handoff else {}),
                 "summary": {
                     "answered": len(results),
                     "auto_graded": len(graded),

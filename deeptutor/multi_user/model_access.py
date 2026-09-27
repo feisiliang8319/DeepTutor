@@ -105,7 +105,8 @@ def redacted_model_access(user_id: str | None = None) -> dict[str, list[dict[str
                     "available": model is not None,
                 }
             )
-    if user_id == user.id:
+    from .teaching_identity import active as teaching_active
+    if user_id == user.id and not teaching_active():
         # Only ever the caller's OWN personal models. An administrator
         # inspecting somebody's grants asks for that user's id, and their
         # personal sign-in is not the administrator's business — nor is it in

@@ -1,4 +1,6 @@
 "use client";
+import { useAuthStatus } from "@/hooks/useAuthStatus";
+import AccountManager from "@/components/teaching/AccountManager";
 
 import { Fragment, useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
@@ -43,7 +45,12 @@ function formatDate(iso: string, lang: Language): string {
   }
 }
 
-export default function AdminUsersPage() {
+export default function AdminUsersEntry() {
+  const auth=useAuthStatus();
+  if(auth.loading||auth.error)return null;
+  return auth.productMode === "teaching" ? <div className="h-full overflow-auto p-5 md:p-10"><div className="mx-auto max-w-5xl"><AccountManager/></div></div> : <AdminUsersPage/>;
+}
+function AdminUsersPage() {
   const router = useRouter();
   const { t, i18n } = useTranslation();
   const lang: Language = i18n.language?.startsWith("zh") ? "zh" : "en";

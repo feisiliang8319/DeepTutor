@@ -47,7 +47,10 @@ class NativeAccountAccess:
 def from_environment():
     import os
 
-    mode = os.environ.get('EDU_AUTH_MODE', 'cloudflare')
+    from deeptutor.multi_user.teaching_identity import active
+    mode = os.environ.get('EDU_AUTH_MODE', 'native' if active() else 'cloudflare')
+    if active() and mode != 'native':
+        raise ValueError('Teaching mode requires native education authentication')
     if mode == 'cloudflare':
         return None
     if mode != 'native':

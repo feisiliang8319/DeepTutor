@@ -136,7 +136,8 @@ def is_first_user() -> bool:
     return len(_load_users()) == 0
 
 
-def add_user(username: str, plain_password: str, role: str = "user") -> None:
+def add_user(username: str, plain_password: str, role: str = "user", *,
+             parent_id: str | None = None, actor_id: str = "system") -> None:
     """
     Add or update a user in data/user/auth_users.json.
 
@@ -148,7 +149,7 @@ def add_user(username: str, plain_password: str, role: str = "user") -> None:
     """
     from deeptutor.multi_user.identity import save_user
 
-    record = save_user(username, hash_password(plain_password), role=role)  # type: ignore[arg-type]
+    record = save_user(username, hash_password(plain_password), role=role, parent_id=parent_id, actor_id=actor_id)  # type: ignore[arg-type]
     logger.info("User '%s' saved with role=%r", username, record.get("role", "user"))
 
 
@@ -272,6 +273,12 @@ def decode_token(token: str) -> TokenPayload | None:
         if not username:
             return None
         user_id = str(payload.get("uid") or "")
+        from deeptutor.multi_user.teaching_identity import active
+        if active():
+            record = _load_users().get(str(username))
+            if not record or record.get("disabled") or not user_id or record["id"] != user_id:
+                return None
+            return TokenPayload(username=username, role=record["role"], user_id=user_id)
         if not user_id:
             record = _load_users().get(str(username)) or {}
             user_id = str(record.get("id") or "")
@@ -366,7 +373,7 @@ def authenticate(username: str, password: str) -> TokenPayload | None:
         return None
 
     record = users.get(username)
-    if not record:
+    if not record or (isinstance(record, dict) and record.get("disabled")):
         return None
 
     hashed = record.get("hash", "") if isinstance(record, dict) else record

@@ -574,6 +574,16 @@ class ReasonTool(_PromptHintsMixin, BaseTool):
     async def execute(self, **kwargs: Any) -> ToolResult:
         from deeptutor.tools.reason import reason
 
+        from deeptutor.multi_user.teaching_identity import active
+        if active():
+            from deeptutor.multi_user.teaching_policy import current_turn_policy, choose_model, require_student_access
+            from deeptutor.multi_user.model_access import apply_allowed_llm_selection
+            from deeptutor.services.model_selection import resolve_llm_config_for_selection
+            policy = current_turn_policy()
+            selection = choose_model(policy, require_student_access(), reasoning=True)
+            choice = apply_allowed_llm_selection(selection.model_dump())
+            selected = resolve_llm_config_for_selection(choice)
+            kwargs = {**kwargs, "api_key":selected.api_key, "base_url":selected.base_url, "model":selected.model}
         result = await reason(
             query=kwargs.get("query", ""),
             context=kwargs.get("context", ""),

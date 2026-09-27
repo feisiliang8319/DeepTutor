@@ -126,6 +126,9 @@ def load_users(  # nosec B107 - empty defaults mean "no env fallback supplied".
     env_password_hash: str = "",
 ) -> dict[str, dict[str, Any]]:
     """Load canonical users, migrating legacy records and env fallback in memory."""
+    from . import teaching_identity
+    if teaching_identity.active():
+        return teaching_identity.load_users()
     migrate_legacy_multi_user_tree()
     users: dict[str, dict[str, Any]] | None = None
     if USERS_FILE.exists():
@@ -169,7 +172,13 @@ def load_users(  # nosec B107 - empty defaults mean "no env fallback supplied".
     return {}
 
 
-def save_user(username: str, hashed_password: str, role: Role = "user") -> dict[str, Any]:
+def save_user(username: str, hashed_password: str, role: Role = "user", *,
+              parent_id: str | None = None, actor_id: str = "system") -> dict[str, Any]:
+    from . import teaching_identity
+    if teaching_identity.active():
+        return teaching_identity.create_user(username, hashed_password, role, parent_id, actor_id=actor_id)
+    if role not in {"admin", "user"} or parent_id is not None:
+        raise ValueError("Teaching accounts require explicit identity migration first")
     USERS_FILE.parent.mkdir(parents=True, exist_ok=True)
     # Read-modify-write must be atomic so concurrent first-time registrations
     # cannot each see an empty store and each promote themselves to admin.
@@ -202,16 +211,24 @@ def list_user_info(  # nosec B107 - empty defaults mean "no env fallback supplie
             "created_at": record.get("created_at", ""),
             "disabled": bool(record.get("disabled", False)),
             "avatar": str(record.get("avatar") or ""),
+            "parent_id": record.get("parent_id"),
         }
         for username, record in load_users(env_username, env_password_hash).items()
     ]
 
 
 def get_user(username: str) -> dict[str, Any] | None:
+    from . import teaching_identity
+    if teaching_identity.active():
+        found=teaching_identity.get_account(username)
+        return found[1] if found else None
     return load_users().get(username)
 
 
 def get_user_by_id(user_id: str) -> tuple[str, dict[str, Any]] | None:
+    from . import teaching_identity
+    if teaching_identity.active():
+        return teaching_identity.get_account(user_id,by_id=True)
     for username, record in load_users().items():
         if str(record.get("id") or "") == user_id:
             return username, record
@@ -219,6 +236,9 @@ def get_user_by_id(user_id: str) -> tuple[str, dict[str, Any]] | None:
 
 
 def delete_user(username: str) -> bool:
+    from . import teaching_identity
+    if teaching_identity.active():
+        raise ValueError("Teaching accounts retain learning evidence; disable the account instead")
     if not USERS_FILE.exists():
         return False
     users = load_users()
@@ -231,6 +251,9 @@ def delete_user(username: str) -> bool:
 
 def set_avatar(username: str, avatar: str) -> bool:
     """Update the avatar marker for an existing user. Returns True on success."""
+    from . import teaching_identity
+    if teaching_identity.active():
+        return teaching_identity.set_avatar(username, avatar)
     if not USERS_FILE.exists():
         return False
     with _USERS_WRITE_LOCK:
@@ -288,6 +311,9 @@ def delete_avatar_file(user_id: str) -> None:
 
 
 def set_role(username: str, role: Role) -> bool:
+    from . import teaching_identity
+    if teaching_identity.active():
+        raise ValueError("Use the teaching account endpoint to change role and parent atomically")
     if role not in {"admin", "user"}:
         raise ValueError("role must be 'admin' or 'user'")
     if not USERS_FILE.exists():

@@ -88,6 +88,10 @@ def normalize_grant(user_id: str, payload: dict[str, Any] | None) -> dict[str, A
 
 
 def load_grant(user_id: str) -> dict[str, Any]:
+    from .teaching_identity import active
+    if active():
+        from .teaching_grants import legacy_view
+        return legacy_view(user_id)
     path = grant_path(user_id)
     if not path.exists():
         return empty_grant(user_id)
@@ -98,6 +102,9 @@ def load_grant(user_id: str) -> dict[str, Any]:
 
 
 def save_grant(user_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+    from .teaching_identity import active
+    if active():
+        raise ValueError("Use the delegated teaching access endpoint")
     user_record = get_user_by_id(user_id)
     if user_record is None:
         raise ValueError(f"Unknown user id: {user_id}")

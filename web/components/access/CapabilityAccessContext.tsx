@@ -11,6 +11,7 @@ import {
 
 import type { Capability } from "@/lib/capability-routes";
 import { apiFetch, apiUrl } from "@/lib/api";
+import { fetchAuthStatus } from "@/lib/auth";
 import { listLLMOptions } from "@/lib/llm-options";
 
 type CapabilityAccessValue = {
@@ -57,6 +58,12 @@ export function CapabilityAccessProvider({
 
   const refresh = useCallback(async () => {
     try {
+      const status = await fetchAuthStatus();
+      if (status?.product_mode === "teaching") {
+        setIsAdmin(status.role === "admin");
+        setHasLlm(true); // Availability failures are explained by the teaching turn endpoint.
+        return;
+      }
       // The settings payload only exposes the catalog to admins, so its
       // presence is our admin signal — admins are never gated.
       const res = await apiFetch(apiUrl("/api/v1/settings"));

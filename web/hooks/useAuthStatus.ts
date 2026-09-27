@@ -10,6 +10,8 @@ export interface AuthStatusState {
   authenticated: boolean;
   /** Whether the authenticated user is an admin. */
   isAdmin: boolean;
+  role: string;
+  productMode: "legacy" | "teaching";
   /** True until the first status fetch resolves. */
   loading: boolean;
   /** Unavailable status is never treated as disabled authentication. */
@@ -20,6 +22,8 @@ const INITIAL: AuthStatusState = {
   enabled: false,
   authenticated: false,
   isAdmin: false,
+  role: "",
+  productMode: "legacy",
   loading: true,
   error: false,
 };
@@ -47,6 +51,8 @@ function loadAuthStatus(): Promise<AuthStatusState> {
         enabled: Boolean(status?.enabled),
         authenticated: Boolean(status?.authenticated),
         isAdmin: status?.role === "admin",
+        role: status?.role || "",
+        productMode: status?.product_mode === "teaching" ? "teaching" as const : "legacy" as const,
         loading: false,
         error: status === null,
       }))

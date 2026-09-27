@@ -8,6 +8,8 @@ import { accountAreaRedirect, isManagementSession, type AccountArea } from "@/li
 import AppShell from "@/components/layout/AppShell";
 import ManagementSidebar from "@/components/sidebar/ManagementSidebar";
 import UtilitySidebar from "@/components/sidebar/UtilitySidebar";
+import { TeachingPreferencesProvider } from "@/components/teaching/TeachingPreferences";
+import TeachingSidebar from "@/components/teaching/TeachingSidebar";
 import WorkspaceSidebar from "@/components/sidebar/WorkspaceSidebar";
 
 /** Resolve the authenticated account before mounting either mode's content. */
@@ -16,7 +18,7 @@ export default function AccountShell({ area, children }: { area: AccountArea; ch
   const pathname = usePathname();
   const { i18n } = useTranslation();
   const zh = i18n.language?.startsWith("zh");
-  const status = { ...auth, role: auth.isAdmin ? "admin" : "user" };
+  const status = { ...auth, product_mode: auth.productMode, role: auth.role };
   const redirect = auth.loading || auth.error ? null : accountAreaRedirect(status, area, pathname);
 
   useEffect(() => {
@@ -32,6 +34,8 @@ export default function AccountShell({ area, children }: { area: AccountArea; ch
     </div>
   );
   if (auth.loading || redirect) return <p role="status" className="p-8 text-sm text-[var(--muted-foreground)]">{zh ? "正在打开工作台…" : "Opening your workspace…"}</p>;
+
+  if (auth.productMode === "teaching") return <TeachingPreferencesProvider student={auth.role === "student"}><AppShell sidebar={<TeachingSidebar role={auth.role} />}>{children}</AppShell></TeachingPreferencesProvider>;
 
   const sidebar = isManagementSession(status) ? <ManagementSidebar /> : area === "workspace" ? <WorkspaceSidebar /> : <UtilitySidebar />;
   return <AppShell sidebar={sidebar}>{children}</AppShell>;

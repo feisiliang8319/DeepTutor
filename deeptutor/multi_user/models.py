@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Literal
 
-Role = Literal["admin", "user"]
+Role = Literal["admin", "parent", "student", "user"]  # user: pre-migration only
 ScopeKind = Literal["admin", "user"]
 
 
@@ -69,7 +69,7 @@ class KnowledgeResource:
     id: str
     name: str
     base_dir: Path
-    source: Literal["admin", "user"]
+    source: Literal["admin", "user", "family"]
     assigned: bool = False
     read_only: bool = False
     metadata: dict[str, Any] = field(default_factory=dict)

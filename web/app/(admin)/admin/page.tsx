@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useAuthStatus } from "@/hooks/useAuthStatus";
+import TeachingAdminHome from "@/components/teaching/TeachingAdminHome";
 import { useTranslation } from "react-i18next";
 import { ArrowUpRight, BookOpen, Cpu, Users, Wrench, Settings, Plug } from "lucide-react";
 
@@ -16,7 +18,7 @@ const configuration = [
   { href: "/settings", icon: Settings, zh: "系统设置", en: "System settings", detail: "网络、文档解析与更多配置", english: "Network, document parsing and other settings" },
 ];
 
-export default function ManagementHome() {
+function LegacyManagementHome() {
   const { i18n } = useTranslation();
   const zh = i18n.language?.startsWith("zh");
   return (
@@ -49,4 +51,10 @@ export default function ManagementHome() {
       </div>
     </div>
   );
+}
+
+export default function ManagementHome() {
+  const {productMode,loading}=useAuthStatus();
+  if(loading)return null;
+  return productMode === "teaching" ? <TeachingAdminHome/> : <LegacyManagementHome/>;
 }

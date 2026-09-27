@@ -96,11 +96,12 @@ class TurnRecord:
 class SQLiteSessionStore:
     """Persist unified chat sessions and messages in a SQLite database."""
 
-    def __init__(self, db_path: Path | None = None) -> None:
+    def __init__(self, db_path: Path | None = None, *, migrate_legacy: bool = True) -> None:
         path_service = get_path_service()
         self.db_path = db_path or path_service.get_chat_history_db()
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
-        self._migrate_legacy_db(path_service)
+        if migrate_legacy:
+            self._migrate_legacy_db(path_service)
         self._lock = asyncio.Lock()
         self._initialize()
 
@@ -128,6 +129,11 @@ class SQLiteSessionStore:
                     compressed_summary TEXT DEFAULT '',
                     summary_up_to_msg_id INTEGER DEFAULT 0,
                     preferences_json TEXT DEFAULT '{}'
+                );
+
+                CREATE TABLE IF NOT EXISTS teaching_receipts (
+                    source_id TEXT PRIMARY KEY,
+                    session_id TEXT NOT NULL REFERENCES sessions(id) ON DELETE RESTRICT
                 );
 
                 CREATE TABLE IF NOT EXISTS messages (
@@ -445,6 +451,29 @@ class SQLiteSessionStore:
             "compressed_summary": "",
             "summary_up_to_msg_id": 0,
         }
+
+    def receive_quiz_explanation(self, source_id: str, content: str, evidence: dict[str, Any], *, title: str = "Quiz explanations and corrections", event_id: str | None = None) -> str:
+        """Atomically persist the teaching handoff once, in this student's store.
+
+        The education service retries this after a crash without duplicating
+        grading, sessions or messages. Raw attempts remain in education storage.
+        """
+        import hashlib
+        session_id = "unified_quiz_" + hashlib.sha256(source_id.encode()).hexdigest()[:24]
+        receipt_id = f"review:{event_id}" if event_id else source_id
+        now = time.time()
+        with self._connect() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            receipt = conn.execute("SELECT session_id FROM teaching_receipts WHERE source_id=?", (receipt_id,)).fetchone()
+            if receipt:
+                return str(receipt[0])
+            conn.execute("INSERT OR IGNORE INTO sessions(id,title,created_at,updated_at,preferences_json) VALUES(?,?,?,?,?)",
+                         (session_id, title, now, now, _json_dumps({"capability":"chat", "quiz_source":source_id})))
+            conn.execute("INSERT INTO messages(session_id,role,content,capability,events_json,metadata_json,created_at) VALUES(?,?,?,?,?,?,?)",
+                         (session_id, "assistant", content, "chat", "[]", _json_dumps({"quiz_evidence": evidence}), now))
+            conn.execute("INSERT INTO teaching_receipts(source_id,session_id) VALUES(?,?)", (receipt_id,session_id))
+            conn.execute("UPDATE sessions SET updated_at=? WHERE id=?",(now,session_id))
+        return session_id
 
     async def create_session(
         self,

@@ -1,0 +1,116 @@
+{
+  "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+  "source_file": "raw-stock/im-g4-full/raw/grade4-unit5-multiplicative-comparison-and-measurement.md",
+  "source_lesson_spans_verified": 18,
+  "verified_tasks": 17,
+  "package_sha256": "f0042b69d6cd985e80ff2139889f3a5863c8cf2974ce5ad0a273ac3f4eac6e77",
+  "builder_sha256": "23f9373dde78888463395b1615ac1b3f679939d50cc9cce923ab677ef12de6da",
+  "source_records": [
+    "ae854a2258a76a35bbeed6211f1994396a96e8f2546b822ef8f42abd035bf179",
+    "76c09949afe406351cabbc75f9281e2008d912201cbc4b13ff0aefc4a808fc33",
+    "9a0450fd1a31551153c0c01446bbc9719c85b8018915aedc0c832411e900aa7d",
+    "bdad2f929ca6769ce03b1079d79daebf817922fa2a6f69294427e9bd2f36aabb",
+    "e88e034177652c1b44c920a3e9bbc586870cb7b5d0512611d3345e28f6499ce5",
+    "72587fc7b57b16866076852f620416ba19c2ba84efd4f16f858fe4bbc760f00b",
+    "5bb86b4f016a6592e00472b92ebd96cc6289efc3bf32efead20a3c6ba190e180",
+    "4d119a0da925a793fb3a681945ba1f983ff3e5354e97fdc43894ab6d2771f3b6",
+    "b1f7af2a0ab3a9ac3637b9889206921cb0cbc09368f45dee891f8a554fb432f0",
+    "b371990de833af1c0a7f0d61f7bf83cba1544f160f55957fc8b9fc69ac6e1f2b",
+    "8fbe004dd89a1a38a6447e94aa46c13096b68ad2fb372c3eb5c9ed7b4e959943",
+    "e01a35cc8460d44bf0b9d4f6716b77da070dc97ea1294dbece40b4bef9eb6115",
+    "c85dd142b41ee0318882fb9224063a3ca58e5f193b02bfbbc322ed61f67d27f0",
+    "e653d1e63be294d70254d31db785c0492cbce18b0f7bed66ee241f7614d62c87",
+    "dd09ce8399f65092dc4452df78dea8985533edb4a4dbea34dce098e71aa244ee",
+    "6e520373d6cf814aac660f8831c849100b2d55340c84fc3cc9c9656b4ffed836",
+    "21b7cc1ceb8a8b23c43e56d8360396175dc0481f598e73bad942fadb90bedae6"
+  ],
+  "checks": [
+    {
+      "lesson": 1,
+      "record_id": "ae854a2258a76a35bbeed6211f1994396a96e8f2546b822ef8f42abd035bf179",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 2,
+      "record_id": "76c09949afe406351cabbc75f9281e2008d912201cbc4b13ff0aefc4a808fc33",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 3,
+      "record_id": "9a0450fd1a31551153c0c01446bbc9719c85b8018915aedc0c832411e900aa7d",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 4,
+      "record_id": "bdad2f929ca6769ce03b1079d79daebf817922fa2a6f69294427e9bd2f36aabb",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 5,
+      "record_id": "e88e034177652c1b44c920a3e9bbc586870cb7b5d0512611d3345e28f6499ce5",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 6,
+      "record_id": "72587fc7b57b16866076852f620416ba19c2ba84efd4f16f858fe4bbc760f00b",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 7,
+      "record_id": "5bb86b4f016a6592e00472b92ebd96cc6289efc3bf32efead20a3c6ba190e180",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 8,
+      "record_id": "4d119a0da925a793fb3a681945ba1f983ff3e5354e97fdc43894ab6d2771f3b6",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 9,
+      "record_id": "b1f7af2a0ab3a9ac3637b9889206921cb0cbc09368f45dee891f8a554fb432f0",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 10,
+      "record_id": "b371990de833af1c0a7f0d61f7bf83cba1544f160f55957fc8b9fc69ac6e1f2b",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 11,
+      "record_id": "8fbe004dd89a1a38a6447e94aa46c13096b68ad2fb372c3eb5c9ed7b4e959943",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 12,
+      "record_id": "e01a35cc8460d44bf0b9d4f6716b77da070dc97ea1294dbece40b4bef9eb6115",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 13,
+      "record_id": "c85dd142b41ee0318882fb9224063a3ca58e5f193b02bfbbc322ed61f67d27f0",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 14,
+      "record_id": "e653d1e63be294d70254d31db785c0492cbce18b0f7bed66ee241f7614d62c87",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 15,
+      "record_id": "dd09ce8399f65092dc4452df78dea8985533edb4a4dbea34dce098e71aa244ee",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 16,
+      "record_id": "6e520373d6cf814aac660f8831c849100b2d55340c84fc3cc9c9656b4ffed836",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 17,
+      "record_id": "21b7cc1ceb8a8b23c43e56d8360396175dc0481f598e73bad942fadb90bedae6",
+      "exact_arithmetic_checked": true
+    }
+  ],
+  "optional_lessons": "18 retained classroom reference; not converted in this batch",
+  "scope": "New worked examples aligned to17 retained lesson goals; original teacher responses and diagrams remain incomplete; teaching/grade/rights approval unchanged."
+}

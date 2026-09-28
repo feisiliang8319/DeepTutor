@@ -1,0 +1,670 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "IM G4 U5 存量转化 · 17道倍数与测量讲解例题",
+  "items": [
+    {
+      "id": "im-g4-u5-l1-stock-example-v1",
+      "knowledge_node_code": "G4.OA.A1.REPRESENT_VERBAL",
+      "item_type": "multi_step",
+      "prompt": "红色积木有6块，蓝色块数是红色的4倍。蓝色有多少块？两色共多少块，蓝色比红色多多少块？写出乘法关系。",
+      "expected_answer": "蓝色24块；共30块；多18块；24＝4×6。",
+      "explanation": "把红色6块看作一份，蓝色有同样大小的4份，所以4×6=24。合计24+6=30，差为24−6=18。“是4倍”比较份数，不是“多4块”；若多4块才是6+4。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L1 | retained source line 11",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 1. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "ae854a2258a76a35bbeed6211f1994396a96e8f2546b822ef8f42abd035bf179",
+        "source_lesson_family": "IM:G4:U5:L1",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "19e3bfd9b118b50ad9bda6ea704d7427931e5271b864178081c9c1ccc836632f",
+        "source_span": {
+          "start": 226,
+          "end": 14011
+        },
+        "source_spans": [
+          {
+            "start": 226,
+            "end": 14011,
+            "sha256": "19e3bfd9b118b50ad9bda6ea704d7427931e5271b864178081c9c1ccc836632f"
+          }
+        ],
+        "title_zh": "四倍不是多四个",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l2-stock-example-v1",
+      "knowledge_node_code": "G4.OA.A1.COMPARISON_EQUATION",
+      "item_type": "multi_step",
+      "prompt": "一段红绳长8厘米，一段蓝绳长24厘米。蓝绳是红绳的几倍？又比红绳长几厘米？分别写出表示倍数和差的等式，说明区别。",
+      "expected_answer": "3倍，多16厘米；24＝3×8，24＝8+16。",
+      "explanation": "倍数问题问24里面有几个8，用24÷8=3，所得3不带厘米单位。差的问题问还多长，用24−8=16厘米。画线段时，蓝绳相当于三段8厘米，超出的部分则是其中两段。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L2 | retained source line 445",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 2. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "76c09949afe406351cabbc75f9281e2008d912201cbc4b13ff0aefc4a808fc33",
+        "source_lesson_family": "IM:G4:U5:L2",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "bea49ddbd94107109da446ef9d8255a7cfb23505ef8455fc3545a59449d26681",
+        "source_span": {
+          "start": 14011,
+          "end": 28011
+        },
+        "source_spans": [
+          {
+            "start": 14011,
+            "end": 28011,
+            "sha256": "bea49ddbd94107109da446ef9d8255a7cfb23505ef8455fc3545a59449d26681"
+          }
+        ],
+        "title_zh": "一个关系，两种比较",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l3-stock-example-v1",
+      "knowledge_node_code": "G4.OA.A2.SOLVE_COMPARISON",
+      "item_type": "multi_step",
+      "prompt": "甲有35张贴纸，是乙的5倍。乙有多少张？另有两条长度分别为42厘米和6厘米的绳子，长绳是短绳的几倍？说明两个除法分别在求什么。",
+      "expected_answer": "乙有7张；长绳是短绳的7倍。",
+      "explanation": "第一问用5×□=35，求一份是多少，35÷5=7张。第二问用□×6=42，求包含几份，42÷6=7倍。虽然都得到7，前者带张数，后者表示份数比较，不应混淆。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L3 | retained source line 896",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 3. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "9a0450fd1a31551153c0c01446bbc9719c85b8018915aedc0c832411e900aa7d",
+        "source_lesson_family": "IM:G4:U5:L3",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "40ca17592e6821f4e85d84f0b37903bf8e3deb32921923746ee8d6a5e67a3321",
+        "source_span": {
+          "start": 28011,
+          "end": 40005
+        },
+        "source_spans": [
+          {
+            "start": 28011,
+            "end": 40005,
+            "sha256": "40ca17592e6821f4e85d84f0b37903bf8e3deb32921923746ee8d6a5e67a3321"
+          }
+        ],
+        "title_zh": "已知倍数，反求一份",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l4-stock-example-v1",
+      "knowledge_node_code": "G4.OA.A2.SOLVE_COMPARISON",
+      "item_type": "multi_step",
+      "prompt": "甲图书角有125册书，乙有甲的8倍，丙有乙的2倍。乙、丙各多少册，三个图书角共多少册？丙是甲的几倍？",
+      "expected_answer": "乙1000册，丙2000册，共3125册；丙是甲的16倍。",
+      "explanation": "先按关系顺序计算，乙125×8=1000，丙1000×2=2000。合计125+1000+2000=3125。两次倍数相乘8×2=16，检验125×16=2000；不能把8倍和2倍相加成10倍。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L4 | retained source line 1281",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 4. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "bdad2f929ca6769ce03b1079d79daebf817922fa2a6f69294427e9bd2f36aabb",
+        "source_lesson_family": "IM:G4:U5:L4",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "5a1e5d48adf429d6944ddf4d8e8d4f7dbd9e75af1fd3ed7c7401ef65dfe16f35",
+        "source_span": {
+          "start": 40005,
+          "end": 55682
+        },
+        "source_spans": [
+          {
+            "start": 40005,
+            "end": 55682,
+            "sha256": "5a1e5d48adf429d6944ddf4d8e8d4f7dbd9e75af1fd3ed7c7401ef65dfe16f35"
+          }
+        ],
+        "title_zh": "较大数量的倍数关系",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l5-stock-example-v1",
+      "knowledge_node_code": "G4.OA.A3.MULTISTEP_EQUATION",
+      "item_type": "multi_step",
+      "prompt": "甲原有18张卡片，乙原有甲的3倍。乙给甲12张后，两人各有多少张？总张数改变了吗，此时乙还是甲的3倍吗？",
+      "expected_answer": "甲30张，乙42张；总数仍72张；此时乙不是甲的3倍。",
+      "explanation": "乙原来18×3=54。转移后甲18+12=30，乙54−12=42，合计72与原来的18+54相同。3×30=90，不等于42，所以原来的倍数关系不能沿用到转移后的新数量。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L5 | retained source line 1684",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 5. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "e88e034177652c1b44c920a3e9bbc586870cb7b5d0512611d3345e28f6499ce5",
+        "source_lesson_family": "IM:G4:U5:L5",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "2220f4c5e1c6ef61fc44eda10d4ea05030e919b9c6c0a163c59a5f14755b831b",
+        "source_span": {
+          "start": 55682,
+          "end": 67969
+        },
+        "source_spans": [
+          {
+            "start": 55682,
+            "end": 67969,
+            "sha256": "2220f4c5e1c6ef61fc44eda10d4ea05030e919b9c6c0a163c59a5f14755b831b"
+          }
+        ],
+        "title_zh": "转移后关系会改变",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l6-stock-example-v1",
+      "knowledge_node_code": "G4.OA.A2.SOLVE_COMPARISON",
+      "item_type": "multi_step",
+      "prompt": "甲展台有36张照片，乙的照片数是甲的10倍，丙又是乙的10倍。乙、丙各有多少张？丙是甲的20倍还是100倍？解释。",
+      "expected_answer": "乙360张，丙3600张；丙是甲的100倍。",
+      "explanation": "把36扩大10倍得到360，再扩大10倍得到3600。连续乘10等于乘10×10=100，不能把两次十倍相加成20倍。验算36×100=3600。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L6 | retained source line 2039",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 6. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "72587fc7b57b16866076852f620416ba19c2ba84efd4f16f858fe4bbc760f00b",
+        "source_lesson_family": "IM:G4:U5:L6",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "1a400ddcbc1c6647c01557d88834bcfd61fc2b8f0f4f6e90d259659988beda84",
+        "source_span": {
+          "start": 67969,
+          "end": 81561
+        },
+        "source_spans": [
+          {
+            "start": 67969,
+            "end": 81561,
+            "sha256": "1a400ddcbc1c6647c01557d88834bcfd61fc2b8f0f4f6e90d259659988beda84"
+          }
+        ],
+        "title_zh": "两次十倍",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l7-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A1.UNIT_CONVERT",
+      "item_type": "multi_step",
+      "prompt": "本题1米＝100厘米。把3米25厘米全部化成厘米，再与295厘米比较，长多少？",
+      "expected_answer": "3米25厘米＝325厘米，比295厘米长30厘米。",
+      "explanation": "3米相当于3×100=300厘米，再加25厘米为325。相同单位下325−295=30厘米。不能把3米25厘米写成3+25=28厘米，也不能把325当作米数。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L7 | retained source line 2436",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 7. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "5bb86b4f016a6592e00472b92ebd96cc6289efc3bf32efead20a3c6ba190e180",
+        "source_lesson_family": "IM:G4:U5:L7",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "0a612e38cbbfed0997aa1a8a8a69fe9805eff5ac8da40afe74740f4b14cbf0e0",
+        "source_span": {
+          "start": 81561,
+          "end": 93420
+        },
+        "source_spans": [
+          {
+            "start": 81561,
+            "end": 93420,
+            "sha256": "0a612e38cbbfed0997aa1a8a8a69fe9805eff5ac8da40afe74740f4b14cbf0e0"
+          }
+        ],
+        "title_zh": "米与厘米先统一",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l8-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A1.UNIT_CONVERT",
+      "item_type": "multi_step",
+      "prompt": "本题1千米＝1000米。甲路线长2千米350米，乙路线长1800米。甲比乙长多少米？两条路线接起来总长多少米？",
+      "expected_answer": "甲长2350米，比乙长550米；总长4150米。",
+      "explanation": "2千米为2000米，加350米得到2350米。差2350−1800=550米，和2350+1800=4150米。先转换到同一个小单位，才能直接相加减。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L8 | retained source line 2824",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 8. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "4d119a0da925a793fb3a681945ba1f983ff3e5354e97fdc43894ab6d2771f3b6",
+        "source_lesson_family": "IM:G4:U5:L8",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "f0eccb48201e9495b1d988e32bfb68672bcbcdc573d89999293389a5d2aacd6c",
+        "source_span": {
+          "start": 93420,
+          "end": 107603
+        },
+        "source_spans": [
+          {
+            "start": 93420,
+            "end": 107603,
+            "sha256": "f0eccb48201e9495b1d988e32bfb68672bcbcdc573d89999293389a5d2aacd6c"
+          }
+        ],
+        "title_zh": "千米与米的关系",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l9-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A1.UNIT_CONVERT",
+      "item_type": "multi_step",
+      "prompt": "本题1千克＝1000克，1升＝1000毫升。把2千克250克换成克，把3升40毫升换成毫升。能否把这两个结果直接相加成一种数量？",
+      "expected_answer": "2250克；3040毫升；不能直接相加，质量与容量是不同的量。",
+      "explanation": "2千克为2000克，加250克为2250克；3升为3000毫升，加40毫升为3040毫升。两个换算系数恰好都是1000，不代表克与毫升是同一种单位，题目没有提供把质量转换成体积所需的信息。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L9 | retained source line 3240",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 9. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "b1f7af2a0ab3a9ac3637b9889206921cb0cbc09368f45dee891f8a554fb432f0",
+        "source_lesson_family": "IM:G4:U5:L9",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "24977d9a9f25cabe8685e2785d92a6bc84983d1172a45033c1b892162a12c488",
+        "source_span": {
+          "start": 107603,
+          "end": 122346
+        },
+        "source_spans": [
+          {
+            "start": 107603,
+            "end": 122346,
+            "sha256": "24977d9a9f25cabe8685e2785d92a6bc84983d1172a45033c1b892162a12c488"
+          }
+        ],
+        "title_zh": "质量与容量分别换算",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l10-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A2.MEASURE_WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "一根5米绳子剪出3段，每段125厘米，剪裁没有损耗。本题1米＝100厘米。剪出的总长多少厘米？剩余多少厘米，合几米几厘米？",
+      "expected_answer": "剪出375厘米；剩125厘米，即1米25厘米。",
+      "explanation": "先把5米写成500厘米。三段合计3×125=375厘米，剩500−375=125厘米。125厘米可分成100厘米加25厘米，所以为1米25厘米。检验375+125=500。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L10 | retained source line 3672",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 10. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "b371990de833af1c0a7f0d61f7bf83cba1544f160f55957fc8b9fc69ac6e1f2b",
+        "source_lesson_family": "IM:G4:U5:L10",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "4742eca4eda815aa0fbb0c6f00deb3fb2e6eca2221e266093b42c67403f37cd5",
+        "source_span": {
+          "start": 122346,
+          "end": 134980
+        },
+        "source_spans": [
+          {
+            "start": 122346,
+            "end": 134980,
+            "sha256": "4742eca4eda815aa0fbb0c6f00deb3fb2e6eca2221e266093b42c67403f37cd5"
+          }
+        ],
+        "title_zh": "同单位完成多步测量",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l11-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A1.UNIT_CONVERT",
+      "item_type": "multi_step",
+      "prompt": "本题的磅和盎司都是质量单位，1磅＝16盎司，不使用液量盎司。甲包裹3磅4盎司，乙包裹2磅14盎司，哪一个质量更大，多多少盎司？",
+      "expected_answer": "甲52盎司，乙46盎司，甲多6盎司。",
+      "explanation": "甲3×16+4=52盎司，乙2×16+14=46盎司，因此差6盎司。虽然乙剩余部分14大于4，仍须先把整磅一起计入。磅与盎司的进率为16，不能套用米与厘米的100。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L11 | retained source line 4056",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 11. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "8fbe004dd89a1a38a6447e94aa46c13096b68ad2fb372c3eb5c9ed7b4e959943",
+        "source_lesson_family": "IM:G4:U5:L11",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "29089ff4b77a5aeacfe871fa3c0da0752da714ad16a99c14518eaf5788c4626d",
+        "source_span": {
+          "start": 134980,
+          "end": 147676
+        },
+        "source_spans": [
+          {
+            "start": 134980,
+            "end": 147676,
+            "sha256": "29089ff4b77a5aeacfe871fa3c0da0752da714ad16a99c14518eaf5788c4626d"
+          }
+        ],
+        "title_zh": "磅与盎司的质量换算",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l12-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A1.UNIT_CONVERT",
+      "item_type": "multi_step",
+      "prompt": "本题1小时＝60分钟，1分钟＝60秒。2小时15分钟是多少分钟、多少秒？7分钟30秒又是多少秒？解释为何2小时15分钟不能写成215分钟。",
+      "expected_answer": "135分钟、8100秒；7分钟30秒为450秒。",
+      "explanation": "2小时为120分钟，另加15为135分钟；135×60=8100秒。另一时间7×60+30=450秒。小时到分钟按60换算，钟面写法或数字拼接不能替代单位换算。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L12 | retained source line 4433",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 12. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "e01a35cc8460d44bf0b9d4f6716b77da070dc97ea1294dbece40b4bef9eb6115",
+        "source_lesson_family": "IM:G4:U5:L12",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "5f5d4efbfa341c3b00f5871413927c1f46e1b69273f6973c7bc909b01f91518a",
+        "source_span": {
+          "start": 147676,
+          "end": 159366
+        },
+        "source_spans": [
+          {
+            "start": 147676,
+            "end": 159366,
+            "sha256": "5f5d4efbfa341c3b00f5871413927c1f46e1b69273f6973c7bc909b01f91518a"
+          }
+        ],
+        "title_zh": "时间单位不是百进制",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l13-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A2.MEASURE_WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "有3瓶果汁，每瓶3/4升。倒在一起后用掉1升250毫升。本题1升＝1000毫升，不计损耗。合计多少毫升，用后还剩多少？",
+      "expected_answer": "合计2250毫升；用掉1250毫升，剩1000毫升，即1升。",
+      "explanation": "3瓶总量3×3/4=9/4升=2又1/4升。1/4升是250毫升，合计2250毫升。使用量为1000+250=1250毫升，差2250−1250=1000毫升。相减前要统一单位，不能把9/4直接减1250。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L13 | retained source line 4813",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 13. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "c85dd142b41ee0318882fb9224063a3ca58e5f193b02bfbbc322ed61f67d27f0",
+        "source_lesson_family": "IM:G4:U5:L13",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "299853e17c99a7475d982fc00492d34d62cff22a771e5465978f3ab9b57a6134",
+        "source_span": {
+          "start": 159366,
+          "end": 177074
+        },
+        "source_spans": [
+          {
+            "start": 159366,
+            "end": 177074,
+            "sha256": "299853e17c99a7475d982fc00492d34d62cff22a771e5465978f3ab9b57a6134"
+          }
+        ],
+        "title_zh": "带分数的容量问题",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l14-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A2.MEASURE_WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "有2千克500克大米，每袋装125克，先装8袋；另有3瓶水，每瓶500毫升。本题1千克＝1000克，1升＝1000毫升。装袋后大米剩多少克？水共多少升？两个答案可以直接合计吗？",
+      "expected_answer": "大米剩1500克；水共1.5升；不能把克与升直接相加。",
+      "explanation": "大米总量2500克，8袋用8×125=1000克，剩1500克。水共3×500=1500毫升=1.5升。数值同为1500时，单位仍分别表示质量与容量；相同数字不代表相同物理量。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L14 | retained source line 5277",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 14. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "e653d1e63be294d70254d31db785c0492cbce18b0f7bed66ee241f7614d62c87",
+        "source_lesson_family": "IM:G4:U5:L14",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "f7c24e5b8fb3050c67d3d95d3329734c97c8c02114648f9ad00d219014b0a017",
+        "source_span": {
+          "start": 177074,
+          "end": 192818
+        },
+        "source_spans": [
+          {
+            "start": 177074,
+            "end": 192818,
+            "sha256": "f7c24e5b8fb3050c67d3d95d3329734c97c8c02114648f9ad00d219014b0a017"
+          }
+        ],
+        "title_zh": "份数与单位都要对应",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l15-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A2.MEASURE_WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "甲走了1又3/4千米，乙走了3段各500米的路。本题1千米＝1000米。两人各走多少米，谁更多，多多少米？",
+      "expected_answer": "甲1750米，乙1500米；甲多250米。",
+      "explanation": "甲的整千米为1000米，3/4千米为750米，共1750。乙为3×500=1500米。统一为米后相减得250米。不能仅因乙走了3段就认为乙一定更远，段数还要结合每段长度。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L15 | retained source line 5756",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 15. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "dd09ce8399f65092dc4452df78dea8985533edb4a4dbea34dce098e71aa244ee",
+        "source_lesson_family": "IM:G4:U5:L15",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "4058041cb26ed6fb03d90955b2b15684dadccad10991261276801ded9c4cd68f",
+        "source_span": {
+          "start": 192818,
+          "end": 206455
+        },
+        "source_spans": [
+          {
+            "start": 192818,
+            "end": 206455,
+            "sha256": "4058041cb26ed6fb03d90955b2b15684dadccad10991261276801ded9c4cd68f"
+          }
+        ],
+        "title_zh": "把分数千米换成米",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l16-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A3.AREA_PERIMETER_FORMULA",
+      "item_type": "multi_step",
+      "prompt": "长方形甲长3/2米、宽3/4米。乙的长和宽都分别是甲的2倍。两者周长各多少米，乙的周长是甲的几倍？解释不能仅凭“两个边长都乘2”就把周长乘4。",
+      "expected_answer": "甲周长9/2米＝4又1/2米；乙周长9米，是甲的2倍。",
+      "explanation": "甲周长2×(3/2+3/4)=2×9/4=9/2。乙长3米、宽3/2米，周长2×(3+3/2)=9米。每条边的长度都扩大2倍，四条边相加的和也扩大2倍；周长是长度的和，不能套用面积的倍数规律。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L16 | retained source line 6185",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 16. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "6e520373d6cf814aac660f8831c849100b2d55340c84fc3cc9c9656b4ffed836",
+        "source_lesson_family": "IM:G4:U5:L16",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "b83bc089dac35ae396790cfeb17ac19113950a72121d4a43d67bc42c44a9eed9",
+        "source_span": {
+          "start": 206455,
+          "end": 220118
+        },
+        "source_spans": [
+          {
+            "start": 206455,
+            "end": 220118,
+            "sha256": "b83bc089dac35ae396790cfeb17ac19113950a72121d4a43d67bc42c44a9eed9"
+          }
+        ],
+        "title_zh": "边长加倍与周长",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l17-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A3.AREA_PERIMETER_FORMULA",
+      "item_type": "multi_step",
+      "prompt": "一个长方形框长2米40厘米、宽1米60厘米。把长增加1/2米，宽不变。本题1米＝100厘米。原周长与新周长各是多少米？为什么周长并非只增加1/2米？",
+      "expected_answer": "原周长8米，新周长9米，增加1米。",
+      "explanation": "统一成厘米，原周长2×(240+160)=800厘米=8米。1/2米为50厘米，新长290厘米，周长2×(290+160)=900厘米=9米。长方形有两条同样长的边，每条增加50厘米，合计增加100厘米即1米。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L17 | retained source line 6674",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 17. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "21b7cc1ceb8a8b23c43e56d8360396175dc0481f598e73bad942fadb90bedae6",
+        "source_lesson_family": "IM:G4:U5:L17",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "db32d60dc4c5db3a8a84a0a51b599bf45c9058edcca032841da178fe9762cb64",
+        "source_span": {
+          "start": 220118,
+          "end": 235022
+        },
+        "source_spans": [
+          {
+            "start": 220118,
+            "end": 235022,
+            "sha256": "db32d60dc4c5db3a8a84a0a51b599bf45c9058edcca032841da178fe9762cb64"
+          }
+        ],
+        "title_zh": "加长一边后的周长",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    }
+  ]
+}

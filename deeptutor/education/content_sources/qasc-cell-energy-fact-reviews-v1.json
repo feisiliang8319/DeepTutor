@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "library": "qasc",
+  "expected_records": 9060,
+  "expected_changed_records": 107,
+  "reviews": [
+    {
+      "fact_id": "dd7800f1fa30192d63aeb4ac5ee46b38200e836f302a2eebb27e4833be1cb61a",
+      "fact_before": "Mitosis is cell division.",
+      "correction": "Mitosis divides duplicated chromosomes into daughter nuclei in eukaryotic cells. Cytokinesis separates the cytoplasm into daughter cells and commonly follows mitosis. Mitosis can occur without cytokinesis, and bacterial cell division does not use mitosis.",
+      "reason": "The source collapses nuclear division, cytokinesis, and all forms of cell division into one term. Check the organism and process before accepting the combined inference.",
+      "expected_records": 28,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/10-2-the-cell-cycle",
+        "https://openstax.org/books/biology-2e/pages/10-5-prokaryotic-cell-division"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "9984b0fa8aec47e2aee6244ba6a3631bef4d1a3d59c06b259335b0caa2341491",
+      "fact_before": "Dilation occurs when cell walls relax.",
+      "correction": "In blood-vessel dilation, relaxation of smooth muscle in the vessel wall can widen the lumen. A vessel wall is a tissue structure, not a cell wall. Animal cells do not have plant-like cell walls. Different kinds of dilation require their own explanation; this statement cannot establish a cause of an aneurysm or a general treatment claim.",
+      "reason": "The source confuses a blood-vessel wall with a cell wall and transfers claims between unrelated meanings of dilation. Withdraw the derived medical and plant-cell conclusions.",
+      "expected_records": 15,
+      "references": [
+        "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-1-structure-and-function-of-blood-vessels",
+        "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "8ec27bcc039b710bf438d698af04eeb80ff6b9696a6f74e13c99d7d54e8bfe74",
+      "fact_before": "Mutations are essential for evolution to occur.",
+      "correction": "Mutation creates new alleles and is the ultimate source of new genetic variation. A population can also evolve through changes in frequencies of existing alleles caused by selection, genetic drift, or gene flow. A new mutation is not required for every evolutionary change or in every generation.",
+      "reason": "Distinguish the origin of genetic variation from the mechanisms that change frequencies of existing variants.",
+      "expected_records": 17,
+      "references": [
+        "https://openstax.org/books/concepts-biology/pages/11-2-mechanisms-of-evolution"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "8cf7653db84659d0303dbe40bb2e5c2ecefba516892bdf781cab7f816f2756a3",
+      "fact_before": "absorbing energy causes objects to heat",
+      "correction": "Energy entering a system need not raise its temperature. For example, heat absorbed during equilibrium melting of a pure substance at fixed pressure can change its phase while its temperature remains constant. The energy transfer mechanism, material and physical conditions must be specified.",
+      "reason": "The premise wrongly treats every energy gain as a temperature increase.",
+      "expected_records": 15,
+      "references": [
+        "https://openstax.org/books/university-physics-volume-2/pages/1-5-phase-changes"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "9ae0fec5ba0782bcd5acf7d8d60efba0640b9b16cd169ca3f72e1b4ec18bd283",
+      "fact_before": "an egg requires warmth to survive",
+      "correction": "A developing egg needs conditions appropriate to its species and developmental stage. A general instruction to make every egg warmer is incorrect: salmon eggs develop in cold water, and excessive warmth can reduce survival by increasing oxygen demand. Specify the species and safe temperature range instead of assuming that warmer always means better.",
+      "reason": "The source overgeneralizes incubation conditions across species.",
+      "expected_records": 17,
+      "references": [
+        "https://www.fisheries.noaa.gov/species/atlantic-salmon",
+        "https://www.fisheries.noaa.gov/news/scientists-improve-predictions-how-temperature-affects-survival-fish-embryos"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "1394c04c66477e9436df48770d622f60f5e117a2e6ae9fceeca6586155e4ee61",
+      "fact_before": "Cells vary in size as well as shape, but all cells are very small.",
+      "correction": "Most familiar cells require a microscope for detailed observation, but some cells are visible without one. For example, the marine alga Valonia ventricosa can be a single multinucleate cell several centimeters across. Cell size must not be inferred from an absolute claim that all cells are microscopic.",
+      "reason": "The source turns a common observation into a universal rule.",
+      "expected_records": 15,
+      "references": [
+        "https://www.perryinstitute.org/species-spotlight-sea-pearl-sailors-eyeball/"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    }
+  ]
+}

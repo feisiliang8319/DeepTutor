@@ -95,5 +95,36 @@ def test_catalog_source_and_prior_metadata_preserved(tmp_path):
         assert row['metadata']['fact_chain_review']['explanation_before'].endswith('Trees are bushes.')
         assert db.execute('select state from records where id="1"').fetchone()[0]=='needs_curriculum_review'
     with pytest.raises(ValueError,match='already applied'):build(target,path,tmp_path/'snapshots')
+    # A later correction in the same source must retain the first review.
+    (target/'math-review-assets').mkdir();(target/'math-review-assets/figure.svg').write_text('<svg/>')
+    second_fact='Trees are plants.'
+    second_review={**REVIEW,'fact_id':sha(second_fact),'fact_before':second_fact,
+                   'correction':'Trees are woody plants.','reason':'Add the relevant growth-form scope.'}
+    path2=tmp_path/'second.json';path2.write_text(json.dumps({**recipe,'reviews':[second_review]}))
+    result2=build(target,path2,tmp_path/'snapshots');target2=tmp_path/'snapshots'/result2['snapshot_id']
+    latest=(target2/'qasc-revised-documents/fixture.md').read_text()
+    assert REVIEW['correction'] in latest and second_review['correction'] in latest
+    assert 'Trees are bushes.' not in latest
+    assert (target2/'math-review-assets/figure.svg').read_text()=='<svg/>'
+    manifest=json.loads((target2/'qasc-revised-documents.json').read_text())
+    assert manifest[0]['expected_current_sha256']==sha((target/'qasc-revised-documents/fixture.md').read_bytes())
+    report=json.loads((target2/'summary.json').read_text())
+    assert report['qasc_reviewed_fact_groups']==2 and report['qasc_inferences_withdrawn']==1
+    with sqlite3.connect(target2/'catalog.sqlite3') as db:
+        row=json.loads(db.execute("select data_json from records where id='0'").fetchone()[0])
+        assert row['metadata']['fact_chain_review']['previous_review']['reviews']==[REVIEW]
+        assert row['metadata']['fact_chain_review']['explanation_before'].endswith('Trees are bushes.')
+    third_fact='Water contains oxygen.'
+    third_review={**REVIEW,'fact_id':sha(third_fact),'fact_before':third_fact,
+                  'correction':'Water molecules contain oxygen atoms chemically bonded to hydrogen.',
+                  'reason':'Distinguish oxygen atoms from dissolved oxygen gas.'}
+    path3=tmp_path/'third.json';path3.write_text(json.dumps({**recipe,'reviews':[third_review]}))
+    result3=build(target2,path3,tmp_path/'snapshots');target3=tmp_path/'snapshots'/result3['snapshot_id']
+    latest=(target3/'qasc-revised-documents/fixture.md').read_text()
+    assert all(r['correction'] in latest for r in [REVIEW,second_review,third_review])
+    with sqlite3.connect(target2/'catalog.sqlite3') as a,sqlite3.connect(target3/'catalog.sqlite3') as b:
+        assert a.execute("select data_json from records where id='0'").fetchone()==b.execute("select data_json from records where id='0'").fetchone()
+    report=json.loads((target3/'summary.json').read_text())
+    assert report['qasc_reviewed_fact_groups']==3 and report['qasc_inferences_withdrawn']==2
     bad=copy.deepcopy(recipe);bad['reviews'][0]['expected_records']=2;path.write_text(json.dumps(bad))
     with pytest.raises(ValueError,match='population changed'):build(base,path,tmp_path/'snapshots')

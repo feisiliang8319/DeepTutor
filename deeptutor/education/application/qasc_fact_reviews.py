@@ -82,12 +82,30 @@ def build(base, recipe_path, output):
             raise ValueError('Missing or unsafe review evidence')
     with sqlite3.connect((base/'catalog.sqlite3').as_uri()+'?mode=ro', uri=True) as db:
         rows = [json.loads(x[0]) for x in db.execute("select data_json from records where library='qasc' order by rowid")]
-    if len(rows) != recipe['expected_records'] or any('fact_chain_review' in r['metadata'] for r in rows):
-        raise ValueError('Unexpected population or review already applied')
+    if len(rows) != recipe['expected_records']:
+        raise ValueError('Unexpected population')
+    prior_reviews = {}
+    for row in rows:
+        prior = row['metadata'].get('fact_chain_review')
+        if not prior:
+            continue
+        if prior['source_sha256'] != row['source_sha256'] or prior['raw_sha256'] != row['raw_sha256'] or row['explanation'] != reviewed_explanation(prior['reviews']) or row['state'] not in {'needs_fact_check', 'duplicate'}:
+            raise ValueError('Previous fact review provenance changed')
+        original_ids = {sha(f) for f in facts(prior['explanation_before'])}
+        for review in prior['reviews']:
+            key = review['fact_id']
+            if key != sha(review['fact_before']) or key not in original_ids or (key in prior_reviews and prior_reviews[key] != review):
+                raise ValueError('Conflicting prior fact reviews')
+            prior_reviews[key] = review
+    if reviews.keys() & prior_reviews.keys():
+        raise ValueError('Fact review already applied')
+    combined_reviews = {**prior_reviews, **reviews}
+    def original_explanation(row):
+        return row['metadata'].get('fact_chain_review', {}).get('explanation_before', row['explanation'])
     selected = {}; counts = Counter(); groups = {}
     for row in rows:
         local = []
-        for fact in set(facts(row['explanation'])):
+        for fact in set(facts(original_explanation(row))):
             identity = sha(fact)
             groups.setdefault(identity, {'id': identity, 'original_fact': fact, 'records': [], 'state': 'pending_semantic_review'})['records'].append(row['id'])
             if identity in reviews:
@@ -96,19 +114,27 @@ def build(base, recipe_path, output):
             selected[row['id']] = sorted(local, key=lambda r:r['fact_id'])
     if dict(counts) != {k:v['expected_records'] for k,v in reviews.items()} or len(selected) != recipe['expected_changed_records']:
         raise ValueError('Review population changed')
+    for key, review in prior_reviews.items():
+        if len(groups.get(key, {}).get('records', [])) != review['expected_records']:
+            raise ValueError('Prior fact population changed')
     identity = sha(json.dumps({'base':base.name,'recipe':sha(recipe_path.read_bytes()),'processor':sha(Path(__file__).read_bytes())},sort_keys=True))
-    target = Path(output)/identity; shutil.copytree(base,target)
+    target = Path(output)/identity
+    shutil.copytree(base, target, ignore=lambda path, names: {'qasc-revised-documents'} if Path(path) == base else set())
     corrected = target/'qasc-revised-documents'; corrected.mkdir(exist_ok=False); manifest=[]
     paths = {r['source_path']:r['source_sha256'] for r in rows}
     for path, source_sha in paths.items():
         blob=(base/'objects'/(source_sha+'.md')).read_bytes()
         if sha(blob) != source_sha:
             raise ValueError('Source object changed')
-        before=blob.decode(); after, changed=patch_document(Path(path).name,before,reviews)
+        original_text=blob.decode()
+        before,_=patch_document(Path(path).name,original_text,prior_reviews)
+        after,_=patch_document(Path(path).name,original_text,combined_reviews)
+        changed=sum(r['id'] in selected for r in rows if r['source_path']==path)
         if not changed:
+            if before != after: raise ValueError('Unexpected document change')
             continue
         revised_sha=sha(after);(corrected/Path(path).name).write_text(after);(target/'objects'/(revised_sha+'.md')).write_text(after)
-        manifest.append({'source_path':path,'expected_current_sha256':source_sha,'revised_sha256':revised_sha,'changed_questions':changed})
+        manifest.append({'source_path':path,'expected_current_sha256':sha(before),'revised_sha256':revised_sha,'changed_questions':changed})
     if sum(x['changed_questions'] for x in manifest) != len(selected):
         raise ValueError('Source and catalog counts differ')
     with sqlite3.connect(target/'catalog.sqlite3') as db:
@@ -119,8 +145,12 @@ def build(base, recipe_path, output):
             if sha(original[row['start']:row['end']]) != row['raw_sha256']:
                 raise ValueError('Source span changed')
             # Preserve fact order, matching the natural document patch.
-            items=[reviews[sha(f)] for f in facts(row['explanation']) if sha(f) in reviews]
-            row['metadata']={**row['metadata'],'fact_chain_review':{'reviews':items,'explanation_before':row['explanation'],'answer_approval':'unchanged','source_sha256':row['source_sha256'],'raw_sha256':row['raw_sha256'],'recipe_sha256':sha(recipe_path.read_bytes())}}
+            source_explanation=original_explanation(row)
+            items=[combined_reviews[sha(f)] for f in facts(source_explanation) if sha(f) in combined_reviews]
+            prior=row['metadata'].get('fact_chain_review')
+            current={'reviews':items,'explanation_before':source_explanation,'answer_approval':'unchanged','source_sha256':row['source_sha256'],'raw_sha256':row['raw_sha256'],'recipe_sha256':sha(recipe_path.read_bytes())}
+            if prior: current['previous_review']=prior
+            row['metadata']={**row['metadata'],'fact_chain_review':current}
             row['explanation']=reviewed_explanation(items)
             if row['state'] != 'duplicate': row['state']='needs_fact_check'
             db.execute('update records set state=?,data_json=? where id=?',(row['state'],json.dumps(row,ensure_ascii=False),row['id']))
@@ -136,12 +166,12 @@ def build(base, recipe_path, output):
                     raise ValueError('Unrelated data changed')
             if changed!=len(selected):raise ValueError('Catalog correction count mismatch')
         states=dict(db.execute("select state,count(*) from records where library='qasc' group by state"))
-    for key,review in reviews.items():groups[key].update(state='background_corrected_inference_withdrawn',review=review)
-    report={**previous,'snapshot_id':identity,'base_snapshot_id':base.name,'created_at':datetime.now(timezone.utc).isoformat(),'catalog_sha256':sha((target/'catalog.sqlite3').read_bytes()),'committed_batches':previous['committed_batches']+1,'qasc_fact_groups':len(groups),'qasc_reviewed_fact_groups':len(reviews),'qasc_inferences_withdrawn':len(selected),'qasc_formal_items_created':0}
+    for key,review in combined_reviews.items():groups[key].update(state='background_corrected_inference_withdrawn',review=review)
+    report={**previous,'snapshot_id':identity,'base_snapshot_id':base.name,'created_at':datetime.now(timezone.utc).isoformat(),'catalog_sha256':sha((target/'catalog.sqlite3').read_bytes()),'committed_batches':previous['committed_batches']+1,'qasc_fact_groups':len(groups),'qasc_reviewed_fact_groups':len(combined_reviews),'qasc_inferences_withdrawn':sum('fact_chain_review' in r['metadata'] for r in rows),'qasc_batch_reviewed_fact_groups':len(reviews),'qasc_batch_changed_records':len(selected),'qasc_formal_items_created':0}
     for library in report['libraries']:
         if library['library']=='qasc':library['states']=states
     (target/'summary.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     (target/'qasc-fact-queue.json').write_text(json.dumps(list(groups.values()),ensure_ascii=False,indent=2)+'\n')
     (target/'qasc-revised-documents.json').write_text(json.dumps(manifest,indent=2)+'\n')
     (target/'qasc-fact-reviews.json').write_bytes(recipe_path.read_bytes())
-    return {'snapshot_id':identity,'changed_records':len(selected),'fact_groups':len(groups),'reviewed_fact_groups':len(reviews),'question_answer_approval_changes':0,'changed_documents':manifest,'states':states}
+    return {'snapshot_id':identity,'changed_records':len(selected),'fact_groups':len(groups),'reviewed_fact_groups':len(combined_reviews),'question_answer_approval_changes':0,'changed_documents':manifest,'states':states}

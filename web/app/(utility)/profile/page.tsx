@@ -24,6 +24,7 @@ import {
 } from "@/components/UserAvatar";
 import { parseAvatarMarker } from "@/lib/avatar";
 import { formatDate, type Language } from "@/lib/datetime";
+import PasswordForm from "@/components/teaching/PasswordForm";
 
 const AVATAR_OUTPUT_SIZE = 256;
 // Decoding a huge photo just to throw away most pixels wastes memory; the
@@ -98,6 +99,7 @@ export default function ProfilePage() {
   const router = useRouter();
   const { t, i18n } = useTranslation();
   const [profile, setProfile] = useState<ProfileInfo | null>(null);
+  const [passwordRequired, setPasswordRequired] = useState(false);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -116,6 +118,7 @@ export default function ProfilePage() {
         router.replace("/login");
         return;
       }
+      setPasswordRequired(Boolean(status.password_change_required));
       try {
         const info = await getProfile();
         if (!cancelled) setProfile(info);
@@ -204,6 +207,8 @@ export default function ProfilePage() {
     joinedDate && !Number.isNaN(joinedDate.getTime())
       ? formatDate(joinedDate, lang)
       : null;
+
+  if (profile && passwordRequired) return <div className="mx-auto max-w-xl px-6 py-10"><PasswordForm userId={profile.id} username={profile.username} required/><button onClick={() => void handleSignOut()} className="mt-5 text-sm underline">{t("Sign out")}</button></div>;
 
   return (
     <div className="h-screen overflow-y-auto bg-[var(--background)] px-4 py-10 [scrollbar-gutter:stable]">
@@ -378,6 +383,7 @@ export default function ProfilePage() {
               </div>
             </div>
 
+            {profile.role === "parent" && !passwordRequired && <PasswordForm userId={profile.id} username={profile.username}/>}
             {/* Sign out card */}
             <div className="mt-4 flex items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
               <div>

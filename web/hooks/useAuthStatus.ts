@@ -12,6 +12,7 @@ export interface AuthStatusState {
   isAdmin: boolean;
   role: string;
   productMode: "legacy" | "teaching";
+  password_change_required: boolean;
   /** True until the first status fetch resolves. */
   loading: boolean;
   /** Unavailable status is never treated as disabled authentication. */
@@ -24,6 +25,7 @@ const INITIAL: AuthStatusState = {
   isAdmin: false,
   role: "",
   productMode: "legacy",
+  password_change_required: false,
   loading: true,
   error: false,
 };
@@ -53,6 +55,7 @@ function loadAuthStatus(): Promise<AuthStatusState> {
         isAdmin: status?.role === "admin",
         role: status?.role || "",
         productMode: status?.product_mode === "teaching" ? "teaching" as const : "legacy" as const,
+        password_change_required: Boolean(status?.password_change_required),
         loading: false,
         error: status === null,
       }))

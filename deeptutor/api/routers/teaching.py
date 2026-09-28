@@ -24,6 +24,45 @@ class GoalUpdate(BaseModel):
     goal: str = Field(max_length=4000)
 
 
+from pydantic import SecretStr, field_validator
+
+
+class PasswordChange(BaseModel):
+    new_password: SecretStr
+    current_password: SecretStr | None = None
+
+    @field_validator("new_password")
+    @classmethod
+    def valid_password(cls, value):
+        text = value.get_secret_value()
+        if len(text) < 8 or len(text.encode("utf-8")) > 72:
+            raise ValueError("Password must be at least 8 characters and at most 72 UTF-8 bytes")
+        return value
+
+
+@router.put("/accounts/{user_id}/password")
+def change_account_password(user_id: str, body: PasswordChange, actor: TokenPayload = Depends(require_teaching)):
+    from deeptutor.multi_user.teaching_passwords import change_password
+    try:
+        change_password(actor.user_id, user_id, body.new_password.get_secret_value(),
+                        current_password=body.current_password.get_secret_value() if body.current_password else None)
+    except PermissionError as exc:
+        raise HTTPException(403, str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(400, str(exc)) from exc
+    return {"ok": True, "sign_in_required": actor.user_id == user_id}
+
+
+@router.post("/accounts/{user_id}/initialize-password")
+def initialize_account_password(user_id: str, actor: TokenPayload = Depends(require_teaching)):
+    from deeptutor.multi_user.teaching_passwords import change_password
+    try:
+        change_password(actor.user_id, user_id, "12345678", initialize=True)
+    except PermissionError as exc:
+        raise HTTPException(403, str(exc)) from exc
+    return {"ok": True, "password_change_required": True}
+
+
 @router.get("/policy")
 def get_policy(_: TokenPayload = Depends(require_admin)):
     if not identities.active():
@@ -154,16 +193,13 @@ def put_access(user_id: str, body: Access, actor: TokenPayload = Depends(require
 def resource_catalog(actor: TokenPayload = Depends(require_teaching)):
     if actor.role not in {"admin","parent"}:
         raise HTTPException(403,"Resource allocation belongs to parents and the administrator")
-    from deeptutor.multi_user.model_access import admin_catalog, is_owner_bound
+    from deeptutor.multi_user.model_access import admin_catalog
     from deeptutor.multi_user.knowledge_access import admin_kb_manager
     ceiling=effective(actor.user_id)
     allowed={(m.profile_id,m.model_id) for m in ceiling.models}
-    models=[]
-    for profile in admin_catalog().get("services",{}).get("llm",{}).get("profiles",[]):
-        if is_owner_bound(profile): continue
-        for model in profile.get("models",[]):
-            if actor.role == "admin" or (profile["id"],model["id"]) in allowed:
-                models.append({"profile_id":profile["id"],"model_id":model["id"],"label":model.get("name") or model.get("model") or model["id"]})
+    choices, route = teaching_policy.teaching_model_options(admin_catalog(), teaching_policy.read()[0])
+    teaching_models = choices if actor.role == "admin" else []
+    models = [m for m in route if actor.role == "admin" or (m["profile_id"],m["model_id"]) in allowed]
     knowledge=[{"id":"admin:kb:"+name,"label":name} for name in admin_kb_manager().list_knowledge_bases()
                if actor.role == "admin" or "admin:kb:"+name in ceiling.knowledge_bases]
     with identities.connect() as conn:
@@ -171,7 +207,7 @@ def resource_catalog(actor: TokenPayload = Depends(require_teaching)):
             ref=f"family:{row[0]}:kb:{row[1]}"
             if actor.role == "admin" or ref in ceiling.knowledge_bases:
                 knowledge.append({"id":ref,"label":row[1]})
-    return {"models":models,"knowledge_bases":knowledge,"features":["chat","quiz","research","homework"] if actor.role == "admin" else ceiling.features}
+    return {"models":models,"teaching_models":teaching_models,"knowledge_bases":knowledge,"features":["chat","quiz","research","homework"] if actor.role == "admin" else ceiling.features}
 
 
 @router.get("/students/{student_id}/evidence")

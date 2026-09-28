@@ -607,13 +607,27 @@ class ReasonTool(_PromptHintsMixin, BaseTool):
         from deeptutor.multi_user.teaching_identity import active
         if active():
             from deeptutor.multi_user.teaching_policy import current_turn_policy, choose_model, require_student_access
-            from deeptutor.multi_user.model_access import apply_allowed_llm_selection
-            from deeptutor.services.model_selection import resolve_llm_config_for_selection
+            from deeptutor.multi_user.model_access import apply_allowed_llm_selection, admin_catalog
+            from deeptutor.services.model_selection.runtime import activate_llm_selection, reset_llm_selection
             policy = current_turn_policy()
-            selection = choose_model(policy, require_student_access(), reasoning=True)
+            selection = choose_model(policy, require_student_access(), reasoning=True, catalog=admin_catalog())
             choice = apply_allowed_llm_selection(selection.model_dump())
-            selected = resolve_llm_config_for_selection(choice)
-            kwargs = {**kwargs, "api_key":selected.api_key, "base_url":selected.base_url, "model":selected.model}
+            selected, token = activate_llm_selection(choice)
+            try:
+                from deeptutor.multi_user.teaching_routing import build_teaching_provider
+                from deeptutor.services.llm.provider_factory import get_runtime_provider
+                from deeptutor.tools.reason import _SYSTEM_PROMPT
+                provider = build_teaching_provider(selected) or get_runtime_provider(selected)
+                response = await provider.chat(messages=[
+                    {"role":"system", "content":_SYSTEM_PROMPT},
+                    {"role":"user", "content":"Context:\n" + str(kwargs.get("context") or "") + "\nQuestion:\n" + str(kwargs.get("query") or "")},
+                ], model=selected.model, reasoning_effort=selected.reasoning_effort,
+                    max_tokens=selected.max_tokens, temperature=0.0)
+                if response.finish_reason == "error":
+                    raise RuntimeError("The reasoning model is unavailable")
+                return ToolResult(content=response.content or "", metadata={"model":getattr(provider,"selected_model",selected.model)})
+            finally:
+                reset_llm_selection(token)
         result = await reason(
             query=kwargs.get("query", ""),
             context=kwargs.get("context", ""),

@@ -1,6 +1,6 @@
 import type { AuthStatus } from "./auth";
 
-type Session = Pick<AuthStatus, "enabled" | "authenticated" | "role" | "product_mode">;
+type Session = Pick<AuthStatus, "enabled" | "authenticated" | "role" | "product_mode" | "password_change_required">;
 
 function teachingPath(role: string | undefined, pathname: string): boolean {
   if (pathname === "/profile") return true;
@@ -41,6 +41,7 @@ export function accountDestination(status: Session, requested: string | null = n
   const destination = localDestination(requested);
   const pathname = destination ? new URL(destination, "https://deeptutor.invalid").pathname : "/";
   if (status.product_mode === "teaching") {
+    if (status.password_change_required) return "/profile?change-password=required";
     return destination && teachingPath(status.role, pathname) ? destination : teachingHome(status.role);
   }
   if (isManagementSession(status)) {
@@ -53,6 +54,7 @@ export function accountDestination(status: Session, requested: string | null = n
 export function accountAreaRedirect(status: Session, area: AccountArea, pathname: string): string | null {
   if (status.enabled && !status.authenticated) return "/login?next=" + encodeURIComponent(pathname);
   if (status.product_mode === "teaching") {
+    if (status.password_change_required && pathname !== "/profile") return "/profile?change-password=required";
     return teachingPath(status.role, pathname) ? null : teachingHome(status.role);
   }
   const management = isManagementSession(status);

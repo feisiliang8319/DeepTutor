@@ -160,6 +160,7 @@ class AuthStatusResponse(BaseModel):
     enabled: bool
     authenticated: bool
     product_mode: str = "legacy"
+    password_change_required: bool = False
     user_id: str | None = None
     username: str | None = None
     role: str | None = None
@@ -308,6 +309,8 @@ async def require_auth(
     if request is not None:
         from deeptutor.multi_user.teaching_access import authorize
         authorize(request.url.path, request.method, payload.role)
+        from deeptutor.multi_user.teaching_passwords import enforce_password_change
+        enforce_password_change(payload, request.url.path, request.method)
     _install_current_user(payload)
     return payload
 
@@ -463,6 +466,7 @@ async def auth_status(
         enabled=True,
         authenticated=payload is not None,
         product_mode="teaching" if _teaching_mode() else "legacy",
+        password_change_required=payload.password_change_required if payload else False,
         user_id=payload.user_id if payload else None,
         username=payload.username if payload else None,
         role=payload.role if payload else None,

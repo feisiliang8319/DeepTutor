@@ -21,6 +21,17 @@ FINISH_REASON_MAP = {
 }
 
 
+class ResponseStreamError(RuntimeError):
+    """Preserve machine-readable quota signals without exposing response data."""
+
+    def __init__(self, code=None):
+        super().__init__("Response failed")
+        self.code = code if code in {
+            "usage_limit_reached", "insufficient_quota", "rate_limit_exceeded",
+            "model_not_found",
+        } else "provider_error"
+
+
 def map_finish_reason(status: str | None) -> str:
     return FINISH_REASON_MAP.get(status or "completed", "stop")
 
@@ -226,8 +237,8 @@ async def consume_sse(
             status = (event.get("response") or {}).get("status")
             finish_reason = map_finish_reason(status)
         elif event_type in {"error", "response.failed"}:
-            detail = event.get("error") or event.get("message") or event
-            raise RuntimeError(f"Response failed: {str(detail)[:500]}")
+            detail = event.get("error") or (event.get("response") or {}).get("error") or {}
+            raise ResponseStreamError(detail.get("code") if isinstance(detail, dict) else None)
 
     return content, tool_calls, finish_reason
 

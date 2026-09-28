@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import asyncio
 from collections.abc import Awaitable, Callable
+import hashlib
 import re
 import secrets
 import string
@@ -43,6 +44,14 @@ _THINKING_OFF_EFFORTS: frozenset[str] = frozenset({"none", "minimal", "minimum"}
 
 def _gen_tool_id() -> str:
     return "toolu_" + "".join(secrets.choice(_ALNUM) for _ in range(22))
+
+
+def _compatible_tool_id(value: str) -> str:
+    # Codex preserves call and item IDs as "call|item". Keep both sides of
+    # the completed tool exchange paired when continuing through Claude.
+    if re.fullmatch(r"[a-zA-Z0-9_-]{1,128}", value):
+        return value
+    return "toolu_dt_" + hashlib.sha256(value.encode()).hexdigest()
 
 
 class AnthropicProvider(LLMProvider):
@@ -160,7 +169,7 @@ class AnthropicProvider(LLMProvider):
         content = msg.get("content")
         block: dict[str, Any] = {
             "type": "tool_result",
-            "tool_use_id": msg.get("tool_call_id", ""),
+            "tool_use_id": _compatible_tool_id(msg.get("tool_call_id", "")),
         }
         if isinstance(content, (str, list)):
             block["content"] = content
@@ -201,7 +210,7 @@ class AnthropicProvider(LLMProvider):
             blocks.append(
                 {
                     "type": "tool_use",
-                    "id": tc.get("id") or _gen_tool_id(),
+                    "id": _compatible_tool_id(tc["id"]) if tc.get("id") else _gen_tool_id(),
                     "name": func.get("name", ""),
                     "input": args,
                 }

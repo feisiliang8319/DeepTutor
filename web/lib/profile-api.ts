@@ -3,7 +3,7 @@ import { apiFetch, apiUrl } from "@/lib/api";
 export interface ProfileInfo {
   id: string;
   username: string;
-  role: "admin" | "user";
+  role: "admin" | "user" | "parent" | "student";
   created_at: string;
   disabled?: boolean;
   /** Avatar marker: "", "icon:<name>:<color>", or "img:<version>". */

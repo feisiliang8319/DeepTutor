@@ -335,11 +335,25 @@ class AgenticChatPipeline:
         if tool_schemas is not None and self._tool_view is not None:
             self._tool_view.attach(tool_schemas)
 
+        client = self._build_openai_client()
+        from deeptutor.multi_user.teaching_routing import build_teaching_provider
+        from deeptutor.core.agentic.client import _ProviderOpenAIAdapter
+
+        async def route_changed(reason, model):
+            await stream.progress(
+                {"zh":"正在调整教学连接，请稍候。", "zh-Hant":"正在調整教學連線，請稍候。"}.get(context.language, "Adjusting the teaching connection. Please wait."),
+                source="chat", stage="responding",
+                metadata={"trace_kind":"model_route", "reason":reason, "selected_model":model},
+            )
+
+        provider = build_teaching_provider(self.llm_config, on_route=route_changed)
+        if provider is not None:
+            client = _ProviderOpenAIAdapter(provider)
         loop = AgentLoop(
             pipeline=self,
             context=context,
             stream=stream,
-            client=self._build_openai_client(),
+            client=client,
             enabled_tools=enabled_tools if use_native_tools else [],
             tool_schemas=tool_schemas,
         )

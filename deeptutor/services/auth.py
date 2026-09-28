@@ -72,6 +72,7 @@ class TokenPayload:
     username: str
     role: str
     user_id: str = ""
+    password_change_required: bool = False
 
 
 # ---------------------------------------------------------------------------
@@ -233,6 +234,13 @@ def create_token(username: str, role: str = "user", user_id: str | None = None) 
         "exp": datetime.now(timezone.utc) + timedelta(hours=TOKEN_EXPIRE_HOURS),
         "iat": datetime.now(timezone.utc),
     }
+    from deeptutor.multi_user.teaching_identity import active
+    if active():
+        from deeptutor.multi_user.teaching_passwords import password_tag
+        record = _load_users().get(username)
+        if not record or record.get("disabled"):
+            raise ValueError("Account unavailable")
+        payload["pwdv"] = password_tag(record["hash"], AUTH_SECRET)
     return jwt.encode(payload, AUTH_SECRET, algorithm=_ALGORITHM)
 
 
@@ -278,7 +286,11 @@ def decode_token(token: str) -> TokenPayload | None:
             record = _load_users().get(str(username))
             if not record or record.get("disabled") or not user_id or record["id"] != user_id:
                 return None
-            return TokenPayload(username=username, role=record["role"], user_id=user_id)
+            from deeptutor.multi_user.teaching_passwords import token_matches, must_change_password
+            if not token_matches(record, payload, AUTH_SECRET):
+                return None
+            return TokenPayload(username=username, role=record["role"], user_id=user_id,
+                                password_change_required=record["role"] == "parent" and must_change_password(user_id))
         if not user_id:
             record = _load_users().get(str(username)) or {}
             user_id = str(record.get("id") or "")

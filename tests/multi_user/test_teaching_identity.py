@@ -286,6 +286,8 @@ def test_chat_strategy_is_server_owned_and_pinned(teaching,as_user,monkeypatch):
     with store.connect(write=True) as conn:
         conn.execute("INSERT INTO teaching_policy VALUES(1,?,1)",(settings.model_dump_json(),))
         conn.execute("INSERT INTO teaching_grants VALUES(?,?,?)",("u_parent_a",access.model_dump_json(),"u_admin"))
+    from deeptutor.multi_user import model_access
+    monkeypatch.setattr(model_access,"admin_catalog",lambda: {"services":{"llm":{"profiles":[{"id":"p","binding":"openai","models":[{'id': 'teacher', 'model': 'teacher'}, {'id': 'reasoner', 'model': 'reasoner'}]}]}}})
     monkeypatch.setattr(knowledge_access,"list_visible_knowledge_bases",lambda: [{"id":"allowed","available":True}])
     with as_user("u_student_a",role="student"):
         payload=policy.prepare_turn({"content":"Explain fractions", "capability":"deep_question", "tools":["exec"], "knowledge_bases":["foreign"], "config":{"persona":"override"}})
@@ -371,6 +373,8 @@ def test_account_language_is_authoritative_and_traditional_is_preserved(teaching
         conn.execute("INSERT INTO teaching_policy VALUES(1,?,1)",(settings.model_dump_json(),))
         conn.execute("INSERT INTO teaching_grants VALUES(?,?,?)",("u_parent_a",Access(models=[settings.teacher_model],features=["chat"]).model_dump_json(),"u_admin"))
         conn.execute("INSERT INTO appearance VALUES(?,?)",("u_student_a",'{"language":"zh-Hant"}'))
+    from deeptutor.multi_user import model_access
+    monkeypatch.setattr(model_access,"admin_catalog",lambda: {"services":{"llm":{"profiles":[{"id":"p","binding":"openai","models":[{'id': 'm', 'model': 'm'}]}]}}})
     monkeypatch.setattr(knowledge_access,"list_visible_knowledge_bases",lambda:[])
     with as_user("u_student_a",role="student"):
         assert policy.prepare_turn({"language":"fr","content":"Explain"})["language"]=="zh-Hant"

@@ -37,6 +37,8 @@ class NativeAccountAccess:
         payload = self.decode(token)
         if payload is None:
             raise HTTPException(401, '登录已过期，请重新登录')
+        if getattr(payload, 'password_change_required', False):
+            raise HTTPException(403, '请先修改初始化密码，再继续使用')
         record = self.lookup(payload.username)
         if (not record or record.get('disabled') or not record.get('id')
                 or record['id'] != payload.user_id):

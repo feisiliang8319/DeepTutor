@@ -14,6 +14,7 @@ export interface AuthStatus {
   username?: string;
   role?: string;
   product_mode?: "legacy" | "teaching";
+  password_change_required?: boolean;
   is_admin?: boolean;
   /** Avatar marker: "", "icon:<name>:<color>", or "img:<version>". */
   avatar?: string;

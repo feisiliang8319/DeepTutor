@@ -59,8 +59,9 @@ def is_owner_bound(profile: dict[str, Any]) -> bool:
     """Whether a profile is tied to the identity of the operator who set it up.
 
     OAuth providers such as Codex authenticate one individual's plan rather than
-    a billable team key, so those profiles are never lent to other accounts
-    through grants — each user signs in for themselves or goes without.
+    a billable team key. Personal access remains owner-bound; an explicitly
+    enabled teaching service can delegate selected Codex models without
+    delegating credential access or login management.
     """
     binding = str(profile.get("binding") or "").strip().lower()
     if binding in OWNER_BOUND_BINDINGS:
@@ -74,15 +75,16 @@ def redacted_model_access(user_id: str | None = None) -> dict[str, list[dict[str
         user_id = user.id
     grant = load_grant(user_id)
     catalog = admin_catalog()
+    from .teaching_identity import active as teaching_active
+    teaching_route = None
+    if teaching_active():
+        from .teaching_policy import read, teaching_model_options
+        _, route = teaching_model_options(catalog, read()[0])
+        teaching_route = {(m["profile_id"], m["model_id"]) for m in route}
     result: dict[str, list[dict[str, Any]]] = {"llm": []}
     for item in grant.get("models", {}).get("llm", []) or []:
         profile_id = str(item.get("profile_id") or item.get("id") or "")
         profile = _profile_by_id(catalog, "llm", profile_id)
-        if profile is not None and is_owner_bound(profile):
-            # A grant may predate the profile becoming owner-bound. Drop it here,
-            # the one place every caller resolves grants through, so the option
-            # list, the capability gate, and selection validation all agree.
-            continue
         if not profile:
             result["llm"].append(
                 {
@@ -94,6 +96,12 @@ def redacted_model_access(user_id: str | None = None) -> dict[str, list[dict[str
             )
             continue
         for model_id in item.get("model_ids") or []:
+            if teaching_route is not None and (profile_id, str(model_id)) not in teaching_route:
+                continue
+            if is_owner_bound(profile):
+                from .teaching_policy import codex_service_model
+                if not codex_service_model(profile, str(model_id)):
+                    continue
             model = _model_by_id(profile, str(model_id))
             result["llm"].append(
                 {
@@ -105,7 +113,6 @@ def redacted_model_access(user_id: str | None = None) -> dict[str, list[dict[str
                     "available": model is not None,
                 }
             )
-    from .teaching_identity import active as teaching_active
     if user_id == user.id and not teaching_active():
         # Only ever the caller's OWN personal models. An administrator
         # inspecting somebody's grants asks for that user's id, and their

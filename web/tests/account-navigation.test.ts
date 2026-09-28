@@ -5,6 +5,13 @@ import { accountAreaRedirect, accountDestination, isManagementSession } from "..
 const parent = { enabled: true, authenticated: true, role: "admin" };
 const student = { enabled: true, authenticated: true, role: "user" };
 
+test("initialized parent must change password even with a saved family bookmark", () => {
+  const initialized = { enabled:true, authenticated:true, role:"parent", product_mode:"teaching" as const, password_change_required:true };
+  assert.equal(accountDestination(initialized, "/parent/students"), "/profile?change-password=required");
+  assert.equal(accountAreaRedirect(initialized, "management", "/parent"), "/profile?change-password=required");
+  assert.equal(accountAreaRedirect(initialized, "utility", "/profile"), null);
+});
+
 test("parent lands in resource management even with an old learning bookmark", () => {
   for (const path of [null, "/", "/practice", "/home", "/space/learning", "/home/session123"]) {
     assert.equal(accountDestination(parent, path), "/admin");

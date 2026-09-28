@@ -25,20 +25,23 @@ DEFAULT_ORIGINATOR = "DeepTutor"
 
 
 class CodexHTTPError(RuntimeError):
-    def __init__(self, status_code: int, safe_message: str) -> None:
+    def __init__(self, status_code: int, safe_message: str, *, code=None, retry_after=None) -> None:
         super().__init__(safe_message)
         self.status_code = status_code
+        self.code = code
+        self.retry_after = retry_after
 
 
 class OpenAICodexProvider(LLMProvider):
     """Use OpenAI Codex OAuth tokens to call the Responses API."""
 
-    def __init__(self, default_model: str = CODEX_DEFAULT_MODEL_ID):
+    def __init__(self, default_model: str = CODEX_DEFAULT_MODEL_ID, *, oauth_service=None):
         super().__init__(api_key=None, api_base=None)
         self.default_model = default_model
+        self._oauth_service = oauth_service
 
     async def _load_token(self) -> CodexToken:
-        return await get_codex_oauth_service().get_token()
+        return await (self._oauth_service or get_codex_oauth_service()).get_token()
 
     async def _call_codex(
         self,
@@ -70,7 +73,7 @@ class OpenAICodexProvider(LLMProvider):
         if tools:
             body["tools"] = convert_tools(tools)
 
-        service = get_codex_oauth_service()
+        service = self._oauth_service or get_codex_oauth_service()
         async with service.inference_guard():
             try:
                 token = await self._load_token()
@@ -119,19 +122,23 @@ class OpenAICodexProvider(LLMProvider):
                 return LLMResponse(
                     content=f"Error calling Codex: {exc}",
                     finish_reason="error",
+                    error_status=exc.status_code,
+                    error_code=exc.code,
+                    retry_after=exc.retry_after,
                 )
             except CodexAuthError as exc:
                 return LLMResponse(
                     content=f"Error calling Codex: {exc.public_message}",
                     finish_reason="error",
                 )
-            except Exception:
+            except Exception as exc:
                 # The user-facing text stays generic so upstream payloads never
                 # leak, but an operator still needs the real cause in the log.
                 logger.exception("Codex request failed")
                 return LLMResponse(
                     content="Error calling Codex: Codex request failed. Please try again.",
                     finish_reason="error",
+                    error_code=getattr(exc, "code", None),
                 )
 
     async def chat(
@@ -220,6 +227,7 @@ async def _request_codex(
                 raise CodexHTTPError(
                     response.status_code,
                     _friendly_error(response.status_code),
+                    retry_after=_retry_after(response.headers.get("retry-after")),
                 )
             return await consume_sse(response, on_content_delta)
 
@@ -237,3 +245,10 @@ def _friendly_error(status_code: int) -> str:
     if status_code == 429:
         return "Codex usage quota exceeded or rate limit triggered. Please try again later."
     return f"Codex returned HTTP {status_code}."
+
+
+def _retry_after(value):
+    try:
+        return min(86400.0, max(0.0, float(value))) if value is not None else None
+    except (ValueError, TypeError):
+        return None

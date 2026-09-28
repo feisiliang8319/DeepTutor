@@ -16,6 +16,8 @@ class ModelChoice(BaseModel):
 class TeachingPolicy(BaseModel):
     teacher_model: ModelChoice | None = None
     reasoning_model: ModelChoice | None = None
+    fallback_model: ModelChoice | None = None
+    codex_service_enabled: bool = False
     instructions: str = Field(default="根据学生已有理解逐步讲解，遇到困难先提示；需要时深入研究并注明资料来源。", max_length=8000)
     tools: list[Literal["web_search", "paper_search", "reason"]] = Field(default_factory=lambda: ["web_search", "paper_search", "reason"])
     material_engine: str = "auto"
@@ -49,14 +51,21 @@ def material_index_provider() -> str:
 
 
 def save(policy: TeachingPolicy, revision: int, actor_id: str) -> int:
-    # Models must be real shared resources, never an operator's personal login.
+    # Administrator opt-in exposes a teaching service, never the OAuth login.
     from .model_access import admin_catalog, _profile_by_id, _model_by_id, is_owner_bound
     catalog = admin_catalog()
-    for selected in (policy.teacher_model, policy.reasoning_model):
+    for selected in (policy.teacher_model, policy.reasoning_model, policy.fallback_model):
         if selected:
             profile = _profile_by_id(catalog, "llm", selected.profile_id)
-            if not profile or is_owner_bound(profile) or not _model_by_id(profile, selected.model_id):
+            codex = bool(profile and profile.get("binding") == "openai_codex" and policy.codex_service_enabled)
+            if not profile or (is_owner_bound(profile) and not codex) or not _model_by_id(profile, selected.model_id):
                 raise ValueError("Select an available shared model from the administrator catalog")
+            if document_model(_model_by_id(profile, selected.model_id)):
+                raise ValueError("OCR models process documents and cannot teach")
+            if selected == policy.fallback_model and (is_owner_bound(profile) or not profile.get("api_key")):
+                raise ValueError("The fallback must be an API-key model")
+    if policy.codex_service_enabled and (not policy.teacher_model or not policy.fallback_model):
+        raise ValueError("Codex teaching requires a primary model and an API-key fallback")
     # Provider validity is checked by the upload endpoint; keep configuration
     # constrained to a registered engine without changing engine internals.
     if policy.material_engine not in {"auto", "llamaindex", "lightrag", "graphrag", "pageindex"}:
@@ -88,16 +97,77 @@ def require_student_access():
     return access
 
 
-def choose_model(policy, access, *, reasoning=False):
+def choose_model(policy, access, *, reasoning=False, catalog=None):
     allowed={(m.profile_id,m.model_id) for m in access.models}
     preferred=(policy.reasoning_model,policy.teacher_model) if reasoning else (policy.teacher_model,policy.reasoning_model)
     # Respect central priorities, then use the first resource actually delegated
     # to this family. Never require a student to pick a model.
-    candidates=(*preferred,*access.models)
+    candidates=(*preferred,policy.fallback_model,*([] if policy.codex_service_enabled else access.models))
+    if catalog is not None:
+        from .model_access import _profile_by_id, _model_by_id, is_owner_bound
+        valid=set()
+        for candidate in candidates:
+            if candidate is None:
+                continue
+            profile=_profile_by_id(catalog,"llm",candidate.profile_id)
+            if not profile or not _model_by_id(profile,candidate.model_id):
+                continue
+            if document_model(_model_by_id(profile,candidate.model_id)):
+                continue
+            if is_owner_bound(profile) and not codex_service_model(profile,candidate.model_id,policy):
+                continue
+            valid.add((candidate.profile_id,candidate.model_id))
+        allowed &= valid
     choice=next((m for m in candidates if m and (m.profile_id,m.model_id) in allowed),None)
     if choice is None:
         raise RuntimeError("No teaching model is available within your family's assigned access")
     return choice
+
+
+def document_model(model):
+    """Recognize the catalog's OCR models without removing their processing service."""
+    return bool(model and "ocr" in (str(model.get("model", "")) + " " + str(model.get("name", ""))).casefold())
+
+
+def teaching_model_options(catalog, policy):
+    """Redacted configuration choices and the current allocatable teaching route."""
+    from .model_access import is_owner_bound
+    choices, route = [], []
+    for profile in catalog.get("services", {}).get("llm", {}).get("profiles", []):
+        for model in profile.get("models", []):
+            if document_model(model):
+                continue
+            if is_owner_bound(profile) and profile.get("binding") != "openai_codex":
+                continue
+            roles = [role for role, selected in (
+                ("primary", policy.teacher_model), ("reasoning", policy.reasoning_model),
+                ("fallback", policy.fallback_model)
+            ) if selected and selected.profile_id == profile["id"] and selected.model_id == model["id"]]
+            label = model.get("name") or model.get("model") or model["id"]
+            if profile.get("binding") == "openai_codex":
+                label = "Codex · " + label
+            option = {"profile_id": profile["id"], "model_id": model["id"],
+                      "label": label,
+                      "binding": profile.get("binding"), "route_roles": roles,
+                      "api_key_model": bool(profile.get("api_key")) and not is_owner_bound(profile)}
+            choices.append(option)
+            if is_owner_bound(profile) and not codex_service_model(profile, model["id"], policy):
+                continue
+            if not policy.codex_service_enabled or roles:
+                route.append(option)
+    route.sort(key=lambda m: min(({"primary":0,"reasoning":1,"fallback":2}[role] for role in m["route_roles"]), default=3))
+    return choices, route
+
+
+def codex_service_model(profile, model_id, policy=None):
+    """A logical teaching permission never grants the subscription credential."""
+    if not identity.active() or profile.get("binding") != "openai_codex":
+        return False
+    policy = policy or read()[0]
+    return bool(policy.codex_service_enabled and any(
+        choice and choice.profile_id == profile.get("id") and choice.model_id == model_id
+        for choice in (policy.teacher_model, policy.reasoning_model)
+    ))
 
 
 def prepare_turn(payload: dict) -> dict:
@@ -108,7 +178,8 @@ def prepare_turn(payload: dict) -> dict:
     policy, revision = read()
     if payload.get("attachments") and "homework" not in access.features:
         raise RuntimeError("Homework uploads have not been enabled by your parent")
-    choice = choose_model(policy, access)
+    from .model_access import admin_catalog
+    choice = choose_model(policy, access, catalog=admin_catalog())
     tools = [tool for tool in policy.tools if tool == "reason" or "research" in access.features]
     # Only learning input crosses this boundary. Configuration, personas,
     # capabilities and source references are always selected by the server.

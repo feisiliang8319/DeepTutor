@@ -50,11 +50,13 @@ def save(actor_id: str, subject_id: str, grant: Access) -> Access:
     if a["role"] == "admin":
         if s["role"] != "parent":
             raise HTTPException(403,"Administrators allocate access to parents, never directly to students")
-        from .model_access import admin_catalog,_profile_by_id,_model_by_id,is_owner_bound
+        from .model_access import admin_catalog
         catalog=admin_catalog()
+        from .teaching_policy import read, teaching_model_options
+        _, route = teaching_model_options(catalog, read()[0])
+        allocatable = {(m["profile_id"], m["model_id"]) for m in route}
         for model in grant.models:
-            profile=_profile_by_id(catalog,"llm",model.profile_id)
-            if not profile or is_owner_bound(profile) or not _model_by_id(profile,model.model_id):
+            if (model.profile_id, model.model_id) not in allocatable:
                 raise HTTPException(400,"Model is not an available shared resource")
         from .knowledge_access import admin_kb_manager
         names=set(admin_kb_manager().list_knowledge_bases())

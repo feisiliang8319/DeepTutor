@@ -29,6 +29,20 @@ async def _sdk_events(events):
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("kind", ["error", "response.failed"])
+@pytest.mark.parametrize("code", ["usage_limit_reached", "model_not_found", "unknown-error"])
+async def test_sse_failure_exposes_only_structured_safe_code(kind, code):
+    from deeptutor.services.llm.provider_core.openai_responses.parsing import ResponseStreamError
+
+    error = {"code": code, "message": "private upstream details"}
+    event = {"type": kind, **({"error": error} if kind == "error" else {"response": {"error": error}})}
+    with pytest.raises(ResponseStreamError) as failure:
+        await consume_sse(_SSEFixture([event]))
+    assert failure.value.code == (code if code != "unknown-error" else "provider_error")
+    assert "private" not in str(failure.value)
+
+
+@pytest.mark.asyncio
 async def test_sse_arguments_can_be_correlated_by_item_id() -> None:
     response = _SSEFixture(
         [

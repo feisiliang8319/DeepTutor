@@ -8,4 +8,4 @@ export async function teachingApi<T>(path:string,init?:RequestInit):Promise<T>{
 }
 export const jsonBody=(value:unknown):RequestInit=>({method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(value)});
 export type Account={id:string;username:string;role:string;parent_id:string|null;disabled:boolean;goal?:string};
-export type Access={models:Array<{profile_id:string;model_id:string;label?:string}>;knowledge_bases:string[];features:string[]};
+export type Access={models:Array<{profile_id:string;model_id:string;label?:string;route_roles?:string[]}>;knowledge_bases:string[];features:string[]};

@@ -68,6 +68,19 @@ def metadata(text: str) -> dict:
             for m in re.finditer(r'\*\*([^*\n]+):\*\*\s*([^\n]*?)(?=\s+\*\*|\n|$)',text)}
 
 
+def has_unrendered_diagram(body: str) -> bool:
+    if re.search(r'\[asy\]|\\begin\{(?:tikzpicture|picture)\}', body):
+        return True
+    # A factorial followed by square brackets (n![...]) is not Markdown media.
+    # Recognize image destinations and defined shortcut references instead.
+    for match in re.finditer(r'!\[([^\]\n]*)\](\s*(?:\([^\n]+?\)|\[[^\]\n]*\]))?', body):
+        if match[2]:
+            return True
+        if match[1] and re.search(r'^\s{0,3}\[' + re.escape(match[1]) + r'\]:\s*\S+', body, re.M | re.I):
+            return True
+    return False
+
+
 def question(library: str, title: str, body: str) -> dict:
     parts=sections(body,3)
     chunk={name:clean(value) for name,value,_,_ in parts}
@@ -106,7 +119,7 @@ def question(library: str, title: str, body: str) -> dict:
         flags.append('historical_fact_check')
     if 'original problem includes a figure that is not bundled' in body:
         flags.append('missing_figure')
-    if re.search(r'\[asy\]|\\begin\{(?:tikzpicture|picture)\}|!\[',body):
+    if has_unrendered_diagram(body):
         flags.append('unrendered_diagram')
     elif re.search(r'\b(?:diagram|figure|graph|picture|image)\s+(?:below|above|shown)|\b(?:shown|pictured)\s+(?:below|above)|in the (?:diagram|figure)|according to the (?:graph|picture)',prompt,re.I):
         flags.append('missing_figure')

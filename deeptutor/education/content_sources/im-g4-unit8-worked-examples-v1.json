@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "IM G4 U8 存量转化 · 10道图形属性与对称讲解例题",
+  "items": [
+    {
+      "id": "im-g4-u8-l1-stock-example-v1",
+      "knowledge_node_code": "G4.G.A2.CLASSIFY_BY_LINES",
+      "item_type": "multi_step",
+      "prompt": "本题矩形指有四个直角的四边形，菱形指四边等长的四边形。正方形有四个直角且四边相等。它能否同时放入“矩形”和“菱形”两组？分类时必须只能选一组吗？",
+      "expected_answer": "能同时属于两组；按这些定义，分类可以重叠。",
+      "explanation": "检查正方形是否满足每一组的全部条件：四个直角满足矩形定义，四边相等满足菱形定义。两个条件没有互相排斥，所以不能为了把图形只放一处而否定其中一个性质。这里明确使用包含式定义，正方形是特殊矩形和特殊菱形。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-8/ | IM:G4:U8:L1 | retained source line 11",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 8, lesson 1. DeepTutor authored the Chinese task, reviewed definitions and checked applicable arithmetic and coordinate invariants; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "7144371505cf0283cf5e3e05b6662954652a8273c843ab6c44eb55cbb253f75d",
+        "source_lesson_family": "IM:G4:U8:L1",
+        "source_sha256": "b475148df27349b27f750ac4ce7e0bfd2599056e1a75a3319276753105222c63",
+        "source_raw_sha256": "387bb30a9819ffb81bbbcd2b4e28d51546d99cdc0128be6ed56f88a7fe39b58d",
+        "source_span": {
+          "start": 221,
+          "end": 14849
+        },
+        "source_spans": [
+          {
+            "start": 221,
+            "end": 14849,
+            "sha256": "387bb30a9819ffb81bbbcd2b4e28d51546d99cdc0128be6ed56f88a7fe39b58d"
+          }
+        ],
+        "title_zh": "同一图形可以属于多类",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": false
+      }
+    },
+    {
+      "id": "im-g4-u8-l2-stock-example-v1",
+      "knowledge_node_code": "G4.G.A2.RIGHT_TRIANGLES",
+      "item_type": "multi_step",
+      "prompt": "三角形甲的边长为3、4、5厘米，其中一个角已标明为直角；乙的三条边都是5厘米，三个角均为60°。分别按边长与角度分类，说明两种分类能否同时使用。",
+      "expected_answer": "甲是不等边直角三角形；乙是等边锐角三角形。",
+      "explanation": "甲三边不相等，因此按边长为不等边；已知有90°角，因此按角为直角三角形。乙三边相等，为等边；三个60°都小于90°，为锐角三角形。每个名字说明不同属性，可以同时成立；本题给出的直角标记不能仅靠草图猜测。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-8/ | IM:G4:U8:L2 | retained source line 421",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 8, lesson 2. DeepTutor authored the Chinese task, reviewed definitions and checked applicable arithmetic and coordinate invariants; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "f04c58f773138125ff4a27c227b7f8392f6a589b35483243314b862ebb673ae9",
+        "source_lesson_family": "IM:G4:U8:L2",
+        "source_sha256": "b475148df27349b27f750ac4ce7e0bfd2599056e1a75a3319276753105222c63",
+        "source_raw_sha256": "cab53923a88e47fbfec767ae92625f0eba8598c2f42939baf313ffaa051ada86",
+        "source_span": {
+          "start": 14849,
+          "end": 28928
+        },
+        "source_spans": [
+          {
+            "start": 14849,
+            "end": 28928,
+            "sha256": "cab53923a88e47fbfec767ae92625f0eba8598c2f42939baf313ffaa051ada86"
+          }
+        ],
+        "title_zh": "边长分类与角度分类",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": false
+      }
+    },
+    {
+      "id": "im-g4-u8-l3-stock-example-v1",
+      "knowledge_node_code": "G4.G.A2.CLASSIFY_BY_LINES",
+      "item_type": "multi_step",
+      "prompt": "一个四边形已知有四个直角，边长依次6、4、6、4厘米。本题矩形有四个直角，正方形还要求四边等长，平行四边形有两组对边平行。它属于哪些类别，为什么不是正方形？",
+      "expected_answer": "属于矩形，也属于平行四边形；不是正方形。",
+      "explanation": "四个直角使它成为矩形，矩形的两组对边分别平行，所以也符合平行四边形条件。但6≠4，四边不全相等，不满足正方形的额外条件。不能因为图形有四个角就直接称正方形。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-8/ | IM:G4:U8:L3 | retained source line 823",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 8, lesson 3. DeepTutor authored the Chinese task, reviewed definitions and checked applicable arithmetic and coordinate invariants; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "fb4a90b89ae5332c748a11038705477f809cb62777a36bf5b398bfa954c50b1c",
+        "source_lesson_family": "IM:G4:U8:L3",
+        "source_sha256": "b475148df27349b27f750ac4ce7e0bfd2599056e1a75a3319276753105222c63",
+        "source_raw_sha256": "f2e28f11d15d133fa4f19a9bd3360f96311cb4f0ec4267ba26944e78a6a24bc0",
+        "source_span": {
+          "start": 28928,
+          "end": 46829
+        },
+        "source_spans": [
+          {
+            "start": 28928,
+            "end": 46829,
+            "sha256": "f2e28f11d15d133fa4f19a9bd3360f96311cb4f0ec4267ba26944e78a6a24bc0"
+          }
+        ],
+        "title_zh": "四边形的条件链",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": false
+      }
+    },
+    {
+      "id": "im-g4-u8-l4-stock-example-v1",
+      "knowledge_node_code": "G4.G.A3.LINE_SYMMETRY",
+      "item_type": "multi_step",
+      "prompt": "一个6厘米长、4厘米宽的长方形，另有一个边长4厘米的正方形。各有几条对称轴？长方形的对角线虽把面积分成相等两部分，为何一般不是对称轴？",
+      "expected_answer": "非正方形长方形有2条，正方形有4条；长方形沿对角线折叠两半不能完全重合。",
+      "explanation": "长方形经过中心且平行于边的两条直线分别把左右或上下对齐。正方形还可沿两条对角线折叠重合，因此共4条。对称要求折后逐点重合，仅两部分面积相等不够；6与4的边长不同，使非正方形的对角线不具备该折叠性质。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-8/ | IM:G4:U8:L4 | retained source line 1353",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 8, lesson 4. DeepTutor authored the Chinese task, reviewed definitions and checked applicable arithmetic and coordinate invariants; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "6c65d41b28e2b951ad6520a72b83a3f52684454f7ff08cc58d7d0d6a9bb4522c",
+        "source_lesson_family": "IM:G4:U8:L4",
+        "source_sha256": "b475148df27349b27f750ac4ce7e0bfd2599056e1a75a3319276753105222c63",
+        "source_raw_sha256": "0d8fe5151043b343dcc2c26aa5b19fac0a54b21488eed3f559bef4d6039a86a9",
+        "source_span": {
+          "start": 46829,
+          "end": 63040
+        },
+        "source_spans": [
+          {
+            "start": 46829,
+            "end": 63040,
+            "sha256": "0d8fe5151043b343dcc2c26aa5b19fac0a54b21488eed3f559bef4d6039a86a9"
+          }
+        ],
+        "title_zh": "平分面积未必是对称轴",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": false
+      }
+    },
+    {
+      "id": "im-g4-u8-l5-stock-example-v1",
+      "knowledge_node_code": "G4.G.A3.LINE_SYMMETRY",
+      "item_type": "multi_step",
+      "prompt": "方格纸上取一条竖直线作对称轴，并以轴上一点O作高低参照。P在轴右3格、O上方2格；Q在轴上、O上方1格；R在轴左2格、O下方1格。描述三个对称点的位置。",
+      "expected_answer": "P的对称点在左3格、上2格；Q保持原位置；R的对称点在右2格、下1格。",
+      "explanation": "沿竖直轴反射保持高低位置不变，左右互换且距轴相等。轴上的点折叠后仍在原位。不能把右3格上2格变成左2格上3格，那会交换两个方向的距离。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-8/ | IM:G4:U8:L5 | retained source line 1856",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 8, lesson 5. DeepTutor authored the Chinese task, reviewed definitions and checked applicable arithmetic and coordinate invariants; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "e1c7a0b9830c3caec3db2b94cd9655048c5724e803f95d3cdd9f1f9e6a6c6f5b",
+        "source_lesson_family": "IM:G4:U8:L5",
+        "source_sha256": "b475148df27349b27f750ac4ce7e0bfd2599056e1a75a3319276753105222c63",
+        "source_raw_sha256": "0b8b4431dc8ded76ebfbb461d984701a3a163c6c93645eb9459989e23e144870",
+        "source_span": {
+          "start": 63040,
+          "end": 80061
+        },
+        "source_spans": [
+          {
+            "start": 63040,
+            "end": 80061,
+            "sha256": "0b8b4431dc8ded76ebfbb461d984701a3a163c6c93645eb9459989e23e144870"
+          }
+        ],
+        "title_zh": "对称点与轴的距离",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": false
+      }
+    },
+    {
+      "id": "im-g4-u8-l6-stock-example-v1",
+      "knowledge_node_code": "G4.G.A3.LINE_SYMMETRY",
+      "item_type": "multi_step",
+      "prompt": "在方格纸上以O为参照，四个点分别位于左3格上2格、右3格上2格、右3格下2格、左3格下2格，按这个顺序连接并闭合。说明所得图形的长宽、平行与垂直关系、对称轴。每格边长1厘米。",
+      "expected_answer": "6厘米乘4厘米的长方形；两组对边平行，相邻边垂直；经过O的水平线和竖直线都是对称轴。",
+      "explanation": "左右跨度3+3=6格，上下跨度2+2=4格。连接相同高度的点形成水平边，连接相同左右位置的点形成竖直边，因此构成长方形。反射后四个顶点两两对应，故两条中线均为对称轴；6≠4，不能额外把对角线当对称轴。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-8/ | IM:G4:U8:L6 | retained source line 2332",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 8, lesson 6. DeepTutor authored the Chinese task, reviewed definitions and checked applicable arithmetic and coordinate invariants; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "73f34f06b0c8acee21741bd85cb7600fd40001d009745e8b14dd24153adb2c3b",
+        "source_lesson_family": "IM:G4:U8:L6",
+        "source_sha256": "b475148df27349b27f750ac4ce7e0bfd2599056e1a75a3319276753105222c63",
+        "source_raw_sha256": "8bfeb590bcb52b60556d6bb67b7fc22c6e1a7782f4ceb817c37ae7d696560186",
+        "source_span": {
+          "start": 80061,
+          "end": 94162
+        },
+        "source_spans": [
+          {
+            "start": 80061,
+            "end": 94162,
+            "sha256": "8bfeb590bcb52b60556d6bb67b7fc22c6e1a7782f4ceb817c37ae7d696560186"
+          }
+        ],
+        "title_zh": "按属性构造一个图形",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": true
+      }
+    },
+    {
+      "id": "im-g4-u8-l7-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A2.MEASURE_WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "一个五边形像房屋轮廓，从左下沿外边界依次是：底边8厘米、右侧竖边、右侧斜屋顶边、左侧斜屋顶边、左侧竖边。图形关于穿过底边中点的竖直线对称；已知左侧竖边3厘米、左侧斜屋顶边5厘米。求周长。",
+      "expected_answer": "24厘米。",
+      "explanation": "对称使右侧竖边也为3厘米、右侧屋顶斜边也为5厘米。周长把五条外边相加：8+3+5+5+3=24。对称轴位于内部，不是额外的一条外边，不能计入周长。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-8/ | IM:G4:U8:L7 | retained source line 2722",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 8, lesson 7. DeepTutor authored the Chinese task, reviewed definitions and checked applicable arithmetic and coordinate invariants; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "31aaf28b8ded92a075e8c086f3e13e518503e7faed06a7e5f733faeabd6ca7c5",
+        "source_lesson_family": "IM:G4:U8:L7",
+        "source_sha256": "b475148df27349b27f750ac4ce7e0bfd2599056e1a75a3319276753105222c63",
+        "source_raw_sha256": "7a800d2994628c0947dc61eabf6c4aea2c73d62c09ca423e82bfa91384414962",
+        "source_span": {
+          "start": 94162,
+          "end": 110163
+        },
+        "source_spans": [
+          {
+            "start": 94162,
+            "end": 110163,
+            "sha256": "7a800d2994628c0947dc61eabf6c4aea2c73d62c09ca423e82bfa91384414962"
+          }
+        ],
+        "title_zh": "用对称补齐边长",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": false
+      }
+    },
+    {
+      "id": "im-g4-u8-l8-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A2.MEASURE_WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "等腰三角形的底边长10厘米，另两条边相等，周长34厘米。两条相等边各多长？再验证这三条边能组成三角形。",
+      "expected_answer": "各12厘米；12+12>10且12+10>12，可以组成。",
+      "explanation": "先减去已知底边，剩34−10=24厘米由两条相等边平分，各24÷2=12。验算12+12+10=34。三角形任何两边之和需大于第三边，避免只算出数字却得到无法存在的图形。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-8/ | IM:G4:U8:L8 | retained source line 3180",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 8, lesson 8. DeepTutor authored the Chinese task, reviewed definitions and checked applicable arithmetic and coordinate invariants; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "7f9d6c890209f6bafb94bcfe8e34c28787362ed9ac3452acdaf11bfff978564d",
+        "source_lesson_family": "IM:G4:U8:L8",
+        "source_sha256": "b475148df27349b27f750ac4ce7e0bfd2599056e1a75a3319276753105222c63",
+        "source_raw_sha256": "9becb52cf1b36129eeb5d21f2461ebed681af43fb88a577ba0387b7dda6cdb08",
+        "source_span": {
+          "start": 110163,
+          "end": 125876
+        },
+        "source_spans": [
+          {
+            "start": 110163,
+            "end": 125876,
+            "sha256": "9becb52cf1b36129eeb5d21f2461ebed681af43fb88a577ba0387b7dda6cdb08"
+          }
+        ],
+        "title_zh": "已知周长反求相等边",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": false
+      }
+    },
+    {
+      "id": "im-g4-u8-l9-stock-example-v1",
+      "knowledge_node_code": "G4.G.A3.LINE_SYMMETRY",
+      "item_type": "multi_step",
+      "prompt": "一张3厘米宽、4厘米高的长方形，沿一条长4厘米的边作镜像，两个长方形仅共用这条边、无其他重叠。新图形长宽和周长是多少？为什么不能直接把两个原周长相加？",
+      "expected_answer": "新图形6厘米乘4厘米，周长20厘米；原周长相加多算了共用边两次。",
+      "explanation": "镜像使宽3+3=6，高仍4，新周长2×(6+4)=20。每个原周长2×(3+4)=14，两者相加28时，共用的4厘米边作为每个原图形的边被计了两次。但拼成新图后它是内部线，应减2×4=8，得到20。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-8/ | IM:G4:U8:L9 | retained source line 3593",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 8, lesson 9. DeepTutor authored the Chinese task, reviewed definitions and checked applicable arithmetic and coordinate invariants; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "14ce880f2cb649a720488d87b0bc7e3595753ccbdf06850e6ce40e179fbc234a",
+        "source_lesson_family": "IM:G4:U8:L9",
+        "source_sha256": "b475148df27349b27f750ac4ce7e0bfd2599056e1a75a3319276753105222c63",
+        "source_raw_sha256": "7dae5e0838a3da8ae90aa7b325929e75abb9e9fa76dae7383c27d3b510509fd3",
+        "source_span": {
+          "start": 125876,
+          "end": 138588
+        },
+        "source_spans": [
+          {
+            "start": 125876,
+            "end": 138588,
+            "sha256": "7dae5e0838a3da8ae90aa7b325929e75abb9e9fa76dae7383c27d3b510509fd3"
+          }
+        ],
+        "title_zh": "镜像拼合后内部边不算周长",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": true
+      }
+    },
+    {
+      "id": "im-g4-u8-l10-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C7.SOLVE_UNKNOWN_ANGLE",
+      "item_type": "multi_step",
+      "prompt": "正方形ABCD沿边顺序标记，连接对角线AC。已知正方形的对角线AC是对称轴，它把顶点A处的边AB与AD相互对应。求角BAC与CAD，并说明不能把结论直接套到任意长方形。",
+      "expected_answer": "两角各45°；一般长方形对角线不一定是对称轴，不能据此平分其直角。",
+      "explanation": "A处为90°，由题给对称对应可知两部分相等。设每部分为x，x+x=90，所以x=45。依据是直角与对称性两个条件共同成立；仅有直角、不满足相同对称关系时，拆出的两角可能不同。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-8/ | IM:G4:U8:L10 | retained source line 3978",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 8, lesson 10. DeepTutor authored the Chinese task, reviewed definitions and checked applicable arithmetic and coordinate invariants; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "3468992c6cb42bf733371e2df0ea3f1c0ed809e0dd4723f42335c67636d356f1",
+        "source_lesson_family": "IM:G4:U8:L10",
+        "source_sha256": "b475148df27349b27f750ac4ce7e0bfd2599056e1a75a3319276753105222c63",
+        "source_raw_sha256": "38401cb277785f3064f449c19aedad10bec4ea308969ae47544803acf445be3f",
+        "source_span": {
+          "start": 138588,
+          "end": 151654
+        },
+        "source_spans": [
+          {
+            "start": 138588,
+            "end": 151654,
+            "sha256": "38401cb277785f3064f449c19aedad10bec4ea308969ae47544803acf445be3f"
+          }
+        ],
+        "title_zh": "用正方形对称性平分直角",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": true
+      }
+    }
+  ]
+}

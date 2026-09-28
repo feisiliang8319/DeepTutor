@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "IM G4 U9 存量转化 · 12道综合复习与开放推理讲解例题",
+  "items": [
+    {
+      "id": "im-g4-u9-l1-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B4.WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "5条彩带，每条3/8米，接起来后剪去7/8米，不计接头损耗。原总长多少米，剪后剩多少，剩余与1米比较如何？",
+      "expected_answer": "原15/8米；剩8/8＝1米，恰好等于1米。",
+      "explanation": "先算5×3/8=15/8，再算15/8−7/8=8/8=1。整个过程以同样的1/8米为小份，先合计15份，再减7份。不能只比较分子15与7而忽略最后8份正好组成单位1。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L1 | retained source line 11",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 1. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "1322854f1477cbf0b3cb7732230b346b3bb50a887854bde1b80d14f3c8db869f",
+        "source_lesson_family": "IM:G4:U9:L1",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "2074f5c860b269825f975090f0087789cfe31e72b2196caeba3d101c8c69fbde",
+        "source_span": {
+          "start": 208,
+          "end": 14278
+        },
+        "source_spans": [
+          {
+            "start": 208,
+            "end": 14278,
+            "sha256": "2074f5c860b269825f975090f0087789cfe31e72b2196caeba3d101c8c69fbde"
+          }
+        ],
+        "title_zh": "分数乘法与减少合用",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u9-l2-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B3.ADD_SUB_MIXED",
+      "item_type": "multi_step",
+      "prompt": "一桶水有2又1/6升，倒入3/6升，再倒出5/6升。剩多少升？用净变化和分步计算两种方法检查。",
+      "expected_answer": "1又5/6升。",
+      "explanation": "分步算先有2又4/6升，倒出5/6时可重组为1又10/6，剩1又5/6。净变化为3/6−5/6，等于减少2/6；原来的2又1/6减少2/6也得1又5/6。加入与倒出的方向不能颠倒。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L2 | retained source line 481",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 2. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "ef0903437507e311da750fdd10ee631612b8773a86a326961566987b3f47d7c6",
+        "source_lesson_family": "IM:G4:U9:L2",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "00ecc0fec4e325ff22d7022b5c341551bd19a106858acbec01387e5338b54738",
+        "source_span": {
+          "start": 14278,
+          "end": 27694
+        },
+        "source_spans": [
+          {
+            "start": 14278,
+            "end": 27694,
+            "sha256": "00ecc0fec4e325ff22d7022b5c341551bd19a106858acbec01387e5338b54738"
+          }
+        ],
+        "title_zh": "带分数的多步收支",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u9-l3-stock-example-v1",
+      "knowledge_node_code": "G4.NF.C5.TENTHS_TO_HUNDREDTHS",
+      "item_type": "multi_step",
+      "prompt": "一杯果汁原有4/10升，加入35/100升，再喝掉28/100升。还剩多少升？请把每一步都写成百分之一升来说明。",
+      "expected_answer": "47/100升。",
+      "explanation": "4/10=40/100，加入后40/100+35/100=75/100，再减28/100得47/100。检查剩余47/100加喝掉28/100回到75/100，再减新加入35/100回到原40/100。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L3 | retained source line 854",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 3. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "1293d8c847030ffc1d4edca20f5e49418c3af2f174a80f6954a2e8af4ceafb17",
+        "source_lesson_family": "IM:G4:U9:L3",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "00b61767798a38118fec3ae39248d97417853f1b8678ec680493fedce33b4d39",
+        "source_span": {
+          "start": 27694,
+          "end": 38134
+        },
+        "source_spans": [
+          {
+            "start": 27694,
+            "end": 38134,
+            "sha256": "00b61767798a38118fec3ae39248d97417853f1b8678ec680493fedce33b4d39"
+          }
+        ],
+        "title_zh": "十进分数的同单位运算",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u9-l4-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.B4.STANDARD_ALGORITHM",
+      "item_type": "multi_step",
+      "prompt": "计算70000−39875。除竖式外，也可先从39875补到40000，再补到70000。写出两个补数，并说明为什么相加就是答案。",
+      "expected_answer": "先补125，再补30000；差30125。",
+      "explanation": "从较小数一路增加到较大数，总共增加量就是两数之差。39875+125=40000，40000+30000=70000，所以差125+30000=30125。检验39875+30125=70000；这一方法利用接近整万的结构，避免连续跨零退位。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L4 | retained source line 1192",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 4. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "221571136267bd20152b5698c67c7c96e6ce038227d05fe71fa1ffcc8e13c55b",
+        "source_lesson_family": "IM:G4:U9:L4",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "8a645bdb76e097a2dafb9940f26a1d080d2a342f650eee6e2b9900fcf21b5368",
+        "source_span": {
+          "start": 38134,
+          "end": 51638
+        },
+        "source_spans": [
+          {
+            "start": 38134,
+            "end": 51638,
+            "sha256": "8a645bdb76e097a2dafb9940f26a1d080d2a342f650eee6e2b9900fcf21b5368"
+          }
+        ],
+        "title_zh": "退位与补足都能求差",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u9-l5-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.B5.MULT_2BY2",
+      "item_type": "multi_step",
+      "prompt": "计算58×24。先写两行部分积58×20、58×4，再各自拆成十位与个位的乘积，说明两种记录为何相等。",
+      "expected_answer": "1160+232＝1392；也等于1000+160+200+32。",
+      "explanation": "24=20+4，得到1160与232。再用58=50+8，第一部分为50×20+8×20=1000+160，第二部分为50×4+8×4=200+32。四项覆盖全部乘积，重新分组不改变总和。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L5 | retained source line 1606",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 5. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "fa401b4108ff31ab0a6e406934fb8892eb14abe965304f0e939eaaa1d798c545",
+        "source_lesson_family": "IM:G4:U9:L5",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "79cb901f53fbcdd5ef93b9450142a4273acf0612f6301f83533b055ad92418fe",
+        "source_span": {
+          "start": 51638,
+          "end": 63683
+        },
+        "source_spans": [
+          {
+            "start": 51638,
+            "end": 63683,
+            "sha256": "79cb901f53fbcdd5ef93b9450142a4273acf0612f6301f83533b055ad92418fe"
+          }
+        ],
+        "title_zh": "把两行乘法展开看",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u9-l6-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.B6.DIV_4BY1",
+      "item_type": "multi_step",
+      "prompt": "求1847÷7的整数商和余数。先扣除7×200、7×60、7×3，记录各次剩余并验证结果。",
+      "expected_answer": "依次余447、27、6；商263余6。",
+      "explanation": "1847−1400=447，447−420=27，27−21=6。部分商200+60+3=263，余6小于7。检查7×263+6=1847，同时满足还原关系与余数范围。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L6 | retained source line 2011",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 6. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "5c3da1c1371dd37f38fe4776e1c4642d9230e4d9d9cbb69a2a6308635f00dd11",
+        "source_lesson_family": "IM:G4:U9:L6",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "703f7de303dd98909cd2aa8383f74087c944963bf8850ceb1bb21ccdf6fc494f",
+        "source_span": {
+          "start": 63683,
+          "end": 75391
+        },
+        "source_spans": [
+          {
+            "start": 63683,
+            "end": 75391,
+            "sha256": "703f7de303dd98909cd2aa8383f74087c944963bf8850ceb1bb21ccdf6fc494f"
+          }
+        ],
+        "title_zh": "部分商与最终余数",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u9-l7-stock-example-v1",
+      "knowledge_node_code": "G4.OA.A2.SOLVE_COMPARISON",
+      "item_type": "multi_step",
+      "prompt": "甲收集48张邮票，乙是甲的3倍，丙比乙多24张。乙、丙各有多少，三人共有多少？解释“3倍”和“多24”为什么使用不同运算。",
+      "expected_answer": "乙144张、丙168张，共360张。",
+      "explanation": "“3倍”是3份48，用48×3=144；“多24”在144的基础上增加24，用144+24=168。合计48+144+168=360。不能把丙的数量算成144×24，也不能把乙算成48+3。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L7 | retained source line 2357",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 7. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "895cb414329e4b915cd6ecd6d9598e0c943cc17cc5d5a1d68cb0dea894d9abce",
+        "source_lesson_family": "IM:G4:U9:L7",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "5621cf50f53dc8e250379ecf1aca1fa72068fab98cb606c8fa5b2da2acb71e4a",
+        "source_span": {
+          "start": 75391,
+          "end": 90959
+        },
+        "source_spans": [
+          {
+            "start": 75391,
+            "end": 90959,
+            "sha256": "5621cf50f53dc8e250379ecf1aca1fa72068fab98cb606c8fa5b2da2acb71e4a"
+          }
+        ],
+        "title_zh": "倍数和增加放在同一题",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u9-l8-stock-example-v1",
+      "knowledge_node_code": "G4.OA.A3.REMAINDER_INTERP",
+      "item_type": "multi_step",
+      "prompt": "有23盒彩笔，每盒18支，用掉57支后，把剩下的按每袋8支分装。最多装满几袋、剩几支？若要求每支都装进袋，最后一袋可以不足8支，至少需要几袋？",
+      "expected_answer": "剩357支，可装满44袋余5支；全部装袋需要45袋。",
+      "explanation": "原有23×18=414支，使用后414−57=357。357÷8=44余5，只数满袋为44；若全部装袋，剩5支还需另1袋，共45。两问对“满袋”和“全部装入”的要求不同，因此不能共用一个舍入结论。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L8 | retained source line 2801",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 8. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "32e8b3e964b3199a760b792423a2d8264f01620a533a3662b176285c67a18284",
+        "source_lesson_family": "IM:G4:U9:L8",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "8767f075f7f0fbbbc05b411b00101cf6fc42a8510d2361fef8224e4c0d882cfe",
+        "source_span": {
+          "start": 90959,
+          "end": 102880
+        },
+        "source_spans": [
+          {
+            "start": 90959,
+            "end": 102880,
+            "sha256": "8767f075f7f0fbbbc05b411b00101cf6fc42a8510d2361fef8224e4c0d882cfe"
+          }
+        ],
+        "title_zh": "多步计算后的余数含义",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u9-l9-stock-example-v1",
+      "knowledge_node_code": "G4.OA.A3.MULTISTEP_EQUATION",
+      "item_type": "multi_step",
+      "prompt": "用48、6、5这三个数各一次，编一个能用48÷6×5解决的实际问题，写出单位并求解。数量关系必须清楚；答案不要求与示例故事完全一样。",
+      "expected_answer": "示例：48张卡片平均分成6袋，取其中5袋，共40张。其他满足算式与单位的故事也可。",
+      "explanation": "先把48张平均分为6袋，每袋48÷6=8张，再取5袋，共8×5=40张。检查6是总袋数、5是取出的袋数，5不超过6，情境可实现。开放题应核对关系与单位，不能因为人名或物品不同就判错。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L9 | retained source line 3135",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 9. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "0595710152ce7c58ec6c246205df309ea7dd9a7bec7f02d3c2df5a74eaf74138",
+        "source_lesson_family": "IM:G4:U9:L9",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "9fd826ec82e3eb1ad2278133e8e13991e24b1a3abd7201717defda5d4745b1a5",
+        "source_span": {
+          "start": 102880,
+          "end": 113056
+        },
+        "source_spans": [
+          {
+            "start": 102880,
+            "end": 113056,
+            "sha256": "9fd826ec82e3eb1ad2278133e8e13991e24b1a3abd7201717defda5d4745b1a5"
+          }
+        ],
+        "title_zh": "给算式编一个合理故事",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "开放任务按题目约束、数量关系、单位及推导审核；示例不是唯一答案，不做全文精确匹配判分。",
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "open_response_examples_not_exhaustive": true
+      }
+    },
+    {
+      "id": "im-g4-u9-l10-stock-example-v1",
+      "knowledge_node_code": "G4.OA.A3.REASONABLENESS",
+      "item_type": "multi_step",
+      "prompt": "19盒彩笔，每盒51支。先用容易心算的附近数估计总数，再精算，并说明你的估计偏大还是偏小、差多少。允许采用不同合理估计。",
+      "expected_answer": "示例估计20×50＝1000支；实际19×51＝969支；该估计偏大31支。",
+      "explanation": "把19看作约20、51看作约50，得到1000作为规模判断。一个因数向上近似、另一个向下，不能仅凭方向就保证乘积一定偏大或偏小，需精算或比较后判断。本例1000−969=31。使用其他附近数时，估值与误差会相应不同。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L10 | retained source line 3510",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 10. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "5b41a008dfa009f4b6a0e0efd419d004c5955205469481b7e9f89b3099a8cf51",
+        "source_lesson_family": "IM:G4:U9:L10",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "9d388891aeec6ce6b2dfb74ca2d2dbaa2809852c6fccac0c48aa53bdf0dc3718",
+        "source_span": {
+          "start": 113056,
+          "end": 125959
+        },
+        "source_spans": [
+          {
+            "start": 113056,
+            "end": 125959,
+            "sha256": "9d388891aeec6ce6b2dfb74ca2d2dbaa2809852c6fccac0c48aa53bdf0dc3718"
+          }
+        ],
+        "title_zh": "估计需要说明依据",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "开放任务按题目约束、数量关系、单位及推导审核；示例不是唯一答案，不做全文精确匹配判分。",
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "open_response_examples_not_exhaustive": true
+      }
+    },
+    {
+      "id": "im-g4-u9-l11-stock-example-v1",
+      "knowledge_node_code": "G4.OA.B4.MULTIPLE_TEST",
+      "item_type": "multi_step",
+      "prompt": "有16、18、25、36四个数。请至少找出两个不同的“只有这个数具有的性质”，据此分别选出一个不同类的数，并解释为什么其余三个不满足同一性质。",
+      "expected_answer": "示例：25是唯一奇数；16是唯一8的倍数；36是唯一12的倍数；18是唯一非完全平方数。至少给出两个正确且区分成立的理由即可。",
+      "explanation": "分类依赖选用的属性。25奇、其他均偶；16能被8整除，另外三个不能；36能被12整除，另外三个不能。16=4²、25=5²、36=6²而18不是整数平方。每个理由都要检查另外三个，题目不存在唯一指定答案。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L11 | retained source line 3921",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 11. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "2118d380aa8e48239ac97d7fe7f9d3b5f91a3b8e4489e1e5934e51383c856303",
+        "source_lesson_family": "IM:G4:U9:L11",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "062c4d09c98b1ef7ad298dfbaaf4650e1cfe36d792aadef9d2cc53f40526968b",
+        "source_span": {
+          "start": 125959,
+          "end": 141286
+        },
+        "source_spans": [
+          {
+            "start": 125959,
+            "end": 141286,
+            "sha256": "062c4d09c98b1ef7ad298dfbaaf4650e1cfe36d792aadef9d2cc53f40526968b"
+          }
+        ],
+        "title_zh": "不同分类理由都可成立",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "开放任务按题目约束、数量关系、单位及推导审核；示例不是唯一答案，不做全文精确匹配判分。",
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "open_response_examples_not_exhaustive": true
+      }
+    },
+    {
+      "id": "im-g4-u9-l12-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.B5.EXPLAIN_MODELS",
+      "item_type": "multi_step",
+      "prompt": "不把每题当作独立竖式，依次计算18×5、18×10、18×15、36×15。说明怎样利用前面结果得到后面结果。也可设计其他正确的关联方法。",
+      "expected_answer": "依次90、180、270、540。",
+      "explanation": "18×10是18×5的2倍，所以90×2=180；18×15=18×(10+5)，可把180+90=270；36×15是18×15的2倍，所以270×2=540。推导利用倍数与分配律，复用前题减少重复计算，其他保持等式成立的方法也可。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-9/ | IM:G4:U9:L12 | retained source line 4340",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 9, lesson 12. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "b58b07e77e5cf9289e9e0f028045a7a574dc0483f0452940804cc18db0fe6403",
+        "source_lesson_family": "IM:G4:U9:L12",
+        "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+        "source_raw_sha256": "554d111d478408fc80aebdede221b8aba00fae95b00ea5a5664df32ac3338aec",
+        "source_span": {
+          "start": 141286,
+          "end": 154850
+        },
+        "source_spans": [
+          {
+            "start": 141286,
+            "end": 154850,
+            "sha256": "554d111d478408fc80aebdede221b8aba00fae95b00ea5a5664df32ac3338aec"
+          }
+        ],
+        "title_zh": "让前一道帮助后一道",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "开放任务按题目约束、数量关系、单位及推导审核；示例不是唯一答案，不做全文精确匹配判分。",
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "open_response_examples_not_exhaustive": true
+      }
+    }
+  ]
+}

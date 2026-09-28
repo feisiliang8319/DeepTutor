@@ -1,0 +1,94 @@
+{
+  "source_sha256": "b475148df27349b27f750ac4ce7e0bfd2599056e1a75a3319276753105222c63",
+  "source_file": "raw-stock/im-g4-full/raw/grade4-unit8-properties-of-two-dimensional-shapes.md",
+  "source_lesson_spans_verified": 10,
+  "verified_tasks": 10,
+  "package_sha256": "53159cd7f19c7365cc8a5428049198f642527aae07f854db00b0f3d20cdc9de5",
+  "builder_sha256": "3a16aafc129acfd8b9e3bdefdf562ea17a4d865bf2f7d0e34c9dcc9efc93f148",
+  "source_records": [
+    "7144371505cf0283cf5e3e05b6662954652a8273c843ab6c44eb55cbb253f75d",
+    "f04c58f773138125ff4a27c227b7f8392f6a589b35483243314b862ebb673ae9",
+    "fb4a90b89ae5332c748a11038705477f809cb62777a36bf5b398bfa954c50b1c",
+    "6c65d41b28e2b951ad6520a72b83a3f52684454f7ff08cc58d7d0d6a9bb4522c",
+    "e1c7a0b9830c3caec3db2b94cd9655048c5724e803f95d3cdd9f1f9e6a6c6f5b",
+    "73f34f06b0c8acee21741bd85cb7600fd40001d009745e8b14dd24153adb2c3b",
+    "31aaf28b8ded92a075e8c086f3e13e518503e7faed06a7e5f733faeabd6ca7c5",
+    "7f9d6c890209f6bafb94bcfe8e34c28787362ed9ac3452acdaf11bfff978564d",
+    "14ce880f2cb649a720488d87b0bc7e3595753ccbdf06850e6ce40e179fbc234a",
+    "3468992c6cb42bf733371e2df0ea3f1c0ed809e0dd4723f42335c67636d356f1"
+  ],
+  "checks": [
+    {
+      "lesson": 1,
+      "record_id": "7144371505cf0283cf5e3e05b6662954652a8273c843ab6c44eb55cbb253f75d",
+      "exact_arithmetic_checked": false,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 2,
+      "record_id": "f04c58f773138125ff4a27c227b7f8392f6a589b35483243314b862ebb673ae9",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 3,
+      "record_id": "fb4a90b89ae5332c748a11038705477f809cb62777a36bf5b398bfa954c50b1c",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 4,
+      "record_id": "6c65d41b28e2b951ad6520a72b83a3f52684454f7ff08cc58d7d0d6a9bb4522c",
+      "exact_arithmetic_checked": false,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 5,
+      "record_id": "e1c7a0b9830c3caec3db2b94cd9655048c5724e803f95d3cdd9f1f9e6a6c6f5b",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 6,
+      "record_id": "73f34f06b0c8acee21741bd85cb7600fd40001d009745e8b14dd24153adb2c3b",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 7,
+      "record_id": "31aaf28b8ded92a075e8c086f3e13e518503e7faed06a7e5f733faeabd6ca7c5",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 8,
+      "record_id": "7f9d6c890209f6bafb94bcfe8e34c28787362ed9ac3452acdaf11bfff978564d",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 9,
+      "record_id": "14ce880f2cb649a720488d87b0bc7e3595753ccbdf06850e6ce40e179fbc234a",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 10,
+      "record_id": "3468992c6cb42bf733371e2df0ea3f1c0ed809e0dd4723f42335c67636d356f1",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    }
+  ],
+  "optional_lessons": "6,9,10 have self-contained worked examples but remain optional; original classroom activities unchanged",
+  "scope": "Complete textual conditions and definitions reviewed; applicable arithmetic and coordinate reflection invariants checked. Actual student drawing/folding performance not verified; original missing assets and approval unchanged."
+}

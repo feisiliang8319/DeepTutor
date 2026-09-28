@@ -1,0 +1,86 @@
+{
+  "source_sha256": "672be47b45b58b5f4af2fd9f1b3a42c047a0519d6778d99939620de752ca62a8",
+  "source_file": "raw-stock/im-g4-full/raw/grade4-unit9-putting-it-all-together.md",
+  "source_lesson_spans_verified": 12,
+  "verified_tasks": 12,
+  "package_sha256": "08a823f6b09e63895b1e96ec2d74c0b54d1517f6fc2b7ea2e2b7212f076d02d6",
+  "builder_sha256": "19cbe0273ba2934c435b3142e9aae608ad6fdc0696ad30131de3eb902426d81a",
+  "source_records": [
+    "1322854f1477cbf0b3cb7732230b346b3bb50a887854bde1b80d14f3c8db869f",
+    "ef0903437507e311da750fdd10ee631612b8773a86a326961566987b3f47d7c6",
+    "1293d8c847030ffc1d4edca20f5e49418c3af2f174a80f6954a2e8af4ceafb17",
+    "221571136267bd20152b5698c67c7c96e6ce038227d05fe71fa1ffcc8e13c55b",
+    "fa401b4108ff31ab0a6e406934fb8892eb14abe965304f0e939eaaa1d798c545",
+    "5c3da1c1371dd37f38fe4776e1c4642d9230e4d9d9cbb69a2a6308635f00dd11",
+    "895cb414329e4b915cd6ecd6d9598e0c943cc17cc5d5a1d68cb0dea894d9abce",
+    "32e8b3e964b3199a760b792423a2d8264f01620a533a3662b176285c67a18284",
+    "0595710152ce7c58ec6c246205df309ea7dd9a7bec7f02d3c2df5a74eaf74138",
+    "5b41a008dfa009f4b6a0e0efd419d004c5955205469481b7e9f89b3099a8cf51",
+    "2118d380aa8e48239ac97d7fe7f9d3b5f91a3b8e4489e1e5934e51383c856303",
+    "b58b07e77e5cf9289e9e0f028045a7a574dc0483f0452940804cc18db0fe6403"
+  ],
+  "checks": [
+    {
+      "lesson": 1,
+      "record_id": "1322854f1477cbf0b3cb7732230b346b3bb50a887854bde1b80d14f3c8db869f",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 2,
+      "record_id": "ef0903437507e311da750fdd10ee631612b8773a86a326961566987b3f47d7c6",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 3,
+      "record_id": "1293d8c847030ffc1d4edca20f5e49418c3af2f174a80f6954a2e8af4ceafb17",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 4,
+      "record_id": "221571136267bd20152b5698c67c7c96e6ce038227d05fe71fa1ffcc8e13c55b",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 5,
+      "record_id": "fa401b4108ff31ab0a6e406934fb8892eb14abe965304f0e939eaaa1d798c545",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 6,
+      "record_id": "5c3da1c1371dd37f38fe4776e1c4642d9230e4d9d9cbb69a2a6308635f00dd11",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 7,
+      "record_id": "895cb414329e4b915cd6ecd6d9598e0c943cc17cc5d5a1d68cb0dea894d9abce",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 8,
+      "record_id": "32e8b3e964b3199a760b792423a2d8264f01620a533a3662b176285c67a18284",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 9,
+      "record_id": "0595710152ce7c58ec6c246205df309ea7dd9a7bec7f02d3c2df5a74eaf74138",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 10,
+      "record_id": "5b41a008dfa009f4b6a0e0efd419d004c5955205469481b7e9f89b3099a8cf51",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 11,
+      "record_id": "2118d380aa8e48239ac97d7fe7f9d3b5f91a3b8e4489e1e5934e51383c856303",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 12,
+      "record_id": "b58b07e77e5cf9289e9e0f028045a7a574dc0483f0452940804cc18db0fe6403",
+      "exact_arithmetic_checked": true
+    }
+  ],
+  "open_response_scope": "Lessons9–12 supply checked examples and constraints; they do not enumerate all acceptable student responses. Exact text matching must not grade these tasks.",
+  "scope": "New worked examples aligned to12 retained review lesson goals; original teacher responses and diagrams remain incomplete; teaching/grade/rights approval unchanged."
+}

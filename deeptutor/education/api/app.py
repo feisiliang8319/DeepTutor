@@ -1233,4 +1233,6 @@ def create_app(
     from deeptutor.education.api.assessments import register
     register(app, connect=connect, require_learner=require_learner, require_enrollment=require_enrollment,
              require_linked_parent=require_linked_parent, teaching_mode=teaching_mode, judge_available=judge is not None)
+    from deeptutor.education.api.content_catalog import register as register_content
+    register_content(app, connect=connect, judge_available=judge is not None)
     return app

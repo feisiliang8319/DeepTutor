@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 887,
+  "reviews": [
+    {
+      "concept_id": "efb7cd6db5d04045765bca90e2278396ff4f682df2d0e0bda2286f5e78611a77",
+      "expected_records": 20,
+      "lecture_before": "Words are made up of syllables. Two kinds of syllables are closed and open.\nA closed syllable has one vowel and ends with a consonant. It usually has a short vowel sound.\ndesk: short e\nkit / ten: short i / short e\nAn open syllable ends with one vowel. It usually has a long vowel sound.\ngo: long o\nhe / ro: long e / long o\nSome open syllables end with y. The y makes a long e sound or a long i sound.\nsky: long i\nba / by: long a / long e",
+      "lecture_after": "Words are made up of syllables. Two kinds of syllables are closed and open.\nA closed syllable has one vowel and ends with a consonant. It usually has a short vowel sound.\ndesk: short e\nkit / ten: short i in the stressed first syllable; the unstressed second syllable has a reduced vowel (schwa), not the short e in desk. Syllable spelling patterns are useful guides, but unstressed vowels may be reduced.\nAn open syllable ends with one vowel. It usually has a long vowel sound.\ngo: long o\nhe / ro: long e / long o\nSome open syllables end with y. The y makes a long e sound or a long i sound.\nsky: long i\nba / by: long a / long e",
+      "reason": "Correct the second-syllable vowel of kitten while preserving the introductory spelling-pattern examples.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/pronunciation/english/kitten",
+          "supports": "Both listed pronunciations show short i followed by an unstressed reduced vowel."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "2a3285bdbbcf023a25b211965e332d3ad889fe885df314757a0ef01d62f43ec7",
+      "expected_records": 85,
+      "lecture_before": "Similes and metaphors are figures of speech that compare two things that are not actually alike.\nA simile compares two things by saying that one is like the other. Similes often use the words like and as.\nMy sister runs like a cheetah.\nThe sister's running and a cheetah's running are compared using the word like.\nA cheetah is known for running fast, so the simile means that the sister also runs fast.\nThe cat's fur was as dark as the night.\nThe cat's fur and the night are compared using the word as.\nThe night is dark, so the simile means that the cat's fur is also dark.\nA metaphor compares two things by saying that one of them is the other. Unlike similes, metaphors don't use the word like or as.\nThe snow formed a blanket over the town.\nThe snow and a blanket are compared without the word like or as.\nA blanket is a large piece of cloth that completely covers a bed. The metaphor makes the reader imagine that the snow becomes a blanket, covering the town completely.\nUsing similes and metaphors in your writing can help you create an interesting picture for the reader.",
+      "lecture_after": "Similes and metaphors are figures of speech that connect different things through a selected similarity or association.\nA simile compares two things by saying that one is like the other. Similes often use the words like and as.\nMy sister runs like a cheetah.\nThe sister's running and a cheetah's running are compared using the word like.\nA cheetah is known for running fast, so the simile means that the sister also runs fast.\nThe cat's fur was as dark as the night.\nThe cat's fur and the night are compared using the word as.\nThe night is dark, so the simile means that the cat's fur is also dark.\nA metaphor describes one thing in terms of another to highlight a shared feature or association. Unlike a simile, it does not mark that comparison with like or as.\nThe snow formed a blanket over the town.\nThe snow and a blanket are compared without the word like or as.\nA blanket is a large piece of cloth that completely covers a bed. The metaphor makes the reader imagine that the snow becomes a blanket, covering the town completely.\nUsing similes and metaphors in your writing can help you create an interesting picture for the reader.",
+      "reason": "Unlike things can share the feature being compared; the like/as distinction concerns the comparison, not a ban on those words elsewhere in a sentence.",
+      "references": [
+        {
+          "url": "https://poets.org/glossary/metaphor",
+          "supports": "A metaphor links unlike things through a comparison."
+        },
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/simile",
+          "supports": "A simile makes a comparison using explicit comparison language."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "255573d8116c04542fc85f202ade48ede3d66d097858ebf1413df2930c587e98",
+      "expected_records": 50,
+      "lecture_before": "Connotation is the feeling or idea that goes along with a word or phrase. Some words are close in meaning but have different connotations.\nFor example, think about the words eager and impatient. They both mean wanting something to happen, but they have different connotations.\nEager has a positive connotation. It is a nice word. An eager person is happy and excited.\nImpatient has a negative connotation. It is not a nice word. An impatient person is often pushy and demanding.",
+      "lecture_after": "Connotation is the feeling or idea that goes along with a word or phrase. Some words are close in meaning but have different connotations.\nFor example, think about the words eager and impatient. They both mean wanting something to happen, but they have different connotations.\nIn many contexts, eager suggests willing enthusiasm and has a positive association, while impatient suggests difficulty waiting and can have a negative association. These are common tendencies, not fixed judgments about a person. Connotations depend on the surrounding words, situation and audience.",
+      "reason": "Replace moral labels and absolute word rankings with contextual associations.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/connotation",
+          "supports": "Associations beyond literal meaning are shaped by cultural, personal and contextual factors."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "a7ccd5ef61ccd1d08bda63d8f2378700118815cb0862513b961c0e974aeeab1f",
+      "expected_records": 65,
+      "lecture_before": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nAnaphora is the repetition of the same word or words at the beginning of several phrases or clauses.\nWe are united. We are powerful. We are winners.\nAntithesis involves contrasting opposing ideas within a parallel grammatical structure.\nI want to help, not to hurt.\nApostrophe is a direct address to an absent person or a nonhuman entity.\nOh, little bird, what makes you sing so beautifully?\nAssonance is the repetition of a vowel sound in a series of nearby words.\nTry to light the fire.\nChiasmus is an expression in which the second half parallels the first but reverses the order of words.\nNever let a fool kiss you or a kiss fool you.\nUnderstatement involves deliberately representing something as less serious or important than it really is.\nAs you know, it can get a little cold in the Antarctic.",
+      "lecture_after": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nAnaphora is the repetition of the same word or words at the beginning of several phrases or clauses.\nWe are united. We are powerful. We are winners.\nAntithesis involves contrasting opposing ideas within a parallel grammatical structure.\nI want to help, not to hurt.\nApostrophe is a direct address to an absent person or a nonhuman entity.\nOh, little bird, what makes you sing so beautifully?\nAssonance is the repetition of a vowel sound in a series of nearby words.\nTry to light the fire.\nChiasmus reverses the order of corresponding grammatical structures, ideas or other elements. Repeating the same key words in reverse order is more specifically called antimetabole; it is often discussed under the broader heading of chiasmus.\nNever let a fool kiss you or a kiss fool you.\nUnderstatement involves deliberately representing something as less serious or important than it really is.\nAs you know, it can get a little cold in the Antarctic.",
+      "reason": "Clarify rhetorical terminology without automatically regrading historical labels; replace the employment example where present because it assumes distinct events are interchangeable.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/chiasmus",
+          "supports": "Defines reversal of corresponding elements, including grammatical structure."
+        },
+        {
+          "url": "https://www.poetryfoundation.org/articles/88761/governing-rhetoric",
+          "supports": "Distinguishes reversed grammatical structure from exact key-word reversal, called antimetabole."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "e8af5986f018a439f2fbf8ecbda71aa23830c81c50ad0799158e7e6da4afd975",
+      "expected_records": 82,
+      "lecture_before": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nAnaphora is the repetition of the same word or words at the beginning of several phrases or clauses.\nWe are united. We are powerful. We are winners.\nAntithesis involves contrasting opposing ideas within a parallel grammatical structure.\nI want to help, not to hurt.\nApostrophe is a direct address to an absent person or a nonhuman entity.\nOh, little bird, what makes you sing so beautifully?\nAssonance is the repetition of a vowel sound in a series of nearby words.\nTry to light the fire.\nChiasmus is an expression in which the second half parallels the first but reverses the order of words.\nNever let a fool kiss you or a kiss fool you.\nA euphemism is a polite or indirect expression that is used to de-emphasize an unpleasant topic.\nThe head of Human Resources would never refer to firing people, only to laying them off.\nHyperbole is an obvious exaggeration that is not meant to be taken literally.\nI ate so much that I think I might explode!\nAn oxymoron is a joining of two seemingly contradictory terms.\nSome reviewers are calling this book a new classic.\nA paradox is a statement that might at first appear to be contradictory, but that may in fact contain some truth.\nAlways expect the unexpected.\nUnderstatement involves deliberately representing something as less serious or important than it really is.\nAs you know, it can get a little cold in the Antarctic.",
+      "lecture_after": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nAnaphora is the repetition of the same word or words at the beginning of several phrases or clauses.\nWe are united. We are powerful. We are winners.\nAntithesis involves contrasting opposing ideas within a parallel grammatical structure.\nI want to help, not to hurt.\nApostrophe is a direct address to an absent person or a nonhuman entity.\nOh, little bird, what makes you sing so beautifully?\nAssonance is the repetition of a vowel sound in a series of nearby words.\nTry to light the fire.\nChiasmus reverses the order of corresponding grammatical structures, ideas or other elements. Repeating the same key words in reverse order is more specifically called antimetabole; it is often discussed under the broader heading of chiasmus.\nNever let a fool kiss you or a kiss fool you.\nA euphemism is a polite or indirect expression that is used to de-emphasize an unpleasant topic.\nFor example, passed away is a gentler expression for died. This illustrates indirect wording about the same event.\nHyperbole is an obvious exaggeration that is not meant to be taken literally.\nI ate so much that I think I might explode!\nAn oxymoron is a joining of two seemingly contradictory terms.\nSome reviewers are calling this book a new classic.\nA paradox is a statement that might at first appear to be contradictory, but that may in fact contain some truth.\nAlways expect the unexpected.\nUnderstatement involves deliberately representing something as less serious or important than it really is.\nAs you know, it can get a little cold in the Antarctic.",
+      "reason": "Clarify rhetorical terminology without automatically regrading historical labels; replace the employment example where present because it assumes distinct events are interchangeable.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/chiasmus",
+          "supports": "Defines reversal of corresponding elements, including grammatical structure."
+        },
+        {
+          "url": "https://www.poetryfoundation.org/articles/88761/governing-rhetoric",
+          "supports": "Distinguishes reversed grammatical structure from exact key-word reversal, called antimetabole."
+        },
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/learner-english/euphemism",
+          "supports": "Gives passed away as an example of a euphemism for died."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "2332bb62d062786937770787fa4718c7435904948b5eaf749ed30ddd8278b7bd",
+      "expected_records": 181,
+      "lecture_before": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nAlliteration is the repetition of sounds at the beginning of nearby words.\nWhat a lucky little lady you are!\nAn allusion is a brief reference to something or someone well known, often from history or literature.\n\"I'd better get home before I turn into a pumpkin!\" Lila remarked.\nAn idiom is an expression that cannot be understood literally. Its meaning must be learned.\nThe assignment was a piece of cake.\nA simile uses like or as to compare two things that are not actually alike.\nThe cat's fur was as dark as the night.\nA metaphor compares two things that are not actually alike without using like or as.\nThe snow formed a blanket over the town.\nOnomatopoeia involves using a word that expresses a sound.\nThe scrambled eggs hit the floor with a splat.\nPersonification is giving human characteristics to nonhuman things.\nThe trees danced in the wind.\nA pun involves using a word or phrase in a humorous way that suggests more than one meaning.\nA great new broom is sweeping the nation.\nVerbal irony involves saying one thing but implying something very different. People often use verbal irony when they are being sarcastic.\nOlivia seems thrilled that her car keeps breaking down.\nEach breakdown is as enjoyable as a punch to the face.",
+      "lecture_after": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nAlliteration is the repetition of sounds at the beginning of nearby words.\nWhat a lucky little lady you are!\nAn allusion is a brief reference to something or someone well known, often from history or literature.\n\"I'd better get home before I turn into a pumpkin!\" Lila remarked.\nAn idiom is an expression that cannot be understood literally. Its meaning must be learned.\nThe assignment was a piece of cake.\nA simile makes an explicit comparison between different things, often using like or as, to highlight a shared feature.\nThe cat's fur was as dark as the night.\nA metaphor describes one thing in terms of another to highlight a shared feature or association. Unlike a simile, it does not mark that comparison with like or as.\nThe snow formed a blanket over the town.\nOnomatopoeia uses a word whose sound imitates or suggests an associated sound, as splat does in the example below.\nThe scrambled eggs hit the floor with a splat.\nPersonification is giving human characteristics to nonhuman things.\nThe trees danced in the wind.\nA pun involves using a word or phrase in a humorous way that suggests more than one meaning.\nA great new broom is sweeping the nation.\nVerbal irony involves saying one thing but implying something very different. People often use verbal irony when they are being sarcastic.\nOlivia seems thrilled that her car keeps breaking down.\nEach breakdown is as enjoyable as a punch to the face.",
+      "reason": "Clarify the shared comparison feature and the sound-imitation criterion.",
+      "references": [
+        {
+          "url": "https://poets.org/glossary/metaphor",
+          "supports": "A metaphor links unlike things through a comparison."
+        },
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/simile",
+          "supports": "A simile makes a comparison using explicit comparison language."
+        },
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/onomatopoeia",
+          "supports": "Distinguishes sound imitation from merely naming or discussing a sound."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "5793312e6a877804c1d4b330d18ee1bd25fd6f977a21c85154d9c89bfb036aa3",
+      "expected_records": 197,
+      "lecture_before": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nA euphemism is a polite or indirect expression that is used to de-emphasize an unpleasant topic.\nThe head of Human Resources would never refer to firing people, only to laying them off.\nHyperbole is an obvious exaggeration that is not meant to be taken literally.\nI ate so much that I think I might explode!\nAn oxymoron is a joining of two seemingly contradictory terms.\nSome reviewers are calling this book a new classic.\nA paradox is a statement that might at first appear to be contradictory, but that may in fact contain some truth.\nAlways expect the unexpected.",
+      "lecture_after": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nA euphemism is a polite or indirect expression that is used to de-emphasize an unpleasant topic.\nFor example, passed away is a gentler expression for died. This illustrates indirect wording about the same event.\nHyperbole is an obvious exaggeration that is not meant to be taken literally.\nI ate so much that I think I might explode!\nAn oxymoron is a joining of two seemingly contradictory terms.\nSome reviewers are calling this book a new classic.\nA paradox is a statement that might at first appear to be contradictory, but that may in fact contain some truth.\nAlways expect the unexpected.",
+      "reason": "Replace an absolute employment-language assertion with an unambiguous same-event euphemism.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/learner-english/euphemism",
+          "supports": "Gives passed away as an example of a euphemism for died."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "66782202f992e895b271bf87a9315d10cacb42a4cabcbbaa79de32ff6b66253e",
+      "expected_records": 34,
+      "lecture_before": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nA euphemism is a polite or indirect expression that is used to de-emphasize an unpleasant topic.\nThe head of Human Resources would never refer to firing people, only to laying them off.",
+      "lecture_after": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nA euphemism is a polite or indirect expression that is used to de-emphasize an unpleasant topic.\nFor example, passed away is a gentler expression for died. This illustrates indirect wording about the same event.",
+      "reason": "Replace an absolute employment-language assertion with an unambiguous same-event euphemism.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/learner-english/euphemism",
+          "supports": "Gives passed away as an example of a euphemism for died."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "8675aa7c15ff8855b0862880081e2292c54e9be6afa91fb43a03d7dc941cb437",
+      "expected_records": 29,
+      "lecture_before": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nA metaphor compares two things that are not actually alike without using like or as.\nThe snow formed a blanket over the town.",
+      "lecture_after": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nA metaphor describes one thing in terms of another to highlight a shared feature or association. Unlike a simile, it does not mark that comparison with like or as.\nThe snow formed a blanket over the town.",
+      "reason": "Describe an implicit comparison through a selected shared feature, not a claim that the things have no similarity.",
+      "references": [
+        {
+          "url": "https://poets.org/glossary/metaphor",
+          "supports": "A metaphor links unlike things through a comparison."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "477515a746457b06360b92b62cc8febec7079a66c36bf26385c335f49a93cf60",
+      "expected_records": 20,
+      "lecture_before": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nA simile uses like or as to compare two things that are not actually alike.\nThe cat's fur was as dark as the night.",
+      "lecture_after": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nA simile makes an explicit comparison between different things, often using like or as, to highlight a shared feature.\nThe cat's fur was as dark as the night.",
+      "reason": "Describe explicit comparison through a selected shared feature.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/simile",
+          "supports": "A simile makes a comparison using explicit comparison language."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "2d621a1a40f88dcf13571cef28805d3dc78ed17366354f369a6738f87f0b3feb",
+      "expected_records": 97,
+      "lecture_before": "An allusion is a brief mention of something or someone well known, often from mythology, history, or literature. An allusion lets you reference ideas from an entire story in just a few words.\nThe protean nature of the disease makes it difficult to diagnose.\nThe word protean is an allusion to the sea god Proteus in Greek mythology. Because the sea is constantly changing, to describe something as protean suggests that it is variable or in flux.",
+      "lecture_after": "An allusion is a brief mention of something or someone well known, often from mythology, history, or literature. An allusion lets you reference ideas from an entire story in just a few words.\nThe protean nature of the disease makes it difficult to diagnose.\nThe word protean is an allusion to the sea god Proteus in Greek mythology. Proteus was known for changing his own shape. That shape-changing ability is the source of the association: protean describes something changeable or able to take different forms.",
+      "reason": "Trace protean to the shape-changing god rather than to the sea changing.",
+      "references": [
+        {
+          "url": "https://www.dictionary.com/browse/proteus",
+          "supports": "Identifies the sea god ability to change form and the related adjective protean."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "79a65655f3ea046565cd6e01c04269ec35064fd3e69700448c24cb76487efc41",
+      "expected_records": 27,
+      "lecture_before": "When writing research papers, you will often be asked to follow a particular style guide for your citations. One popular style guide is the Modern Language Association (MLA) Handbook.\nBelow are the basic formats for some common types of Works Cited entries. Consult the MLA Handbook for a complete list.\nBooks:\nFormat | Author(s). Book Title. City of Publication: Publisher, Year of Publication. Medium of Publication.\nExample | Austen, Jane. Pride and Prejudice. New York: Dover Publications, 1995. Print.\nEssays, short stories, or poems in an anthology or book:\nFormat | Author(s). \"Essay, Poem, or Short Story Title.\" Anthology or Book Title. Ed. Editor Name. City of Publication: Publisher, Year of Publication. Page Number(s). Medium of Publication.\nExample | James, Henry. \"The Middle Years.\" The Oxford Book of American Short Stories. Ed. Joyce Carol Oates. Oxford: Oxford UP, 2013. 116-135. Print.\nMagazine and newspaper articles:\nFormat | Author(s). \"Article Title.\" Title of Magazine or Newspaper Date of Publication: Page(s). Medium of Publication.\nExample | Hayes, David J., and James H. Stock. \"The Real Cost of Coal.\" New York Times 24 Mar. 2015: n. pag. Web. 25 Mar. 2015.\nJournal articles:\nFormat | Author(s). \"Article Title.\" Title of Journal Volume.Issue (Year): Page(s). Medium of Publication.\nExample | Gillette, Jane, et al. \"Human Simulations of Vocabulary Learning.\" Cognition 73.2 (1999): 135-176. Print.\nWeb pages:\nFormat | Author(s). \"Page Title.\" Name of Website. Publisher, Date of Publication. Medium of Publication. Date of Access.\nExample | Gunn, Janelle P., and Lauren E. Owens. \"How to Slash Sodium from Your Diet.\" Livestrong.com. Demand Media, 30 Mar. 2015. Web. 31 Mar. 2015.\nAdditional guidelines:\nAuthor Names. The first author's name is written in last name, first name format (Smith, Jane). Additional author names are written in first name last name format (Smith, Jane, and John Doe). If there are more than three authors, the first author's name is followed by \"et al.,\" which stands for and others (e.g., Smith, Jane, et al.).\nMedium of Publication. Each entry must include information about what form the content was communicated in. The most common mediums are \"Print\" and \"Web,\" but other possibilities include \"Film,\" \"E-mail,\" and \"Lecture.\" Whenever the Medium of Publication is \"Web,\" the date of access (the day, month, and year the webpage was viewed) must be listed directly after the Medium of Publication.\nEditors and Translators. If a work has an editor or a translator, this information must be added to the Works Cited entry using the appropriate abbreviation. \"Ed.\" stands for edited by. \"Trans.\" stands for translated by.\nMissing Information. If a work has no known author, the author section of the citation is simply left out. If a work has no available page numbers, the abbreviation \"n. pag.\" is used instead. If a work has no available publication date, the abbreviation \"n.d.\" is used instead. If a work has no available publisher or no available city of publication, the abbreviation \"n.p.\" is used instead.",
+      "lecture_after": "Citation rules depend on the style guide and edition required for the assignment. The original examples attached to these older exercises use legacy MLA conventions; they are not a current MLA template. Their original answer keys remain unverified against later editions.\nFor current writing using MLA ninth edition, build a Works Cited entry from the relevant core elements: author, work title, container title, other contributors, version, number, publisher, publication date and location. Include the elements that apply to the actual source; a container may be a book, journal or website holding the work.\nFor a simple book, the pattern is: Author. Title. Publisher, Year. An article or chapter also identifies its containing publication and relevant volume, issue or page information. Formatting and punctuation depend on which elements are present.\nFor three or more authors, the entry normally gives the first listed author followed by et al. A publication city and Print or Web are not routine required elements. Labels such as edited by and translated by are normally written out. Do not invent missing details or automatically insert older placeholders such as n.d. Consult the required edition for special cases and source-specific details.\nA legacy-format exercise needs an explicit edition before it can be graded reliably. A later citation convention does not by itself prove that a historical exercise answer should be silently replaced.",
+      "reason": "Replace an unlabelled legacy-format template with explicit version boundaries and current core-element guidance; do not regrade the 27 historical exercises.",
+      "references": [
+        {
+          "url": "https://style.mla.org/whats-new/",
+          "supports": "Documents changes from seventh to eighth edition including author count, city, medium and missing-data placeholders."
+        },
+        {
+          "url": "https://style.mla.org/works-cited/works-cited-a-quick-guide/",
+          "supports": "Explains core elements and containers for Works Cited entries."
+        },
+        {
+          "url": "https://style.mla.org/mla-handbook-ninth-edition/",
+          "supports": "Identifies the ninth-edition handbook for current MLA use."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

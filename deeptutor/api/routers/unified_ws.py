@@ -60,6 +60,15 @@ async def unified_websocket(ws: WebSocket) -> None:
         if closed:
             return
         try:
+            from deeptutor.multi_user.teaching_identity import active as teaching_active
+            if teaching_active():
+                from deeptutor.multi_user.teaching_policy import require_student_access
+                try:
+                    require_student_access()
+                except RuntimeError:
+                    closed = True
+                    await ws.close(code=1008, reason='Independent Quiz or teaching access restriction')
+                    return
             # default=str so one non-serializable value inside an event can
             # never poison the push channel (send_json would raise, flag the
             # socket as closed, and silently freeze the stream for the user).

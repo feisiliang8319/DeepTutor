@@ -1,9 +1,11 @@
 import { t } from './teaching-i18n';
-export type FoundationFollowup={status:'offered'|'declined'|'in_progress'|'completed'|'awaiting_review';exam_id?:string;count:number;minutes:number};
-export type AssessmentResult={status:string;diagnostic_only?:boolean;foundation_followup?:FoundationFollowup;percent?:number;band?:string;passed:boolean;pending?:number;threshold?:number;promotion?:{status:string;from_grade?:number;to_grade?:number;missing_core?:string[];next_course_ready?:boolean;review_required?:boolean}|null};
-export type Exam={set_id:string;learner_id:string;course_version_id:string;kind:string;grade:number;deadline:number;server_now:number;minutes:number;submitted:boolean;draft:Record<string,string>;draft_revision:number;items:Array<{id:string;prompt:string;choices?:unknown;figure_url?:string;points:number}>;result:AssessmentResult|null};
+export type FoundationFollowup={status:'offered'|'declined'|'in_progress'|'completed'|'awaiting_review'|'invalidated';exam_id?:string;count:number;minutes:number};
+export type ExamIntegrity={state:'active'|'sealed'|'invalidated';reason:string|null;ended_at:number|null;retake_authorized_at:number|null};
+export type AssessmentResult={status:string;integrity?:ExamIntegrity;diagnostic_only?:boolean;foundation_followup?:FoundationFollowup;percent?:number;band?:string;passed:boolean;pending?:number;threshold?:number;promotion?:{status:string;from_grade?:number;to_grade?:number;missing_core?:string[];next_course_ready?:boolean;review_required?:boolean}|null};
+export type Exam={integrity?:ExamIntegrity|null;set_id:string;learner_id:string;course_version_id:string;kind:string;grade:number;deadline:number;server_now:number;minutes:number;submitted:boolean;draft:Record<string,string>;draft_revision:number;items:Array<{id:string;prompt:string;choices?:unknown;figure_url?:string;points:number}>;result:AssessmentResult|null};
 export const modeNames=()=>({checkin:t('轻量回顾'),daily:t('日常测试'),unit:t('单元测试'),final:t('期末测试'),promotion:t('提前晋级'),competition:t('STEM竞赛'),foundation:t('基础补测')});
 export function promotionText(result:AssessmentResult){
+ if(result.status==='invalidated')return result.integrity?.reason==='connection_lost'?t('测试异常中断，成绩无效，不影响知识掌握记录。'):t('已离开测试页面，本次考核失败，不能用于晋级。');
  const p=result.promotion;
  if(result.status!=='final')return t('评分尚待复核，不会触发晋级。');
  if(result.diagnostic_only)return t('基础补测仅用于发现知识缺口，不改变已获得的晋级。');
@@ -16,9 +18,10 @@ export function promotionText(result:AssessmentResult){
 }
 
 export function foundationText(followup:FoundationFollowup){
+ if(followup.status==='invalidated')return t('基础补测已失效，不撤销此前的竞赛晋级。');
  if(followup.status==='declined')return t('本轮已结束，未进行基础补测。基础掌握情况仍待验证。');
  if(followup.status==='completed')return t('基础补测已完成，讲解与补弱建议已进入 Chat。');
  if(followup.status==='awaiting_review')return t('基础补测评分待复核，不影响已获得的晋级。');
- if(followup.status==='in_progress')return t('基础补测正在进行，刷新后可继续。');
+ if(followup.status==='in_progress')return t('基础补测正在进行，离开或刷新页面会使本次补测失效。');
  return t('基础知识尚未补测，不等于已经掌握。');
 }

@@ -537,7 +537,7 @@ def test_formal_assessment_routes_preserve_delegation(family_client,web_db):
     catalog='/api/edu/assessments/catalog?learner_id='+LEARNER
     assert client.get(catalog,headers=headers('student_b')).status_code==403
     assert client.get(catalog,headers=headers('student_a')).json()['courses'][0]['learning_grade']==4
-    request={'learner_id':LEARNER,'course_version_id':CV,'kind':'competition'}
+    request={'learner_id':LEARNER,'course_version_id':CV,'kind':'competition','page_session':'synthetic-page-session-1234567890123456','rules_accepted':True}
     for name in ('admin','parent_a','parent_b','student_b'):
         assert client.post('/api/edu/assessments',json=request,headers=headers(name)).status_code==403
     # There are no reviewed competition items: trial mode cannot silently fill.
@@ -591,7 +591,9 @@ def test_competition_followup_and_numeric_review_are_family_scoped(family_client
     from deeptutor.education.application import assessment_engine as engine
     from deeptutor.education.storage.repositories import AssessmentItemRepository
     from deeptutor.multi_user.teaching_grants import Access
-    client,headers=family_client;conn,_=formal
+    client,original_headers=family_client;conn,_=formal
+    session='synthetic-page-session-1234567890123456'
+    def headers(name):return {**original_headers(name),'X-Quiz-Session':session}
     with store.connect(write=True) as users:
         users.execute('INSERT INTO teaching_grants VALUES(?,?,?)',('u_parent_a',Access(features=['quiz','chat']).model_dump_json(),'u_admin'))
     paper=engine.issue(conn,LEARNER,CV,'competition')
@@ -601,18 +603,18 @@ def test_competition_followup_and_numeric_review_are_family_scoped(family_client
     assert response.json()['assessment']['promotion']['to_grade']==5
     route='/api/edu/assessments/'+paper['set_id']+'/foundation-choice'
     for name in ('admin','parent_a','parent_b','student_b'):
-        assert client.post(route,json={'choice':'yes'},headers=headers(name)).status_code==403
+        assert client.post(route,json={'choice':'yes','page_session':session,'rules_accepted':True},headers=headers(name)).status_code==403
     active=client.get('/api/edu/assessments/active',params={'learner_id':LEARNER},headers=headers('student_a')).json()
     assert active['exam']['set_id']==paper['set_id'] and active['exam']['submitted']
-    started=client.post(route,json={'choice':'yes'},headers=headers('student_a'))
+    started=client.post(route,json={'choice':'yes','page_session':session,'rules_accepted':True},headers=headers('student_a'))
     assert started.status_code==200,started.text
     foundation=started.json()['exam'];assert foundation['kind']=='foundation'
-    assert client.post(route,json={'choice':'yes'},headers=headers('student_a')).json()['exam']['set_id']==foundation['set_id']
+    assert client.post(route,json={'choice':'yes','page_session':session,'rules_accepted':True},headers=headers('student_a')).json()['exam']['set_id']==foundation['set_id']
     review='/api/edu/assessments/'+paper['set_id']+'/review'
     payload={'item_id':paper['items'][-1]['id'],'points':2.5,'note':'Checked the original working and awarded partial credit.'}
     for name in ('admin','student_a','parent_b','student_b'):
-        assert client.get(review,headers=headers(name)).status_code==403
-        assert client.post(review,json=payload,headers=headers(name)).status_code==403
+        assert client.get(review,headers=headers(name)).status_code==(423 if name=='student_a' else 403)
+        assert client.post(review,json=payload,headers=headers(name)).status_code==(423 if name=='student_a' else 403)
     result=client.post(review,json=payload,headers=headers('parent_a'))
     assert result.status_code==200,result.text
     assert result.json()['assessment']['percent']==72.5
@@ -643,4 +645,4 @@ def test_competition_followup_and_numeric_review_are_family_scoped(family_client
     assert 'Foundation check' in content and 'Focus for follow-up learning' in content and 'Node A' in content
     with store.connect(write=True) as users:
         users.execute('UPDATE teaching_grants SET grant_json=? WHERE user_id=?',(Access(features=['chat']).model_dump_json(),'u_parent_a'))
-    assert client.post(route,json={'choice':'yes'},headers=headers('student_a')).status_code==403
+    assert client.post(route,json={'choice':'yes','page_session':session,'rules_accepted':True},headers=headers('student_a')).status_code==403

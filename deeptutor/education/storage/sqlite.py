@@ -134,7 +134,7 @@ def check_trigger_integrity(conn: sqlite3.Connection) -> frozenset[str]:
     required = REQUIRED_TRIGGERS
     if _table_exists(conn, "task_set_submissions"):
         required = required | {"task_set_submissions_no_update", "task_set_submissions_no_delete"}
-    for table in ("exam_score_reviews", "promotion_events", "placement_events", "competition_foundation_choices"):
+    for table in ("exam_score_reviews", "promotion_events", "placement_events", "competition_foundation_choices", "exam_integrity_events"):
         if _table_exists(conn, table):
             required = required | {table + "_no_update", table + "_no_delete"}
     return frozenset(required - present)

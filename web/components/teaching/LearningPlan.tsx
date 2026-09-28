@@ -38,6 +38,7 @@ export default function LearningPlan({studentId,goalEditor,children}:{studentId:
  useEffect(()=>{let live=true;setData(null);setReview('');setSaved(false);setError('');education<Plan>(`students/${studentId}/learning-plan`).then(d=>{if(live)setData(d);}).catch(e=>{if(live)setError(e.message);});return()=>{live=false;};},[studentId]);
  async function refreshed(){await load();setSaved(true);}
  async function confirm(setId:string){setBusy(true);setError('');try{await education(`assessments/${setId}/confirm-promotion`,{method:'POST'});await load();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
+ async function allowRetake(setId:string){setBusy(true);setError('');try{await education(`assessments/${setId}/allow-retake`,{method:'POST'});await load();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
  const groups=new Map<string,Course[]>();
  data?.courses.forEach(c=>{const key=c.subject_key+':'+c.curriculum_key;groups.set(key,[...(groups.get(key)||[]),c]);});
  const names=modeNames();
@@ -65,12 +66,13 @@ export default function LearningPlan({studentId,goalEditor,children}:{studentId:
    {children}
    {data&&<section className="my-8" aria-labelledby="assessment-history">
      <h2 id="assessment-history" className="text-lg font-semibold">{t('学科考核与晋级记录')}</h2>
-     {!data.exams.length?<p className="mt-4 text-sm text-[var(--muted-foreground)]">{t('完成测试后，这里会显示成绩与晋级进展。')}</p>:<div className="mt-4 space-y-3">{data.exams.map(exam=><details key={exam.set_id} open={exam.result.promotion?.status==='parent_confirmation'?true:undefined} className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-4">
-       <summary className="cursor-pointer text-sm leading-7">{exam.subject_key} · {t('{{grade}} 年级',{grade:exam.grade})} · {names[exam.kind as keyof typeof names]} · {exam.result.percent??'—'}/100</summary>
+     {!data.exams.length?<p className="mt-4 text-sm text-[var(--muted-foreground)]">{t('完成测试后，这里会显示成绩与晋级进展。')}</p>:<div className="mt-4 space-y-3">{data.exams.map(exam=><details key={exam.set_id} open={exam.result.promotion?.status==='parent_confirmation'||exam.result.status==='invalidated'?true:undefined} className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-4">
+       <summary className="cursor-pointer text-sm leading-7">{exam.subject_key} · {t('{{grade}} 年级',{grade:exam.grade})} · {names[exam.kind as keyof typeof names]} · {exam.result.status==='invalidated'?t('成绩无效'):`${exam.result.percent??'—'}/100`}</summary>
        <p className="mt-3 text-sm leading-7">{promotionText(exam.result)}</p>
        {exam.result.foundation_followup&&<p className="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">{foundationText(exam.result.foundation_followup)}</p>}
        {exam.result.promotion?.status==='parent_confirmation'&&<button onClick={()=>confirm(exam.set_id)} disabled={busy} className={primary}>{t('确认本学科升至 {{grade}} 年级',{grade:exam.result.promotion.to_grade})}</button>}
-       <button onClick={()=>setReview(review===exam.set_id?'':exam.set_id)} className="mt-3 block text-sm underline">{t('查看与复核评分')}</button>
+       {exam.result.status==='invalidated'&&(exam.result.integrity?.retake_authorized_at?<p className="mt-3 text-sm">{t('已允许领取新试卷，原测试仍保持失效。')}</p>:<button onClick={()=>allowRetake(exam.set_id)} disabled={busy} className={primary}>{t('允许重新测试')}</button>)}
+       {exam.result.status!=='invalidated'&&<button onClick={()=>setReview(review===exam.set_id?'':exam.set_id)} className="mt-3 block text-sm underline">{t('查看与复核评分')}</button>}
        {review===exam.set_id&&<ScoreReview setId={exam.set_id} onSave={load}/>}
      </details>)}</div>}
    </section>}

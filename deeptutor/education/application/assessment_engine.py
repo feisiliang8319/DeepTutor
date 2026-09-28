@@ -16,6 +16,7 @@ import unicodedata
 from uuid import uuid4
 from fastapi import HTTPException
 from deeptutor.education.application import to_iso_timestamp
+from deeptutor.education.application import exam_integrity as integrity
 from deeptutor.education.application.content_readiness import admitted
 from deeptutor.education.application.grading_policy import is_servable
 from deeptutor.education.storage.sqlite import transaction
@@ -164,9 +165,10 @@ def _select(pool, requested, units, require_core):
     return chosen
 
 
-def issue(conn, learner, version, kind, unit=None, *, judge_available=False, competition_set_id=None):
+def issue(conn, learner, version, kind, unit=None, *, judge_available=False, competition_set_id=None, page_session=None):
     if kind not in SPECS: raise HTTPException(400,"未知测试类型。")
     with transaction(conn):
+        integrity.require_retake_permission(conn,learner)
         config=course(conn,version,active=kind!='foundation'); current=placement(conn,learner,config)
         if kind=='foundation':
             source=conn.execute("SELECT f.*,p.to_grade FROM formal_exams f JOIN promotion_events p ON p.set_id=f.set_id WHERE f.set_id=? AND f.learner_id=? AND f.course_version_id=? AND f.kind='competition'",(competition_set_id,learner,version)).fetchone()
@@ -191,13 +193,14 @@ def issue(conn, learner, version, kind, unit=None, *, judge_available=False, com
         existing=conn.execute("SELECT f.* FROM formal_exams f JOIN task_sets t ON t.id=f.set_id WHERE f.learner_id=? AND t.skipped_at IS NULL AND (t.submitted_at IS NULL OR f.result_json IS NULL OR json_extract(f.result_json,'$.status')='grading')",(learner,)).fetchone()
         if existing:
             if kind=='foundation': raise HTTPException(409,"请先完成当前测试，再开始基础补测。")
+            integrity.inspect(conn,existing['set_id'],page_session)
             return public_exam(conn,existing['set_id'])
         if conn.execute("SELECT 1 FROM task_sets WHERE learner_id=? AND course_version_id=? AND submitted_at IS NULL AND skipped_at IS NULL",(learner,version)).fetchone(): raise HTTPException(409,"请先完成现有练习，再开始正式测试。")
         previous=conn.execute("SELECT * FROM formal_exams WHERE learner_id=? AND course_version_id=? AND kind=? AND unit_id IS ? AND result_json IS NOT NULL ORDER BY deadline DESC LIMIT 1",(learner,version,kind,unit)).fetchone()
         if previous and kind!='foundation':
             result=json.loads(previous['result_json'])
-            if result.get('status')!='final': raise HTTPException(409,"上次测试仍有题目等待复核。")
-            if not result['passed'] and not remedied(conn,previous): raise HTTPException(409,"请先到上次测试的Chat完成订正交流，再领取新卷。")
+            if result.get('status') not in {'final','invalidated'}: raise HTTPException(409,"上次测试仍有题目等待复核。")
+            if result.get('status')!='invalidated' and not result['passed'] and not remedied(conn,previous): raise HTTPException(409,"请先到上次测试的Chat完成订正交流，再领取新卷。")
         seen_ids={r[0] for r in conn.execute('SELECT assessment_item_id FROM student_attempts WHERE learner_id=?',(learner,))}
         for row in conn.execute('SELECT item_ids_json FROM task_sets WHERE learner_id=?',(learner,)): seen_ids.update(json.loads(row[0]))
         seen_families=set();seen_prints=set()
@@ -224,6 +227,7 @@ def issue(conn, learner, version, kind, unit=None, *, judge_available=False, com
         snapshot={'version':2,'competition_set_id':competition_set_id,'count':count,'minutes':minutes,'units':units,'items':selected,'threshold':70 if kind=='competition' else 90 if kind=='promotion' else 80}
         conn.execute('INSERT INTO task_sets(id,learner_id,course_version_id,item_ids_json,issued_at) VALUES(?,?,?,?,?)',(set_id,learner,version,json.dumps([r['id'] for r in selected]),to_iso_timestamp(now)))
         conn.execute('INSERT INTO formal_exams(set_id,learner_id,course_version_id,subject_key,curriculum_key,grade,placement_revision,placement_grade,kind,unit_id,deadline,snapshot_json) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)',(set_id,learner,version,config['subject_key'],config['curriculum_key'],config['grade'],current['revision'],current['grade'],kind,unit,now+minutes*60,json.dumps(snapshot)))
+        integrity.start(conn,set_id,page_session)
         return public_exam(conn,set_id)
 
 
@@ -232,11 +236,13 @@ def public_exam(conn,set_id):
     if not row: raise HTTPException(404,"测试不存在。")
     snapshot=json.loads(row['snapshot_json']);draft=conn.execute('SELECT * FROM exam_drafts WHERE set_id=?',(set_id,)).fetchone()
     result=exam_result(conn,row)
-    return {'set_id':set_id,'learner_id':row['learner_id'],'course_version_id':row['course_version_id'],'kind':row['kind'],'grade':row['grade'],'deadline':row['deadline'],'server_now':time.time(),'submitted':row['submitted_at'] is not None,'draft':json.loads(draft['answers_json']) if draft else {},'draft_revision':draft['revision'] if draft else 0,'items':[{'id':i['id'],'prompt':i['public']['prompt'],'choices':json.loads(i['public']['choices_json']) if i['public'].get('choices_json') else None,'figure_url':'/api/edu/figures/'+i['public']['figure_spec_id'] if i['public'].get('figure_spec_id') else None,'points':i['points']} for i in snapshot['items']],'minutes':snapshot['minutes'],'result':result}
+    return {'set_id':set_id,'learner_id':row['learner_id'],'course_version_id':row['course_version_id'],'kind':row['kind'],'grade':row['grade'],'deadline':row['deadline'],'server_now':time.time(),'submitted':row['submitted_at'] is not None,'draft':json.loads(draft['answers_json']) if draft else {},'draft_revision':draft['revision'] if draft else 0,'items':[{'id':i['id'],'prompt':i['public']['prompt'],'choices':json.loads(i['public']['choices_json']) if i['public'].get('choices_json') else None,'figure_url':'/api/edu/figures/'+i['public']['figure_spec_id'] if i['public'].get('figure_spec_id') else None,'points':i['points']} for i in snapshot['items']],'minutes':snapshot['minutes'],'result':result,'integrity':integrity.status(conn,set_id)}
 
 
-def save_draft(conn,set_id,answers,revision):
+def save_draft(conn,set_id,answers,revision,*,page_session=None):
     with transaction(conn):
+        integrity.inspect(conn,set_id,page_session)
+        if integrity.invalid_result(conn,set_id): return integrity.report(conn,set_id)
         row=conn.execute('SELECT f.*,t.submitted_at FROM formal_exams f JOIN task_sets t ON t.id=f.set_id WHERE f.set_id=?',(set_id,)).fetchone()
         if not row or row['submitted_at'] is not None or time.time()>row['deadline']: raise HTTPException(409,"测试已结束，不能继续修改作答。")
         allowed={i['id'] for i in json.loads(row['snapshot_json'])['items']}
@@ -247,10 +253,12 @@ def save_draft(conn,set_id,answers,revision):
     return {'revision':revision+1,'saved_at':time.time()}
 
 
-def validate_submission(conn,payload):
+def validate_submission(conn,payload,*,page_session=None):
     """Called INSIDE the durable-submission transaction, including legacy URL."""
     exam=conn.execute('SELECT * FROM formal_exams WHERE set_id=?',(payload.set_id,)).fetchone()
     if not exam: return payload
+    integrity.inspect(conn,payload.set_id,page_session)
+    if integrity.invalid_result(conn,payload.set_id): return None
     saved=conn.execute('SELECT 1 FROM task_set_submissions WHERE set_id=?',(payload.set_id,)).fetchone()
     if saved: return payload
     snapshot=json.loads(exam['snapshot_json']);repo=AssessmentItemRepository(conn)
@@ -268,6 +276,8 @@ def validate_submission(conn,payload):
 def calculate(conn,set_id):
     exam=conn.execute('SELECT * FROM formal_exams WHERE set_id=?',(set_id,)).fetchone()
     if not exam: return None
+    invalid=integrity.invalid_result(conn,set_id)
+    if invalid: return invalid
     snapshot=json.loads(exam['snapshot_json']);scores=[];core=defaultdict(lambda:{'count':0,'earned':0.0,'possible':0.0});pending=0;earned=0.0;possible=0.0
     for item in snapshot['items']:
         attempt=conn.execute('SELECT * FROM student_attempts WHERE id=?',(set_id+':'+item['id'],)).fetchone()
@@ -299,7 +309,7 @@ def calculate(conn,set_id):
 def finalize(conn,set_id,*,parent_actor=None,reevaluate=True):
     with transaction(conn):
         result=calculate(conn,set_id)
-        if result is None:return None
+        if result is None or result.get('status')=='invalidated':return result
         exam=dict(conn.execute('SELECT * FROM formal_exams WHERE set_id=?',(set_id,)).fetchone())
         previous=exam['result_json']
         if parent_actor and exam['kind']!='promotion': raise HTTPException(400,"只有提前晋级需要家长确认。")
@@ -353,18 +363,18 @@ def foundation_status(conn,competition_set_id):
     if row['choice']=='no': return {'status':'declined','count':35,'minutes':90}
     exam=conn.execute('SELECT result_json FROM formal_exams WHERE set_id=?',(row['foundation_set_id'],)).fetchone()
     result=json.loads(exam[0]) if exam and exam[0] else None
-    status='completed' if result and result.get('status')=='final' else 'awaiting_review' if result and result.get('status')=='awaiting_review' else 'in_progress'
+    status='invalidated' if result and result.get('status')=='invalidated' else 'completed' if result and result.get('status')=='final' else 'awaiting_review' if result and result.get('status')=='awaiting_review' else 'in_progress'
     return {'status':status,'exam_id':row['foundation_set_id'],'count':35,'minutes':90}
 
 
 def exam_result(conn,exam):
-    result=json.loads(exam['result_json']) if exam['result_json'] else None
+    result=integrity.invalid_result(conn,exam['set_id']) or (json.loads(exam['result_json']) if exam['result_json'] else None)
     if result and exam['kind']=='competition' and result.get('promotion',{} ) and result['promotion']['status']=='promoted' and not result['promotion'].get('review_required'):
         result['foundation_followup']=foundation_status(conn,exam['set_id'])
     return result
 
 
-def choose_foundation(conn,set_id,choice,actor,*,judge_available=False):
+def choose_foundation(conn,set_id,choice,actor,*,judge_available=False,page_session=None):
     """One durable choice per passed competition; starting is atomic with issue."""
     if choice not in {'yes','no'}: raise HTTPException(400,"请选择是否进行基础补测。")
     with transaction(conn):
@@ -377,6 +387,6 @@ def choose_foundation(conn,set_id,choice,actor,*,judge_available=False):
             if previous['choice']!=choice: raise HTTPException(409,"这次竞赛的补测选择已记录。")
             exam=public_exam(conn,previous['foundation_set_id']) if previous['foundation_set_id'] else None
         else:
-            exam=issue(conn,source['learner_id'],source['course_version_id'],'foundation',judge_available=judge_available,competition_set_id=set_id) if choice=='yes' else None
+            exam=issue(conn,source['learner_id'],source['course_version_id'],'foundation',judge_available=judge_available,competition_set_id=set_id,page_session=page_session) if choice=='yes' else None
             conn.execute('INSERT INTO competition_foundation_choices VALUES(?,?,?,?,?)',(set_id,choice,exam['set_id'] if exam else None,actor,time.time()))
         return {'exam':exam,'foundation_followup':foundation_status(conn,set_id)}

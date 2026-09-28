@@ -3,6 +3,7 @@ import { t, useTeachingLocale } from "@/components/teaching/teaching-i18n";
 
 import { PersonalizeButton, TeachingLanguageSelector } from "./TeachingPreferences";
 import Link from "next/link";
+import {useEffect,useState} from "react";
 import { usePathname } from "next/navigation";
 import { MessageSquare, ClipboardCheck, BookOpen, Users, Settings, Brain, GraduationCap, LayoutDashboard } from "lucide-react";
 import { LogoutButton } from "@/components/auth/LogoutButton";
@@ -11,6 +12,8 @@ import { useSidebarDrawer } from "@/components/layout/AppShell";
 
 export default function TeachingSidebar({ role }: { role: string }) {
   useTeachingLocale();
+  const [examActive,setExamActive]=useState(false);
+  useEffect(()=>{const update=(event:Event)=>setExamActive(Boolean((event as CustomEvent).detail));window.addEventListener('quiz-exam-state',update);return()=>window.removeEventListener('quiz-exam-state',update);},[]);
 
 const student = [
   { href: "/home", label: "Chat", detail: t("学习与讲解"), icon: MessageSquare },
@@ -36,7 +39,7 @@ const admin = [
   const active = entries.filter(e => pathname === e.href || pathname.startsWith(e.href + "/")).sort((a,b) => b.href.length-a.href.length)[0]?.href;
   return <aside className="flex h-dvh w-[220px] flex-col border-r border-[var(--border)] bg-[var(--secondary)]">
     <div className="px-5 pb-8 pt-7"><p className="text-xl font-semibold">DeepTutor</p>{process.env.NEXT_PUBLIC_TEACHING_PREVIEW==="true"&&<p className="mt-2 text-xs text-[var(--primary)]">{t("隔离预览 · 合成数据")}</p>}<p className="mt-2 text-xs text-[var(--muted-foreground)]">{role === "student" ? t("专注每一次理解") : role === "parent" ? t("家长工作台") : t("教学系统管理")}</p></div>
-    <nav aria-label={t("教学导航")} className="space-y-2 px-3">{entries.map(e => <Link key={e.href} href={e.href} onClick={() => drawer?.close()} aria-current={e.href===active ? "page" : undefined} className={`flex gap-3 rounded-lg p-3 focus-visible:outline focus-visible:outline-2 ${e.href===active ? "bg-[var(--background)] text-[var(--foreground)]" : "text-[var(--muted-foreground)] hover:bg-[var(--background)]"}`}><e.icon size={19} aria-hidden="true"/><span className="text-sm font-medium">{e.label}{"detail" in e && <span className="mt-1 block text-xs font-normal text-[var(--muted-foreground)]">{String(e.detail)}</span>}</span></Link>)}</nav>
-    <div className="mt-auto border-t border-[var(--border)] p-3">{role === "student" && <PersonalizeButton/>}<TeachingLanguageSelector/><ProfileLink/><LogoutButton/></div>
+    <nav aria-label={t("教学导航")} className="space-y-2 px-3">{entries.map(e => <Link key={e.href} href={e.href} aria-disabled={examActive&&e.href!=="/quiz"?true:undefined} onClick={event => {if(examActive&&e.href!=="/quiz"){event.preventDefault();return;}drawer?.close();}} aria-current={e.href===active ? "page" : undefined} className={`flex gap-3 rounded-lg p-3 focus-visible:outline focus-visible:outline-2 ${e.href===active ? "bg-[var(--background)] text-[var(--foreground)]" : "text-[var(--muted-foreground)] hover:bg-[var(--background)]"}`}><e.icon size={19} aria-hidden="true"/><span className="text-sm font-medium">{e.label}{"detail" in e && <span className="mt-1 block text-xs font-normal text-[var(--muted-foreground)]">{String(e.detail)}</span>}</span></Link>)}</nav>
+    <div className="mt-auto border-t border-[var(--border)] p-3">{examActive&&<p className="mb-4 text-xs leading-6">{t("独立测试进行中，其他入口将在测试结束后开放。")}</p>}<div inert={examActive}>{role === "student" && <PersonalizeButton/>}<TeachingLanguageSelector/><ProfileLink/><LogoutButton/></div></div>
   </aside>;
 }

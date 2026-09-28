@@ -6,6 +6,7 @@ from typing import Literal
 from fastapi import HTTPException, Request
 from pydantic import BaseModel, Field, field_validator
 from deeptutor.education.application import assessment_engine as engine
+from deeptutor.education.application import exam_integrity as integrity
 from deeptutor.education.storage.sqlite import transaction
 
 
@@ -38,6 +39,8 @@ class Placement(BaseModel):
 
 
 class NewExam(BaseModel):
+    page_session: str = Field(min_length=32,max_length=128,pattern=r'^[a-zA-Z0-9-]+$')
+    rules_accepted: Literal[True]
     learner_id: str
     course_version_id: str
     kind: Literal['checkin','daily','unit','final','promotion','competition']
@@ -46,6 +49,13 @@ class NewExam(BaseModel):
 
 class FoundationChoice(BaseModel):
     choice: Literal['yes','no']
+    page_session: str | None = Field(default=None,min_length=32,max_length=128,pattern=r'^[a-zA-Z0-9-]+$')
+    rules_accepted: bool = False
+
+
+class Presence(BaseModel):
+    page_session: str = Field(min_length=32,max_length=128,pattern=r'^[a-zA-Z0-9-]+$')
+    reason: Literal['page_hidden','page_left','connection_lost'] | None = None
 
 
 class Draft(BaseModel):
@@ -200,7 +210,11 @@ def register(app, *, connect, require_learner, require_enrollment, require_linke
             if row is None:
                 # Keep an unanswered optional choice reachable after refresh.
                 row=conn.execute("SELECT f.set_id FROM formal_exams f JOIN promotion_events p ON p.set_id=f.set_id WHERE f.learner_id=? AND f.kind='competition' AND json_extract(f.result_json,'$.passed')=1 AND COALESCE(json_extract(f.result_json,'$.promotion.review_required'),0)=0 AND NOT EXISTS(SELECT 1 FROM competition_foundation_choices c WHERE c.competition_set_id=f.set_id) ORDER BY f.deadline DESC LIMIT 1",(learner_id,)).fetchone()
-            if row: owned_exam(conn,row[0],request)
+            if row is None:
+                row=conn.execute("SELECT f.set_id FROM formal_exams f JOIN exam_integrity i ON i.set_id=f.set_id WHERE f.learner_id=? AND i.state='invalidated' AND i.retake_authorized_at IS NULL ORDER BY f.deadline DESC LIMIT 1",(learner_id,)).fetchone()
+            if row:
+                owned_exam(conn,row[0],request)
+                if actor(request).role=='student': integrity.inspect(conn,row[0],request.headers.get('x-quiz-session'))
             legacy=None
             if row is None:
                 old=conn.execute("SELECT t.id AS set_id,t.learner_id,t.course_version_id,t.submitted_at FROM task_sets t JOIN enrollments e ON e.learner_id=t.learner_id AND e.course_version_id=t.course_version_id WHERE t.learner_id=? AND e.status='active' AND t.skipped_at IS NULL AND (t.submitted_at IS NULL OR EXISTS(SELECT 1 FROM task_set_submissions s,json_each(t.item_ids_json) j WHERE s.set_id=t.id AND NOT EXISTS(SELECT 1 FROM student_attempts a WHERE a.id=t.id || ':' || j.value))) AND NOT EXISTS(SELECT 1 FROM formal_exams f WHERE f.set_id=t.id) ORDER BY t.issued_at LIMIT 1",(learner_id,)).fetchone()
@@ -213,20 +227,40 @@ def register(app, *, connect, require_learner, require_enrollment, require_linke
         conn=connect()
         try:
             student(conn,body.learner_id,request,write=True);require_enrollment(conn,body.learner_id,body.course_version_id)
-            return engine.issue(conn,body.learner_id,body.course_version_id,body.kind,body.unit_id,judge_available=judge_available)
+            return engine.issue(conn,body.learner_id,body.course_version_id,body.kind,body.unit_id,judge_available=judge_available,page_session=body.page_session)
         finally:conn.close()
 
     @app.get('/api/edu/assessments/{set_id}')
     def get_exam(set_id:str,request:Request):
         conn=connect()
-        try: owned_exam(conn,set_id,request);return engine.public_exam(conn,set_id)
+        try:
+            owned_exam(conn,set_id,request)
+            if actor(request).role=='student': integrity.inspect(conn,set_id,request.headers.get('x-quiz-session'))
+            return engine.public_exam(conn,set_id)
         finally:conn.close()
 
     @app.put('/api/edu/assessments/{set_id}/draft')
     def draft(set_id:str,body:Draft,request:Request):
         if any(len(k)>200 or len(v)>20000 for k,v in body.answers.items()): raise HTTPException(400,'作答内容过长。')
         conn=connect()
-        try: owned_exam(conn,set_id,request,write=True);return engine.save_draft(conn,set_id,body.answers,body.revision)
+        try: owned_exam(conn,set_id,request,write=True);return engine.save_draft(conn,set_id,body.answers,body.revision,page_session=request.headers.get('x-quiz-session'))
+        finally:conn.close()
+
+    @app.post('/api/edu/assessments/{set_id}/presence')
+    def presence(set_id:str,body:Presence,request:Request):
+        conn=connect()
+        try:
+            owned_exam(conn,set_id,request,write=True)
+            integrity.inspect(conn,set_id,body.page_session,reason=body.reason,heartbeat=body.reason is None)
+            return engine.public_exam(conn,set_id)
+        finally:conn.close()
+
+    @app.post('/api/edu/assessments/{set_id}/allow-retake')
+    def allow_retake(set_id:str,request:Request):
+        conn=connect()
+        try:
+            linked_exam(conn,set_id,request)
+            return integrity.allow_retake(conn,set_id,actor(request).user_id)
         finally:conn.close()
 
     @app.post('/api/edu/assessments/{set_id}/confirm-promotion')
@@ -245,7 +279,12 @@ def register(app, *, connect, require_learner, require_enrollment, require_linke
         conn=connect()
         try:
             owned_exam(conn,set_id,request,write=True)
-            return engine.choose_foundation(conn,set_id,body.choice,actor(request).user_id,judge_available=judge_available)
+            if body.choice=='yes' and (not body.page_session or not body.rules_accepted): raise HTTPException(400,'开始补测前，请确认独立测试规则。')
+            result=engine.choose_foundation(conn,set_id,body.choice,actor(request).user_id,judge_available=judge_available,page_session=body.page_session)
+            if result['exam']:
+                integrity.inspect(conn,result['exam']['set_id'],body.page_session)
+                result['exam']=engine.public_exam(conn,result['exam']['set_id'])
+            return result
         finally:conn.close()
 
     @app.get('/api/edu/assessments/{set_id}/review')

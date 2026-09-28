@@ -20,6 +20,7 @@ from __future__ import annotations
 
 from datetime import datetime
 import json
+import contextlib
 import hashlib
 import os
 import re
@@ -168,6 +169,10 @@ def create_app(
                     destination = {'admin':'/admin','parent':'/parent','student':'/quiz'}.get(request.state.education_account.role,'/home')
                     return RedirectResponse(destination, status_code=303,
                                             headers={'Cache-Control': 'private, no-store'})
+                if request.state.education_account.role == 'student':
+                    from deeptutor.education.application.exam_integrity import guard_education_request
+                    with contextlib.closing(connect()) as exam_conn:
+                        guard_education_request(exam_conn,request.state.education_account.user_id,request.url.path,request.method)
                 if request.method not in {'GET', 'HEAD', 'OPTIONS'}:
                     # Cookie authentication must not admit cross-site writes.
                     origin = request.headers.get('origin')
@@ -879,6 +884,10 @@ def create_app(
         conn = connect()
         try:
             require_learner(conn, payload.learner_id, request, write=True)
+            from deeptutor.education.application import exam_integrity as integrity
+            if hasattr(request.state,'education_account') and request.state.education_account.role=='student':
+                integrity.guard_submission_target(conn,request.state.education_account.user_id,payload.set_id)
+            if integrity.invalid_result(conn,payload.set_id): return integrity.report(conn,payload.set_id)
             row = conn.execute(
                 "SELECT s.answers_json, t.course_version_id FROM task_set_submissions s "
                 "JOIN task_sets t ON t.id=s.set_id WHERE t.id=? AND t.learner_id=?",
@@ -903,6 +912,9 @@ def create_app(
         conn = connect()
         try:
             learner_id = require_learner(conn, payload.learner_id, request, write=True)
+            from deeptutor.education.application import exam_integrity as integrity
+            if hasattr(request.state,'education_account') and request.state.education_account.role=='student':
+                integrity.guard_submission_target(conn,request.state.education_account.user_id,payload.set_id)
             if learner_id.startswith(PARENT_PREFIX):
                 raise HTTPException(
                     status_code=403,
@@ -985,7 +997,9 @@ def create_app(
             # 双击提交按钮就能触发，不需要恶意脚本。
             with edu_sqlite.transaction(conn):
                 from deeptutor.education.application.assessment_engine import validate_submission
-                payload = validate_submission(conn, payload)
+                checked = validate_submission(conn, payload,page_session=request.headers.get('x-quiz-session'))
+                if checked is None: return integrity.report(conn,payload.set_id)
+                payload = checked
                 claimed = conn.execute(
                     "UPDATE task_sets SET submitted_at = ? WHERE id = ? "
                     "AND submitted_at IS NULL AND skipped_at IS NULL",
@@ -995,6 +1009,7 @@ def create_app(
                                                 (payload.set_id,)).fetchone()['skipped_at'] is not None:
                     raise HTTPException(409, '这组练习已放下，请重新选择主题')
                 if claimed:
+                    integrity.seal(conn,payload.set_id)
                     conn.execute(
                         "INSERT INTO task_set_submissions (set_id, answers_json, received_at) VALUES (?, ?, ?)",
                         (payload.set_id, json.dumps([a.model_dump() for a in payload.answers]), now),

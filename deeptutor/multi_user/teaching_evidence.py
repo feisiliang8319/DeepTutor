@@ -49,6 +49,10 @@ def read(user_id: str, *, include_private: bool = False) -> dict:
         conn.close()
 
 
+class ActiveAssessmentError(RuntimeError):
+    pass
+
+
 def assert_no_active_assessment(user_id: str) -> None:
     """Do not provide Chat assistance while a formal independent exam is open."""
     configured=os.environ.get("TEACHING_EDUCATION_DB", "")
@@ -63,6 +67,20 @@ def assert_no_active_assessment(user_id: str) -> None:
             return
         exam=conn.execute("SELECT 1 FROM formal_exams f JOIN learner_profiles l ON l.id=f.learner_id JOIN task_sets t ON t.id=f.set_id WHERE l.deep_tutor_user_id=? AND t.submitted_at IS NULL AND t.skipped_at IS NULL LIMIT 1",(user_id,)).fetchone()
         if exam:
-            raise RuntimeError("Please submit your current Quiz before returning to Chat. 请先提交当前测试，再回到 Chat 学习与订正。")
+            raise ActiveAssessmentError("Please submit your current Quiz before returning to Chat. 请先提交当前测试，再回到 Chat 学习与订正。")
     finally:
         conn.close()
+
+
+def enforce_exam_access(user_id: str, role: str, path: str) -> None:
+    """HTTP resources are guarded as well as the existing per-turn Chat gate."""
+    from fastapi import HTTPException
+    from .teaching_identity import active
+    if role != 'student' or not active():
+        return
+    if path in {'/api/v1/auth/status','/api/v1/auth/logout','/api/v1/capabilities','/api/v1/settings/ui','/api/v1/teaching/appearance'} or path.startswith('/api/v1/auth/profile'):
+        return
+    try:
+        assert_no_active_assessment(user_id)
+    except ActiveAssessmentError as exc:
+        raise HTTPException(423, '独立测试进行中，暂时不能使用 Chat、资料或其他测试记录。') from exc

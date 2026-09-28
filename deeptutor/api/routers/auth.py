@@ -311,6 +311,8 @@ async def require_auth(
         authorize(request.url.path, request.method, payload.role)
         from deeptutor.multi_user.teaching_passwords import enforce_password_change
         enforce_password_change(payload, request.url.path, request.method)
+        from deeptutor.multi_user.teaching_evidence import enforce_exam_access
+        enforce_exam_access(payload.user_id,payload.role,request.url.path)
     _install_current_user(payload)
     return payload
 

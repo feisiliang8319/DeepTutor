@@ -1,0 +1,54 @@
+{
+  "figure_id": "stock-cemc-tracking-temperatures-v1",
+  "kind": "line-graph",
+  "title": "Daily High Temperature",
+  "source": "CEMC POTW A 2024 p.36",
+  "note": "题目要求『估读』，故 y 轴只标 0/5/10/15/20/25，不在数据点旁标数值——标了就把估读这一教学目标消掉了。各点数值与官方解答一致。",
+  "axis": {
+    "category_label": "Day",
+    "value_label": "Temperature (Degrees Celsius)",
+    "value_max": 25,
+    "value_step": 5
+  },
+  "series": [
+    {
+      "category": "Mon",
+      "value": 17
+    },
+    {
+      "category": "Tues",
+      "value": 20
+    },
+    {
+      "category": "Wed",
+      "value": 9
+    },
+    {
+      "category": "Thurs",
+      "value": 16
+    },
+    {
+      "category": "Fri",
+      "value": 14
+    },
+    {
+      "category": "Sat",
+      "value": 23
+    },
+    {
+      "category": "Sun",
+      "value": 18
+    }
+  ],
+  "palette": {
+    "line": "#417366",
+    "point": "#315a4e",
+    "grid": "#c6cfc7",
+    "stroke": "#45574d",
+    "white": "#f5f3eb"
+  },
+  "source_spec_sha256": "120f7b240f1d5e4ce4c9b409bd36978dad157c28f6bbfecd233c58701026fc34",
+  "reviewed_against_original_pdf": "2026-09-28; source pages rendered and visually compared in this batch",
+  "original_transcription_by": "claude-opus-5 (visual read of rendered page, 2026-08-15)",
+  "review_method": "Original existing PDF page visually compared; derived data independently recomputed by check_cemc_figures.py."
+}

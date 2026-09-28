@@ -1,0 +1,44 @@
+{
+  "figure_id": "stock-cemc-books-books-books-v1",
+  "kind": "pictograph",
+  "title": "Books Read",
+  "source": "CEMC POTW A 2024 p.34",
+  "note": "每个图标代表固定本数（题目要求学生自己推出是 4 本），故此处只存图标个数、不存换算比例——存了就把 (a) 小问的答案泄露进图里。",
+  "icon": "book",
+  "columns": [
+    "Student",
+    "Books Read"
+  ],
+  "rows": [
+    {
+      "label": "Xuan",
+      "count": 5
+    },
+    {
+      "label": "Javya",
+      "count": 3
+    },
+    {
+      "label": "Natasha",
+      "count": 10
+    },
+    {
+      "label": "Sanan",
+      "count": 4
+    },
+    {
+      "label": "Brandon",
+      "count": 7
+    }
+  ],
+  "palette": {
+    "icon": "#3c5e51",
+    "rule": "#85978b",
+    "stroke": "#45574d",
+    "white": "#f5f3eb"
+  },
+  "source_spec_sha256": "df0f31feda54faeeadc3c1f3287ff4faf12fda2f54534aba705c65bac110fe11",
+  "reviewed_against_original_pdf": "2026-09-28; source pages rendered and visually compared in this batch",
+  "original_transcription_by": "claude-opus-5 (visual read of rendered page, 2026-08-15)",
+  "review_method": "Original existing PDF page visually compared; derived data independently recomputed by check_cemc_figures.py."
+}

@@ -1,0 +1,67 @@
+{
+  "figure_id": "stock-cemc-test-results-v1",
+  "kind": "bar-chart",
+  "title": "Test Results for Meadowcrest PS",
+  "source": "CEMC POTW A 2025 p.56",
+  "note": "横向条形图；成绩由高到低自上而下排列。C+ 为 0 人（无条）。",
+  "orientation": "horizontal",
+  "axis": {
+    "category_label": "Grade",
+    "value_label": "Number of Students",
+    "value_max": 22,
+    "value_step": 2
+  },
+  "series": [
+    {
+      "category": "A+",
+      "value": 4
+    },
+    {
+      "category": "A",
+      "value": 6
+    },
+    {
+      "category": "A−",
+      "value": 8
+    },
+    {
+      "category": "B+",
+      "value": 16
+    },
+    {
+      "category": "B",
+      "value": 21
+    },
+    {
+      "category": "B−",
+      "value": 17
+    },
+    {
+      "category": "C+",
+      "value": 0
+    },
+    {
+      "category": "C",
+      "value": 4
+    },
+    {
+      "category": "C−",
+      "value": 3
+    },
+    {
+      "category": "D+",
+      "value": 1
+    }
+  ],
+  "palette": {
+    "bar": "#417a72",
+    "grid": "#c6cfc7",
+    "axis": "#45574d",
+    "stroke": "#45574d",
+    "white": "#f5f3eb"
+  },
+  "source_spec_sha256": "47244f9677e297f286a667ee86dbb1b927aef4ecc993096bd4ec912f31ec6bc4",
+  "reviewed_against_original_pdf": "2026-09-28; source pages rendered and visually compared in this batch",
+  "original_transcription_by": "claude-opus-5 (visual read of rendered page, 2026-08-15)",
+  "review_method": "Original existing PDF page visually compared; derived data independently recomputed by check_cemc_figures.py."
+}

@@ -1,0 +1,25 @@
+{
+  "figure_id": "stock-cemc-time-after-time-v1",
+  "kind": "clock",
+  "title": "Time After Time",
+  "source": "CEMC POTW A 2024 p.47",
+  "note": "模拟钟面显示 10:09（官方解答确认）。刻度只画到分，不写数字时间——写了就把 (b)(c) 小问变成读文字。",
+  "time": {
+    "hour": 10,
+    "minute": 9
+  },
+  "show_minute_ticks": true,
+  "show_numerals": true,
+  "palette": {
+    "bezel": "#50675c",
+    "face": "#f5f3eb",
+    "hand": "#31483d",
+    "tick": "#31483d",
+    "stroke": "#45574d",
+    "white": "#f5f3eb"
+  },
+  "source_spec_sha256": "9f1d19960ae2a24a32444f75f53c52b31d2c0bb11f18ab25296e2eef0c12802c",
+  "reviewed_against_original_pdf": "2026-09-28; source pages rendered and visually compared in this batch",
+  "original_transcription_by": "claude-opus-5 (visual read of rendered page, 2026-08-15)",
+  "review_method": "Original existing PDF page visually compared; derived data independently recomputed by check_cemc_figures.py."
+}

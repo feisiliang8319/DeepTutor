@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "CEMC 存量 · 六道图形题复核修订",
+  "items": [
+    {
+      "id": "cemc-potwa-2025-p22-shape-sums-figure-review-v1",
+      "knowledge_node_code": "G4.OA.A3.MULTISTEP_EQUATION",
+      "item_type": "multi_step",
+      "prompt": "图中相同形状表示相同的数。已标出第一、第二、第四行的和，以及第一、第四列的和。求三个问号处的和：第三行、第二列、第三列，并说明理由。",
+      "expected_answer": "第三行 13；第二列 12；第三列 22",
+      "explanation": "第一行四个三角形的和是20，所以三角形=5。第一列2个三角形与2个圆的和是12，所以圆=1。第四行给出2个圆+三角形+正方形=15，所以正方形=8。第二行给出三角形+圆+正方形+六边形=17，所以六边形=3。因此第三行=1+1+8+3=13，第二列=5+1+1+5=12，第三列=5+8+8+1=22。第四列5+3+3+8=19，可用于验算。",
+      "explanation_source": "derived",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "source_ref": "CEMC POTW A — Shape Sums (POTWA-25-combined-linked.pdf p.22) | figure and explanation reconstruction of existing stock",
+      "license_note": "CC BY-NC 4.0",
+      "attribution_text": "CEMC Problem of the Week, Problem A (Grades 3/4). © Centre for Education in Mathematics and Computing, University of Waterloo. Used under CC BY-NC 4.0. Chinese adaptation and redrawn diagram by DeepTutor; no CEMC endorsement.",
+      "derived_from_item_id": "cemc-potwa-2025-p22-shape-sums",
+      "figure_spec_id": "stock-cemc-shape-sums-v1",
+      "rubric_json": {
+        "source_grade_band": "3/4",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "review_scope": "candidate only; independent arithmetic and original-page figure reconstruction do not bypass external-figure approval",
+        "source_pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+        "source_pdf_page": 22,
+        "source_content_hash": "d6915fbb318cde63242c87bed8088c9bae08eccb897c40ee19f201f08ba25d3e",
+        "figure": {
+          "id": "stock-cemc-shape-sums-v1",
+          "kind": "symbol-grid",
+          "spec_sha256": "54d860cba94c458d0f3071ba4a8dc0c561729e7f64a899f3951c97aba2120a82",
+          "svg_sha256": "bb235bc11ea2256d7179698357bcad55ae06a3a88a893436f3a5cb39d80dead4"
+        },
+        "scoring": {
+          "full_credit": "第三行 13；第二列 12；第三列 22",
+          "accept_equivalent_reasoning": true
+        },
+        "verification": "See source-bound cemc-six-figure-math-proof.json; original question and answer PDF pages retained."
+      }
+    },
+    {
+      "id": "cemc-potwa-2024-p23-amazing-navigation-figure-review-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "只完成原题(a)。从图中的A出发，每次沿北N、东E、南S或西W移动一格，最终到达Z。灰色格子不能走；每个浅色格子（包括A、Z）必须恰好经过一次。上方为北。写出完整的方向序列，并解释第一步的选择。",
+      "expected_answer": "S, E, E, N, N, W, W, N, E, E, E, E, E, S, S, E, N, N, E",
+      "explanation": "A右侧为灰格。若第一步向北，A正下方的浅色格子以后会成为无法通过的死路，所以第一步必须向南。完整路线为 S,E,E,N,N,W,W,N,E,E,E,E,E,S,S,E,N,N,E。路线走19步，连同起点恰好覆盖20个浅色格子，无重复，终点为Z。对原图所有合法路径穷举后只有这一条；原题(b)重画迷宫不在本题范围内。",
+      "explanation_source": "derived",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "source_ref": "CEMC POTW A — Amazing Navigation (POTWA-24-Combined-Linked.pdf p.23) | figure and explanation reconstruction of existing stock",
+      "license_note": "CC BY-NC 4.0",
+      "attribution_text": "CEMC Problem of the Week, Problem A (Grades 3/4). © Centre for Education in Mathematics and Computing, University of Waterloo. Used under CC BY-NC 4.0. Chinese adaptation and redrawn diagram by DeepTutor; no CEMC endorsement.",
+      "derived_from_item_id": "cemc-potwa-2024-p23-amazing-navigation",
+      "figure_spec_id": "stock-cemc-amazing-navigation-v1",
+      "rubric_json": {
+        "source_grade_band": "3/4",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "review_scope": "candidate only; independent arithmetic and original-page figure reconstruction do not bypass external-figure approval",
+        "source_pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+        "source_pdf_page": 23,
+        "source_content_hash": "12aecb550e2916056d3cf974aabc7c1f91e700c1e935bd709f6a3ef85a66a7f1",
+        "figure": {
+          "id": "stock-cemc-amazing-navigation-v1",
+          "kind": "maze-grid",
+          "spec_sha256": "295cef561f3cba26b703063bf180745c7f50a72eab9158da4c0993ad5ba3eddd",
+          "svg_sha256": "814cb8f1f79c32e2ace34864e42fa83eb1da32c3ee8a270557eba8f7b7195ae3"
+        },
+        "scoring": {
+          "full_credit": "S, E, E, N, N, W, W, N, E, E, E, E, E, S, S, E, N, N, E",
+          "accept_equivalent_reasoning": true
+        },
+        "verification": "See source-bound cemc-six-figure-math-proof.json; original question and answer PDF pages retained.",
+        "partial_coverage": "Original part (a) only; original drawing part (b) excluded explicitly."
+      }
+    },
+    {
+      "id": "cemc-potwa-2025-p56-test-results-figure-review-v1",
+      "knowledge_node_code": "G3.MD.B3.SCALED_GRAPHS",
+      "item_type": "multi_step",
+      "prompt": "条形图记录一所学校数学测试的成绩。成绩从上到下由高到低排列，A+最高、D+最低。(a)共有多少学生参加？(b)成绩的众数是什么？众数指人数最多的成绩。(c)B−及以上表示达到要求，有多少学生达到要求？",
+      "expected_answer": "(a)80人；(b)B；(c)72人",
+      "explanation": "按图中从上到下读取人数：4、6、8、16、21、17、0、4、3、1，总和为80。B对应21人，是最长的条形，所以众数为B。B−及以上包含前六个成绩档，4+6+8+16+21+17=72。C+人数是0，仍应保留这个成绩档。",
+      "explanation_source": "derived",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "source_ref": "CEMC POTW A — Test Results (POTWA-25-combined-linked.pdf p.56) | figure and explanation reconstruction of existing stock",
+      "license_note": "CC BY-NC 4.0",
+      "attribution_text": "CEMC Problem of the Week, Problem A (Grades 3/4). © Centre for Education in Mathematics and Computing, University of Waterloo. Used under CC BY-NC 4.0. Chinese adaptation and redrawn diagram by DeepTutor; no CEMC endorsement.",
+      "derived_from_item_id": "cemc-potwa-2025-p56-test-results",
+      "figure_spec_id": "stock-cemc-test-results-v1",
+      "rubric_json": {
+        "source_grade_band": "3/4",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "review_scope": "candidate only; independent arithmetic and original-page figure reconstruction do not bypass external-figure approval",
+        "source_pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+        "source_pdf_page": 56,
+        "source_content_hash": "6217ef9da3129dd5754252e55bc85552f3a666e8a127e884c2bfa212e9b5cd66",
+        "figure": {
+          "id": "stock-cemc-test-results-v1",
+          "kind": "bar-chart",
+          "spec_sha256": "28a3d51a4d567c26a56344db629bd62dcb543dd3d784ff46391daa5690d03f41",
+          "svg_sha256": "7f497e4baef6538bdace7dd143888807a28b8f64d3bd5ac5d93db5d7105c5f33"
+        },
+        "scoring": {
+          "full_credit": "(a)80人；(b)B；(c)72人",
+          "accept_equivalent_reasoning": true
+        },
+        "verification": "See source-bound cemc-six-figure-math-proof.json; original question and answer PDF pages retained."
+      }
+    },
+    {
+      "id": "cemc-potwa-2024-p36-tracking-temperatures-figure-review-v1",
+      "knowledge_node_code": "G3.MD.B3.SCALED_GRAPHS",
+      "item_type": "multi_step",
+      "prompt": "图中显示某周每天的最高气温，单位为摄氏度。(a)估计本周记录到的最高气温。(b)估计最低气温。(c)估计相邻两天之间最大的气温变化，并指出是哪两天。答案允许合理的估读误差。",
+      "expected_answer": "(a)约23°C；(b)约9°C；(c)约11°C，星期二到星期三",
+      "explanation": "各点可估读为星期一17、二20、三9、四16、五14、六23、日18°C。最高约23°C，最低约9°C。相邻两天变化量的绝对值依次约为3、11、7、2、9、5°C，所以最大变化是星期二到星期三下降约11°C。检查的是估读与比较，不要求从图上读出虚假的精确小数。",
+      "explanation_source": "derived",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "source_ref": "CEMC POTW A — Tracking Temperatures (POTWA-24-Combined-Linked.pdf p.36) | figure and explanation reconstruction of existing stock",
+      "license_note": "CC BY-NC 4.0",
+      "attribution_text": "CEMC Problem of the Week, Problem A (Grades 3/4). © Centre for Education in Mathematics and Computing, University of Waterloo. Used under CC BY-NC 4.0. Chinese adaptation and redrawn diagram by DeepTutor; no CEMC endorsement.",
+      "derived_from_item_id": "cemc-potwa-2024-p36-tracking-temperatures",
+      "figure_spec_id": "stock-cemc-tracking-temperatures-v1",
+      "rubric_json": {
+        "source_grade_band": "3/4",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "review_scope": "candidate only; independent arithmetic and original-page figure reconstruction do not bypass external-figure approval",
+        "source_pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+        "source_pdf_page": 36,
+        "source_content_hash": "e80cacccf7df9596dc6d1a7c35f70a378499ddbf7ba3ce33b80d6dcb7f4f1159",
+        "figure": {
+          "id": "stock-cemc-tracking-temperatures-v1",
+          "kind": "line-graph",
+          "spec_sha256": "f006636f57bab8ad0deb7e32632bee9aaec05ff6bf907eadcadd2f3022d91127",
+          "svg_sha256": "211d1d2490fa745dba46c012bb55cbf40d8beb7ff630c49fe92d47263d0a6592"
+        },
+        "scoring": {
+          "full_credit": "(a)约23°C；(b)约9°C；(c)约11°C，星期二到星期三",
+          "accept_equivalent_reasoning": true,
+          "temperature_tolerance_celsius": 1,
+          "change_tolerance_celsius": 2,
+          "require_max_change_days": "Tuesday to Wednesday",
+          "note": "Accept coherent graph-based estimates; do not reject reasonable rounding automatically."
+        },
+        "verification": "See source-bound cemc-six-figure-math-proof.json; original question and answer PDF pages retained."
+      }
+    },
+    {
+      "id": "cemc-potwa-2024-p34-books-books-books-figure-review-v1",
+      "knowledge_node_code": "G3.MD.B3.SCALED_GRAPHS",
+      "item_type": "multi_step",
+      "prompt": "图中统计五位学生本月读书的数量，每个相同的书本图标代表相同本数。(a)已知Brandon读了28本，每个图标代表几本？(b)这五位学生共读了多少本？写出计算过程。",
+      "expected_answer": "(a)4本；(b)116本",
+      "explanation": "Brandon一行有7个图标，所以每个代表28÷7=4本。五行图标数依次为5、3、10、4、7，共29个，合计29×4=116本。也可先算20、12、40、16、28本再相加。",
+      "explanation_source": "derived",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "source_ref": "CEMC POTW A — Books, Books, Books (POTWA-24-Combined-Linked.pdf p.34) | figure and explanation reconstruction of existing stock",
+      "license_note": "CC BY-NC 4.0",
+      "attribution_text": "CEMC Problem of the Week, Problem A (Grades 3/4). © Centre for Education in Mathematics and Computing, University of Waterloo. Used under CC BY-NC 4.0. Chinese adaptation and redrawn diagram by DeepTutor; no CEMC endorsement.",
+      "derived_from_item_id": "cemc-potwa-2024-p34-books-books-books",
+      "figure_spec_id": "stock-cemc-books-books-books-v1",
+      "rubric_json": {
+        "source_grade_band": "3/4",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "review_scope": "candidate only; independent arithmetic and original-page figure reconstruction do not bypass external-figure approval",
+        "source_pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+        "source_pdf_page": 34,
+        "source_content_hash": "30c4d2d555c833b2b21402a0590f0a0848c518d65680a801e98db0bc444009d3",
+        "figure": {
+          "id": "stock-cemc-books-books-books-v1",
+          "kind": "pictograph",
+          "spec_sha256": "f8d4b58a596f28ab6227df89068f2fc0244551ab42a9a0f4cbc3ee40db7de75a",
+          "svg_sha256": "0ed421656b586570afde39153c6bd78cbea3488a53702dc08f38fce4a526090e"
+        },
+        "scoring": {
+          "full_credit": "(a)4本；(b)116本",
+          "accept_equivalent_reasoning": true
+        },
+        "verification": "See source-bound cemc-six-figure-math-proof.json; original question and answer PDF pages retained."
+      }
+    },
+    {
+      "id": "cemc-potwa-2024-p47-time-after-time-figure-review-v1",
+      "knowledge_node_code": "G4.MD.A2.ELAPSED_TIME",
+      "item_type": "multi_step",
+      "prompt": "假设钟面显示的是现在的时间，而且现在是上午。再过5小时6分钟放学。(a)离放学还有多少分钟？(b)放学是几点？(c)学校从上午8:55开始上课，到钟面显示的时间已经过了几小时几分钟？",
+      "expected_answer": "(a)306分钟；(b)下午3:15；(c)1小时14分钟",
+      "explanation": "长分针指向第9分钟刻度，短时针略过10，所以现在是上午10:09。(a)5×60+6=306分钟。(b)10:09加5小时6分钟为15:15，即下午3:15。(c)8:55到9:55是一小时，再到10:09是14分钟，共1小时14分钟。",
+      "explanation_source": "derived",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "source_ref": "CEMC POTW A — Time After Time (POTWA-24-Combined-Linked.pdf p.47) | figure and explanation reconstruction of existing stock",
+      "license_note": "CC BY-NC 4.0",
+      "attribution_text": "CEMC Problem of the Week, Problem A (Grades 3/4). © Centre for Education in Mathematics and Computing, University of Waterloo. Used under CC BY-NC 4.0. Chinese adaptation and redrawn diagram by DeepTutor; no CEMC endorsement.",
+      "derived_from_item_id": "cemc-potwa-2024-p47-time-after-time",
+      "figure_spec_id": "stock-cemc-time-after-time-v1",
+      "rubric_json": {
+        "source_grade_band": "3/4",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "review_scope": "candidate only; independent arithmetic and original-page figure reconstruction do not bypass external-figure approval",
+        "source_pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+        "source_pdf_page": 47,
+        "source_content_hash": "648043920a86a3b9e903ab8e4ed248f743fd28206ad29728100d7a8117142ea7",
+        "figure": {
+          "id": "stock-cemc-time-after-time-v1",
+          "kind": "clock",
+          "spec_sha256": "9ad398b97097394ad1a0ec863dc903ea09a8ace9dde1e2629d9dc1c085b0c407",
+          "svg_sha256": "48068e64e6848caa1550df1be66f4c18549367faf9846a27ce778be81a805dbe"
+        },
+        "scoring": {
+          "full_credit": "(a)306分钟；(b)下午3:15；(c)1小时14分钟",
+          "accept_equivalent_reasoning": true
+        },
+        "verification": "See source-bound cemc-six-figure-math-proof.json; original question and answer PDF pages retained."
+      }
+    }
+  ]
+}

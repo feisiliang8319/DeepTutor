@@ -1,0 +1,75 @@
+{
+  "figure_id": "stock-cemc-shape-sums-v1",
+  "kind": "symbol-grid",
+  "title": "Shape Sums",
+  "source": "CEMC POTW A 2025 p.22",
+  "note": "行和标在每行右侧，列和标在每列下方；'?' 表示待求。符号本身代表未知数。",
+  "grid": {
+    "rows": 4,
+    "cols": 4,
+    "cells": [
+      [
+        "triangle",
+        "triangle",
+        "triangle",
+        "triangle"
+      ],
+      [
+        "triangle",
+        "circle",
+        "square",
+        "hexagon"
+      ],
+      [
+        "circle",
+        "circle",
+        "square",
+        "hexagon"
+      ],
+      [
+        "circle",
+        "triangle",
+        "circle",
+        "square"
+      ]
+    ],
+    "row_sums": [
+      "20",
+      "17",
+      "?",
+      "15"
+    ],
+    "col_sums": [
+      "12",
+      "?",
+      "?",
+      "19"
+    ]
+  },
+  "legend_example": {
+    "text": "For example, we know:",
+    "expression": [
+      "triangle",
+      "+",
+      "triangle",
+      "+",
+      "triangle",
+      "+",
+      "triangle",
+      "=",
+      "20"
+    ]
+  },
+  "palette": {
+    "triangle": "#6488aa",
+    "circle": "#b98849",
+    "square": "#bc7569",
+    "hexagon": "#60937d",
+    "stroke": "#45574d",
+    "white": "#f5f3eb"
+  },
+  "source_spec_sha256": "de8e686aac31fc55661430b2f6ba1c1a9b36ac6fc4644e2671b5df5f57b09b24",
+  "reviewed_against_original_pdf": "2026-09-28; source pages rendered and visually compared in this batch",
+  "original_transcription_by": "claude-opus-5 (visual read of rendered page, 2026-08-15)",
+  "review_method": "Original existing PDF page visually compared; derived data independently recomputed by check_cemc_figures.py."
+}

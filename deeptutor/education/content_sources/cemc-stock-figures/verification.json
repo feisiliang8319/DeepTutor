@@ -1,0 +1,66 @@
+{
+  "method": "independent exact arithmetic, row-reduced linear system, and exhaustive grid-path search",
+  "maze": {
+    "cells": 20,
+    "solutions": 1,
+    "route": [
+      "S",
+      "E",
+      "E",
+      "N",
+      "N",
+      "W",
+      "W",
+      "N",
+      "E",
+      "E",
+      "E",
+      "E",
+      "E",
+      "S",
+      "S",
+      "E",
+      "N",
+      "N",
+      "E"
+    ]
+  },
+  "shape_values": {
+    "triangle": "5",
+    "circle": "1",
+    "square": "8",
+    "hexagon": "3"
+  },
+  "shape_missing_sums": [
+    13,
+    12,
+    22
+  ],
+  "bar_answers": [
+    80,
+    "B",
+    72
+  ],
+  "pictograph_answers": [
+    4,
+    116
+  ],
+  "temperature_estimates": [
+    23,
+    9,
+    11
+  ],
+  "clock_answers": [
+    306,
+    "15:15",
+    "1:14"
+  ],
+  "spec_hashes": {
+    "stock-cemc-amazing-navigation-v1.json": "295cef561f3cba26b703063bf180745c7f50a72eab9158da4c0993ad5ba3eddd",
+    "stock-cemc-tracking-temperatures-v1.json": "f006636f57bab8ad0deb7e32632bee9aaec05ff6bf907eadcadd2f3022d91127",
+    "stock-cemc-test-results-v1.json": "28a3d51a4d567c26a56344db629bd62dcb543dd3d784ff46391daa5690d03f41",
+    "stock-cemc-books-books-books-v1.json": "f8d4b58a596f28ab6227df89068f2fc0244551ab42a9a0f4cbc3ee40db7de75a",
+    "stock-cemc-time-after-time-v1.json": "9ad398b97097394ad1a0ec863dc903ea09a8ace9dde1e2629d9dc1c085b0c407",
+    "stock-cemc-shape-sums-v1.json": "54d860cba94c458d0f3071ba4a8dc0c561729e7f64a899f3951c97aba2120a82"
+  }
+}

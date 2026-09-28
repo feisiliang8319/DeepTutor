@@ -1,0 +1,64 @@
+{
+  "figure_id": "stock-cemc-amazing-navigation-v1",
+  "kind": "maze-grid",
+  "title": "Amazing Navigation",
+  "source": "CEMC POTW A 2024 p.23",
+  "note": "白格可走、灰格不可走；从 A 出发经过每个白格恰好一次到达 Z。附指北针（上为北）。",
+  "grid": {
+    "rows": 4,
+    "cols": 8,
+    "cells": [
+      [
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "Z"
+      ],
+      [
+        "white",
+        "white",
+        "white",
+        "grey",
+        "grey",
+        "white",
+        "white",
+        "grey"
+      ],
+      [
+        "A",
+        "grey",
+        "white",
+        "grey",
+        "grey",
+        "white",
+        "white",
+        "grey"
+      ],
+      [
+        "white",
+        "white",
+        "white",
+        "grey",
+        "grey",
+        "grey",
+        "grey",
+        "grey"
+      ]
+    ]
+  },
+  "compass": true,
+  "palette": {
+    "white": "#f5f3eb",
+    "grey": "#808080",
+    "stroke": "#45574d"
+  },
+  "source_spec_sha256": "e9fceb750a1e27120e7ade59a9105386172badd4dd141169ed9706b647f0a8a1",
+  "reviewed_against_original_pdf": "2026-09-28; source pages rendered and visually compared in this batch",
+  "correction": "Original PDF has 4 rows by 8 columns and 20 traversable squares; earlier 4 by 7 transcription is retained only as historical evidence.",
+  "original_transcription_by": "claude-opus-5 (visual read of rendered page, 2026-08-15)",
+  "review_method": "Original existing PDF page visually compared; derived data independently recomputed by check_cemc_figures.py."
+}

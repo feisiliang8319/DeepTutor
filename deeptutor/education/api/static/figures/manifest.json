@@ -54,5 +54,71 @@
     "spec_sha256": "25fefac8288c5e553b409f65ebbd55e0adc02e347f6f1507738505e359104c20",
     "source": "self-authored (DeepTutor diagnostic, 2026-09-26)",
     "item_id": "diagnostic-20260926-g4-md-b4-line_plot-3"
+  },
+  "stock-cemc-amazing-navigation-v1.svg": {
+    "item_ids": [
+      "cemc-potwa-2024-p23-amazing-navigation-figure-review-v1"
+    ],
+    "sha256": "814cb8f1f79c32e2ace34864e42fa83eb1da32c3ee8a270557eba8f7b7195ae3",
+    "spec_sha256": "295cef561f3cba26b703063bf180745c7f50a72eab9158da4c0993ad5ba3eddd",
+    "source": "CEMC POTW A — Amazing Navigation (POTWA-24-Combined-Linked.pdf p.23) | figure and explanation reconstruction of existing stock",
+    "source_pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+    "source_page": 23,
+    "approval": "candidate_only"
+  },
+  "stock-cemc-books-books-books-v1.svg": {
+    "item_ids": [
+      "cemc-potwa-2024-p34-books-books-books-figure-review-v1"
+    ],
+    "sha256": "0ed421656b586570afde39153c6bd78cbea3488a53702dc08f38fce4a526090e",
+    "spec_sha256": "f8d4b58a596f28ab6227df89068f2fc0244551ab42a9a0f4cbc3ee40db7de75a",
+    "source": "CEMC POTW A — Books, Books, Books (POTWA-24-Combined-Linked.pdf p.34) | figure and explanation reconstruction of existing stock",
+    "source_pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+    "source_page": 34,
+    "approval": "candidate_only"
+  },
+  "stock-cemc-shape-sums-v1.svg": {
+    "item_ids": [
+      "cemc-potwa-2025-p22-shape-sums-figure-review-v1"
+    ],
+    "sha256": "bb235bc11ea2256d7179698357bcad55ae06a3a88a893436f3a5cb39d80dead4",
+    "spec_sha256": "54d860cba94c458d0f3071ba4a8dc0c561729e7f64a899f3951c97aba2120a82",
+    "source": "CEMC POTW A — Shape Sums (POTWA-25-combined-linked.pdf p.22) | figure and explanation reconstruction of existing stock",
+    "source_pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+    "source_page": 22,
+    "approval": "candidate_only"
+  },
+  "stock-cemc-test-results-v1.svg": {
+    "item_ids": [
+      "cemc-potwa-2025-p56-test-results-figure-review-v1"
+    ],
+    "sha256": "7f497e4baef6538bdace7dd143888807a28b8f64d3bd5ac5d93db5d7105c5f33",
+    "spec_sha256": "28a3d51a4d567c26a56344db629bd62dcb543dd3d784ff46391daa5690d03f41",
+    "source": "CEMC POTW A — Test Results (POTWA-25-combined-linked.pdf p.56) | figure and explanation reconstruction of existing stock",
+    "source_pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+    "source_page": 56,
+    "approval": "candidate_only"
+  },
+  "stock-cemc-time-after-time-v1.svg": {
+    "item_ids": [
+      "cemc-potwa-2024-p47-time-after-time-figure-review-v1"
+    ],
+    "sha256": "48068e64e6848caa1550df1be66f4c18549367faf9846a27ce778be81a805dbe",
+    "spec_sha256": "9ad398b97097394ad1a0ec863dc903ea09a8ace9dde1e2629d9dc1c085b0c407",
+    "source": "CEMC POTW A — Time After Time (POTWA-24-Combined-Linked.pdf p.47) | figure and explanation reconstruction of existing stock",
+    "source_pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+    "source_page": 47,
+    "approval": "candidate_only"
+  },
+  "stock-cemc-tracking-temperatures-v1.svg": {
+    "item_ids": [
+      "cemc-potwa-2024-p36-tracking-temperatures-figure-review-v1"
+    ],
+    "sha256": "211d1d2490fa745dba46c012bb55cbf40d8beb7ff630c49fe92d47263d0a6592",
+    "spec_sha256": "f006636f57bab8ad0deb7e32632bee9aaec05ff6bf907eadcadd2f3022d91127",
+    "source": "CEMC POTW A — Tracking Temperatures (POTWA-24-Combined-Linked.pdf p.36) | figure and explanation reconstruction of existing stock",
+    "source_pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+    "source_page": 36,
+    "approval": "candidate_only"
   }
 }

@@ -16,7 +16,11 @@ const student = [
   { href: "/home", label: "Chat", detail: t("学习与讲解"), icon: MessageSquare },
   { href: "/quiz", label: "Quiz", detail: t("测试与结果"), icon: ClipboardCheck },
 ];
-const parent = [{ href: "/parent", label: t("孩子的学习"), detail: t("目标、进展与资料"), icon: GraduationCap }];
+const parent = [
+  { href: "/parent", label: t("学习进展"), detail: t("每个孩子的成长"), icon: GraduationCap },
+  { href: "/parent/students", label: t("学生账号"), detail: t("账号、课程与可用范围"), icon: Users },
+  { href: "/parent/materials", label: t("家庭资料"), detail: t("教材与参考资料"), icon: BookOpen },
+];
 const admin = [
   { href: "/admin", label: t("管理总览"), icon: LayoutDashboard },
   { href: "/admin/materials", label: t("知识库"), icon: BookOpen },

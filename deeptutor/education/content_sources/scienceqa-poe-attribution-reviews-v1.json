@@ -1,0 +1,30 @@
+{
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 1,
+  "records": [
+    {
+      "record_id": "c6cf3529f0c1033ced1be93bd687aeeab54b80395296dc33381687025c9f391f",
+      "source_title": "figurative-language · grade12 · Q13607",
+      "source_path": "scienceqa/raw/scienceqa-language-science-high-g9-12.md",
+      "source_sha256": "a14f09e5203a3cec0c14b2652a979130672a5e3d6c94036ad432a21d9c15a944",
+      "raw_sha256": "087afe033f1ed3869af4de1a09a59a9b9c6e522794a3b7f7ccb5c5aaaf9aaff0",
+      "mode": "question_attribution",
+      "fragment_before": "—Edgar Allen Poe, \"The Raven\"",
+      "fragment_after": "—Edgar Allan Poe, \"The Raven\"",
+      "prompt_before": "Which figure of speech is used in this text?\nFor the rare and radiant maiden whom the angels name Lenore . . .\n—Edgar Allen Poe, \"The Raven\"",
+      "prompt_after": "Which figure of speech is used in this text?\nFor the rare and radiant maiden whom the angels name Lenore . . .\n—Edgar Allan Poe, \"The Raven\"",
+      "explanation_before": "The text uses assonance, the repetition of a vowel sound in a series of nearby words.\nThe words rare, radiant, maiden, angels, and name share a vowel sound.",
+      "explanation_after": "The text uses assonance, the repetition of a vowel sound in a series of nearby words.\nThe words rare, radiant, maiden, angels, and name share a vowel sound.",
+      "answer_before": "assonance",
+      "reason": "Correct author middle-name spelling on the exact source-bound attribution line only. This does not certify the original vowel-analysis explanation or answer.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/poets/edgar-allan-poe",
+          "supports": "Author name is Edgar Allan Poe."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    }
+  ]
+}

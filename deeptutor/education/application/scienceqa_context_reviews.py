@@ -1,4 +1,4 @@
-"""Correct a source-bound passage in both ScienceQA context and explanation.
+"""Correct source-bound ScienceQA passages or a question attribution line.
 
 Original source IDs, spans, answers, rights, figure gates and approvals remain.
 The processor creates an immutable candidate; indexing/activation are separate.
@@ -19,6 +19,21 @@ def sha(value):
     return hashlib.sha256(value.encode() if isinstance(value, str) else value).hexdigest()
 
 
+
+def reviewed_fields(review):
+    mode = review.get('mode', 'context_and_explanation')
+    if mode == 'context_and_explanation':
+        return ('prompt', 'explanation')
+    if mode == 'question_attribution':
+        # This mode can change only one complete attribution line, never the
+        # question conditions, answer choices, or explanatory reasoning.
+        for key in ('fragment_before', 'fragment_after'):
+            if not re.fullmatch(r'—[^\r\n]+', review.get(key, '')):
+                raise ValueError('Invalid question attribution line')
+        return ('prompt',)
+    raise ValueError('Unsupported passage review mode')
+
+
 def patch_document(filename, text, reviews):
     old = parse_file('scienceqa', filename, text)
     selected = {r['source_title']: r for r in reviews}
@@ -31,17 +46,22 @@ def patch_document(filename, text, reviews):
             continue
         if any(row[field] != r[field + '_before'] for field in ('prompt', 'explanation', 'answer')):
             raise ValueError('Context or explanation source changed')
+        fields = reviewed_fields(r)
         before, after = r['fragment_before'], r['fragment_after']
         if not before.strip() or not after.strip() or before == after or re.search(r'^#{1,3} |^---\s*$', after, re.M):
             raise ValueError('Invalid context replacement')
         block = text[row['start']:row['end']]
         patterns = [r'(\*\*Context:\*\*\s*)(.*?)(?=^### |\Z)',
                     r'(^### Explanation\n)(.*?)(?=^### |^## |^---\s*$|\Z)']
+        if fields == ('prompt',):
+            patterns = [r'(^### Question\n)(.*?)(?=^\*\*Options:\*\*|^### |^## |^---\s*$|\Z)']
         for pattern in patterns:
             matches = list(re.finditer(pattern, block, re.M | re.S))
             if len(matches) != 1 or matches[0][2].count(before) != 1:
                 raise ValueError('Context/explanation fragment boundary mismatch')
             m = matches[0]
+            if fields == ('prompt',) and before not in m[2].splitlines():
+                raise ValueError('Attribution must occupy a complete question line')
             block = block[:m.start(2)] + m[2].replace(before, after, 1) + block[m.end(2):]
         edits.append((row['start'], row['end'], block))
     if len(edits) != len(reviews):
@@ -106,7 +126,8 @@ def build(base, recipe_path, output):
         blob = (base/'objects'/(row['source_sha256']+'.md')).read_bytes()
         if sha(blob) != row['source_sha256'] or sha(blob.decode()[row['start']:row['end']]) != row['raw_sha256']:
             raise ValueError('Immutable source bytes changed')
-        if any(r[k+'_after'] != r[k+'_before'].replace(r['fragment_before'],r['fragment_after'],1) for k in ('prompt','explanation')):
+        fields = reviewed_fields(r)
+        if any(r[k+'_after'] != (r[k+'_before'].replace(r['fragment_before'],r['fragment_after'],1) if k in fields else r[k+'_before']) for k in ('prompt','explanation')):
             raise ValueError('Replacement exceeds reviewed fragment')
         chosen[key] = row
     documents, manifest = {}, []
@@ -155,11 +176,11 @@ def build(base, recipe_path, output):
                 a,b=json.loads(a[0]),json.loads(b[0])
                 if a==b:continue
                 changed+=1
-                if a['id'] not in chosen or {k for k in a.keys()|b.keys() if a.get(k)!=b.get(k)}!={'prompt','explanation','metadata'} or {k:v for k,v in b['metadata'].items() if k!='individual_context_review'}!=a['metadata']:
+                if a['id'] not in chosen or {k for k in a.keys()|b.keys() if a.get(k)!=b.get(k)}!=(set(reviewed_fields(reviews[a['id']])) | {'metadata'}) or {k:v for k,v in b['metadata'].items() if k!='individual_context_review'}!=a['metadata']:
                     raise ValueError('Unrelated data changed')
             if changed!=len(reviews):raise ValueError('Context correction count mismatch')
     report={**summary,'snapshot_id':identity,'base_snapshot_id':base.name,'created_at':datetime.now(timezone.utc).isoformat(),'catalog_sha256':sha((target/'catalog.sqlite3').read_bytes()),'committed_batches':summary['committed_batches']+1,'scienceqa_context_passages_corrected':sum(map(len,prior_context.values()))+len(reviews)}
     (target/'summary.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     (target/'revised-documents.json').write_text(json.dumps(manifest,indent=2)+'\n')
     (target/recipe_path.name).write_bytes(recipe_path.read_bytes())
-    return {'snapshot_id':identity,'changed_contexts':len(reviews),'changed_explanations':len(reviews),'changed_documents':manifest,'answer_approval_changes':0,'formal_items_created':0}
+    return {'snapshot_id':identity,'changed_contexts':len(reviews),'changed_explanations':sum('explanation' in reviewed_fields(r) for r in reviews.values()),'changed_attributions':sum(r.get('mode')=='question_attribution' for r in reviews.values()),'changed_documents':manifest,'answer_approval_changes':0,'formal_items_created':0}

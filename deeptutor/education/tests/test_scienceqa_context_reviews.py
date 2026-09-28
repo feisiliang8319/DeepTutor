@@ -129,3 +129,47 @@ def test_explanation_only_followup_cannot_bypass_existing_context_history(tmp_pa
     with pytest.raises(ValueError,match='explicit joint revision'):
         explanation_build(new,proposal,tmp_path/'overlap-output')
     assert (new/'catalog.sqlite3').read_bytes()==unchanged
+
+
+def attribution_fixture(tmp_path,monkeypatch):
+    monkeypatch.setitem(globals(),'TEXT',TEXT.replace('Which boundary?','Which boundary?\n—Wrong Author, "Poem"'))
+    base=fixture(tmp_path);p,r=recipe(base,tmp_path)
+    r.update(mode='question_attribution',fragment_before='—Wrong Author, "Poem"',fragment_after='—Correct Author, "Poem"')
+    r['prompt_after']=r['prompt_before'].replace(r['fragment_before'],r['fragment_after'])
+    r['explanation_after']=r['explanation_before']
+    obj=json.loads(p.read_text());obj['records']=[r];p.write_text(json.dumps(obj))
+    return base,p,r
+
+
+def test_attribution_only_preserves_context_answer_explanation_and_future_rebuild(tmp_path,monkeypatch):
+    base,p,r=attribution_fixture(tmp_path,monkeypatch);before=(base/'catalog.sqlite3').read_bytes()
+    result=build(base,p,tmp_path/'snapshots');new=tmp_path/'snapshots'/result['snapshot_id']
+    assert result['changed_attributions']==1 and result['changed_explanations']==0
+    assert (base/'catalog.sqlite3').read_bytes()==before
+    expected=TEXT.replace(r['fragment_before'],r['fragment_after'])
+    assert (new/'revised-documents/fixture.md').read_text()==expected
+    with sqlite3.connect(base/'catalog.sqlite3') as a,sqlite3.connect(new/'catalog.sqlite3') as b:
+        for x,y in zip(a.execute('select data_json from records order by id'),b.execute('select data_json from records order by id'),strict=True):
+            x,y=json.loads(x[0]),json.loads(y[0])
+            if x['id']=='0':
+                assert y['prompt']==r['prompt_after']
+                y['prompt']=x['prompt'];y['metadata'].pop('individual_context_review')
+            assert x==y
+    later=lecture(new,tmp_path,'First old lecture.','First corrected lecture.','later')
+    assert (later/'revised-documents/fixture.md').read_text()==expected.replace('First old lecture.','First corrected lecture.')
+    with pytest.raises(ValueError,match='Existing individual review'):build(new,p,tmp_path/'repeat')
+
+
+@pytest.mark.parametrize('damage',['question_condition','answer_choice','partial_line','multiline','explanation_change','unknown_mode'])
+def test_attribution_scope_cannot_change_reasoning_choices_or_other_sections(tmp_path,monkeypatch,damage):
+    base,p,r=attribution_fixture(tmp_path,monkeypatch)
+    if damage=='question_condition':r.update(fragment_before='Which boundary?',fragment_after='Which other boundary?')
+    elif damage=='answer_choice':r.update(fragment_before='convergent',fragment_after='divergent')
+    elif damage=='partial_line':r.update(fragment_before='—Wrong Author',fragment_after='—Correct Author')
+    elif damage=='multiline':r['fragment_after']='—Correct Author\nNew condition.'
+    elif damage=='explanation_change':r['explanation_after']='Changed reasoning.'
+    elif damage=='unknown_mode':r['mode']='all_fields'
+    r['prompt_after']=r['prompt_before'].replace(r['fragment_before'],r['fragment_after'],1)
+    obj=json.loads(p.read_text());obj['records']=[r];p.write_text(json.dumps(obj));before=(base/'catalog.sqlite3').read_bytes()
+    with pytest.raises(ValueError):build(base,p,tmp_path/'out')
+    assert (base/'catalog.sqlite3').read_bytes()==before and not (tmp_path/'out').exists()

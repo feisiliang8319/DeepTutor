@@ -2,7 +2,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.routing import APIRoute
-from pydantic import BaseModel, ConfigDict, Field, SecretStr
+from pydantic import BaseModel, ConfigDict, Field, SecretStr, StrictBool
 
 from deeptutor.api.routers.auth import require_admin
 from deeptutor.services import material_intelligence as service
@@ -55,3 +55,59 @@ async def test_connection(body: ConnectionTest):
         return await service.connection_test()
     except service.IntelligenceError as exc:
         raise failed(exc) from None
+
+
+from deeptutor.services import material_reviews as reviews
+
+
+class PreviewMaterial(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    kb: str = Field(min_length=1, max_length=200)
+    filename: str = Field(min_length=1, max_length=1000)
+
+
+class ExportConfirmation(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    confirmed_nonpersonal_export: StrictBool
+
+
+@router.get("/libraries")
+def libraries():
+    return reviews.libraries()
+
+
+@router.get("/documents")
+def documents(kb: str):
+    try:
+        return reviews.documents(kb)
+    except service.IntelligenceError as exc:
+        raise failed(exc) from None
+
+
+@router.post("/preview")
+def preview(body: PreviewMaterial):
+    try:
+        return reviews.prepare(body.kb, body.filename)
+    except service.IntelligenceError as exc:
+        raise failed(exc) from None
+
+
+@router.post("/reviews/{review_id}/analyze")
+async def analyze(review_id: str, body: ExportConfirmation):
+    try:
+        return await reviews.analyze(review_id, body.confirmed_nonpersonal_export)
+    except service.IntelligenceError as exc:
+        raise failed(exc) from None
+
+
+@router.get("/reviews/{review_id}")
+def review(review_id: str):
+    try:
+        return reviews.review(review_id)
+    except service.IntelligenceError as exc:
+        raise failed(exc) from None
+
+
+@router.get("/reviews")
+def recent():
+    return reviews.recent()

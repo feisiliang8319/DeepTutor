@@ -1,10 +1,10 @@
-"""Admin-only Jev connection setup; no document or student-data submission.
+"""Admin-only Jev connection and validated Choice transport.
 
-The only outbound request contains a fixed bilingual synthetic fixture. Real
-material classification is deliberately not wired to this connection pilot.
+Material review callers enforce per-excerpt approval before using transport.
 """
 from __future__ import annotations
 
+import asyncio
 from datetime import datetime, timezone
 import json
 
@@ -41,7 +41,7 @@ def _profile(catalog):
 def settings():
     profile = _profile(_store().load())
     return {"key_configured": bool(profile.get("api_key")), "model": MODEL,
-            "material_processing_enabled": False, "last_test_at": profile.get("last_test_at"),
+            "material_processing_enabled": True, "last_test_at": profile.get("last_test_at"),
             "last_test_status": profile.get("last_test_status")}
 
 
@@ -62,32 +62,27 @@ def save_key(api_key: str | None):
     return settings()
 
 
-def _validate_answer(answer):
-    if not isinstance(answer, dict) or answer.get("type") != "choice" or not isinstance(answer.get("choice"), str) or answer.get("choice") not in {"mathematics", "other"}:
+def _validate_answer(answer, choices):
+    if not isinstance(answer, dict) or answer.get("type") != "choice" or not isinstance(answer.get("choice"), str) or answer.get("choice") not in choices:
         raise IntelligenceError("invalid_response")
     confidence, probabilities = answer.get("confidence"), answer.get("probabilities")
     if (isinstance(confidence, bool) or not isinstance(confidence, (int, float))
             or not 0 <= confidence <= 1
-            or not isinstance(probabilities, dict) or set(probabilities) != {"mathematics", "other"}):
+            or not isinstance(probabilities, dict) or set(probabilities) != set(choices)):
         raise IntelligenceError("invalid_response")
     if any(isinstance(p, bool) or not isinstance(p, (int, float)) or not 0 <= p <= 1 for p in probabilities.values()):
         raise IntelligenceError("invalid_response")
     if abs(sum(probabilities.values()) - 1) > 0.02 or probabilities[answer["choice"]] < max(probabilities.values()):
         raise IntelligenceError("invalid_response")
-    if answer["choice"] != "mathematics":
-        raise IntelligenceError("test_inconclusive")
 
 
-async def _probe(key):
-    questions = {language: {"type": "choice", "instructions": f"Classify the school subject of state.{language}.",
-                 "criteria": {"mathematics": "Mathematics or geometry", "other": "Another school subject"}}
-                 for language in FIXTURE}
+async def request_choices(key, state, questions):
     # Fixed origin, no redirects or environment proxies. The request has no
-    # user-controlled text, host settings, account details or private files.
+    # destination choice, account details or credentials in the request body.
     try:
-        async with httpx.AsyncClient(timeout=httpx.Timeout(20, connect=5), follow_redirects=False, trust_env=False) as client:
+        async with asyncio.timeout(30), httpx.AsyncClient(timeout=httpx.Timeout(20, connect=5), follow_redirects=False, trust_env=False) as client:
             async with client.stream("POST", ENDPOINT, headers={"Authorization": f"Bearer {key}"},
-                                     json={"model": MODEL, "state": FIXTURE, "questions": questions}) as response:
+                                     json={"model": MODEL, "state": state, "questions": questions}) as response:
                 if response.status_code != 200:
                     code = "invalid_key" if response.status_code in {401, 403} else "rate_limited" if response.status_code in {429, 529} else "provider_unavailable"
                     raise IntelligenceError(code)
@@ -97,7 +92,7 @@ async def _probe(key):
                     if len(body) > 64000:
                         raise IntelligenceError("invalid_response")
         payload = json.loads(body)
-    except httpx.TimeoutException:
+    except (httpx.TimeoutException, TimeoutError):
         raise IntelligenceError("timeout") from None
     except httpx.HTTPError:
         raise IntelligenceError("provider_unavailable") from None
@@ -105,8 +100,18 @@ async def _probe(key):
         raise IntelligenceError("invalid_response") from None
     if not isinstance(payload, dict) or not isinstance(payload.get("answers"), dict) or payload.get("model") != MODEL:
         raise IntelligenceError("invalid_response")
-    for language in FIXTURE:
-        _validate_answer(payload["answers"].get(language))
+    for name, question in questions.items():
+        _validate_answer(payload["answers"].get(name), question["criteria"])
+    return {name: payload["answers"][name] for name in questions}
+
+
+async def _probe(key):
+    questions = {language: {"type": "choice", "instructions": f"Classify the school subject of state.{language}.",
+                 "criteria": {"mathematics": "Mathematics or geometry", "other": "Another school subject"}}
+                 for language in FIXTURE}
+    answers = await request_choices(key, FIXTURE, questions)
+    if any(answer["choice"] != "mathematics" for answer in answers.values()):
+        raise IntelligenceError("test_inconclusive")
 
 
 async def connection_test():

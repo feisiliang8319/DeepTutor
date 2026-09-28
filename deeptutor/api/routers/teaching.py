@@ -221,6 +221,6 @@ def student_evidence(student_id: str, actor: TokenPayload = Depends(require_teac
         raise HTTPException(503,str(exc)) from exc
 
 
-# Admin-only connection setup. Does not submit main/family/student material.
+# Admin-only Jev connection and explicitly approved main-library excerpt reviews.
 from deeptutor.api.routers import material_intelligence
 router.include_router(material_intelligence.router, prefix="/intelligence")

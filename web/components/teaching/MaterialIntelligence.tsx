@@ -3,39 +3,17 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, KeyRound, Loader2, PlugZap } from "lucide-react";
+import MaterialReview from "./MaterialReview";
+import { request } from "./material-intelligence-api";
 import { t, useTeachingLocale } from "./teaching-i18n";
 
 type Settings = {
   key_configured: boolean;
   model: string;
-  material_processing_enabled: false;
+  material_processing_enabled: boolean;
   last_test_at: string | null;
   last_test_status: string | null;
 };
-const endpoint = "/api/v1/teaching/intelligence";
-const errorText: Record<string, string> = {
-  invalid_key: "密钥无效，请检查后重新保存。",
-  not_configured: "请先保存 Jev 专用 API Key。",
-  rate_limited: "服务繁忙或调用受限，请稍后重试。",
-  timeout: "连接超时，请稍后重试。",
-  provider_unavailable: "暂时无法连接 TypeSafe，请稍后重试。",
-  invalid_response: "服务返回格式异常，连接测试未通过。",
-  test_inconclusive: "已收到回复，但样例判断未通过，请稍后重试。",
-  configuration_changed: "密钥已变更，请重新测试。",
-  invalid_request: "提交格式有误，请检查密钥。",
-};
-async function request<T>(path: string, method = "GET", body?: unknown): Promise<T> {
-  const response = await fetch(endpoint + path, {
-    method, credentials: "same-origin", cache: "no-store",
-    headers: body === undefined ? undefined : { "Content-Type": "application/json" },
-    body: body === undefined ? undefined : JSON.stringify(body),
-  });
-  const data = await response.json().catch(() => null);
-  if (!response.ok) throw new Error(response.status === 401 || response.status === 403
-    ? "请以管理员身份重新登录。"
-    : errorText[data?.detail?.code] || "操作未完成，请稍后重试。");
-  return data as T;
-}
 export default function MaterialIntelligence() {
   const { i18n } = useTeachingLocale();
   const [settings, setSettings] = useState<Settings | null>(null);
@@ -80,8 +58,8 @@ export default function MaterialIntelligence() {
         <p className="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">{t("配置 Jev 专用密钥，并用中英文固定样例测试连接。")}</p></div>
     </div>
     <div className="mt-7 rounded-2xl border border-[var(--border)] bg-[var(--accent)] p-5 text-sm leading-7">
-      <p className="font-medium">{t("当前阶段：连接配置")}</p>
-      <p className="mt-1 text-[var(--muted-foreground)]">{t("资料处理尚未启用。连接测试只发送系统预设的两句三角形样例，不读取或发送教材、家庭资料或学生记录。")}</p>
+      <p className="font-medium">{t("当前阶段：主库资料建议")}</p>
+      <p className="mt-1 text-[var(--muted-foreground)]">{t("连接测试只发送固定样例。资料建议须由管理员选定主库文件、检查片段并确认外发；不会读取学生聊天、作答或家庭资料。")}</p>
     </div>
     <form className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-7" onSubmit={event => { event.preventDefault(); if (!busy && settings && key.trim()) void save(); }}>
       <div className="flex flex-wrap items-center justify-between gap-3"><h2 className="flex items-center gap-2 font-medium"><KeyRound size={19}/>{t("专用 API Key")}</h2>
@@ -104,5 +82,6 @@ export default function MaterialIntelligence() {
       <div className="flex flex-wrap justify-between gap-2"><dt className="text-[var(--muted-foreground)]">{t("最近连接测试")}</dt><dd>{t(!settings.last_test_at ? "尚未测试" : connected ? "连接正常" : "测试未通过")}</dd></div>
       {settings.last_test_at && <div className="text-right text-xs text-[var(--muted-foreground)]">{new Date(settings.last_test_at).toLocaleString(i18n.language)}</div>}
     </dl>}
+    {settings && <MaterialReview enabled={settings.key_configured}/> }
   </section>;
 }

@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 1015,
+  "reviews": [
+    {
+      "concept_id": "2754d0a5b945751dc5c0201aab9df9282cb37b915d4878cb68741f3cac27b30f",
+      "expected_records": 99,
+      "lecture_before": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nVolume is a measurement of how much space something takes up.\nThere are many different units of volume. When you are using metric units, volume may be written in units of milliliters or liters.\nThere are 1,000 milliliters in 1 liter. So, 1 milliliter is much less than 1 liter.\nA raindrop has a volume of about 20 milliliters, while a large soda bottle has a volume of 2 liters. The flask shown here measures volumes up to 500 milliliters.",
+      "lecture_after": "Volume tells us how much space something occupies. Write a measurement as a number followed by its unit. In metric units, 1 liter (L) equals 1,000 milliliters (mL), and 1 mL equals 1 cubic centimeter.\nA small drop of rain is much less than 1 mL; 20 mL is not a reasonable size for one ordinary raindrop. A bottle labeled 2 L holds 2,000 mL. For an estimation question, compare the scale of the object with the scale of the unit, rather than choosing from the numeral alone.",
+      "reason": "Remove the implausible 20 mL raindrop example while preserving metric conversion.",
+      "references": [
+        {
+          "url": "https://www.nist.gov/pml/owm/si-units-volume",
+          "supports": "1 L=1000 mL and 1 mL=1 cubic centimeter."
+        },
+        {
+          "url": "https://gpm.nasa.gov/resources/faq/how-big-can-raindrop-get",
+          "supports": "Ordinary raindrop diameters are on a millimeter scale; 20 mL would be a centimeter-scale drop."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "00063c978e3091bd917f3e39ac3d6dc1fba38695eff77fe5e34b3949eb6a5def",
+      "expected_records": 56,
+      "lecture_before": "A force is a push or a pull.\nA force can make an object start moving or stop an object that is moving. A force can also make an object speed up, slow down, or change direction.\nForces can be different sizes.\nThink about trying to move a heavy object and a light object. Imagine you want to move them at the same speed. You will need to use a larger force to move the heavy object.",
+      "lecture_after": "A force is a push or pull. Consider the net force: the combined effect of all forces on the object. A nonzero net force changes velocity, meaning speed or direction.\nFor the same acceleration, a larger mass requires a larger net force. If two objects start at the same speed and stop in the same time, the greater mass requires a greater average stopping force.\nLifting an object at constant speed requires an upward force balancing its weight, so a heavier object needs a larger upward lifting force. This is different from saying that greater mass always requires a greater force merely to keep moving. Motion at constant velocity can occur with zero net force. In a horizontal pulling question, compare friction and acceleration as well; equal speed alone is not enough to infer the pulling force.",
+      "reason": "Replace force-versus-speed generalization with net force, acceleration and lifting distinctions.",
+      "references": [
+        {
+          "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/newtons-laws-of-motion/",
+          "supports": "For constant mass, net force changes velocity according to F=ma; constant straight-line speed is compatible with zero net force."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+          "supports": "Weight is the gravitational force on mass, distinct from mass itself."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "95c5bd138ab6bcc73260ed6b8ef9ab4b0c064db07ad7577dd86e29106b356b7c",
+      "expected_records": 116,
+      "lecture_before": "Minerals are the building blocks of rocks. A rock can be made of one or more minerals.\nMinerals and rocks have the following properties:\nProperty | Mineral | Rock\nIt is a solid. | Yes | Yes\nIt is formed in nature. | Yes | Yes\nIt is not made by organisms. | Yes | Yes\nIt is a pure substance. | Yes | No\nIt has a fixed crystal structure. | Yes | No\nYou can use these properties to tell whether a substance is a mineral, a rock, or neither.\nLook closely at the last three properties:\nMinerals and rocks are not made by organisms.\nOrganisms make their own body parts. For example, snails and clams make their shells. Because they are made by organisms, body parts cannot be  minerals or rocks.\nHumans are organisms too. So, substances that humans make by hand or in factories are not minerals or rocks.\nA mineral is a pure substance, but a rock is not.\nA pure substance is made of only one type of matter.  Minerals are pure substances, but rocks are not. Instead, all rocks are mixtures.\nA mineral has a fixed crystal structure, but a rock does not.\nThe crystal structure of a substance tells you how the atoms or molecules in the substance are arranged. Different types of minerals have different crystal structures, but all minerals have a fixed crystal structure. This means that the atoms and molecules in different pieces of the same type of mineral are always arranged the same way.\nHowever, rocks do not have a fixed crystal structure. So, the arrangement of atoms or molecules in different pieces of the same type of rock may be different!",
+      "lecture_after": "A mineral is a naturally occurring inorganic solid with an ordered crystal structure and a characteristic chemical composition. Quartz and calcite are examples. Some mineral compositions allow a range of elemental substitutions; do not require every sample to be perfectly pure.\nA manufactured object is not a naturally formed mineral specimen. However, a biological object may contain mineral crystals: shells can contain calcite or aragonite. Distinguish a whole shell from the mineral material within it.\nA rock is a naturally formed solid geological material. Many rocks contain several minerals, but a rock may consist mainly of one mineral or include noncrystalline material. Biological remains can contribute to rocks: shell material can become limestone, and ancient plant remains can form coal. A shell or plant part is not automatically a rock; consider its geological formation and the actual material described.",
+      "reason": "Remove universal bans on biological contributions and the claim that every rock must be a mixture.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/what-difference-between-a-rock-and-a-mineral",
+          "supports": "Mineral definition and rocks composed of one or more minerals or undifferentiated mineral matter."
+        },
+        {
+          "url": "https://www.usgs.gov/faqs/what-coal",
+          "supports": "Coal is a geological deposit formed from altered plant remains."
+        },
+        {
+          "url": "https://www.usgs.gov/news/science-snippet/waterwords-aragonite",
+          "supports": "Calcite and aragonite mineral forms occur in marine shells."
+        },
+        {
+          "url": "https://pubs.usgs.gov/gip/acidrain/4.html",
+          "supports": "Limestone commonly contains calcium carbonate fossils."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "53ac8e1ff9dc049155b4d011fa53a74e9e6892ff9570fc1ad2711af9a86e2d2e",
+      "expected_records": 34,
+      "lecture_before": "Rocks are made of minerals. Here are some properties of rocks:\nThey are solid.\nThey are formed in nature.\nThey are not made by living things.\nThey are not pure substances.",
+      "lecture_after": "A rock is a naturally formed solid geological material. Many rocks contain several minerals, but a rock may consist mainly of one mineral or include noncrystalline material. Biological remains can contribute to rocks: shell material can become limestone, and ancient plant remains can form coal. A shell or plant part is not automatically a rock; consider its geological formation and the actual material described.",
+      "reason": "Replace all-rocks-mixtures and no-biological-origin claims.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/what-difference-between-a-rock-and-a-mineral",
+          "supports": "Mineral definition and rocks composed of one or more minerals or undifferentiated mineral matter."
+        },
+        {
+          "url": "https://www.usgs.gov/faqs/what-coal",
+          "supports": "Coal is a geological deposit formed from altered plant remains."
+        },
+        {
+          "url": "https://www.usgs.gov/news/science-snippet/waterwords-aragonite",
+          "supports": "Calcite and aragonite mineral forms occur in marine shells."
+        },
+        {
+          "url": "https://pubs.usgs.gov/gip/acidrain/4.html",
+          "supports": "Limestone commonly contains calcium carbonate fossils."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "7a62cfebeec5dbd2f7952338c4ed1820c694445e8f5323b7741f0abbfb4d3731",
+      "expected_records": 77,
+      "lecture_before": "Properties are used to identify different substances. Minerals have the following properties:\nIt is a solid.\nIt is formed in nature.\nIt is not made by organisms.\nIt is a pure substance.\nIt has a fixed crystal structure.\nIf a substance has all five of these properties, then it is a mineral.\nLook closely at the last three properties:\nA mineral is not made by organisms.\nOrganisms make their own body parts. For example, snails and clams make their shells. Because they are made by organisms, body parts cannot be minerals.\nHumans are organisms too. So, substances that humans make by hand or in factories cannot be minerals.\nA mineral is a pure substance.\nA pure substance is made of only one type of matter. All minerals are pure substances.\nA mineral has a fixed crystal structure.\nThe crystal structure of a substance tells you how the atoms or molecules in the substance are arranged. Different types of minerals have different crystal structures, but all minerals have a fixed crystal structure. This means that the atoms or molecules in different pieces of the same type of mineral are always arranged the same way.",
+      "lecture_after": "A mineral is a naturally occurring inorganic solid with an ordered crystal structure and a characteristic chemical composition. Quartz and calcite are examples. Some mineral compositions allow a range of elemental substitutions; do not require every sample to be perfectly pure.\nA manufactured object is not a naturally formed mineral specimen. However, a biological object may contain mineral crystals: shells can contain calcite or aragonite. Distinguish a whole shell from the mineral material within it.",
+      "reason": "Distinguish a whole biological object from constituent mineral crystals; avoid universal purity claims.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/what-difference-between-a-rock-and-a-mineral",
+          "supports": "Mineral definition and rocks composed of one or more minerals or undifferentiated mineral matter."
+        },
+        {
+          "url": "https://www.usgs.gov/faqs/what-coal",
+          "supports": "Coal is a geological deposit formed from altered plant remains."
+        },
+        {
+          "url": "https://www.usgs.gov/news/science-snippet/waterwords-aragonite",
+          "supports": "Calcite and aragonite mineral forms occur in marine shells."
+        },
+        {
+          "url": "https://pubs.usgs.gov/gip/acidrain/4.html",
+          "supports": "Limestone commonly contains calcium carbonate fossils."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "2a79c9b4064a7c64697d534093f3dc42da0cca9c824a65f10e36a5aea79177b8",
+      "expected_records": 101,
+      "lecture_before": "Solid, liquid, and gas are states of matter. Matter is anything that takes up space. Matter can come in different states, or forms.\nWhen matter is a solid, it has a definite volume and a definite shape. So, a solid has a size and shape of its own.\nSome solids can be easily folded, bent, or broken. A piece of paper is a solid. Also, some solids are very small. A grain of sand is a solid.\nWhen matter is a liquid, it has a definite volume but not a definite shape. So, a liquid has a size of its own, but it does not have a shape of its own. Think about pouring juice from a bottle into a cup. The juice still takes up the same amount of space, but it takes the shape of the bottle.\nSome liquids do not pour as easily as others. Honey and milk are both liquids. But pouring honey takes more time than pouring milk.\nWhen matter is a gas, it does not have a definite volume or a definite shape. A gas expands, or gets bigger, until it completely fills a space. A gas can also get smaller if it is squeezed into a smaller space.\nMany gases are invisible. Air is a gas.",
+      "lecture_after": "Solid, liquid and gas are common states of matter. Matter has mass and occupies space. Under ordinary conditions, a solid keeps its own shape and approximately its volume. A flexible solid can bend without becoming a liquid.\nA liquid flows and takes the shape of its current container while keeping approximately the same volume. When juice is poured from a bottle into a cup, it takes the shape of the cup, not the bottle it left. Honey and milk are both liquids, although they flow at different rates.\nA gas expands to fill the available container and can be compressed. Invisible gases still occupy space. Air is a mixture of gases.",
+      "reason": "Correct the destination-container mistake in the juice example; include mass in the definition of matter.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+          "supports": "Matter has mass and volume; liquids conform to their current container; gas fills its container."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "ee8579e9edaae0848411eba127d48855fcbbcf01a847df2ac4649ba3dde316f6",
+      "expected_records": 47,
+      "lecture_before": "Solid, liquid, and gas are states of matter. Matter is anything that takes up space. Matter can come in different states, or forms.\nWhen matter is a solid, it has a definite volume and a definite shape. So, a solid has a size and shape of its own.\nSome solids can be easily folded, bent, or broken. A piece of paper is a solid. Also, some solids are very small. A grain of sand is a solid.\nWhen matter is a liquid, it has a definite volume but not a definite shape. So, a liquid has a size of its own, but it does not have a shape of its own. Think about pouring juice from a bottle into a cup. The juice still takes up the same amount of space, but it takes the shape of the bottle.\nSome liquids are thicker than others. Honey and milk are both liquids. But pouring honey takes more time than pouring milk.\nWhen matter is a gas, it does not have a definite volume or a definite shape. A gas expands, or gets bigger, until it completely fills a space. A gas can also get smaller if it is squeezed into a smaller space.\nMany gases are invisible. The oxygen you breathe is a gas. The helium in a balloon is also a gas.",
+      "lecture_after": "Solid, liquid and gas are common states of matter. Matter has mass and occupies space. Under ordinary conditions, a solid keeps its own shape and approximately its volume. A flexible solid can bend without becoming a liquid.\nA liquid flows and takes the shape of its current container while keeping approximately the same volume. When juice is poured from a bottle into a cup, it takes the shape of the cup, not the bottle it left. Honey and milk are both liquids, although they flow at different rates.\nA gas expands to fill the available container and can be compressed. Invisible gases still occupy space. Air is a mixture of gases.",
+      "reason": "Correct the destination-container mistake in the juice example; include mass in the definition of matter.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+          "supports": "Matter has mass and volume; liquids conform to their current container; gas fills its container."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "798d34b23d3bc721c917b2a827505f8e28c89f7d39a0bc19a79fe9f3a61718bb",
+      "expected_records": 18,
+      "lecture_before": "Matter is made of tiny particles called atoms. Atoms are always moving.\nThe energy of moving atoms is called thermal energy. The total amount of thermal energy in matter depends on three things: the type of matter, the amount of matter, and how fast the atoms are moving.\nTemperature measures how hot or cold matter is. If the atoms in matter slow down, the temperature goes down. The matter now has both less thermal energy and a lower temperature.\nWhat happens if the amount of matter changes? A 1-kilogram brick at 70°F has half as much thermal energy as a 2-kilogram brick at 70°F. The two bricks have the same temperature, but the smaller brick has half as many atoms. So, it has half as much thermal energy.",
+      "lecture_after": "Thermal energy depends on the amount and kind of material as well as its temperature and physical state. Temperature describes hotness; it is not the total energy of an object.\nFor equal masses of the same material in the same state, the warmer sample has more thermal energy. For samples of the same material at the same temperature and state, a greater mass contains more particles and more thermal energy. Thus a 2-kilogram sample has approximately twice the thermal contribution of a 1-kilogram sample under those matching conditions, while their temperatures are equal.\nUse the conditions stated in the question. If both mass and temperature change, or materials or phases differ, temperature alone may not determine which object has more energy.",
+      "reason": "Apply the same material, mass, temperature and phase qualifications to the remaining half-mass example.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/14-2-temperature-change-and-heat-capacity",
+          "supports": "Temperature-change/heat relation assumes no phase change or work and depends on mass and material."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/15-1-the-first-law-of-thermodynamics",
+          "supports": "Work and heat transfer both change internal energy; temperature change alone cannot identify the mechanism."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics/pages/14-3-phase-change-and-latent-heat",
+          "supports": "Energy can enter or leave during a phase change without a temperature change."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "1973d3fd2e0171f47ad3b60f8dd02ae251bbff71d097661bc0ea4221163addc2",
+      "expected_records": 82,
+      "lecture_before": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart. These pulls and pushes between magnets are called magnetic forces.\nThe strength of a force is called its magnitude. The greater the magnitude of the magnetic force between two magnets, the more strongly the magnets attract or repel each other.\nYou can change the magnitude of a magnetic force between two magnets by using magnets of different sizes. The magnitude of the magnetic force is smaller when the magnets are smaller.",
+      "lecture_after": "Magnets can attract or repel without touching. The interaction depends on their poles and positions. Force magnitude means the strength of the push or pull.\nSize can affect a magnet comparison when the material, magnetization, shape, orientation and gap are controlled. Size alone does not determine strength: different materials or shapes may reverse a size-based prediction. Use the controlled conditions or measurements supplied by the question. Do not treat a larger drawing as proof that one magnet exerts a stronger force.",
+      "reason": "State the controls for size comparisons; larger size alone does not establish greater magnetic force.",
+      "references": [
+        {
+          "url": "https://www.kjmagnetics.com/blog/magnet-grade",
+          "supports": "Field and pull depend on material grade, size, shape, measurement position and nearby material."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "f03b9896fb617813110757c3fc19162331214545cce2ca0243b74c6dc609dfbc",
+      "expected_records": 90,
+      "lecture_before": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart. These pulls and pushes between magnets are called magnetic forces.\nThe strength of a force is called its magnitude. The greater the magnitude of the magnetic force between two magnets, the more strongly the magnets attract or repel each other.\nYou can change the magnitude of a magnetic force between two magnets by using magnets of different sizes. The magnitude of the magnetic force is greater when the magnets are larger.",
+      "lecture_after": "Magnets can attract or repel without touching. The interaction depends on their poles and positions. Force magnitude means the strength of the push or pull.\nSize can affect a magnet comparison when the material, magnetization, shape, orientation and gap are controlled. Size alone does not determine strength: different materials or shapes may reverse a size-based prediction. Use the controlled conditions or measurements supplied by the question. Do not treat a larger drawing as proof that one magnet exerts a stronger force.",
+      "reason": "State the controls for size comparisons; larger size alone does not establish greater magnetic force.",
+      "references": [
+        {
+          "url": "https://www.kjmagnetics.com/blog/magnet-grade",
+          "supports": "Field and pull depend on material grade, size, shape, measurement position and nearby material."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "7723f78e525bf15f20eed698e7d7eb0d02101068ebc451c00e63af92382cff54",
+      "expected_records": 295,
+      "lecture_before": "A solution is made up of two or more substances that are completely mixed. In a solution, solute particles are mixed into a solvent. The solute cannot be separated from the solvent by a filter. For example, if you stir a spoonful of salt into a cup of water, the salt will mix into the water to make a saltwater solution. In this case, the salt is the solute. The water is the solvent.\nThe concentration of a solute in a solution is a measure of the ratio of solute to solvent. Concentration can be described in terms of particles of solute per volume of solvent.\nconcentration = particles of solute / volume of solvent",
+      "lecture_after": "A solution contains solute distributed through a solvent. To compare concentrations, read the units and the denominator carefully.\nNumber concentration is the number of solute particles divided by the volume of the solution. Amount concentration, often called molarity, is moles of solute divided by solution volume. Solution volume is not automatically equal to the initial volume of solvent.\nSome simplified exercises explicitly provide particles per volume of solvent. Use that stated ratio for that exercise, but label it as such rather than treating it as the universal definition of concentration. Without a diagram or the necessary particle and volume data, the comparison cannot be reconstructed.",
+      "reason": "Distinguish volume of solution from a task-specific ratio based on solvent; do not change source answer labels.",
+      "references": [
+        {
+          "url": "https://goldbook.iupac.org/terms/view/A00295",
+          "supports": "Amount concentration uses volume of the mixture."
+        },
+        {
+          "url": "https://goldbook.iupac.org/terms/view/C01222/pdf",
+          "supports": "Mass, amount, volume and number concentrations are defined relative to mixture volume."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "library": "qasc",
+  "expected_records": 9060,
+  "expected_changed_records": 40,
+  "reviews": [
+    {
+      "fact_id": "a95d18e6256822e3daad440420aa4ae09588b1ee6c3ff73524234c951b148dba",
+      "fact_before": "Plants release oxygen during the day but not during the night.",
+      "correction": "Photosynthetic oxygen production requires suitable light, rather than a rule tied only to the clock. Plant respiration uses oxygen in both light and darkness. Net oxygen exchange depends on the balance of photosynthesis and respiration; these are different processes.",
+      "reason": "The day/night shortcut is treated as absolute and even used to claim plant respiration stops at night.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/8-2-the-light-dependent-reactions-of-photosynthesis",
+        "https://extension.oregonstate.edu/catalog/em-9901-plant-growth-development"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 12
+    },
+    {
+      "fact_id": "78467c8c61cb8c987b65a3724d83a2dd36a52ac576ff46a77b4d97bed12a1934",
+      "fact_before": "Pollination is the fertilization step in the sexual reproduction of plants.",
+      "correction": "Pollination transfers pollen to a receptive plant structure, such as a flower stigma. Fertilization is the subsequent fusion of gametes. Pollination and fertilization are distinct events; transferring pollen does not itself mean an egg has been fertilized.",
+      "reason": "Two distinct reproductive processes are conflated throughout the linked reasoning.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 9
+    },
+    {
+      "fact_id": "9cf9fb5d589c405fece6fc8c27f921e477bf47af5dd0aace340f812ccf6c522a",
+      "fact_before": "Microspores develop into female gametophyte that produces egg in archegonium.",
+      "correction": "Microspores develop into male gametophytes. Megaspores develop into female gametophytes. The source has reversed these terms; the original multiple-choice item lacks the correct male-gametophyte option and remains unusable as an approved question.",
+      "reason": "The explanation and marked answer both reverse male and female gametophytes.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/26-1-evolution-of-seed-plants"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "a871daa24314e0ca1bd306bbab3cb2ad6955bbf426aee3b72fa122b32603f6ec",
+      "fact_before": "Hermaphrodites are female animals that make both sperm and oocytes.",
+      "correction": "In animal biology, a simultaneous hermaphrodite has both male and female reproductive functions. Describing such an animal simply as a female that makes sperm is misleading. The reproductive biology of the named species still needs checking.",
+      "reason": "The definition labels an animal with both reproductive functions as exclusively female.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/43-1-reproduction-methods"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "1af6c68ad913680685178f92ef621de195d26bcf69a0d3362e1db098bd5ceb47",
+      "fact_before": "Plants breathe oxygen into the atmosphere.",
+      "correction": "Oxygen released by a photosynthesizing plant is a product of photosynthesis. Aerobic plant respiration consumes oxygen instead. Describing oxygen production as the plant breathing oxygen into the atmosphere confuses these processes.",
+      "reason": "The metaphor reverses the role of oxygen in respiration.",
+      "references": [
+        "https://extension.oregonstate.edu/catalog/em-9901-plant-growth-development",
+        "https://openstax.org/books/biology-2e/pages/8-2-the-light-dependent-reactions-of-photosynthesis"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "1ae6c42ec172a1bbbe28b8dc2fd57cb1c4f424ae673344172cd31ed2805f167f",
+      "fact_before": "Chlorophyll is the plant's oxygen producer.",
+      "correction": "Chlorophyll absorbs light energy. Oxygen production in photosynthesis occurs through water splitting associated with photosystem II; chlorophyll alone is not an oxygen-producing substance.",
+      "reason": "A light-absorbing pigment is conflated with the whole oxygen-producing reaction system.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/8-2-the-light-dependent-reactions-of-photosynthesis"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "282cc7134fb115134cf3ecbf64f8f562a41933b705e94d3db1b37afb0198a209",
+      "fact_before": "All ferns are shade plants.",
+      "correction": "Many ferns grow in moist shade, but not all ferns are restricted to shade. Bracken can grow in full sun. A habitat preference must be checked for the species rather than assigned to every fern.",
+      "reason": "A common habitat preference is turned into an absolute classification rule.",
+      "references": [
+        "https://research.fs.usda.gov/feis/species-reviews/pteaqu"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "503f5d9004be185c741bfcc8528b4c4c4b31a630c69962929bb1e3246edc9958",
+      "fact_before": "Sexual reproduction is the combination of egg and sperm to form larvae.",
+      "correction": "Fusion of an egg and a sperm forms a zygote. A larva, where the life cycle includes one, develops later. Fertilization does not immediately form a larva.",
+      "reason": "The source skips embryonic development and equates a fertilized cell with a larval stage.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/43-6-fertilization-and-early-embryonic-development"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "16186c9d1f3f8693c388875ef883224d99a922d68a8c58eb6506f9792f88b825",
+      "fact_before": "Now seeds are the products of successful sexual reproduction.",
+      "correction": "Seeds commonly develop through sexual reproduction, but some plants form seeds by apomixis without fertilization. A seed therefore does not by itself prove that sexual reproduction occurred.",
+      "reason": "The source treats a common origin of seeds as universal.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-3-asexual-reproduction"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "9550f854e9629b911cceefed3a56540b60c83b0ad0ea67718e35b5e1f781a4da",
+      "fact_before": "Fertilization takes place inside the female organism.",
+      "correction": "Fertilization can occur inside or outside an animal body, depending on the species and reproductive method. Internal fertilization is one mode, not the definition of fertilization. The location cannot be inferred for every organism from this source fragment.",
+      "reason": "The scope of internal fertilization is omitted and transferred across unrelated reproductive systems.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/43-2-fertilization"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 10
+    },
+    {
+      "fact_id": "c48b453ead0cc550b7aa966ead4a3fb4b3b268f8bfaa2cb2f35d74454d61d6df",
+      "fact_before": "Pollination is mostly by honeybees, and wind pollination is limited.",
+      "correction": "Bees pollinate many plants, but bees are not required for every pollination event. Depending on the species, pollen can be transferred by wind, other animals, or self-pollination. A claim that honeybees dominate all pollination needs a defined population and evidence.",
+      "reason": "A pollinator important to some plants is incorrectly treated as necessary or dominant for all plant pollination.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 3
+    },
+    {
+      "fact_id": "7bb9e6f7e8cc97f930e94e5ee9758029be2d4cc4f865aee23874384689a71e5e",
+      "fact_before": "Bees are absolutely essential for pollination.",
+      "correction": "Bees pollinate many plants, but bees are not required for every pollination event. Depending on the species, pollen can be transferred by wind, other animals, or self-pollination. A claim that honeybees dominate all pollination needs a defined population and evidence.",
+      "reason": "A pollinator important to some plants is incorrectly treated as necessary or dominant for all plant pollination.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "58655b6c7fbd653ebd6fd2a13d7bf749b96f6b5070ac882b7a3599f924c0fb85",
+      "fact_before": "Bees are necessary for pollination.",
+      "correction": "Bees pollinate many plants, but bees are not required for every pollination event. Depending on the species, pollen can be transferred by wind, other animals, or self-pollination. A claim that honeybees dominate all pollination needs a defined population and evidence.",
+      "reason": "A pollinator important to some plants is incorrectly treated as necessary or dominant for all plant pollination.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    }
+  ]
+}

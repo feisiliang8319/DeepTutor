@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "library": "qasc",
+  "expected_records": 9060,
+  "expected_changed_records": 40,
+  "reviews": [
+    {
+      "fact_id": "d089e28498810c1cef38635f94362e18edd2c71d1ab7a7c1e73e63aa59592f57",
+      "fact_before": "cold fronts cause thunderstorms as they pass by",
+      "correction": "A cold front can trigger thunderstorms by lifting warm air when moisture and atmospheric instability are sufficient. Not every cold front produces thunderstorms, lightning, or tornadoes. Those outcomes cannot be inferred from a cold front alone.",
+      "reason": "A conditional weather mechanism is presented as a guaranteed chain of events.",
+      "references": [
+        "https://www.weather.gov/safety/lightning-thunderstorm-development",
+        "https://www.nesdis.noaa.gov/about/k-12-education/severe-weather/what-causes-thunderstorm"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 14
+    },
+    {
+      "fact_id": "702cfb63704673b85e4afdccc34da6f162cf02bf39bca5df2ee62022b4f5a8c0",
+      "fact_before": "Rain is also known as precipitation.",
+      "correction": "Rain is one form of precipitation. Precipitation also includes snow, sleet, freezing rain, and hail. A statement about precipitation does not establish that the water falls as liquid rain in every case.",
+      "reason": "The source treats a category and one member as interchangeable, including where snow is also a plausible option.",
+      "references": [
+        "https://www.usgs.gov/water-science-school/science/precipitation-and-water-cycle"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 14
+    },
+    {
+      "fact_id": "bbb061ddfd41d0a58be8d853a787ae2a011f82e5883932762e29d6e443b4bfdf",
+      "fact_before": "being burried under soil and mud changes vegetation into peat through extreme heat and pressure in a swamp over a long period of time",
+      "correction": "Peat accumulates when partially decomposed plant material builds up in waterlogged conditions that limit oxygen and slow decomposition. Extreme heat and pressure are not the mechanism of initial peat formation. Later burial and heating can transform peat through coalification; the two stages must be distinguished.",
+      "reason": "Peat formation is confused with later coalification and used to claim that heat and pressure create bogs.",
+      "references": [
+        "https://pubs.usgs.gov/fs/fs177-96/fsheet.htm",
+        "https://pubs.usgs.gov/circ/c1143/html/text.html"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 12
+    }
+  ]
+}

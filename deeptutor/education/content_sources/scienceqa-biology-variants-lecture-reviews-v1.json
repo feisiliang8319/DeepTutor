@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 346,
+  "reviews": [
+    {
+      "concept_id": "294384df51365aced9d26ed7d3ac59a4fb84126426b029c897301446a6dec3bb",
+      "expected_records": 341,
+      "lecture_before": "Scientists use scientific names to identify organisms. Scientific names are made of two words.\nThe first word in an organism's scientific name tells you the organism's genus. A genus is a group of organisms that share many traits.\nA genus is made up of one or more species. A species is a group of very similar organisms. The second word in an organism's scientific name tells you its species within its genus.\nTogether, the two parts of an organism's scientific name identify its species. For example Ursus maritimus and Ursus americanus are two species of bears. They are part of the same genus, Ursus. But they are different species within the genus. Ursus maritimus has the species name maritimus. Ursus americanus has the species name americanus.\nBoth bears have small round ears and sharp claws. But Ursus maritimus has white fur and Ursus americanus has black fur.",
+      "lecture_after": "Scientists use scientific names to identify organisms. In the species-level names used in this exercise, two parts together identify a species.\nThe first word in an organism's scientific name tells you the organism's genus. A genus is a group of organisms that share many traits.\nA genus is made up of one or more species. A species is a group of very similar organisms. The second word in an organism's scientific name tells you its species within its genus.\nTogether, the two parts of an organism's scientific name identify its species. For example Ursus maritimus and Ursus americanus are two species of bears. They are part of the same genus, Ursus. But they are different species within the genus. For these animal names, maritimus and americanus are the specific names, the second parts of the binomina. Use the complete combinations Ursus maritimus and Ursus americanus to identify the two species; the second word alone is not a globally unique identifier.\nBoth bears have rounded ears and claws. Polar bears have pale-looking coats, but American black bears do not all have black fur: their coats can also be brown, cinnamon, or blonde. Fur color alone does not determine the scientific species name.",
+      "reason": "Correct an overbroad biological statement and define the scope of the teaching example.",
+      "references": [
+        {
+          "url": "https://code.iczn.org/chapter-2-the-number-of-words-in-the-scientific-names-of-animals/article-5-principle-of-binominal-nomenclature/",
+          "supports": "An animal species name is a binomen combining generic and specific names."
+        },
+        {
+          "url": "https://www.nps.gov/noca/learn/nature/black-bears.htm",
+          "supports": "NPS lists black, blonde, brown and cinnamon color forms of Ursus americanus."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "58fc6b9cc2114ca7b1dca3b69d2d47db0fab12714d005c485fd7088735a5c234",
+      "expected_records": 5,
+      "lecture_before": "Plant and animal cells have many parts in common, but not all. This table shows some of their similarities and differences.\nCell part | Plant cell | Animal cell\ncell wall | yes | no\ncell membrane | yes | yes\ncytoplasm | yes | yes\nmitochondria | yes | yes\nvacuole | yes | yes\nchloroplasts | yes | no\nnucleus | yes | yes\nchromosomes | yes | yes\nThink about how plant and animal cells are different:\nPlant cells have a cell wall, but animal cells do not. The cell wall helps plant cells keep a fixed shape. Most animal cells do not have a fixed shape.\nPlant cells have chloroplasts, but animal cells do not. Chloroplasts make sugar that plants cells can use as food. Animal cells cannot make their own food.",
+      "lecture_after": "Plant and animal cells have many parts in common. This table compares a typical photosynthetic plant cell with a typical animal cell. It is a classroom model, not a checklist that every specialized cell must match.\nCell part | Plant cell | Animal cell\ncell wall | yes | no\ncell membrane | yes | yes\ncytoplasm | yes | yes\nmitochondria | yes | yes\nvacuole | yes | yes\nchloroplasts | yes | no\nnucleus | yes | yes\nchromosomes | yes | yes\nThink about how plant and animal cells are different:\nPlant cells have a cell wall, but animal cells do not. The cell wall helps plant cells keep a fixed shape. Animal cells lack cell walls, but their cytoskeleton helps support and maintain their shapes. Cell shapes vary with cell type and function.\nIn the photosynthetic plant cell represented here, chloroplasts use light energy to help make sugars. Typical animal cells do not contain chloroplasts. This contrast does not mean every cell in a plant is photosynthetic.",
+      "reason": "Correct an overbroad biological statement and define the scope of the teaching example.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/4-3-eukaryotic-cells",
+          "supports": "The plant and animal cell diagrams show typical cells; chloroplasts perform photosynthesis and cell walls provide support."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/4-5-the-cytoskeleton",
+          "supports": "Cytoskeletal protein fibers help maintain cell shape, including in animal cells."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

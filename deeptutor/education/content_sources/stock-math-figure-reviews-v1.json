@@ -1,0 +1,425 @@
+{
+  "scope": "Independent checks of eight source-bound diagrams; source rights and curriculum/figure gates remain. Reconstructed SVGs are internal review artifacts, not student-published images.",
+  "records": [
+    {
+      "id": "stock-math-l-shape-v1",
+      "svg_sha256": "b7849d2328d75c4b3245d72373ce68a1d7f513e650c538a421939be87a9c719f",
+      "spec_sha256": "db07f7293ff56f27b6e639b78f84df8cf13e57da2182d915f7eab1bf32c60efa",
+      "source_record_id": "df5efe24328d216730b31787ae09825ca0480bb2e718207976db6884a0f4c778",
+      "source_raw_sha256": "a4ad10ca712257e3b214e96f4f53a3df12edc2b86df8be52c1833a02ab35f4c7",
+      "source_sha256": "ce7f383785e915a22530109973f4e0639bac5d0b3292212f4a8c81ae7d65ecc2",
+      "answer": "9",
+      "reasoning_zh": "外接矩形面积 8×9=72，缺口面积 72−52=20；DE=9−5=4，所以 EF=20÷4=5，DE+EF=9。图形不按比例绘制，不能量图求值。",
+      "independent_check": {
+        "DE": 4,
+        "EF": "5",
+        "missing_area": 20
+      },
+      "status": "closed_math_check_passed",
+      "publication": "held_for_source_rights_and_curriculum_review",
+      "kind": "l-shape",
+      "data": {
+        "vertices": {
+          "A": [
+            190,
+            65
+          ],
+          "B": [
+            430,
+            65
+          ],
+          "C": [
+            430,
+            335
+          ],
+          "D": [
+            310,
+            335
+          ],
+          "E": [
+            310,
+            215
+          ],
+          "F": [
+            190,
+            215
+          ]
+        },
+        "given_lengths": {
+          "AB": 8,
+          "BC": 9,
+          "FA": 5
+        },
+        "given_area": 52,
+        "drawn_to_scale": false
+      },
+      "source_path": "harp-competition/raw/harp-geometry.md",
+      "source_title": "Geometry · Level 1 · AMC 8 2005 Problem 13",
+      "answer_before": "$9$",
+      "explanation_before_sha256": "69d4a1c31bb1303120c0b259c17d8da4ec50889a81111aa1a62b1ce6376a8cfb",
+      "replace_explanation": false
+    },
+    {
+      "id": "stock-math-speed-points-v1",
+      "svg_sha256": "14205ee9b88d5274cf6de9cf72cd9ed36bf4740edadc995ca4ad7e4448eed800",
+      "spec_sha256": "a226e6182ffef0b321418405a0ea8c035a365cbe6cc8e3b4afd8f7630ecbbc75",
+      "source_record_id": "bbd7ea48750dd5107020ad6324c5bafc9454178819c15628a58ecf1d10bf1ab3",
+      "source_raw_sha256": "c3a086bd38d5a6688246bfee8ffdcf9d5a27659506eb004602da98eab61611ff",
+      "source_sha256": "408a38e4c86233fa41cf4fb930ded26adc1614bb756964b6bbf953146204ccb0",
+      "answer": "Evelyn",
+      "reasoning_zh": "平均速度等于距离除以时间，对应从原点到该点的射线斜率。Evelyn 的斜率最大。坐标数值只用于检查图形，不给原题额外添加刻度。",
+      "independent_check": {
+        "distance_per_time": {
+          "Evelyn": "18/5",
+          "Briana": "22/25",
+          "Carla": "104/85",
+          "Debra": "1/2",
+          "Angela": "7/34"
+        }
+      },
+      "status": "closed_math_check_passed",
+      "publication": "held_for_source_rights_and_curriculum_review",
+      "kind": "speed-points",
+      "data": {
+        "points": {
+          "Evelyn": [
+            1.25,
+            4.5
+          ],
+          "Briana": [
+            2.5,
+            2.2
+          ],
+          "Carla": [
+            4.25,
+            5.2
+          ],
+          "Debra": [
+            5.6,
+            2.8
+          ],
+          "Angela": [
+            6.8,
+            1.4
+          ]
+        },
+        "axes": "equal positive unit spacing; distance versus time"
+      },
+      "source_path": "harp-competition/raw/harp-prealgebra.md",
+      "source_title": "Prealgebra · Level 1 · AMC 8 2005 Problem 17",
+      "answer_before": "$\\text{Evelyn}$",
+      "explanation_before_sha256": "c322bc6a1bbbae4e9ca433303318b32d5ecaca5744a2c7db83e00cb0a959e954",
+      "replace_explanation": false
+    },
+    {
+      "id": "stock-math-opposite-cube-v1",
+      "svg_sha256": "ab9dbd6737b9ab864a668fe49bdf13c4695b027dbf75c76bc98d1b38fcaa4859",
+      "spec_sha256": "b216972ec2b077d1cae3bf4ee8895aba85202baa999114e792b86261b7e02e73",
+      "source_record_id": "796437e8952d4aeff22698082c7cd08ef5cc0d50428a7a5d5b57e848b57868b7",
+      "source_raw_sha256": "7a3460d497dcb5eefa1348f1a5f66920b014a3adb99445e58332a688b3960302",
+      "source_sha256": "aa2270edf32634d2c3c8a8b1c0e3303f41f2c8ee9927a5a6d631c0a80101a991",
+      "answer": "81",
+      "reasoning_zh": "含有 11、14、15 的六个连续非负整数只有 10–15 或 11–16。前一组的对面和为 25，会使 11 与 14 相对，但图中两面相邻，矛盾。因此六面为 11–16，总和为 81。",
+      "independent_check": {
+        "complete_assignments": [
+          {
+            "minimum": 11,
+            "opposites": [
+              12,
+              16,
+              13
+            ],
+            "sum": 81
+          }
+        ]
+      },
+      "status": "closed_math_check_passed",
+      "publication": "held_for_source_rights_and_curriculum_review",
+      "kind": "opposite-cube",
+      "data": {
+        "visible_adjacent_faces": [
+          15,
+          11,
+          14
+        ],
+        "opposite_faces_have_equal_pair_sums": true,
+        "all_faces_consecutive_integers": true
+      },
+      "source_path": "harp-competition/raw/harp-algebra.md",
+      "source_title": "Algebra · Level 1 · AJHSME 1990 Problem 11",
+      "answer_before": "$81$",
+      "explanation_before_sha256": "0380879ad3886e0139328f7595ecef615e8f5e6306fa7aa65feffcf0ecf8679e",
+      "replace_explanation": false
+    },
+    {
+      "id": "stock-math-growing-squares-v1",
+      "svg_sha256": "e4e4aed931d2771ee3443f0988da97fc96866c98ac205a883e2945493eab3133",
+      "spec_sha256": "8684c2b82bbea6e06d4e5202440ab9471e65a82bdf4d70644243affd56cf61fb",
+      "source_record_id": "4895a83743657a814f07214ed44596293747880aa404211046333c59bb60b2f9",
+      "source_raw_sha256": "de9066ca7df5f972c0d7625f20f2a792a1d2394c41f2ab3f85a29633284c549f",
+      "source_sha256": "aa2270edf32634d2c3c8a8b1c0e3303f41f2c8ee9927a5a6d631c0a80101a991",
+      "answer": "13",
+      "reasoning_zh": "第 n 个正方形用 n² 块。第七个比第六个多 7²−6²=49−36=13 块。",
+      "independent_check": {
+        "sixth": 36,
+        "seventh": 49
+      },
+      "status": "closed_math_check_passed",
+      "publication": "held_for_source_rights_and_curriculum_review",
+      "kind": "growing-squares",
+      "data": {
+        "side_lengths": [
+          1,
+          2,
+          3
+        ],
+        "tile_shape": "unit square"
+      },
+      "source_path": "harp-competition/raw/harp-algebra.md",
+      "source_title": "Algebra · Level 1 · AMC 8 2002 Problem 11",
+      "answer_before": "$13$",
+      "explanation_before_sha256": "5486397a7e05bf1b144e538268d63357a50421739bab878afe12267ddb7afb63",
+      "replace_explanation": false
+    },
+    {
+      "id": "stock-math-six-dots-v1",
+      "svg_sha256": "e90463f40d87c74a4f2fc3f110e2f0b7db488c864603e787661d76973cfc0396",
+      "spec_sha256": "7b11375f31a252ae6ef2b9e9ec7bc5f67bf36ba8d22f6f26ab7d0c67c62e5afc",
+      "source_record_id": "9d35cd7dad9f8990d706eec2349e30cc17c8eff52351a3e40e7c2d1da32053a4",
+      "source_raw_sha256": "4e1f39a4ad1bc94f4ea61c6f6c3eaef2d8db38d3b10f569d3c8424e1ceb257de",
+      "source_sha256": "a768bfd8ccb22fe9b981d08e74d3918d24b82d5c07f952ac016da3963df7526b",
+      "answer": "18",
+      "reasoning_zh": "任取三个点共有 C(6,3)=20 组；上下两行各有一组三点共线，不能构成三角形。其余 20−2=18 组均有效。",
+      "independent_check": {
+        "all_triples": 20,
+        "collinear": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        ]
+      },
+      "status": "closed_math_check_passed",
+      "publication": "held_for_source_rights_and_curriculum_review",
+      "kind": "six-dots",
+      "data": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "line_spacing": "equal"
+      },
+      "source_path": "harp-competition/raw/harp-counting-and-probability.md",
+      "source_title": "Counting And Probability · Level 2 · AMC 8 2005 Problem 21",
+      "answer_before": "$18$",
+      "explanation_before_sha256": "457d3ca75764b8325c11d0febacb5ffda00ee7a1be80510fa3be7e2ab8995340",
+      "replace_explanation": false
+    },
+    {
+      "id": "stock-math-spinners-v1",
+      "svg_sha256": "1a056e70a42efdd68bcc8f949e94ac6be53daeb735dca814b75b70dbe7df9ffd",
+      "spec_sha256": "d3a4314c8d03b8b97a7a84d83933c43baa877bdf28380c487b06bc0c3dbdc49f",
+      "source_record_id": "f3be9f2aab078517c1a08b0dd11d9309bd569e3b793dbfbb0ea988a7940b6229",
+      "source_raw_sha256": "8ce7fa6c366d8e18a6a5892e4790d4382a54a056738a75ce410475421746854a",
+      "source_sha256": "a768bfd8ccb22fe9b981d08e74d3918d24b82d5c07f952ac016da3963df7526b",
+      "answer": "2/3",
+      "reasoning_zh": "在两次转动相互独立的前提下，积为奇数必须两者都为奇数，概率为 (2/4)×(2/3)=1/3。因此偶数积的概率为 2/3。",
+      "independent_check": {
+        "equally_likely_outcomes": 12,
+        "even_products": 8
+      },
+      "status": "closed_math_check_passed",
+      "publication": "held_for_source_rights_and_curriculum_review",
+      "kind": "spinners",
+      "data": {
+        "spinner_A": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "spinner_B": [
+          1,
+          2,
+          3
+        ],
+        "equally_likely_sectors": true,
+        "independent_spins": true
+      },
+      "source_path": "harp-competition/raw/harp-counting-and-probability.md",
+      "source_title": "Counting And Probability · Level 2 · AMC 8 2004 Problem 21",
+      "answer_before": "$\\frac23$",
+      "explanation_before_sha256": "a52a379296b8adbf0d66e98e9f0fd9e3f2e158638d8571e6cffb36ecea86b594",
+      "replace_explanation": false
+    },
+    {
+      "id": "stock-math-symbol-grid-v1",
+      "svg_sha256": "e1bd92911e411887e91c5210e4cda7875a381392600c4ea3b8b512b98503b4af",
+      "spec_sha256": "90532c768c09cf25e0164bb98c9b822a37ec119ac1e16832276bca70b61dcc2b",
+      "source_record_id": "9f8e545d01defdd6223b652e26ddefa8ad5a035ba50e2f894cb6c85f7e740269",
+      "source_raw_sha256": "28fd5a154152c9b6eb2137fe3f41b62d40412d57bf79b12c2cb2d1966178ef43",
+      "source_sha256": "a768bfd8ccb22fe9b981d08e74d3918d24b82d5c07f952ac016da3963df7526b",
+      "answer": "84",
+      "reasoning_zh": "两种符号的整条直线不能相交，所以只能是互异的平行行，或互异的平行列。按行计：三行全为同种符号行但两种符号都出现，有 2³−2=6 种；恰有一行圆、一行三角、另一行混合，有 3×2×(2³−2)=36 种，共 42 种。按列同理 42 种，两类不能重叠，总计 84。原解析用 C(9,3)=84 只是数值巧合，理由不成立。",
+      "independent_check": {
+        "complete_configurations": 512,
+        "qualifying_configurations": 84,
+        "lines": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            3,
+            4,
+            5
+          ],
+          [
+            6,
+            7,
+            8
+          ],
+          [
+            0,
+            3,
+            6
+          ],
+          [
+            1,
+            4,
+            7
+          ],
+          [
+            2,
+            5,
+            8
+          ],
+          [
+            0,
+            4,
+            8
+          ],
+          [
+            2,
+            4,
+            6
+          ]
+        ]
+      },
+      "status": "closed_math_check_passed",
+      "publication": "held_for_source_rights_and_curriculum_review",
+      "kind": "symbol-grid",
+      "data": {
+        "grid_size": 3,
+        "circle_cells_xy": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "other_cells": "triangle",
+        "valid_lines": "rows, columns, two diagonals"
+      },
+      "source_path": "harp-competition/raw/harp-counting-and-probability.md",
+      "source_title": "Counting And Probability · Level 2 · AMC 8 2022 Problem 23",
+      "answer_before": "$84$",
+      "explanation_before_sha256": "490494ba9396fad4affdea5862d26e91f210baa0cf386dad5750e3f1a4a8756c",
+      "replace_explanation": true
+    },
+    {
+      "id": "stock-math-dartboard-v1",
+      "svg_sha256": "0268e980214739042557154bfa3577b9d1da60f86e1c099c43dc7c5ac499d90a",
+      "spec_sha256": "6482fb530c867e951f54d3ae473bbb56b4da11cd9c725c8ba550b324629b9e94",
+      "source_record_id": "e44f44d728faba31211e607d5c764ea2f788d0f9b3771c70d8a440a3812ecccf",
+      "source_raw_sha256": "f2936722060905a4d386b2598a510bb9a94b243a00b68ebdccf75c5641192e86",
+      "source_sha256": "a768bfd8ccb22fe9b981d08e74d3918d24b82d5c07f952ac016da3963df7526b",
+      "answer": "35/72",
+      "reasoning_zh": "每个内区占全圆 1/12，每个外环区占 1/4。一次得奇数的概率为 1/12+1/4+1/4=7/12，得偶数为 5/12。在两次投掷独立的前提下，奇数和概率为 2×(7/12)×(5/12)=35/72。面积不是概率，必须除以全盘面积。",
+      "independent_check": {
+        "odd_single_throw": "7/12",
+        "even_single_throw": "5/12",
+        "two_throw_joint_probability": "35/72",
+        "independence_required": true
+      },
+      "status": "closed_math_check_passed",
+      "publication": "held_for_source_rights_and_curriculum_review",
+      "kind": "dartboard",
+      "data": {
+        "outer_radius": 6,
+        "inner_radius": 3,
+        "equal_sectors": 3,
+        "inner_values_upper_left_upper_right_bottom": [
+          1,
+          2,
+          2
+        ],
+        "outer_values_upper_left_upper_right_bottom": [
+          2,
+          1,
+          1
+        ],
+        "independent_throws": true
+      },
+      "source_path": "harp-competition/raw/harp-counting-and-probability.md",
+      "source_title": "Counting And Probability · Level 2 · AMC 8 2007 Problem 25",
+      "answer_before": "$\\frac{35}{72}$",
+      "explanation_before_sha256": "30d666c5095271777c6eee5f9d76c32e0c06c9a3d8f2492826c402d68c50fb7d",
+      "replace_explanation": false
+    }
+  ]
+}

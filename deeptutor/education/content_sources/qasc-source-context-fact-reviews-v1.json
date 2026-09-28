@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "library": "qasc",
+  "expected_records": 9060,
+  "expected_changed_records": 20,
+  "reviews": [
+    {
+      "fact_id": "9da2f19d46d66285e3413c87b982e212835efc69ee4fb3bba5416ae7d6b2cc40",
+      "fact_before": "Good cigars or quality cigars contain only tobacco.",
+      "correction": "A judgment that a cigar is good or high quality does not establish its ingredients or a health effect. This source fragment cannot supply a scientific premise for the smoking question.",
+      "reason": "A subjective quality label is used as if it proved composition.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-general-science.md ; general-science · Q14 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "835735149c9f9d1dfd7ff759cf11fed0741e2901e16eaf4bbcf820e8cfef40d6",
+      "fact_before": "Average vehicle speed rises by only 0.3 miles per hour.",
+      "correction": "The claimed 0.3-mile-per-hour increase has no study population, comparison, location, or time period in this record. It cannot establish a general speed change or support the definition of a speedometer.",
+      "reason": "A context-free statistic has been spliced into an unrelated measurement definition.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-general-science.md ; general-science · Q131 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "254acfcb5fbe5c60aa30b5f41acfd666fec2223974d6ba418b77f186ee614d89",
+      "fact_before": "Immunization records with all required shots.",
+      "correction": "The immunization-records phrase is a fragment, not a proposition explaining how an immune response develops. It does not identify a vaccine, outcome, or causal relation supporting this question.",
+      "reason": "An administrative phrase has been treated as biological evidence.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-chemistry.md ; chemistry · Q313 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "e2e00214da899057ba5361811a3af32c3be609891a17bd5963cdaf343f2549d4",
+      "fact_before": "All lengths shown are in inches.",
+      "correction": "The phrase all lengths shown refers to an unidentified diagram or table. Without that source, it cannot establish the units on a particular tape measure or a universal rule for length measurement.",
+      "reason": "A missing display and its unit legend have been generalized to all measurements.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-chemistry.md ; chemistry · Q408 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "0514cda65db060439314a508c40d811c6580a8b9fbd1681d74a9edf6a528ec93",
+      "fact_before": "All precipitation amounts are in inches.",
+      "correction": "A local precipitation table might label amounts in inches, but this record supplies no such table. That unit label does not define moisture in general or establish a unit for every moisture measurement.",
+      "reason": "A source-specific precipitation label is used to draw an unsupported conclusion about moisture.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-chemistry.md ; chemistry · Q1076 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "b4a4c38bfac9a578c24f05a7b0d48860eb0dec5e5860e463eaf7469b95ea625c",
+      "fact_before": "Line, Bar, Circle, Pictorial graphs are all good answers.",
+      "correction": "Calling a list of graph names good answers requires the missing original question and scoring criteria. It does not establish that every listed graph is appropriate for a new dataset or question.",
+      "reason": "An answer-key fragment is not independent evidence for the new question.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-chemistry.md ; chemistry · Q1149 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "5c1e3c83877e2c0c38d3e1e3434dad0a7386355aa7b3a3f4075affb1220f1966",
+      "fact_before": "Display screen shows it all.",
+      "correction": "The display-screen sentence identifies neither a graph nor any displayed values. It supplies no evidence about percentages or the purpose of a circle graph.",
+      "reason": "A promotional or context-dependent display claim is spliced into a graph explanation.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-chemistry.md ; chemistry · Q1154 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "39b2bc06f96cc6c57d2232fa486a025713476c2c79737108c9c4cba06b03434e",
+      "fact_before": "Humans, angels, animals, and all other living things are finite.",
+      "correction": "The reference to angels and finitude is a philosophical or religious statement, not empirical evidence for the cellular composition of humans. This reasoning chain requires relevant biological evidence instead.",
+      "reason": "The premise mixes different kinds of claims and does not establish the biological conclusion.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q901 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "d50851caa229438f378de3641289f9a90c7ce7350723f806a324ffe4d9859dc3",
+      "fact_before": "Life-long learning is no longer a luxury for the few, but a survival skill for all.",
+      "correction": "The phrase lifelong learning as a survival skill concerns education and uses survival in a different sense. It does not establish that plants engage in lifelong learning or explain their water requirements.",
+      "reason": "A human-education metaphor is combined with plant survival through an equivocation on survival.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q1288 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "881f274975f402bf7e5184b535a7af852d3a10423824cfd6df2c5c69db154993",
+      "fact_before": "All species are aquatic, most are marine.",
+      "correction": "All species are aquatic has no named taxonomic group in this record. The missing subject cannot be expanded to all species of animals or used to place every aquatic species in shallow coastal water.",
+      "reason": "A missing taxonomic scope and an unjustified habitat generalization invalidate the chain.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q1632 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "3ba92b10cb47bf5e11bf0898f2bd62f3927a137cb3ee196409329009b3c7960b",
+      "fact_before": "Molasses Sugar Molasses Sugar is the darkest sugar of all.",
+      "correction": "The darkest-sugar claim gives no comparison set, color measurement, or product definition. It does not explain sweetness or establish a universal ranking among sugars.",
+      "reason": "A context-free superlative supplies no evidence for the sensory conclusion.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q1801 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "61789eff1d127d08c01009a61b0ede1386fbc3e452274f2e6e84b4d1d8652036",
+      "fact_before": "Birds, like all living things, have intrinsic value.",
+      "correction": "Intrinsic value is an ethical assessment, not experimental evidence identifying which substance causes harm. The statement can be discussed as a value judgment, but cannot validate this science answer.",
+      "reason": "An ethical claim is used as though it were a causal scientific premise.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q2529 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "8b187d7cc3e6eea3ba8d405af3d488aeb1f90a484977d1a2d8560bc4312e765b",
+      "fact_before": "Every job has meaning and purpose.",
+      "correction": "The claim that every job has meaning is about human work and purpose. It does not explain flower reproduction; calling a flower function its job does not make the two premises a biological proof.",
+      "reason": "The reasoning shifts between a human occupation and a biological function.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q2980 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "e22496fa5fd7e91a07900e7e9225ef54ba985cb637054ccf7a2c45271741a8c4",
+      "fact_before": "By default all objects are assumed to be solid.",
+      "correction": "Assuming objects are solid may be a convention in a particular exercise or model, but no such scope is supplied here. That assumption cannot establish the state or foldability of an unspecified real object.",
+      "reason": "A missing model convention is generalized into a physical fact.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q3157 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "f8b41c89888447061754ee26c89cd2fcd2e8fe70119ce16882b0a76bf48a9810",
+      "fact_before": "All waste was sent to the landfill.",
+      "correction": "The sentence about all waste being sent to a landfill describes an unidentified event. It does not establish the destination or environmental effect of all waste in general.",
+      "reason": "A local past-tense event is turned into a universal environmental conclusion.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q3289 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "029ecae52954d50cc4869d4aa7670c02f9e0faa91b8a4b4ab2cf6e07e10ebde6",
+      "fact_before": "Almost all of our turtles are aquatic or semi-aquatic.",
+      "correction": "Our turtles refers to an unspecified collection, not a representative survey of turtle species. This fragment cannot establish the habitat or water requirements of almost all turtles.",
+      "reason": "An unidentified sample is generalized to an entire animal group.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q3300 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "d9f8277f16507bf2fd21923a5b94075e227d942e76dc9e1fc6e79627f8d6e76b",
+      "fact_before": "Every surface was scrubbed with bleach.",
+      "correction": "The statement that every surface was scrubbed with bleach describes an unidentified cleaning event. It does not establish sterilization, effectiveness, or that bleaching is the only relevant way to assess a surface.",
+      "reason": "A cleaning report is substituted for evidence of microbial control.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q4055 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "b8fba949b8cb77abb548b720373abbdc35ad73f8061d8c4916e14c0df02271a0",
+      "fact_before": "Property of ancestors and forefathers can only be legally inherited by sons.",
+      "correction": "The statement about inheritance by sons has no jurisdiction, date, or supporting legal source here and is unrelated to fish ancestry. It cannot serve as a scientific premise or a general legal rule.",
+      "reason": "An unsupported legal fragment is spliced into evolutionary biology through the words ancestors and forefathers.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q4071 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "1e1d4ac89724ab70c0315b725bf845d801c4086d01a629d7b7f8663af5f30fa4",
+      "fact_before": "Human birth is the rarest of all births.",
+      "correction": "The claim that human birth is the rarest specifies no population, interval, or comparison of birth rates. It provides no evidence about parental care.",
+      "reason": "A context-free rarity claim is not a causal or classificatory premise for care of offspring.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q4111 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "1d49d12852d126e98c0f448ce04fbd6a935e16d728cbbf9dbb9c91d0ea67e7b7",
+      "fact_before": "All weights are in kilograms.",
+      "correction": "The statement all weights are in kilograms could only be a local reporting convention, but no table or exercise defining that scope is supplied. It cannot establish the units or quantity measured by every scale.",
+      "reason": "A missing unit convention is generalized into a universal measurement rule.",
+      "references": [
+        "Original supplied QASC record: qasc/raw/qasc-biology.md ; biology · Q4115 ; original source bytes and reasoning retained in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "source_context_and_inference_withdrawal_not_answer_approval",
+      "expected_records": 1
+    }
+  ]
+}

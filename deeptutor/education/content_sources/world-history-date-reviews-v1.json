@@ -1,0 +1,31 @@
+{
+  "library": "world-history-1500",
+  "expected_total_records": 1757,
+  "expected_changed_records": 1,
+  "records": [
+    {
+      "record_id": "21363fdc5767301e803a7be1c5cfbce13ac429e61ecc4f2affd3e7635d488112",
+      "source_title": "What was the year of Spartacus's uprising against his owners?",
+      "source_path": "world-history-1500/raw/world-history-to-1500-qa.md",
+      "source_sha256": "270adbd841502cef952b18cf30e13810505b1712266e168483a6c33b9e09553f",
+      "raw_sha256": "c2b11f6e66876fc6c7ea3ab609aceace580538999ab2debe794b3d016181b794",
+      "prompt_before": "What was the year of Spartacus's uprising against his owners?",
+      "answer_before": "The **year of Spartacus's uprising** against his owners was **76 BCE**. This insurrection is historically significant because it represented a major challenge to Roman authority, whereby Spartacus's forces not only rose up but also **defeated two Roman armies** before facing eventual defeat in **71 BCE**. The aftermath of Spartacus's rebellion saw thousands of captured rebels crucified, a grim act intended to serve as a warning to all enslaved individuals, illustrating the lengths to which the Roman authorities would go to suppress resistance.",
+      "answer_after": "The **year of Spartacus's uprising** against his owners was **73 BCE**. This insurrection is historically significant because it represented a major challenge to Roman authority, whereby Spartacus's forces not only rose up but also **defeated two Roman armies** before facing eventual defeat in **71 BCE**. The aftermath of Spartacus's rebellion saw thousands of captured rebels crucified, a grim act intended to serve as a warning to all enslaved individuals, illustrating the lengths to which the Roman authorities would go to suppress resistance.",
+      "fragment_before": "76 BCE",
+      "fragment_after": "73 BCE",
+      "reason": "The inherited generated answer reproduces the erroneous date in OpenStax 6.4. Section 7.2 and Dickinson College commentary on Eutropius independently give 73 BCE. Correct this date only; retain the original answer in review provenance and keep the other claims and whole question unapproved.",
+      "reviewed_on": "2026-09-28",
+      "references": [
+        {
+          "url": "https://openstax.org/books/world-history-volume-1/pages/7-2-slavery-in-the-roman-empire",
+          "supports": "Text and figure 7.7 state the revolt began in 73 BCE."
+        },
+        {
+          "url": "https://dcc.dickinson.edu/eutropius/6-7",
+          "supports": "The college commentary dates the revolt to 73–71 BCE and identifies the outbreak at Capua in 73 BCE."
+        }
+      ]
+    }
+  ]
+}

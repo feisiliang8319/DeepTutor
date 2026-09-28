@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "library": "qasc",
+  "expected_records": 9060,
+  "expected_changed_records": 120,
+  "reviews": [
+    {
+      "fact_id": "dc86efe92a4192d9c8bbf885308913634c1a334722d96475f0639ad1ed6182bb",
+      "fact_before": "if an animal lives under ground then that animal will be protected from a wild fire",
+      "correction": "An underground burrow can shelter an animal during a wildfire, but protection is not guaranteed. Some burrowing animals can suffocate, and survival depends on the fire and shelter conditions.",
+      "reason": "A potential refuge is incorrectly treated as a universal guarantee of survival.",
+      "references": [
+        "https://www.nps.gov/yell/learn/nature/ecological-consequences-of-fire.htm",
+        "https://www.nps.gov/lavo/learn/nature/fire-ecology.htm"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 16
+    },
+    {
+      "fact_id": "ef4e65fc60e14517fbcedb26cbb644fc2abd0b367cc5f3fdc9380862ad1f4a17",
+      "fact_before": "if a habitat can no longer support animals then those animals will move to another area",
+      "correction": "Animals may move when a habitat no longer supplies their needs, but they cannot always reach a suitable alternative. Barriers can trap fish away from food or safe waters, and fragmented habitats can lead to population declines.",
+      "reason": "Loss of suitable habitat does not guarantee successful relocation.",
+      "references": [
+        "https://www.fws.gov/story/what-fish-passage"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 15
+    },
+    {
+      "fact_id": "bbbd292ba89bc71ded59fadb43016e9e642cfc56295eb443e5ef65582ef5b912",
+      "fact_before": "if a plant requires less water then that plant will survive in a drought",
+      "correction": "Low water requirements or drought tolerance can improve survival under some dry conditions, but do not guarantee survival in every drought. The result depends on the species, growth stage, available moisture, and severity of the drought.",
+      "reason": "A comparative tolerance has been converted into unconditional survival.",
+      "references": [
+        "https://extension.umn.edu/agriculture/crop-production/forages/alfalfa-during-drought"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 9
+    },
+    {
+      "fact_id": "1ce347e5396909a3faf95aaba15536bc2da9d7738f9852d75b9b260afcac8cbd",
+      "fact_before": "if humans disturb animals in a location then those animals will move to a different location",
+      "correction": "Human disturbance can cause animals to avoid an area, but the response is not universal. With repeated exposure, some animals become habituated and reduce their avoidance or approach people.",
+      "reason": "Different wildlife responses, including habituation, invalidate the automatic relocation inference.",
+      "references": [
+        "https://www.nps.gov/grca/learn/nature/wildlife-habituation.htm"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 9
+    },
+    {
+      "fact_id": "600986eed1703075c9e492cc5ddd1698e582c5cc841dae63966338169fac4fec",
+      "fact_before": "high pressure systems cause clear weather",
+      "correction": "High-pressure systems often bring fair weather, but clear skies are not guaranteed. Low clouds or fog can persist beneath a high-pressure inversion. Pressure alone does not establish a clear sky at a particular place and time.",
+      "reason": "A common tendency is stated as an exceptionless forecast.",
+      "references": [
+        "https://www.weather.gov/otx/full_weather_glossary",
+        "https://www.weather.gov/media/zhu/ZHU_Training_Page/fog_stuff/fog_guide/fog.pdf"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 15
+    },
+    {
+      "fact_id": "56b527c6da7a654ffba2abe57fe6dbe22f8d7065f75e51865f6890da18c3f2f2",
+      "fact_before": "a rainbow is formed by refraction of light by separating light into all different colors",
+      "correction": "A primary rainbow forms when sunlight enters liquid water droplets, is refracted and dispersed by wavelength, reflects inside the droplets, and refracts again on exit. Seeing the bow also depends on the positions of the light source, droplets, and observer; water vapor or refraction alone does not describe this process.",
+      "reason": "The premise omits internal reflection and viewing geometry and is used in some rows to equate water vapor or a prism with an atmospheric rainbow.",
+      "references": [
+        "https://www.weather.gov/fgz/Rainbow"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 15
+    },
+    {
+      "fact_id": "9c19898043d876da6dab57560c0d23eaa7b8d7e9a36dd9c656a3690b3ac2ddf6",
+      "fact_before": "weathering means breaking down rocks from larger whole into smaller pieces by weather",
+      "correction": "Weathering includes physical breakdown and chemical alteration of rock at or near the surface. It happens in place; erosion is the removal and transport of material. Weathering is not limited to smaller pieces being produced by weather.",
+      "reason": "The narrow definition omits chemical weathering and blurs the distinction from erosion.",
+      "references": [
+        "https://pubs.usgs.gov/info/clays/"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 15
+    },
+    {
+      "fact_id": "45f535c3b06fa75d932be6f9717b87a4c1d326e3eefa7cf2fa948fb86a17f475",
+      "fact_before": "Fungi are the only organisms that can decompose wood.",
+      "correction": "Fungi are important decomposers of wood, but they are not the only organisms involved. Some bacteria also degrade wood; the organisms and rates depend on environmental conditions and wood properties.",
+      "reason": "The exclusive claim conflicts with documented bacterial wood deterioration.",
+      "references": [
+        "https://research.fs.usda.gov/treesearch/62262",
+        "https://www.fpl.fs.usda.gov/documnts/pdf2013/fpl_2013_ibach001.pdf"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 11
+    },
+    {
+      "fact_id": "5f47502b382fa7b0039c509f01b62c291c1ae1f24bd00fd98128c0aa42724ea5",
+      "fact_before": "if heat is conducted to an object then that object will become hot",
+      "correction": "Energy transferred into an object by conduction can raise its temperature, but it need not make the object hot. During a phase change such as melting at fixed pressure, absorbed energy can change the phase while temperature remains approximately constant.",
+      "reason": "The original inference assumes every transfer produces a high temperature and ignores phase change.",
+      "references": [
+        "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 14
+    },
+    {
+      "fact_id": "e11735adbe801d0246f78857356f502d10d1f710d1cdfb681e57012a4dc09619",
+      "fact_before": "All wood is either pine or oak.",
+      "correction": "Wood comes from many kinds of trees, not only pine and oak. Quaking aspen, for example, produces wood used for lumber, paper pulp, and matches.",
+      "reason": "An exhaustive two-category classification excludes documented types of wood.",
+      "references": [
+        "https://research.fs.usda.gov/silvics/quaking-aspen"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 2
+    }
+  ]
+}

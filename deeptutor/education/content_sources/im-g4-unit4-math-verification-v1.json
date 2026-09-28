@@ -1,0 +1,146 @@
+{
+  "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+  "source_file": "raw-stock/im-g4-full/raw/grade4-unit4-from-hundredths-to-hundred-thousands.md",
+  "source_lesson_spans_verified": 23,
+  "verified_tasks": 22,
+  "package_sha256": "0553f51d6b7759510a3f6e6e218e05a874bcf93296dae8b4d14fcde64d1b2f40",
+  "builder_sha256": "6a4b4124ddcc306c813879b84f99f387cde631ca0b4fa758df69df2d163d4d64",
+  "source_records": [
+    "1256f1849f0752cb185f16b98cf42a1c9333909b842184e86f9c4ed117dd7b3a",
+    "6cb3b6824941eedf9ece439a1d423cdb55155bcdf175f240055988cbab489a3f",
+    "0a318a92d92f94f8ade03fed1d256fc0d686dbb0166fd7bddcdedbebebb742a5",
+    "1c1f2dc359c3916f3d58d89864f5949ee673351a88a5f17398d8f31c3bab37aa",
+    "5174e3ba2f3e84e12fcd7745b6ebaf4a30ab01a7479487ca258e09bc25af68ba",
+    "36c3661b355441a58fc56a12bc738789b27e0a6455f1f9380a5294297774f4be",
+    "c9abcadf300e42b2577cf69071fc5c01fe2b4eab0db801dd56e3859ad34dd5f6",
+    "c0017a0a14032a3360cf20bd6ead44b68fb1f95a0c2a3f4c426f7535fede8a96",
+    "89bdb940353afbb2af5f1cc544cf643ded97206a7fefcc41d3ecefd88af21235",
+    "830c13dc7836c1ef7fe00e8909feacd19bccecb18236a8055e59ab68e3761a24",
+    "3cd02c67fa25861addd647034cfd8af18e15eb1d2db7d391f4b23682bcfdc73c",
+    "9b7d1afa4fc633d0918151885c176e47dee7797adcc6bba2c54f6a38917599b2",
+    "3f0f7772e86c18a7a9e6c83d88571710fbde860730ed2ab71e497e11278159a2",
+    "e50e109b067e17e01c29f8302c37730bc6cba9d953a1d994805cc279ad7c1a90",
+    "110db0135c3e0d4857839a9b5550735428c743911fec2cb59e7cf03fe17825e6",
+    "a1a8ad982e7c23ebad2c06644fbff0f16b221585e979ce700b7cc520543f08e7",
+    "e94d49501c3aab00dc015a04ef423202bc5cbb2a3a92a544c87eb6455aca6a76",
+    "275829f4cbea2909e9a168b422fff9f80f82bd0ab63850359e26cb9e9562a252",
+    "44e78e0ef540203a211a5681409adc01ab3f4ba3981e837524ea0d84ec358a76",
+    "3b59dca98ca70131f3cfa490ca70f9b224d516fffa170e5106aa4a6b6cd30f44",
+    "726437fed7012022a0679856d448f38f3dc6cf974dd60c94113718dbaa31eb2e",
+    "57e6f01598498416800c9749e7a6f338da5e0377521cbf6a04dc646fb9def852"
+  ],
+  "checks": [
+    {
+      "lesson": 1,
+      "record_id": "1256f1849f0752cb185f16b98cf42a1c9333909b842184e86f9c4ed117dd7b3a",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 2,
+      "record_id": "6cb3b6824941eedf9ece439a1d423cdb55155bcdf175f240055988cbab489a3f",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 3,
+      "record_id": "0a318a92d92f94f8ade03fed1d256fc0d686dbb0166fd7bddcdedbebebb742a5",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 4,
+      "record_id": "1c1f2dc359c3916f3d58d89864f5949ee673351a88a5f17398d8f31c3bab37aa",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 5,
+      "record_id": "5174e3ba2f3e84e12fcd7745b6ebaf4a30ab01a7479487ca258e09bc25af68ba",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 6,
+      "record_id": "36c3661b355441a58fc56a12bc738789b27e0a6455f1f9380a5294297774f4be",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 7,
+      "record_id": "c9abcadf300e42b2577cf69071fc5c01fe2b4eab0db801dd56e3859ad34dd5f6",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 8,
+      "record_id": "c0017a0a14032a3360cf20bd6ead44b68fb1f95a0c2a3f4c426f7535fede8a96",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 9,
+      "record_id": "89bdb940353afbb2af5f1cc544cf643ded97206a7fefcc41d3ecefd88af21235",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 10,
+      "record_id": "830c13dc7836c1ef7fe00e8909feacd19bccecb18236a8055e59ab68e3761a24",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 11,
+      "record_id": "3cd02c67fa25861addd647034cfd8af18e15eb1d2db7d391f4b23682bcfdc73c",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 12,
+      "record_id": "9b7d1afa4fc633d0918151885c176e47dee7797adcc6bba2c54f6a38917599b2",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 13,
+      "record_id": "3f0f7772e86c18a7a9e6c83d88571710fbde860730ed2ab71e497e11278159a2",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 14,
+      "record_id": "e50e109b067e17e01c29f8302c37730bc6cba9d953a1d994805cc279ad7c1a90",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 15,
+      "record_id": "110db0135c3e0d4857839a9b5550735428c743911fec2cb59e7cf03fe17825e6",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 16,
+      "record_id": "a1a8ad982e7c23ebad2c06644fbff0f16b221585e979ce700b7cc520543f08e7",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 17,
+      "record_id": "e94d49501c3aab00dc015a04ef423202bc5cbb2a3a92a544c87eb6455aca6a76",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 18,
+      "record_id": "275829f4cbea2909e9a168b422fff9f80f82bd0ab63850359e26cb9e9562a252",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 19,
+      "record_id": "44e78e0ef540203a211a5681409adc01ab3f4ba3981e837524ea0d84ec358a76",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 20,
+      "record_id": "3b59dca98ca70131f3cfa490ca70f9b224d516fffa170e5106aa4a6b6cd30f44",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 21,
+      "record_id": "726437fed7012022a0679856d448f38f3dc6cf974dd60c94113718dbaa31eb2e",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 22,
+      "record_id": "57e6f01598498416800c9749e7a6f338da5e0377521cbf6a04dc646fb9def852",
+      "exact_arithmetic_checked": true
+    }
+  ],
+  "optional_lessons": "23 retained classroom reference; not converted in this batch",
+  "scope": "New worked examples aligned to22 retained lesson goals; original teacher responses and diagrams remain incomplete; teaching/grade/rights approval unchanged."
+}

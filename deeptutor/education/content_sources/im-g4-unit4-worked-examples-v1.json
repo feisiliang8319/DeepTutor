@@ -1,0 +1,865 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "IM G4 U4 存量转化 · 22道小数与多位数讲解例题",
+  "items": [
+    {
+      "id": "im-g4-u4-l1-stock-example-v1",
+      "knowledge_node_code": "G4.NF.C6.DECIMAL_NOTATION",
+      "item_type": "multi_step",
+      "prompt": "把0.6和0.06分别写成分数，并判断哪个更大。它们的小数部分都出现数字6，为什么数值不同？",
+      "expected_answer": "0.6＝6/10＝60/100；0.06＝6/100；0.6更大，是0.06的10倍。",
+      "explanation": "0.6中的6在十分位，表示6个十分之一；0.06中的6在百分位，表示6个百分之一。一个十分之一是十个百分之一，所以60个百分之一大于6个百分之一。决定数值的是数位及份数，不能只数数字个数。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L1 | retained source line 11",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 1. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "1256f1849f0752cb185f16b98cf42a1c9333909b842184e86f9c4ed117dd7b3a",
+        "source_lesson_family": "IM:G4:U4:L1",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "5b2cc821c0fec86269087d6ad2ec26a1bef7dfa967ca2c3a73aae5d0dc0847ca",
+        "source_span": {
+          "start": 221,
+          "end": 14922
+        },
+        "source_spans": [
+          {
+            "start": 221,
+            "end": 14922,
+            "sha256": "5b2cc821c0fec86269087d6ad2ec26a1bef7dfa967ca2c3a73aae5d0dc0847ca"
+          }
+        ],
+        "title_zh": "同一个6，数值不同",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l2-stock-example-v1",
+      "knowledge_node_code": "G4.NF.C6.DECIMAL_NOTATION",
+      "item_type": "multi_step",
+      "prompt": "在0.7、0.70、0.07中，哪些相等？再把0.40改写成只有一位小数的等值数。说明哪些零可去掉而不改变数值。",
+      "expected_answer": "0.7＝0.70，且都不等于0.07；0.40＝0.4。",
+      "explanation": "7个十分之一等于70个百分之一，故0.7=0.70。0.07却只有7个百分之一，不能去掉小数点后、7前面的占位零。小数末尾添零或去零不改变值；不能把这一规律套到任意位置的零。40/100=4/10，故0.40=0.4。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L2 | retained source line 460",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 2. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "6cb3b6824941eedf9ece439a1d423cdb55155bcdf175f240055988cbab489a3f",
+        "source_lesson_family": "IM:G4:U4:L2",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "e9791c652cef93cf0dbe432e7e8d59d76b923b7d3e44c669ed069955f30f718d",
+        "source_span": {
+          "start": 14922,
+          "end": 27073
+        },
+        "source_spans": [
+          {
+            "start": 14922,
+            "end": 27073,
+            "sha256": "e9791c652cef93cf0dbe432e7e8d59d76b923b7d3e44c669ed069955f30f718d"
+          }
+        ],
+        "title_zh": "等值小数与占位零",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l3-stock-example-v1",
+      "knowledge_node_code": "G4.NF.C7.COMPARE_DECIMALS",
+      "item_type": "multi_step",
+      "prompt": "数轴相邻两个十分位刻度之间平均分10个小间隔。0.48在0.4右边第几个小间隔的终点？0.52在0.5右边第几个？两数谁在右边，相差多少？",
+      "expected_answer": "0.48在第8个终点，0.52在第2个终点；0.52在右边，相差0.04。",
+      "explanation": "一个十分之一分成10份，每格就是百分之一，即0.01。0.48−0.40=0.08，需8格；0.52−0.50=0.02，需2格。两数距离为52/100−48/100=4/100=0.04。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L3 | retained source line 843",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 3. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "0a318a92d92f94f8ade03fed1d256fc0d686dbb0166fd7bddcdedbebebb742a5",
+        "source_lesson_family": "IM:G4:U4:L3",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "ebf935287249e097351bcfc4cbdcb12b043a853dd6b9e4dd6095708f6c736d04",
+        "source_span": {
+          "start": 27073,
+          "end": 38958
+        },
+        "source_spans": [
+          {
+            "start": 27073,
+            "end": 38958,
+            "sha256": "ebf935287249e097351bcfc4cbdcb12b043a853dd6b9e4dd6095708f6c736d04"
+          }
+        ],
+        "title_zh": "数轴上的百分之一",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l4-stock-example-v1",
+      "knowledge_node_code": "G4.NF.C7.COMPARE_DECIMALS",
+      "item_type": "multi_step",
+      "prompt": "把0.08、0.8、0.18、0.81、0.80从小到大排列，相等的数并列，并说明为什么0.18不是比0.8大。",
+      "expected_answer": "0.08<0.18<0.8＝0.80<0.81。",
+      "explanation": "统一写成百分之一，五个数依次为8/100、80/100、18/100、81/100、80/100，比较分子即可。0.18是18个百分之一，而0.8是80个百分之一；不能因为18比8大就忽略它们原来位于不同的数位。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L4 | retained source line 1242",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 4. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "1c1f2dc359c3916f3d58d89864f5949ee673351a88a5f17398d8f31c3bab37aa",
+        "source_lesson_family": "IM:G4:U4:L4",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "88cdd9d3b45babdd100cf75b9ff0c191fbe1108adcdb6462ec58aa6cf75ff5c8",
+        "source_span": {
+          "start": 38958,
+          "end": 51997
+        },
+        "source_spans": [
+          {
+            "start": 38958,
+            "end": 51997,
+            "sha256": "88cdd9d3b45babdd100cf75b9ff0c191fbe1108adcdb6462ec58aa6cf75ff5c8"
+          }
+        ],
+        "title_zh": "位数多不代表值大",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l5-stock-example-v1",
+      "knowledge_node_code": "G4.NF.C7.COMPARE_DECIMALS",
+      "item_type": "multi_step",
+      "prompt": "把3/5、0.62、58/100从小到大排列。每个数都表示同一个单位下的量，写出共同表示方法来证明。",
+      "expected_answer": "58/100<3/5<0.62。",
+      "explanation": "3/5=60/100=0.60；0.62=62/100；58/100=0.58。三者可统一为58、60、62个百分之一，所以从小到大如结论。不要把分数的分子或小数点后的数字直接放在一起比而不先统一单位。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L5 | retained source line 1680",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 5. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "5174e3ba2f3e84e12fcd7745b6ebaf4a30ab01a7479487ca258e09bc25af68ba",
+        "source_lesson_family": "IM:G4:U4:L5",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "bfd4bc4b2dfdf1646d62e93f631ee1af1a484c8257d2fab66d6cc944825756ab",
+        "source_span": {
+          "start": 51997,
+          "end": 64860
+        },
+        "source_spans": [
+          {
+            "start": 51997,
+            "end": 64860,
+            "sha256": "bfd4bc4b2dfdf1646d62e93f631ee1af1a484c8257d2fab66d6cc944825756ab"
+          }
+        ],
+        "title_zh": "分数与小数放在一起比较",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l6-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A1.PLACE_TEN_TIMES",
+      "item_type": "multi_step",
+      "prompt": "每盒有1000枚小积木。10盒共有多少枚，25盒又有多少枚？把10000枚改成每包100枚，可正好分多少包？用千与百之间的关系解释。",
+      "expected_answer": "10盒10000枚；25盒25000枚；10000枚可分100包。",
+      "explanation": "10个一千组成一万；25个一千是两万五千。一千含10个一百，一万含10×10=100个一百。因此一万枚每包100枚正好100包，不能把千、百、一万只当作不带单位的标签。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L6 | retained source line 2123",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 6. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "36c3661b355441a58fc56a12bc738789b27e0a6455f1f9380a5294297774f4be",
+        "source_lesson_family": "IM:G4:U4:L6",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "cb80ade3f8a065b8bcf3e83d8203b7777bb3e97d65cfa891f9a703c3a1c93f99",
+        "source_span": {
+          "start": 64860,
+          "end": 78442
+        },
+        "source_spans": [
+          {
+            "start": 64860,
+            "end": 78442,
+            "sha256": "cb80ade3f8a065b8bcf3e83d8203b7777bb3e97d65cfa891f9a703c3a1c93f99"
+          }
+        ],
+        "title_zh": "一万个是什么概念",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l7-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A2.READ_WRITE_FORMS",
+      "item_type": "multi_step",
+      "prompt": "一个数由5个万、7个百、8个一组成，其余数位都是0。写出数字、中文读法和展开式，并说明千位与十位为什么不能直接删掉。",
+      "expected_answer": "50708，读作五万零七百零八；展开式50000+700+8。",
+      "explanation": "按万、千、百、十、个的位置依次写5、0、7、0、8。没有千和十也必须用0占住相应数位，否则写成578会把万位上的5变成百位上的5，数值大幅改变。中文读数时的零是读法规则，不能与数字占位逐字机械对应。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L7 | retained source line 2526",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 7. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "c9abcadf300e42b2577cf69071fc5c01fe2b4eab0db801dd56e3859ad34dd5f6",
+        "source_lesson_family": "IM:G4:U4:L7",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "f446988e19b701272c8c8e2f239c67250735fba1d8be7c4aec9c7481899c87a5",
+        "source_span": {
+          "start": 78442,
+          "end": 90524
+        },
+        "source_spans": [
+          {
+            "start": 78442,
+            "end": 90524,
+            "sha256": "f446988e19b701272c8c8e2f239c67250735fba1d8be7c4aec9c7481899c87a5"
+          }
+        ],
+        "title_zh": "读写带零的五位数",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l8-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A2.READ_WRITE_FORMS",
+      "item_type": "multi_step",
+      "prompt": "把406090按非零数位写成展开式，并用中文读出。另一个数406009与它有何不同？",
+      "expected_answer": "406090＝400000+6000+90，读作四十万六千零九十；406009＝400000+6000+9，读作四十万六千零九。",
+      "explanation": "两个数十万位和千位相同。406090中的9位于十位，表示90；406009中的9位于个位，表示9。因此前者比后者多81。每个0都在维持后面数字的正确位置。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L8 | retained source line 2890",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 8. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "c0017a0a14032a3360cf20bd6ead44b68fb1f95a0c2a3f4c426f7535fede8a96",
+        "source_lesson_family": "IM:G4:U4:L8",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "afdb2bd350499e8a063ec86caba040eea8b12103c1f58b30052f57bb647bfbb3",
+        "source_span": {
+          "start": 90524,
+          "end": 105554
+        },
+        "source_spans": [
+          {
+            "start": 90524,
+            "end": 105554,
+            "sha256": "afdb2bd350499e8a063ec86caba040eea8b12103c1f58b30052f57bb647bfbb3"
+          }
+        ],
+        "title_zh": "六位数的展开式",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l9-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A1.PLACE_TEN_TIMES",
+      "item_type": "multi_step",
+      "prompt": "在55555中，从左到右五个5分别表示多少？万位的5是千位的5的几倍，又是个位的5的几倍？",
+      "expected_answer": "分别为50000、5000、500、50、5；前一比较为10倍，后一比较为10000倍。",
+      "explanation": "相邻数位每向左一位，同一个数字代表的值扩大10倍。万位到千位只跨一位，50000÷5000=10；万位到个位跨四位，需乘四次10，50000÷5=10000。不能把“左边一位十倍”误用成任意两个数位都是十倍。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L9 | retained source line 3334",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 9. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "89bdb940353afbb2af5f1cc544cf643ded97206a7fefcc41d3ecefd88af21235",
+        "source_lesson_family": "IM:G4:U4:L9",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "1766d5de8295a48cea92cb624f5969997ac21fb8b3d18efa68e224d2ae22a199",
+        "source_span": {
+          "start": 105554,
+          "end": 119020
+        },
+        "source_spans": [
+          {
+            "start": 105554,
+            "end": 119020,
+            "sha256": "1766d5de8295a48cea92cb624f5969997ac21fb8b3d18efa68e224d2ae22a199"
+          }
+        ],
+        "title_zh": "相邻数位的十倍关系",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l10-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A1.PLACE_TEN_TIMES",
+      "item_type": "multi_step",
+      "prompt": "在等式8000＝□×800、800＝□×80、8000＝□×80中填数。解释为什么第三个空与前两个不同。",
+      "expected_answer": "依次为10、10、100。",
+      "explanation": "800到8000扩大10倍，80到800也扩大10倍。80到8000连续经历两次十倍，10×10=100，所以第三空为100。检验时用右边的乘法还原左边的数。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L10 | retained source line 3749",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 10. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "830c13dc7836c1ef7fe00e8909feacd19bccecb18236a8055e59ab68e3761a24",
+        "source_lesson_family": "IM:G4:U4:L10",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "852dd5af53f685d2a239bc61f13643dc319e8efa1ae9430025113603e5da3998",
+        "source_span": {
+          "start": 119020,
+          "end": 131078
+        },
+        "source_spans": [
+          {
+            "start": 119020,
+            "end": 131078,
+            "sha256": "852dd5af53f685d2a239bc61f13643dc319e8efa1ae9430025113603e5da3998"
+          }
+        ],
+        "title_zh": "用等式表达数位关系",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l11-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A1.PLACE_TEN_TIMES",
+      "item_type": "multi_step",
+      "prompt": "数轴从0到100000，每个大间隔为10000。45000在哪两个相邻大刻度之间，到两端各有多远？4500乘10后位于哪里？",
+      "expected_answer": "45000在40000与50000之间，距两端均5000；4500×10＝45000，落在同一点。",
+      "explanation": "先看四个完整的一万为40000，五个为50000。45000比40000多5000、比50000少5000，正居中。4500扩大10倍等于45000，而不是45000再右移10个大格；数值的倍数与数轴上的格数变化不是一回事。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L11 | retained source line 4126",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 11. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "3cd02c67fa25861addd647034cfd8af18e15eb1d2db7d391f4b23682bcfdc73c",
+        "source_lesson_family": "IM:G4:U4:L11",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "7fa13910f64b254601f4582fc1395df5624c5ef441a8ba73d3e66703fb75b898",
+        "source_span": {
+          "start": 131078,
+          "end": 145243
+        },
+        "source_spans": [
+          {
+            "start": 131078,
+            "end": 145243,
+            "sha256": "7fa13910f64b254601f4582fc1395df5624c5ef441a8ba73d3e66703fb75b898"
+          }
+        ],
+        "title_zh": "大数在数轴上的位置",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l12-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A2.COMPARE",
+      "item_type": "multi_step",
+      "prompt": "比较305099和350009，填>、=或<，说明应先比较哪一个数位。能否因为第一个数后面的99更大就认定它更大？",
+      "expected_answer": "305099<350009；十万位相同，先在万位分出大小。",
+      "explanation": "两数十万位都是3。往右看万位，前者是0，后者是5，已经确定后者更大。较低数位的差不能抵消5个万的差距，所以不能只比较末尾的99和09。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L12 | retained source line 4522",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 12. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "9b7d1afa4fc633d0918151885c176e47dee7797adcc6bba2c54f6a38917599b2",
+        "source_lesson_family": "IM:G4:U4:L12",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "166c4e15f5d8be980355185612fd2fb8c466928dbf7b89b623561b3b71e3632f",
+        "source_span": {
+          "start": 145243,
+          "end": 166597
+        },
+        "source_spans": [
+          {
+            "start": 145243,
+            "end": 166597,
+            "sha256": "166c4e15f5d8be980355185612fd2fb8c466928dbf7b89b623561b3b71e3632f"
+          }
+        ],
+        "title_zh": "从最高不同位比较",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l13-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A2.COMPARE",
+      "item_type": "multi_step",
+      "prompt": "把401080、410008、400810、401008从小到大排列，说明中间两个数怎样比较。",
+      "expected_answer": "400810<401008<401080<410008。",
+      "explanation": "先从十万位、万位、千位依次比较。400810的千位为0，小于万位同为0且千位为1的两个数；410008的万位为1，最大。401008与401080前四位相同，十位分别为0、8，所以401008较小。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L13 | retained source line 5018",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 13. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "3f0f7772e86c18a7a9e6c83d88571710fbde860730ed2ab71e497e11278159a2",
+        "source_lesson_family": "IM:G4:U4:L13",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "79176a88ee7b2a0a5cb26df838f0f187bae5739a34ae4586dc7c9b511a1c6057",
+        "source_span": {
+          "start": 166597,
+          "end": 178452
+        },
+        "source_spans": [
+          {
+            "start": 166597,
+            "end": 178452,
+            "sha256": "79176a88ee7b2a0a5cb26df838f0f187bae5739a34ae4586dc7c9b511a1c6057"
+          }
+        ],
+        "title_zh": "排序时逐位核对",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l14-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A3.ROUND_ANY_PLACE",
+      "item_type": "multi_step",
+      "prompt": "对267300，分别写出它两侧相邻的1000的倍数、10000的倍数、100000的倍数。此题只找边界，暂不取整。",
+      "expected_answer": "267000与268000；260000与270000；200000与300000。",
+      "explanation": "看千位时，数是267个完整的1000再加300；看万位时，是26个完整的10000再加7300；看十万位时，是2个完整的100000再加67300。每组两端相差对应的一单位且中间没有另一个同类倍数。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L14 | retained source line 5389",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 14. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "e50e109b067e17e01c29f8302c37730bc6cba9d953a1d994805cc279ad7c1a90",
+        "source_lesson_family": "IM:G4:U4:L14",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "f7921598511f6c6e8a3f14d1cbcf02686ad7ed98508494ea1ca7f5213edb63f9",
+        "source_span": {
+          "start": 178452,
+          "end": 192477
+        },
+        "source_spans": [
+          {
+            "start": 178452,
+            "end": 192477,
+            "sha256": "f7921598511f6c6e8a3f14d1cbcf02686ad7ed98508494ea1ca7f5213edb63f9"
+          }
+        ],
+        "title_zh": "先找两侧的整倍数",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l15-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A3.ROUND_ANY_PLACE",
+      "item_type": "multi_step",
+      "prompt": "把267300分别取最接近的整千、整万、整十万。算出它到两侧相邻整倍数的距离，说明选择。",
+      "expected_answer": "整千267000；整万270000；整十万300000。",
+      "explanation": "到267000与268000的距离为300和700，前者更近；到260000与270000为7300和2700，后者更近；到200000与300000为67300和32700，后者更近。每一问都从原数267300判断，不能逐步取整后再取下一位。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L15 | retained source line 5818",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 15. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "110db0135c3e0d4857839a9b5550735428c743911fec2cb59e7cf03fe17825e6",
+        "source_lesson_family": "IM:G4:U4:L15",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "e9c134b89306620a6bd8fbe5c59ab51d7c8d66503ad6a6831c19bdb8871c7753",
+        "source_span": {
+          "start": 192477,
+          "end": 209045
+        },
+        "source_spans": [
+          {
+            "start": 192477,
+            "end": 209045,
+            "sha256": "e9c134b89306620a6bd8fbe5c59ab51d7c8d66503ad6a6831c19bdb8871c7753"
+          }
+        ],
+        "title_zh": "取最近的整倍数",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l16-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A3.ROUND_ANY_PLACE",
+      "item_type": "multi_step",
+      "prompt": "对原数349500，分别四舍五入到千位、万位、十万位，恰好一半时取较大的整倍数。再说明为什么先取到千位、再取到十万位可能出错。",
+      "expected_answer": "分别为350000、350000、300000。若先变350000再取十万位，会得到400000，与直接取整不同。",
+      "explanation": "349500正好在349000与350000中点，按约定取350000。取整万时它距350000为500，小于距340000的9500，仍取350000。直接取整十万时，原数小于350000这个中点，因此取300000。先取千位会丢掉原数在中点哪一侧的信息，不能用中间近似数替代原数。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L16 | retained source line 6282",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 16. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "a1a8ad982e7c23ebad2c06644fbff0f16b221585e979ce700b7cc520543f08e7",
+        "source_lesson_family": "IM:G4:U4:L16",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "253fef4677a809f0b3c163b6ba3241eaa619990f4d3ec5e2fb14c2a39fc893a8",
+        "source_span": {
+          "start": 209045,
+          "end": 225525
+        },
+        "source_spans": [
+          {
+            "start": 209045,
+            "end": 225525,
+            "sha256": "253fef4677a809f0b3c163b6ba3241eaa619990f4d3ec5e2fb14c2a39fc893a8"
+          }
+        ],
+        "title_zh": "取整不能层层接着做",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l17-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.A3.ROUND_ANY_PLACE",
+      "item_type": "multi_step",
+      "prompt": "两天的展览入场人次分别为34820和27460。先各取整到最近的千，再估计总人次；然后精确相加，求估计值与实际值的差。若规定总数超过62000须单独报告，能否只用估计值判断？",
+      "expected_answer": "估计35000+27000＝62000；实际62280，比估计多280；不能只看估计，实际已超过62000。",
+      "explanation": "取整便于快速判断规模，但各数的取整误差会影响合计。精算34820+27460=62280，差62280−62000=280。遇到明确阈值时需用原始精确数据，近似数等于阈值并不保证实际值也等于或低于它。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L17 | retained source line 6878",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 17. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "e94d49501c3aab00dc015a04ef423202bc5cbb2a3a92a544c87eb6455aca6a76",
+        "source_lesson_family": "IM:G4:U4:L17",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "7581c525d529e21504be454e06784e51eb01a7cc6b62f9a15e56bc5253063307",
+        "source_span": {
+          "start": 225525,
+          "end": 242153
+        },
+        "source_spans": [
+          {
+            "start": 225525,
+            "end": 242153,
+            "sha256": "7581c525d529e21504be454e06784e51eb01a7cc6b62f9a15e56bc5253063307"
+          }
+        ],
+        "title_zh": "估计与精确值各有用途",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l18-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.B4.STANDARD_ALGORITHM",
+      "item_type": "multi_step",
+      "prompt": "计算48576+27648和48576−27648。按数位对齐，说明加法中至少一次进位，并用另一种运算检验减法答案。",
+      "expected_answer": "和为76224，差为20928。",
+      "explanation": "加法个位6+8=14，写4向十位进1；十位7+4+1=12，写2向百位进1；继续逐位得76224。减法逐位退位得20928。验算20928+27648=48576，可检查退位后是否漏减。每次进位或退位都是相邻数位十进关系的重新组合。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L18 | retained source line 7365",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 18. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "275829f4cbea2909e9a168b422fff9f80f82bd0ab63850359e26cb9e9562a252",
+        "source_lesson_family": "IM:G4:U4:L18",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "1f6ddd582eeaf9cc8dc01d7d0b8e2cd5638f7c737d4f96d9464dce9601cf5acf",
+        "source_span": {
+          "start": 242153,
+          "end": 254228
+        },
+        "source_spans": [
+          {
+            "start": 242153,
+            "end": 254228,
+            "sha256": "1f6ddd582eeaf9cc8dc01d7d0b8e2cd5638f7c737d4f96d9464dce9601cf5acf"
+          }
+        ],
+        "title_zh": "进位加法与退位减法",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l19-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.B4.STANDARD_ALGORITHM",
+      "item_type": "multi_step",
+      "prompt": "计算7204−3686。把7204重新分组为6000+1100+90+14，再分位相减，并说明这个展开式为何仍等于原数。",
+      "expected_answer": "3518。",
+      "explanation": "6000+1100+90+14=7204，所以重新分组没有改变总量。3686=3000+600+80+6；对应相减得3000+500+10+8=3518。验算3518+3686=7204。这里11个百、9个十和14个一是计算中间的组合，不是把原数字直接拼成新数。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L19 | retained source line 7724",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 19. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "44e78e0ef540203a211a5681409adc01ab3f4ba3981e837524ea0d84ec358a76",
+        "source_lesson_family": "IM:G4:U4:L19",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "7da1b00cb0759c122532d8afd5d6244694915c339749e2f79c1cd928ea7f3877",
+        "source_span": {
+          "start": 254228,
+          "end": 267056
+        },
+        "source_spans": [
+          {
+            "start": 254228,
+            "end": 267056,
+            "sha256": "7da1b00cb0759c122532d8afd5d6244694915c339749e2f79c1cd928ea7f3877"
+          }
+        ],
+        "title_zh": "连续退位仍要保持总量",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l20-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.B4.STANDARD_ALGORITHM",
+      "item_type": "multi_step",
+      "prompt": "先计算486759+278685，再用900000减去所得的和。写出两个结果，并用加法检查最终差。",
+      "expected_answer": "和为765444；最终差为134556。",
+      "explanation": "逐位相加并处理进位得到765444。然后900000−765444=134556，需要跨越多个0重新分组。检查765444+134556=900000，且原两个加数相加确为765444，两个步骤都吻合。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L20 | retained source line 8121",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 20. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "3b59dca98ca70131f3cfa490ca70f9b224d516fffa170e5106aa4a6b6cd30f44",
+        "source_lesson_family": "IM:G4:U4:L20",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "bb0507a1a3c3dca935e4366b18e47029144256dbd454b6cc7de1b883fabb3665",
+        "source_span": {
+          "start": 267056,
+          "end": 279045
+        },
+        "source_spans": [
+          {
+            "start": 267056,
+            "end": 279045,
+            "sha256": "bb0507a1a3c3dca935e4366b18e47029144256dbd454b6cc7de1b883fabb3665"
+          }
+        ],
+        "title_zh": "多次进退位的六位数运算",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l21-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.B4.STANDARD_ALGORITHM",
+      "item_type": "multi_step",
+      "prompt": "计算500000−278946。用400000+90000+9000+900+90+10表示被减数，再逐项减去278946的各位值，并检查总和。",
+      "expected_answer": "221054。",
+      "explanation": "重新分组之和仍为500000。依次相减：(400000−200000)+(90000−70000)+(9000−8000)+(900−900)+(90−40)+(10−6)=200000+20000+1000+0+50+4=221054。这里百位结果为0，写答案时必须保留。验算221054+278946=500000。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L21 | retained source line 8508",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 21. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "726437fed7012022a0679856d448f38f3dc6cf974dd60c94113718dbaa31eb2e",
+        "source_lesson_family": "IM:G4:U4:L21",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "6d9207ad29d1bac0ffb6e881c9ad00a2484e5ebcb94d4e9f41940531c13c304a",
+        "source_span": {
+          "start": 279045,
+          "end": 291199
+        },
+        "source_spans": [
+          {
+            "start": 279045,
+            "end": 291199,
+            "sha256": "6d9207ad29d1bac0ffb6e881c9ad00a2484e5ebcb94d4e9f41940531c13c304a"
+          }
+        ],
+        "title_zh": "跨零退位的每一位",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l22-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.B4.STANDARD_ALGORITHM",
+      "item_type": "multi_step",
+      "prompt": "图书馆原有128450册书，新购37865册，同时移出9867册破损书。现在多少册？若书架可放160000册，还能放多少册？",
+      "expected_answer": "现有156448册，还能放3552册。",
+      "explanation": "先把新购书加进来：128450+37865=166315。再减去移出书：166315−9867=156448。剩余容量160000−156448=3552。检查现有量加剩余容量等于160000；不能把移出书也当作新增，或忽略中间操作的方向。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L22 | retained source line 8888",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 22. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "57e6f01598498416800c9749e7a6f338da5e0377521cbf6a04dc646fb9def852",
+        "source_lesson_family": "IM:G4:U4:L22",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "4bd050dbf62429e76612ddaee2d4124cfd464b31d1d2790fbb794480c19c9af2",
+        "source_span": {
+          "start": 291199,
+          "end": 304165
+        },
+        "source_spans": [
+          {
+            "start": 291199,
+            "end": 304165,
+            "sha256": "4bd050dbf62429e76612ddaee2d4124cfd464b31d1d2790fbb794480c19c9af2"
+          }
+        ],
+        "title_zh": "多步骤大数问题",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    }
+  ]
+}

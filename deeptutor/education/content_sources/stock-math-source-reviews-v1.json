@@ -1,0 +1,1331 @@
+{
+  "schema_version": 1,
+  "source_snapshot_id": "f9676fd1d0d108af63d2a429ea8bd074cb0a4ef8baa384348acb2d4c15d2983c",
+  "description": "Exact-record parsing repairs and explicitly reviewed answer equivalences; no formal content approval. Original source objects remain unchanged.",
+  "records": {
+    "33f0a007726f8ee85d6a4273f7c0d01f860107332da602a27774a2d08de38f56": {
+      "source_raw_sha256": "a15ec616268789ca8d0865b9573f509f1c70db9d54977e7c14e6857bbf7fadc8",
+      "parsed_answer_before": "$50$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:176f9dc026f4fef8362c7342ef83e0b5b0bd80950815e77428d03d9e63869c8b",
+      "compared_answers": [
+        "$50$",
+        "50^{\\circ}"
+      ]
+    },
+    "697b0f571c25035791528c8cea98cdd9db7ea0ee7e768ff9d676b2195150a7a4": {
+      "source_raw_sha256": "b446d52c287b2848dee333b269682be3d6fddca27c2de298e5f4284454b182f8",
+      "parsed_answer_before": "50^{\\circ}",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:176f9dc026f4fef8362c7342ef83e0b5b0bd80950815e77428d03d9e63869c8b",
+      "compared_answers": [
+        "$50$",
+        "50^{\\circ}"
+      ]
+    },
+    "601a46f1c54da5e43371c970ef98280d392d4ed18dace1d1e364c16767f14f14": {
+      "source_raw_sha256": "eca00b038c3e6872ae79b390df554409ef9b53b4c84d3e46358b68d0d1409515",
+      "parsed_answer_before": "$6+6\\sqrt{2}$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:30a93782fdd6c42579b489315622bc5761970fc5b59464330d8393bb700066d0",
+      "compared_answers": [
+        "$6+6\\sqrt{2}$",
+        "6\\sqrt{2}+6"
+      ]
+    },
+    "1dd379fceb0f57786540771f27d39c10de3281b7e6ee02080c6e652c2dcf6c80": {
+      "source_raw_sha256": "21964feb3788cd4df4504efb1a25f7f0132cdc25ed63af3ac56221324304f688",
+      "parsed_answer_before": "6\\sqrt{2}+6",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:30a93782fdd6c42579b489315622bc5761970fc5b59464330d8393bb700066d0",
+      "compared_answers": [
+        "$6+6\\sqrt{2}$",
+        "6\\sqrt{2}+6"
+      ]
+    },
+    "aa08ab7928a50e3af3741ddc39d354a919f8fd2b75f0436b7f5247cc4a4359db": {
+      "source_raw_sha256": "ea484889b300dfa77a6f5f0b24ed1db61c4ae761e526354aeb5f522f53823c28",
+      "parsed_answer_before": "$2\\sqrt{2}+\\sqrt{6}$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:3504baea1219c77736657b0473d9393e3f3e77a7ebeee4c3348813f7a9283b85",
+      "compared_answers": [
+        "$2\\sqrt{2}+\\sqrt{6}$",
+        "2 \\sqrt{2} + \\sqrt{6}"
+      ]
+    },
+    "91035dcb72a73d8dc2ecf8281c440c4210f1d9fb22d8b79104a60d448ee4f077": {
+      "source_raw_sha256": "385f6ddc6915f80cbd6d37ee8ea1188894ac6d14ad43af4b21f099d7ec148fef",
+      "parsed_answer_before": "2 \\sqrt{2} + \\sqrt{6}",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:3504baea1219c77736657b0473d9393e3f3e77a7ebeee4c3348813f7a9283b85",
+      "compared_answers": [
+        "$2\\sqrt{2}+\\sqrt{6}$",
+        "2 \\sqrt{2} + \\sqrt{6}"
+      ]
+    },
+    "efb3b68789bd5e67aa9c478af0fa434911ed2aa8c2bdace5a532e61882426e4a": {
+      "source_raw_sha256": "d4e6e1aa15bac40dc5d8cb06e4a24a02493addfe6e88ff1e44948e53411b4513",
+      "parsed_answer_before": "$\\sqrt 5$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:3a05924b38be280b526aa36c9478d836ee4c4588447625cbaf5305de7da38972",
+      "compared_answers": [
+        "$\\sqrt 5$",
+        "\\sqrt{5}"
+      ]
+    },
+    "e2aa5a7b638d2ce4fff8ba10db33dafe755692df048af7e09d7c1cdd214f170e": {
+      "source_raw_sha256": "fc526b5af00ed0f5079604db6711bf4e79d5aad73576834d2232395d488e01a5",
+      "parsed_answer_before": "\\sqrt{5}",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:3a05924b38be280b526aa36c9478d836ee4c4588447625cbaf5305de7da38972",
+      "compared_answers": [
+        "$\\sqrt 5$",
+        "\\sqrt{5}"
+      ]
+    },
+    "0ea3fc05a494ada36014fb124eac89879912d1ed2c29f367817d86c504b00150": {
+      "source_raw_sha256": "0da9774265128389e96ecf327e05643c1acd9ff74f20d8e22e0723d81f42c614",
+      "parsed_answer_before": "$\\dfrac{24}5$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:4d0b3d3a5ba7853356f618e4793d1b34ad89a16f0eff985843a0ca107d36eb5d",
+      "compared_answers": [
+        "$\\dfrac{24}5$",
+        "\\frac{24}{5}"
+      ]
+    },
+    "192827b9320feb01f0bd9b8524d9315d7d55074021f5754f4416e1cc01cc18e1": {
+      "source_raw_sha256": "55fed49124982ed6d8c3519a4e47fb21b4e0c4dd28fefa91dcc0290f15d3ff03",
+      "parsed_answer_before": "\\frac{24}{5}",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:4d0b3d3a5ba7853356f618e4793d1b34ad89a16f0eff985843a0ca107d36eb5d",
+      "compared_answers": [
+        "$\\dfrac{24}5$",
+        "\\frac{24}{5}"
+      ]
+    },
+    "761fad3e6fdca86d78b16335356f73ebc71213d4593f41fd10a6b2a565243e69": {
+      "source_raw_sha256": "b1ec9c30d186e94471141724e360fd94d937b3eb26cb8263e146b23d6865590e",
+      "parsed_answer_before": "$\\frac 34$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:5a3e466ba266e7610615160073112a51c6b7d105c723e88e48e94f8bb2ded840",
+      "compared_answers": [
+        "$\\frac 34$",
+        "\\frac{3}{4}"
+      ]
+    },
+    "030b4f721856eb2769732d351a3c3aa406aef941fc31c56a55c7dbe2ba7736e7": {
+      "source_raw_sha256": "e49d111bbe3fb200af66df1f6f25c4d51c0a2ac32c46a9ecdb00f7261e4ccd7c",
+      "parsed_answer_before": "\\frac{3}{4}",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:5a3e466ba266e7610615160073112a51c6b7d105c723e88e48e94f8bb2ded840",
+      "compared_answers": [
+        "$\\frac 34$",
+        "\\frac{3}{4}"
+      ]
+    },
+    "66cf986f81899db34b9216cb3d02bc710c9aba2a5f411b3ccda0d8c2caa8740c": {
+      "source_raw_sha256": "2d5fc3b79df1310d120785c2c748c18aea1a73f68c8b678f883bb35d78a126ad",
+      "parsed_answer_before": "$\\frac{3}{2}$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:5ffa5677b8cd9b879014f3218af664b38cf8a2d97a10e470160ea8fe76119dc6",
+      "compared_answers": [
+        "$\\frac{3}{2}$",
+        "\\tfrac{3}{2}"
+      ]
+    },
+    "9cf60eb57543ad2d58cf397f71ef01cae43bddcf5fa1bd83b4cbb225587468d4": {
+      "source_raw_sha256": "78ca0a6fdb02433410bad79269ccf3bbdff81846e4473f33a96bb6e8850b1e0a",
+      "parsed_answer_before": "\\tfrac{3}{2}",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:5ffa5677b8cd9b879014f3218af664b38cf8a2d97a10e470160ea8fe76119dc6",
+      "compared_answers": [
+        "$\\frac{3}{2}$",
+        "\\tfrac{3}{2}"
+      ]
+    },
+    "e5af8ecd86cb592ced6154bd65eaf28e608454ba2e85488982066c85aa821adb": {
+      "source_raw_sha256": "4400a6f8000e59cd945aa7fad96912b3e53f62646a243a1d12e7b6fab235c1a5",
+      "parsed_answer_before": "$8\\sqrt{2}$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:64a175d0de9b5697b975e4962920a0f0532e8dec9344f118e4c0feb11a87c156",
+      "compared_answers": [
+        "$8\\sqrt{2}$",
+        "8 \\sqrt{2}"
+      ]
+    },
+    "d9ebb0787ee628e0c9e705f1a4b7d28e4a82b7dd02671c10a2ea7b134943fc61": {
+      "source_raw_sha256": "6301349c040a2c45723747d30c706a17bac0cf58d9878fb6cd2bf0bf65f309ad",
+      "parsed_answer_before": "8 \\sqrt{2}",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:64a175d0de9b5697b975e4962920a0f0532e8dec9344f118e4c0feb11a87c156",
+      "compared_answers": [
+        "$8\\sqrt{2}$",
+        "8 \\sqrt{2}"
+      ]
+    },
+    "8f24d501ffb897fb6486c4c69ed5f6973207aa55e845c43cfc4ca7ea96a935b4": {
+      "source_raw_sha256": "001a9ac6ce1ec5d01135d54ef24cabb504c86b091729c7b652c7f0bce107d59e",
+      "parsed_answer_before": "$\\frac{\\sqrt{6}}{2}$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:7a36e9c39b5af1001a6609ee060094197d8c6cd1216e16f31ce171859b7bfe9a",
+      "compared_answers": [
+        "$\\frac{\\sqrt{6}}{2}$",
+        "\\frac{\\sqrt6}2"
+      ]
+    },
+    "c27895c1cc71a946313c40ad9ed546f4bfe92c604d008604077e2c380b84d487": {
+      "source_raw_sha256": "6ac7a521ceaab94fe6aca98a889f5666bbe4aab2d9266e47a0d5c15da9a2eee8",
+      "parsed_answer_before": "\\frac{\\sqrt6}2",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:7a36e9c39b5af1001a6609ee060094197d8c6cd1216e16f31ce171859b7bfe9a",
+      "compared_answers": [
+        "$\\frac{\\sqrt{6}}{2}$",
+        "\\frac{\\sqrt6}2"
+      ]
+    },
+    "934aa0e7582432edeac028251d61e44f9633fa6a0af948c9c9e2e2ef0a9de7ad": {
+      "source_raw_sha256": "e2b023dafc2b17121601d70e52894b4b2c3c3e03318920203de20777e890810e",
+      "parsed_answer_before": "$250,500$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:82b345785e69a2f34da691c7e4ea840fa556d1074fef96e90263307b20f7caa0",
+      "compared_answers": [
+        "$250,500$",
+        "250500"
+      ]
+    },
+    "93104244e46cc0b3a6d1251253c6633e20933bba9d6c220d0e393e70eb908dcc": {
+      "source_raw_sha256": "7ff355d073c3a539920febfdda99e7701dc0f1eb11396c11d20d11f865d23cfe",
+      "parsed_answer_before": "250500",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:82b345785e69a2f34da691c7e4ea840fa556d1074fef96e90263307b20f7caa0",
+      "compared_answers": [
+        "$250,500$",
+        "250500"
+      ]
+    },
+    "9e7c842aa0bd21ab2420bafc96ad7455d1f492b385eac2c89046e51d9cb90e4c": {
+      "source_raw_sha256": "de5e10a147114f07d2ada2d2679dbd2c623430ca0296582ea7d7374bc6948c47",
+      "parsed_answer_before": "$25$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:85d1c96c7ea1473adf80af95de7010e48cc1b3888d2a9cb941d923127a2c9472",
+      "compared_answers": [
+        "$25$",
+        "25^\\circ"
+      ]
+    },
+    "aa849a8e87043a116fbee6496c1f98dcb367204bfbca9dc96bcaca85d07fa063": {
+      "source_raw_sha256": "d7da5e82a45516e7844ddf4b9ca982778fb03cd4f75943fd628e7379124ff0c5",
+      "parsed_answer_before": "25^\\circ",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:85d1c96c7ea1473adf80af95de7010e48cc1b3888d2a9cb941d923127a2c9472",
+      "compared_answers": [
+        "$25$",
+        "25^\\circ"
+      ]
+    },
+    "f92628f38555569305466a9d05bf3fe5da48aaa1467e14b3e6456718a42e6d3b": {
+      "source_raw_sha256": "87952c0f968dc12d559fcef03df73662957f1173859189b48db680134e60c0ea",
+      "parsed_answer_before": "$11$.$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:91ad9f1e1f0ed1ac5317926e6f4cbc093053ba9949032a6b61f7fa021ef3611c",
+      "compared_answers": [
+        "$11$.$",
+        "11"
+      ]
+    },
+    "8c255cd93d3711ffbfd133e073917339011b4da7b7de7b00e2a3426df2612788": {
+      "source_raw_sha256": "5d9abecdba39c9587a088a5e8300d6e351c317d50eb82c56b9ebfc8a55d10b8f",
+      "parsed_answer_before": "11",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:91ad9f1e1f0ed1ac5317926e6f4cbc093053ba9949032a6b61f7fa021ef3611c",
+      "compared_answers": [
+        "$11$.$",
+        "11"
+      ]
+    },
+    "8220c6e2788410b79e13f722165600dbf572eaae62f832fad3b5d8e5efb72288": {
+      "source_raw_sha256": "222bd99677382692b30644c0b73b49fe00abc6045c850dca97649e8c7420ccea",
+      "parsed_answer_before": "$83$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:94e0cff0279a823dc8a9f9cea2f2c9e22a847630341abfd542bbd86b7aed6a84",
+      "compared_answers": [
+        "$83$",
+        "83^\\circ"
+      ]
+    },
+    "5961248606799853e069ebe7e05d45269403a44a97a666219937519c9e2705a5": {
+      "source_raw_sha256": "b6cb048732c8733544c9da0c6dcf0bf6210cd1c7d95b58da4d1bfd4a7e61c78b",
+      "parsed_answer_before": "83^\\circ",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:94e0cff0279a823dc8a9f9cea2f2c9e22a847630341abfd542bbd86b7aed6a84",
+      "compared_answers": [
+        "$83$",
+        "83^\\circ"
+      ]
+    },
+    "9fc175732bf0c3022da4fec2c3804137c9c2d4b4feda224c62650c85cc99a237": {
+      "source_raw_sha256": "e6d1436e687c72581884b8e7c377f193f6e33c7718d96963d545b577a501e464",
+      "parsed_answer_before": "$\\frac{3}{4}$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:9ece33875e41d340d9d0d9c35378c1dee860715fe3d180eee8f26ef0276cc08c",
+      "compared_answers": [
+        "$\\frac{3}{4}$",
+        "\\tfrac34"
+      ]
+    },
+    "206918484d1503338348928af74e59d121cc3ced5966463fb39707f3c177f1c8": {
+      "source_raw_sha256": "8ac1a52908ebefcc67f94175c4b2816d422681b1b953485d0f301ef865f08144",
+      "parsed_answer_before": "\\tfrac34",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:9ece33875e41d340d9d0d9c35378c1dee860715fe3d180eee8f26ef0276cc08c",
+      "compared_answers": [
+        "$\\frac{3}{4}$",
+        "\\tfrac34"
+      ]
+    },
+    "1a6c088746c7bbf4fed777c94d936aac6916c39481b6fffe54386bd0b16c6808": {
+      "source_raw_sha256": "be4a5359e7c452a0dedc58e4323393b8dd69c8415e880dcc39cb33cf813e2600",
+      "parsed_answer_before": "$16.5$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:a4a2ce959f1fd5e3b97479d072a2924dc55223b9e498c069b913e7e3828bdcff",
+      "compared_answers": [
+        "$16.5$",
+        "\\frac{33}{2}"
+      ]
+    },
+    "d555f786edd0284b8af3e06d7e0b7e3a0c92b4a3c7aa56d3869eff1d59c779c9": {
+      "source_raw_sha256": "46119e4946e283e0e0381ee481b1135070849a7e98ff549de9b5faa51624d702",
+      "parsed_answer_before": "\\frac{33}{2}",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:a4a2ce959f1fd5e3b97479d072a2924dc55223b9e498c069b913e7e3828bdcff",
+      "compared_answers": [
+        "$16.5$",
+        "\\frac{33}{2}"
+      ]
+    },
+    "62974871c24ba8de7b8bbc3e66fcd0346eb16d10db3edfaee736150a4892e84e": {
+      "source_raw_sha256": "dc1c32bbc031ce735a5c709fc43da6dfacc59af563ed58491fc8a8a849a33ae1",
+      "parsed_answer_before": "$97$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:c67a109ae5b749b80facdf429367ab1384eca85f4f01c7685bbe31d710b7956f",
+      "compared_answers": [
+        "$97$",
+        "097"
+      ]
+    },
+    "b0c2bd75e0c2edeece9cd40de096a1e08b1d6fb5a2eab65315aadaa63a16b395": {
+      "source_raw_sha256": "36b59560386277fb174cde39326f0cfd8709fe066197c80f891da3ead2fb8881",
+      "parsed_answer_before": "097",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:c67a109ae5b749b80facdf429367ab1384eca85f4f01c7685bbe31d710b7956f",
+      "compared_answers": [
+        "$97$",
+        "097"
+      ]
+    },
+    "79b8a716680874328c59504c84eba26ee13ac583d8159f63d7f53b0a0653d73c": {
+      "source_raw_sha256": "4aa9a1573967e75e806c4c4a3f0f0cc9297c8808ea88bed2cf8ce8c0320aa48f",
+      "parsed_answer_before": "$2 - \\sqrt2 + \\frac{\\pi}{4}$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:d08620d162a2aa80072bef91c409f93674f2b3cfc5aa659716ac0e9d462a30c2",
+      "compared_answers": [
+        "$2 - \\sqrt2 + \\frac{\\pi}{4}$",
+        "\\frac \\pi4 + 2 - \\sqrt2"
+      ]
+    },
+    "d3f28cec70bbed1509220237195803e7dda299ad91c42c344cbe2ca2b627be25": {
+      "source_raw_sha256": "85d3eef90cc39902576fb50a1f92dc4f14a9aba7f88e0c59edb7c990860fb6e1",
+      "parsed_answer_before": "\\frac \\pi4 + 2 - \\sqrt2",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:d08620d162a2aa80072bef91c409f93674f2b3cfc5aa659716ac0e9d462a30c2",
+      "compared_answers": [
+        "$2 - \\sqrt2 + \\frac{\\pi}{4}$",
+        "\\frac \\pi4 + 2 - \\sqrt2"
+      ]
+    },
+    "67edb673d5ccda592abe6ed72ddcd0d0958d0958c81b4768d55e63bce1fc5ceb": {
+      "source_raw_sha256": "45612dfc237afa6fcaf419246fb464c7bf623dabdf6ba6d6311211511d02d43e",
+      "parsed_answer_before": "$\\frac {3}{5}$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:ed4b708c72606c6d18185cca11263d963044a2d4ed4cb2974ea482fbc2c19b41",
+      "compared_answers": [
+        "$\\frac {3}{5}$",
+        "\\frac{3}{5}"
+      ]
+    },
+    "a9a3a4196979c6faea7f4859524e6ddf51b317170cf6163dac65e93423ac50be": {
+      "source_raw_sha256": "a49fa749fbcf43b7288016d2ac36ddf7c2bdc27f794ad23a269dea56458c47cb",
+      "parsed_answer_before": "\\frac{3}{5}",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:ed4b708c72606c6d18185cca11263d963044a2d4ed4cb2974ea482fbc2c19b41",
+      "compared_answers": [
+        "$\\frac {3}{5}$",
+        "\\frac{3}{5}"
+      ]
+    },
+    "11b9aa82868f4e3e7432d5eeaafcb21f8f93f207e34ee98eab223353a0ae4ee2": {
+      "source_raw_sha256": "140e16e2de78ba0e8eeb5a515c743459cb974712a399d8d6ce427f5771015565",
+      "parsed_answer_before": "$\\frac{\\sqrt{3}}{2}$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:f020f95abf31363ba5e03693dcbd18ea2201f08c97933d9ae7c6c94a284ea8e8",
+      "compared_answers": [
+        "$\\frac{\\sqrt{3}}{2}$",
+        "\\frac{\\sqrt3}{2}"
+      ]
+    },
+    "6fbc25b26ffcc90dfd2360a3a677c4485e4cabc146e8774fb38d70b0514331c9": {
+      "source_raw_sha256": "14915e22c77d04897f009b644463946813f726cc0d520af5b210f30fd5a09a10",
+      "parsed_answer_before": "\\frac{\\sqrt3}{2}",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:f020f95abf31363ba5e03693dcbd18ea2201f08c97933d9ae7c6c94a284ea8e8",
+      "compared_answers": [
+        "$\\frac{\\sqrt{3}}{2}$",
+        "\\frac{\\sqrt3}{2}"
+      ]
+    },
+    "576c91f1a5232e7f9f46e5ba4ec6baa235dc7b1250b7bbd6e5eaed5011078272": {
+      "source_raw_sha256": "a6a41ec17787fd4bdcfcd99dd55b6a51a2684a66d7a093911dc4be1f71ae2426",
+      "parsed_answer_before": "$\\frac12$",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:fea5f8919a6fafad723a7e92f65d5455be687b22795204e963a5df7c1b3d9da0",
+      "compared_answers": [
+        "$\\frac12$",
+        "\\frac{1}{2}"
+      ]
+    },
+    "7c4ede6d622834683376df5d4b3ca71c5c5fe1aedbaa32282db7b9001bb545c7": {
+      "source_raw_sha256": "9637663f29db3a5a04998b5d9150e3016b39f9beef8c00e36d8815faf263d076",
+      "parsed_answer_before": "\\frac{1}{2}",
+      "note": "Individually compared matching prompts and source answers. The two recorded forms differ only by equivalent numeric/LaTeX notation, commutative term order, or the explicit degree unit requested by the prompt. This records equivalence, not validation of the underlying problem.",
+      "approval": "unreviewed",
+      "cleared_issues": [],
+      "equivalent_answer_key": "reviewed-equivalent:fea5f8919a6fafad723a7e92f65d5455be687b22795204e963a5df7c1b3d9da0",
+      "compared_answers": [
+        "$\\frac12$",
+        "\\frac{1}{2}"
+      ]
+    },
+    "cb8f9d5a5b591ecdcf87d649e2f521779786a414420d893eee17c46395e8a22e": {
+      "source_raw_sha256": "16018dab84dbfd92dd189771a81c098cddd709bb2bd56ba12173751a014bc28e",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "(-2,18)",
+        "(8,38)"
+      ],
+      "answer": "(-2,18); (8,38)",
+      "answer_contract": "all_values_required"
+    },
+    "368cb6d668d06378367fbe47764d9e9380d68ff2852eda2efe8bca02917e411e": {
+      "source_raw_sha256": "3901eb50792c750f64831cd9703e446291b511be8e479b87f0a2d48505e02579",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "(-2, 23)",
+        "(0, 1)"
+      ],
+      "answer": "(-2, 23); (0, 1)",
+      "answer_contract": "all_values_required"
+    },
+    "941d420986792b7537a8527bbe67dd9211fc62f93ec385c40e50efd566f8600f": {
+      "source_raw_sha256": "4c29a558dbb9cc350277af6e756a6eeae3f936df82caf0a2a2467d338265474a",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\dfrac{1}{6}",
+        "\\frac{1}{6}"
+      ],
+      "answer": "\\frac{1}{6}",
+      "answer_contract": "final_requested_quantity"
+    },
+    "5748152ef0a2c66aa8a982a16d005c6064682b49560c5ffa1abb33750cc80680": {
+      "source_raw_sha256": "cb6eb7e529828f84a3a2a19b253b47751f37a23b35cf7adb1ba268f936e0a482",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "2",
+        "4"
+      ],
+      "answer": "4",
+      "answer_contract": "final_requested_quantity"
+    },
+    "069d061502fbb1206203a2655593a962ba7ec625b2664fb729b1b08ecb18daad": {
+      "source_raw_sha256": "3e01a297eed1dd5b3fe991bc2d4271fe3d6f552714cc01e94ebcc2252509dc84",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\frac{2\\sqrt{53}+53}{53}",
+        "161"
+      ],
+      "answer": "161",
+      "answer_contract": "final_requested_quantity"
+    },
+    "2011c844c28d4a102246781ca468dfcda3c93363611c89269e02556b9b17149d": {
+      "source_raw_sha256": "5d09851942454431be3c2540450f32cb67d2f8aca9c71388a5bfdfdc58f1b52f",
+      "parsed_answer_before": "",
+      "note": "Corrected a substantive source error. The source accepts both -3 and +3, but direct substitution proves that only -3 meets the stated sum.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "-3",
+        "3"
+      ],
+      "answer": "-3",
+      "answer_contract": "unique",
+      "explanation": "For 15 terms with first term 7 and common difference d, S=15(7+7d)=105+105d. Setting S=-210 gives d=-3. Substitution gives 105+105(-3)=-210. The source note accepting +3 is incorrect: +3 gives 420, not -210."
+    },
+    "60f847c219d3d23831ae4ed67fadf3b182eec76e2913677fda26832293e4a023": {
+      "source_raw_sha256": "09506023b5bf8f0f77a320d5f39ed56d166c26d06781f728c04fcc711e94226e",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "10\\sqrt{2}",
+        "10\\sqrt 2"
+      ],
+      "answer": "10\\sqrt 2",
+      "answer_contract": "final_requested_quantity"
+    },
+    "cc7436361ec214c05f3549461aed2536fd0872ac3e133dbc6fe770fe559a4b52": {
+      "source_raw_sha256": "a70e917e5d3fb0c56d9cbcfbccd153b5548928e113b1d1ae8b4d153354c12f21",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "-2",
+        "1"
+      ],
+      "answer": "-2, 1",
+      "answer_contract": "all_values_required"
+    },
+    "377ccd428973df9b0461973ee282dc5db94af88dce6d4843d9feb1764990f42e": {
+      "source_raw_sha256": "8bee9998f88a8291a6f1119d5023c3ec89c5305f9dca5a2ade444aeff6a62207",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\" + string(n) + \"",
+        "22"
+      ],
+      "answer": "22",
+      "answer_contract": "final_requested_quantity"
+    },
+    "fef659518ce593a6d1a34e7132d6f6e99a47f5d4a0596aa241e1f14f81987a3e": {
+      "source_raw_sha256": "155b82a9be50929f53d442b6a26595f484627053cb117fc130a0ff34c902a21d",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "144",
+        "12"
+      ],
+      "answer": "12",
+      "answer_contract": "final_requested_quantity"
+    },
+    "86ccbfba3c07f129fbd8cf332c104f31265d32baa963faa38dedaa1a77ea517f": {
+      "source_raw_sha256": "c9d2dc7cb433ca86e6ad00ba4739cd687acb8d1af8a39fa0159cb55cf9bab2bd",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "0.25\\text{ cm}",
+        "0.25\\,\\text{ cm}"
+      ],
+      "answer": "0.25\\,\\text{ cm}",
+      "answer_contract": "final_requested_quantity"
+    },
+    "e4e703584722fb13156a164711611c7faaee7cba1b2a733b4cdae32479b7e22e": {
+      "source_raw_sha256": "2973f205a809376799b61d669262030709fd6175f65c15fc68f5413c8bfa4644",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\frac{25}{13}",
+        "1\\frac{12}{13}"
+      ],
+      "answer": "\\frac{25}{13}",
+      "accepted_answers": [
+        "\\frac{25}{13}",
+        "1\\frac{12}{13}"
+      ],
+      "answer_contract": "equivalent_forms"
+    },
+    "66e4817bfb98bfcafc654e60fd1ecae0c91833c17e794cfb86048dbfc3647933": {
+      "source_raw_sha256": "c9537070363e725ce379dc58a663284f60bc1cd9302fcd231da7341fd3e4e9c2",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\frac{3}{2}",
+        "\\frac32"
+      ],
+      "answer": "\\frac32",
+      "answer_contract": "final_requested_quantity"
+    },
+    "2c6f025c8e3eee7fcc8af878a9b5cb38546dc5ba00f3419b0fbd048113a1c94f": {
+      "source_raw_sha256": "e4d37a98f0acadb8940a90a2c8c180f71312386737eee2b3775b93d05a3c3fb4",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "2x+1",
+        "-2x-1"
+      ],
+      "answer": "2x+1, -2x-1",
+      "answer_contract": "all_values_required"
+    },
+    "005c4c9de672df854764322693bac36f5a9ba6688ad400867b483496f710b18e": {
+      "source_raw_sha256": "8d3ccf1cb7b6d1eaee73eab222fa5990e4e5d63203797498df7f1d3e3a97206a",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\phantom{09}",
+        "\\phantom{25}",
+        "-5"
+      ],
+      "answer": "-5",
+      "answer_contract": "final_requested_quantity"
+    },
+    "df179733135c675754984650d26690b7e4de00e0c99198958a0dd4b6c54f413e": {
+      "source_raw_sha256": "d6b02c70dec31dab03f7fabf154e906187b9678f54bd6887216fa5c01a2b84f0",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\frac{1}{3}",
+        "-\\frac{5}{2}"
+      ],
+      "answer": "\\frac{1}{3}, -\\frac{5}{2}",
+      "answer_contract": "all_values_required"
+    },
+    "5888af7e65ddd5260f64c43a03369c668322a1dea7a09d3af6557b8749057b67": {
+      "source_raw_sha256": "573ae915ccb32faf450635f7e8b3db47eec0c5163631608bbe11e3c2eef6ec3c",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "16/5",
+        "\\frac{16}{5}"
+      ],
+      "answer": "\\frac{16}{5}",
+      "answer_contract": "final_requested_quantity"
+    },
+    "b13164a0933272af09fa27fb18b389d07b0acfeb849a6bcde57a77fe8a065805": {
+      "source_raw_sha256": "ad3fd1e7e8b9b05a923593a77d80b965cca670a58330de6fc5a6c39793870b0c",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "1",
+        "9"
+      ],
+      "answer": "1, 9",
+      "answer_contract": "all_values_required"
+    },
+    "85cedfc47a8bb40429ad2e1ac421ca34576653091cd0157d13edda004c66c985": {
+      "source_raw_sha256": "07a94cd6149d3094e8e64316334aa39be04fc0e8237bea4d928c7823483423c4",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "(-5, 7)",
+        "(-5, 1)"
+      ],
+      "answer": "(-5, 7)",
+      "accepted_answers": [
+        "(-5, 7)",
+        "(-5, 1)"
+      ],
+      "answer_contract": "any_one_of_the_listed_answers"
+    },
+    "760c198cc62ea5948f2f9c43d32cefdcb8c2b583e1f0eb3aaa2988b60fe6dd1e": {
+      "source_raw_sha256": "c32fa38a3da0fb20e4263fc2bbad6cbedafee834eb52b647f2b6e080e46fad53",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "5 - 10i",
+        "11",
+        "-3 + 6i"
+      ],
+      "answer": "5 - 10i, 11, -3 + 6i",
+      "answer_contract": "all_values_required"
+    },
+    "e79edde2241de93dc147f310a169ff3ef0671ea6a11f4021c821fe1a572d469b": {
+      "source_raw_sha256": "bf6a94e08de7af0489956eec410d859640b6f2c27e0da30716b241ec63b83547",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "-3\\sqrt5-5",
+        "-3 \\sqrt{5} - 5"
+      ],
+      "answer": "-3 \\sqrt{5} - 5",
+      "answer_contract": "final_requested_quantity"
+    },
+    "e6960fe9754dcb86ec183984a88d1bafd6ff211f51dfb9effb5610de14ff5b55": {
+      "source_raw_sha256": "33c52209a1ac3b0a8598c86febb43b26ce7bf0e95ffa8f7d963c872fc7276bdb",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "-\\tfrac32",
+        "-\\tfrac34"
+      ],
+      "answer": "-\\tfrac32, -\\tfrac34",
+      "answer_contract": "all_values_required"
+    },
+    "85e1b857de0934a4c48c2a9759b852490a0d5ebde1ee679854f907718603cd7d": {
+      "source_raw_sha256": "915ff620809aef59b3c96a7fbeea4bf0555e49e77bdedf5e31d1efcf96d16dd1",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "-10879",
+        "10879"
+      ],
+      "answer": "-10879, 10879",
+      "answer_contract": "all_values_required"
+    },
+    "2149b00925d47f2b42c426c20a2793259757c062ee84ded1ca346bac8624746b": {
+      "source_raw_sha256": "83f49b33b557eee96037d218a14413109f559ef3a04fb1908af0c06b78109b91",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "3",
+        "\\frac{2}{5}"
+      ],
+      "answer": "3, \\frac{2}{5}",
+      "answer_contract": "all_values_required"
+    },
+    "e8029b2c3f6fed5529d4cae19c100f1b5836caf9b74acfa0c5ff0cce63799892": {
+      "source_raw_sha256": "57b6ce3a5f2adbbbc25b76fec6a39c1be205d9a4d7a9a5333e4c142fa3fa3f21",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "(10, 0)",
+        "(0,0)"
+      ],
+      "answer": "(10, 0)",
+      "accepted_answers": [
+        "(10, 0)",
+        "(0,0)"
+      ],
+      "answer_contract": "any_one_of_the_listed_answers"
+    },
+    "cd1591205062fdca3beba908d85627e4366b253503dc36c3ba068d405e9cc375": {
+      "source_raw_sha256": "69f814f9aa3f54b2515a8fbb3fe76e64d2ab15d1c330adfce86f658b1d36ba4a",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\left(\\tfrac32, -\\tfrac52\\right)",
+        "\\left(-\\tfrac52, -\\tfrac52\\right)"
+      ],
+      "answer": "\\left(\\tfrac32, -\\tfrac52\\right)",
+      "accepted_answers": [
+        "\\left(\\tfrac32, -\\tfrac52\\right)",
+        "\\left(-\\tfrac52, -\\tfrac52\\right)"
+      ],
+      "answer_contract": "any_one_of_the_listed_answers"
+    },
+    "e386068987156333db4960cb723597a3d3dd2d97a3fb1e21d46e7f600ff45ecb": {
+      "source_raw_sha256": "c3e2503b38b8deb7ba5b28b32c303e430c8f3ff831782bb9392d813f72251b3d",
+      "parsed_answer_before": "",
+      "note": "Preserved the unconditional answer and removed the source alternative that depends on an unstated domain assumption.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "(3,-5)",
+        "(0,0)"
+      ],
+      "answer": "(3,-5)",
+      "answer_contract": "guaranteed_from_given_domain_point",
+      "explanation": "An odd function satisfies f(-x)=-f(x) on its symmetric domain. Since f(-3)=5, f(3)=-5, so (3,-5) is guaranteed. The point (0,0) is guaranteed only if zero belongs to the domain; the question does not state that condition, so it is not an unconditional alternative."
+    },
+    "c7bf1ec5c9131f4b516f0382e22b6816e6aeda9c817b00a52748e68f98ed6bbe": {
+      "source_raw_sha256": "a3cd0f226cbb9d623c122cae08ad54bbf53c46505645d777af0b1bacd581ff66",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "j-i \\equiv 0 \\pmod{6}",
+        "784"
+      ],
+      "answer": "784",
+      "answer_contract": "final_requested_quantity"
+    },
+    "46dee44523bcab89c5af99cb4f9f4c21a2860d200740ed3eadda72f2cd58e924": {
+      "source_raw_sha256": "7dcf809394210ee72137ac64f5a9f655165b7fe4ece04f7989778331406b47d9",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "28",
+        "28_9"
+      ],
+      "answer": "28_9",
+      "answer_contract": "final_requested_quantity"
+    },
+    "222fcbf9a42007ad396b12278534b713e59df238995c98d790bdb55011bbe8e6": {
+      "source_raw_sha256": "d3e5daa8e666580a904a45fdec4a65e8aff0ff3d77bf7957aecc138b231bd7d6",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "20\\!:\\!34",
+        "8\\!:\\!34 \\text{ p.m.}"
+      ],
+      "answer": "8\\!:\\!34 \\text{ p.m.}",
+      "answer_contract": "final_requested_quantity"
+    },
+    "4c5a0cf391f4ed03e03be5c3c6ea528409323486c0cf3238168a70b74e4ff40c": {
+      "source_raw_sha256": "cee5922be36747893c8182a104163cb23bc1ec92f0219ca176ac469ee2c81ed0",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "15\\frac{39}{40}",
+        "\\frac{639}{40}"
+      ],
+      "answer": "\\frac{639}{40}",
+      "answer_contract": "final_requested_quantity"
+    },
+    "14b480bdfbaac9a64793bc216895a9507514f14200b03cf8e2cc638618470693": {
+      "source_raw_sha256": "ea62a33fd9f13426c252ae4d6839d7c0d834eb2702924157299d0c09b23260c7",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "-b+2",
+        "2 - b"
+      ],
+      "answer": "2 - b",
+      "answer_contract": "final_requested_quantity"
+    },
+    "79a846ee06d553375596529d96971bc530b54acf554a5bf5d7653d1d3fe91e4c": {
+      "source_raw_sha256": "97ffb75d8c4de5ce84f6fd41b3a7f2f6a0bf8c635fc86127d225ae855ed3c64b",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "x+11",
+        "11+x"
+      ],
+      "answer": "11+x",
+      "answer_contract": "final_requested_quantity"
+    },
+    "1682c657adf29aa1851c354ac1e9a0e4f734e2c17d1649f244456b37ad286cc6": {
+      "source_raw_sha256": "66ce162e1b45377238f0106c8e030fe5cf346f005545b3d0d4490c698ffec3b4",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\phantom{2}",
+        "4"
+      ],
+      "answer": "4",
+      "answer_contract": "final_requested_quantity"
+    },
+    "10cb2bd67847afe4bf625c2146751885201d5b4bb11023bb854f7125064c5a5b": {
+      "source_raw_sha256": "246ea10b9c0428b7b67bcd14b30d97586ca537d5423de894022af125a38c27d1",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "11",
+        "20",
+        "12"
+      ],
+      "answer": "6",
+      "answer_contract": "custom_box_operator_not_answer_markup",
+      "explanation": "Here a box denotes the divisor-count function. 11 has 2 positive divisors and 20 has 6, so the inner product is 2×6=12. The positive divisors of 12 are 1,2,3,4,6,12, giving a final answer of 6. Boxed 11,20,12 in the source are inputs to this operator, not final answers."
+    },
+    "003e3c8bcae9bf134208723741e9839a0eb0eb28aa41392da6ff0253a83d16fe": {
+      "source_raw_sha256": "e91e314b76943073f11716d2363c9d88b9db0fa385f0fde19057357445563b10",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "12x -34",
+        "-34 + 12x"
+      ],
+      "answer": "-34 + 12x",
+      "answer_contract": "final_requested_quantity"
+    },
+    "7c6a1c5773a91d416a2505bea2e0277caf55f4bbc33e1d6cf17215816d99deea": {
+      "source_raw_sha256": "1db068f7873f6d35285a1753bf99e19ea8ed85cb231edc65d05f737e6346d2e4",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "12",
+        "18"
+      ],
+      "answer": "12, 18",
+      "answer_contract": "all_values_required"
+    },
+    "4387b65ca7d8500272ff20fd77f8efa5c1369330653bc9b2ddd04d97fe631764": {
+      "source_raw_sha256": "8ff9460a5cd980d37e58e0a589dd8e50e1c6ccb86eb31c8e12ac6f0d4b13478e",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "5",
+        "-3"
+      ],
+      "answer": "5, -3",
+      "answer_contract": "all_values_required"
+    },
+    "be33409f68f047ba2a543da06ba3dba7bd899715ae29f94f09dd373bec861d94": {
+      "source_raw_sha256": "d84219f9c8f6fd3c1e905c1936d510c942578bff52b7b90e805a39e6ed67f4d7",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "30^\\circ",
+        "150^\\circ"
+      ],
+      "answer": "30^\\circ, 150^\\circ",
+      "answer_contract": "all_values_required"
+    },
+    "3bc392c304eb6ebb96ee4233a72d661986faa3843ad4854b39fc7d32886a49f7": {
+      "source_raw_sha256": "e60bcbc35bada0053350a90ce6ec0980c9cfabd7c527479223347c72cb1d6915",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "60^\\circ",
+        "45^\\circ",
+        "75^\\circ"
+      ],
+      "answer": "60^\\circ, 45^\\circ, 75^\\circ",
+      "answer_contract": "all_values_required"
+    },
+    "168b908d710b3cd1faf12ec340958dab9035d904a43247a8b5c31196933f24c9": {
+      "source_raw_sha256": "b4b87dd703fb0b3cb5d69ffa0d6bc601dfbbdebd8ced8f39ff37132fc3cc2114",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "4",
+        "-4"
+      ],
+      "answer": "4, -4",
+      "answer_contract": "all_values_required"
+    },
+    "1a2aec118b2104fb8bd5c6c658ea7848e5d28d0f3ef609908085541550cc9195": {
+      "source_raw_sha256": "9f1eac8f2c6e7c83904062e5002055e4591d0c57499ecb0b67e93158af2af9cf",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "30^\\circ",
+        "75^\\circ, 75^\\circ"
+      ],
+      "answer": "30^\\circ, 75^\\circ, 75^\\circ",
+      "answer_contract": "all_values_required"
+    },
+    "1d2fd56068e913ee12edbbe30f353d18ce3ed3e9a3d7d13542d54d3f70c53343": {
+      "source_raw_sha256": "8a51a2c81a278000cb909e935f870207722b6af7d1983f7310b4efde44f3e687",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\frac{3}{2}",
+        "-3"
+      ],
+      "answer": "\\frac{3}{2}, -3",
+      "answer_contract": "all_values_required"
+    },
+    "ea691ede86314f172dfecb502cc8b2b3e245a494838022b543497d45c0a23143": {
+      "source_raw_sha256": "c636084279d23b2989bf4ac9061d0acd5e9b5797acd3045527b3805661a16dbd",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\begin{pmatrix} 2/3 \\\\ -2/3 \\\\ -1/3 \\end{pmatrix}",
+        "\\begin{pmatrix} -2/3 \\\\ 2/3 \\\\ 1/3 \\end{pmatrix}"
+      ],
+      "answer": "\\begin{pmatrix} 2/3 \\\\ -2/3 \\\\ -1/3 \\end{pmatrix}",
+      "accepted_answers": [
+        "\\begin{pmatrix} 2/3 \\\\ -2/3 \\\\ -1/3 \\end{pmatrix}",
+        "\\begin{pmatrix} -2/3 \\\\ 2/3 \\\\ 1/3 \\end{pmatrix}"
+      ],
+      "answer_contract": "any_one_of_the_listed_answers"
+    },
+    "2b4212828af11c7248b244e477e0c458c46a7a3c1fc2dfef106288ab8824d0a9": {
+      "source_raw_sha256": "62ad1f552cd6e76584259f60ee2f33d71a28e5dbf8e0360f438e36c59544f056",
+      "parsed_answer_before": "",
+      "note": "sin(3x-pi)=sin(3(x-pi/3)); a right shift pi/3 is conventional. A left shift pi/3 differs by one full period 2pi/3 and is also valid.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\frac{\\pi}{3}",
+        "-\\frac{\\pi}{3}"
+      ],
+      "answer": "\\frac{\\pi}{3} to the right",
+      "accepted_answers": [
+        "\\frac{\\pi}{3}",
+        "-\\frac{\\pi}{3}"
+      ],
+      "answer_contract": "phase_shift_modulo_2pi_over_3"
+    },
+    "0d701bc1855bd53036e81dd6adb94d5e7157d85d372eedc705e3ed330d863050": {
+      "source_raw_sha256": "5f91c953e4b397f4fc0dfb2c5544d0b1b9c9ea515e46a21591ef46515afe02b1",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "-1",
+        "2"
+      ],
+      "answer": "-1, 2",
+      "answer_contract": "all_values_required"
+    },
+    "f71979fd2e7e6f418e6ffe5d14fd8a8c2078c284edc9119d1916eb5580c107c4": {
+      "source_raw_sha256": "f5a5201191e9662f4c79e785d829305066eec6f12aacdfda9101226f9dbe81dd",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "30^\\circ",
+        "45^\\circ",
+        "105^\\circ"
+      ],
+      "answer": "30^\\circ, 45^\\circ, 105^\\circ",
+      "answer_contract": "all_values_required"
+    },
+    "9c484dd60a2228075462250448b73a9cbb5278b97f13bd72761b9915f691e44b": {
+      "source_raw_sha256": "b0ba97410e8b7c565e9e586bef987685b98cc300c1b0885f858a6e3778015c6d",
+      "parsed_answer_before": "",
+      "note": "Compared the actual question with the worked solution. The selected response preserves every required value and separates alternative valid responses from intermediate boxed expressions. Formal teaching review remains pending.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "multiple_boxed_answers",
+        "missing_answer"
+      ],
+      "answer_candidates_before": [
+        "\\frac{\\pi}{4}",
+        "\\frac{5\\pi}{4}"
+      ],
+      "answer": "\\frac{\\pi}{4}, \\frac{5\\pi}{4}",
+      "answer_contract": "all_values_required"
+    },
+    "c2c5198cb96f247f634608f3c4685586f6238977d86518f2e790dcf0236966bc": {
+      "source_raw_sha256": "21b946d469281a6e36bbb425dadcfdcb1a7e4d3090fc567cb563bf51892de692",
+      "parsed_answer_before": "",
+      "note": "Unbraced LaTeX box token was not extracted. Factoring 2x²-5x+2=(2x-1)(x-2) yields 1/2 and 2; largest is 2.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "missing_answer"
+      ],
+      "answer_contract": "unique",
+      "answer": "2"
+    },
+    "b6824a0b7341bf81161e53ca987a3510997fa84e46d60f917797bd2470576677": {
+      "source_raw_sha256": "1ce7b22ba5219eeaffe260c6af05cf876a5486a5362b9f287c1a000499b94293",
+      "parsed_answer_before": "",
+      "note": "Unbraced LaTeX box token was not extracted. x²+y²=(x+y)²-2xy=1-2(-4)=9.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "missing_answer"
+      ],
+      "answer_contract": "unique",
+      "answer": "9"
+    },
+    "74345cf360569a3bd1599368ecd08cf8088cfc5c55e36c01b9237c4c04345801": {
+      "source_raw_sha256": "791a2a5a308467a8a20845b313419c7161167f6d1f1be7746a5c6dec487a747b",
+      "parsed_answer_before": "",
+      "note": "The source box is empty. Every integer strictly in the interval is n!+k with 2≤k≤n-1, divisible by k and larger than k. For n=2 the interval has no integers. Thus there are no primes.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "missing_answer"
+      ],
+      "answer_contract": "unique",
+      "answer": "0"
+    },
+    "87c2e1551ada3b33a0b98054ef66ee62935aacfff7dd09b0fde82502447b4532": {
+      "source_raw_sha256": "eaf64f8b94c6d932836ef93f83ed584782f6893c1c830cd9b077a8f6eb058e1b",
+      "parsed_answer_before": "",
+      "note": "The source box is empty. Each 2≤n≤59 has a prime divisor p≤59 that also divides P; p divides P+n, which is larger than p. All 58 terms are composite.",
+      "approval": "unreviewed",
+      "cleared_issues": [
+        "missing_answer"
+      ],
+      "answer_contract": "unique",
+      "answer": "0"
+    }
+  }
+}

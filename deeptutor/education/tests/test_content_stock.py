@@ -1,9 +1,10 @@
+from copy import deepcopy
 import json
 from pathlib import Path
 import sqlite3
 import tempfile
 import unittest
-from deeptutor.education.application.content_stock import boxed, parse_file, process
+from deeptutor.education.application.content_stock import boxed, parse_file, process, apply_source_review
 
 
 def math_source(prompt='Calculate 6 times 7.',answer='42'):
@@ -86,6 +87,19 @@ class StockTests(unittest.TestCase):
             self.assertEqual(report['records'],2)
             self.assertEqual(report['duplicate_records'],0)
             self.assertEqual(report['issues']['missing_figure'],2)
+
+    def test_source_review_is_bound_and_cannot_clear_figure_or_approval(self):
+        row={'raw_sha256':'a'*64,'answer':'','issues':['missing_answer','missing_figure'],
+             'metadata':{},'approval':'unreviewed'}
+        review={'source_raw_sha256':'a'*64,'parsed_answer_before':'','approval':'unreviewed',
+                'answer':'0','cleared_issues':['missing_answer'],'note':'Verified composite numbers.'}
+        updated=deepcopy(row);apply_source_review(updated,review)
+        self.assertEqual(updated['answer'],'0')
+        self.assertEqual(updated['issues'],['missing_figure'])
+        self.assertEqual(updated['approval'],'unreviewed')
+        for change in [{'source_raw_sha256':'b'*64},{'parsed_answer_before':'99'},
+                       {'cleared_issues':['missing_figure']},{'approval':'production'}]:
+            with self.assertRaises(ValueError):apply_source_review(deepcopy(row),{**review,**change})
 
     def test_symlink_cannot_read_unrelated_files(self):
         with tempfile.TemporaryDirectory() as tmp:

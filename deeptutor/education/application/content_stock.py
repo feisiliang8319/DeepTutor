@@ -16,7 +16,7 @@ import re
 import sqlite3
 import unicodedata
 
-VERSION = 2
+VERSION = 3
 LIBRARIES = ('harp-competition', 'math-competition', 'scienceqa', 'qasc',
              'world-history-1500', 'us-newspapers-primary-source', 'im-g4-full', 'im-g4-u1')
 BLOCKING = {'missing_prompt', 'missing_answer', 'missing_explanation', 'missing_figure',
@@ -180,8 +180,34 @@ def state(row: dict) -> str:
     return 'needs_curriculum_review'
 
 
+def apply_source_review(row: dict, review: dict) -> None:
+    """Only exact source-bound corrections; never clear asset or approval gates."""
+    if (review['source_raw_sha256']!=row['raw_sha256']
+            or review['parsed_answer_before']!=row['answer']
+            or review.get('approval')!='unreviewed'):
+        raise ValueError('Source review no longer matches this record')
+    if 'answer_candidates_before' in review and review['answer_candidates_before']!=row['metadata'].get('answer_candidates'):
+        raise ValueError('Source answer candidates changed')
+    cleared=set(review.get('cleared_issues',[]))
+    if not cleared <= {'missing_answer','multiple_boxed_answers'}:
+        raise ValueError('Source review cannot override other readiness gates')
+    if 'answer' in review:
+        if not isinstance(review['answer'],str) or not review['answer'].strip(): raise ValueError('Reviewed answer is empty')
+        row['answer']=review['answer']
+    if 'explanation' in review:
+        row['explanation']='DeepTutor source correction: '+review['explanation']
+    row['issues']=[issue for issue in row['issues'] if issue not in cleared]
+    row['metadata']['source_review']=review
+    if 'equivalent_answer_key' in review:
+        row['answer_equivalence_key']=review['equivalent_answer_key']
+
+
 def process(root: Path, output: Path, batch_size: int = 1000) -> dict:
     if not 1<=batch_size<=1000: raise ValueError('Batch size must be 1–1000')
+    review_file=Path(__file__).parents[1]/'content_sources/stock-math-source-reviews-v1.json'
+    review_blob=review_file.read_bytes() if review_file.exists() else b''
+    reviews=json.loads(review_blob)['records'] if review_blob else {}
+    reviewed_ids=set()
     files=[]
     for library in LIBRARIES:
         folder=root/library/'raw'
@@ -195,7 +221,7 @@ def process(root: Path, output: Path, batch_size: int = 1000) -> dict:
     manifest=[dict(library=lib,path=str(p.relative_to(root)),sha256=sha,bytes=len(blob))
               for lib,p,blob,sha in files]
     parser_sha256=digest(Path(__file__).read_bytes())
-    identity=digest(json.dumps({'version':VERSION,'parser_sha256':parser_sha256,'sources':manifest},sort_keys=True))
+    identity=digest(json.dumps({'version':VERSION,'parser_sha256':parser_sha256,'review_sha256':digest(review_blob),'sources':manifest},sort_keys=True))
     folder=output/identity
     if (folder/'summary.json').exists():
         summary=json.loads((folder/'summary.json').read_text())
@@ -225,6 +251,8 @@ def process(root: Path, output: Path, batch_size: int = 1000) -> dict:
             row.update(library=library,source_path=str(path.relative_to(root)),source_sha256=sha,
                        raw_sha256=digest(raw),source_line=text.count('\n',0,row['start'])+1,
                        id=digest(str(path.relative_to(root))+':'+sha+':'+str(row['start'])),duplicate_of=None)
+            if row['id'] in reviews:
+                apply_source_review(row,reviews[row['id']]);reviewed_ids.add(row['id'])
             fingerprint_parts=[row['kind'],norm(row['prompt']),[norm(v) for v in row['options']]]
             # Two missing images can encode different questions despite identical
             # visible text. Their absence prevents a safe duplicate decision.
@@ -241,7 +269,7 @@ def process(root: Path, output: Path, batch_size: int = 1000) -> dict:
     duplicates=0;conflicts=0
     for (fingerprint,) in groups:
         matches=[json.loads(r[0]) for r in conn.execute('SELECT data_json FROM records WHERE fingerprint=? ORDER BY rowid',(fingerprint,))]
-        answers={norm(r['answer'].strip('$ ')) for r in matches if r['answer']}
+        answers={r.get('answer_equivalence_key',norm(r['answer'].strip('$ '))) for r in matches if r['answer']}
         conflict=len(answers)>1
         # Prefer a copy without missing assets/answers; don't discard the best copy
         # solely because a lower-quality source appeared earlier in file order.
@@ -266,7 +294,7 @@ def process(root: Path, output: Path, batch_size: int = 1000) -> dict:
         all_issues.update(issues)
         library_summaries.append(dict(library=library,total=totals[library],states=dict(counts),issues=dict(issues),kinds=dict(kinds)))
     conn.close()
-    summary=dict(schema_version=VERSION,parser_sha256=parser_sha256,snapshot_id=identity,created_at=datetime.now(timezone.utc).isoformat(),
+    summary=dict(schema_version=VERSION,parser_sha256=parser_sha256,review_sha256=digest(review_blob),source_reviews_applied=len(reviewed_ids),source_reviews_not_applicable=len(set(reviews)-reviewed_ids),snapshot_id=identity,created_at=datetime.now(timezone.utc).isoformat(),
                  source_files=len(files),source_bytes=sum(len(b) for _,_,b,_ in files),
                  records=sum(totals.values()),committed_batches=batches,batch_size=batch_size,
                  duplicate_records=duplicates,answer_conflict_records=conflicts,unique_im_lessons=len(families),

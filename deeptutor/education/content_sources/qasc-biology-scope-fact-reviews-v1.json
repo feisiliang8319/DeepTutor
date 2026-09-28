@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "library": "qasc",
+  "expected_records": 9060,
+  "expected_changed_records": 124,
+  "reviews": [
+    {
+      "fact_id": "9fb074f62b4f4415548272a728efdb6bcc43dd3a84d18c4befb16fb1fe21d151",
+      "fact_before": "an aquatic animal requires great amounts of water to survive",
+      "correction": "An aquatic animal needs a habitat with conditions suitable for its species. The amount of water alone does not establish suitability: water quality, oxygen, temperature, and access to habitat can matter. Great amounts is not a defined water requirement for every aquatic animal.",
+      "reason": "An undefined quantity is treated as a sufficient, universal survival condition.",
+      "references": [
+        "https://www.fws.gov/story/what-fish-passage"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 15
+    },
+    {
+      "fact_id": "3deeaf5bd2271633e3710bcf04e59f39d798a06f810bdc6f926abd1aa103fc09",
+      "fact_before": "Sperm had to swim from male to female reproductive organs for fertilization.",
+      "correction": "Fertilization involves the union of gametes, but not every organism uses freely swimming sperm. In flowering plants, a pollen tube delivers sperm to the female gametophyte. A statement about swimming sperm must identify the organisms and reproductive context before it is applied.",
+      "reason": "The past-tense source statement has lost its organism scope and is mixed with unrelated human and plant reproductive claims.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/26-3-angiosperms"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 15
+    },
+    {
+      "fact_id": "d22a09d9d10cc5ad7aec5306f645882efe8da305aa19fb26222cba420f778586",
+      "fact_before": "Fertilization occurs when sperm swim to an egg inside an archegonium.",
+      "correction": "In ferns, swimming sperm can reach an egg within an archegonium of the gametophyte. An archegonium is a plant reproductive structure; it is not a human uterus and this description is not a universal account of fertilization or pregnancy.",
+      "reason": "A plant reproductive structure is incorrectly mixed with human pregnancy and generalized across organisms.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/25-4-seedless-vascular-plants"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 14
+    },
+    {
+      "fact_id": "b406f9ded56545c197a27bec145390f63fdd44315b28eab6cd71ef6566850f55",
+      "fact_before": "Marine species live mainly in shallow coastal waters.",
+      "correction": "Marine species occupy diverse ocean habitats, including deep water. Being marine does not by itself establish that a particular species lives in shallow, warm, or coastal water. Claims about where most species live require a defined population and evidence.",
+      "reason": "A broad habitat statement is used to assign habitats to individual species and even to organisms in general.",
+      "references": [
+        "https://oceanexplorer.noaa.gov/static/news/exploration-extras/24-national-ocean-month/welcome.html"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 14
+    },
+    {
+      "fact_id": "6f13b57f88283b964cff25921f087385aa5f21fa21efc0dc9bc617c69c9684af",
+      "fact_before": "Roots have primary and secondary meristems for growth in length and width.",
+      "correction": "Root apical meristems support primary growth in length. Secondary thickening occurs in plants with the relevant lateral meristems, but typical vascular-cambium secondary growth is not a universal feature of all roots; most monocots lack it.",
+      "reason": "The source generalizes one growth pattern to all roots and conflates root growth with shoot branching.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/30-2-stems"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 14
+    },
+    {
+      "fact_id": "c9f42c6353020a963c5c59e8fa973606887ad54d50b99ce19fa5235ecdad12c5",
+      "fact_before": "Corals form large colonies in shallow tropical water.",
+      "correction": "Many tropical reef-building corals form colonies in shallow warm water. Other corals live in cold, deep water. The habitat of a particular coral must not be inferred solely from the word coral, and a statement about some coral colonies does not apply to every colony-forming animal.",
+      "reason": "The scope of tropical reef-building corals is omitted and the property is transferred to other groups.",
+      "references": [
+        "https://oceanexplorer.noaa.gov/ocean-fact/coral-water/"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 13
+    },
+    {
+      "fact_id": "d56733e6f56e027d95b7e3dbffe3ac41fc27be7b771d18533d5c9c0cc3e510cd",
+      "fact_before": "Most invertebrates have a more complex nervous system.",
+      "correction": "More complex requires a comparison group and a defined feature of the nervous system. This record names neither. The label invertebrate alone cannot establish which of two animals has a more complex nervous system or whether most have a particular kind of brain.",
+      "reason": "The missing comparison is used to infer unrelated superlatives and brain capabilities.",
+      "references": [
+        "Original supplied QASC fact and its linked records; original source bytes and complete reasoning preserved in immutable source metadata."
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 13
+    },
+    {
+      "fact_id": "0e0bcaaf68d849226f539151fd384ec8adbdabf80ccd34246f24202294eca953",
+      "fact_before": "Mollusks have a circulatory system with one or two hearts that pump blood.",
+      "correction": "Mollusks do not all have one or two hearts. Squid and octopuses have three hearts: two supply the gills and one circulates oxygenated blood to the rest of the body. Heart number must be checked for the particular mollusk group.",
+      "reason": "The incorrect generalization explicitly produces a false heart-count claim for squid.",
+      "references": [
+        "https://ocean.si.edu/ocean-life/invertebrates/octopuses-squids-and-relatives"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 13
+    },
+    {
+      "fact_id": "0d2dfb9d57663639035171ec9e3ba97a137465c1ede8958515a7553aec6b7a8f",
+      "fact_before": "Cells are the microscopic building blocks of organisms.",
+      "correction": "Cells are the basic units of organisms, and most are microscopic. Some individual cells, including the bacterium Thiomargarita magnifica, are visible without a microscope. Being a cellular building block does not mean a cell is itself a single molecule.",
+      "reason": "An elementary size generalization is treated as absolute and is also misused to equate cells with organic molecules.",
+      "references": [
+        "https://newscenter.lbl.gov/2022/06/23/giant-bacteria-found-in-guadeloupe-mangroves-challenge-traditional-concepts/"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 13
+    }
+  ]
+}

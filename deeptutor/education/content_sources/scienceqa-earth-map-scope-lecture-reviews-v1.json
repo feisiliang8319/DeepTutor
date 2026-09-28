@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 917,
+  "reviews": [
+    {
+      "concept_id": "a9891a2585c7ee8f999025e53dc7f011b5d3ca4b1d0ec7caae853abdcdaa5ed9",
+      "expected_records": 1,
+      "lecture_before": "Material that is carried by wind, water, or ice is called sediment. Sand and mud are examples of sediment. Sediment may be deposited, or laid down, in places such as deserts and the ocean floor.\nOver time, sediment can be pressed together to form sedimentary rock. You can observe a sedimentary rock to learn about the environment in which the sediment was deposited.\nEach type of sediment forms a different sedimentary rock. Here are some examples of sedimentary rocks:\nSandstone forms from sand. Sand is usually deposited by wind in deserts and by water on beaches.\nShale and mudstone form from mud. Mud is often deposited at the bottom of oceans and deep lakes.\nLimestone forms from sediment made mostly of the shells of marine organisms. This type of sediment is often deposited in the ocean near coral reefs.\nConglomerate forms from sediment of many different sizes, such as mud, sand, pebbles, and boulders. This type of sediment is usually carried by glaciers and fast-flowing rivers. The sediment can be deposited when a glacier melts or a river starts moving more slowly.",
+      "lecture_after": "Material that is carried by wind, water, or ice is called sediment. Sand and mud are examples of sediment. Sediment may be deposited, or laid down, in places such as deserts and the ocean floor.\nOver time, loose sediment can become rock through compaction and cementation. You can observe a sedimentary rock to learn about the environment in which the sediment was deposited.\nGrain size, composition and formation process help distinguish sedimentary rocks. These settings are examples, not the only places where a rock can form:\nSandstone forms from sand. Sand is usually deposited by wind in deserts and by water on beaches.\nShale and mudstone form from mud. Mud is often deposited at the bottom of oceans and deep lakes.\nSome limestone forms from accumulated shells or other biological material; limestone can also form when minerals precipitate from water.\nConglomerate contains rounded to subangular gravel-sized fragments, often held in a finer matrix. Fragment shape and size matter: a poorly sorted mixture alone does not identify conglomerate. Moving water can deposit such gravel, but the whole rock and its setting are needed to infer its history.",
+      "reason": "Add cementation and diagnostic fragment shape; avoid implying one exclusive environment or one origin for all limestone.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/what-are-sedimentary-rocks?page=1",
+          "supports": "Distinguishes clastic compaction/cementation and biological or chemical limestone."
+        },
+        {
+          "url": "https://apps.usgs.gov/thesaurus/term-simple.php?code=2.1.5&thcode=4",
+          "supports": "Conglomerate contains predominantly rounded to subangular gravel-sized fragments."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "49ed63e51743d1bd5d102e596a1d303a2879ae1efaddd44ad593d176bc2fb459",
+      "expected_records": 20,
+      "lecture_before": "Evidence is information that tells you something happened.\nHow do you look for evidence of a change to Earth's surface?\nThere are many ways to find evidence of a change to Earth's surface. One way is to look at a picture that was taken after the change.\nHere are some examples of what the evidence for different changes might be:\nCause of the change | Evidence of the change\nearthquake | cracks in the ground; houses with broken walls and roofs\nvolcanic eruption | melted rock on Earth's surface; smoke coming out of a hole in the ground\nerosion | a canyon with a river flowing through it; a river carrying sand and mud\nBe careful when you are looking for evidence!\nA picture of Earth's surface can contain a lot of information. Some of that information might be evidence of a change to the surface, but some of it is not!\nFor example, a picture taken after an earthquake might show a blue sky. But the color of the sky is not evidence of an earthquake. So, that information is not evidence that an earthquake happened.",
+      "lecture_after": "Evidence is information that tells you something happened.\nHow do you look for evidence of a change to Earth's surface?\nThere are many ways to find evidence of a change to Earth's surface. One way is to look at a picture that was taken after the change.\nHere are some examples of what the evidence for different changes might be:\nCause of the change | Evidence of the change\nearthquake | cracks in the ground; houses with broken walls and roofs\nvolcanic eruption | melted rock on Earth's surface; volcanic gas or ash emerging from a volcanic vent\nerosion | a canyon with a river flowing through it; a river carrying sand and mud\nBe careful when you are looking for evidence! A crack or damaged building can have several causes, and volcanic gas can escape without a new eruption. A photograph is a clue to compare with other observations, not proof of one cause by itself.\nA picture of Earth's surface can contain a lot of information. Some of that information might be evidence of a change to the surface, but some of it is not!\nFor example, a picture taken after an earthquake might show a blue sky. But the color of the sky is not evidence of an earthquake. So, that information is not evidence that an earthquake happened.",
+      "reason": "Correct volcanic smoke wording and avoid inferring a unique cause from nonspecific signs.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/publications/volcanic-gas",
+          "supports": "Explains volcanic gas emission from active and inactive volcanoes."
+        },
+        {
+          "url": "https://volcanoes.usgs.gov/volcanic_ash/ash_gas.html",
+          "supports": "Volcanic ash consists of rock and glass fragments rather than combustion ash."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "85d5a7c25b8877441035314095021b6e3c68439babd097d87ddee4ad4076a39f",
+      "expected_records": 44,
+      "lecture_before": "The way an organism looks or acts is called a trait. Scientists use fossils to learn more about the traits of ancient organisms.\nFossils can preserve the remains of body parts and activities. A fossil of a body part, such as a tail or a wing, can tell you what an organism looked like. A fossil of an organism's activities, such as a burrow or a footprint, can tell you about the organism's behavior.\nHere are three examples of fossils and the traits that you can observe from them:\nThis is a fossil of an animal. This fossil tells you that the animal had a spiral-shaped shell.\nThis is a fossil of a plant. This fossil tells you that the plant had small leaves arranged in a branched pattern.\nThis is a fossil of an animal's footprint. This fossil tells you that the animal could walk on land.\nAn organism's fossil may not show all of the organism's traits. This is because most body parts are destroyed during fossil formation. When an organism's body turns into a fossil, only a few body parts are usually preserved.",
+      "lecture_after": "The way an organism looks or acts is called a trait. Scientists use fossils to learn more about the traits of ancient organisms.\nFossils can preserve the remains of body parts and activities. A fossil of a body part, such as a tail or a wing, can tell you what an organism looked like. A fossil of an organism's activities, such as a burrow or a footprint, can tell you about the organism's behavior.\nHere are conditional examples of what a fossil might show. The actual specimen or image is needed to confirm each observation:\nIf a fossil preserves a spiral shell, that supports a conclusion about the shell shape.\nIf a plant fossil preserves small leaves on branches, it can provide evidence about their arrangement.\nA footprint records contact with a surface. Tracks alone do not establish that the surface was on dry land; organisms can also leave tracks underwater. Sediment and other evidence help interpret the setting.\nAn organism's fossil may not show all of the organism's traits. This is because most body parts are destroyed during fossil formation. When an organism's body turns into a fossil, only a few body parts are usually preserved.",
+      "reason": "Replace unsupported observations of absent figures with conditional examples; footprints alone do not prove a dry-land setting.",
+      "references": [
+        {
+          "url": "https://www.nps.gov/subjects/fossils/what-is-a-fossil.htm",
+          "supports": "Defines fossils by biological evidence and geologic context; neither minimum age nor petrification is required."
+        },
+        {
+          "url": "https://www.nps.gov/subjects/fossils/body-fossils.htm",
+          "supports": "Hard parts are more likely to survive fossilization than soft tissues, but preservation is selective."
+        },
+        {
+          "url": "https://www.nhm.ac.uk/discover/news/2023/march/fossils-reveal-how-giant-amphibians-swam-shores-ancient-sea.html",
+          "supports": "Describes fossil tracks and modern animals walking along the underwater floor."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "e49ed76878dd6ae93be19fe4a68ffc079cbe5fa4650dcaf543431d7247bf3268",
+      "expected_records": 4,
+      "lecture_before": "Although the Moon appears to shine, it does not give off light. Instead, we can see the Moon because it is lit up by the Sun. The part of the Moon that is both lit up by the Sun and facing Earth is called the Moon's phase.\nThe Moon orbits, or goes around, Earth. As it does, the Moon's phase changes. The model below shows the Moon's phase at eight positions in its orbit. The smaller moons closer to Earth show where sunlight hits the Moon. The larger moons farther from Earth show how the Moon will look during that phase.\nTo use the model, first pick one of the eight positions. Then, imagine standing on Earth and looking up at the Moon. Use the dotted white lines in the model to guide you. The picture of the Moon shows its phase for that position. If you are in the Southern Hemisphere, the Moon will appear flipped, left to right.",
+      "lecture_after": "We usually see the Moon by reflected sunlight. The visible sunlit portion changes as the Moon orbits Earth; this produces the familiar phases. This explanation concerns visible moonlight, not every kind of radiation the Moon emits.\nA phase diagram can show positions of the Sun, Earth and Moon together with the appearance seen by an observer. Read its labels and illumination direction before using it. Without the actual diagram, a numbered position or dotted guide line cannot be identified.\nPeople in different hemispheres observe the same phase at a given time, but from different orientations. The familiar southern view can look upside down relative to the northern view. This is a change in viewing orientation, not a literal left-right mirror reflection; the apparent tilt also depends on the observer and the Moon's position in the sky.",
+      "reason": "Correct the mirror-reflection claim and stop giving instructions for a missing diagram as though it were present.",
+      "references": [
+        {
+          "url": "https://science.nasa.gov/moon/top-moon-questions/",
+          "supports": "Explains reflected sunlight, phases and different viewing orientation across hemispheres."
+        },
+        {
+          "url": "https://science.nasa.gov/moon/moon-phases/",
+          "supports": "Explains observer-dependent apparent tilt."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "6ab26123b1cc998fddbb041586fec23fefbe7de352fbc2ca109b883d7004fa17",
+      "expected_records": 8,
+      "lecture_before": "Humans have invented many ways to use natural resources. We use energy from natural resources in our daily activities, including cooking food, moving objects, and powering machines.\nSome ways of using natural resources for energy add to air pollution, and others do not.\nWood, oil, and coal are examples of natural resources that are fuels. Burning a fuel provides energy. But it also releases chemicals that can be harmful to our health and to the environment. These chemicals add to air pollution.\nSunlight, wind, and water are natural resources that can provide energy. Using energy from the Sun, wind, or water does not burn material. These uses of energy do not release chemicals that add to air pollution.",
+      "lecture_after": "Humans have invented many ways to use natural resources. We use energy from natural resources in our daily activities, including cooking food, moving objects, and powering machines.\nEnergy sources differ in their direct emissions and in the impacts of constructing and operating the equipment.\nWood, oil, and coal are examples of natural resources that are fuels. Burning a fuel provides energy. But it also releases chemicals that can be harmful to our health and to the environment. These chemicals add to air pollution.\nSolar panels, wind turbines and flowing-water turbines can generate electricity without burning fuel at the generator. That does not mean zero impact over their whole life cycle: equipment production, construction and some reservoirs can cause emissions or other environmental changes.",
+      "reason": "Distinguish fuel-free operation from a zero-impact claim about the entire energy system.",
+      "references": [
+        {
+          "url": "https://www.eia.gov/energyexplained/hydropower/hydropower-and-the-environment.php",
+          "supports": "Distinguishes electricity generation from construction emissions, reservoir gases and environmental effects."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "03c37c4516b89e1d8e4b6cde4e1fa3d4bbb8a8288944f25bc072f7a1c72bfcd0",
+      "expected_records": 2,
+      "lecture_before": "Fossils are preserved remains of the body parts or activities of ancient organisms.\nSome fossils show the body parts of organisms. Bones and shells are two body parts that are commonly preserved in fossils.\nSome fossils show traces of an organism's activities. Footprints and burrows are two examples of traces that can be preserved in fossils. A burrow is a hole dug by an animal.\nAll fossils are formed in nature. They take thousands of years to form.",
+      "lecture_after": "Fossils are preserved remains of the body parts or activities of ancient organisms.\nSome fossils show the body parts of organisms. Bones and shells are two body parts that are commonly preserved in fossils.\nSome fossils show traces of an organism's activities. Footprints and burrows are two examples of traces that can be preserved in fossils. A burrow is a hole dug by an animal.\nFossils preserve evidence of life in a geologic context. Many are very old, but there is no single required formation time or requirement that remains turn into stone. A human-made replica is not the original fossil.",
+      "reason": "Remove the universal minimum formation-time claim.",
+      "references": [
+        {
+          "url": "https://www.nps.gov/subjects/fossils/what-is-a-fossil.htm",
+          "supports": "Defines fossils by biological evidence and geologic context; neither minimum age nor petrification is required."
+        },
+        {
+          "url": "https://www.nps.gov/subjects/fossils/body-fossils.htm",
+          "supports": "Hard parts are more likely to survive fossilization than soft tissues, but preservation is selective."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "d9c22673b615ef6a2a0b4d980ac8785fffc484c071b6138b69126438a26953c6",
+      "expected_records": 7,
+      "lecture_before": "Fossils are the remains of organisms that lived long ago. Scientists look at fossils to learn about the traits of ancient organisms. Often, scientists compare fossils to modern organisms.\nSome ancient organisms had many traits in common with modern organisms. Other ancient organisms were very different from any organisms alive today. The similarities and differences provide clues about how ancient organisms moved, what they ate, and what type of environment they lived in.\nBe careful when observing a fossil's traits!\nAs an organism turns into a fossil, many parts of its body break down. Soft parts, such as skin, often break down quickly. Hard parts, such as bone, are usually preserved. So, a fossil does not show all of an organism's traits.",
+      "lecture_after": "Fossils are the remains of organisms that lived long ago. Scientists look at fossils to learn about the traits of ancient organisms. Often, scientists compare fossils to modern organisms.\nSome ancient organisms had many traits in common with modern organisms. Other ancient organisms were very different from any organisms alive today. The similarities and differences provide clues about how ancient organisms moved, what they ate, and what type of environment they lived in.\nBe careful when observing a fossil's traits!\nAs an organism turns into a fossil, many parts of its body break down. Soft parts, such as skin, often break down quickly. When fossil preservation occurs, hard parts such as bone are more likely to survive than soft parts. This does not mean that most bones become fossils. So, a fossil does not show all of an organism's traits.",
+      "reason": "Distinguish preferential preservation from a claim that hard parts are usually fossilized.",
+      "references": [
+        {
+          "url": "https://www.nps.gov/subjects/fossils/what-is-a-fossil.htm",
+          "supports": "Defines fossils by biological evidence and geologic context; neither minimum age nor petrification is required."
+        },
+        {
+          "url": "https://www.nps.gov/subjects/fossils/body-fossils.htm",
+          "supports": "Hard parts are more likely to survive fossilization than soft tissues, but preservation is selective."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "834e9bdf2102d86784a4ac8bedf1237cdf90cf41ed20c2ebdf775279f10df365",
+      "expected_records": 1,
+      "lecture_before": "Fossils are preserved remains of the body parts or activities of ancient organisms.\nSome fossils show the body parts of organisms. Bones and shells are two examples of body parts that can be preserved in fossils.\nSome fossils show traces of an organism's activities. An animal might leave footprints in mud or dig a burrow in soil. These traces might be preserved as fossils.\nFossils are not human-made. All fossils are formed in nature.\nFossils take a long time to form. For example, an organism's body can take thousands of years to become a fossil.",
+      "lecture_after": "Fossils are preserved remains of the body parts or activities of ancient organisms.\nSome fossils show the body parts of organisms. Bones and shells are two examples of body parts that can be preserved in fossils.\nSome fossils show traces of an organism's activities. An animal might leave footprints in mud or dig a burrow in soil. These traces might be preserved as fossils.\nFossils are not human-made. All fossils are formed in nature.\nSome fossilization processes can take thousands of years, but this is not a required minimum time for all fossils. Preservation in a geologic context is the key, and remains need not turn into stone.",
+      "reason": "Keep the possible long timescale while removing its use as a universal requirement.",
+      "references": [
+        {
+          "url": "https://www.nps.gov/subjects/fossils/what-is-a-fossil.htm",
+          "supports": "Defines fossils by biological evidence and geologic context; neither minimum age nor petrification is required."
+        },
+        {
+          "url": "https://www.nps.gov/subjects/fossils/body-fossils.htm",
+          "supports": "Hard parts are more likely to survive fossilization than soft tissues, but preservation is selective."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "b2eebddfa567cae4b000b7685df0cf04f5dbf345d30e6b4b9c7a65969607ecf6",
+      "expected_records": 1,
+      "lecture_before": "Material that is carried by wind, water, or ice is called sediment. Sediment may be deposited, or laid down, in places such as deserts and the ocean floor. Different types of sediment are deposited in different environments. For example, sand may be deposited in a desert, and mud may be deposited at the bottom of the ocean.\nThe environment of an area can change over thousands of years. When the environment changes, the type of sediment that is deposited also changes. Over a long period of time, different layers of sediment can build up in the same area. These layers preserve a record of the environments that existed in that area in the past.\nAs many layers of sediment build up, they can be pressed together to form layers of sedimentary rock. A series of rock layers is called a rock sequence. You can observe the layers of a rock sequence to learn more about how an area's environment changed over time.",
+      "lecture_after": "Material that is carried by wind, water, or ice is called sediment. Sediment may be deposited, or laid down, in places such as deserts and the ocean floor. Different types of sediment are deposited in different environments. For example, sand may be deposited in a desert, and mud may be deposited at the bottom of the ocean.\nThe environment of an area can change over thousands of years. Environmental changes can change the sediment being deposited, although every change need not produce a different sediment type. Over a long period of time, different layers of sediment can build up in the same area. These layers preserve a record of the environments that existed in that area in the past.\nAs sediment layers build up, compaction and cementation can turn them into layers of sedimentary rock. A series of rock layers is called a rock sequence. You can observe the layers of a rock sequence to learn more about how an area's environment changed over time.",
+      "reason": "Qualify the environmental inference and include cementation.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/what-are-sedimentary-rocks?page=1",
+          "supports": "Distinguishes clastic compaction/cementation and biological or chemical limestone."
+        },
+        {
+          "url": "https://apps.usgs.gov/thesaurus/term-simple.php?code=2.1.5&thcode=4",
+          "supports": "Conglomerate contains predominantly rounded to subangular gravel-sized fragments."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "de74df9d8acc6df24822016da9a68ea746d8c4651c3c9f604837184978599cba",
+      "expected_records": 1,
+      "lecture_before": "Many maps of Earth use color to show different areas.\nGreen and brown show land that is not covered by water or ice.\nBlue shows liquid water in oceans, rivers, lakes, and other bodies of water.\nWhite shows frozen water. These parts of Earth's surface are covered by ice.",
+      "lecture_after": "Maps can use color to show different features. Under the example color convention described here:\nGreen and brown show land that is not covered by water or ice.\nBlue shows liquid water in oceans, rivers, lakes, and other bodies of water.\nWhite represents ice-covered areas in this example. Always check the actual legend: the same colors can have different meanings on other maps.",
+      "reason": "Make the described color scheme a stated example rather than a universal map legend.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/where-can-i-find-a-topographic-map-symbol-sheet",
+          "supports": "Map symbol sheets are associated with particular map editions and conventions."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "17a04270dc1b0a4b66c59d4b894b0956342d66707602d4b4abd27409fdad62d7",
+      "expected_records": 26,
+      "lecture_before": "To study air masses, scientists can use maps that show conditions within Earth's atmosphere. For example, the map below uses color to show specific humidity, a measurement of the amount of water vapor in the air.\nThe map's legend tells you the specific humidity level that each color represents. Colors on the left in the legend represent lower specific humidity levels than colors on the right. For example, areas on the map that are the darkest shade of purple have a specific humidity from zero grams per kilogram (g/kg) up to two g/kg. Areas that are the next darkest shade of purple have a specific humidity from two g/kg up to four g/kg.",
+      "lecture_after": "Atmospheric maps can use color to display specific humidity: the mass of water vapor divided by the mass of moist air, often written in grams per kilogram (g/kg).\nUse the actual legend to translate each color into an interval. For example, if a legend labels one purple band 0–2 g/kg and another 2–4 g/kg, those are the intervals to use. The color names and left-to-right ordering alone do not establish the values. Without the map and legend, the humidity of a particular region cannot be read.",
+      "reason": "Retain a conditional worked legend example without claiming the absent image has been inspected.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/where-can-i-find-a-topographic-map-symbol-sheet",
+          "supports": "Map symbol sheets are associated with particular map editions and conventions."
+        },
+        {
+          "url": "https://forecast.weather.gov/glossary.php?word=HUMIDITY",
+          "supports": "Defines specific humidity as water-vapor mass divided by total moist-air mass."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "23e9e5e350adfe4d93d45816e6f2dcf7f7b225379c0738c4fe16fa201594b8ac",
+      "expected_records": 27,
+      "lecture_before": "To study air masses, scientists can use maps that show conditions within Earth's atmosphere. For example, the map below uses color to show air temperatures.\nThe map's legend tells you the temperature that each color represents. Colors on the left in the legend represent lower temperatures than colors on the right. For example, areas on the map that are the darkest shade of blue have a temperature from -25°C up to -20°C. Areas that are the next darkest shade of blue have a temperature from -20°C up to -15°C.",
+      "lecture_after": "Atmospheric maps can use color to display air temperature. Read the units and interval labels in the actual legend.\nFor example, if one blue band is labeled −25°C to −20°C and another −20°C to −15°C, the latter represents warmer air. Those numbers are an example, not a universal meaning of blue. Do not assume every legend increases from left to right. Without the map and its legend, the temperature of a particular region cannot be read.",
+      "reason": "Keep the numeric comparison as a conditional example while removing unsupported observations of a missing map.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/where-can-i-find-a-topographic-map-symbol-sheet",
+          "supports": "Map symbol sheets are associated with particular map editions and conventions."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "6c41bfa4c5755e06549af6c03222990480b84f91db1886f6d43a0bc5f974239b",
+      "expected_records": 397,
+      "lecture_before": "Maps have four cardinal directions, or main directions. Those directions are north, south, east, and west.\nA compass rose is a set of arrows that point to the cardinal directions. A compass rose usually shows only the first letter of each cardinal direction.\nThe north arrow points to the North Pole. On most maps, north is at the top of the map.",
+      "lecture_after": "Maps have four cardinal directions, or main directions. Those directions are north, south, east, and west.\nA compass rose is a set of arrows that point to the cardinal directions. A compass rose usually shows only the first letter of each cardinal direction.\nA geographic north arrow indicates true north. Some maps also mark magnetic north or grid north, which can differ; read the labels. Many maps place north at the top, but check the compass rose rather than assuming that orientation.",
+      "reason": "Distinguish types of north and require reading the map orientation.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/what-do-different-north-arrows-a-usgs-topographic-map-mean?items_per_page=6&page=1",
+          "supports": "Distinguishes true, magnetic and grid north."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "2f700bc7bd597219bc567d28120ddd3ed22292654f1009e3f5b7ed37da2292be",
+      "expected_records": 172,
+      "lecture_before": "A continent is one of the major land masses on the earth. Most people say there are seven continents.",
+      "lecture_after": "A continent is a major geographic division of Earth's land. These exercises use the common seven-continent model: Asia, Africa, North America, South America, Antarctica, Europe and Australia. This is a naming convention, not a count of seven completely separate continuous landmasses.",
+      "reason": "State the curriculum convention without an unsupported global-majority claim or a disconnected-landmass definition.",
+      "references": [
+        {
+          "url": "https://education.nationalgeographic.org/resource/Continent/",
+          "supports": "Lists the seven named continents and explains that Europe and Asia share the Eurasian landmass."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "8185b7ed58ae22545c01b3460f8e53928ccbd8bbf3756b05171486ddcaad7151",
+      "expected_records": 56,
+      "lecture_before": "A continent is one of the seven largest areas of land on earth.",
+      "lecture_after": "A continent is a major geographic division of Earth's land. These exercises use the common seven-continent model: Asia, Africa, North America, South America, Antarctica, Europe and Australia. This is a naming convention, not a count of seven completely separate continuous landmasses.",
+      "reason": "State the curriculum convention without an unsupported global-majority claim or a disconnected-landmass definition.",
+      "references": [
+        {
+          "url": "https://education.nationalgeographic.org/resource/Continent/",
+          "supports": "Lists the seven named continents and explains that Europe and Asia share the Eurasian landmass."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "e67fc55381d4b2426890f33457719064972d73c031f0ce34a7d62f5dd50225ba",
+      "expected_records": 98,
+      "lecture_before": "Lines of latitude and lines of longitude are imaginary lines drawn on some globes and maps. They can help you find places on globes and maps.\nLines of latitude show how far north or south a place is. We use units called degrees to describe how far a place is from the equator. The equator is the line located at 0° latitude. We start counting degrees from there.\nLines north of the equator are labeled N for north. Lines south of the equator are labeled S for south. Lines of latitude are also called parallels because each line is parallel to the equator.\nLines of longitude are also called meridians. They show how far east or west a place is. We use degrees to help describe how far a place is from the prime meridian. The prime meridian is the line located at 0° longitude. Lines west of the prime meridian are labeled W. Lines east of the prime meridian are labeled E. Meridians meet at the north and south poles.\nThe equator goes all the way around the earth, but the prime meridian is different. It only goes from the North Pole to the South Pole on one side of the earth. On the opposite side of the globe is another special meridian. It is labeled both 180°E and 180°W.\nTogether, lines of latitude and lines of longitude form a grid. You can use this grid to find the exact location of a place.",
+      "lecture_after": "Lines of latitude and lines of longitude are imaginary lines drawn on some globes and maps. They can help you find places on globes and maps.\nLines of latitude show how far north or south a place is. We use degrees to describe angular position north or south of the equator, rather than a distance measured in kilometers. The equator is the line located at 0° latitude. We start counting degrees from there.\nLines north of the equator are labeled N for north. Lines south of the equator are labeled S for south. Lines of latitude are also called parallels because each line is parallel to the equator.\nLines of longitude are also called meridians. They show how far east or west a place is. We use degrees to describe angular position east or west of the prime meridian. The prime meridian is the line located at 0° longitude. Lines west of the prime meridian are labeled W. Lines east of the prime meridian are labeled E. Meridians meet at the north and south poles.\nThe equator goes all the way around the earth, but the prime meridian is different. It only goes from the North Pole to the South Pole on one side of the earth. On the opposite side of the globe is another special meridian. It is labeled both 180°E and 180°W.\nTogether, lines of latitude and lines of longitude form a grid. A latitude-longitude pair identifies a location to the precision of its coordinates and the map. A coarse printed grid alone does not provide unlimited exactness.",
+      "reason": "Clarify angular coordinates and practical precision.",
+      "references": [
+        {
+          "url": "https://oceanservice.noaa.gov/facts/latitude.html",
+          "supports": "Explains angular latitude, coordinate subdivisions and measurement accuracy."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "0b5f1dcf0e7c0b8847d57c69d4bfef92a03faa948db4b5cbfaf8a282d1b718a7",
+      "expected_records": 51,
+      "lecture_before": "A grid is made up of lines of squares. They are organized in rows and columns. A grid can help you use a map.\nA row is a line of squares that goes from side to side. Rows are marked with letters.\nA column is a line of squares that goes up and down. Columns are marked with numbers.",
+      "lecture_after": "A grid is made up of lines of squares. They are organized in rows and columns. A grid can help you use a map.\nA row is a line of squares that goes from side to side. In the grid convention used by these exercises, rows are marked with letters.\nA column is a line of squares that goes up and down. In this convention, columns are marked with numbers. Other grids may label them differently, so read the labels before giving a location.",
+      "reason": "Scope the letter-number arrangement to the stated exercise convention.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/where-can-i-find-a-topographic-map-symbol-sheet",
+          "supports": "Map symbol sheets are associated with particular map editions and conventions."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "1e7ef1bb7f831cf26172a6500b2e8e196314023370824c19443428e22bbfa773",
+      "expected_records": 1,
+      "lecture_before": "Timelines are used to show when events happened. Timelines go from left to right. Events on the left happened earlier than events on the right.\nOn some timelines, dates are divided into two categories:\nDates that occurred before the year 1 CE are labeled BCE, or Before the Common Era. These dates are sometimes labeled BC, or Before Christ.\nDates that occurred in the year 1 CE or later are labeled CE, or Common Era. These dates are sometimes labeled AD, or Anno Domini, which means \"in the year of the Lord.\"",
+      "lecture_after": "Timelines are used to show when events happened. On the left-to-right timeline convention used here, earlier events are on the left and later events are on the right. Other timelines can be arranged differently, so follow the date labels and direction shown.\nOn some timelines, dates are divided into two categories:\nDates that occurred before the year 1 CE are labeled BCE, or Before the Common Era. These dates are sometimes labeled BC, or Before Christ.\nDates that occurred in the year 1 CE or later are labeled CE, or Common Era. These dates are sometimes labeled AD, or Anno Domini, which means \"in the year of the Lord.\"",
+      "reason": "State the exercise orientation without making it a requirement for every timeline.",
+      "references": [
+        {
+          "url": "https://www.loc.gov/classroom-materials/united-states-history-primary-source-timeline/",
+          "supports": "An example of organizing historical sources chronologically by dated periods; the spatial arrangement is not the definition of chronological order."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 900,
+  "reviews": [
+    {
+      "concept_id": "4bdfcec86f03a9a7c2dee0a0cdfd8faecba93c6d25c329e54d41f1b165da8a31",
+      "expected_records": 48,
+      "lecture_before": "All living things are made up of cells. Plants, animals, and some fungi have many cells. Other living things are made up of just one cell.\nAll living things need food and water. Water helps living things break down food and remove waste. Food gives living things energy. They use energy from food to grow and change.\nAll living things sense changes in their environment. Living things might sense changes by seeing, smelling, hearing, or feeling. Living things can respond to the changes they sense.",
+      "lecture_after": "All living things are made up of cells. Plants, animals, and some fungi have many cells. Other living things are made up of just one cell.\nLiving things need water, energy and materials for their life processes. Animals obtain energy-rich materials by feeding; plants can make sugars using light energy. The need for energy does not mean every organism eats food in the same way.\nLiving things can respond to changes in their surroundings. Cells can respond to signals such as light or chemicals. Seeing, smelling, hearing and feeling are examples for animals with the relevant sensory systems, not abilities shared by every organism.",
+      "reason": "Describe general cellular needs without suggesting that all organisms feed or sense their surroundings like animals.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/6-1-energy-and-metabolism",
+          "supports": "Cellular processes require energy and materials; organisms obtain energy in different ways."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "4e89db4ea1bccefffb57294a65067f0c158ab5d917158ebee0a9c3bfcb92c205",
+      "expected_records": 19,
+      "lecture_before": "All living things need food and water. Water helps living things break down food and remove waste. Food gives living things energy. Living things use this energy to grow and change. All living things grow and change during their lives.\nAll living things sense changes in the world around them. Living things might sense changes by seeing, smelling, hearing, or feeling. Living things can respond to the changes they sense.",
+      "lecture_after": "Living things need water, energy and materials for their life processes. Animals obtain energy-rich materials by feeding; plants can make sugars using light energy. The need for energy does not mean every organism eats food in the same way. Living things grow and develop during their lives.\nLiving things can respond to changes in their surroundings. Cells can respond to signals such as light or chemicals. Seeing, smelling, hearing and feeling are examples for animals with the relevant sensory systems, not abilities shared by every organism.",
+      "reason": "Describe general cellular needs without suggesting that all organisms feed or sense their surroundings like animals.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/6-1-energy-and-metabolism",
+          "supports": "Cellular processes require energy and materials; organisms obtain energy in different ways."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "3d41fee06d73a1fa2335706b94998de9b3c0c557338aa664d49e010f29c10fe9",
+      "expected_records": 2,
+      "lecture_before": "All living things need food and water. Water helps living things stay healthy. Food gives living things energy. They can use this energy to grow and change. All living things grow and change during their lives. Living things can get bigger and grow new body parts.\nFor example, an oak tree is a living thing. It begins life as a seed. It takes in water from the soil. It makes food using energy from the sun. The oak tree gets taller and grows leaves and branches during its life.",
+      "lecture_after": "Living things need water, energy and materials for their life processes. Animals obtain energy-rich materials by feeding; plants can make sugars using light energy. The need for energy does not mean every organism eats food in the same way. Living things grow and develop during their lives.\nFor example, an oak tree is a living thing. It begins life as a seed. It takes in water from the soil. It makes food using energy from the sun. The oak tree gets taller and grows leaves and branches during its life.",
+      "reason": "Describe general cellular needs without suggesting that all organisms feed or sense their surroundings like animals.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/6-1-energy-and-metabolism",
+          "supports": "Cellular processes require energy and materials; organisms obtain energy in different ways."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "d80e5c0f575930d3669df9e8274f90dc63b2ba325f8462550e12182f6fcc1e83",
+      "expected_records": 18,
+      "lecture_before": "Reptiles have scaly, waterproof skin. Most reptiles live on land.",
+      "lecture_after": "The scaly skin of the familiar nonbird reptiles in these exercises helps reduce water loss. Water-resistant does not mean that no water can ever pass through the skin. Most reptiles live on land.",
+      "reason": "Replace absolute impermeability with the actual function and identify the classroom grouping.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/29-4-reptiles",
+          "supports": "Describes scaly skin as reducing water loss rather than being perfectly impermeable."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "41ab9491037e11b8b2f5e1e7fee04cff9ecf195bad163eae4d7c02ff58766096",
+      "expected_records": 88,
+      "lecture_before": "Plants and animals are living things. Living things are called organisms.\nPlants come in many shapes and sizes. Most plants grow in the ground. They might grow leaves, flowers, and fruit. Plants cannot move around on their own like animals can.\nAnimals also come in many shapes and sizes. Most animals can move around. Animals might run, swim, jump, or fly. Animals eat plants or other organisms for food.",
+      "lecture_after": "Plants and animals are living things. Living things are called organisms.\nPlants come in many shapes and sizes. Most plants grow in the ground. They might grow leaves, flowers, and fruit. Most familiar adult plants stay rooted rather than walking from place to place. Plants can still move parts and grow toward or away from stimuli; being rooted does not mean having no movement.\nAnimals also come in many shapes and sizes. Most animals can move around. Animals might run, swim, jump, or fly. Animals eat plants or other organisms for food.",
+      "reason": "Distinguish adult locomotion from movements and growth responses.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/30-6-plant-sensory-systems-and-responses",
+          "supports": "Describes plant growth responses and movements in response to stimuli."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "83d3279d8f408073e30077a250a4a424bb23298079567fe3175b186ec600996c",
+      "expected_records": 84,
+      "lecture_before": "Scientists sort animals with similar traits into groups. This is called classification. Classification helps scientists learn about how animals live.\nHow do scientists classify animals? First, they make observations about an animal. Scientists observe the animal's traits, including its body parts and behavior. Then, scientists compare the animal's traits to other animals' traits. Scientists classify animals with similar traits into a group.",
+      "lecture_after": "Scientists sort animals with similar traits into groups. This is called classification. Classification helps scientists learn about how animals live.\nHow do scientists classify animals? First, they make observations about an animal. Scientists observe the animal's traits, including its body parts and behavior. Then, scientists compare the animal's traits to other animals' traits. Shared traits are useful clues, but modern classification also uses evidence about ancestry, including DNA. Similar-looking features alone do not always mean animals are closely related.",
+      "reason": "Keep observation and comparison as an introduction while adding the missing ancestry criterion.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/20-1-organizing-life-on-earth",
+          "supports": "Classification draws on multiple kinds of evidence about evolutionary relationships, not resemblance alone."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "2bf0e148e40b35e802b7e310e9af2a08b6b9106be1245eb3f93a4722f5d27c15",
+      "expected_records": 175,
+      "lecture_before": "Birds, mammals, fish, reptiles, and amphibians are groups of animals. The animals in each group have traits in common.\nScientists sort animals into groups based on traits they have in common. This process is called classification.",
+      "lecture_after": "Birds, mammals, fish, reptiles, and amphibians are groups of animals. The animals in each group have traits in common.\nScientists sort animals into groups based on traits they have in common. This process is called classification. These are familiar classroom group names; they are not all separate branches of the same rank in an evolutionary tree. For example, birds belong within the reptile lineage. Modern classification considers ancestry as well as visible traits.",
+      "reason": "Distinguish useful classroom labels from a claim of five separate equivalent evolutionary groups.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/20-1-organizing-life-on-earth",
+          "supports": "Classification draws on multiple kinds of evidence about evolutionary relationships, not resemblance alone."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/29-4-reptiles",
+          "supports": "Includes birds within the reptile lineage."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "6a0b67602048d5e14bd4137a9f14a873ba259ab1c5408b14ea2fada0d65de550",
+      "expected_records": 92,
+      "lecture_before": "Birds, mammals, fish, reptiles, and amphibians are groups of animals. Scientists sort animals into each group based on traits they have in common. This process is called classification.\nClassification helps scientists learn about how animals live. Classification also helps scientists compare similar animals.",
+      "lecture_after": "Birds, mammals, fish, reptiles, and amphibians are groups of animals. Scientists sort animals into each group based on traits they have in common. This process is called classification. These are familiar classroom group names; they are not all separate branches of the same rank in an evolutionary tree. For example, birds belong within the reptile lineage. Modern classification considers ancestry as well as visible traits.\nClassification helps scientists learn about how animals live. Classification also helps scientists compare similar animals.",
+      "reason": "Distinguish useful classroom labels from a claim of five separate equivalent evolutionary groups.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/20-1-organizing-life-on-earth",
+          "supports": "Classification draws on multiple kinds of evidence about evolutionary relationships, not resemblance alone."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/29-4-reptiles",
+          "supports": "Includes birds within the reptile lineage."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "0c97a0ba6c8ab81637af197c43fa28d067f512a51e773326d2007da5934d3b27",
+      "expected_records": 1,
+      "lecture_before": "Waste is material within an animal's body that it cannot use. If waste builds up in an animal's body, it will make the animal sick. So, the waste must be removed.\nExcretion and elimination are two ways waste can be removed from an animal's body.\n Waste that is made by an animal's cells is removed by the excretory system. The waste in a cell comes from the breakdown of nutrients. Cells break down nutrients and make many different chemicals. The animal uses most of these chemicals to stay healthy. But cells also make some chemicals that the animal does not need. The release of unneeded chemicals as waste is called excretion. \n Waste that is left over from food is removed by the digestive system. The digestive system breaks down food and takes in small nutrient particles. Some parts of the food are left over after the nutrients are absorbed. These parts are waste. The anus releases this waste from the body. The release of waste left over from food is called elimination.",
+      "lecture_after": "Animals need ways to remove metabolic wastes and other unwanted material. Two processes that should be distinguished are excretion and elimination of undigested material.\nExcretion removes products of metabolism. For example, humans produce urea as a metabolic waste and excrete it in urine. Different animals have different excretory structures.\nElimination through the digestive tract removes feces, which include undigested material. In humans this material leaves through the anus. This is not the same process as removing waste chemicals made by cells, and not every animal has a human-like digestive tract.",
+      "reason": "Separate metabolic excretion from fecal elimination and scope the organ examples to humans.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/34-3-digestive-system-processes",
+          "supports": "Describes digestion, absorption and elimination of undigested material."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/41-4-nitrogenous-wastes",
+          "supports": "Describes mammalian urea production and its excretion in urine."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "08b6cf13ae73d8c982d3328f25163fcd1a8218105ea0fc1df102d3361682e2a2",
+      "expected_records": 3,
+      "lecture_before": "All organisms need food. Food gives organisms the energy they need to survive.\nAnimals get their food by eating other organisms. An animal's digestive system breaks down food into small particles of fat, protein, sugar, and other nutrients. The blood carries these small particles to cells throughout the animal's body.\nInside cells, nutrient particles can be broken down to release energy. Cells need energy to do their jobs. A cell's job might include sending signals to other cells, rearranging chemicals to make new substances, or moving substances from place to place.\nCells also use nutrient particles as building materials. Cells use building materials to help the animal grow and to replace worn-out parts.",
+      "lecture_after": "Organisms need energy and materials for cellular work. The example below concerns how humans obtain these from food.\nIn human digestion, food is broken down into absorbable components, including simple sugars, amino acids and products of fat digestion. After absorption, nutrients are transported through blood and, for many absorbed fats, first through lymph before reaching the blood. They can then supply cells with materials and energy.\nInside cells, nutrient particles can be broken down to release energy. Cells need energy to do their jobs. A cell's job might include sending signals to other cells, rearranging chemicals to make new substances, or moving substances from place to place.\nCells also use nutrient particles as building materials. Cells use building materials to help the animal grow and to replace worn-out parts.",
+      "reason": "Use appropriate digestion products and avoid applying human circulation to all animals.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/34-3-digestive-system-processes",
+          "supports": "Describes absorbable digestion products and the lymphatic transport of many absorbed lipids."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "67e52c41f1cae556c7818c9d5f6d0149d68e6fce2a7f9ce69340bda0d6d5617e",
+      "expected_records": 288,
+      "lecture_before": "Organisms, including people, have both inherited and acquired traits. Inherited and acquired traits are gained in different ways.\nInherited traits are passed down through families. Children gain these traits from their parents. Inherited traits do not need to be learned.\nAcquired traits are gained during a person's life. Some acquired traits, such as riding a bicycle, are gained by learning. Other acquired traits, such as scars, are caused by the environment.",
+      "lecture_after": "Organisms, including people, have both inherited and acquired traits. Inherited and acquired traits are gained in different ways.\nInherited genetic information is passed from parents to offspring. Many traits reflect both this information and environmental influences, so inherited does not always mean fixed or unaffected by experience.\nAcquired features and learned skills arise during a person's life. The inherited-versus-acquired distinction is useful for these simple examples, but many real traits have interacting genetic and environmental influences. Some acquired traits, such as riding a bicycle, are gained by learning. Other acquired traits, such as scars, are caused by the environment.",
+      "reason": "Avoid presenting inheritance and environment as mutually exclusive causes of every trait.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution",
+          "supports": "Distinguishes inherited variation from environmental influences on traits."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "d6897d1a255e842b27c9e5fd8884f849944917162af50e7fef95a6fc61c9cd31",
+      "expected_records": 15,
+      "lecture_before": "Every living thing needs food to stay alive. Living things get their food in different ways. A food chain shows how living things in an ecosystem get their food.\nProducers make their own food. Many producers use carbon dioxide, water, and sunlight to make sugar. This sugar is food for the producer.\nConsumers eat other living things. Consumers cannot make their own food.",
+      "lecture_after": "Organisms need energy and materials. A food chain is a simplified model of feeding relationships in an ecosystem; more complex relationships can be shown by a food web.\nProducers make their own food. Many producers use carbon dioxide, water, and sunlight to make sugar. This sugar is food for the producer.\nIn this food-chain model, consumers obtain organic matter by feeding on other organisms or material from them. The diagram shows their feeding role; an organism can participate in more than one pathway.",
+      "reason": "Specify the scope of the simple feeding model and allow organic remains or connected pathways instead of asserting one universal linear chain.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems",
+          "supports": "Food chains and food webs model feeding relationships and trophic roles."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "54b3059121acbec88725ec80da2c760ed1a25cd0e5a8e2cb4a74f9ff7ded18d7",
+      "expected_records": 15,
+      "lecture_before": "Every organism needs food to stay alive. Organisms get their food in different ways. A food chain shows how organisms in an ecosystem get their food.\nProducers make their own food. Many producers use carbon dioxide, water, and sunlight to make sugar. This sugar is food for the producer.\nConsumers eat other organisms. Consumers cannot make their own food.",
+      "lecture_after": "Organisms need energy and materials. A food chain is a simplified model of feeding relationships in an ecosystem; more complex relationships can be shown by a food web.\nProducers make their own food. Many producers use carbon dioxide, water, and sunlight to make sugar. This sugar is food for the producer.\nIn this food-chain model, consumers obtain organic matter by feeding on other organisms or material from them. The diagram shows their feeding role; an organism can participate in more than one pathway.",
+      "reason": "Specify the scope of the simple feeding model and allow organic remains or connected pathways instead of asserting one universal linear chain.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems",
+          "supports": "Food chains and food webs model feeding relationships and trophic roles."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "b0477a34dbbb778539c58df382d52d9b98b6631c85d66760b47393609478d7be",
+      "expected_records": 20,
+      "lecture_before": "Every organism needs food to stay alive. Organisms get their food in different ways. A food chain shows how organisms in an ecosystem get their food.\nThe food chain begins with the producer. A producer can change matter that is not food into food. Many producers use carbon dioxide, water, and sunlight to make sugar. Carbon dioxide and water are not food, but sugar is food for the producer.\nConsumers eat other organisms. There can be several kinds of consumers in a food chain:\nA primary consumer eats producers. The word primary tells you that this is the first consumer in a food chain.\nA secondary consumer eats primary consumers. The word secondary tells you that this is the second consumer in a food chain.\nA tertiary consumer eats secondary consumers. The word tertiary tells you that this is the third consumer in a food chain.\nA top consumer is the animal at the top of a food chain. Food chains can have different numbers of organisms. For example, when there are four organisms in the chain, the top consumer is the tertiary consumer. But if there are five organisms in the chain, the top consumer eats the tertiary consumer!",
+      "lecture_after": "Organisms need energy and materials. A food chain is a simplified model of feeding relationships in an ecosystem; more complex relationships can be shown by a food web.\nThe grazing food chain illustrated here begins with a producer. Other chains can begin with dead organic material, and a food web can connect these pathways. A producer can change matter that is not food into food. Many producers use carbon dioxide, water, and sunlight to make sugar. Carbon dioxide and water are not food, but sugar is food for the producer.\nConsumers eat other organisms. There can be several kinds of consumers in a food chain:\nA primary consumer eats producers. The word primary tells you that this is the first consumer in a food chain.\nA secondary consumer eats primary consumers. The word secondary tells you that this is the second consumer in a food chain.\nA tertiary consumer eats secondary consumers. The word tertiary tells you that this is the third consumer in a food chain.\nA top consumer is the animal at the top of a food chain. Food chains can have different numbers of organisms. For example, when there are four organisms in the chain, the top consumer is the tertiary consumer. But if there are five organisms in the chain, the top consumer eats the tertiary consumer!",
+      "reason": "Specify the scope of the simple feeding model and allow organic remains or connected pathways instead of asserting one universal linear chain.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems",
+          "supports": "Food chains and food webs model feeding relationships and trophic roles."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "9c97db7270924a072eeb99252d8f9d9104b2cff36be0baf68c4192d694a01f35",
+      "expected_records": 24,
+      "lecture_before": "The fruits and vegetables we eat are parts of plants! Plants are made up of different structures. The different structures carry out important functions.\nThe roots take in water and nutrients from the soil. They also hold the plant in place in the soil.\nThe stem supports the plant. It carries food, water, and nutrients through the plant.\nThe leaves are where most of the plant's photosynthesis happens. Photosynthesis is the process plants use to turn water, sunlight, and carbon dioxide into food.\nAfter they are pollinated, the flowers make seeds and fruit.\nThe fruit contain the seeds. Each fruit grows from a pollinated flower.\nThe seeds can grow into a new plant. Germination is when a seed begins to grow.",
+      "lecture_after": "The fruits and vegetables we eat are parts of plants! Plants are made up of different structures. The different structures carry out important functions.\nThe roots take in water and nutrients from the soil. They also hold the plant in place in the soil.\nThe stem supports the plant. It carries food, water, and nutrients through the plant.\nThe leaves are where most of the plant's photosynthesis happens. In photosynthesis, plants use energy from light to build sugars from carbon dioxide and water. Light supplies energy rather than matter.\nIn the usual sexual reproduction of flowering plants, pollination is followed by fertilization before seeds develop. A fruit commonly develops from the flower's ovary and may contain seeds. Pollination alone does not guarantee a fruit, and some fruits develop without fertilization and are seedless.\nThe seeds can grow into a new plant. Germination is when a seed begins to grow.",
+      "reason": "Separate energy from matter and distinguish pollination, fertilization and seedless fruit exceptions.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization",
+          "supports": "Distinguishes pollen transfer, fertilization, seed development and fruit formation."
+        },
+        {
+          "url": "https://extension.psu.edu/fall-high-tunnel-cucumbers-a-limited-window-opportunity",
+          "supports": "Parthenocarpic cucumber varieties can set fruit without pollination or ovule fertilization."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "69b39942aad70303f81cf99c4331924d3e8080f1a77bbb3415390b95cb738ead",
+      "expected_records": 1,
+      "lecture_before": "Many plants have flowers. These plants can use their flowers to make new plants. How do plants use their flowers to make new plants?\nFlowers make a powder called pollen. Animals, wind, or water can move pollen. They can move pollen to the female part of the flower. Then, the pollen helps the flower grow seeds and fruit. Fruit grows around the seeds.\nLater, the seeds can fall out of the fruit. They can land on the ground. Then, the seeds can grow into new plants.",
+      "lecture_after": "Many plants have flowers. These plants can use their flowers to make new plants. How do plants use their flowers to make new plants?\nFlowers make a powder called pollen. Animals, wind, or water can move pollen. They can move pollen to the female part of the flower. In normal sexual reproduction, compatible pollen enables fertilization of an egg within an ovule. A fertilized ovule can develop into a seed, and the ovary commonly develops into fruit. Pollen arriving does not guarantee that all later steps succeed.\nLater, the seeds can fall out of the fruit. They can land on the ground. Then, the seeds can grow into new plants.",
+      "reason": "Add the missing fertilization step without treating every pollination as successful reproduction.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization",
+          "supports": "Distinguishes pollen transfer, fertilization, seed development and fruit formation."
+        },
+        {
+          "url": "https://extension.psu.edu/fall-high-tunnel-cucumbers-a-limited-window-opportunity",
+          "supports": "Parthenocarpic cucumber varieties can set fruit without pollination or ovule fertilization."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "1fe677716f6fc001d4a5ed4f484d8b8a049f025bac26c7e6dc6c1da3c4861276",
+      "expected_records": 1,
+      "lecture_before": "Many plants have flowers. These plants can use their flowers to reproduce, or make new plants like themselves. How do plants use their flowers to reproduce?\nFirst, the male part of the flower makes a powder called pollen. Animals, wind, or water can move pollen. Pollination is what happens when pollen is moved to the female part of the flower.\nAfter pollination, the flower can grow seeds and fruit. The fruit grows around the seeds. Later, a seed can fall out of the fruit. It can germinate, or start to grow into a new plant.",
+      "lecture_after": "Many plants have flowers. These plants can use their flowers to reproduce, or make new plants like themselves. How do plants use their flowers to reproduce?\nFirst, the male part of the flower makes a powder called pollen. Animals, wind, or water can move pollen. Pollination is what happens when pollen is moved to the female part of the flower.\nIn normal sexual reproduction, successful pollination is followed by fertilization. Fertilized ovules can develop into seeds, and the ovary commonly develops into fruit. Some fruits develop without fertilization, so this is the usual pathway rather than a rule for every fruit. Later, a seed can fall out of the fruit. It can germinate, or start to grow into a new plant.",
+      "reason": "Distinguish pollen transfer from fertilization and qualify the usual fruit pathway.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization",
+          "supports": "Distinguishes pollen transfer, fertilization, seed development and fruit formation."
+        },
+        {
+          "url": "https://extension.psu.edu/fall-high-tunnel-cucumbers-a-limited-window-opportunity",
+          "supports": "Parthenocarpic cucumber varieties can set fruit without pollination or ovule fertilization."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "1fe94c5b3912169bd95654af054c1c044de4a019daa574f161a65da6231e7f34",
+      "expected_records": 2,
+      "lecture_before": "An animal's skeletal system provides a strong frame for its body. The skeletal system has three main jobs. First, it supports the animal's body. Second, it protects the organs and other soft parts inside the animal's body. Third, it works with the muscular system to help the animal move.\nSome animals have an endoskeleton. The word endoskeleton means \"inside skeleton.\" An endoskeleton is inside an animal's body. Many vertebrates have an endoskeleton. A vertebrate's endoskeleton is made up of bones and fibers called tendons and ligaments. Tendons connect muscles to bones, and ligaments connect bones to other bones.\nSome animals have an exoskeleton. The word exoskeleton means \"outside skeleton.\" An exoskeleton is made up of tough structures covering the outside of an animal's body. Many invertebrates have an exoskeleton. Stiff fibers attach the animal's muscles to its exoskeleton.",
+      "lecture_after": "An animal's skeletal system provides a strong frame for its body. Three important roles of skeletal systems are described here. First, it supports the animal's body. Second, it protects the organs and other soft parts inside the animal's body. Third, it works with the muscular system to help the animal move.\nSome animals have an endoskeleton. The word endoskeleton means \"inside skeleton.\" An endoskeleton is inside an animal's body. Many vertebrates have an endoskeleton. A vertebrate's internal supporting skeleton includes cartilage and, in many vertebrates, bone. Associated connective tissues include tendons and ligaments. Tendons connect muscles to bones, and ligaments connect bones to other bones.\nOther animals use fluid-supported hydrostatic skeletons. Some animals have an exoskeleton. The word exoskeleton means \"outside skeleton.\" An exoskeleton is made up of tough structures covering the outside of an animal's body. Many invertebrates have an exoskeleton. Stiff fibers attach the animal's muscles to its exoskeleton.",
+      "reason": "Include cartilage and hydrostatic support rather than presenting bones and two skeleton types as universal.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/38-1-types-of-skeletal-systems",
+          "supports": "Distinguishes internal, external and hydrostatic support systems and describes skeletal tissues."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "8e8577fbe407603f334a0ad91006535c648bd2bbb0f5e22ad6467f0216ee80c9",
+      "expected_records": 2,
+      "lecture_before": "A trait is the way a living thing looks or acts. A habitat is the place where a living thing grows or lives.\nAn adaptation is a trait that helps a living thing stay alive in its habitat.",
+      "lecture_after": "A trait is the way a living thing looks or acts. A habitat is the place where a living thing grows or lives.\nIn evolutionary biology, an adaptation is an inherited feature that helps survival or reproduction in a particular environment. A useful learned action or a temporary adjustment is not automatically an inherited adaptation.",
+      "reason": "Restore the inheritance and reproductive context absent from the simplified definition.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution",
+          "supports": "Defines adaptation through heritable features and environmental fitness."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "dfa9bf44bb9713437a41942abe1cbd6db3ce37c411771945573477211025c3d4",
+      "expected_records": 2,
+      "lecture_before": "A trait is the way an organism looks or behaves.\nAn adaptation is a trait that helps an organism stay alive in its environment.",
+      "lecture_after": "A trait is the way an organism looks or behaves.\nIn evolutionary biology, an adaptation is an inherited feature that helps survival or reproduction in a particular environment. A useful learned action or a temporary adjustment is not automatically an inherited adaptation.",
+      "reason": "Restore the inheritance and reproductive context absent from the simplified definition.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution",
+          "supports": "Defines adaptation through heritable features and environmental fitness."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

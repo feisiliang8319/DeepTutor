@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_linked_records": 589,
+  "reviews": [
+    {
+      "concept_id": "d910ba1b32dd1c8743b98e07c11008430dd7492f23d45f137006834566367973",
+      "lecture": "An ecosystem is formed when living and nonliving things interact in an environment. There are many types of ecosystems. Here are some ways in which ecosystems can differ from each other:\nthe pattern of weather, or climate\nthe type of soil or water\nthe organisms that live there",
+      "expected_records": 75,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The definition includes living and nonliving components and their interaction; the listed climate, soil/water and organism differences are appropriate introductory examples.",
+      "limitations": "The list is illustrative, not a complete classification of ecosystems. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems",
+          "supports": "An ecosystem includes organisms and their interactions with the physical environment."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "f07ba05ccbbdff7db3ae64ec4a3012c8f16f2208ce99529e3de1ce13ff4ec91f",
+      "lecture": "Natural resources are useful things that come directly from nature. They are not made by people.\nClay is an example of a natural resource. It comes directly from nature, and people can use it in many ways.\nA clay pot is not a natural resource. It is created by people. However, a clay pot is made from a natural resource.",
+      "expected_records": 1,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage correctly distinguishes a natural clay resource from a manufactured clay pot.",
+      "limitations": "Natural material may undergo extraction or processing; this does not classify the finished pot as an unmanufactured resource. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://pubs.usgs.gov/info/clays/",
+          "supports": "Describes clay formation and industrial uses of naturally occurring clay deposits."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "b904af9a319c4ac0fef5fb01e9223aad41ab4e2a79acb551b814accdf6711ed2",
+      "lecture": "Before you decide to do something, it is often helpful to list costs and benefits.\nCosts are what you give up or spend when you decide to do something. Costs involve giving up things that you want or need.\nBenefits are what you gain or save when you decide to do something. Benefits involve gaining something that you want or need.",
+      "expected_records": 197,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The broad cost-benefit definitions include things given up, spent, gained or saved, rather than restricting value to money.",
+      "limitations": "This is an introductory comparison, not a complete marginal decision rule or a calculation of every opportunity cost. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.stlouisfed.org/education/economic-lowdown-podcast-series/episode-1-opportunity-cost",
+          "supports": "Choice involves scarce resources and opportunities given up."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "ecdee0e125b4e89716796c9cb7d7f29b9d272024ee751d94ca8b8b7814992c01",
+      "lecture": "A food web is a model.\nA food web shows where organisms in an ecosystem get their food. Models can make things in nature easier to understand because models can represent complex things in a simpler way. If a food web showed every organism in an ecosystem, the food web would be hard to understand. So, each food web shows how some organisms in an ecosystem can get their food.\nArrows show how matter moves.\nA food web has arrows that point from one organism to another. Each arrow shows the direction that matter moves when one organism eats another organism. An arrow starts from the organism that is eaten. The arrow points to the organism that is doing the eating.\nAn organism in a food web can have more than one arrow pointing from it. This shows that the organism is eaten by more than one other organism in the food web.\nAn organism in a food web can also have more than one arrow pointing to it. This shows that the organism eats more than one other organism in the food web.",
+      "expected_records": 148,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The food-web passage explicitly calls the diagram a simplified model and correctly directs feeding arrows from consumed organism to consumer.",
+      "limitations": "Only feeding paths represented in the model are covered; missing images, complete diets, detrital pathways and quantitative transfer efficiencies are not certified. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems",
+          "supports": "Food webs depict connected feeding relationships and movement through trophic levels."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "e051ccf79445bfbb14b3f50cca58ab9c2f2182bf522fcdf5fc2759ba31e2792b",
+      "lecture": "A food web is a model.\nModels can make things in nature easier to understand. Models can be simpler than the things they represent. A food web is a model that shows where living things in an ecosystem get their food. If a food web showed every living thing in an ecosystem, the food web would be hard to understand. So, each food web shows how some living things in an ecosystem can get their food.\nArrows show how matter moves.\nA food web has arrows that point from one living thing to another. Each arrow shows the direction that matter moves when one living thing eats another living thing. An arrow starts from the living thing that is eaten. The arrow points to the living thing that is doing the eating.\nA living thing in a food web can have more than one arrow pointing from it. This shows that the living thing is eaten by more than one other living thing in the food web.\nA living thing in a food web can also have more than one arrow pointing to it. This shows that the living thing eats more than one other living thing in the food web.",
+      "expected_records": 11,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The food-web passage explicitly calls the diagram a simplified model and correctly directs feeding arrows from consumed organism to consumer.",
+      "limitations": "Only feeding paths represented in the model are covered; missing images, complete diets, detrital pathways and quantitative transfer efficiencies are not certified. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/46-1-ecology-of-ecosystems",
+          "supports": "Food webs depict connected feeding relationships and movement through trophic levels."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "47e5a0282b3a7ad0fd5646b8c146b27026e25f7523f4f1226995978131032fa0",
+      "lecture": "Scientists record climate data from places around the world. Temperature is one type of climate data. Scientists collect data over many years. They can use this data to calculate the average temperature for each month. The average temperature can be used to describe the climate of a location.\nA line graph can be used to show the average temperature each month. Months with higher dots on the graph have higher average temperatures.",
+      "expected_records": 33,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage bases monthly climate averages on observations over many years and correctly interprets higher plotted values on the conventional upward-increasing temperature axis.",
+      "limitations": "This assumes the stated ordinary line-graph convention; an individual graph still needs its axis, units, averaging interval and data checked. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals",
+          "supports": "Climate normals describe long-term climatological averages including monthly temperature."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "361892a68e46dd403c444b63e193982b7b57d1a811713c677ae92cf8a70bffb6",
+      "lecture": "The outer layer of Earth is broken up into many pieces called tectonic plates, or simply plates. The breaks between plates are called plate boundaries. Plate boundaries are classified by the way the plates are moving relative to each other:\nAt a convergent boundary, two plates are moving toward each other.\nAt a divergent boundary, two plates are moving away from each other.\nAt a transform boundary, two plates are sliding past each other.\ntransform boundary\nWhen the plates at a transform boundary slide past each other, they usually move in one of two ways. Either the plates move in opposite directions, or they move in the same direction but at different rates.\nThe boundary between the two plates is called a fault. When the two plates move suddenly, an earthquake can happen along the fault.",
+      "expected_records": 4,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The relative-motion definitions of convergent, divergent and transform boundaries are correct. The described transform motion or continental collision is an appropriate idealized example.",
+      "limitations": "Actual boundaries can be broad or oblique zones with multiple faults. The passage does not establish the details of a missing plate diagram or a specific earthquake. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://pubs.usgs.gov/gip/dynamic/understanding.html",
+          "supports": "Describes plate-boundary motion, transform faulting and continent-continent collision."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "4a760e1e7f4c25965b8fd453e88c442a560c7d690ba5b6ce46ce47d39b58ef3c",
+      "lecture": "The outer layer of Earth is broken up into many pieces called tectonic plates, or simply plates. The breaks between plates are called plate boundaries. Plate boundaries are classified by the way the plates are moving relative to each other:\nAt a divergent boundary, two plates are moving away from each other.\nAt a transform boundary, two plates are sliding past each other.\nAt a convergent boundary, two plates are moving toward each other.\nOne type of convergent boundary is a continent-continent collision. This type of boundary forms when two plates with continental crust move toward each other. The collision compresses and folds the continental crust, forcing it upward to form a mountain range.",
+      "expected_records": 4,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The relative-motion definitions of convergent, divergent and transform boundaries are correct. The described transform motion or continental collision is an appropriate idealized example.",
+      "limitations": "Actual boundaries can be broad or oblique zones with multiple faults. The passage does not establish the details of a missing plate diagram or a specific earthquake. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://pubs.usgs.gov/gip/dynamic/understanding.html",
+          "supports": "Describes plate-boundary motion, transform faulting and continent-continent collision."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "69ad946019cae7e4b316865d9560d4dbcf8a8e6665a1f212b7450fe29de27901",
+      "lecture": "Oceans are huge bodies of salt water. The world has five oceans. All of the oceans are connected, making one world ocean.",
+      "expected_records": 116,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage combines the common five-named-ocean convention with the important physical fact that the regions form one connected world ocean.",
+      "limitations": "Names and boundaries are geographic conventions rather than five disconnected bodies; this does not certify an absent map or every national naming convention. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://oceanservice.noaa.gov/facts/howmanyoceans.html",
+          "supports": "NOAA describes one global ocean and five commonly recognized named regions."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    }
+  ]
+}

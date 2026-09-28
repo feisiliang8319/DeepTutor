@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 105,
+  "reviews": [
+    {
+      "concept_id": "15c43b4386f7c6e980044af5c7caa3aebfdf0d483bfd82289787ed3ac3f9a725",
+      "expected_records": 51,
+      "lecture_before": "A force is a push or a pull that acts on an object. Every force has a direction and a magnitude, or strength. If two forces act on an object in opposite directions, the forces are called opposing forces.\nWhen opposing forces have the same magnitude, they are balanced. If all the forces on an object are balanced, there is no net force on the object.\nWhen opposing forces have different magnitudes, the forces are unbalanced. If any forces on an object are unbalanced, there is a net force on the object.",
+      "lecture_after": "A force is a push or pull with a magnitude and direction. To find the net force on a chosen object, add all external forces as vectors; do not judge an arbitrary pair in isolation.\nFor exactly two opposite forces on the same object, equal magnitudes give zero net force and unequal magnitudes give a net force toward the larger force. If more forces act, include every force. For example, 10 N to the right and two forces of 4 N and 6 N to the left give zero net force, even though either leftward force is smaller than the rightward force.\nIn the Newtonian model, zero net external force means zero acceleration of the center of mass, not necessarily zero velocity. A nonzero net force changes velocity.",
+      "reason": "State the quantities and model assumptions explicitly; the shared lecture is not independent verification of the original figure or answer.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/4-3-newtons-second-law-of-motion-concept-of-a-system",
+          "supports": "The net external force is the vector sum of all external forces on the chosen system."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "ffe31d3985846912344b87531ace97a6da7cecb0b9537bcf8e87d97390075a95",
+      "expected_records": 6,
+      "lecture_before": "During a chemical reaction, thermal energy is absorbed or released as heat. This transfer of thermal energy changes the temperature of the reaction's surroundings. The surroundings are everything around the reaction, such as the solution that the reaction takes place in or the air nearby.\nSome reactions release thermal energy into the surroundings. This thermal energy is converted from chemical energy, which is provided by the molecules in the reaction. As the thermal energy moves out of the reaction and into the surroundings, the temperature of the surroundings increases.\nSome reactions absorb thermal energy from the surroundings. This thermal energy is converted into chemical energy during the reaction. As the thermal energy moves out of the surroundings and into the reaction, the temperature of the surroundings decreases.",
+      "lecture_after": "Chemical reactions can transfer energy to or from their surroundings. First define the reacting system and what is being measured as the surroundings.\nAn exothermic reaction releases energy as heat to the surroundings; an endothermic reaction absorbs heat from them. In a simple insulated calorimeter with no phase change and negligible other energy transfers, releasing heat to a sample raises its temperature, while absorbing heat from it lowers its temperature.\nThese temperature trends require the stated experimental conditions. Phase changes or temperature control can allow heat transfer without a temperature change. Heat exchanged with the room or the container can also affect the reading. Account for these effects before using a measured temperature change to infer the reaction's heat.",
+      "reason": "State the quantities and model assumptions explicitly; the shared lecture is not independent verification of the original figure or answer.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/5-2-calorimetry",
+          "supports": "Reaction heat inferred from solution temperature depends on the calorimeter boundary, heat capacity and heat-exchange assumptions."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "6c4910d3e279b9075722bfcb7e0ad16b5a8c528338d5b9a917304c02a40b0523",
+      "expected_records": 48,
+      "lecture_before": "In a solution, solute particles move and spread throughout the solvent. The diagram below shows how a solution can change over time. Solute particles move from the area where they are at a higher concentration to the area where they are at a lower concentration. This movement happens through the process of diffusion.\nAs a result of diffusion, the concentration of solute particles becomes equal throughout the solution. When this happens, the solute particles reach equilibrium. At equilibrium, the solute particles do not stop moving. But their concentration throughout the solution stays the same.\nMembranes, or thin boundaries, can divide solutions into parts. A membrane is permeable to a solute when particles of the solute can pass through gaps in the membrane. In this case, solute particles can move freely across the membrane from one side to the other.\nSo, for the solute particles to reach equilibrium, more particles will move across a permeable membrane from the side with a higher concentration of solute particles to the side with a lower concentration. At equilibrium, the concentration on both sides of the membrane is equal.",
+      "lecture_after": "In a simple diffusion model, dissolved particles move randomly in both directions. When concentration differs between connected regions, the net movement is from higher to lower concentration. This describes the combined effect of many particles, not a rule that every individual particle moves down the gradient.\nFor the classroom model of a closed solution under uniform conditions, with no process maintaining a concentration difference, diffusion tends to equalize concentration. At dynamic equilibrium particles continue moving, but there is no net transfer between the regions.\nA membrane allows a particular solute to diffuse across it only if it is permeable to that solute. Equal concentration on the two sides is the prediction of this simplified model. Do not extend it automatically to every real cell membrane or to systems with other forces or transport processes maintaining differences. Use the stated membrane properties and the actual diagram; do not infer an answer from an absent figure.",
+      "reason": "State the quantities and model assumptions explicitly; the shared lecture is not independent verification of the original figure or answer.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/5-2-passive-transport",
+          "supports": "Diffusion has net movement down a gradient while particles continue moving at dynamic equilibrium; membrane permeability is selective."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

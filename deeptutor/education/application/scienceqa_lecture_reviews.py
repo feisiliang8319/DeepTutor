@@ -28,7 +28,7 @@ def concept_id(text: str) -> str:
 def patch_document(text: str, reviews: dict[str, dict]) -> tuple[str, Counter]:
     """Replace only complete Lecture bodies; preserve all other source bytes."""
     counts = Counter()
-    pattern = re.compile(r'(^### Lecture\n)(.*?)(?=^### Explanation\n)', re.M | re.S)
+    pattern = re.compile(r'(^### Lecture\n)(.*?)(?=^### |^## |^---\s*$|\Z)', re.M | re.S)
 
     def replace(match):
         original = match[2]
@@ -83,7 +83,32 @@ def build(base: Path, recipe_path: Path, output: Path) -> dict:
         rows = [json.loads(x[0]) for x in db.execute("select data_json from records where library='scienceqa' order by rowid")]
     if len(rows) != recipe['expected_total_records']:
         raise ValueError('ScienceQA inventory changed')
-    counts = Counter(concept_id(x['lecture']) for x in rows)
+    # Reconstruct earlier corrections from immutable provenance, so a later
+    # batch on the same file cannot silently restore an older lecture.
+    prior_reviews = {}
+    review_fields = set(next(iter(reviews.values())))
+    for row in rows:
+        prior = row['metadata'].get('lecture_review')
+        if not prior:
+            continue
+        if not review_fields <= prior.keys() or row['lecture'] != prior['lecture_after']:
+            raise ValueError('Previous lecture provenance is incomplete or changed')
+        key = prior['concept_id']
+        normalized = {field:prior[field] for field in review_fields}
+        if key != concept_id(prior['lecture_before']):
+            raise ValueError('Previous lecture identity changed')
+        if key in prior_reviews and prior_reviews[key] != normalized:
+            raise ValueError('Conflicting prior lecture reviews')
+        prior_reviews[key] = normalized
+    if reviews.keys() & prior_reviews.keys():
+        raise ValueError('Concept already reviewed; preserve its history instead of reapplying')
+    def original_lecture(row):
+        return row['metadata'].get('lecture_review', {}).get('lecture_before', row['lecture'])
+    counts = Counter(concept_id(original_lecture(x)) for x in rows)
+    combined_reviews = {**prior_reviews, **reviews}
+    for key, prior in prior_reviews.items():
+        if counts[key] != prior['expected_records']:
+            raise ValueError('Prior review population changed')
     for key, review in reviews.items():
         if counts[key] != review['expected_records']:
             raise ValueError('Linked review count changed')
@@ -106,17 +131,19 @@ def build(base: Path, recipe_path: Path, output: Path) -> dict:
         if sha(blob) != source_sha:
             raise ValueError('Source bytes changed')
         text = blob.decode('utf-8')
-        after, linked = patch_document(text, reviews)
+        before, _ = patch_document(text, prior_reviews)
+        after, combined_counts = patch_document(text, combined_reviews)
+        linked = Counter({k:v for k,v in combined_counts.items() if k in reviews})
         all_counts.update(linked)
         if not linked:
             continue
         filename = Path(source_path).name
-        if validate_roundtrip(filename, text, after, reviews) != sum(linked.values()):
+        if validate_roundtrip(filename, before, after, reviews) != sum(linked.values()):
             raise ValueError('Document/parser replacement count mismatch')
         new_sha = sha(after)
         (corrected / filename).write_text(after, encoding='utf-8')
         (target / 'objects' / (new_sha + '.md')).write_text(after, encoding='utf-8')
-        manifest.append({'source_path':source_path, 'source_sha256':source_sha, 'revised_sha256':new_sha, 'changed_lectures':sum(linked.values())})
+        manifest.append({'source_path':source_path, 'source_sha256':source_sha, 'expected_current_sha256':sha(before), 'revised_sha256':new_sha, 'changed_lectures':sum(linked.values())})
     if dict(all_counts) != {k:v['expected_records'] for k,v in reviews.items()}:
         raise ValueError('Not all reviewed lectures were replaced')
     changed = sum(all_counts.values())
@@ -162,15 +189,16 @@ def build(base: Path, recipe_path: Path, output: Path) -> dict:
         item['linked_records'] += 1
         item['source_paths'].add(row['source_path'])
         item['skills'].add(row['metadata'].get('skill',''))
-        if key in reviews:
-            item.update(state='shared_lecture_corrected', lecture_revised=reviews[key]['lecture_after'], review_scope='Not a review of individual questions, answers, diagrams, or grade suitability.')
+        if key in combined_reviews:
+            item.update(state='shared_lecture_corrected', lecture_revised=combined_reviews[key]['lecture_after'], review_scope='Not a review of individual questions, answers, diagrams, or grade suitability.')
     queue = []
     for item in concepts.values():
         item['source_paths'] = sorted(item['source_paths']); item['skills'] = sorted(item['skills'])
         queue.append(item)
     report = {**previous,'snapshot_id':identity,'base_snapshot_id':base.name,'created_at':datetime.now(timezone.utc).isoformat(),
         'catalog_sha256':sha((target/'catalog.sqlite3').read_bytes()),'committed_batches':previous['committed_batches']+1,
-        'scienceqa_shared_lectures_corrected':len(reviews),'scienceqa_linked_lectures_corrected':changed,
+        'scienceqa_shared_lectures_corrected':len(combined_reviews),'scienceqa_linked_lectures_corrected':sum(x['expected_records'] for x in combined_reviews.values()),
+        'scienceqa_batch_shared_lectures_corrected':len(reviews),'scienceqa_batch_linked_lectures_corrected':changed,
         'scienceqa_review_recipe_sha256':sha(recipe_path.read_bytes()),
         'scienceqa_review_note':'Original source identities/spans retained; only derived lecture and provenance updated. No question, answer, grade, or approval change.'}
     (target/'summary.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')

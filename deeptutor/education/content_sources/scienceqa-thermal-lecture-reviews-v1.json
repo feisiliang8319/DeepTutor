@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 415,
+  "reviews": [
+    {
+      "concept_id": "da1d2a776272be84cc7de6140e01b0a32ac99efb06c22a3a6168688c73edf0db",
+      "expected_records": 106,
+      "lecture_before": "All solids, liquids, and gases are made of matter. Matter is made up of tiny particles that are always moving. The energy from the motion of these particles is called thermal energy.\nTemperature measures how hot or cold matter is. If the particles in matter move faster, the temperature goes up. The matter now has both more thermal energy and a higher temperature.",
+      "lecture_after": "For the comparisons in this exercise, the objects have the same material, mass, and physical state; only their temperatures differ. Under these conditions, the warmer object has more thermal energy and the cooler object has less.\nA particle model helps explain this: ordinary solids, liquids, and gases contain atoms or molecules in continual motion. Warming increases their average random motion; cooling reduces it. In a solid, particles mainly vibrate about their positions.\nTemperature and total energy are different quantities. A hotter object does not necessarily contain more thermal energy than a much larger, cooler object. Do not extend the equal-object rule to different masses, materials, or phase changes.",
+      "reason": "State equal-material/mass/phase conditions; distinguish average particle motion from total energy.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/14-2-temperature-change-and-heat-capacity",
+          "supports": "Temperature-change/heat relation assumes no phase change or work and depends on mass and material."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/15-1-the-first-law-of-thermodynamics",
+          "supports": "Work and heat transfer both change internal energy; temperature change alone cannot identify the mechanism."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics/pages/14-3-phase-change-and-latent-heat",
+          "supports": "Energy can enter or leave during a phase change without a temperature change."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "ad5735bfe544fd622a0d4f639a327404244132f62ad755e6e024391b035f76fa",
+      "expected_records": 89,
+      "lecture_before": "All solids, liquids, and gases are made of matter. Matter is made up of tiny particles that are always moving. The energy from the motion of these particles is called thermal energy.\nTemperature measures how hot or cold matter is. If the particles in matter slow down, the temperature goes down. The matter now has both less thermal energy and a lower temperature.",
+      "lecture_after": "For the comparisons in this exercise, the objects have the same material, mass, and physical state; only their temperatures differ. Under these conditions, the warmer object has more thermal energy and the cooler object has less.\nA particle model helps explain this: ordinary solids, liquids, and gases contain atoms or molecules in continual motion. Warming increases their average random motion; cooling reduces it. In a solid, particles mainly vibrate about their positions.\nTemperature and total energy are different quantities. A hotter object does not necessarily contain more thermal energy than a much larger, cooler object. Do not extend the equal-object rule to different masses, materials, or phase changes.",
+      "reason": "State equal-material/mass/phase conditions for cooling and comparison.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/14-2-temperature-change-and-heat-capacity",
+          "supports": "Temperature-change/heat relation assumes no phase change or work and depends on mass and material."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/15-1-the-first-law-of-thermodynamics",
+          "supports": "Work and heat transfer both change internal energy; temperature change alone cannot identify the mechanism."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics/pages/14-3-phase-change-and-latent-heat",
+          "supports": "Energy can enter or leave during a phase change without a temperature change."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "aa71f7618b7035cb6f8d6fbd38702734fbdf02458e901ec368a54003254c92f3",
+      "expected_records": 63,
+      "lecture_before": "Matter is made of tiny particles called atoms. Atoms are always moving.\nThe energy of moving atoms is called thermal energy. The total amount of thermal energy in matter depends on three things: the type of matter, the amount of matter, and how fast the atoms are moving.\nTemperature measures how hot or cold matter is. If the atoms in matter move faster, the temperature goes up. The matter now has both more thermal energy and a higher temperature.\nWhat happens if the amount of matter changes? A 2-kilogram brick at 70°F has twice as much thermal energy as a 1-kilogram brick at 70°F. The two bricks have the same temperature, but the larger brick has twice as many atoms. So, it has twice as much thermal energy.",
+      "lecture_after": "Thermal energy depends on the amount and kind of material as well as its temperature and physical state. Temperature describes hotness; it is not the total energy of an object.\nFor equal masses of the same material in the same state, the warmer sample has more thermal energy. For samples of the same material at the same temperature and state, a greater mass contains more particles and more thermal energy. Thus a 2-kilogram sample has approximately twice the thermal contribution of a 1-kilogram sample under those matching conditions, while their temperatures are equal.\nUse the conditions stated in the question. If both mass and temperature change, or materials or phases differ, temperature alone may not determine which object has more energy.",
+      "reason": "Qualify mass proportionality and separate temperature from total thermal energy.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/14-2-temperature-change-and-heat-capacity",
+          "supports": "Temperature-change/heat relation assumes no phase change or work and depends on mass and material."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/15-1-the-first-law-of-thermodynamics",
+          "supports": "Work and heat transfer both change internal energy; temperature change alone cannot identify the mechanism."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics/pages/14-3-phase-change-and-latent-heat",
+          "supports": "Energy can enter or leave during a phase change without a temperature change."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "19ca27d7675e110c729b09c13ceb540c8bfcf587b3be69228ae4a7a9c475989d",
+      "expected_records": 42,
+      "lecture_before": "Matter is made of tiny particles called atoms. Atoms are always moving.\nThe energy of moving atoms is called thermal energy. The total amount of thermal energy in matter depends on three things: the type of matter, the amount of matter, and how fast the atoms are moving.\nTemperature measures how hot or cold matter is. If the atoms in matter slow down, the temperature goes down. The matter now has both less thermal energy and a lower temperature.\nWhat happens if the amount of matter changes? A 2-kilogram brick at 70°F has twice as much thermal energy as a 1-kilogram brick at 70°F. The two bricks have the same temperature, but the larger brick has twice as many atoms. So, it has twice as much thermal energy.",
+      "lecture_after": "Thermal energy depends on the amount and kind of material as well as its temperature and physical state. Temperature describes hotness; it is not the total energy of an object.\nFor equal masses of the same material in the same state, the warmer sample has more thermal energy. For samples of the same material at the same temperature and state, a greater mass contains more particles and more thermal energy. Thus a 2-kilogram sample has approximately twice the thermal contribution of a 1-kilogram sample under those matching conditions, while their temperatures are equal.\nUse the conditions stated in the question. If both mass and temperature change, or materials or phases differ, temperature alone may not determine which object has more energy.",
+      "reason": "Qualify equal-state comparisons instead of an unconditional temperature/energy rule.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/14-2-temperature-change-and-heat-capacity",
+          "supports": "Temperature-change/heat relation assumes no phase change or work and depends on mass and material."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/15-1-the-first-law-of-thermodynamics",
+          "supports": "Work and heat transfer both change internal energy; temperature change alone cannot identify the mechanism."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics/pages/14-3-phase-change-and-latent-heat",
+          "supports": "Energy can enter or leave during a phase change without a temperature change."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "6a060daff3ccb70eafedebdeb93e9d1034f969f6ebd645feeeac8ddc1b8ef241",
+      "expected_records": 115,
+      "lecture_before": "A change in an object's temperature indicates a change in the object's thermal energy:\nAn increase in temperature shows that the object's thermal energy increased. So, thermal energy was transferred into the object from its surroundings.\nA decrease in temperature shows that the object's thermal energy decreased. So, thermal energy was transferred out of the object to its surroundings.",
+      "lecture_after": "To infer net heat transfer from temperature change in this exercise, assume a fixed amount of material with no phase change, chemical reaction, or significant mechanical work. Under those conditions, a temperature rise indicates net heat entering the object, and a fall indicates net heat leaving it. Use the actual temperature data in the question; a missing table cannot be reconstructed from this rule.\nA temperature change alone does not establish heat transfer in every situation. Work can also increase internal energy, as when air is compressed. During melting, heat can enter while temperature remains approximately constant. Heat is energy transferred because of a temperature difference; it is not a substance stored inside an object.",
+      "reason": "State the no-work/no-phase-change assumptions; temperature change alone does not prove heat transfer.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/14-2-temperature-change-and-heat-capacity",
+          "supports": "Temperature-change/heat relation assumes no phase change or work and depends on mass and material."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/15-1-the-first-law-of-thermodynamics",
+          "supports": "Work and heat transfer both change internal energy; temperature change alone cannot identify the mechanism."
+        },
+        {
+          "url": "https://openstax.org/books/college-physics/pages/14-3-phase-change-and-latent-heat",
+          "supports": "Energy can enter or leave during a phase change without a temperature change."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

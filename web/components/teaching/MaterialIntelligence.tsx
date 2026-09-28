@@ -72,11 +72,11 @@ export default function MaterialIntelligence() {
   const connected = settings?.last_test_status === "connected";
   const inputClass = "mt-3 w-full rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]";
   const buttonClass = "inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50";
-  return <section className="mx-auto max-w-3xl pb-8">
+  return <section className="mx-auto max-w-3xl px-4 pb-8 pt-6 sm:px-6">
     <Link href="/settings/models" className="inline-flex items-center gap-2 text-sm text-[var(--muted-foreground)] hover:text-[var(--foreground)]"><ArrowLeft size={16}/>{t("返回模型配置")}</Link>
     <div className="mt-7 flex items-start gap-4">
       <div className="rounded-2xl bg-[var(--accent)] p-3 text-[var(--primary)]"><PlugZap size={26}/></div>
-      <div><h1 className="text-2xl font-semibold leading-snug">{t("资料智能处理（Jev）")}</h1>
+      <div className="min-w-0"><h1 className="text-2xl font-semibold leading-snug">{t("资料智能处理（Jev）")}</h1>
         <p className="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">{t("配置 Jev 专用密钥，并用中英文固定样例测试连接。")}</p></div>
     </div>
     <div className="mt-7 rounded-2xl border border-[var(--border)] bg-[var(--accent)] p-5 text-sm leading-7">

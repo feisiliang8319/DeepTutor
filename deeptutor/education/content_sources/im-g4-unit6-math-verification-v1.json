@@ -1,0 +1,158 @@
+{
+  "source_sha256": "ea77c2e3aeb0a15b3f81c027adab3f1e3b4f5f6049c5ec5473ffe0a39fb1c224",
+  "source_file": "raw-stock/im-g4-full/raw/grade4-unit6-multiplying-and-dividing-multi-digit-numbers.md",
+  "source_lesson_spans_verified": 25,
+  "verified_tasks": 24,
+  "package_sha256": "ae5734896ee0985da91d5ca68ee8001640da62f6feaace5fa43ce6149bc7a031",
+  "builder_sha256": "2ce95dc0fefa334faf6ce7291580d6cf938e8d0dccef71c7f7408a3c4c8fb41a",
+  "source_records": [
+    "b4ea7652fee76036d341fd052a5401a548f3e962965e2379d267a36259c9cab0",
+    "f96de6ba2df4e0b813d12fcddfec3da557a08a248a7900dfd96e0eb1df45eede",
+    "000dd3bd2f94bfaf1554e30e743471e39fdc5c125cb9d43e4ab7959ad911a9b8",
+    "fecc38bc7b00abb3b086839cb9ec8c0bcbff9bade0439f22393db95dc504c155",
+    "737fecff92f195b3f3383daef730cabae3790734279c0d901bb94032f61fbff8",
+    "5c51d26ddf126f0d6038d3ff9140127bf166fdbb5662478d39204f099460f975",
+    "dcde74f013aeaca5e1c88aee21462032bc3b48afda2732eae863617f29aded34",
+    "1e05e090872259be9b570c9e00f0a9d9c7e22a7ea5288445327d15bcce6bb13b",
+    "74e33c5007533c99f65b09a9e4f1a80d358757b82b13403733e4be884700395d",
+    "846c68d7052e5cf0e0df2aa6d649c60aaa7c377d0fd5276417b72286b516da46",
+    "f8c6142aed17a5d27ad227608d59193a0e4c15971d745d6b7a5f1165e4d26cc7",
+    "d5972057a597e2d66576ccdf5f1caac7cd777bccd9efcf4b3f79ad366d40542f",
+    "a26e3a810d06ba3989d6e7b8449fbb976fde2cfa474ef1eb9e91df2904b837fe",
+    "e4a5e06985a891e95c2905e85e2b64cca6158b81fa75a9a85632173904093c91",
+    "74ba3cc810e0426a814be1fd63fb91ac0f7e93b908684cdb5db1d52d7c0105c2",
+    "a1010a53b5b9291ebb6ee09e3e887eb96379d834b26739a9cecf1786043d8634",
+    "63d3daec2f9ce2087db38106c4fe4812714e5bdf54f30d4d7a0facea079573bf",
+    "be5d7f085ecadadf586f03db0d7e79faddecc3ba750fe3a9cbcc05601c678f9c",
+    "4060de1c1bb5ce6a48d49a4cef72ec45fc26e4872a79278bd2d21bce92232a0a",
+    "bdf860d7b7e3ae0fd591f36635b1e4b9e9f402866f51c3cebb76d6ff0a5d006d",
+    "d3784ba5e7f261a8e52559d1ec221d9c847446e8afb2000ab8c857d881049299",
+    "24e74c9a5c9d1a3e1496795116f9c84734cbce35404a4ffdd1eaf0d02e936e45",
+    "6105e72ab5715e277ec3f23d708c825ec641990a6de14e6cc9d0170ed30209c6",
+    "4dde775056b15070629c91bf81df071dd98569cd9ae217cb0ece2eaeca98f14a"
+  ],
+  "checks": [
+    {
+      "lesson": 1,
+      "record_id": "b4ea7652fee76036d341fd052a5401a548f3e962965e2379d267a36259c9cab0",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 2,
+      "record_id": "f96de6ba2df4e0b813d12fcddfec3da557a08a248a7900dfd96e0eb1df45eede",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 3,
+      "record_id": "000dd3bd2f94bfaf1554e30e743471e39fdc5c125cb9d43e4ab7959ad911a9b8",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 4,
+      "record_id": "fecc38bc7b00abb3b086839cb9ec8c0bcbff9bade0439f22393db95dc504c155",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 5,
+      "record_id": "737fecff92f195b3f3383daef730cabae3790734279c0d901bb94032f61fbff8",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 6,
+      "record_id": "5c51d26ddf126f0d6038d3ff9140127bf166fdbb5662478d39204f099460f975",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 7,
+      "record_id": "dcde74f013aeaca5e1c88aee21462032bc3b48afda2732eae863617f29aded34",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 8,
+      "record_id": "1e05e090872259be9b570c9e00f0a9d9c7e22a7ea5288445327d15bcce6bb13b",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 9,
+      "record_id": "74e33c5007533c99f65b09a9e4f1a80d358757b82b13403733e4be884700395d",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 10,
+      "record_id": "846c68d7052e5cf0e0df2aa6d649c60aaa7c377d0fd5276417b72286b516da46",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 11,
+      "record_id": "f8c6142aed17a5d27ad227608d59193a0e4c15971d745d6b7a5f1165e4d26cc7",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 12,
+      "record_id": "d5972057a597e2d66576ccdf5f1caac7cd777bccd9efcf4b3f79ad366d40542f",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 13,
+      "record_id": "a26e3a810d06ba3989d6e7b8449fbb976fde2cfa474ef1eb9e91df2904b837fe",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 14,
+      "record_id": "e4a5e06985a891e95c2905e85e2b64cca6158b81fa75a9a85632173904093c91",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 15,
+      "record_id": "74ba3cc810e0426a814be1fd63fb91ac0f7e93b908684cdb5db1d52d7c0105c2",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 16,
+      "record_id": "a1010a53b5b9291ebb6ee09e3e887eb96379d834b26739a9cecf1786043d8634",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 17,
+      "record_id": "63d3daec2f9ce2087db38106c4fe4812714e5bdf54f30d4d7a0facea079573bf",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 18,
+      "record_id": "be5d7f085ecadadf586f03db0d7e79faddecc3ba750fe3a9cbcc05601c678f9c",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 19,
+      "record_id": "4060de1c1bb5ce6a48d49a4cef72ec45fc26e4872a79278bd2d21bce92232a0a",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 20,
+      "record_id": "bdf860d7b7e3ae0fd591f36635b1e4b9e9f402866f51c3cebb76d6ff0a5d006d",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 21,
+      "record_id": "d3784ba5e7f261a8e52559d1ec221d9c847446e8afb2000ab8c857d881049299",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 22,
+      "record_id": "24e74c9a5c9d1a3e1496795116f9c84734cbce35404a4ffdd1eaf0d02e936e45",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 23,
+      "record_id": "6105e72ab5715e277ec3f23d708c825ec641990a6de14e6cc9d0170ed30209c6",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 24,
+      "record_id": "4dde775056b15070629c91bf81df071dd98569cd9ae217cb0ece2eaeca98f14a",
+      "exact_arithmetic_checked": true
+    }
+  ],
+  "optional_lessons": "25 retained classroom reference; not converted in this batch",
+  "scope": "New worked examples aligned to24 retained lesson goals; original teacher responses and diagrams remain incomplete; teaching/grade/rights approval unchanged."
+}

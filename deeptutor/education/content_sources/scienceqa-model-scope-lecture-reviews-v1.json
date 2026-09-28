@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 1924,
+  "reviews": [
+    {
+      "concept_id": "b5cae73c20b8e255cf9f5dcfb67736df0c1125360e48486d1a4e52e704bee1ae",
+      "expected_records": 33,
+      "lecture_before": "Chemical changes and physical changes are two common ways matter can change.\nIn a chemical change, the type of matter changes. The types of matter before and after a chemical change are always different.\nBurning a piece of paper is a chemical change. When paper gets hot enough, it reacts with oxygen in the air and burns. The paper and oxygen change into ash and smoke.\nIn a physical change, the type of matter stays the same. The types of matter before and after a physical change are always the same.\nCutting a piece of paper is a physical change. The cut pieces are still made of paper.\nA change of state is a type of physical change. For example, ice melting is a physical change. Ice and liquid water are made of the same type of matter: water.",
+      "lecture_after": "Chemical changes and physical changes are two common ways matter can change.\nA chemical change forms one or more new substances. Some starting material may remain; it is not necessary for every substance in the sample to change.\nBurning a piece of paper is a chemical change. When paper gets hot enough, it reacts with oxygen in the air and burns. The paper and oxygen change into ash and smoke.\nIn a physical change, the type of matter stays the same. The types of matter before and after a physical change are always the same.\nCutting a piece of paper is a physical change. The cut pieces are still made of paper.\nA change of state is a type of physical change. For example, ice melting is a physical change. Ice and liquid water are made of the same type of matter: water.",
+      "reason": "Qualify the classroom model and avoid applying its simplified rules to every material or organism.",
+      "references": [
+        {
+          "url": "https://goldbook.iupac.org/terms/view/M04002",
+          "supports": "A molecule is a neutral entity containing multiple atoms; bonding does not imply every material consists of discrete molecules."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-6-ionic-and-molecular-compounds",
+          "supports": "Ionic solids contain extended arrangements of ions rather than separate neutral molecules."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-3-physical-and-chemical-properties",
+          "supports": "A physical change preserves chemical identities; a chemical change forms new substances."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "60f17897cdeef6b8070d2d4bb0cfef5af7cbe9cb4ca7ac00bb8ff33a0277eb9e",
+      "expected_records": 193,
+      "lecture_before": "Chemical changes and physical changes are two common ways matter can change.\nIn a chemical change, the type of matter changes. The types of matter before and after a chemical change are always different.\nSome chemical changes are caused by heating or cooling. For example, burning a piece of paper is a chemical change caused by heating. When paper gets hot enough, it re­acts with oxygen in the air and burns. The paper and oxygen change into ash and smoke.\nIn a physical change, the type of matter stays the same. The types of matter before and after a physical change are always the same.\nA change of state is a type of physical change. Changes of state can be caused by heating or cooling. For example, ice melting is a physical change that can be caused by heating. Ice and liquid water are made of the same type of matter: water.\nThe law of conservation of mass says that all physical and chemical changes conserve mass. Conserve means to keep the same. So, the total mass before a physical or chemical change is equal to the total mass after the change.",
+      "lecture_after": "Chemical changes and physical changes are two common ways matter can change.\nA chemical change forms one or more new substances. Some starting material may remain; it is not necessary for every substance in the sample to change.\nSome chemical changes are caused by heating or cooling. For example, burning a piece of paper is a chemical change caused by heating. When paper gets hot enough, it re­acts with oxygen in the air and burns. The paper and oxygen change into ash and smoke.\nIn a physical change, the type of matter stays the same. The types of matter before and after a physical change are always the same.\nA change of state is a type of physical change. Changes of state can be caused by heating or cooling. For example, ice melting is a physical change that can be caused by heating. Ice and liquid water are made of the same type of matter: water.\nFor ordinary physical and chemical changes, mass is conserved when all participating matter is counted. In a closed system, matter cannot enter or leave, so the total measured mass stays the same. An open container can gain or lose matter; include gases that enter or escape when comparing the full system.",
+      "reason": "Qualify the classroom model and avoid applying its simplified rules to every material or organism.",
+      "references": [
+        {
+          "url": "https://goldbook.iupac.org/terms/view/M04002",
+          "supports": "A molecule is a neutral entity containing multiple atoms; bonding does not imply every material consists of discrete molecules."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-6-ionic-and-molecular-compounds",
+          "supports": "Ionic solids contain extended arrangements of ions rather than separate neutral molecules."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-3-physical-and-chemical-properties",
+          "supports": "A physical change preserves chemical identities; a chemical change forms new substances."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+          "supports": "Conservation compares all material involved; an open sample can exchange matter with its surroundings."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "b19823b732670a8f49b644c7bd61797605f4697b0722ebdcccda3b8ab160d65a",
+      "expected_records": 68,
+      "lecture_before": "Matter is made of very small particles called atoms. Atoms can be linked together by chemical bonds. When two or more atoms link together, they form a molecule.\nIn a chemical change, the chemical bonds in the molecules break. The atoms then link together to form new molecules. The types of molecules in matter before and after a chemical change are always different.\nBurning a piece of paper is a chemical change. As paper burns, paper molecules react with oxygen molecules in the air. This reaction breaks the chemical bonds in the molecules. The atoms then relink and form different molecules. For example, carbon dioxide molecules are created when paper burns.\nIn a physical change, chemical bonds do not break. The types of molecules in matter before and after a physical change are always the same.\nA change of state is a type of physical change. For example, water vaporizing is a physical change. Liquid water and water vapor are made of the same type of matter: water.",
+      "lecture_after": "Ordinary matter is built from atoms. Some bonded atoms form separate neutral groups called molecules. Other materials, such as a sodium chloride crystal, contain extended arrangements of ions rather than separate molecules.\nIn a chemical change, atoms are rearranged as new substances form. Bonds or other chemical interactions change, but not every bond in the original sample must break. A reaction can involve molecules, ions, or extended structures.\nBurning a piece of paper is a chemical change. As paper burns, paper molecules react with oxygen molecules in the air. This reaction breaks the chemical bonds in the molecules. The atoms then relink and form different molecules. For example, carbon dioxide molecules are created when paper burns.\nA physical change preserves the chemical identities of the substances. For example, water molecules remain water molecules when liquid water becomes water vapor, even though attractions between molecules change. Do not use the blanket rule that no kind of bond or interaction can change.\nA change of state is a type of physical change. For example, water vaporizing is a physical change. Liquid water and water vapor are made of the same type of matter: water.",
+      "reason": "Qualify the classroom model and avoid applying its simplified rules to every material or organism.",
+      "references": [
+        {
+          "url": "https://goldbook.iupac.org/terms/view/M04002",
+          "supports": "A molecule is a neutral entity containing multiple atoms; bonding does not imply every material consists of discrete molecules."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-6-ionic-and-molecular-compounds",
+          "supports": "Ionic solids contain extended arrangements of ions rather than separate neutral molecules."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-3-physical-and-chemical-properties",
+          "supports": "A physical change preserves chemical identities; a chemical change forms new substances."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "38d4064508b576b53c16533c346a6798dd238c27f77ba40db682463259282f5e",
+      "expected_records": 186,
+      "lecture_before": "Matter is made of very small particles called atoms. Atoms can be linked together by chemical bonds. When two or more atoms link together, they form a molecule.\nIn a chemical change, the chemical bonds in the molecules break. The atoms then link together to form different molecules. The types of molecules in matter before and after a chemical change are always different.\nSome chemical changes are caused by heating or cooling. For example, burning a piece of paper is a chemical change caused by heating. As paper burns, paper molecules react with oxygen molecules in the air. This reaction breaks the chemical bonds in the molecules. The atoms then link together in a different way to form different molecules. For example, carbon dioxide molecules are formed when paper burns.\nIn a physical change, chemical bonds do not break. The types of molecules in matter before and after a physical change are always the same.\nA change of state is a type of physical change. Changes of state can be caused by heating or cooling. For example, water vaporizing is a physical change that can be caused by heating. Liquid water and water vapor are made of the same type of matter: water.\nThe law of conservation of mass says that all physical and chemical changes conserve mass. Conserve means to keep the same. So, the total mass before a physical or chemical change is equal to the total mass after the change.",
+      "lecture_after": "Ordinary matter is built from atoms. Some bonded atoms form separate neutral groups called molecules. Other materials, such as a sodium chloride crystal, contain extended arrangements of ions rather than separate molecules.\nIn a chemical change, atoms are rearranged as new substances form. Bonds or other chemical interactions change, but not every bond in the original sample must break. A reaction can involve molecules, ions, or extended structures.\nSome chemical changes are caused by heating or cooling. For example, burning a piece of paper is a chemical change caused by heating. As paper burns, paper molecules react with oxygen molecules in the air. This reaction breaks the chemical bonds in the molecules. The atoms then link together in a different way to form different molecules. For example, carbon dioxide molecules are formed when paper burns.\nA physical change preserves the chemical identities of the substances. For example, water molecules remain water molecules when liquid water becomes water vapor, even though attractions between molecules change. Do not use the blanket rule that no kind of bond or interaction can change.\nA change of state is a type of physical change. Changes of state can be caused by heating or cooling. For example, water vaporizing is a physical change that can be caused by heating. Liquid water and water vapor are made of the same type of matter: water.\nFor ordinary physical and chemical changes, mass is conserved when all participating matter is counted. In a closed system, matter cannot enter or leave, so the total measured mass stays the same. An open container can gain or lose matter; include gases that enter or escape when comparing the full system.",
+      "reason": "Qualify the classroom model and avoid applying its simplified rules to every material or organism.",
+      "references": [
+        {
+          "url": "https://goldbook.iupac.org/terms/view/M04002",
+          "supports": "A molecule is a neutral entity containing multiple atoms; bonding does not imply every material consists of discrete molecules."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-6-ionic-and-molecular-compounds",
+          "supports": "Ionic solids contain extended arrangements of ions rather than separate neutral molecules."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-3-physical-and-chemical-properties",
+          "supports": "A physical change preserves chemical identities; a chemical change forms new substances."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+          "supports": "Conservation compares all material involved; an open sample can exchange matter with its surroundings."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "8be092983c57d1f4a5ac59ec874967f6a100460d427c03eb9486b51a302cc2cc",
+      "expected_records": 276,
+      "lecture_before": "The temperature of a substance depends on the average kinetic energy of the particles in the substance. The higher the average kinetic energy of the particles, the higher the temperature of the substance.\nThe kinetic energy of a particle is determined by its mass and speed. For a pure substance, the greater the mass of each particle in the substance and the higher the average speed of the particles, the higher their average kinetic energy.",
+      "lecture_after": "For a classical ideal gas at equilibrium, the mean translational kinetic energy per particle is proportional to its absolute temperature in kelvin: mean K = (3/2) kT. Here k is Boltzmann's constant. This is a model relating temperature to one kind of microscopic motion, not a universal formula for the entire internal energy of every material.\nA particle with mass m and speed v has translational kinetic energy K = (1/2) mv^2. For identical particles, average over v^2, not the square of the average speed. At equal temperature in this gas model, particles of different masses have the same mean translational kinetic energy; the heavier particles have a smaller root-mean-square speed.",
+      "reason": "Qualify the classroom model and avoid applying its simplified rules to every material or organism.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/13-4-kinetic-theory-atomic-and-molecular-explanation-of-pressure-and-temperature",
+          "supports": "In a classical ideal gas, mean translational kinetic energy is 3kT/2; use mean squared speed, absolute temperature, and distinguish temperature from total energy."
+        },
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/3-2-work-heat-and-internal-energy",
+          "supports": "Internal energy includes microscopic energy; the simple temperature-only expression is scoped to an ideal monatomic gas."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "f96c7f446fff1c073fc8d0b8fbf74993ce5fc8488ada05e8b160f705d070edd3",
+      "expected_records": 279,
+      "lecture_before": "Organisms, including people, have both inherited and acquired traits. Inherited and acquired traits are gained in different ways.\nInherited traits are passed down through families. Children gain these traits from their parents. Inherited traits do not need to be learned.\nAcquired traits are gained during a person's life. Some acquired traits, such as riding a bicycle, are gained by learning. Other acquired traits, such as scars, are caused by the environment. Children do not inherit their parents' acquired traits.",
+      "lecture_after": "Organisms, including people, have both inherited and acquired traits. Inherited and acquired traits are gained in different ways.\nInherited traits are passed down through families. Children gain these traits from their parents. Inherited traits do not need to be learned.\nAcquired traits are gained during a person's life. Some acquired traits, such as riding a bicycle, are gained by learning. Other acquired traits, such as scars, are caused by the environment. For example, a child does not inherit a parent's scar or bicycle-riding skill as a ready-made genetic trait.\nThese classroom categories describe different influences, not two completely separate kinds of organism. Many observable traits develop through both genes and environment. Inherited does not mean that a trait is unaffected by growth, experience, or living conditions.",
+      "reason": "Qualify the classroom model and avoid applying its simplified rules to every material or organism.",
+      "references": [
+        {
+          "url": "https://www.genome.gov/genetics-glossary/Phenotype",
+          "supports": "Observable traits depend on both genetic makeup and environmental influences."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance",
+          "supports": "Simple dominant/recessive inheritance and Punnett ratios have explicit model assumptions; other inheritance patterns exist."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "b847725cf3bece5d9cebfbd626b292b5dfb0824049ce00343c6ecb8cbf688213",
+      "expected_records": 297,
+      "lecture_before": "Organisms, including people, have both inherited and acquired traits. Inherited and acquired traits are gained in different ways.\nInherited traits are passed down from biological parents to their offspring through genes. Genes are pieces of hereditary material that contain the instructions that affect inherited traits. Offspring receive their genes, and therefore gain their inherited traits, from their biological parents. Inherited traits do not need to be learned.\nAcquired traits are gained during a person's life. Some acquired traits, such as riding a bicycle, are gained by learning. Other acquired traits, such as scars, are caused by the environment. Parents do not pass acquired traits down to their offspring.",
+      "lecture_after": "Organisms, including people, have both inherited and acquired traits. Inherited and acquired traits are gained in different ways.\nInherited traits are passed down from biological parents to their offspring through genes. Genes are pieces of hereditary material that contain the instructions that affect inherited traits. Offspring receive their genes, and therefore gain their inherited traits, from their biological parents. Inherited traits do not need to be learned.\nAcquired traits are gained during a person's life. Some acquired traits, such as riding a bicycle, are gained by learning. Other acquired traits, such as scars, are caused by the environment. For example, a child does not inherit a parent's scar or bicycle-riding skill as a ready-made genetic trait.\nThese classroom categories describe different influences, not two completely separate kinds of organism. Many observable traits develop through both genes and environment. Inherited does not mean that a trait is unaffected by growth, experience, or living conditions.",
+      "reason": "Qualify the classroom model and avoid applying its simplified rules to every material or organism.",
+      "references": [
+        {
+          "url": "https://www.genome.gov/genetics-glossary/Phenotype",
+          "supports": "Observable traits depend on both genetic makeup and environmental influences."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance",
+          "supports": "Simple dominant/recessive inheritance and Punnett ratios have explicit model assumptions; other inheritance patterns exist."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "d42afacda8777e1defa34a591a29caba31fc7e655c245832dc1b70a329214f4c",
+      "expected_records": 202,
+      "lecture_before": "All organisms have pieces of hereditary material called genes, which are passed from parents to offspring. Genes contain instructions for building the parts of an organism. An organism's genes affect its observable traits, including its appearance, its behavior, and which diseases it may have. Genes may have different alleles, or forms, that can cause different versions of a trait.\nFor example, flower color is a trait in pea plants. The gene for this trait has two possible alleles. Each allele is represented by an uppercase or lowercase letter. The allele F is for purple flowers, and the allele f is for white flowers. Each pea plant has two alleles for the flower color gene—one allele inherited from each parent.\nAn organism's genotype for a gene is its combination of alleles for that gene. So, a pea plant may have a genotype of FF, Ff, or ff for the flower color gene.\nAn organism's phenotype for a trait is its observable version of that trait, which depends on the organism's combination of alleles. A pea plant may have a phenotype of purple flowers or white flowers for the flower color trait.\nSome traits, like flower color in pea plants, are controlled by a single gene. Most plants and animals have a genotype made up of two alleles for these traits. These two alleles determine whether an organism is homozygous or heterozygous for the gene.\nAn organism with two identical alleles for a gene is homozygous for that gene. A pea plant with the genotype FF or ff is homozygous for the flower color gene.\nAn organism with two different alleles for a gene is heterozygous for that gene. A pea plant with the genotype Ff is heterozygous for the flower color gene.\nThe types of alleles in an organism's genotype determine the organism's phenotype. Some alleles have types called dominant and recessive. These two types can cause different versions of a trait to appear as the organism's phenotype.\nA dominant allele causes its version of the trait to appear even when the organism also has a recessive allele for the gene. In pea plants, the F allele, which causes purple flowers, is dominant over the f allele. A pea plant with at least one F allele will have the F allele's version of the flower color trait. So, a plant with the genotype FF or Ff will have purple flowers.\nA recessive allele causes its version of the trait to appear only when the organism does not have any dominant alleles for the gene. In pea plants, the f allele, which causes white flowers, is recessive to the F allele. A pea plant with only f alleles will have the f allele's version of the flower color trait. So, a plant with the genotype ff will have white flowers.",
+      "lecture_after": "All organisms have pieces of hereditary material called genes, which are passed from parents to offspring. Genes contain instructions for building the parts of an organism. An organism's genes affect its observable traits, including its appearance, its behavior, and which diseases it may have. Genes may have different alleles, or forms, that can cause different versions of a trait.\nFor example, flower color is a trait in pea plants. The gene for this trait has two possible alleles. Each allele is represented by an uppercase or lowercase letter. The allele F is for purple flowers, and the allele f is for white flowers. Each pea plant has two alleles for the flower color gene—one allele inherited from each parent.\nAn organism's genotype for a gene is its combination of alleles for that gene. So, a pea plant may have a genotype of FF, Ff, or ff for the flower color gene.\nA phenotype is an observable trait. Phenotypes can depend on genes and environmental conditions. In this simplified pea-flower example, the specified alleles predict purple or white flowers under the assumed conditions.\nThis exercise uses a diploid, single-gene model with two copies of the studied gene. Two identical alleles are homozygous; two different alleles are heterozygous. Do not assume every organism has two copies of every gene or that all traits follow a single-gene rule.\nAn organism with two identical alleles for a gene is homozygous for that gene. A pea plant with the genotype FF or ff is homozygous for the flower color gene.\nAn organism with two different alleles for a gene is heterozygous for that gene. A pea plant with the genotype Ff is heterozygous for the flower color gene.\nThe following example assumes complete dominance: one allele determines the specified phenotype when paired with the recessive allele. Dominance describes the relationship between alleles for a particular trait; it does not mean an allele is better or more common. Other inheritance patterns and environmental effects also exist.\nA dominant allele causes its version of the trait to appear even when the organism also has a recessive allele for the gene. In pea plants, the F allele, which causes purple flowers, is dominant over the f allele. A pea plant with at least one F allele will have the F allele's version of the flower color trait. So, a plant with the genotype FF or Ff will have purple flowers.\nA recessive allele causes its version of the trait to appear only when the organism does not have any dominant alleles for the gene. In pea plants, the f allele, which causes white flowers, is recessive to the F allele. A pea plant with only f alleles will have the f allele's version of the flower color trait. So, a plant with the genotype ff will have white flowers.\nUse this model only when the problem supplies the relevant inheritance assumptions; it is not a way to infer a person's health, abilities, or behavior from a single visible trait.",
+      "reason": "Qualify the classroom model and avoid applying its simplified rules to every material or organism.",
+      "references": [
+        {
+          "url": "https://www.genome.gov/genetics-glossary/Phenotype",
+          "supports": "Observable traits depend on both genetic makeup and environmental influences."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance",
+          "supports": "Simple dominant/recessive inheritance and Punnett ratios have explicit model assumptions; other inheritance patterns exist."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "ab0d5389800ec58c73a8cb33dfe364f9c9bc003fde5dfc67b95b5989eb1002d6",
+      "expected_records": 251,
+      "lecture_before": "All organisms have pieces of hereditary material called genes, which are passed from parents to offspring. Genes contain instructions for building the parts of an organism. An organism's genes affect its observable traits, including its appearance, its behavior, and which diseases it may have. Genes may have different alleles, or forms, that can cause different versions of a trait.\nFor example, flower color is a trait in pea plants. The gene for this trait has two possible alleles. Each allele is represented by an uppercase or lowercase letter. The allele F is for purple flowers, and the allele f is for white flowers. Each pea plant has two alleles for the flower color gene—one allele inherited from each parent.\nAn organism's genotype for a gene is its combination of alleles for that gene. So, a pea plant may have a genotype of FF, Ff, or ff for the flower color gene.\nAn organism's phenotype for a trait is its observable version of that trait, which depends on the organism's combination of alleles. A pea plant may have a phenotype of purple flowers or white flowers for the flower color trait.",
+      "lecture_after": "All organisms have pieces of hereditary material called genes, which are passed from parents to offspring. Genes contain instructions for building the parts of an organism. An organism's genes affect its observable traits, including its appearance, its behavior, and which diseases it may have. Genes may have different alleles, or forms, that can cause different versions of a trait.\nFor example, flower color is a trait in pea plants. The gene for this trait has two possible alleles. Each allele is represented by an uppercase or lowercase letter. The allele F is for purple flowers, and the allele f is for white flowers. Each pea plant has two alleles for the flower color gene—one allele inherited from each parent.\nAn organism's genotype for a gene is its combination of alleles for that gene. So, a pea plant may have a genotype of FF, Ff, or ff for the flower color gene.\nA phenotype is an observable trait. Phenotypes can depend on genes and environmental conditions. In this simplified pea-flower example, the specified alleles predict purple or white flowers under the assumed conditions.\nUse this model only when the problem supplies the relevant inheritance assumptions; it is not a way to infer a person's health, abilities, or behavior from a single visible trait.",
+      "reason": "Qualify the classroom model and avoid applying its simplified rules to every material or organism.",
+      "references": [
+        {
+          "url": "https://www.genome.gov/genetics-glossary/Phenotype",
+          "supports": "Observable traits depend on both genetic makeup and environmental influences."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance",
+          "supports": "Simple dominant/recessive inheritance and Punnett ratios have explicit model assumptions; other inheritance patterns exist."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "1a1c425a86bf4684972bcb4b76759797ea4edd25bd751297cced03d71856b342",
+      "expected_records": 49,
+      "lecture_before": "Offspring phenotypes: dominant or recessive?\nHow do you determine an organism's phenotype for a trait? Look at the combination of alleles in the organism's genotype for the gene that affects that trait. Some alleles have types called dominant and recessive. These two types can cause different versions of the trait to appear as the organism's phenotype.\nIf an organism's genotype has at least one dominant allele for a gene, the organism's phenotype will be the dominant allele's version of the gene's trait.\nIf an organism's genotype has only recessive alleles for a gene, the organism's phenotype will be the recessive allele's version of the gene's trait.\nIn a Punnett square, each box represents a different outcome, or result. Each of the four outcomes is equally likely to happen. Each box represents one way the parents' alleles can combine to form an offspring's genotype. Because there are four boxes in the Punnett square, there are four possible outcomes.\nAn event is a set of one or more outcomes. The probability of an event is a measure of how likely the event is to happen. This probability is a number between 0 and 1, and it can be written as a fraction:\nprobability of an event = number of ways the event can happen / number of equally likely outcomes\nYou can use a Punnett square to calculate the probability that a cross will produce certain offspring. For example, the Punnett square below has two boxes with the genotype Ff. It has one box with the genotype FF and one box with the genotype ff. This means there are two ways the parents' alleles can combine to form Ff. There is one way they can combine to form FF and one way they can combine to form ff.\n | F | f\nF | FF | Ff\nf | Ff | ff\nConsider an event in which this cross produces an offspring with the genotype ff. The probability of this event is given by the following fraction:\nnumber of ways the event can happen / number of equally likely outcomes = number of boxes with the genotype ff / total number of boxes = 1 / 4.",
+      "lecture_after": "Offspring phenotypes: dominant or recessive?\nFor this exercise, assume a diploid, single-gene model with complete dominance and the inheritance rules stated in the problem. Under these assumptions, the allele combination predicts the specified phenotype. Many real traits involve other inheritance patterns, multiple genes, or environmental effects.\nIf an organism's genotype has at least one dominant allele for a gene, the organism's phenotype will be the dominant allele's version of the gene's trait.\nIf an organism's genotype has only recessive alleles for a gene, the organism's phenotype will be the recessive allele's version of the gene's trait.\nIn the 2-by-2 cross shown here, assume each parent transmits either listed allele with probability 1/2 and the gametes combine independently. The four boxes are equally likely transmission combinations. Repeated genotypes can occur in more than one box, so four boxes do not imply four distinct genotypes.\nAn event is a set of one or more outcomes. The probability of an event is a measure of how likely the event is to happen. This probability is a number between 0 and 1, and it can be written as a fraction:\nprobability of an event = number of ways the event can happen / number of equally likely outcomes\nYou can use a Punnett square to calculate the probability that a cross will produce certain offspring. For example, the Punnett square below has two boxes with the genotype Ff. It has one box with the genotype FF and one box with the genotype ff. This means there are two ways the parents' alleles can combine to form Ff. There is one way they can combine to form FF and one way they can combine to form ff.\n | F | f\nF | FF | Ff\nf | Ff | ff\nConsider an event in which this cross produces an offspring with the genotype ff. The probability of this event is given by the following fraction:\nnumber of ways the event can happen / number of equally likely outcomes = number of boxes with the genotype ff / total number of boxes = 1 / 4.\nPunnett-square probabilities describe expected outcomes across many offspring. They do not guarantee that each small family or sample has the exact predicted proportions.",
+      "reason": "Qualify the classroom model and avoid applying its simplified rules to every material or organism.",
+      "references": [
+        {
+          "url": "https://www.genome.gov/genetics-glossary/Phenotype",
+          "supports": "Observable traits depend on both genetic makeup and environmental influences."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance",
+          "supports": "Simple dominant/recessive inheritance and Punnett ratios have explicit model assumptions; other inheritance patterns exist."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "465cc1f90f4e944101eeece8424ad1e37ad935c3ddce5232dbbd1054f94fbcab",
+      "expected_records": 90,
+      "lecture_before": "Offspring phenotypes: dominant or recessive?\nHow do you determine an organism's phenotype for a trait? Look at the combination of alleles in the organism's genotype for the gene that affects that trait. Some alleles have types called dominant and recessive. These two types can cause different versions of the trait to appear as the organism's phenotype.\nIf an organism's genotype has at least one dominant allele for a gene, the organism's phenotype will be the dominant allele's version of the gene's trait.\nIf an organism's genotype has only recessive alleles for a gene, the organism's phenotype will be the recessive allele's version of the gene's trait.\nA Punnett square shows what types of offspring a cross can produce. The expected ratio of offspring types compares how often the cross produces each type of offspring, on average. To write this ratio, count the number of boxes in the Punnett square representing each type.\nFor example, consider the Punnett square below.\n | F | f\nF | FF | Ff\nf | Ff | ff\nThere is 1 box with the genotype FF and 2 boxes with the genotype Ff. So, the expected ratio of offspring with the genotype FF to those with Ff is 1:2.",
+      "lecture_after": "Offspring phenotypes: dominant or recessive?\nFor this exercise, assume a diploid, single-gene model with complete dominance and the inheritance rules stated in the problem. Under these assumptions, the allele combination predicts the specified phenotype. Many real traits involve other inheritance patterns, multiple genes, or environmental effects.\nIf an organism's genotype has at least one dominant allele for a gene, the organism's phenotype will be the dominant allele's version of the gene's trait.\nIf an organism's genotype has only recessive alleles for a gene, the organism's phenotype will be the recessive allele's version of the gene's trait.\nA Punnett square shows what types of offspring a cross can produce. The expected ratio of offspring types compares how often the cross produces each type of offspring, on average. To write this ratio, count the number of boxes in the Punnett square representing each type.\nFor example, consider the Punnett square below.\n | F | f\nF | FF | Ff\nf | Ff | ff\nThere is 1 box with the genotype FF and 2 boxes with the genotype Ff. So, the expected ratio of offspring with the genotype FF to those with Ff is 1:2.\nPunnett-square probabilities describe expected outcomes across many offspring. They do not guarantee that each small family or sample has the exact predicted proportions.",
+      "reason": "Qualify the classroom model and avoid applying its simplified rules to every material or organism.",
+      "references": [
+        {
+          "url": "https://www.genome.gov/genetics-glossary/Phenotype",
+          "supports": "Observable traits depend on both genetic makeup and environmental influences."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/12-3-laws-of-inheritance",
+          "supports": "Simple dominant/recessive inheritance and Punnett ratios have explicit model assumptions; other inheritance patterns exist."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

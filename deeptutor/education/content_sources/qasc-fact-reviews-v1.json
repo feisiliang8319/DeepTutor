@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "library": "qasc",
+  "expected_records": 9060,
+  "expected_changed_records": 82,
+  "reviews": [
+    {
+      "fact_id": "931d41a98d1e7b7abb9326adeca4178f71d7a6863a8ac21786a7bf951794a59a",
+      "fact_before": "All plants are of bush type.",
+      "correction": "Plants include trees, shrubs, herbs and grasses, among other growth forms. A bush is one kind of plant; the category does not include every plant. A property cannot be transferred to all plants solely because one bush has it.",
+      "reason": "The source reverses a category relationship. Review the question, alternatives and combined inference before accepting its answer.",
+      "expected_records": 16,
+      "references": [
+        "https://plants.usda.gov/assets/docs/PLANTS_Help_Document.pdf"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "151099fcdce7373da80d11e1d8fa060e87baac120321c72be425d0df4fbd4f7c",
+      "fact_before": "Viruses contain DNA but not much else.",
+      "correction": "A virus has a DNA or RNA genome surrounded by a protein capsid; some viruses also have an envelope and additional proteins. A general statement about viruses cannot assume that every viral genome is DNA, or that DNA is their largest component.",
+      "reason": "The source excludes RNA viruses and essential structural proteins. Its quantity claims and derived answer remain unverified.",
+      "expected_records": 16,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/21-1-viral-evolution-morphology-and-classification"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "9be18e3fdb628071bde961592a01edcbf93f4feb5e45b05ac44a5d0f501922ed",
+      "fact_before": "plant reproduction requires pollination",
+      "correction": "Pollination transfers pollen in seed plants and is part of their sexual reproductive process. Plants can also reproduce without pollination, for example through vegetative propagation. Mosses and ferns have life cycles without pollen. Pollination is not a requirement for every kind of plant reproduction.",
+      "reason": "The universal premise is false. A specific species, reproductive method and pollinator must be established before drawing the proposed conclusion.",
+      "expected_records": 17,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-3-asexual-reproduction"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "6580db3433d797aeffd98c2de1ceede17dcea2062f9ac39902f10de301580f7c",
+      "fact_before": "if an object is black then that object absorbs all visible light",
+      "correction": "A surface that appears black reflects relatively little visible light toward the observer under the given illumination. Real black materials need not absorb every incident photon. An ideal blackbody is a perfect absorber; visible appearance alone does not establish perfect absorption at all wavelengths.",
+      "reason": "The source confuses an ideal absorber with an ordinary dark surface, and may extend visible-light behavior to other wavelengths.",
+      "expected_records": 17,
+      "references": [
+        "https://openstax.org/books/university-physics-volume-3/pages/6-1-blackbody-radiation"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "1b3761530a7f4b8e9e0daa97f794c11785558a5f7daa9f61749af7827fa6be50",
+      "fact_before": "friction causes an object to lose energy",
+      "correction": "Friction can reduce mechanical energy by transferring energy and converting it into internal energy, including thermal energy. Total energy is conserved. Specify the object, system boundary and type of energy; friction does not mean energy is destroyed or that the total energy of every individual object must decrease.",
+      "reason": "The source omits the energy type and system boundary. Lubrication reduces some frictional losses but does not guarantee zero energy transfer or zero loss.",
+      "expected_records": 16,
+      "references": [
+        "https://openstax.org/books/college-physics-2e/pages/7-6-conservation-of-energy"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    }
+  ]
+}

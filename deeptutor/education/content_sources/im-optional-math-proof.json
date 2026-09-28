@@ -1,0 +1,68 @@
+{
+  "verified_tasks": 7,
+  "source_lesson_spans_verified": 7,
+  "package_sha256": "3c2e3f9fde43e5766add3902e3ca06769a9e91f63790920b5d2fdf03959d4cf0",
+  "builder_sha256": "2752834e00028f03c33259a18573146e691163946864c78b3b2660e0ee89e917",
+  "checks": [
+    {
+      "lesson_family": "IM:G4:U2:L17",
+      "source_record_id": "0db6e99f2217ca6075c662fae4470da81bc2124e07104bece1e45ade0ae5e703",
+      "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+      "source_span_sha256": "f907fc2f0314480cb4ad4eb4e6b76a59eb3353b93acf21093900b9aab35e98dd",
+      "exact_arithmetic_checked": true,
+      "definition_reviewed": true
+    },
+    {
+      "lesson_family": "IM:G4:U3:L19",
+      "source_record_id": "4c927038c08becdda977911cbb8f8b1c09122cd23adf6ba9d2ed9be1f8826e64",
+      "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+      "source_span_sha256": "6dd2ebde49efc2f7c5d41dcbf0eeea1a899c9699a496dde98c19b119da96dcbd",
+      "exact_arithmetic_checked": true,
+      "definition_reviewed": true
+    },
+    {
+      "lesson_family": "IM:G4:U3:L20",
+      "source_record_id": "2ff554e16c436217460b8aa424d4331821333342f275c9df6d95d0ea34bf0a51",
+      "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+      "source_span_sha256": "1c5e82b69f969b227361b66801c99ed9fc3add88ea0ed4357d3c7f861530a2d8",
+      "exact_arithmetic_checked": true,
+      "definition_reviewed": true
+    },
+    {
+      "lesson_family": "IM:G4:U4:L23",
+      "source_record_id": "7f278cd24acf778312e5f6ecff446f8a5fe35d4b49ccb01963e6c13d2bdb4851",
+      "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+      "source_span_sha256": "35455fee3954f89a02e9af7c65d66f1c8c4157bf8593fa308f039a8e598869b5",
+      "exact_arithmetic_checked": true,
+      "definition_reviewed": true
+    },
+    {
+      "lesson_family": "IM:G4:U5:L18",
+      "source_record_id": "e13abfc432357e14bfa2f32cb2b4b4cc9fb7e693780843e124f8ccb3468aecd4",
+      "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+      "source_span_sha256": "712d842ca4eebd5e218ed71a56aea629e859001315f569a6cc1ae4f83a797371",
+      "exact_arithmetic_checked": true,
+      "definition_reviewed": true
+    },
+    {
+      "lesson_family": "IM:G4:U6:L25",
+      "source_record_id": "4db26dfa892079fe0fdac0278a9436063b79dc61041544a574e69303c7dd3895",
+      "source_sha256": "ea77c2e3aeb0a15b3f81c027adab3f1e3b4f5f6049c5ec5473ffe0a39fb1c224",
+      "source_span_sha256": "d7124df15f15d6905ba58abb78ebc333c3fd698208825fe3d69f6a824234b73c",
+      "exact_arithmetic_checked": true,
+      "definition_reviewed": true
+    },
+    {
+      "lesson_family": "IM:G4:U7:L16",
+      "source_record_id": "3bd1168bd403fbfd6a339a75838e19cdcc54058719439d1fee88d2939a93633d",
+      "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+      "source_span_sha256": "4ffea6bd43af582206f8904465f6404d26f85bdec1431fa4c3e68e2eac7e315f",
+      "exact_arithmetic_checked": false,
+      "definition_reviewed": true
+    }
+  ],
+  "exact_arithmetic_check_count": 6,
+  "definition_only_count": 1,
+  "physical_drawing_cutting_gameplay_verified": false,
+  "scope": "Seven optional lesson goals adapted into complete independent examples, not official answers or verification of physical classroom activity performance. No formal testing or grade approval."
+}

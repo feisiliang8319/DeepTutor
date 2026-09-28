@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "IM G4 存量选学活动 · 7道完整课时例题",
+  "items": [
+    {
+      "id": "im-g4-u2-l17-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A2.JUSTIFY_COMPARISON",
+      "item_type": "multi_step",
+      "prompt": "一条从0到1的数轴被等分成12小段。夹子A放在第8个分点（0右侧第1个点计为第1个），B放在表示3/4的位置。用十二分之一为单位说明两者位置，并比较大小。游戏规定距离1更近者获胜，哪个夹子获胜？说明理由。",
+      "expected_answer": "A在8/12＝2/3处，B在9/12＝3/4处；2/3＜3/4。A距离1为4/12，B为3/12，B获胜。",
+      "explanation": "每小段表示1/12。A是8小段，B的3/4等于9/12。两者使用同一条数轴与同一个整体，所以可以比较分子8和9。A离1还差4小段，B只差3小段；比较距离而不是夹子名称来判断。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L17 | retained source line 6546",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 17. DeepTutor authored the task and explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "0db6e99f2217ca6075c662fae4470da81bc2124e07104bece1e45ade0ae5e703",
+        "source_lesson_family": "IM:G4:U2:L17",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "f907fc2f0314480cb4ad4eb4e6b76a59eb3353b93acf21093900b9aab35e98dd",
+        "source_span": {
+          "start": 224605,
+          "end": 238510
+        },
+        "source_spans": [
+          {
+            "start": 224605,
+            "end": 238510,
+            "sha256": "f907fc2f0314480cb4ad4eb4e6b76a59eb3353b93acf21093900b9aab35e98dd"
+          }
+        ],
+        "title_zh": "数轴夹子游戏：位置与比较",
+        "teaching_review": "pending",
+        "optional_source_lesson": true,
+        "grade_assignment_note": "对齐存量四年级选学课时目标；正式测试资格、知识点对应和难度仍待教学审核。",
+        "adaptation_scope": "Complete independently authored example; source classroom activity assets and official answers remain unavailable. Numeric answers checked, physical performance unverified.",
+        "judging_rules": [
+          "接受其他正确推导和等值表示。",
+          "这是有完整解答的Chat讲解素材；不在Chat启动测试，不凭此自动认定掌握或升级。",
+          "选学活动不自动成为单元晋级的必过任务。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l19-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B3.WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "一条绳长3米。制作4件相同挂饰，每件用3/8米，随后又用5/8米做结。已知各段均从这条绳剪出、没有额外损耗。共用了多少米，还剩多少米？分别写出先合计用量和逐次扣除的算法。",
+      "expected_answer": "共用17/8＝2又1/8米，剩7/8米。",
+      "explanation": "4件挂饰用4×3/8＝12/8米；加上结的5/8，共17/8米。原绳3米＝24/8米，剩24/8−17/8＝7/8米。逐次扣除为24/8−12/8−5/8＝7/8米，两种方法一致。不能把5/8再乘4，因为它是所有挂饰完成后额外的一次用量。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L19 | retained source line 7877",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 19. DeepTutor authored the task and explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "4c927038c08becdda977911cbb8f8b1c09122cd23adf6ba9d2ed9be1f8826e64",
+        "source_lesson_family": "IM:G4:U3:L19",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "6dd2ebde49efc2f7c5d41dcbf0eeea1a899c9699a496dde98c19b119da96dcbd",
+        "source_span": {
+          "start": 281075,
+          "end": 297967
+        },
+        "source_spans": [
+          {
+            "start": 281075,
+            "end": 297967,
+            "sha256": "6dd2ebde49efc2f7c5d41dcbf0eeea1a899c9699a496dde98c19b119da96dcbd"
+          }
+        ],
+        "title_zh": "分数材料的多步预算",
+        "teaching_review": "pending",
+        "optional_source_lesson": true,
+        "grade_assignment_note": "对齐存量四年级选学课时目标；正式测试资格、知识点对应和难度仍待教学审核。",
+        "adaptation_scope": "Complete independently authored example; source classroom activity assets and official answers remain unavailable. Numeric answers checked, physical performance unverified.",
+        "judging_rules": [
+          "接受其他正确推导和等值表示。",
+          "这是有完整解答的Chat讲解素材；不在Chat启动测试，不凭此自动认定掌握或升级。",
+          "选学活动不自动成为单元晋级的必过任务。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l20-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B4.WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "用边长1/6米的相同正方形便签拼字母F。共5行，每行左对齐，从上到下各有4、1、3、1、1张；同行相邻便签边贴边，上下两行间也无间隙。需要多少张？图案总高度和最宽处宽度是多少？若改为全部排成一条无间隙直线，总长度是多少？",
+      "expected_answer": "共10张；总高度5/6米，最大宽度4/6＝2/3米，直线长10/6＝1又2/3米。",
+      "explanation": "便签数4+1+3+1+1＝10。高度来自5行各占1/6米，最宽是第一行的4张。排成直线时每张沿排列方向贡献1/6米，得到10×1/6。便签总数不是图案宽乘高，因为F的包围长方形中有空位。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L20 | retained source line 8337",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 20. DeepTutor authored the task and explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "2ff554e16c436217460b8aa424d4331821333342f275c9df6d95d0ea34bf0a51",
+        "source_lesson_family": "IM:G4:U3:L20",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "1c5e82b69f969b227361b66801c99ed9fc3add88ea0ed4357d3c7f861530a2d8",
+        "source_span": {
+          "start": 297967,
+          "end": 309378
+        },
+        "source_spans": [
+          {
+            "start": 297967,
+            "end": 309378,
+            "sha256": "1c5e82b69f969b227361b66801c99ed9fc3add88ea0ed4357d3c7f861530a2d8"
+          }
+        ],
+        "title_zh": "便签字母的行列结构",
+        "teaching_review": "pending",
+        "optional_source_lesson": true,
+        "grade_assignment_note": "对齐存量四年级选学课时目标；正式测试资格、知识点对应和难度仍待教学审核。",
+        "adaptation_scope": "Complete independently authored example; source classroom activity assets and official answers remain unavailable. Numeric answers checked, physical performance unverified.",
+        "judging_rules": [
+          "接受其他正确推导和等值表示。",
+          "这是有完整解答的Chat讲解素材；不在Chat启动测试，不凭此自动认定掌握或升级。",
+          "选学活动不自动成为单元晋级的必过任务。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u4-l23-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.B4.STANDARD_ALGORITHM",
+      "item_type": "multi_step",
+      "prompt": "在一个虚构的计数模型中，开始有48,250只蜜蜂；某段时间新增加12,570只，之后减少9,865只。除此之外没有数量变化。先把三个数分别四舍五入到最接近的千位估计最后数量，再算精确值并求估计值与精确值的差。题目数字只是算术模型，不代表真实蜂群规律。",
+      "expected_answer": "估计48,000+13,000−10,000＝51,000；精确50,955；估计多45。",
+      "explanation": "48,250取48,000；12,570取13,000；9,865取10,000。精算先加得到60,820，再减9,865得到50,955。51,000−50,955＝45；估计接近但不等于精确结果。题干已说明没有其他变化，不能把此模型推广为所有蜂群的真实变化。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-4/ | IM:G4:U4:L23 | retained source line 9303",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 4, lesson 23. DeepTutor authored the task and explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "7f278cd24acf778312e5f6ecff446f8a5fe35d4b49ccb01963e6c13d2bdb4851",
+        "source_lesson_family": "IM:G4:U4:L23",
+        "source_sha256": "c4653f4eb798d8c374c48f72a779bd57dcd3e579ed9d0472afa753acd9dd4e11",
+        "source_raw_sha256": "35455fee3954f89a02e9af7c65d66f1c8c4157bf8593fa308f039a8e598869b5",
+        "source_span": {
+          "start": 304165,
+          "end": 316971
+        },
+        "source_spans": [
+          {
+            "start": 304165,
+            "end": 316971,
+            "sha256": "35455fee3954f89a02e9af7c65d66f1c8c4157bf8593fa308f039a8e598869b5"
+          }
+        ],
+        "title_zh": "蜜蜂数量：先估计再精算",
+        "teaching_review": "pending",
+        "optional_source_lesson": true,
+        "grade_assignment_note": "对齐存量四年级选学课时目标；正式测试资格、知识点对应和难度仍待教学审核。",
+        "adaptation_scope": "Complete independently authored example; source classroom activity assets and official answers remain unavailable. Numeric answers checked, physical performance unverified.",
+        "judging_rules": [
+          "接受其他正确推导和等值表示。",
+          "这是有完整解答的Chat讲解素材；不在Chat启动测试，不凭此自动认定掌握或升级。",
+          "选学活动不自动成为单元晋级的必过任务。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u5-l18-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A1.UNIT_CONVERT",
+      "item_type": "multi_step",
+      "prompt": "三张玩具动物模型的尺寸卡写明：长颈鹿模型高40厘米，兔子模型高10厘米，蛇模型长1米。判断以下陈述中哪一条错误并改正：①长颈鹿模型高度是兔子的4倍；②蛇模型长100厘米；③蛇模型长度是兔子高度的100倍。这里只比较给定模型尺寸，不代表真实动物大小。",
+      "expected_answer": "①②正确；③错误，应为10倍。",
+      "explanation": "40÷10＝4。1米＝100厘米，单位统一后100÷10＝10，而不是100。倍数没有厘米单位；100厘米是长度，10倍是长度之比。只有在同一单位下相除，才能直接比较给定尺寸。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-5/ | IM:G4:U5:L18 | retained source line 7089",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 5, lesson 18. DeepTutor authored the task and explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "e13abfc432357e14bfa2f32cb2b4b4cc9fb7e693780843e124f8ccb3468aecd4",
+        "source_lesson_family": "IM:G4:U5:L18",
+        "source_sha256": "94010058572192a9650fcd0496c009756126afc15b1085c6415c0ae6aa213fdf",
+        "source_raw_sha256": "712d842ca4eebd5e218ed71a56aea629e859001315f569a6cc1ae4f83a797371",
+        "source_span": {
+          "start": 235022,
+          "end": 246038
+        },
+        "source_spans": [
+          {
+            "start": 235022,
+            "end": 246038,
+            "sha256": "712d842ca4eebd5e218ed71a56aea629e859001315f569a6cc1ae4f83a797371"
+          }
+        ],
+        "title_zh": "动物模型卡：两真一假",
+        "teaching_review": "pending",
+        "optional_source_lesson": true,
+        "grade_assignment_note": "对齐存量四年级选学课时目标；正式测试资格、知识点对应和难度仍待教学审核。",
+        "adaptation_scope": "Complete independently authored example; source classroom activity assets and official answers remain unavailable. Numeric answers checked, physical performance unverified.",
+        "judging_rules": [
+          "接受其他正确推导和等值表示。",
+          "这是有完整解答的Chat讲解素材；不在Chat启动测试，不凭此自动认定掌握或升级。",
+          "选学活动不自动成为单元晋级的必过任务。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u6-l25-stock-example-v1",
+      "knowledge_node_code": "G4.OA.C5.PATTERN_FEATURES",
+      "item_type": "multi_step",
+      "prompt": "装饰串按“红、红、蓝”循环排列27朵纸花。每朵花需要6片花瓣，每张纸恰能剪12片，没有额外损耗，最后一张可以剩下花瓣。红花与蓝花各多少朵？至少需要多少张纸？最后剩多少片可用花瓣？",
+      "expected_answer": "红花18朵、蓝花9朵；需162片花瓣，至少14张纸，剩6片。",
+      "explanation": "27朵含9组“红、红、蓝”，所以红18、蓝9。全部花瓣数27×6＝162。13张只提供156片，不够；14张提供168片，余168−162＝6片。排色规律决定颜色数量，装纸容量决定向上取整，不能把13余6解释成只需13张。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-6/ | IM:G4:U6:L25 | retained source line 9310",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 6, lesson 25. DeepTutor authored the task and explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "4db26dfa892079fe0fdac0278a9436063b79dc61041544a574e69303c7dd3895",
+        "source_lesson_family": "IM:G4:U6:L25",
+        "source_sha256": "ea77c2e3aeb0a15b3f81c027adab3f1e3b4f5f6049c5ec5473ffe0a39fb1c224",
+        "source_raw_sha256": "d7124df15f15d6905ba58abb78ebc333c3fd698208825fe3d69f6a824234b73c",
+        "source_span": {
+          "start": 329660,
+          "end": 342780
+        },
+        "source_spans": [
+          {
+            "start": 329660,
+            "end": 342780,
+            "sha256": "d7124df15f15d6905ba58abb78ebc333c3fd698208825fe3d69f6a824234b73c"
+          }
+        ],
+        "title_zh": "纸花的重复规律与备料",
+        "teaching_review": "pending",
+        "optional_source_lesson": true,
+        "grade_assignment_note": "对齐存量四年级选学课时目标；正式测试资格、知识点对应和难度仍待教学审核。",
+        "adaptation_scope": "Complete independently authored example; source classroom activity assets and official answers remain unavailable. Numeric answers checked, physical performance unverified.",
+        "judging_rules": [
+          "接受其他正确推导和等值表示。",
+          "这是有完整解答的Chat讲解素材；不在Chat启动测试，不凭此自动认定掌握或升级。",
+          "选学活动不自动成为单元晋级的必过任务。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l16-stock-example-v1",
+      "knowledge_node_code": "G4.G.A1.IDENTIFY_IN_FIGURES",
+      "item_type": "multi_step",
+      "prompt": "一个平面四边形的四个内角都是直角。仅凭这一条线索，能确定它一定是正方形吗？给出一个符合线索但不是正方形的例子。若再补充“四条边等长”，能确定图形类别吗？能确定它的具体边长吗？采用长方形包含正方形的定义。",
+      "expected_answer": "不能；例如相邻边长2厘米和3厘米的长方形。补充四边等长后可确定为正方形，仍不能确定具体边长。",
+      "explanation": "四个直角使它属于长方形，但没有强制相邻边相等。2厘米与3厘米的长方形是反例。增加四边等长后，它同时满足正方形的直角与等边条件。边长1厘米或2厘米的正方形都符合，所以类别被确定不等于尺寸也被确定。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L16 | retained source line 6152",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 16. DeepTutor authored the task and explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "3bd1168bd403fbfd6a339a75838e19cdcc54058719439d1fee88d2939a93633d",
+        "source_lesson_family": "IM:G4:U7:L16",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "4ffea6bd43af582206f8904465f6404d26f85bdec1431fa4c3e68e2eac7e315f",
+        "source_span": {
+          "start": 226146,
+          "end": 235885
+        },
+        "source_spans": [
+          {
+            "start": 226146,
+            "end": 235885,
+            "sha256": "4ffea6bd43af582206f8904465f6404d26f85bdec1431fa4c3e68e2eac7e315f"
+          }
+        ],
+        "title_zh": "猜图游戏：条件够不够",
+        "teaching_review": "pending",
+        "optional_source_lesson": true,
+        "grade_assignment_note": "对齐存量四年级选学课时目标；正式测试资格、知识点对应和难度仍待教学审核。",
+        "adaptation_scope": "Complete independently authored example; source classroom activity assets and official answers remain unavailable. Numeric answers checked, physical performance unverified.",
+        "judging_rules": [
+          "接受其他正确推导和等值表示。",
+          "这是有完整解答的Chat讲解素材；不在Chat启动测试，不凭此自动认定掌握或升级。",
+          "选学活动不自动成为单元晋级的必过任务。"
+        ]
+      }
+    }
+  ]
+}

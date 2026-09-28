@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_linked_records": 1060,
+  "reviews": [
+    {
+      "concept_id": "647f02ff281beb782c8210baea8bc049d0925423e66c54773fdb5c5411115af9",
+      "lecture": "Rhyming words are words that end with the same sound.\nThe words tip and slip rhyme. They both end with the same sound.\nThe words meet and treat also rhyme. They both end with the same sound, even though the sound has two different spellings.\nThe words tip and meet don't rhyme. They end with different sounds.",
+      "expected_records": 58,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The supplied monosyllabic pairs correctly distinguish matching rimes from nonmatching ones; meet and treat illustrate that identical spelling is unnecessary.",
+      "limitations": "The assessment is of these ordinary English examples, not every accent, near-rhyme category or a claim that a shared final consonant alone is sufficient. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/rhyme",
+          "supports": "Describes sound correspondence in rhyme and distinguishes rhyme types."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "2791ee888846c2c8bbc0b098d28df23fad854d31aa327d2906d74c211d1574ea",
+      "lecture": "Rhyming words are words that end with the same sound.\nThe words tip and slip rhyme. They both end with the ip sound.\nThe words lake and make rhyme. They both end with the ake sound.\nThe words tip and lake don't rhyme. They end with different sounds.",
+      "expected_records": 39,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The supplied monosyllabic pairs correctly distinguish matching rimes from nonmatching ones; meet and treat illustrate that identical spelling is unnecessary.",
+      "limitations": "The assessment is of these ordinary English examples, not every accent, near-rhyme category or a claim that a shared final consonant alone is sufficient. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/rhyme",
+          "supports": "Describes sound correspondence in rhyme and distinguishes rhyme types."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "e1b35b14e5dbc17092d94fdd3d97741f8d27866a6443e18cd5028431039b97a4",
+      "lecture": "An allusion is a brief mention of something or someone well known, often from mythology, history, or literature. An allusion lets you reference ideas from an entire story in just a few words.\n\"I'd better get home before I turn into a pumpkin!\" Lila remarked.\nHere, Lila alludes to the fairy tale \"Cinderella,\" in which Cinderella must leave the ball before the coach that brought her transforms into a pumpkin. The allusion shows that Lila must depart immediately.",
+      "expected_records": 240,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The explanation correctly connects the pumpkin remark to the familiar Cinderella coach transformation and interprets the remark as a cue to leave.",
+      "limitations": "This is an illustrative reading of the remark within the familiar story version; it does not establish a literal deadline for the speaker or certify every Cinderella variant. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/allusion",
+          "supports": "An allusion refers briefly to a recognizable literary work or event."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "a5a69306408d3c5e95defa2421148028208eaab4d194958fb24b7bb654400a09",
+      "lecture": "Every substance around you is made of one or more chemical elements, or types of atoms. Substances that are made of only one chemical element are elementary substances. Substances that are made of two or more chemical elements bonded together are compounds.\nEvery chemical element is represented by its own symbol. For some elements, the symbol is one capital letter. For other elements, the symbol is one capital letter and one lowercase letter. For example, the symbol for the element fluorine is F, and the symbol for the element beryllium is Be.\nThe symbol for each element in a substance is shown in the substance's chemical formula.\nAn elementary substance is represented by a chemical formula that contains only one symbol.\nThe symbol may be followed by a subscript. A subscript is text that is smaller and placed lower than the normal line of text. A subscript is included when the atoms in the elementary substance are bonded to form molecules. The subscript tells you the number of atoms in each molecule.\nFor example, the chemical formula for the elementary substance oxygen is O2. The formula has a subscript of 2. This subscript tells you that there are two atoms in the molecule represented by this chemical formula.\nThe chemical element represented by the symbol O is also called oxygen. So, the formula O2 tells you that each molecule of O2 contains two oxygen atoms.\nA compound is represented by a chemical formula that contains multiple symbols.\nFor example, in the compound beryllium fluoride, there is one beryllium atom for every two fluorine atoms. This combination is shown in the compound's chemical formula, BeF2. In the formula, the symbol Be represents one beryllium atom. The symbol F followed by the subscript 2 represents two fluorine atoms.",
+      "expected_records": 63,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The elemental-versus-compound distinction, F and Be symbols, O2 atom count and BeF2 one-to-two ratio are correct in the introductory pure-substance examples.",
+      "limitations": "This does not classify mixtures as compounds, imply every compound consists of discrete molecules, or treat an empirical atom ratio as a structural model. Typography in individual formulas remains separately reviewable. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-4-chemical-formulas",
+          "supports": "Chemical symbols and subscripts identify composition; elemental molecules and empirical atom ratios are distinguished."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "8537d77c97d9502fea2771a189d5abc163173e6cec59bf6c6218beb4e168215f",
+      "lecture": "There are more than 100 different chemical elements, or types of atoms. Chemical elements make up all of the substances around you.\nA substance may be composed of one chemical element or multiple chemical elements. Substances that are composed of only one chemical element are elementary substances. Substances that are composed of multiple chemical elements bonded together are compounds.\nEvery chemical element is represented by its own atomic symbol. An atomic symbol may consist of one capital letter, or it may consist of a capital letter followed by a lowercase letter. For example, the atomic symbol for the chemical element fluorine is F, and the atomic symbol for the chemical element beryllium is Be.\nThe atomic symbol for each chemical element in a substance is shown in the substance's chemical formula.\nAn elementary substance is represented by a chemical formula that contains only one atomic symbol.\nThe atomic symbol in a chemical formula may be followed by a small number written lower than the symbol. This number is called a subscript. A subscript is included when the atoms in the elementary substance are bonded to form molecules. The subscript shows how many atoms are in each molecule.\nFor example, the chemical formula for the elementary substance oxygen, O2, has a subscript of 2. This subscript shows that the atomic symbol O represents two atoms. The elementary substance O2 and the chemical element represented by the atomic symbol O are both named oxygen. So, the formula tells you that each molecule of O2 contains two oxygen atoms.\nA compound is represented by a chemical formula that contains multiple atomic symbols.\nThe chemical elements in a compound are bonded together in a fixed ratio. This ratio is shown in a compound's chemical formula.\nFor example, in the compound beryllium fluoride, there is one beryllium atom for every two fluorine atoms. So, the ratio of beryllium atoms to fluorine atoms is 1 to 2. This ratio is shown in the chemical formula for beryllium fluoride, BeF2. There is no subscript following the atomic symbol Be because that symbol represents one atom. The subscript 2 follows the atomic symbol F to show that the symbol represents two atoms.",
+      "expected_records": 44,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The elemental-versus-compound distinction, F and Be symbols, O2 atom count and BeF2 one-to-two ratio are correct in the introductory pure-substance examples.",
+      "limitations": "This does not classify mixtures as compounds, imply every compound consists of discrete molecules, or treat an empirical atom ratio as a structural model. Typography in individual formulas remains separately reviewable. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-4-chemical-formulas",
+          "supports": "Chemical symbols and subscripts identify composition; elemental molecules and empirical atom ratios are distinguished."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "a26da0e875b4c29b257fd0fbcd16d215f15c56a2e8c911d3b644bb7f5f6b1cb1",
+      "lecture": "An adaptation is an inherited trait that helps an organism survive or reproduce. Adaptations can include both body parts and behaviors.\nThe shape of an animal's mouth is one example of an adaptation. Animals' mouths can be adapted in different ways. For example, a large mouth with sharp teeth might help an animal tear through meat. A long, thin mouth might help an animal catch insects that live in holes. Animals that eat similar food often have similar mouths.",
+      "expected_records": 65,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage defines adaptation as inherited and gives conditional examples of mouth shape and feeding. The wording might or often avoids claiming that appearance alone proves a universal function.",
+      "limitations": "Adaptive benefit depends on the environment and evidence; similar structures need not have identical functions or prove common ancestry. The assessment does not certify the history of any pictured species. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution",
+          "supports": "Heritable traits can affect survival and reproduction under particular environmental conditions."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "daf2fd49733bb17fc2aa99fb1aec874692167285126a09f5ddef381090f8dcc1",
+      "lecture": "An adaptation is an inherited trait that helps an organism survive or reproduce. Adaptations can include both body parts and behaviors.\nThe shape of an animal's feet is one example of an adaptation. Animals' feet can be adapted in different ways. For example, webbed feet might help an animal swim. Feet with thick fur might help an animal walk on cold, snowy ground.",
+      "expected_records": 86,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage defines adaptation as inherited and gives conditional examples of webbed feet or insulated feet. The wording might or often avoids claiming that appearance alone proves a universal function.",
+      "limitations": "Adaptive benefit depends on the environment and evidence; similar structures need not have identical functions or prove common ancestry. The assessment does not certify the history of any pictured species. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution",
+          "supports": "Heritable traits can affect survival and reproduction under particular environmental conditions."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "d3439018b2147ed8ab3dceec16f4c577e5488c04567b7e34877bee8f01494688",
+      "lecture": "An adaptation is an inherited trait that helps an organism survive or reproduce. Adaptations can include both body parts and behaviors.\nThe shape of a bird's beak is one example of an adaptation. Birds' beaks can be adapted in different ways. For example, a sharp hooked beak might help a bird tear through meat easily. A short, thick beak might help a bird break through a seed's hard shell. Birds that eat similar food often have similar beaks.",
+      "expected_records": 82,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage defines adaptation as inherited and gives conditional examples of beak shape and feeding. The wording might or often avoids claiming that appearance alone proves a universal function.",
+      "limitations": "Adaptive benefit depends on the environment and evidence; similar structures need not have identical functions or prove common ancestry. The assessment does not certify the history of any pictured species. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution",
+          "supports": "Heritable traits can affect survival and reproduction under particular environmental conditions."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "e47e288cee088907026b547af0d1827f425a11cb7ef5d9d465983d162e99d8d5",
+      "lecture": "An adaptation is an inherited trait that helps an organism survive or reproduce. Adaptations can include both body parts and behaviors.\nThe color, texture, and covering of an animal's skin are examples of adaptations. Animals' skins can be adapted in different ways. For example, skin with thick fur might help an animal stay warm. Skin with sharp spines might help an animal defend itself against predators.",
+      "expected_records": 170,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage defines adaptation as inherited and gives conditional examples of insulating or defensive body coverings. The wording might or often avoids claiming that appearance alone proves a universal function.",
+      "limitations": "Adaptive benefit depends on the environment and evidence; similar structures need not have identical functions or prove common ancestry. The assessment does not certify the history of any pictured species. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution",
+          "supports": "Heritable traits can affect survival and reproduction under particular environmental conditions."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "61587daa3a75cff452cc0eb32a11c0f1c2f12217262b064c4d4224b94cfce7cd",
+      "lecture": "An adaptation is an inherited trait that helps an organism survive or reproduce. Adaptations can include both body parts and behaviors.\nArms, legs, flippers, and wings are different types of limbs. The type of limbs an animal has is an example of an adaptation. Animals' limbs can be adapted in different ways. For example, long legs might help an animal run fast. Flippers might help an animal swim. Wings might help an animal fly.",
+      "expected_records": 75,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage defines adaptation as inherited and gives conditional examples of limbs and locomotion. The wording might or often avoids claiming that appearance alone proves a universal function.",
+      "limitations": "Adaptive benefit depends on the environment and evidence; similar structures need not have identical functions or prove common ancestry. The assessment does not certify the history of any pictured species. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution",
+          "supports": "Heritable traits can affect survival and reproduction under particular environmental conditions."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "38ae96410d6f0366fd0359908f8e780259a8082ae2eee96416d00e131691cc31",
+      "lecture": "An adaptation is an inherited trait that helps an organism survive or reproduce. Adaptations can include both body parts and behaviors.\nThe shape of an animal's neck is one example of an adaptation. Animals' necks can be adapted in different ways. For example, a large frilled neck might help an animal appear dangerous to its predators. A long neck might help an animal get food from tall trees.",
+      "expected_records": 28,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage defines adaptation as inherited and gives conditional examples of neck shape and feeding or defensive display. The wording might or often avoids claiming that appearance alone proves a universal function.",
+      "limitations": "Adaptive benefit depends on the environment and evidence; similar structures need not have identical functions or prove common ancestry. The assessment does not certify the history of any pictured species. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/18-1-understanding-evolution",
+          "supports": "Heritable traits can affect survival and reproduction under particular environmental conditions."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "3361a125c1b87929dadb824095a825e047299571eb84df3e0346c8131531e8a7",
+      "lecture": "A fossil is the preserved evidence of an ancient organism. Some fossils are formed from body parts such as bones or shells. Other fossils, such as footprints or burrows, are formed from traces of an organism's activities.\nFossils are typically found in sedimentary rocks. Sedimentary rocks usually form in layers. Over time, new layers are added on top of old layers in a series called a rock sequence. The layers in an undisturbed rock sequence are in the same order as when they formed. So, the deeper layers are older than the shallower layers.\nThe relative ages of fossils can be determined from their positions in an undisturbed rock sequence. Older fossils are usually in deeper layers, and younger fossils are usually in shallower layers.",
+      "expected_records": 36,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The relative-age explanation explicitly requires an undisturbed rock sequence and uses usually for fossil positions; this is the proper scope of superposition.",
+      "limitations": "Reworked fossils, intrusions, overturned layers and other disturbances require additional evidence. No missing rock-layer diagram is recovered by this assessment. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.nps.gov/articles/southwest-glossary.htm",
+          "supports": "The law of superposition applies to undisturbed sequences of deposits."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "9875aad07a915f6331483f89f8d724ae3c2965e28f00dff3469a450923d2cf8a",
+      "lecture": "Experiments have variables, or parts that change. You can design an experiment to find out how one variable affects another variable. For example, imagine that you want to find out if fertilizer affects the number of tomatoes a tomato plant grows. To answer this question, you decide to set up two equal groups of tomato plants. Then, you add fertilizer to the soil of the plants in one group but not in the other group. Later, you measure the effect of the fertilizer by counting the number of tomatoes on each plant.\nIn this experiment, the amount of fertilizer added to the soil and the number of tomatoes were both variables.\nThe amount of fertilizer added to the soil was an independent variable because it was the variable whose effect you were investigating. This type of variable is called independent because its value does not depend on what happens after the experiment begins. Instead, you decided to give fertilizer to some plants and not to others.\nThe number of tomatoes was a dependent variable because it was the variable you were measuring. This type of variable is called dependent because its value can depend on what happens in the experiment.",
+      "expected_records": 44,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "Within the described fixed-treatment tomato experiment, fertilizer application is selected by the experimenter and tomato count is the measured response. The labels are correct.",
+      "limitations": "This is a variable-identification example, not evidence that the experimental design establishes causation; randomization, other controls, replication and uncertainty still matter. The explanation does not cover adaptive treatment protocols. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/psychology-2e/pages/2-3-analyzing-findings",
+          "supports": "Distinguishes the manipulated variable from the measured response in an experiment."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "9ee8dbb184cf662eeeb9acb4200d89c84e31dba5aee5cccd765355e0d0cc5a50",
+      "lecture": "Birds have feathers, two wings, and a beak.",
+      "expected_records": 18,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "Feathers, a pair of wings and a beak correctly describe the typical body plan of modern birds in this introductory classification context.",
+      "limitations": "This is not a requirement that an injured individual retain all parts or that every bird fly; reduced wings still fit the body-plan distinction. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/29-5-birds",
+          "supports": "Describes feathers, wings and the beak among modern bird characteristics."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "90038546efc2ed76935e609cca5d61507a7e1fdf20d535e3368c3c8338530810",
+      "lecture": "Mammals have hair or fur and feed their young milk.",
+      "expected_records": 12,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "Hair and milk production are defining mammalian traits in this elementary group comparison.",
+      "limitations": "Hair may be sparse or present during only part of development; milk is produced by lactating individuals, not every individual at every life stage. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/29-6-mammals",
+          "supports": "Describes hair and mammary glands as distinctive mammalian characteristics."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    }
+  ]
+}

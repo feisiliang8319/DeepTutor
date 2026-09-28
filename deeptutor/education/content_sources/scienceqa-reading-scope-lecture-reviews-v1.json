@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 229,
+  "reviews": [
+    {
+      "concept_id": "aa8b22920c60f7e2a7f2c0c02184430953fd5d844f9c7213b1a95e9bb3b57c98",
+      "expected_records": 102,
+      "lecture_before": "In a title, capitalize the first word, the last word, and every important word in between.\nThe Wind in the Willows James and the Giant Peach\nThese words are not important in titles:\nArticles, a, an, the\nShort prepositions, such as at, by, for, in, of, on, to, up\nCoordinating conjunctions, such as and, but, or",
+      "lecture_after": "These exercises use a common English title-case convention: capitalize the first and last words and the major words between them. Major words include nouns, pronouns, verbs, adjectives and adverbs, even when they are short. This is a style convention, not a rule for every title in every publication.\nThe Wind in the Willows James and the Giant Peach\nUnder this classroom convention, the following grammatical categories are normally lowercase in the middle of a title. They are not unimportant in meaning. Check the word's function and the required style:\nArticles, a, an, the\nShort prepositions, such as at, by, for, in, of, on, to, up\nCoordinating conjunctions, such as and, but, or",
+      "reason": "Distinguish word class from semantic importance and make the exercise capitalization convention explicit.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_general_format.html",
+          "supports": "Uses title case within a named style and assignment context."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "d08e42f766a043839af349a04c2c0bd187f9b5c3c3f149e364dd7b8fba7cdfce",
+      "expected_records": 52,
+      "lecture_before": "A fact is something that can be proved to be true.\nThe month of July has more days than the month of June.\nThis is a fact. It can be proved by looking at a calendar and counting the number of days in each month.\nAn opinion is something that a person believes, thinks, or feels. An opinion cannot be proved true.\nJuly is a better month than June for camping.\nThis is an opinion. People may have different opinions about which month is \"better\" for camping.",
+      "lecture_after": "A fact is something that can be proved to be true.\nThe month of July has more days than the month of June.\nThis is a fact. It can be proved by looking at a calendar and counting the number of days in each month.\nIn these exercises, an opinion is a personal preference or evaluative judgment, such as which month is better for camping. Reasons and evidence can support a judgment, but deciding what better means also depends on criteria or values. A belief about a checkable fact can still be tested; not everything a person thinks is an untestable opinion.\nJuly is a better month than June for camping.\nThis is an opinion. People may have different opinions about which month is \"better\" for camping.",
+      "reason": "Avoid classifying every belief as untestable; preserve the correct calendar comparison and distinguish judgments from factual assertions.",
+      "references": [
+        {
+          "url": "https://writing.colostate.edu/guides/teaching/co300man/pop12d.cfm",
+          "supports": "Distinguishes verifiable factual assertions from interpretive judgments and discusses the role of evidence."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "fea833c81f3787322c1b0e76bbfbb69f3f3078c10874b25cc74aa7fb818cf690",
+      "expected_records": 21,
+      "lecture_before": "Poetry is a special kind of writing. It has many elements that make it different from ordinary writing. Knowing these elements can help you talk about poetry, understand it better, and enjoy it more.\nA poem rhymes when it has a pattern of words that end in the same sound.\nEnd rhyme is when the rhymes appear at the end of a poem's lines.\nLittle Betty Blue,\nLost her holiday shoe.\n—From Mother Goose\nInternal rhyme is when at least one of the rhyming words appears inside the poem's lines.\nSweet dreams of pleasant streams.\n—From William Blake, \"A Cradle Song\"\nRhythm is the pattern of strong and weak syllables, or stress, in a poem. You can recognize rhythm in a poem by listening to how it sounds. Poems with regular rhythm have a beat, like in music.\nHe watches from his mountain walls,\nAnd like a thunderbolt he falls.\n—From Alfred, Lord Tennyson, \"The Eagle\"\nThe syllables in bold are strong. We say them with more force than the other syllables. In this poem, every weak syllable is followed by a strong syllable. Each line sounds like da-DUM da-DUM da-DUM da-DUM. To better hear the rhythm, try reading it aloud while clapping on each strong syllable.\nFree verse is when a poem has neither a regular rhythm nor a rhyme pattern.\nThe old bridge has a wrinkled face.\nHe bends his back\nFor us to go over.\n—From Hilda Conkling, \"The Old Bridge\"\nThe syllables in bold are strong. You can see this poem does not have a regular rhythm. It also doesn't have a rhyme pattern.\nRepetition is when words, phrases, or whole lines are repeated.\nThe dainty flying squirrel\nIn vest of shining white,\nIn coat of silver gray,\nAnd vest of shining white.\n—Adapted from Mary E. Burt, \"The Flying Squirrel\"\nAlliteration is when beginning consonant sounds are repeated in words that are close together.\nWhere the wild men watched and waited\nWolves in the forest, and bears in the bush.\n—From Bayard Taylor, \"A Night with a Wolf\"\nOnomatopoeia is when language sounds like what it talks about.\nSometimes the onomatopoeia uses made-up words:\nTlot-tlot! tlot-tlot! Had they heard it? The horse hoofs ringing clear.\n—From Alfred Noyes, \"The Highwayman\"\nSometimes the onomatopoeia uses real words:\nHark! the honey bee is humming.\n—From Mary Howitt, \"The Voice of Spring\"",
+      "lecture_after": "Poetry is a special kind of writing. It has many elements that make it different from ordinary writing. Knowing these elements can help you talk about poetry, understand it better, and enjoy it more.\nA poem rhymes when it has a pattern of words that end in the same sound.\nEnd rhyme is when the rhymes appear at the end of a poem's lines.\nLittle Betty Blue,\nLost her holiday shoe.\n—From Mother Goose\nInternal rhyme is when at least one of the rhyming words appears inside the poem's lines.\nSweet dreams of pleasant streams.\n—From William Blake, \"A Cradle Song\"\nRhythm is the pattern of strong and weak syllables, or stress, in a poem. You can recognize rhythm in a poem by listening to how it sounds. Poems with regular rhythm have a beat, like in music.\nHe watches from his mountain walls,\nAnd like a thunderbolt he falls.\n—From Alfred, Lord Tennyson, \"The Eagle\"\nThese lines illustrate an iambic pattern: four weak-strong feet, often represented as da-DUM da-DUM da-DUM da-DUM. Read them aloud to hear how the pattern interacts with ordinary word stress. A metrical pattern describes an organizing rhythm; delivery and particular lines can vary.\nFree verse does not follow a fixed metrical plan or a required recurring rhyme scheme. It still has rhythm, and local repetition or rhyme may occur.\nThe old bridge has a wrinkled face.\nHe bends his back\nFor us to go over.\n—From Hilda Conkling, \"The Old Bridge\"\nListen to the phrasing in these three lines. Their rhythm need not repeat an identical sequence of feet; free verse can follow the movement of speech.\nRepetition is when words, phrases, or whole lines are repeated.\nThe dainty flying squirrel\nIn vest of shining white,\nIn coat of silver gray,\nAnd vest of shining white.\n—Adapted from Mary E. Burt, \"The Flying Squirrel\"\nAlliteration is when beginning consonant sounds are repeated in words that are close together.\nWhere the wild men watched and waited\nWolves in the forest, and bears in the bush.\n—From Bayard Taylor, \"A Night with a Wolf\"\nOnomatopoeia is when language sounds like what it talks about.\nSometimes the onomatopoeia uses made-up words:\nTlot-tlot! tlot-tlot! Had they heard it? The horse hoofs ringing clear.\n—From Alfred Noyes, \"The Highwayman\"\nSometimes the onomatopoeia uses real words:\nHark! the honey bee is humming.\n—From Mary Howitt, \"The Voice of Spring\"",
+      "reason": "Remove references to absent bold stress marks, distinguish meter from rhythm, and allow local patterns within free verse. Original quotations are retained without certifying all textual editions or performance choices.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/free-verse",
+          "supports": "Free verse need not adhere to a metrical plan even when local rhythmic or sound patterns occur."
+        },
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/meter",
+          "supports": "Explains patterned stress and the weak-strong or strong-weak ordering of feet."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "8769833987abd737fddb6d2c4ac5b5e73cd3963a4fca841157c20db4a4761d57",
+      "expected_records": 17,
+      "lecture_before": "Poets often use the sounds of words to create interesting effects and to express moods and emotions. Understanding these elements of poetry can help you better interpret and appreciate poetic forms.\nAnaphora is the repetition of words or sequences of words at the beginning of multiple phrases, sentences, or lines.\nOut of the cradle endlessly rocking,\nOut of the mocking-bird's throat, the musical shuttle,\nOut of the Ninth-month midnight\n—From Walt Whitman, \"Out of the Cradle Endlessly Rocking\"\nOnomatopoeia is when language sounds like what it talks about.\nSometimes the onomatopoeia uses made-up words:\nTlot-tlot! tlot-tlot! Had they heard it? The horse hoofs ringing clear.\n—From Alfred Noyes, \"The Highwayman\"\nSometimes the onomatopoeia uses real words:\nHark! the honey bee is humming.\n—From Mary Howitt, \"The Voice of Spring\"\nAlliteration is when beginning consonant sounds are repeated in words that are close together.\nWhere the wild men watched and waited\nWolves in the forest, and bears in the bush.\n—From Bayard Taylor, \"A Night with a Wolf\"\nAssonance is the repetition of vowel sounds. Often, assonance can create rhymes or near-rhymes within lines.\nI wandered lonely as a Cloud\nThat floats on high o'er Vales and Hills,\nWhen all at once I saw a crowd,\nA host of golden Daffodils.\n—From William Wordsworth, \"I Wandered Lonely as a Cloud\"\nMeter is a poem's rhythm, or the pattern of strong and weak syllables. Strong syllables are stressed, while weak syllables are unstressed.\nA poem has an iambic meter when the beat sounds like da-DUM. A weak syllable is followed by a strong syllable. Occasionally, a line may begin with a strong syllable.\nHe watches from his mountain walls,\nAnd like a thunderbolt he falls.\n—From Alfred, Lord Tennyson, \"The Eagle\"\nA poem has a trochaic meter when the beat sounds like DUM-da. A strong syllable is followed by a weak syllable. Occasionally, a line may end in a strong syllable.\nBack into the chamber turning, all my soul within me burning,\nSoon again I heard a tapping somewhat louder than before.\n—From Edgar Allen Poe, \"The Raven\"\nFree verse is when a poem has neither a regular rhythm nor a rhyme pattern.\nThe old bridge has a wrinkled face.\nHe bends his back\nFor us to go over.\n—From Hilda Conkling, \"The Old Bridge\"\nThe syllables in bold are strong. You can see this poem does not have a regular rhythm. It also doesn't have a rhyme pattern.",
+      "lecture_after": "Poets often use the sounds of words to create interesting effects and to express moods and emotions. Understanding these elements of poetry can help you better interpret and appreciate poetic forms.\nAnaphora is the repetition of words or sequences of words at the beginning of multiple phrases, sentences, or lines.\nOut of the cradle endlessly rocking,\nOut of the mocking-bird's throat, the musical shuttle,\nOut of the Ninth-month midnight\n—From Walt Whitman, \"Out of the Cradle Endlessly Rocking\"\nOnomatopoeia is when language sounds like what it talks about.\nSometimes the onomatopoeia uses made-up words:\nTlot-tlot! tlot-tlot! Had they heard it? The horse hoofs ringing clear.\n—From Alfred Noyes, \"The Highwayman\"\nSometimes the onomatopoeia uses real words:\nHark! the honey bee is humming.\n—From Mary Howitt, \"The Voice of Spring\"\nAlliteration is when beginning consonant sounds are repeated in words that are close together.\nWhere the wild men watched and waited\nWolves in the forest, and bears in the bush.\n—From Bayard Taylor, \"A Night with a Wolf\"\nAssonance is the repetition of vowel sounds. Often, assonance can create rhymes or near-rhymes within lines.\nI wandered lonely as a Cloud\nThat floats on high o'er Vales and Hills,\nWhen all at once I saw a crowd,\nA host of golden Daffodils.\n—From William Wordsworth, \"I Wandered Lonely as a Cloud\"\nIn the English stress-based examples here, meter is an organizing pattern of stressed and unstressed syllables; rhythm is the broader movement of the spoken line. Strong syllables are stressed, while weak syllables are unstressed.\nA poem has an iambic meter when the beat sounds like da-DUM. A weak syllable is followed by a strong syllable. Occasionally, a line may begin with a strong syllable.\nHe watches from his mountain walls,\nAnd like a thunderbolt he falls.\n—From Alfred, Lord Tennyson, \"The Eagle\"\nA poem has a trochaic meter when the beat sounds like DUM-da. A strong syllable is followed by a weak syllable. Occasionally, a line may end in a strong syllable.\nBack into the chamber turning, all my soul within me burning,\nSoon again I heard a tapping somewhat louder than before.\n—From Edgar Allan Poe, \"The Raven\"\nFree verse does not follow a fixed metrical plan or a required recurring rhyme scheme. It still has rhythm, and local repetition or rhyme may occur.\nThe old bridge has a wrinkled face.\nHe bends his back\nFor us to go over.\n—From Hilda Conkling, \"The Old Bridge\"\nListen to the phrasing in these three lines. Their rhythm need not repeat an identical sequence of feet; free verse can follow the movement of speech.",
+      "reason": "Remove references to absent bold stress marks, distinguish meter from rhythm, and allow local patterns within free verse. Original quotations are retained without certifying all textual editions or performance choices.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/free-verse",
+          "supports": "Free verse need not adhere to a metrical plan even when local rhythmic or sound patterns occur."
+        },
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/meter",
+          "supports": "Explains patterned stress and the weak-strong or strong-weak ordering of feet."
+        },
+        {
+          "url": "https://www.poetryfoundation.org/poets/edgar-allan-poe",
+          "supports": "Confirms the author name and association with The Raven."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "500111f5c954f31ee2b18c90dbc59e41ca296fb2de41556e26bc4761cf23bbf3",
+      "expected_records": 20,
+      "lecture_before": "Statements of fact make claims that are based on research, observation, or experimentation. Facts can be proved with evidence.\nNapoleon Bonaparte was shorter than King Louis XVI.\nThis statement is a fact. The statement can be verified by researching and comparing the height of each man.\nStatements of opinion make claims that are based on personal judgments or perspectives. Opinions can be supported by evidence, but they cannot be definitively proved.\nNapoleon Bonaparte was a better leader than King Louis XVI.\nThis statement is an opinion. People can have different ideas about what makes someone a \"better\" leader, so the statement cannot be proved.",
+      "lecture_after": "A factual claim can be investigated with evidence such as observations, measurements or reliable records. Calling a claim factual describes how it can be tested; it does not by itself establish that the claim is true.\nFor example, a claim comparing Napoleon Bonaparte's height with King Louis XVI's height is a testable historical claim. Its truth requires trustworthy measurements and consistent units; this lesson does not supply or verify those measurements.\nAn evaluative opinion expresses a judgment that depends partly on criteria or values. Saying one person was a better leader requires explaining what better means. Evidence can support or challenge the reasons, but the value judgment is not settled merely by measuring a single fact.\nA passage can mix factual claims and evaluative opinions. Separate the checkable statements from the criteria and judgments before evaluating it.",
+      "reason": "Do not declare an unverified historical height comparison true merely because it is testable; distinguish evidence-based claims from evaluative criteria.",
+      "references": [
+        {
+          "url": "https://writing.colostate.edu/guides/teaching/co300man/pop12d.cfm",
+          "supports": "Distinguishes verifiable factual assertions from interpretive judgments and discusses the role of evidence."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "d71e322ab74b521e7fab0e2693fefc15dc63dc4a7ddcb0fca3afa549636e0bb0",
+      "expected_records": 17,
+      "lecture_before": "A fact is something that can be proved by research or observation.\nNapoleon Bonaparte was shorter than King Louis XVI.\nThe statement above is a fact. The statement can be proved by researching the height of each man and comparing them.\nAn opinion is something that a person believes, thinks, or feels. An opinion cannot be proved.\nNapoleon Bonaparte was a better leader than King Louis XVI.\nThe statement above is an opinion. People can have different ideas about what makes someone a \"better\" leader, so the statement cannot be proved.",
+      "lecture_after": "A factual claim can be investigated with evidence such as observations, measurements or reliable records. Calling a claim factual describes how it can be tested; it does not by itself establish that the claim is true.\nFor example, a claim comparing Napoleon Bonaparte's height with King Louis XVI's height is a testable historical claim. Its truth requires trustworthy measurements and consistent units; this lesson does not supply or verify those measurements.\nAn evaluative opinion expresses a judgment that depends partly on criteria or values. Saying one person was a better leader requires explaining what better means. Evidence can support or challenge the reasons, but the value judgment is not settled merely by measuring a single fact.\nA passage can mix factual claims and evaluative opinions. Separate the checkable statements from the criteria and judgments before evaluating it.",
+      "reason": "Do not declare an unverified historical height comparison true merely because it is testable; distinguish evidence-based claims from evaluative criteria.",
+      "references": [
+        {
+          "url": "https://writing.colostate.edu/guides/teaching/co300man/pop12d.cfm",
+          "supports": "Distinguishes verifiable factual assertions from interpretive judgments and discusses the role of evidence."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

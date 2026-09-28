@@ -1,0 +1,34 @@
+{
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 1,
+  "records": [
+    {
+      "record_id": "73f65e9a3d7dd78f35c04bb73eff4057305906494fe8352d589bec87b1ffa518",
+      "source_title": "earth-science · grade8 · Q13204",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-middle-g6-8.md",
+      "source_sha256": "8598e84d0e8aa403da3a9bea10455d0d24146e979671a405de284834f8a63685",
+      "raw_sha256": "2f08d204f81757ca8ae306931ca7788f91764f9e50d0df9d9b49ddd840e8c6bc",
+      "fragment_before": "It last erupted in May of 1980.",
+      "fragment_after": "A major eruption occurred in May 1980; renewed eruptive activity occurred during 2004–2008.",
+      "answer_before": "convergent",
+      "reason": "The original passage incorrectly presents 1980 as the latest eruption, omitting documented 2004–2008 activity. Correct the repeated statement in both passage and explanation; leave plate-boundary answers and the missing-image hold unchanged.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/volcanoes/mount-st.-helens/science/2004-2008-eruption-mount-st-helens-and-what-ifs",
+          "supports": "USGS documents the 2004–2008 eruption and compares it with the May 18, 1980 eruption."
+        },
+        {
+          "url": "https://www.usgs.gov/publications/2004-2008-dome-building-eruption-mount-st-helens-washington-epilogue",
+          "supports": "USGS reports the full 2004–2008 dome-building episode."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "context_and_repeated_explanation_only_not_whole_question_approval",
+      "prompt_before": "Read the passage and look at the picture.\nThe Cascade Range is a volcanic arc in the Pacific Northwest that begins in California and runs north into British Columbia. As the North American Plate and the Juan de Fuca Plate move toward each other, oceanic crust of the Juan de Fuca Plate subducts, or sinks, below continental crust of the North American Plate.\nThere are eighteen volcanoes in the Cascade Range, and some of them are still active. Mount St. Helens is an active volcano near Seattle, Washington. It last erupted in May of 1980.\n\nComplete the sentence.\nThe Cascade Range formed at a () boundary.",
+      "prompt_after": "Read the passage and look at the picture.\nThe Cascade Range is a volcanic arc in the Pacific Northwest that begins in California and runs north into British Columbia. As the North American Plate and the Juan de Fuca Plate move toward each other, oceanic crust of the Juan de Fuca Plate subducts, or sinks, below continental crust of the North American Plate.\nThere are eighteen volcanoes in the Cascade Range, and some of them are still active. Mount St. Helens is an active volcano near Seattle, Washington. A major eruption occurred in May 1980; renewed eruptive activity occurred during 2004–2008.\n\nComplete the sentence.\nThe Cascade Range formed at a () boundary.",
+      "explanation_before": "To figure out what type of plate boundary formed the Cascade Range, you need to know how the tectonic plates interacted. To find this out, read the passage carefully.\nThe Cascade Range is a volcanic arc in the Pacific Northwest that begins in California and runs north into British Columbia. As the North American Plate and the Juan de Fuca Plate move toward each other, oceanic crust of the Juan de Fuca Plate subducts, or sinks, below continental crust of the North American Plate.\nThere are eighteen volcanoes in the Cascade Range, and some of them are still active. Mount St. Helens is an active volcano near Seattle, Washington. It last erupted in May of 1980.\nThe underlined part of the passage explains that the Cascade Range formed as the two plates moved toward each other. So, the Cascade Range formed at a convergent boundary.",
+      "explanation_after": "To figure out what type of plate boundary formed the Cascade Range, you need to know how the tectonic plates interacted. To find this out, read the passage carefully.\nThe Cascade Range is a volcanic arc in the Pacific Northwest that begins in California and runs north into British Columbia. As the North American Plate and the Juan de Fuca Plate move toward each other, oceanic crust of the Juan de Fuca Plate subducts, or sinks, below continental crust of the North American Plate.\nThere are eighteen volcanoes in the Cascade Range, and some of them are still active. Mount St. Helens is an active volcano near Seattle, Washington. A major eruption occurred in May 1980; renewed eruptive activity occurred during 2004–2008.\nThe underlined part of the passage explains that the Cascade Range formed as the two plates moved toward each other. So, the Cascade Range formed at a convergent boundary."
+    }
+  ]
+}

@@ -50,6 +50,7 @@ def build(base,recipe_path,output):
         rows={key:json.loads(db.execute('select data_json from records where id=?',(key,)).fetchone()[0]) for key in reviews}
     for key,row in rows.items():
         r=reviews[key]
+        if 'individual_context_review' in row['metadata']:raise ValueError('Context-reviewed passages require an explicit joint revision')
         if row['library']!='scienceqa' or row['title']!=r['source_title'] or any(row[k]!=r[k] for k in ('source_path','source_sha256','raw_sha256')) or row['answer']!=r['answer_before'] or row['explanation']!=r['explanation_before'] or 'individual_explanation_review' in row['metadata']:raise ValueError('Source review is stale')
         original=(base/'objects'/(row['source_sha256']+'.md')).read_text()
         if sha(original)!=row['source_sha256'] or sha(original[row['start']:row['end']])!=row['raw_sha256']:raise ValueError('Source bytes changed')

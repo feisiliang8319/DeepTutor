@@ -16,6 +16,7 @@ import sqlite3
 
 from .content_stock import parse_file
 from .scienceqa_explanation_reviews import patch_document as patch_explanations
+from .scienceqa_context_reviews import patch_document as patch_contexts, prior_reviews_by_path
 
 
 def sha(value: str | bytes) -> str:
@@ -111,6 +112,7 @@ def build(base: Path, recipe_path: Path, output: Path) -> dict:
         if prior.get('answer_on_hold') and row['state'] not in {'needs_fact_check', 'duplicate'}:
             raise ValueError('Previous answer hold was cleared')
         prior_explanations.setdefault(row['source_path'], []).append(prior)
+    prior_contexts = prior_reviews_by_path(rows)
     if reviews.keys() & prior_reviews.keys():
         raise ValueError('Concept already reviewed; preserve its history instead of reapplying')
     def original_lecture(row):
@@ -163,6 +165,9 @@ def build(base: Path, recipe_path: Path, output: Path) -> dict:
             selected_explanations = prior_explanations[source_path]
             before = patch_explanations(Path(source_path).name, before, selected_explanations)
             after = patch_explanations(Path(source_path).name, after, selected_explanations)
+        if source_path in prior_contexts:
+            before = patch_contexts(Path(source_path).name, before, prior_contexts[source_path])
+            after = patch_contexts(Path(source_path).name, after, prior_contexts[source_path])
         linked = Counter({k:v for k,v in combined_counts.items() if k in reviews})
         all_counts.update(linked)
         if not linked:

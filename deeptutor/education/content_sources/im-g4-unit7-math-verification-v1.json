@@ -1,0 +1,134 @@
+{
+  "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+  "source_file": "raw-stock/im-g4-full/raw/grade4-unit7-angles-and-angle-measurement.md",
+  "source_lesson_spans_verified": 16,
+  "verified_tasks": 15,
+  "package_sha256": "6e2e4e3a8fa4e8a0ff1398c7eac1e8378e23d844ea6b8e98b0aaf326d637fd57",
+  "builder_sha256": "64c81c756e981de52fb8a2a3d303259efcbd6256096fd5da8112335c54eeb5be",
+  "source_records": [
+    "6cbccabd39e15438dda224693c779b9adc500a81ab8e72486bea13f3533a8749",
+    "ed092212cf1f5806774b9ac952c6db56be1d86761efb1b537fb166caf7cc867c",
+    "227ecdcd332d44626d01684a94a2f6b284ad49b04be08b6271374ad3a841b017",
+    "5de968d8d8644c5a5153166dd6cc68802892bd7d348c2021df7dd14bee059458",
+    "fb2f611fcfa41c257ce2f71f3a9f48d3ef4f406034d4e34de5d5e1c8a7171fe0",
+    "7a6c92fb838ba64f93fa8c88c362f17055d5973aeb36832c3dd884be5638e009",
+    "b897b947c5adf5bb9f5e7ae5f5053884bfa8bc27552a47a7d9d129ba8ee19b56",
+    "9e1ed7d5411e1b6fbb1e3a766b16ef9e31b17647b3935dfd277d5207c09e3e99",
+    "75eb38cbd1b77d3b4034b470929601acc18a0bce258a9e43e5c0655b14ef0053",
+    "75919d468ca55e13ce78ec1e18784db49af84f1447d038f3e4a3f53c509edb0b",
+    "f2b6aa88122ef2b5ad9f6bfa563a8cc98cf19e0a549f1e383da2d091eae7c193",
+    "f1187632fb93a72758ff1577ea221deb9e8f3d4b1a7b3ecba031b25b0695671f",
+    "9c6166471c7b3a450d2c201a1db0b505671c13439aad80733910c035bf847798",
+    "ca106d6baf4746f1ad3ed05dbf726b1a647495307cf97efc98acbb27fa804a69",
+    "cde9c353b7cece4fb04512a227a39748750b173d8d6ea9becf134c120ba67587"
+  ],
+  "checks": [
+    {
+      "lesson": 1,
+      "record_id": "6cbccabd39e15438dda224693c779b9adc500a81ab8e72486bea13f3533a8749",
+      "exact_arithmetic_checked": false,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 2,
+      "record_id": "ed092212cf1f5806774b9ac952c6db56be1d86761efb1b537fb166caf7cc867c",
+      "exact_arithmetic_checked": false,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 3,
+      "record_id": "227ecdcd332d44626d01684a94a2f6b284ad49b04be08b6271374ad3a841b017",
+      "exact_arithmetic_checked": false,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 4,
+      "record_id": "5de968d8d8644c5a5153166dd6cc68802892bd7d348c2021df7dd14bee059458",
+      "exact_arithmetic_checked": false,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 5,
+      "record_id": "fb2f611fcfa41c257ce2f71f3a9f48d3ef4f406034d4e34de5d5e1c8a7171fe0",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 6,
+      "record_id": "7a6c92fb838ba64f93fa8c88c362f17055d5973aeb36832c3dd884be5638e009",
+      "exact_arithmetic_checked": false,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 7,
+      "record_id": "b897b947c5adf5bb9f5e7ae5f5053884bfa8bc27552a47a7d9d129ba8ee19b56",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 8,
+      "record_id": "9e1ed7d5411e1b6fbb1e3a766b16ef9e31b17647b3935dfd277d5207c09e3e99",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 9,
+      "record_id": "75eb38cbd1b77d3b4034b470929601acc18a0bce258a9e43e5c0655b14ef0053",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 10,
+      "record_id": "75919d468ca55e13ce78ec1e18784db49af84f1447d038f3e4a3f53c509edb0b",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 11,
+      "record_id": "f2b6aa88122ef2b5ad9f6bfa563a8cc98cf19e0a549f1e383da2d091eae7c193",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 12,
+      "record_id": "f1187632fb93a72758ff1577ea221deb9e8f3d4b1a7b3ecba031b25b0695671f",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 13,
+      "record_id": "9c6166471c7b3a450d2c201a1db0b505671c13439aad80733910c035bf847798",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 14,
+      "record_id": "ca106d6baf4746f1ad3ed05dbf726b1a647495307cf97efc98acbb27fa804a69",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    },
+    {
+      "lesson": 15,
+      "record_id": "cde9c353b7cece4fb04512a227a39748750b173d8d6ea9becf134c120ba67587",
+      "exact_arithmetic_checked": true,
+      "definition_and_conditions_reviewed": true,
+      "physical_drawing_or_protractor_performance_verified": false
+    }
+  ],
+  "optional_lessons": "16 retained classroom reference; not converted in this batch",
+  "scope": "Complete textual conditions, definitions reviewed and available angle arithmetic checked. No actual student drawing/protractor performance tested. Original missing teacher responses/diagrams and teaching/grade/rights approval unchanged."
+}

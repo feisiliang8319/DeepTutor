@@ -1,0 +1,592 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "IM G4 U7 存量转化 · 15道直线与角度完整条件讲解例题",
+  "items": [
+    {
+      "id": "im-g4-u7-l1-stock-example-v1",
+      "knowledge_node_code": "G4.G.A1.DRAW_IDENTIFY_LINES",
+      "item_type": "multi_step",
+      "prompt": "纸上标出两个不同的点A、B，相距3厘米。分别描述线段AB和直线AB：有几个端点，是否只包含A、B之间的部分，能否说整条直线长3厘米？",
+      "expected_answer": "线段AB有2个端点，包含两端及中间部分，长3厘米；直线AB没有端点，过A、B向两侧无限延伸，不能说整条直线长3厘米。",
+      "explanation": "点用于标记位置；线段有两个确定端点，因此能测有限长度。直线经过这两个点但不停在两点处，A、B只是直线上的点。纸上画出的有限墨线是示意，不意味着数学直线有边界。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L1 | retained source line 11",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 1. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "6cbccabd39e15438dda224693c779b9adc500a81ab8e72486bea13f3533a8749",
+        "source_lesson_family": "IM:G4:U7:L1",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "ad7803ef26494bf3d46d5740a1954676b21b73ea56a5bd6e1a830c8d79b9c42a",
+        "source_span": {
+          "start": 213,
+          "end": 17297
+        },
+        "source_spans": [
+          {
+            "start": 213,
+            "end": 17297,
+            "sha256": "ad7803ef26494bf3d46d5740a1954676b21b73ea56a5bd6e1a830c8d79b9c42a"
+          }
+        ],
+        "title_zh": "点与线的语言要精确",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l2-stock-example-v1",
+      "knowledge_node_code": "G4.G.A1.DRAW_IDENTIFY_LINES",
+      "item_type": "multi_step",
+      "prompt": "在同一直线上，A在O右侧，B在O左侧，三点不同。比较射线OA、射线OB与射线AO：各从哪里出发、朝哪个方向延伸？哪些共用起点，哪些是反向射线？",
+      "expected_answer": "OA从O向右，OB从O向左，AO从A经过O向左；OA与OB共用O且是反向射线；AO与OA起点不同，不能当作同一条射线。",
+      "explanation": "射线的第一个字母表示起点，第二个字母给出延伸方向上的另一个点。射线OA包含O并向右无限延伸；AO从A出发向左，包含A、O及更左的位置。两条反向射线必须共有同一个起点且延伸方向相反，这里为OA与OB。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L2 | retained source line 458",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 2. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "ed092212cf1f5806774b9ac952c6db56be1d86761efb1b537fb166caf7cc867c",
+        "source_lesson_family": "IM:G4:U7:L2",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "ad912d2fd4521c0e6cebfaa37ac05744a32905cf7652fc7df40c4466c91c492c",
+        "source_span": {
+          "start": 17297,
+          "end": 32154
+        },
+        "source_spans": [
+          {
+            "start": 17297,
+            "end": 32154,
+            "sha256": "ad912d2fd4521c0e6cebfaa37ac05744a32905cf7652fc7df40c4466c91c492c"
+          }
+        ],
+        "title_zh": "射线的起点与方向",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l3-stock-example-v1",
+      "knowledge_node_code": "G4.G.A1.DRAW_IDENTIFY_LINES",
+      "item_type": "multi_step",
+      "prompt": "同一平面里有两条不同的水平直线，间隔1厘米；再画一条竖直直线同时穿过它们。哪两条平行？竖直线与每条水平线是否垂直？如果纸面只画出短短一段，能只凭“没碰到”就判断平行吗？",
+      "expected_answer": "两条水平线平行；竖直线分别垂直于它们；不能只凭纸面短线段未相交判断。",
+      "explanation": "平行直线是同一平面内延长后仍不相交的不同直线。水平与竖直方向相交形成直角，所以垂直。有限线段未相碰可能只是画得太短，延长后的方向才是判断依据。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L3 | retained source line 863",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 3. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "227ecdcd332d44626d01684a94a2f6b284ad49b04be08b6271374ad3a841b017",
+        "source_lesson_family": "IM:G4:U7:L3",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "83763a964d977af7b56228c17345ca30d11264998e3f7d4180baeabf9ef77fcf",
+        "source_span": {
+          "start": 32154,
+          "end": 49286
+        },
+        "source_spans": [
+          {
+            "start": 32154,
+            "end": 49286,
+            "sha256": "83763a964d977af7b56228c17345ca30d11264998e3f7d4180baeabf9ef77fcf"
+          }
+        ],
+        "title_zh": "平行与垂直的条件",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l4-stock-example-v1",
+      "knowledge_node_code": "G4.G.A1.IDENTIFY_IN_FIGURES",
+      "item_type": "multi_step",
+      "prompt": "长方形ABCD的顶点沿边依次排列：A左下、B右下、C右上、D左上。写出两组相对边所在的平行直线，以及与AB垂直的两条边所在直线。",
+      "expected_answer": "AB∥CD，BC∥AD；BC与AD都垂直于AB。",
+      "explanation": "长方形四个角都是直角，相邻边所在直线因此垂直；相对边沿相同方向且分离，所以平行。这里讨论边所在的完整直线，而非仅凭图中线段的长短判断。不需要假定长方形一定是正方形。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L4 | retained source line 1289",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 4. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "5de968d8d8644c5a5153166dd6cc68802892bd7d348c2021df7dd14bee059458",
+        "source_lesson_family": "IM:G4:U7:L4",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "1fc9823c5e928071de8f47416316d89659e2308c29d7c6953e80bdab997facb9",
+        "source_span": {
+          "start": 49286,
+          "end": 65029
+        },
+        "source_spans": [
+          {
+            "start": 49286,
+            "end": 65029,
+            "sha256": "1fc9823c5e928071de8f47416316d89659e2308c29d7c6953e80bdab997facb9"
+          }
+        ],
+        "title_zh": "在长方形中找关系",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l5-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C5.ANGLE_CONCEPT",
+      "item_type": "multi_step",
+      "prompt": "两条射线OA、OB共有起点O，形成一个角。另一个角由OC、OD构成，也以O为顶点。第一个角40°，第二个70°。指出顶点及角的边，判断哪个更大；能否因第一个示意图的射线画得更长而改判？",
+      "expected_answer": "顶点都是O，边分别为OA、OB和OC、OD；70°的角更大，画出的射线长度不改变角大小。",
+      "explanation": "角由共有起点的两条射线组成。角度量的是从一条射线转到另一条所需的转动大小，而非墨线长度。题目已给40°与70°，比较这两个度数即可；长短不同的示意仍能表示相同或不同开口。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L5 | retained source line 1711",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 5. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "fb2f611fcfa41c257ce2f71f3a9f48d3ef4f406034d4e34de5d5e1c8a7171fe0",
+        "source_lesson_family": "IM:G4:U7:L5",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "a29ff4422c5fa73d1c88cfa4dd5ac6934140e7250ef7f566728b6bbf5b385fa3",
+        "source_span": {
+          "start": 65029,
+          "end": 81985
+        },
+        "source_spans": [
+          {
+            "start": 65029,
+            "end": 81985,
+            "sha256": "a29ff4422c5fa73d1c88cfa4dd5ac6934140e7250ef7f566728b6bbf5b385fa3"
+          }
+        ],
+        "title_zh": "角由方向与开口决定",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l6-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C5.ANGLE_CONCEPT",
+      "item_type": "multi_step",
+      "prompt": "两个角都标为60°，甲的示意边只画2厘米，乙画7厘米。它们一样大吗？如果没有度数标记，怎样叠合比较？需要对齐哪些部分？",
+      "expected_answer": "一样大。叠合时先让顶点重合，再把其中一条边的方向重合，比较另一条边的开口；不能比较画线长度。",
+      "explanation": "60°代表相同转动量。两角可平移或转动示意使顶点和一边对齐，不能拉伸或挤压改变开口。另一边也重合时角相等；若一边已对齐而另一边张开更多，该角更大。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L6 | retained source line 2187",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 6. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "7a6c92fb838ba64f93fa8c88c362f17055d5973aeb36832c3dd884be5638e009",
+        "source_lesson_family": "IM:G4:U7:L6",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "8b28a284ae4c566a0a96408d8abbcf9f5fb51b8716eeab67f0f25eb91f44d817",
+        "source_span": {
+          "start": 81985,
+          "end": 95064
+        },
+        "source_spans": [
+          {
+            "start": 81985,
+            "end": 95064,
+            "sha256": "8b28a284ae4c566a0a96408d8abbcf9f5fb51b8716eeab67f0f25eb91f44d817"
+          }
+        ],
+        "title_zh": "怎样公平地比较角",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l7-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C5.DEGREE_MEASURE",
+      "item_type": "multi_step",
+      "prompt": "标准钟面12个小时刻度均匀分布。只看3点整、5点整、6点整，分针都在12；求每个时刻时针和分针之间不超过180°的较小角。",
+      "expected_answer": "分别90°、150°、180°。",
+      "explanation": "一圈360°分成12个相同间隔，每间隔30°。3点整跨3格，3×30=90；5点整跨5格为150；6点整跨6格为180。限定整点是因为非整点时针会随时间继续移动，不能总当作停在整数刻度。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L7 | retained source line 2565",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 7. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "b897b947c5adf5bb9f5e7ae5f5053884bfa8bc27552a47a7d9d129ba8ee19b56",
+        "source_lesson_family": "IM:G4:U7:L7",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "c4307fcbd2f0845956471f753fa44559b8138b0f0f2e39cd5875c87789dc0768",
+        "source_span": {
+          "start": 95064,
+          "end": 107747
+        },
+        "source_spans": [
+          {
+            "start": 95064,
+            "end": 107747,
+            "sha256": "c4307fcbd2f0845956471f753fa44559b8138b0f0f2e39cd5875c87789dc0768"
+          }
+        ],
+        "title_zh": "整点钟面上的角",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l8-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C5.DEGREE_MEASURE",
+      "item_type": "multi_step",
+      "prompt": "一整圈定义为360°。转1/4圈、1/2圈、1/8圈分别是多少度？它们分别相当于几个45°？",
+      "expected_answer": "90°、180°、45°；分别为2、4、1个45°。",
+      "explanation": "将360°按圈的分数取相应部分：360÷4=90，360÷2=180，360÷8=45。把45°作为比较单位，分别用90÷45、180÷45、45÷45，得到2、4、1。度数计量转动，不是厘米长度。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L8 | retained source line 2948",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 8. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "9e1ed7d5411e1b6fbb1e3a766b16ef9e31b17647b3935dfd277d5207c09e3e99",
+        "source_lesson_family": "IM:G4:U7:L8",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "22c062879a53a2f8062338a675d0af8d6f24a1ad3b0c917f5ca26cdb2dd11b54",
+        "source_span": {
+          "start": 107747,
+          "end": 122506
+        },
+        "source_spans": [
+          {
+            "start": 107747,
+            "end": 122506,
+            "sha256": "22c062879a53a2f8062338a675d0af8d6f24a1ad3b0c917f5ca26cdb2dd11b54"
+          }
+        ],
+        "title_zh": "度与转过的份额",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l9-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C6.PROTRACTOR_MEASURE",
+      "item_type": "multi_step",
+      "prompt": "量角器中心已对准顶点O，角的一边水平向右，与右端0°线重合。另一边指到同一个刻度位置，该位置两排数字分别是35°和145°；其中从右端0°开始递增的那一排写35°。该角应读多少？为什么不能随意选另一排？",
+      "expected_answer": "读35°。",
+      "explanation": "必须选与基准边所对的0°起点相配的刻度序列。本题基准边向右，沿从右侧0°递增的那排读取为35°。另一排145°是从左侧起算，两者在同一位置但基准不同。先核对顶点、零线和所选刻度，才读数字。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L9 | retained source line 3351",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 9. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "75eb38cbd1b77d3b4034b470929601acc18a0bce258a9e43e5c0655b14ef0053",
+        "source_lesson_family": "IM:G4:U7:L9",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "6773b3a695b57bf31dbac1c04671107c77723c91c61be2fbfe11d41998dc06e5",
+        "source_span": {
+          "start": 122506,
+          "end": 136866
+        },
+        "source_spans": [
+          {
+            "start": 122506,
+            "end": 136866,
+            "sha256": "6773b3a695b57bf31dbac1c04671107c77723c91c61be2fbfe11d41998dc06e5"
+          }
+        ],
+        "title_zh": "双刻度量角器从哪一侧读",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l10-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C5.ANGLE_CONCEPT",
+      "item_type": "multi_step",
+      "prompt": "两条直线相交，其中一个角为90°，这两条线是什么关系，其余三个角多大？若另一组直线相交的一个角为75°，它们是否垂直？",
+      "expected_answer": "第一组垂直，其余三个也都是90°；第二组不垂直。",
+      "explanation": "相邻两个角组成平角180°。已知一个90°，紧邻角为180−90=90，对面的角也为90。垂直要求相交形成直角，不是只要相交就行。75°相邻角为105°，没有直角。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L10 | retained source line 3732",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 10. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "75919d468ca55e13ce78ec1e18784db49af84f1447d038f3e4a3f53c509edb0b",
+        "source_lesson_family": "IM:G4:U7:L10",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "e04a6e3f519e9188aa3bf1fc60c735893a3356ff1fac22e06ef84cee2e7a8412",
+        "source_span": {
+          "start": 136866,
+          "end": 153053
+        },
+        "source_spans": [
+          {
+            "start": 136866,
+            "end": 153053,
+            "sha256": "e04a6e3f519e9188aa3bf1fc60c735893a3356ff1fac22e06ef84cee2e7a8412"
+          }
+        ],
+        "title_zh": "相交不一定垂直",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l11-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C6.SKETCH_ANGLE",
+      "item_type": "multi_step",
+      "prompt": "先画从O水平向右的射线OA，再在它上方画射线OB，使从OA逆时针转到OB为125°。写出用量角器完成的步骤，判断所得角是锐角、直角还是钝角，并说明需检查什么。",
+      "expected_answer": "中心对准O、右侧0°对齐OA、沿向上递增刻度标125°点、从O经过标记画OB；是钝角。",
+      "explanation": "把量角器放正后选右侧为0的刻度，不能读另一排55°。标记125°后移开量角器，用直尺连O和标记并沿该方向延伸为射线。125介于90与180之间，是钝角；复核顶点、零线和开口所在半平面。文字步骤正确不等于已核实实际作图精度。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L11 | retained source line 4143",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 11. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "f2b6aa88122ef2b5ad9f6bfa563a8cc98cf19e0a549f1e383da2d091eae7c193",
+        "source_lesson_family": "IM:G4:U7:L11",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "c19b7e687e262dfcd3984c04102cc05c45946299a425ec74469a593aa2697fe6",
+        "source_span": {
+          "start": 153053,
+          "end": 166981
+        },
+        "source_spans": [
+          {
+            "start": 153053,
+            "end": 166981,
+            "sha256": "c19b7e687e262dfcd3984c04102cc05c45946299a425ec74469a593aa2697fe6"
+          }
+        ],
+        "title_zh": "画一个指定开口的角",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l12-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C5.ANGLE_CONCEPT",
+      "item_type": "multi_step",
+      "prompt": "把35°、90°、125°、180°分别归为锐角、直角、钝角或平角。说明90°和180°为何不属于钝角。",
+      "expected_answer": "35°锐角，90°直角，125°钝角，180°平角。",
+      "explanation": "锐角大于0°且小于90°；直角恰为90°；钝角严格大于90°且小于180°；平角恰为180°。两个端点有自己的类别，不能把“90到180之间”误解为含端点。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L12 | retained source line 4556",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 12. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "f1187632fb93a72758ff1577ea221deb9e8f3d4b1a7b3ecba031b25b0695671f",
+        "source_lesson_family": "IM:G4:U7:L12",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "e63f564777596f689c5faea6c8402d2955951d241856163ef635c0701a9d126b",
+        "source_span": {
+          "start": 166981,
+          "end": 182450
+        },
+        "source_spans": [
+          {
+            "start": 166981,
+            "end": 182450,
+            "sha256": "e63f564777596f689c5faea6c8402d2955951d241856163ef635c0701a9d126b"
+          }
+        ],
+        "title_zh": "角的分类边界",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l13-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C7.ADDITIVE_ANGLE",
+      "item_type": "multi_step",
+      "prompt": "射线OB位于角AOC内部，角AOC为118°，角AOB为46°。求角BOC。若将纸面示意中的OA画得更长而方向不变，答案是否改变？",
+      "expected_answer": "角BOC＝72°；不改变。",
+      "explanation": "OB在角内部，两个小角不重叠且组成大角，所以46+x=118，x=72。延长示意边只改变画出的长度，不改变两条射线方向，因此角度不变。OB在内部这一条件不能遗漏，否则不能直接使用相加关系。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L13 | retained source line 4994",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 13. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "9c6166471c7b3a450d2c201a1db0b505671c13439aad80733910c035bf847798",
+        "source_lesson_family": "IM:G4:U7:L13",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "cb4a7e4a0922719856c249ce31dd8ec36300a33dca233c229ece403a4c9ceed1",
+        "source_span": {
+          "start": 182450,
+          "end": 197351
+        },
+        "source_spans": [
+          {
+            "start": 182450,
+            "end": 197351,
+            "sha256": "cb4a7e4a0922719856c249ce31dd8ec36300a33dca233c229ece403a4c9ceed1"
+          }
+        ],
+        "title_zh": "把大角拆成两部分",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l14-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C7.ADDITIVE_ANGLE",
+      "item_type": "multi_step",
+      "prompt": "在标准钟面1点整与4点整，分别求时针和分针间的较小角，再求后一个角比前一个多多少度。说明为什么只数小时刻度间隔即可。",
+      "expected_answer": "分别30°、120°，相差90°。",
+      "explanation": "整点分针在12，时针在对应整数刻度，一圈12等份，每格30°。1点跨1格，4点跨4格，因此30与120相差3格即90°。若不是整点，时针位置需要另外计算，不能照搬此法。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L14 | retained source line 5375",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 14. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "ca106d6baf4746f1ad3ed05dbf726b1a647495307cf97efc98acbb27fa804a69",
+        "source_lesson_family": "IM:G4:U7:L14",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "b1848fb921b10406573268abad7ee45fb19e0e19bd2e9eeb7056ac4a42882f5d",
+        "source_span": {
+          "start": 197351,
+          "end": 211536
+        },
+        "source_spans": [
+          {
+            "start": 197351,
+            "end": 211536,
+            "sha256": "b1848fb921b10406573268abad7ee45fb19e0e19bd2e9eeb7056ac4a42882f5d"
+          }
+        ],
+        "title_zh": "钟面上的角度推理",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u7-l15-stock-example-v1",
+      "knowledge_node_code": "G4.MD.C7.SOLVE_UNKNOWN_ANGLE",
+      "item_type": "multi_step",
+      "prompt": "直线AB与CD交于O，OA和OB反向，OC和OD反向。已知不超过180°的角AOC为67°，求角BOC、角AOD、角BOD，并用等式说明。",
+      "expected_answer": "角BOC＝113°，角AOD＝113°，角BOD＝67°。",
+      "explanation": "OA与OB组成平角，所以67+∠BOC=180，得113。OC与OD也组成平角，67+∠AOD=180，得113。再用∠BOC+∠BOD=180，得67。这也说明交叉直线的对顶角相等，但条件应是两对反向射线，不能只看一张近似草图。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-7/ | IM:G4:U7:L15 | retained source line 5770",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 7, lesson 15. DeepTutor authored the Chinese task, reviewed definitions and checked applicable angle arithmetic; physical drawing performance is not certified. Not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "cde9c353b7cece4fb04512a227a39748750b173d8d6ea9becf134c120ba67587",
+        "source_lesson_family": "IM:G4:U7:L15",
+        "source_sha256": "214cdb0e432fe04f17b7e28f07c5a8fbe3cc18df1dde66373cd307beb0315639",
+        "source_raw_sha256": "06923d1411b45d621ef2c32f7f43bc8640763e157bc663eb3a04e8a51651a696",
+        "source_span": {
+          "start": 211536,
+          "end": 226146
+        },
+        "source_spans": [
+          {
+            "start": 211536,
+            "end": 226146,
+            "sha256": "06923d1411b45d621ef2c32f7f43bc8640763e157bc663eb3a04e8a51651a696"
+          }
+        ],
+        "title_zh": "平角与交叉直线",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受符合定义的等价表述和其他正确推导；作图结果需另行检查位置、方向和测量精度，不能仅凭文字判定作图过关。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    }
+  ]
+}

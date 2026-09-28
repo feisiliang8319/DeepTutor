@@ -54,3 +54,43 @@ CEMC 改编内容与程序代码的许可证不同。`cemc-b-2025-26.recipe.json
 - 许可证全文：<https://creativecommons.org/licenses/by-nc/4.0/>
 
 本目录 `lessons/` 是 DeepTutor 新编例子与讲义，不是 CEMC 原题译本。源文件与题包留在服务器私有资料回执中，提交源码不附整本原始 PDF 或运行凭据。
+
+## Existing stock comes first
+
+`python -m deeptutor.education.application.content_stock --root <admin-kb-root> --output <education-data>/content-stock/snapshots`
+
+This offline command processes the eight existing Markdown libraries in batches
+of at most 1,000 records. It retains immutable source objects, record locations,
+source hashes, answers, explanations, choices, source grades and source difficulty.
+It never fetches new material, calls a model, approves a quiz item or changes
+academic records. A completed snapshot is identified by its source manifest and
+parser hash. Repeating the same snapshot verifies its checksum and returns the
+existing result; a partial run is retained and cannot be silently overwritten.
+
+The operator verifies `summary.json`, its catalog checksum and the source manifest
+before atomically writing `content-stock/current.json` containing only
+`{"snapshot_id":"<64-character snapshot hash>"}`. The administrator's content
+intake page then exposes the summary and paginated processing queue. Parent,
+student and anonymous accounts cannot read this answer-bearing catalog. SQLite
+binary checksums can differ across SQLite versions; compare ordered `data_json`
+record hashes when verifying the same logical content across hosts.
+
+Structural review states are deliberately separate from teaching approval:
+- `needs_curriculum_review`: extracted fields are complete; curriculum placement,
+  factual review, source-item rights and teaching quality are still pending.
+- `needs_repair`: missing figures/answers/explanations or ambiguous results.
+- `needs_fact_check`: generated history answers need independent fact checking.
+- `reference_only`: lessons or primary-source passages, not independent quiz items.
+- `duplicate`: normalized exact-text duplicate linked to a retained source.
+
+Missing-image questions are never deduplicated from their visible text alone.
+MATH Level 1–5 and HARP Level 1–6 are not school grades. IM preparation and lesson
+content are grouped by lesson; the overlapping Unit 1 library remains a source
+version. Newspaper passages retain their historical and OCR caveats.
+
+`stock_math_repairs.py` plus `g4-stock-v1-input.json` reproduce the 138 linked,
+self-authored Grade 4 revisions. `im-stock-repairs-9.json` supplies nine independent
+IM adaptations; `im-stock-lesson-only-11.json` records why eleven classroom-dependent
+or missing-asset tasks stay in lesson references. None of these packages approves
+formal exam use. Old item bodies remain immutable and retired versions retain
+history links. Do not rerun one-time operator retirement scripts blindly.

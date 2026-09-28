@@ -1,5 +1,6 @@
 """Authenticated administrator-only content operations; no public answer route."""
 import json
+from pathlib import Path
 from fastapi import HTTPException, Request
 from pydantic import BaseModel, Field
 from typing import Literal
@@ -32,6 +33,32 @@ def register(app, *, connect, judge_available=False):
         admin(request); conn=connect()
         try: return content.catalog(conn,judge_available)
         finally: conn.close()
+
+    def stock_root():
+        conn=connect()
+        try:
+            filename=conn.execute('PRAGMA database_list').fetchone()[2]
+            if not filename: raise HTTPException(503,'Stock catalog requires persistent storage')
+            return Path(filename).parent/'content-stock'
+        finally: conn.close()
+
+    @app.get('/api/edu/content-admin/stock')
+    def stock_summary(request:Request):
+        admin(request)
+        from deeptutor.education.application.stock_reader import summary
+        return summary(stock_root())
+
+    @app.get('/api/edu/content-admin/stock/records')
+    def stock_records(request:Request,library:str='',status:str='',page:int=0):
+        admin(request)
+        from deeptutor.education.application.stock_reader import records
+        return records(stock_root(),library,status,page)
+
+    @app.get('/api/edu/content-admin/stock/records/{identity}')
+    def stock_record(identity:str,request:Request):
+        admin(request)
+        from deeptutor.education.application.stock_reader import record
+        return record(stock_root(),identity)
 
     @app.get('/api/edu/content-admin/starter')
     def starter(request:Request, course_version_id:str):

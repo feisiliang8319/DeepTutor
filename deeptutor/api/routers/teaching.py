@@ -219,3 +219,8 @@ def student_evidence(student_id: str, actor: TokenPayload = Depends(require_teac
         return teaching_evidence.read(student_id,include_private=actor.role in {"parent","admin"})
     except (RuntimeError, OSError) as exc:
         raise HTTPException(503,str(exc)) from exc
+
+
+# Admin-only connection setup. Does not submit main/family/student material.
+from deeptutor.api.routers import material_intelligence
+router.include_router(material_intelligence.router, prefix="/intelligence")

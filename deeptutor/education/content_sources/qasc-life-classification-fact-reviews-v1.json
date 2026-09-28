@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "library": "qasc",
+  "expected_records": 9060,
+  "expected_changed_records": 31,
+  "reviews": [
+    {
+      "fact_id": "f3bf5ce4f18d59492f45025c48eaf7bd6fa023c576bbe03e60a7006cdbc5bbcc",
+      "fact_before": "All plants live and grow by photosynthesis.",
+      "correction": "Most familiar green plants photosynthesize, but not all plants do. Ghost pipe lacks chlorophyll and obtains organic carbon through its relationship with fungi. Nonphotosynthetic plants cannot simply be assigned the same producer role as green plants.",
+      "reason": "A typical photosynthetic plant has been generalized to every plant.",
+      "references": [
+        "https://www.nps.gov/prwi/learn/nature/ground-plants.htm",
+        "https://www.nps.gov/media/photo/gallery-item.htm?gid=ED504504-155D-4519-3E0BA1C8F549D4E4&id=1d99b1e2-b5c1-437e-a956-77b40f6a40d0"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 4
+    },
+    {
+      "fact_id": "4c711647f45bcdda127b611774dcd1ab5899c62a5fd7728237cd613d3dc4f8dc",
+      "fact_before": "All plants require sunlight to make their food.",
+      "correction": "Most familiar green plants photosynthesize, but not all plants do. Ghost pipe lacks chlorophyll and obtains organic carbon through its relationship with fungi. Nonphotosynthetic plants cannot simply be assigned the same producer role as green plants.",
+      "reason": "A typical photosynthetic plant has been generalized to every plant.",
+      "references": [
+        "https://www.nps.gov/prwi/learn/nature/ground-plants.htm",
+        "https://www.nps.gov/media/photo/gallery-item.htm?gid=ED504504-155D-4519-3E0BA1C8F549D4E4&id=1d99b1e2-b5c1-437e-a956-77b40f6a40d0"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 2
+    },
+    {
+      "fact_id": "5b6d449330b5664d31be46e8f2ceafc706b488506bfc90fabb8b56d0726294f9",
+      "fact_before": "Plants are always at the bottom of the food chain or web.",
+      "correction": "Most familiar green plants photosynthesize, but not all plants do. Ghost pipe lacks chlorophyll and obtains organic carbon through its relationship with fungi. Nonphotosynthetic plants cannot simply be assigned the same producer role as green plants.",
+      "reason": "A typical photosynthetic plant has been generalized to every plant.",
+      "references": [
+        "https://www.nps.gov/prwi/learn/nature/ground-plants.htm",
+        "https://www.nps.gov/media/photo/gallery-item.htm?gid=ED504504-155D-4519-3E0BA1C8F549D4E4&id=1d99b1e2-b5c1-437e-a956-77b40f6a40d0"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "d49dd85b1042ebcd911184004f0822c34204be7a739ac3a3c0512146227f2f34",
+      "fact_before": "All cells are microscopic in size.",
+      "correction": "Most cells need magnification for detailed study, but some individual cells are visible without a microscope. Thiomargarita magnifica is a bacterium whose single cells can be seen with the naked eye.",
+      "reason": "Microscopic size is not a universal property of all cells.",
+      "references": [
+        "https://newscenter.lbl.gov/2022/06/23/giant-bacteria-found-in-guadeloupe-mangroves-challenge-traditional-concepts/"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 2
+    },
+    {
+      "fact_id": "f111d8567ff578dc635eb1c18e96acc0b609749f3422e35d50bfff0c6cdbd72c",
+      "fact_before": "Cells are so small that they can only be seen under a microscope.",
+      "correction": "Most cells need magnification for detailed study, but some individual cells are visible without a microscope. Thiomargarita magnifica is a bacterium whose single cells can be seen with the naked eye.",
+      "reason": "Microscopic size is not a universal property of all cells.",
+      "references": [
+        "https://newscenter.lbl.gov/2022/06/23/giant-bacteria-found-in-guadeloupe-mangroves-challenge-traditional-concepts/"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "8a12a8eab15856342a8e392d58b17182a3300853ab307ce7bd0122f7756215d0",
+      "fact_before": "All chordates have jaws.",
+      "correction": "Not all chordates have jaws. Lampreys are jawless fishes. Membership in Chordata or Vertebrata alone does not establish the presence of jaws.",
+      "reason": "The source excludes jawless chordates and produces false universal vertebrate answers.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/29-2-fishes"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 3
+    },
+    {
+      "fact_id": "1d4c1c789437b6af1bdb2c58282d13c662b16643114ce87c2ab222fdca8c6d78",
+      "fact_before": "All chordates are vertebrates.",
+      "correction": "Vertebrates are part of Chordata, but not all chordates are vertebrates. Tunicates and lancelets are invertebrate chordates.",
+      "reason": "The source reverses a one-way classification relationship.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/28-7-superphylum-deuterostomia"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "e515b59a2a88b2ccbf18d93060ae769ee054764e05ae91df396edabb6c9483fa",
+      "fact_before": "All reptiles produce eggs with a waterproof shell full of amniotic fluid.",
+      "correction": "Reptiles are amniotes, but not all lay externally shelled eggs. Rattlesnakes, for example, give birth to live young. Amniotic development does not by itself establish an external waterproof shell.",
+      "reason": "The source treats one reproductive mode as universal.",
+      "references": [
+        "https://www.nps.gov/tuzi/learn/nature/snakes.htm",
+        "https://openstax.org/books/biology-2e/pages/29-4-reptiles"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 2
+    },
+    {
+      "fact_id": "92dd72a97a3b37b4435742b4b143b9a8ecb1ae8982cbe074c15ffa8c119e54bc",
+      "fact_before": "All plants are trees.",
+      "correction": "Trees are plants, but many plants are not trees. Mosses, ferns, grasses, and herbaceous wildflowers are examples of other plant forms.",
+      "reason": "The source reverses the category relationship between trees and plants.",
+      "references": [
+        "https://www.nps.gov/zion/learn/nature/secrets-of-the-chinle-formation.htm",
+        "https://www.nps.gov/prwi/learn/nature/ground-plants.htm"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "a0996578b1f73911dd0332697ed53e4b168c015f9df55761bead0c306fba05ad",
+      "fact_before": "Flowers Includes All Plant Species.",
+      "correction": "Flowering plants are one group of plants. Mosses, ferns, and conifers are also plants, but do not produce flowers in the botanical sense. A flower is a reproductive structure rather than a synonym for every plant species.",
+      "reason": "The source confuses a reproductive structure with the entire plant kingdom.",
+      "references": [
+        "https://www.nps.gov/zion/learn/nature/secrets-of-the-chinle-formation.htm",
+        "https://www.nps.gov/prwi/learn/nature/ground-plants.htm"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "fc1700a7da5dc1f984ee78b8a0f400ac6cdfa8bbd22073f03b31ba7aebea647d",
+      "fact_before": "Almost all physical characteristics are genetic traits, inherited from parents.",
+      "correction": "Observable traits can depend on genetic variants, environmental influences, and their interaction. A visible characteristic is not automatically a directly inherited trait, and genes alone do not determine every physical characteristic.",
+      "reason": "The source overstates genetic determination and ignores environmental effects.",
+      "references": [
+        "https://www.genome.gov/genetics-glossary/Phenotype",
+        "https://www.genome.gov/genetics-glossary/Trait"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "26ffc8d17038502af5306558f902636661e468645186ccbcb2094e648152feb2",
+      "fact_before": "All physical traits and some behavioral traits are determined by our genetic makeup.",
+      "correction": "Observable traits can depend on genetic variants, environmental influences, and their interaction. A visible characteristic is not automatically a directly inherited trait, and genes alone do not determine every physical characteristic.",
+      "reason": "The source overstates genetic determination and ignores environmental effects.",
+      "references": [
+        "https://www.genome.gov/genetics-glossary/Phenotype",
+        "https://www.genome.gov/genetics-glossary/Trait"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "5ca7d12f0d2a4837a6763f7e0a4cdf3b85242870dd867c30c72201110c921c6f",
+      "fact_before": "All animals are heterotrophic and obtain their food from plants.",
+      "correction": "Animals are heterotrophs, but they do not all eat plants directly. Carnivores obtain food from other animals. Distinguish an immediate food source from energy flowing through a larger food web.",
+      "reason": "Heterotrophy has been incorrectly equated with eating plants.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/27-1-features-of-the-animal-kingdom"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "71b6ecfa7392740e519e5185083ba2765317e69d6563768cbc752b4d471a7b0f",
+      "fact_before": "Fossils are always bones.",
+      "correction": "Fossils include preserved remains and traces of past life. Shells, leaf impressions, and footprints are examples in addition to bones. A particular fossil needs identification and geological context before drawing further conclusions.",
+      "reason": "The source restricts all fossils to bones.",
+      "references": [
+        "https://www.nps.gov/subjects/fossils/significance.htm"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "96d57ae0442f528666d4c8cbce28cf0d787f9841c2456bb5420c3eebdba696ab",
+      "fact_before": "All sea turtle eat marine animals such as sponges, marine worms and molluscs.",
+      "correction": "Sea turtle diets vary by species, age, population, and available food. Green turtles often eat mainly seagrasses and algae, although they can also consume animal matter. A food eaten by one sea turtle is not established as food for every sea turtle.",
+      "reason": "The universal diet claim cannot identify a shared food source for unspecified animals.",
+      "references": [
+        "https://www.fisheries.noaa.gov/species/green-turtle"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "3459525876e868836f2e989f0d7c8b5a77532ac55bb50047ca55c5e7fe547c3c",
+      "fact_before": "Chloroplasts are the site of photosynthesis in plants only.",
+      "correction": "Chloroplasts carry out photosynthesis in plants and in many algae. Photosynthetic bacteria such as cyanobacteria do not have chloroplasts. The site of photosynthesis depends on the organism.",
+      "reason": "The source restricts chloroplasts to plants and extends an organelle to all producers.",
+      "references": [
+        "https://openstax.org/books/microbiology/pages/5-4-algae"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "7dcdb155c96fe0898adb441fe36a9a803658e5d30b0d67a6b4cac6bf875c42a2",
+      "fact_before": "All insects have heads, abdomens, and thoraxes, antennae, six legs, and wings.",
+      "correction": "Not all insects have wings. Adult fleas are wingless insects, for example. Insect identity alone does not establish the presence of wings.",
+      "reason": "A common adult-insect feature has been treated as universal.",
+      "references": [
+        "https://repository.si.edu/bitstream/handle/10088/22975/SMC_143_Snodgrass_1961_6_1-51.pdf"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "7ee2e00c570d9b7a17602ddc4dc9d1130185277a6bfe1e68735c56471b12d760",
+      "fact_before": "Coral communities are found only in warm waters.",
+      "correction": "Some coral communities live in warm shallow water, while deep-sea corals can live in cold, dark water. Coral occurrence by itself does not establish a warm-water environment.",
+      "reason": "The source excludes cold-water coral communities.",
+      "references": [
+        "https://oceanservice.noaa.gov/education/tutorial_corals/coral05_distribution.html"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "98cb733186e335fd5aa27760ae870e036ce6b55344a5b1a6759d0f5a20be1cee",
+      "fact_before": "All mutant traits are recessive.",
+      "correction": "A mutation does not imply a recessive trait. A variant can have a dominant or recessive effect, and inheritance depends on the specific gene, alleles, and phenotype. A cross cannot be solved merely from the label mutant.",
+      "reason": "The source assigns a single inheritance pattern to all mutations.",
+      "references": [
+        "https://www.genome.gov/genetics-glossary/Dominant"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "608b0a9b54766311b63b3f3847ce37a53cf92afa60380afd7da2aeef27d35bae",
+      "fact_before": "Biodiversity refers to the genetic variation of all life on Earth.",
+      "correction": "Biodiversity includes genetic diversity, diversity of species, and diversity of ecosystems. Genetic variation is one component, not the complete definition.",
+      "reason": "The source reduces a multi-level concept to only one level.",
+      "references": [
+        "https://www.nps.gov/subjects/biodiversity/what-is-biodiversity.htm"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "6abd736b2eee1ebd7d7c2b796b01e0f54ae488ae9c112517c71ca460535d09e8",
+      "fact_before": "All creatures procreate via sexual reproduction.",
+      "correction": "Sexual reproduction is widespread, but asexual reproduction also occurs. Some animals can produce offspring by parthenogenesis, so reproduction alone does not establish that two parents combined genetic material.",
+      "reason": "The source incorrectly makes sexual reproduction universal.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/27-1-features-of-the-animal-kingdom"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "42d0e6ed3782262ede4a316e77e3fb268b9f31692354836ae1aac095fa02de66",
+      "fact_before": "All aquatic animals require dissolved oxygen to breathe.",
+      "correction": "Aquatic animals do not all obtain oxygen from water or use gills. Whales and dolphins breathe atmospheric air with lungs and surface to breathe. Specify the animal before inferring its respiratory organs.",
+      "reason": "The source equates an aquatic habitat with dissolved-oxygen breathing.",
+      "references": [
+        "https://www.fisheries.noaa.gov/pacific-islands/science-data/whale-and-dolphin-surveys-pacific-islands"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "fea337a4d8bd987cbccc0ad08d0110a41d5606ca13ca3396c1c79b5ad57aa2dd",
+      "fact_before": "Hagfishes are a type of jawless fish which are the only parasitic vertebrates.",
+      "correction": "Hagfishes are jawless scavenging and predatory fishes; they should not be labeled the only parasitic vertebrates. Some lampreys are parasitic, and others are nonparasitic. A claim about ancient ancestry needs separate evidence.",
+      "reason": "The source confuses hagfish feeding with parasitic lampreys and overstates uniqueness.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/29-2-fishes"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    }
+  ]
+}

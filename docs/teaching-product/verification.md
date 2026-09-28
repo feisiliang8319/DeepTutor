@@ -129,3 +129,13 @@ Mac Mini 隔离目录：`/private/tmp/deeptutor-teaching-01a0e337`；网页只�
 - 标签页隐藏事件由自动化用例覆盖；内置浏览器打开另一个标签并未产生可观测的隐藏事件，所以不将该操作记作真实切标签验证。普通浏览器不能识别另一设备或外部帮助，本功能不是全面监考。
 - 生产正式课程配置与正式试卷仍为 0；既有试用练习单独标明，正式题库建设尚未完成。
 - 当前仅完成实现与隔离验收；生产构建、部署和远端推送以随后的发布记录为准。
+
+
+### 本次生产发布回读
+
+- 代码提交：`f1cde26e7155afdad2bc899d830b10a0e21034c9`。完整生产构建完成；数据库副本上的 `011_exam_integrity.sql` 演练通过，所有既有表内容校验一致。初次演练的校验脚本误用了 SQLite Row 对象表示，改为行值元组后复核；没有在生产试错。
+- 停服前核对无进行中正式考试或 Chat turn。账户库与教育库均通过 SQLite backup 备份及 integrity_check。旧源码、前端构建和增量类型检查缓存保留于 `/Users/gwp_group/deeptutor-prod/backups/quiz-integrity-20260928T043909Z`。
+- 新迁移在生产完成；发布后再次比较既有教学表、accounts、teaching_grants 和 teaching_policy，均与停服备份一致。模型配置未改动。
+- 公网 `https://mytutors.cc/teaching-release.json` 回读上述代码提交；登录状态接口正常。实际浏览器刷新生产管理页后，原管理员会话与模型策略正常加载。
+- 生产 `assessment_courses=0`、`formal_exams=0`、`exam_integrity_events=0`。正式考试操作证据来自合成隔离预览，未在真实学生账号发卷或作答。
+- GitHub 推送结果以远端分支回读为准；本段仅记录已验证的构建与生产状态。

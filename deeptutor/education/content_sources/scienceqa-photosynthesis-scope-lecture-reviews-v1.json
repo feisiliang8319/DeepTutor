@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 40,
+  "reviews": [
+    {
+      "concept_id": "885b2201ca18412adb030297dd90c2cc8263e90a98ddf1e735e6ca475c638853",
+      "expected_records": 9,
+      "lecture_before": "Organisms that carry out photosynthesis are called photosynthetic organisms. During photosynthesis, these organisms use light energy to turn water and carbon dioxide into sugars and oxygen.\nPhotosynthetic organisms also often have the following characteristics:\nThey are producers, which are organisms that make their own food inside their cells. Producers don't usually eat other organisms.\nTheir cells contain chloroplasts. Chloroplasts are cell parts where photosynthesis occurs.\nTheir chloroplasts often contain chlorophyll, which is green. Chlorophyll captures energy from sunlight to power photosynthesis.\nThey use the sugars they make during photosynthesis as food. This food provides the organisms with the energy they need to live.",
+      "lecture_after": "Organisms that carry out photosynthesis are called photosynthetic organisms. The familiar oxygen-producing form of photosynthesis, used by green plants, algae, and cyanobacteria, uses light energy and water while fixing carbon dioxide into organic compounds. Oxygen is released from water. Some other photosynthetic microbes use different electron sources and do not release oxygen.\nPhotosynthetic organisms also often have the following characteristics:\nThey are producers, which are organisms that make their own food inside their cells. Producers don't usually eat other organisms.\nIn photosynthetic plants and algae, chloroplasts contain the photosynthetic machinery. Photosynthetic bacteria, including cyanobacteria, do not have chloroplasts; they use photosynthetic membranes instead.\nPlant and algal chloroplasts contain chlorophyll, a pigment that helps capture light energy for photosynthesis.\nThey use the sugars they make during photosynthesis as food. This food provides the organisms with the energy they need to live.",
+      "reason": "Scope the plant-like example and distinguish photosynthesis from chloroplast presence or universal oxygen release.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/microbiology/pages/8-6-photosynthesis",
+          "supports": "Distinguishes oxygen-producing photosynthesis from anoxygenic forms and chloroplasts from bacterial photosynthetic membranes."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "d13ff7bca2e433fd2c5758f7dc703611a4b65d22993bcad05826cb345d734030",
+      "expected_records": 15,
+      "lecture_before": "Organisms that carry out photosynthesis are called photosynthetic organisms. During photosynthesis, these organisms use light energy, carbon dioxide, and water to produce sugars and oxygen.\nPhotosynthetic organisms also often have the following characteristics:\nThey are producers, which are organisms that make their own food inside their cells. Because producers make their own food, they typically do not eat other organisms.\nTheir cells contain chloroplasts, which are cell structures where photosynthesis occurs.\nTheir chloroplasts often contain a green substance called chlorophyll. Chlorophyll captures light energy from the Sun to power photosynthesis.\nThey use the sugars they produce during photosynthesis as food. This food provides energy that helps the organisms live, grow, and reproduce.",
+      "lecture_after": "Organisms that carry out photosynthesis are called photosynthetic organisms. The familiar oxygen-producing form of photosynthesis, used by green plants, algae, and cyanobacteria, uses light energy and water while fixing carbon dioxide into organic compounds. Oxygen is released from water. Some other photosynthetic microbes use different electron sources and do not release oxygen.\nPhotosynthetic organisms also often have the following characteristics:\nThey are producers, which are organisms that make their own food inside their cells. Because producers make their own food, they typically do not eat other organisms.\nIn photosynthetic plants and algae, chloroplasts contain the photosynthetic machinery. Photosynthetic bacteria, including cyanobacteria, do not have chloroplasts; they use photosynthetic membranes instead.\nPlant and algal chloroplasts contain chlorophyll, a pigment that helps capture light energy for photosynthesis.\nThey use the sugars they produce during photosynthesis as food. This food provides energy that helps the organisms live, grow, and reproduce.",
+      "reason": "Scope the plant-like example and distinguish photosynthesis from chloroplast presence or universal oxygen release.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/microbiology/pages/8-6-photosynthesis",
+          "supports": "Distinguishes oxygen-producing photosynthesis from anoxygenic forms and chloroplasts from bacterial photosynthetic membranes."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "bb5d017208fbc92c2d9a4d692a9a1ebbeaa7474c3507b68115ceb4ad67b93b0a",
+      "expected_records": 16,
+      "lecture_before": "Every substance around you is made up of atoms. Atoms can link together to form molecules. The links between atoms in a molecule are called chemical bonds. Different molecules are made up of different chemical elements, or types of atoms, bonded together.\nScientists use both ball-and-stick models and chemical formulas to represent molecules.\nA ball-and-stick model of a molecule is shown below.\nThe balls represent atoms. The sticks represent the chemical bonds between the atoms.\nNotice how each ball is labeled with a symbol made of one or more letters. The symbol is an abbreviation for a chemical element. The ball represents one atom of that element.\nEvery chemical element is represented by its own symbol. For some elements, that symbol is one capital letter. For other elements, it is one capital letter followed by one lowercase letter. For example, the symbol for the element boron is B and the symbol for the element chlorine is Cl.\nThe molecule shown above has one boron atom and three chlorine atoms. A chemical bond links each chlorine atom to the boron atom.\nThe chemical formula for a molecule contains the symbol for each chemical element in the molecule. Many chemical formulas use subscripts. A subscript is text that is smaller and placed lower than the normal line of text.\nIn chemical formulas, the subscripts are numbers. The subscript is always written after the symbol for an element. The subscript tells you how many atoms that symbol represents. If the symbol represents just one atom, then no subscript is included.\nThe symbols in the chemical formula for a molecule match the symbols in the ball-and-stick model for that molecule. The ball-and-stick model shown before and the chemical formula shown above represent the same substance.",
+      "lecture_after": "Every substance around you is made up of atoms. Atoms can link together to form molecules. The links between atoms in a molecule are called chemical bonds. The atoms in a molecule may belong to just one element, as in O2, or to more than one element, as in H2O. Different molecules can even share a molecular formula while having different arrangements of their atoms.\nScientists use both ball-and-stick models and chemical formulas to represent molecules.\nA ball-and-stick model of a molecule is shown below.\nThe balls represent atoms. The sticks represent the chemical bonds between the atoms.\nNotice how each ball is labeled with a symbol made of one or more letters. The symbol is an abbreviation for a chemical element. The ball represents one atom of that element.\nEvery chemical element is represented by its own symbol. For some elements, that symbol is one capital letter. For other elements, it is one capital letter followed by one lowercase letter. For example, the symbol for the element boron is B and the symbol for the element chlorine is Cl.\nThe molecule shown above has one boron atom and three chlorine atoms. A chemical bond links each chlorine atom to the boron atom.\nThe chemical formula for a molecule contains the symbol for each chemical element in the molecule. Many chemical formulas use subscripts. A subscript is text that is smaller and placed lower than the normal line of text.\nIn chemical formulas, the subscripts are numbers. The subscript is always written after the symbol for an element. The subscript tells you how many atoms that symbol represents. If the symbol represents just one atom, then no subscript is included.\nThe symbols in the chemical formula for a molecule match the symbols in the ball-and-stick model for that molecule. The ball-and-stick model shown before and the chemical formula shown above represent the same substance.",
+      "reason": "Apply the already checked molecular-composition correction to a second original lecture variant.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-4-chemical-formulas",
+          "supports": "Elemental molecules and structural isomers are valid counterexamples to the original universal wording."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 1477,
+  "reviews": [
+    {
+      "concept_id": "0d9558b3e61dfa89f806c9694c1af99754a790ee8b1f7a92673a53b40bf76469",
+      "expected_records": 288,
+      "lecture_before": "A letter starts with a greeting and ends with a closing. For each one, capitalize the first word and end with a comma. You should also capitalize proper nouns, such as Aunt Sue.\nDear Aunt Sue,\nI'm glad you could come to my party, and\nthank you for the birthday gift. I could not have\nasked for a better one! Every time I see it, I think\nof you.\nWith love,\nRory",
+      "lecture_after": "In the friendly-letter format illustrated here, the greeting and closing begin with a capital letter and end with a comma. This is not a rule for every letter: a common American business-letter format uses a colon after the greeting. Follow the format required for the purpose and audience. You should also capitalize proper nouns, such as Aunt Sue.\nDear Aunt Sue,\nI'm glad you could come to my party, and\nthank you for the birthday gift. I could not have\nasked for a better one! Every time I see it, I think\nof you.\nWith love,\nRory",
+      "reason": "Limit the comma rule to the friendly-letter example instead of all correspondence.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/subject_specific_writing/professional_technical_writing/basic_business_letters/index.html",
+          "supports": "Shows a business-letter salutation with a colon and acknowledges variation between formats."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "c7d4ecc38c108aff1754095dcd97f648e1edc09a7dbebea04e60231da0bc16cb",
+      "expected_records": 84,
+      "lecture_before": "A sentence is a group of words that forms a complete thought. It has both a subject and a verb.\nMy friends walk along the path.\nA sentence fragment is a group of words that does not express a complete thought. It is usually missing a subject or a verb.\nKnows the answer.\nThis is a sentence fragment. It is missing a subject.\nWho knows the answer? She knows the answer.\nThe bright red car.\nThis is a sentence fragment. It is missing a verb.\nWhat did the bright red car do? The bright red car stopped.\nA run-on sentence is made up of two sentences that are joined without end punctuation or with just a comma.\nI knocked on the door it opened.\nIt started raining, we ran inside.\nTo fix a run-on sentence, separate it into two sentences. Add end punctuation after the first sentence, and capitalize the second sentence.\nI knocked on the door. It opened.\nIt started raining. We ran inside.\nYou can also fix a run-on sentence by rewriting it as a compound sentence. A compound sentence is two sentences joined by a comma and a conjunction such as and, but, or, or so.\nI knocked on the door, and it opened.\nIt started raining, so we ran inside.",
+      "lecture_after": "In standard complete-sentence writing, a sentence contains at least one independent clause. Its subject may be understood rather than written, as you is in the command Stop.\nMy friends walk along the path.\nA sentence fragment is a group of words that does not express a complete thought. It is usually missing a subject or a verb.\nKnows the answer.\nThis is a sentence fragment. It is missing a subject.\nWho knows the answer? She knows the answer.\nThe bright red car.\nThis is a sentence fragment. It is missing a verb.\nWhat did the bright red car do? The bright red car stopped.\nA fused sentence improperly joins independent clauses without the needed punctuation or connector; a comma splice joins them with only a comma. These are common run-on errors.\nI knocked on the door it opened.\nIt started raining, we ran inside.\nTo fix a run-on sentence, separate it into two sentences. Add end punctuation after the first sentence, and capitalize the second sentence.\nI knocked on the door. It opened.\nIt started raining. We ran inside.\nYou can also fix a run-on sentence by rewriting it as a compound sentence. A compound sentence contains two or more independent clauses and no dependent clause. They may be connected with a comma and a coordinating conjunction, or with appropriate punctuation such as a semicolon.\nI knocked on the door, and it opened.\nIt started raining, so we ran inside.",
+      "reason": "Distinguish independent clauses from whole sentences and recognize an understood imperative subject and semicolon connections.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/punctuation/independent_and_dependent_clauses/index.html",
+          "supports": "Independent clauses can stand alone; comma splices and fused sentences join them without the needed punctuation or connection."
+        },
+        {
+          "url": "https://dictionary.cambridge.org/us/grammar/british-grammar/clause-types",
+          "supports": "Clause form and communicative function are related but not identical; imperatives normally omit the subject."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "8a23c7f842c7aabe8fa5b46a5195d90596e77c5478663a62f9d1634205461216",
+      "expected_records": 50,
+      "lecture_before": "A sentence is a group of words that forms a complete thought. It has both a subject and a verb.\nMy friends walk along the path.\nA run-on sentence is made up of two sentences that are joined without end punctuation or with just a comma.\nI knocked on the door it opened.\nIt started raining, we ran inside.\nTo fix a run-on sentence, separate it into two sentences. Add end punctuation after the first sentence, and capitalize the second sentence.\nI knocked on the door. It opened.\nIt started raining. We ran inside.\nYou can also fix a run-on sentence by rewriting it as a compound sentence. A compound sentence is two sentences joined by a comma and a conjunction such as and, but, or, or so.\nI knocked on the door, and it opened.\nIt started raining, so we ran inside.",
+      "lecture_after": "In standard complete-sentence writing, a sentence contains at least one independent clause. Its subject may be understood rather than written, as you is in the command Stop.\nMy friends walk along the path.\nA fused sentence improperly joins independent clauses without the needed punctuation or connector; a comma splice joins them with only a comma. These are common run-on errors.\nI knocked on the door it opened.\nIt started raining, we ran inside.\nTo fix a run-on sentence, separate it into two sentences. Add end punctuation after the first sentence, and capitalize the second sentence.\nI knocked on the door. It opened.\nIt started raining. We ran inside.\nYou can also fix a run-on sentence by rewriting it as a compound sentence. A compound sentence contains two or more independent clauses and no dependent clause. They may be connected with a comma and a coordinating conjunction, or with appropriate punctuation such as a semicolon.\nI knocked on the door, and it opened.\nIt started raining, so we ran inside.",
+      "reason": "Distinguish independent clauses from whole sentences and recognize an understood imperative subject and semicolon connections.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/punctuation/independent_and_dependent_clauses/index.html",
+          "supports": "Independent clauses can stand alone; comma splices and fused sentences join them without the needed punctuation or connection."
+        },
+        {
+          "url": "https://dictionary.cambridge.org/us/grammar/british-grammar/clause-types",
+          "supports": "Clause form and communicative function are related but not identical; imperatives normally omit the subject."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "60ecbcb3b38a86cc83ac836bcc1fb8a6f82f02f1591b6b4a9c2379d98fb1f876",
+      "expected_records": 22,
+      "lecture_before": "The title of a book, movie, play, TV show, magazine, or newspaper should be in italics. If you write it by hand, it can be underlined instead.\nA Midsummer Night's Dream\nThe title of a poem, song, or article should be in quotation marks.\n\"You Are My Sunshine\"",
+      "lecture_after": "In the common MLA-style convention used here, titles of whole books, movies, plays, television series, magazines and newspapers are normally italicized. A school assignment may ask for underlining as a handwritten substitute; follow its stated style.\nA Midsummer Night's Dream\nTitles of shorter works such as short poems, songs, articles, short stories and television episodes are normally placed in quotation marks. A book-length poem is treated as a long work. The kind of work and the required style matter.\n\"You Are My Sunshine\"",
+      "reason": "Separate whole series from episodes and short poems from book-length poems; specify the style convention.",
+      "references": [
+        {
+          "url": "https://style.mla.org/title-of-a-fictional-work/",
+          "supports": "Distinguishes longer and shorter works and acknowledges variation in styling conventions."
+        },
+        {
+          "url": "https://style.mla.org/styling-online-works/",
+          "supports": "Distinguishes television series from smaller works and short poems from epic poems."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "ef02d82d68e334599aa5c9261c21d5df0f2f32e6106f217c3d1b3b24e45b7af2",
+      "expected_records": 98,
+      "lecture_before": "The title of a book, movie, play, TV show, magazine, or newspaper should be in italics. If you write it by hand, it can be underlined instead.\nA Midsummer Night's Dream\nThe title of a poem, song, article, or short story should be in quotation marks.\n\"You Are My Sunshine\"",
+      "lecture_after": "In the common MLA-style convention used here, titles of whole books, movies, plays, television series, magazines and newspapers are normally italicized. A school assignment may ask for underlining as a handwritten substitute; follow its stated style.\nA Midsummer Night's Dream\nTitles of shorter works such as short poems, songs, articles, short stories and television episodes are normally placed in quotation marks. A book-length poem is treated as a long work. The kind of work and the required style matter.\n\"You Are My Sunshine\"",
+      "reason": "Separate whole series from episodes and short poems from book-length poems; specify the style convention.",
+      "references": [
+        {
+          "url": "https://style.mla.org/title-of-a-fictional-work/",
+          "supports": "Distinguishes longer and shorter works and acknowledges variation in styling conventions."
+        },
+        {
+          "url": "https://style.mla.org/styling-online-works/",
+          "supports": "Distinguishes television series from smaller works and short poems from epic poems."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "9f82a2e6e93a4625a64bc38aaab5ea20814f2527b1840567b12b0cac977755be",
+      "expected_records": 80,
+      "lecture_before": "There are four kinds of sentences.\nA declarative sentence is a statement. It tells about something. A declarative sentence always ends with a period.\nI have an older brother and a younger sister.\nAn interrogative sentence is a question. It asks something. An interrogative sentence always ends with a question mark.\nHow tall are you?\nAn imperative sentence is a command. It makes a request or tells someone to do something. An imperative sentence usually ends with a period. If the command shows strong feeling, it ends with an exclamation point.\nRead the first chapter by next week.\nLook out for that car!\nAn exclamatory sentence is like a statement, but it shows surprise or strong feeling. An exclamatory sentence always ends with an exclamation point.\nSome whales are over ninety feet long!\nI can't wait until tomorrow!",
+      "lecture_after": "These exercises use four common classroom labels for sentence purposes: statement, question, command and exclamation. The punctuation patterns below describe the ordinary examples, not every possible use of a grammatical clause form.\nA declarative sentence is a statement. It tells about something. A declarative sentence normally ends with a period in these examples.\nI have an older brother and a younger sister.\nAn interrogative sentence is a question. It asks something. An interrogative sentence normally ends with a question mark when used as a direct question.\nHow tall are you?\nAn imperative sentence is a command. It makes a request or tells someone to do something. An imperative sentence usually ends with a period. If the command shows strong feeling, it ends with an exclamation point.\nRead the first chapter by next week.\nLook out for that car!\nAn exclamatory sentence is like a statement, but it shows surprise or strong feeling. An exclamatory sentence is conventionally written with an exclamation point in these examples.\nSome whales are over ninety feet long!\nI can't wait until tomorrow!",
+      "reason": "Separate classroom communicative labels from universal claims based on punctuation alone.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/us/grammar/british-grammar/clause-types",
+          "supports": "Clause form and communicative function are related but not identical; imperatives normally omit the subject."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "df4c84e39d3c24a3e31dcb9592b435a093bc12b407d4d1ae64c8d065f2f72299",
+      "expected_records": 46,
+      "lecture_before": "There are four kinds of sentences.\nA declarative sentence is a statement and always ends with a period.\nThe nurse told Mr. Abrams to roll up his sleeve so that she could check his blood pressure.\nAn imperative sentence makes a request or a demand and usually ends with a period. If a demand shows strong feeling, it can end with an exclamation point.\nFor this assignment, use references to support your claims.\nDon't drive so quickly in the construction zone!\nAn interrogative sentence asks a question and always ends with a question mark.\nGiven the recent critiques of her new strategic plan, do you think the CEO will reconsider the company's direction?\nAn exclamatory sentence is a statement that shows surprise or strong feeling. An exclamation always ends with an exclamation point.\nI can't wait to travel through Europe this summer!",
+      "lecture_after": "These exercises use four common classroom labels for sentence purposes: statement, question, command and exclamation. The punctuation patterns below describe the ordinary examples, not every possible use of a grammatical clause form.\nA declarative sentence is a statement and normally ends with a period in these examples.\nThe nurse told Mr. Abrams to roll up his sleeve so that she could check his blood pressure.\nAn imperative sentence makes a request or a demand and usually ends with a period. If a demand shows strong feeling, it can end with an exclamation point.\nFor this assignment, use references to support your claims.\nDon't drive so quickly in the construction zone!\nAn interrogative sentence asks a question and normally ends with a question mark when used as a direct question.\nGiven the recent critiques of her new strategic plan, do you think the CEO will reconsider the company's direction?\nAn exclamatory sentence is a statement that shows surprise or strong feeling. An exclamation is conventionally written with an exclamation point in these examples.\nI can't wait to travel through Europe this summer!",
+      "reason": "Separate classroom communicative labels from universal claims based on punctuation alone.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/us/grammar/british-grammar/clause-types",
+          "supports": "Clause form and communicative function are related but not identical; imperatives normally omit the subject."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "2296d3575d30d442062df2cd56d0225ce7adeaf411e6e2c9fe0d94055c6e5d0b",
+      "expected_records": 76,
+      "lecture_before": "There are four kinds of sentences.\nA declarative sentence is a statement, and it always ends with a period.\nThe nurse told Mr. Abrams to roll up his sleeve so that she could check his blood pressure.\nAn interrogative sentence is a question, and it always ends with a question mark.\nDo you have any plans for the upcoming weekend?\nAn imperative sentence is a command. It makes a request or tells someone to do something, and it usually ends with a period. If the command shows strong feeling, it ends with an exclamation point.\nFor this assignment, use references to support your claims.\nDon't drive so quickly in the construction zone!\nAn exclamatory sentence is like a statement, but it shows surprise or strong feeling. An exclamatory sentence always ends with an exclamation point.\nI can't wait to travel through Europe this summer!",
+      "lecture_after": "These exercises use four common classroom labels for sentence purposes: statement, question, command and exclamation. The punctuation patterns below describe the ordinary examples, not every possible use of a grammatical clause form.\nA declarative sentence is a statement, and it normally ends with a period in these examples.\nThe nurse told Mr. Abrams to roll up his sleeve so that she could check his blood pressure.\nAn interrogative sentence is a question, and it normally ends with a question mark when used as a direct question.\nDo you have any plans for the upcoming weekend?\nAn imperative sentence is a command. It makes a request or tells someone to do something, and it usually ends with a period. If the command shows strong feeling, it ends with an exclamation point.\nFor this assignment, use references to support your claims.\nDon't drive so quickly in the construction zone!\nAn exclamatory sentence is like a statement, but it shows surprise or strong feeling. An exclamatory sentence is conventionally written with an exclamation point in these examples.\nI can't wait to travel through Europe this summer!",
+      "reason": "Separate classroom communicative labels from universal claims based on punctuation alone.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/us/grammar/british-grammar/clause-types",
+          "supports": "Clause form and communicative function are related but not identical; imperatives normally omit the subject."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "23bb5bcc740d2adb9e23175a0cac0b796ff42f66e6e98ba3ffbab51cbd457ebe",
+      "expected_records": 83,
+      "lecture_before": "Formal writing is used for essays, business letters, and reports. The following types of informal language should be avoided in formal writing:\nType | Examples\nslang | cool, awesome\nidioms | knock your socks off\nconversational language | gonna, kinda, yeah\nabbreviated language | ASAP, FYI\noverly simple or imprecise language | he got some stuff at the store\ncontractions | can't, won't\nContractions are not as informal as the other types, but they should be used sparingly in formal writing.\nCompare the following sentences. The first is informal. The second is formal.\nInformal: Yeah, ostriches can't fly, but they're awesome runners.\nFormal: Though ostriches are flightless, they are remarkably adept runners.",
+      "lecture_after": "Essays, business letters and reports often call for a formal register. The choices below may be unsuitable in some formal assignments, but register depends on audience, genre and the stated style requirements. Clarity and precision matter more than making every sentence elaborate.\nType | Examples\nslang | cool, awesome\nidioms | knock your socks off\nconversational language | gonna, kinda, yeah\nabbreviated language | ASAP, FYI\noverly simple or imprecise language | he got some stuff at the store\ncontractions | can't, won't\nContractions are common in many kinds of writing, including some professional prose. Follow the assignment or publication style; they are not an automatic error in every formal context.\nCompare the following sentences. The first is informal. The second is formal.\nInformal: Yeah, ostriches can't fly, but they're awesome runners.\nFormal: Though ostriches are flightless, they are remarkably adept runners.",
+      "reason": "Avoid treating school register preferences as universal bans or treating elaborate vocabulary as a requirement.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/us/grammar/british-grammar/formal-and-informal-language",
+          "supports": "Describes formal and informal language as choices shaped by context and common tendencies."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "4b78441cb2764cf7edabd4be16fc28e2da5bc42f6133bafd89b6be21f0f2aec1",
+      "expected_records": 49,
+      "lecture_before": "A sentence is a group of words that expresses a complete thought.\nThe band I'm in has been rehearsing daily because we have a concert in two weeks.\nA sentence fragment is a group of words that does not express a complete thought.\nRehearsing daily because we have a concert in two weeks.\nThis fragment is missing a subject. It doesn't tell who is rehearsing.\nThe band I'm in.\nThis fragment is missing a verb. It doesn't tell what the band I'm in is doing.\nBecause we have a concert in two weeks.\nThis fragment is missing an independent clause. It doesn't tell what happened because of the concert.",
+      "lecture_after": "A sentence is a group of words that expresses a complete thought.\nThe band I'm in has been rehearsing daily because we have a concert in two weeks.\nA sentence fragment is a group of words that does not express a complete thought.\nRehearsing daily because we have a concert in two weeks.\nThis fragment is missing a subject. It doesn't tell who is rehearsing.\nThe band I'm in.\nThis noun phrase lacks a main-clause predicate telling what the band does. The embedded words I'm in contain a verb, but they only help identify the band; they do not turn the whole phrase into an independent clause.\nBecause we have a concert in two weeks.\nThis fragment is missing an independent clause. It doesn't tell what happened because of the concert.",
+      "reason": "The fragment contains the verb am inside a relative clause; the missing element is a main-clause predicate.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/punctuation/independent_and_dependent_clauses/index.html",
+          "supports": "Independent clauses can stand alone; comma splices and fused sentences join them without the needed punctuation or connection."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "97ffbb0a11afe7e62a2064bed465124e7411ace7ef2eea36fe8833ded949e940",
+      "expected_records": 261,
+      "lecture_before": "When writing, make sure to avoid vague pronoun references. A vague pronoun reference occurs when a pronoun could refer to more than one possible antecedent.\nWhen Lisa and Kim finally landed, she breathed a sigh of relief.\nThe pronoun she could refer to either Lisa or Kim, so the meaning of the sentence is unclear.\nVague pronoun references can be corrected in one of two ways:\n1. Replace the pronoun with its correct antecedent:\nWhen Lisa and Kim finally landed, Lisa breathed a sigh of relief.\n2. Rewrite the sentence:\nLisa breathed a sigh of relief when she and Kim finally landed.\nA vague pronoun reference also occurs when they, them, their, theirs, it, or its is used without its antecedent.\nThey say that this nail polish dries in less than five minutes.\nThe pronoun they is used without its antecedent, so the meaning of the sentence is unclear.\nThis problem can be fixed by replacing the pronoun with its missing antecedent.\nThe advertisements say that this nail polish dries in less than five minutes.",
+      "lecture_after": "When writing, make sure to avoid vague pronoun references. A vague pronoun reference occurs when a pronoun could refer to more than one possible antecedent.\nWhen Lisa and Kim finally landed, she breathed a sigh of relief.\nThe pronoun she could refer to either Lisa or Kim, so the meaning of the sentence is unclear.\nTwo common ways to clarify this reference are:\n1. Replace the pronoun with its correct antecedent:\nWhen Lisa and Kim finally landed, Lisa breathed a sigh of relief.\n2. Rewrite the sentence:\nLisa breathed a sigh of relief when she and Kim finally landed.\nA pronoun can also be too vague when the reader cannot work out its intended referent from the words or situation. However, generic they and some uses of it need no previously named noun; absence of an explicit antecedent is not always an error.\nThey say that this nail polish dries in less than five minutes.\nHere they could mean people in general, which is a normal usage. If the purpose is to identify who makes the product claim, naming the advertisements is more precise.\nThis problem can be fixed by replacing the pronoun with its missing antecedent.\nThe advertisements say that this nail polish dries in less than five minutes.",
+      "reason": "Retain the ambiguous Lisa/Kim example while recognizing grammatical generic pronouns and context-dependent clarity.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/they",
+          "supports": "They can refer to people in general, including the construction they say."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "394627c515422804ac02ca35fe82b3c4f5abee178af71b4367c96b56b6db34c4",
+      "expected_records": 47,
+      "lecture_before": "A sentence is a group of words that expresses a complete thought.\nThe band I'm in has been rehearsing daily because we have a concert in two weeks.\nA run-on sentence is formed when two sentences are run together, joined by just a comma or by no punctuation at all. If only a comma is used, the run-on is called a comma splice.\nThe band I'm in has been rehearsing daily, we have a concert in two weeks.\nThe band I'm in has been rehearsing daily we have a concert in two weeks.\nThere are several ways to fix a run-on sentence:\nUse stronger punctuation, such as a period or a semicolon.\nThe band I'm in has been rehearsing daily. We have a concert in two weeks.\nThe band I'm in has been rehearsing daily; we have a concert in two weeks.\nUse a comma and a coordinating conjunction to create a compound sentence. Coordinating conjunctions include and, but, or, and so.\nThe band I'm in has been rehearsing daily, and we have a concert in two weeks.\nUse a subordinating conjunction or a relative pronoun to create a complex sentence. Subordinating conjunctions include after, although, as, because, before, if, since, unless, until, when, and while. Relative pronouns include that, which, who, whom, and whose.\nThe band I'm in has been rehearsing daily since we have a concert in two weeks.",
+      "lecture_after": "A sentence is a group of words that expresses a complete thought.\nThe band I'm in has been rehearsing daily because we have a concert in two weeks.\nIn standard edited writing, a run-on error occurs when two or more independent clauses are joined by only a comma or without the required punctuation or connection. If only a comma is used, the run-on is called a comma splice.\nThe band I'm in has been rehearsing daily, we have a concert in two weeks.\nThe band I'm in has been rehearsing daily we have a concert in two weeks.\nThere are several ways to fix a run-on sentence:\nUse stronger punctuation, such as a period or a semicolon.\nThe band I'm in has been rehearsing daily. We have a concert in two weeks.\nThe band I'm in has been rehearsing daily; we have a concert in two weeks.\nUse a comma and a coordinating conjunction to create a compound sentence. Coordinating conjunctions include and, but, or, and so.\nThe band I'm in has been rehearsing daily, and we have a concert in two weeks.\nUse a subordinating conjunction or a relative pronoun to create a complex sentence. Subordinating conjunctions include after, although, as, because, before, if, since, unless, until, when, and while. Relative pronouns include that, which, who, whom, and whose.\nThe band I'm in has been rehearsing daily since we have a concert in two weeks.",
+      "reason": "Describe the error in terms of clauses rather than treating every long sentence or any adjacent clauses as a run-on.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/punctuation/independent_and_dependent_clauses/index.html",
+          "supports": "Independent clauses can stand alone; comma splices and fused sentences join them without the needed punctuation or connection."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "4641bdb656faec55a0c08c9c04451780b9df7532370cf6a55f512df83acb2d5c",
+      "expected_records": 215,
+      "lecture_before": "Words change in meaning when speakers begin using them in new ways. For example, the word peruse once only meant to examine in detail, but it's now also commonly used to mean to look through in a casual manner.\nWhen a word changes in meaning, its correct usage is often debated. Although a newer sense of the word may be more commonly used, many people consider a word's traditional definition to be the correct usage. Being able to distinguish the different uses of a word can help you use it appropriately for different audiences.\nBritney perused her notes, carefully preparing for her exam.\nThe traditional usage above is considered more standard.\nDavid perused the magazine, absentmindedly flipping through the pages.\nThe nontraditional usage above is now commonly used, but traditional style guides generally advise against it.",
+      "lecture_after": "Words can have multiple meanings, and usage can change over time. Peruse can mean to examine closely or to look through casually. Both readings have a long documented history; the casual reading is not simply a recent mistake.\nWhen a word changes in meaning, its correct usage is often debated. Although a newer sense of the word may be more commonly used, many people consider a word's traditional definition to be the correct usage. Being able to distinguish the different uses of a word can help you use it appropriately for different audiences.\nBritney perused her notes, carefully preparing for her exam.\nThe surrounding words carefully preparing make the close-reading sense clear.\nDavid perused the magazine, absentmindedly flipping through the pages.\nHere absentmindedly flipping makes the casual-reading sense clear. Some usage guides prefer the close-reading sense. For maximum clarity, choose examine carefully or skim when the intended reading of peruse could be uncertain.",
+      "reason": "Remove an unsupported recent-change narrative and explain the documented ambiguity without silently regrading usage exercises.",
+      "references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/peruse",
+          "supports": "Records both senses and explains that both have been widespread for about four hundred years."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "6667de608a66e8ca641e354c1464183444a1b526c6cee682bb47bb5d949e1c76",
+      "expected_records": 4,
+      "lecture_before": "Plagiarism is the act of taking another person's work or ideas and presenting them as your own, either accidentally or on purpose. When you use an outside source in your own writing, you should make sure to cite the source in order to avoid plagiarism. Consider the following source:\nFisher, Goddu, and Keil, \"Searching for Explanations: How the Internet Inflates Estimates of Internal Knowledge.\" Copyright 2015 by the American Psychological Association\nThe results of these experiments suggest that searching the Internet may cause a systematic failure to recognize the extent to which we rely on outsourced knowledge. Searching for explanations on the Internet inflates self-assessed knowledge in unrelated domains.\nIf you use a direct quotation in your writing, you must use quotation marks around the exact words that were copied from the source, in addition to citing the source.\nResearchers have found that relying on the Internet for information may cause a systematic failure to recognize the extent to which we rely on outsourced knowledge.\nThis sentence is plagiarized because it uses the source's exact words without quotation marks and without properly citing the source.\nResearchers have found that relying on the Internet for information \"may cause a systematic failure to recognize the extent to which we rely on outsourced knowledge\" (Fisher, Goddu, and Keil).\nIf you paraphrase a source, or put a source's ideas into your own words, you must still cite the source. Even if properly cited, a paraphrase that is too similar to the source in wording or sentence structure is still considered plagiarized.\nAccording to Fisher, Goddu, and Keil, searching the Internet can lead to a regular failure to perceive the extent to which we rely on outside knowledge.\nThis sentence is plagiarized because it is an insufficient paraphrase. Even though it is properly cited, it borrows too much of the source's wording and sentence structure.\nAccording to Fisher, Goddu, and Keil, relying on the Internet to look up information can make it difficult for us to estimate how much of our knowledge comes from internal versus external sources.\nThere are different rules about how to format citations, such as when to include page numbers for print sources. Check a style guide, such as the Modern Language Association (MLA) Handbook, for a complete list of these rules.",
+      "lecture_after": "Plagiarism is the act of taking another person's work or ideas and presenting them as your own, either accidentally or on purpose. When you use an outside source in your own writing, you should make sure to cite the source in order to avoid plagiarism. Consider the following source:\nFisher, Goddu, and Keil, \"Searching for Explanations: How the Internet Inflates Estimates of Internal Knowledge.\" Copyright 2015 by the American Psychological Association\nThe results of these experiments suggest that searching the Internet may cause a systematic failure to recognize the extent to which we rely on outsourced knowledge. Searching for explanations on the Internet inflates self-assessed knowledge in unrelated domains.\nFor a short direct quotation incorporated into your sentence, mark the exact borrowed words with quotation marks and cite the source. A properly formatted long block quotation is an exception: in MLA style it is indented without surrounding quotation marks, and it still needs a citation.\nResearchers have found that relying on the Internet for information may cause a systematic failure to recognize the extent to which we rely on outsourced knowledge.\nThis sentence is plagiarized because it uses the source's exact words without quotation marks and without properly citing the source.\nResearchers have found that relying on the Internet for information \"may cause a systematic failure to recognize the extent to which we rely on outsourced knowledge\" (Fisher, Goddu, and Keil).\nIf you paraphrase a source, or put a source's ideas into your own words, you must still cite the source. Even if properly cited, a paraphrase that is too similar to the source in wording or sentence structure is still considered plagiarized.\nAccording to Fisher, Goddu, and Keil, searching the Internet can lead to a regular failure to perceive the extent to which we rely on outside knowledge.\nThis sentence is plagiarized because it is an insufficient paraphrase. Even though it is properly cited, it borrows too much of the source's wording and sentence structure.\nAccording to Fisher, Goddu, and Keil, relying on the Internet to look up information can make it difficult for us to estimate how much of our knowledge comes from internal versus external sources.\nThere are different rules about how to format citations, such as when to include page numbers for print sources. Check a style guide, such as the Modern Language Association (MLA) Handbook, for a complete list of these rules.",
+      "reason": "State the block-quotation exception without weakening attribution or endorsing the original exercise citation edition.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_formatting_quotations.html",
+          "supports": "Distinguishes short run-in quotations from long block quotations."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "143afaaa1763dd3091adf0f91103bb6bf156fbddc50115b5f5b55eadcd0bacfc",
+      "expected_records": 35,
+      "lecture_before": "The purpose of an advertisement is to persuade people to do something. To accomplish this purpose, advertisements use three types of persuasive strategies, or appeals.\nAppeals to ethos, or character, show the writer or speaker as trustworthy, authoritative, or sharing important values with the audience. An ad that appeals to ethos might do one of the following:\nsay that a brand has been trusted for many years\ninclude an endorsement from a respected organization, such as the American Dental Association\nfeature a testimonial from a \"real person\" who shares the audience's values\nuse an admired celebrity or athlete as a spokesperson\nAppeals to logos, or reason, use logic and verifiable evidence. An ad that appeals to logos might do one of the following:\nuse graphs or charts to display information\ncite results of clinical trials or independently conducted studies\nexplain the science behind a product or service\nemphasize that the product is a financially wise choice\nanticipate and refute potential counterclaims\nAppeals to pathos, or emotion, use feelings rather than facts to persuade the audience. An ad that appeals to pathos might do one of the following:\ntrigger a fear, such as the fear of embarrassment\nappeal to a desire, such as the desire to appear attractive\nlink the product to a positive feeling, such as adventure, love, or luxury",
+      "lecture_after": "The purpose of an advertisement is to persuade people to do something. To accomplish this purpose, advertisements use three types of persuasive strategies, or appeals.\nAppeals to ethos seek to establish the writer or speaker as credible or as sharing the audience's values. This presentation does not by itself prove expertise or truthfulness. An ad that appeals to ethos might do one of the following:\nsay that a brand has been trusted for many years\ninclude an endorsement from a respected organization, such as the American Dental Association\nfeature a testimonial from a \"real person\" who shares the audience's values\nuse an admired celebrity or athlete as a spokesperson\nAppeals to logos present reasoning or evidence. A chart, study citation or scientific-sounding explanation still needs to be checked for accuracy, relevance and support. An ad that appeals to logos might do one of the following:\nuse graphs or charts to display information\ncite results of clinical trials or independently conducted studies\nexplain the science behind a product or service\nemphasize that the product is a financially wise choice\nanticipate and refute potential counterclaims\nAppeals to pathos seek to engage emotions or values. They may be used together with factual evidence; an emotional appeal and a factual claim are not mutually exclusive. An ad that appeals to pathos might do one of the following:\ntrigger a fear, such as the fear of embarrassment\nappeal to a desire, such as the desire to appear attractive\nlink the product to a positive feeling, such as adventure, love, or luxury",
+      "reason": "Distinguish an appeal to credibility from proven credibility and avoid making emotion and evidence mutually exclusive.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/academic_writing/rhetorical_situation/aristotles_rhetorical_situation.html",
+          "supports": "Explains rhetorical appeals as aspects of how a speaker, text and audience interact rather than independent guarantees of truth."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "adef9901912c88b97e18c1dfd2d417e28cec8358934d588bb810eda93bc0963f",
+      "expected_records": 39,
+      "lecture_before": "The purpose of an advertisement is to persuade people to do something. To accomplish this purpose, advertisements use three types of persuasive strategies, or appeals:\nAppeals to ethos, or character, show that the writer or speaker is trustworthy or is an authority on a subject. An ad that appeals to ethos might do one of the following:\nsay that a brand has been trusted for many years\nnote that a brand is recommended by a respected organization or celebrity\ninclude a quote from a \"real person\" who shares the audience's values\nAppeals to logos, or reason, use logic and specific evidence. An ad that appeals to logos might do one of the following:\nuse graphs or charts to display information\nmention the results of scientific studies\nexplain the science behind a product or service\nAppeals to pathos, or emotion, use feelings rather than facts to persuade the audience. An ad that appeals to pathos might do one of the following:\ntrigger a fear, such as the fear of embarrassment\nappeal to a desire, such as the desire to appear attractive\nlink the product to a positive feeling, such as adventure, love, or luxury",
+      "lecture_after": "The purpose of an advertisement is to persuade people to do something. To accomplish this purpose, advertisements use three types of persuasive strategies, or appeals:\nAppeals to ethos seek to establish the writer or speaker as credible or as sharing the audience's values. This presentation does not by itself prove expertise or truthfulness. An ad that appeals to ethos might do one of the following:\nsay that a brand has been trusted for many years\nnote that a brand is recommended by a respected organization or celebrity\ninclude a quote from a \"real person\" who shares the audience's values\nAppeals to logos present reasoning or evidence. A chart, study citation or scientific-sounding explanation still needs to be checked for accuracy, relevance and support. An ad that appeals to logos might do one of the following:\nuse graphs or charts to display information\nmention the results of scientific studies\nexplain the science behind a product or service\nAppeals to pathos seek to engage emotions or values. They may be used together with factual evidence; an emotional appeal and a factual claim are not mutually exclusive. An ad that appeals to pathos might do one of the following:\ntrigger a fear, such as the fear of embarrassment\nappeal to a desire, such as the desire to appear attractive\nlink the product to a positive feeling, such as adventure, love, or luxury",
+      "reason": "Distinguish an appeal to credibility from proven credibility and avoid making emotion and evidence mutually exclusive.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/academic_writing/rhetorical_situation/aristotles_rhetorical_situation.html",
+          "supports": "Explains rhetorical appeals as aspects of how a speaker, text and audience interact rather than independent guarantees of truth."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

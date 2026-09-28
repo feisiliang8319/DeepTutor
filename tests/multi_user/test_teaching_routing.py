@@ -196,6 +196,18 @@ def test_catalog_lists_actual_route_and_keeps_ocr_out_of_teaching(routing):
         teaching_policy.save(policy, 1, "admin")
 
 
+def test_local_model_placeholder_key_does_not_make_it_an_api_fallback(routing):
+    policy,catalog,_=routing
+    catalog['services']['llm']['profiles'].append({'id':'local','binding':'openai',
+        'base_url':'http://127.0.0.1:8000/v1','api_key':'placeholder',
+        'models':[{'id':'qwen','model':'Qwen3-VL'}]})
+    choices,_=teaching_policy.teaching_model_options(catalog,policy)
+    assert not next(m for m in choices if m['model_id']=='qwen')['api_key_model']
+    policy.fallback_model=teaching_policy.ModelChoice(profile_id='local',model_id='qwen')
+    with pytest.raises(ValueError,match='API-key'):
+        teaching_policy.save(policy,1,'admin')
+
+
 def test_catalog_endpoint_limits_parent_to_granted_route(routing, as_user):
     from deeptutor.api.routers.teaching import resource_catalog
     from deeptutor.services.auth import TokenPayload

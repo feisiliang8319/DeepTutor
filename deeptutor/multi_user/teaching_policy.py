@@ -62,7 +62,7 @@ def save(policy: TeachingPolicy, revision: int, actor_id: str) -> int:
                 raise ValueError("Select an available shared model from the administrator catalog")
             if document_model(_model_by_id(profile, selected.model_id)):
                 raise ValueError("OCR models process documents and cannot teach")
-            if selected == policy.fallback_model and (is_owner_bound(profile) or not profile.get("api_key")):
+            if selected == policy.fallback_model and not api_key_model(profile):
                 raise ValueError("The fallback must be an API-key model")
     if policy.codex_service_enabled and (not policy.teacher_model or not policy.fallback_model):
         raise ValueError("Codex teaching requires a primary model and an API-key fallback")
@@ -129,6 +129,13 @@ def document_model(model):
     return bool(model and "ocr" in (str(model.get("model", "")) + " " + str(model.get("name", ""))).casefold())
 
 
+def api_key_model(profile):
+    from .model_access import is_owner_bound
+    from deeptutor.services.config.provider_runtime import _is_local_base_url
+    return bool(profile and profile.get("api_key") and not is_owner_bound(profile)
+                and not _is_local_base_url(profile.get("base_url")))
+
+
 def teaching_model_options(catalog, policy):
     """Redacted configuration choices and the current allocatable teaching route."""
     from .model_access import is_owner_bound
@@ -149,7 +156,7 @@ def teaching_model_options(catalog, policy):
             option = {"profile_id": profile["id"], "model_id": model["id"],
                       "label": label,
                       "binding": profile.get("binding"), "route_roles": roles,
-                      "api_key_model": bool(profile.get("api_key")) and not is_owner_bound(profile)}
+                      "api_key_model": api_key_model(profile)}
             choices.append(option)
             if is_owner_bound(profile) and not codex_service_model(profile, model["id"], policy):
                 continue

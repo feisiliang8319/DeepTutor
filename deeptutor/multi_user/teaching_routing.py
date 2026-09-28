@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from . import teaching_policy as policy_store
 from .context import get_current_user_or_none
-from .model_access import _model_by_id, _profile_by_id, admin_catalog, is_owner_bound
+from .model_access import _model_by_id, _profile_by_id, admin_catalog
 
 
 def build_teaching_provider(config, *, on_route=None):
@@ -54,7 +54,7 @@ def build_teaching_provider(config, *, on_route=None):
             raise PermissionError("No API fallback is authorized for this student")
         current = admin_catalog()
         profile = _profile_by_id(current, "llm", fallback_choice.profile_id)
-        if (not profile or is_owner_bound(profile) or not profile.get("api_key")
+        if (not policy_store.api_key_model(profile)
                 or not _model_by_id(profile, fallback_choice.model_id)):
             raise RuntimeError("The configured API fallback is unavailable")
         resolved = resolve_llm_runtime_config(catalog=current, llm_selection=fallback_choice.model_dump())

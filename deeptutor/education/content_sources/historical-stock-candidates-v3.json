@@ -1,0 +1,376 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "旧书存量 · 第三批9道精确推理改编候选",
+  "items": [
+    {
+      "id": "historical-amusements-57-elapsed-time-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "现在位于今天中午12:00至明天中午12:00之间。把“今天中午到现在的时长”的四分之一，加上“现在到明天中午的时长”的二分之一，结果恰好等于“今天中午到现在的时长”。现在是几点？请用24小时制作答，并说明为什么只有一个答案。",
+      "expected_answer": "今天21:36。",
+      "explanation": "设今天中午以后经过t小时，则剩下24−t小时。条件为t/4+(24−t)/2=t，两边乘4得t+48−2t=4t，故5t=48，t=9.6小时＝9小时36分。中午加9小时36分是21:36。这个一次方程只有一个解，且0≤t<24，符合时间范围。代回：2小时24分+7小时12分＝9小时36分。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 57 | source line 1303",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 57. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "fbb9d70eeb1ac8aaa6ee0cc7dc998ffe306d208e9d50819762e7a4ed601c7e71",
+        "source_problem_family": "amusements:57",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 56632,
+            "end": 56980,
+            "sha256": "057d02f506b8269f158641004e936a723d31e94ebbc2eb6807f76c436c8dbda4"
+          },
+          {
+            "role": "solution",
+            "start": 546029,
+            "end": 546240,
+            "sha256": "33d10d9cfbc22863312bd7078c905f03d969277a4490bf25aa26e750d105f693"
+          }
+        ],
+        "title_zh": "从中午开始计时",
+        "adaptation_note": "将含糊的“得到时间”明确为自中午起的时长，区分时刻与时长。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "fc1f9dd0797eaea75d8e477a240f8fcf977f0c65e30d2e78141fa09495e38e8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-59-watch-true-time-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "一只12小时制指针手表匀速走动，分针的角速度始终是时针的12倍。用另一只准确计时器观察，手表的两根指针每隔65分钟真实时间重合一次。这只手表走快还是走慢？每经过真实的1小时，手表比准确时间多走或少走多少分钟？请给出精确分数。",
+      "expected_answer": "走快；每真实1小时多走60/143分钟，约25.17秒。",
+      "explanation": "准确手表的分针每分钟转6°，时针每分钟转1/2°，相对速度11/2°，所以相邻重合应相隔720/11分钟。现在只过65分钟就完成同样的相对转动，走速为(720/11)÷65＝144/143倍。每真实60分钟，显示时间增加60×144/143分钟，故多走60/143分钟。若65分钟读自这只手表本身，则与正常12:1传动比矛盾；题目明确用真实时间测量。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 59 | source line 1320",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 59. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "a6b04cc2466961e6a9a03160b6718b5aa51a5a2c44d202aabc57d2d3a587ed31",
+        "source_problem_family": "amusements:59",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 57119,
+            "end": 57412,
+            "sha256": "977a6cf48a3bab3b82a5a75715f8301732fce8f2413e00d7ccf41e4f8b9feeec"
+          },
+          {
+            "role": "solution",
+            "start": 546283,
+            "end": 546637,
+            "sha256": "c6edd23183cef32b1cc254b4d7009dfdf6b5c68a4740bff1c8aea2666f1c8f61"
+          }
+        ],
+        "title_zh": "手表走快了多少",
+        "adaptation_note": "保留数学结构，以完整中文条件重写；不依赖原图或历史叙事。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "fc1f9dd0797eaea75d8e477a240f8fcf977f0c65e30d2e78141fa09495e38e8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-114-two-squares-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "找出大于48的三个最小正整数N，使N+1和N/2+1都是整数的平方。除了写出N，还要给出相应平方根，并说明怎样证明没有遗漏更小的数。可以用短程序或系统枚举，但须说明枚举范围为何足够。",
+      "expected_answer": "N＝1680、57120、1940448；相应平方根(a,b)＝(41,29)、(239,169)、(1393,985)。",
+      "explanation": "令N+1=a²、N/2+1=b²，则N=2(b²−1)，且a²=2b²−1。逐个枚举整数b，从2到985，检查2b²−1是否为完全平方数，得到N＝48、1680、57120、1940448。去掉48即得所求。N随正整数b严格递增，所以所有小于第三个答案的N都对应b≤985，枚举覆盖了全部较小可能。验证：41²=1681、29²=841；239²=57121、169²=28561；1393²=1940449、985²=970225。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 114 | source line 2255",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 114. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "5638350035d5cb21e76ed297af5c7e2c2c9d78f66dbaa0d746967befdbdacdd0",
+        "source_problem_family": "amusements:114",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 98806,
+            "end": 99199,
+            "sha256": "1445cd584e5807e34a0061e65404447ba60509e297de16b59c6f356dbc423c70"
+          },
+          {
+            "role": "solution",
+            "start": 591317,
+            "end": 591574,
+            "sha256": "ac11d4719ab0e1dceb791cca1f02375d593b8a6e91ae9adf778e9caff6ebfa8f"
+          }
+        ],
+        "title_zh": "相邻的两个平方条件",
+        "adaptation_note": "显式要求N大于48，并给出有限枚举的完整性论证；不要求学生已学习佩尔方程。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "fc1f9dd0797eaea75d8e477a240f8fcf977f0c65e30d2e78141fa09495e38e8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-121-percentage-orders-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "一个数值计量器初始读数为64。它要执行6次操作，其中3次把当时读数增加50%，另3次把当时读数减少50%；读数按精确数值计算，允许小数，不作四舍五入。6次操作可以任意排列。最终读数是多少？顺序会不会影响结果？再把结论推广到各执行k次，其中k为正整数。",
+      "expected_answer": "最终27；顺序不影响。各k次时，最终为64×(3/4)^k，小于64。",
+      "explanation": "增加50%对应乘3/2，减少50%对应乘1/2。任意顺序的乘积都是64×(3/2)³×(1/2)³＝64×27/64＝27。乘法交换律允许把因子重新分组，每对操作的因子乘积是3/4。各k次便得64×(3/4)^k。增加和减少的百分数虽然相等，作用的基数不同，不能简单相互抵消。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 121 | source line 2379",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 121. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "fd9fb34fcdee6e3870658c7411c7a677acc43623dd088a4c9633ba79e86d736f",
+        "source_problem_family": "amusements:121",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 104720,
+            "end": 105296,
+            "sha256": "d6ad8bbaf23579def96fdf8774f8471bb2b40f731db0e9bfa97203d03c5cb94c"
+          },
+          {
+            "role": "solution",
+            "start": 597380,
+            "end": 597763,
+            "sha256": "8ca1af3c7f43656f244d503435aafcf24a3a3bc2f5247bcd4c458e21a90321c9"
+          }
+        ],
+        "title_zh": "先增加再减少",
+        "adaptation_note": "用计量器替代原赌博叙事，明确精确运算与当前基数。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "fc1f9dd0797eaea75d8e477a240f8fcf977f0c65e30d2e78141fa09495e38e8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-126-digit-rotation-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "寻找至少两位、首位为3的最小正整数N。把首位的3移到个位，其余数字顺序不变，所得整数恰好为原数的3/2。请给出N并证明没有位数更短的解。",
+      "expected_answer": "N＝3529411764705882；移位后为5294117647058823，等于N×3/2。",
+      "explanation": "设首位后还有k位，用x表示这k位的数值（允许其中有前导零），则N=3×10^k+x，移位数为10x+3。由2(10x+3)=3(3×10^k+x)得17x=9×10^k−6。逐个检查k=1至15，9×10^k−6除以17的余数依次为16、10、1、13、14、7、5、2、6、12、4、9、8、15、0。首次整除为k=15，x=529411764705882，且0≤x<10^15，所以N如上。所有更短位数均不满足整除条件，任意更长位数的正整数都更大。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 126 | source line 2439",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 126. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "1613596d167fc8f504aa4995d219c8bd7ac0f7176b9f8bca78019107e7011a8d",
+        "source_problem_family": "amusements:126",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 107132,
+            "end": 107662,
+            "sha256": "5f77626b6479cd297599692b0a0ff5d6f9c24464c01e036f6e996e9fa54c14c4"
+          },
+          {
+            "role": "solution",
+            "start": 598862,
+            "end": 599188,
+            "sha256": "d9b2bee968c5a6a44296c846dbf6ea2b46c119b468a40d9f46be9f6812f80e82"
+          }
+        ],
+        "title_zh": "把首位3移到最后",
+        "adaptation_note": "增补最小正整数、至少两位及移位定义；以有限模运算证明最小性。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "fc1f9dd0797eaea75d8e477a240f8fcf977f0c65e30d2e78141fa09495e38e8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-127-same-remainder-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "把701、1059、1417、2312分别除以同一个正整数d，得到的四个余数完全相同，且余数采用0≤r<d的通常约定。求最大的d及共同余数，并说明最大性的理由。",
+      "expected_answer": "d＝179，共同余数164。",
+      "explanation": "余数相同意味着各数与701的差都能被d整除，因此d同时整除358、716、1611。它们的最大公约数为179：716=2×358，1611=4×358+179，358=2×179。故任何可行d都不超过179。代回四数：701=3×179+164，1059=5×179+164，1417=7×179+164，2312=12×179+164，且164<179，所以179可行且最大。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 127 | source line 2454",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 127. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "ef2a251b2df04a6bd9bde9390192e7890b465efd4eba3d51b77181fb56791fe4",
+        "source_problem_family": "amusements:127",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 107662,
+            "end": 108118,
+            "sha256": "2bee9f5faf0ba66296e4a021f5d415ea60ba1c6b27c8ee69252ecc741fa8141d"
+          },
+          {
+            "role": "solution",
+            "start": 599188,
+            "end": 599617,
+            "sha256": "47ebdf9f091625fac85e98b8893680421477bfa072665b81067013d839f5bb72"
+          }
+        ],
+        "title_zh": "余数相同的最大除数",
+        "adaptation_note": "保留数学结构，以完整中文条件重写；不依赖原图或历史叙事。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "fc1f9dd0797eaea75d8e477a240f8fcf977f0c65e30d2e78141fa09495e38e8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-389-two-way-table-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "同一批机器人每台都有左、右两盏指示灯。每盏灯恰处于“正常”或“故障”一种状态，没有未检查的灯。检查发现：左灯故障4台、左灯正常3台；右灯故障5台、右灯正常2台。这批共有几台？请列出“左右均正常、仅左灯正常、仅右灯正常、左右均故障”四类数量的所有可能组合。",
+      "expected_answer": "共7台；按指定四类顺序，组合为(0,3,2,2)、(1,2,1,3)、(2,1,0,4)。",
+      "explanation": "按左灯状态划分，4+3=7台；按右灯划分也是5+2=7台。设左右均正常有x台，则仅左正常为3−x，仅右正常为2−x；余下均故障为7−x−(3−x)−(2−x)=2+x。所有数量须为非负整数，因此x只能为0、1、2，得到三组组合。将每组按左右灯状态分别求和，均还原题目四个统计数，因此无遗漏。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 389 | source line 9390",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 389. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "edd1a568c0a93c03c2d21b18c5dbdebc8ccd610e9ea200c65678cdd87efeb257",
+        "source_problem_family": "amusements:389",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 418920,
+            "end": 419506,
+            "sha256": "d97f4754515bc199bfaba6f27f55c4211e99aebe2e2b3754cf4222af243f08fc"
+          },
+          {
+            "role": "solution",
+            "start": 869563,
+            "end": 870063,
+            "sha256": "65b21e1b0aa2ddb960a940fca20496f3ac47f51a5ba1cda62841d8e860391aa5"
+          }
+        ],
+        "title_zh": "机器人指示灯分类",
+        "adaptation_note": "用设备状态替代受伤情境，明确二元分类完备，原题的“最少”在此精确条件下其实为总数固定。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "fc1f9dd0797eaea75d8e477a240f8fcf977f0c65e30d2e78141fa09495e38e8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-397-dice-equal-events-v1",
+      "knowledge_node_code": "PS.COUNTING.SYSTEMATIC_ENUM",
+      "item_type": "multi_step",
+      "prompt": "同时掷三枚相互独立的标准公平六面骰子，每枚点数为1至6。甲、乙各选择两个不同的奇数作为自己的目标和，四个数彼此不同，且均从5、7、9、11、13、15、17中选择。找出所有能使“总点数落入甲的目标组”与“落入乙的目标组”概率完全相同的选择；交换甲、乙视为同一种选择。给出概率，并证明没有遗漏。",
+      "expected_answer": "唯一选择是{5,9}与{13,15}，两者概率都为31/216。",
+      "explanation": "三枚骰子有6³=216个等可能的有序结果。总和为5、7、9、11、13、15、17的结果数依次为6、15、25、27、21、10、3。将这些和两两组合，一共有21个二元素目标组；比较不相交的两组，只有6+25=21+10=31给出相等计数，因此两组是{5,9}和{13,15}，概率均为31/216。完整性检验可枚举216个有序三元组建立频数表，再检查全部不相交目标组；不能把不同总和当成等可能。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 397 | source line 9595",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 397. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "3c39cbc30ccc9a7f8b99215bad2920488ef3813664559d906ec37d7c2589068c",
+        "source_problem_family": "amusements:397",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 428319,
+            "end": 429108,
+            "sha256": "64ea53980152f74e41e956da243cb300926370e4205b58df94512134399ffa22"
+          },
+          {
+            "role": "solution",
+            "start": 878579,
+            "end": 879056,
+            "sha256": "48780c07bb6510f795720fc7698beb1f9f38e8904f0e6c6763a640bc08cf4aac"
+          }
+        ],
+        "title_zh": "两组和出现的机会相等",
+        "adaptation_note": "改为独立的概率事件比较，移除轮流游戏及胜负平局的歧义；限制为可实际掷出的奇数和。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "fc1f9dd0797eaea75d8e477a240f8fcf977f0c65e30d2e78141fa09495e38e8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-416-gregorian-cycle-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "在公历规则下，年份能被4整除通常为闰年，但整百年份必须还能被400整除才是闰年。已知2001年1月1日是星期一。这里把一个世纪的第一天定义为年份末两位为01的1月1日，例如2001、2101、2201年。求2001、2101、2201、2301、2401年1月1日各是星期几，并说明按同一公历规则不断延伸时，世纪第一天不可能是哪些星期。",
+      "expected_answer": "依次为星期一、六、四、二、一；不可能为星期日、三、五。",
+      "explanation": "从2001到2101年1月1日，相隔100年，其中24个闰年，总计36524天，除以7余5，所以星期一向后移5天为星期六。2101到2201及2201到2301同样各移5天，依次为星期四、星期二。2301到2401包含闰年2400，共25个闰年，36525天除以7余6，故回到星期一。完整400年共有146097天，恰为20871周；闰年规则也以400年循环，故后续重复一、六、四、二，不会出现日、三、五。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 416 | source line 11072",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 416. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "37d96e45653867362935108156fba8d79bc52a6de5768c8bc94e0a8e4fd82d19",
+        "source_problem_family": "amusements:416",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 497504,
+            "end": 497669,
+            "sha256": "c2e5164f364cc586fc624cef1fa40ee51b938255dc6a7a9c5f37337963692678"
+          },
+          {
+            "role": "solution",
+            "start": 905936,
+            "end": 906051,
+            "sha256": "b600be6b685e69f0b1513c38b840f3fc9c2bd1541f0bdecdc211f16eea1387e5"
+          }
+        ],
+        "title_zh": "世纪起点的星期",
+        "adaptation_note": "明确公历规则、世纪从01年开始及给定星期锚点，移除原末日叙事和无定义的概率。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "fc1f9dd0797eaea75d8e477a240f8fcf977f0c65e30d2e78141fa09495e38e8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    }
+  ]
+}

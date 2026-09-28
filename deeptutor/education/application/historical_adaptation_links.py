@@ -8,6 +8,20 @@ def sha(blob):return hashlib.sha256(blob).hexdigest()
 def build(base,pairs,output):
     base=Path(base).resolve();summary=json.loads((base/'summary.json').read_text())
     if base.name!=summary['snapshot_id'] or sha((base/'catalog.sqlite3').read_bytes())!=summary['catalog_sha256']:raise ValueError('Base changed')
+    prior_path=base/'historical-adaptation-links.json'
+    prior_list=json.loads(prior_path.read_text()) if prior_path.exists() else []
+    prior={entry['source_record_id']:entry for entry in prior_list}
+    if len(prior)!=len(prior_list) or len(prior)!=summary.get('historical_records_with_checked_adaptations',0):raise ValueError('Prior adaptation ledger mismatch')
+    evidence=base/'historical-adaptation-evidence'
+    prior_artifacts={p.name:sha(p.read_bytes()) for p in evidence.iterdir() if p.is_file()} if evidence.exists() else {}
+    with sqlite3.connect((base/'catalog.sqlite3').as_uri()+'?mode=ro',uri=True) as db:
+        actual={}
+        for (encoded,) in db.execute('select data_json from records'):
+            row=json.loads(encoded);link=row.get('metadata',{}).get('checked_teaching_adaptation')
+            if link is not None:actual[row['id']]=link
+        if actual!=prior:raise ValueError('Prior adaptation records mismatch')
+    for link in prior.values():
+        if link['package_sha256'] not in prior_artifacts.values() or link['proof_sha256'] not in prior_artifacts.values():raise ValueError('Prior adaptation evidence changed')
     links={};artifacts={}
     for package_path,proof_path in pairs:
         package_path,proof_path=Path(package_path),Path(proof_path)
@@ -18,9 +32,11 @@ def build(base,pairs,output):
             artifacts[path.name]=path.read_bytes()
         for item in package['items']:
             rubric=item['rubric_json'];key=rubric['source_record_id']
+            if key in prior:raise ValueError('Adaptation already linked')
             if key in links:raise ValueError('Duplicate source adaptation')
             links[key]={'candidate_item_id':item['id'],'source_record_id':key,'source_sha256':rubric['source_sha256'],'source_spans':rubric['source_spans'],'package_sha256':proof['package_sha256'],'proof_sha256':sha(proof_path.read_bytes()),'expected_answer_sha256':sha(item['expected_answer'].encode()),'explanation_sha256':sha(item['explanation'].encode()),'scope':'Checked derived mathematical model only; original source and candidate teaching/grade/rights approval unchanged.'}
     if not 0<len(links)<=1000:raise ValueError('Invalid adaptation population')
+    if artifacts.keys() & prior_artifacts.keys():raise ValueError('Prior evidence filename collision')
     objects={};updates={}
     with sqlite3.connect((base/'catalog.sqlite3').as_uri()+'?mode=ro',uri=True) as db:
         for key,link in links.items():
@@ -50,9 +66,9 @@ def build(base,pairs,output):
                 changed+=1
                 if a['id'] not in links or {k for k in a.keys()|b.keys() if a.get(k)!=b.get(k)}!={'metadata'} or {k:v for k,v in b['metadata'].items() if k!='checked_teaching_adaptation'}!=a['metadata']:raise ValueError('Unrelated data changed')
         if changed!=len(links):raise ValueError('Changed population mismatch')
-    queue=target/'historical-adaptation-evidence';queue.mkdir()
+    queue=target/'historical-adaptation-evidence';queue.mkdir(exist_ok=True)
     for name,blob in artifacts.items():(queue/name).write_bytes(blob)
-    (target/'historical-adaptation-links.json').write_text(json.dumps(list(links.values()),ensure_ascii=False,indent=2)+'\n')
-    report={**summary,'snapshot_id':identity,'base_snapshot_id':base.name,'created_at':datetime.now(timezone.utc).isoformat(),'catalog_sha256':sha((target/'catalog.sqlite3').read_bytes()),'committed_batches':summary['committed_batches']+1,'historical_records_with_checked_adaptations':len(links),'historical_adaptation_note':'Derived candidate links only; original source remains reference-only. No new formal test approval.'}
+    (target/'historical-adaptation-links.json').write_text(json.dumps(list({**prior,**links}.values()),ensure_ascii=False,indent=2)+'\n')
+    report={**summary,'snapshot_id':identity,'base_snapshot_id':base.name,'created_at':datetime.now(timezone.utc).isoformat(),'catalog_sha256':sha((target/'catalog.sqlite3').read_bytes()),'committed_batches':summary['committed_batches']+1,'historical_records_with_checked_adaptations':len(prior)+len(links),'historical_adaptation_note':'Derived candidate links only; original source remains reference-only. No new formal test approval.'}
     (target/'summary.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     return {k:report[k] for k in ('snapshot_id','base_snapshot_id','catalog_sha256','committed_batches','historical_records_with_checked_adaptations')}

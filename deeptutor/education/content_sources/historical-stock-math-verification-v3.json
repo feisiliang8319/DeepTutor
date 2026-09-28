@@ -1,0 +1,180 @@
+{
+  "source_records": [
+    "fbb9d70eeb1ac8aaa6ee0cc7dc998ffe306d208e9d50819762e7a4ed601c7e71",
+    "a6b04cc2466961e6a9a03160b6718b5aa51a5a2c44d202aabc57d2d3a587ed31",
+    "5638350035d5cb21e76ed297af5c7e2c2c9d78f66dbaa0d746967befdbdacdd0",
+    "fd9fb34fcdee6e3870658c7411c7a677acc43623dd088a4c9633ba79e86d736f",
+    "1613596d167fc8f504aa4995d219c8bd7ac0f7176b9f8bca78019107e7011a8d",
+    "ef2a251b2df04a6bd9bde9390192e7890b465efd4eba3d51b77181fb56791fe4",
+    "edd1a568c0a93c03c2d21b18c5dbdebc8ccd610e9ea200c65678cdd87efeb257",
+    "3c39cbc30ccc9a7f8b99215bad2920488ef3813664559d906ec37d7c2589068c",
+    "37d96e45653867362935108156fba8d79bc52a6de5768c8bc94e0a8e4fd82d19"
+  ],
+  "source_numbers": [
+    57,
+    59,
+    114,
+    121,
+    126,
+    127,
+    389,
+    397,
+    416
+  ],
+  "time_after_noon_minutes": 576,
+  "watch_gain_minutes_per_hour": "60/143",
+  "square_candidates": [
+    {
+      "N": 48,
+      "a": 7,
+      "b": 5
+    },
+    {
+      "N": 1680,
+      "a": 41,
+      "b": 29
+    },
+    {
+      "N": 57120,
+      "a": 239,
+      "b": 169
+    },
+    {
+      "N": 1940448,
+      "a": 1393,
+      "b": 985
+    }
+  ],
+  "percentage_order_count": 20,
+  "final_level": 27,
+  "rotation_trials": [
+    {
+      "following_digits": 1,
+      "remainder_mod17": 16
+    },
+    {
+      "following_digits": 2,
+      "remainder_mod17": 10
+    },
+    {
+      "following_digits": 3,
+      "remainder_mod17": 1
+    },
+    {
+      "following_digits": 4,
+      "remainder_mod17": 13
+    },
+    {
+      "following_digits": 5,
+      "remainder_mod17": 14
+    },
+    {
+      "following_digits": 6,
+      "remainder_mod17": 7
+    },
+    {
+      "following_digits": 7,
+      "remainder_mod17": 5
+    },
+    {
+      "following_digits": 8,
+      "remainder_mod17": 2
+    },
+    {
+      "following_digits": 9,
+      "remainder_mod17": 6
+    },
+    {
+      "following_digits": 10,
+      "remainder_mod17": 12
+    },
+    {
+      "following_digits": 11,
+      "remainder_mod17": 4
+    },
+    {
+      "following_digits": 12,
+      "remainder_mod17": 9
+    },
+    {
+      "following_digits": 13,
+      "remainder_mod17": 8
+    },
+    {
+      "following_digits": 14,
+      "remainder_mod17": 15
+    },
+    {
+      "following_digits": 15,
+      "remainder_mod17": 0
+    }
+  ],
+  "rotation_number": 3529411764705882,
+  "same_remainder_divisors": [
+    1,
+    179
+  ],
+  "remainder": 164,
+  "robot_tables": [
+    [
+      0,
+      3,
+      2,
+      2
+    ],
+    [
+      1,
+      2,
+      1,
+      3
+    ],
+    [
+      2,
+      1,
+      0,
+      4
+    ]
+  ],
+  "dice_sum_counts": {
+    "3": 1,
+    "4": 3,
+    "5": 6,
+    "6": 10,
+    "7": 15,
+    "8": 21,
+    "9": 25,
+    "10": 27,
+    "11": 27,
+    "12": 25,
+    "13": 21,
+    "14": 15,
+    "15": 10,
+    "16": 6,
+    "17": 3,
+    "18": 1
+  },
+  "equal_disjoint_odd_sum_pairs": [
+    [
+      [
+        5,
+        9
+      ],
+      [
+        13,
+        15
+      ]
+    ]
+  ],
+  "century_weekdays_monday_zero": {
+    "2001": 0,
+    "2101": 5,
+    "2201": 3,
+    "2301": 1,
+    "2401": 0
+  },
+  "gregorian_cycle_days": 146097,
+  "script_sha256": "fc1f9dd0797eaea75d8e477a240f8fcf977f0c65e30d2e78141fa09495e38e8e",
+  "scope": "Exact mathematical checks under explicit supplied assumptions; no automatic grade, rights, or formal assessment approval.",
+  "package_sha256": "f0f1e6ab30b5f0e901e4df95fe7f673097d9454ed7f6cbd50316af7acee20d43",
+  "verified_tasks": 9
+}

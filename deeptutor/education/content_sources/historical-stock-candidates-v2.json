@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "旧书存量 · 第二批10道构造与策略改编候选",
+  "items": [
+    {
+      "id": "historical-amusements-64-clock-rates-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "三只12小时制指针钟同时从12:00开始。甲准确；每过真实的24小时，乙恰好多走1分钟，丙恰好少走1分钟。三钟始终以各自固定速度运行。至少经过多少个真实的24小时，三钟的时针和分针才会再次同时指向12:00？不考虑秒针与日历。",
+      "expected_answer": "720天。",
+      "explanation": "甲指向12:00时，已经过k个半天。乙比甲多走k/2分钟，丙少走k/2分钟。乙、丙也显示12:00，须使k/2是720分钟的正整数倍，最小k=1440个半天，即720天。代回可知乙恰好多走12小时、丙恰好少走12小时，三钟同时满足。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 64 | source line 1398",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 64. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "d66f0df584566080e712439e1857f49b08392a5b4b44f52138c4e602124271ef",
+        "source_problem_family": "amusements:64",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 60693,
+            "end": 61291,
+            "sha256": "3aa7c3f3bca9e4f23487149384fc5d9ee4a8b5dc2f21f0a00a39f331cb7654fb"
+          },
+          {
+            "role": "solution",
+            "start": 552011,
+            "end": 553405,
+            "sha256": "f02b321285f92672ac36fb3946b8d7888d68f911393436572da2254d3301d893"
+          }
+        ],
+        "title_zh": "再次同时指向十二点",
+        "adaptation_note": "去掉1898—1900日历背景，明确真实时间、12小时表盘和恒定走速。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "a69d210a71880a08956c7cf3d2ddfb01b68a88790e3d08c14ced9bd2e3f21c8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-264-all-partners-v1",
+      "knowledge_node_code": "PS.COUNTING.SYSTEMATIC_ENUM",
+      "item_type": "multi_step",
+      "prompt": "12位同学A至L每天分成6个二人组，每人每天恰好参加一个组。要求任意两人至多同组一次。最多能安排多少天？给出达到上限的完整安排，并说明为什么没有重复。每天的小组顺序不重要。",
+      "expected_answer": "最多11天；任一覆盖全部66对且每天每人出现一次的安排均可。",
+      "explanation": "每人只有11位不同伙伴，所以至多11天。以下每行是一天：\nAL BK CJ DI EH FG\nAK LJ BI CH DG EF\nAJ KI LH BG CF DE\nAI JH KG LF BE CD\nAH IG JF KE LD BC\nAG HF IE JD KC LB\nAF GE HD IC JB KL\nAE FD GC HB IL JK\nAD EC FB GL HK IJ\nAC DB EL FK GJ HI\nAB CL DK EJ FI GH\n每天12人各出现一次；11天共66对，且没有重复，正好覆盖12人之间的全部66对。因此上限可以达到。可用固定A、其余位置轮转的方法生成。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 264 | source line 6071",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 264. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "f44358ab9bdaf97a5bf1ee8a6b294e06f84cfa79e9ffdcf75bf1a18a52a73167",
+        "source_problem_family": "amusements:264",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 274925,
+            "end": 275720,
+            "sha256": "b25187710f5c6e9dff4525cd3224c2e8a32bcf576d13959b5422d74f405d4a2a"
+          },
+          {
+            "role": "solution",
+            "start": 740602,
+            "end": 741182,
+            "sha256": "e8b24c4b93703a61b351044c0faf497e0cec5cfee95473f2d383438a241b53d9"
+          }
+        ],
+        "title_zh": "每天换一位伙伴",
+        "adaptation_note": "改为协作小组；接受任何符合条件的安排，不将示例当唯一答案。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "a69d210a71880a08956c7cf3d2ddfb01b68a88790e3d08c14ced9bd2e3f21c8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-265-team-schedule-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "12位同学A至L参加11轮四人桌面竞赛，每轮分3桌，每桌分成两个二人队对抗。每人每轮只参加一桌。要求任意两人恰好合作一次、恰好互为对手两次。请构造11轮完整安排，并检验每人的合作次数和对手次数。允许给出构造规则和展开表。",
+      "expected_answer": "存在；每人11次合作覆盖11位伙伴，22次对手接触使其余11人各出现2次。",
+      "explanation": "一个完整构造如下，每行是一轮，竖线分隔3桌：\nAB 对 IL | EJ 对 GK | FH 对 CD\nAC 对 JB | FK 对 HL | GI 对 DE\nAD 对 KC | GL 对 IB | HJ 对 EF\nAE 对 LD | HB 对 JC | IK 对 FG\nAF 对 BE | IC 对 KD | JL 对 GH\nAG 对 CF | JD 对 LE | KB 对 HI\nAH 对 DG | KE 对 BF | LC 对 IJ\nAI 对 EH | LF 对 CG | BD 对 JK\nAJ 对 FI | BG 对 DH | CE 对 KL\nAK 对 GJ | CH 对 EI | DF 对 LB\nAL 对 HK | DI 对 FJ | EG 对 BC\n固定A，将B至L循环替换即可生成各轮。逐轮检查每人出现一次；把每队内的无序人对计作合作、两队之间4个人对计作对手。66个合作人对各出现1次，66个对手人对各出现2次。其他满足条件的完整安排同样正确。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 265 | source line 6092",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 265. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "8bba17c6aa14288a233818bbe49d1f3bc717a1122091cdfc32f549d196f61e20",
+        "source_problem_family": "amusements:265",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 275720,
+            "end": 276117,
+            "sha256": "cdaa962dc7319ec5f823d0aced645f62a3b4a663dc2554e96c05517e4fd9676d"
+          },
+          {
+            "role": "solution",
+            "start": 741182,
+            "end": 742088,
+            "sha256": "55766dc8a019895a15a13fe4505a1f37a97cf729de6ebd4cdcad00b72131f3b5"
+          }
+        ],
+        "title_zh": "合作与对手都公平",
+        "adaptation_note": "改写原桥牌情境，不要求懂桥牌，不涉及投注。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "a69d210a71880a08956c7cf3d2ddfb01b68a88790e3d08c14ced9bd2e3f21c8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-268-cyclic-permutations-v1",
+      "knowledge_node_code": "PS.COUNTING.SYSTEMATIC_ENUM",
+      "item_type": "multi_step",
+      "prompt": "用1、2、3、4表示四个音符。每行将它们各写一次，排成24行循环；每种排列恰好出现一次。相邻两行中，每个音符的位置最多移动1格；同一个音符不能连续3行都在第一位，也不能连续3行都在第四位。最后一行与第一行也相邻。给出一个排程并说明如何检验。",
+      "expected_answer": "存在24行排程；须同时满足排列不重复、相邻移动限制和首尾循环限制。",
+      "explanation": "一个可行排程是：\n1234\n2143\n2413\n4231\n4321\n3412\n3142\n1324\n3124\n1342\n1432\n4123\n4213\n2431\n2341\n3214\n2314\n3241\n3421\n4312\n4132\n1423\n1243\n2134\n共有4×3×2×1=24种排列，表中各出现一次。对每一对相邻行，比较同一数字的位置，位移均不超过1；再循环检查任意连续3行的首位与末位，均非同一数字。必须把末行、首行及第二行一起检查，不能只检验线性表。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 268 | source line 6140",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 268. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "72c0affaedfc3cfd91afafbdedcfa0132fddb365c03ef31236c492ecd757f8ea",
+        "source_problem_family": "amusements:268",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 277734,
+            "end": 278481,
+            "sha256": "63fbdf42222ac48d8bc610142b0ab5a60f131461618b011beb0a8d3604020994"
+          },
+          {
+            "role": "solution",
+            "start": 743487,
+            "end": 743997,
+            "sha256": "b8e18a2d2b67ca6d5fefb79066b5773de0de09d6b9d5ed1fb585cc3b22d7c409"
+          }
+        ],
+        "title_zh": "四个音符的循环排程",
+        "adaptation_note": "改为数字排程；将原书“连续敲击”的含义明确为循环中连续行的位置。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "a69d210a71880a08956c7cf3d2ddfb01b68a88790e3d08c14ced9bd2e3f21c8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-286-cube-symmetry-v1",
+      "knowledge_node_code": "PS.COUNTING.SYSTEMATIC_ENUM",
+      "item_type": "multi_step",
+      "prompt": "在立方体六个面分别写1至6，每个数字用一次，要求1与6、2与5、3与4分别在相对的面。第一问：六个空间位置固定为上、下、左、右、前、后，转动得到的编号也算不同，共有多少种？第二问：允许转动整个立方体，能转成一样的算同一种，但镜像不能直接算相同，共有多少种？",
+      "expected_answer": "第一问48种，第二问2种。",
+      "explanation": "固定位置时，1有6处可选，6的位置随之确定；2有4处可选，5随之确定；3有2处可选，4随之确定，所以6×4×2=48。每种编号有24个不同旋转姿态，因为朝上的面有6种，固定上面后绕竖轴有4种。数字各异，非恒等转动不能保持所有面不变，所以每类恰有24种，48÷24=2。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 286 | source line 6643",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 286. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "6c3ce932b3a9f2e2b1cd670471b02c83a752e4b6979e94f2b14026c3d2d16b98",
+        "source_problem_family": "amusements:286",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 298843,
+            "end": 299113,
+            "sha256": "2c4dc98fd91f29805f51d3cf5c057f9f55108e78109e1b885bf6df682315116d"
+          },
+          {
+            "role": "solution",
+            "start": 775184,
+            "end": 775581,
+            "sha256": "45ba3a57769b82f87a6cda0269b9ec3871bba06dd00b570e98e0263242f37c21"
+          }
+        ],
+        "title_zh": "给立方体编号",
+        "adaptation_note": "补上原题未明确的旋转等价约定，分别回答固定面与可旋转两种问题。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "a69d210a71880a08956c7cf3d2ddfb01b68a88790e3d08c14ced9bd2e3f21c8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-363-mixture-conservation-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "在理想化混合模型中，甲杯装1000毫升红液，乙杯装1000毫升蓝液；两种液体混合后总体积按加法计算且不反应。先从甲取25毫升倒入乙并充分混匀，再从乙取25毫升混合液倒回甲。最终甲中的红液与蓝液体积比是多少？甲中混入的蓝液与乙中留下的红液谁更多？",
+      "expected_answer": "甲中红:蓝＝40:1；两杯中混入的对方液体体积相等，均为1000/41毫升。",
+      "explanation": "乙混匀后有1025毫升，其中红25、蓝1000。倒回的25毫升含蓝25×1000/1025=1000/41，含红25×25/1025=25/41。甲最终仍有1000毫升，其中红40000/41、蓝1000/41，比例40:1。乙留下红25−25/41=1000/41，与甲的蓝相同。两杯最终体积都回到原值，也可直接用体积守恒说明交换量相等。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 363 | source line 8852",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 363. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "95cf151d0bb52b9a68a6c95348bfe2eeab6c0b21b0164d0101e73f6f17093e62",
+        "source_problem_family": "amusements:363",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 392924,
+            "end": 393487,
+            "sha256": "dcc90f46a900b5f2a6b0e78bb74ddd90a5a97e1caf2381bbc348960a48f3c5ae"
+          },
+          {
+            "role": "solution",
+            "start": 846635,
+            "end": 846804,
+            "sha256": "e310d4c34580c5df31876ff7a76285259a683113af42e14226202e970496fb78"
+          }
+        ],
+        "title_zh": "来回转移的守恒",
+        "adaptation_note": "使用明确可加体积的理想数学模型，去掉酒精与医疗场景。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "a69d210a71880a08956c7cf3d2ddfb01b68a88790e3d08c14ced9bd2e3f21c8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-365-jug-shortest-path-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "有容量分别为10、10、5、4升的四个无刻度容器，开始两只10升容器装满水，其余为空。每次只能从一只倒入另一只，直到倒出容器空了或接收容器满了；不许加水、洒水或中途凭目测停止。要让5升和4升容器中各有3升，至少倒多少次？给出过程，说明如何检验最少性。",
+      "expected_answer": "最少11次。",
+      "explanation": "按容量10、10、5、4的次序记各容器水量。一个11次方案为：\n(10,10,0,0)\n(5,10,5,0)\n(5,6,5,4)\n(9,6,5,0)\n(9,2,5,4)\n(9,7,0,4)\n(9,7,4,0)\n(9,3,4,4)\n(9,3,5,3)\n(9,8,0,3)\n(4,8,5,3)\n(4,10,3,3)\n每个相邻状态只涉及两只容器，每次转移量等于“源水量”和“目标空余容量”中的较小值。为证明最少，可从起点按倒水次数逐层枚举全部可达状态，并合并重复状态；第0至10层均无末两项为3、3的状态，第11层首次出现。只给出11次方案证明可行，还需这一逐层穷尽论证才能证明最少。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 365 | source line 8880",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 365. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "d16ebb56561786b3fae5411462d2018bf3eb349a2defce52b651e1b109d24979",
+        "source_problem_family": "amusements:365",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 394224,
+            "end": 394655,
+            "sha256": "88888a245447748e9962333306ec4b111bc88d6076b7df11e8a39657cf983934"
+          },
+          {
+            "role": "solution",
+            "start": 847556,
+            "end": 848216,
+            "sha256": "e43a7f12af0464c48cd587a13dc604ff0a8106d156103fc2f8056d74529607fd"
+          }
+        ],
+        "title_zh": "最少倒水次数",
+        "adaptation_note": "把容量比例保留并改为升，明确满倒或倒空规则；给出状态图搜索的最少性依据。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "a69d210a71880a08956c7cf3d2ddfb01b68a88790e3d08c14ced9bd2e3f21c8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-392-parity-game-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "两位玩家轮流从一堆石子中取1、2或3颗；剩余不足3颗时不能多取。石子取完后，以自己累计取得的颗数为奇数者获胜。两人都作最佳决策。分别分析开始有15颗和13颗时谁能保证获胜；有15颗时，先手第一步应取几颗？用包含累计奇偶性的状态表说明，不要把规则当成“取走最后一颗就赢”。",
+      "expected_answer": "15颗时先手能保证胜且第一步须取2颗；13颗时后手能保证胜。",
+      "explanation": "总数为奇数，最终必有且只有一人取得奇数颗。状态需记录剩余数、轮到谁及先手累计数的奇偶性。剩余0时由该奇偶性判先手胜负；先手回合有一个后续状态能赢即可，后手回合则须所有合法后续状态都能让先手赢，先手才可保证胜。由0颗向上递推：15颗时首取1、2、3对应先手能否保证胜为否、是、否；13颗的起始状态为先手不能保证胜，因此后手可保证胜。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 392 | source line 9483",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 392. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "1c02f85a076c0df573fa74dd5fa700a74174054551f759af312fceea24740845",
+        "source_problem_family": "amusements:392",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 423083,
+            "end": 423658,
+            "sha256": "b6db363ad90b87945b481f5f3619b1cf6d247fa3b9b0fc8ea2acafb73ab77081"
+          },
+          {
+            "role": "solution",
+            "start": 870547,
+            "end": 871107,
+            "sha256": "2bbec7afb8bb89465077a1923b39139dbe64fc4277c60fdcc97f4018f112d8a9"
+          }
+        ],
+        "title_zh": "奇偶取石子",
+        "adaptation_note": "保留原游戏胜负规则；用有限状态递推，避免误套常见的取末颗策略。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "a69d210a71880a08956c7cf3d2ddfb01b68a88790e3d08c14ced9bd2e3f21c8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-canterbury-90-neighbor-pairs-v1",
+      "knowledge_node_code": "PS.COUNTING.SYSTEMATIC_ENUM",
+      "item_type": "multi_step",
+      "prompt": "7位同学A至G围坐圆桌。对每个人，把其左右两位邻座看作一个无序的二人组合。允许再次邻接同一个人，但不允许同一位同学在两轮遇到完全相同的邻座组合。最多能安排几轮？请给出达到上限的安排并验证。每行首尾也相邻。",
+      "expected_answer": "最多15轮；每个人的15种邻座组合各用一次。",
+      "explanation": "固定一位同学，其余6人中选2人作邻座，共6×5÷2=15种，所以轮数不超过15。以下15行构造达到上限：\nABCDEFG\nACDBGEF\nADBCFGE\nAGBFECD\nAFCEGDB\nAEDGFBC\nACEBGFD\nADGCFEB\nABFDEGC\nAEFDCGB\nAGEBDFC\nAFGCBED\nAEBFCDG\nAGCEDBF\nAFDGBCE\n逐人记录每行左右邻居，将两字母排序后作为无序组合；每个人得到15个不同组合，恰好覆盖全部可能。这里禁止的是邻座二人组合重复，不能误改为任一邻接都不得重复。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/27635 | Problem 90 | source line 3741",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. The Canterbury Puzzles, problem 90. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 02aa60bc6c3b5982246b0e1ef68428a5b9a7b83980938ceb189df51f26a0762a.",
+      "rubric_json": {
+        "source_record_id": "79fde6ed3d56bd76cc097cd120b26b3b7e1d9e46c163e705614c2378aa9ece0c",
+        "source_problem_family": "canterbury:90",
+        "source_sha256": "02aa60bc6c3b5982246b0e1ef68428a5b9a7b83980938ceb189df51f26a0762a",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 170608,
+            "end": 171164,
+            "sha256": "6257b92871e598a2f86593d7db581dba1b1f6dbf757a7d4368646242792608b8"
+          },
+          {
+            "role": "solution",
+            "start": 297453,
+            "end": 299076,
+            "sha256": "35b5f3694eb9e8eb4802186861d6aa3425d20fb2c1b88a3189150a4bb52a2627"
+          }
+        ],
+        "title_zh": "左右邻座作为一组",
+        "adaptation_note": "明确邻座组合与单条邻接的区别，接受其他满足约束的完整构造。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "a69d210a71880a08956c7cf3d2ddfb01b68a88790e3d08c14ced9bd2e3f21c8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-canterbury-100-thirteen-rings-v1",
+      "knowledge_node_code": "PS.COUNTING.SYSTEMATIC_ENUM",
+      "item_type": "multi_step",
+      "prompt": "13位同学编号0至12围成圆环，每个人有两位邻居，左右不区分。同一对人不能在不同轮次再次相邻。最多能安排多少轮？给出一种构造，并说明为什么达到上限。",
+      "expected_answer": "最多6轮。",
+      "explanation": "每个人只有12位可能邻居，每轮用2位，因此至多6轮。构造方法：对步长s＝1、2、3、4、5、6，依次按0、s、2s、…、12s除以13的余数围成一环。13为素数，这13个余数各不相同；每环的邻接差为±s，不同步长的±s集合互不相同，所以各轮没有重复邻接。6轮各13对，共78对，正好覆盖13×12÷2对。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/27635 | Problem 100 | source line 4025",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. The Canterbury Puzzles, problem 100. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 02aa60bc6c3b5982246b0e1ef68428a5b9a7b83980938ceb189df51f26a0762a.",
+      "rubric_json": {
+        "source_record_id": "6001bbee7caed31f341b80c65b0463634fb021ac2385d8f8cec0f944003810b0",
+        "source_problem_family": "canterbury:100",
+        "source_sha256": "02aa60bc6c3b5982246b0e1ef68428a5b9a7b83980938ceb189df51f26a0762a",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 183368,
+            "end": 183731,
+            "sha256": "ca9204f77db538e83e3a660a1e527446c88cc3f2a7d5d471bf70f85cf091fc54"
+          },
+          {
+            "role": "solution",
+            "start": 306361,
+            "end": 306858,
+            "sha256": "6d3f80e81efab1d1997fa1b8e8810b13dac73195c24acd67f51366c2c3252dae"
+          }
+        ],
+        "title_zh": "十三人的不重复圆环",
+        "adaptation_note": "将原沙滩故事改为明确编号圆环，用模13余数构造而不依赖原图。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "a69d210a71880a08956c7cf3d2ddfb01b68a88790e3d08c14ced9bd2e3f21c8e",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 1136,
+  "reviews": [
+    {
+      "concept_id": "0d8b4c183ae419d53670ac596cf07c9c37354e45af0e35301fdd9394648de710",
+      "expected_records": 32,
+      "lecture_before": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance tells you how far the object has moved. One unit used to measure distance is the kilometer.\nTime tells you how long the object has spent moving. One unit used to measure time is the hour.\nThink about objects moving for the same amount of time. The object that is moving the slowest will go the shortest distance in that time. It is moving at the lowest speed.",
+      "lecture_after": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance traveled means the total length of the path followed, not just the straight-line change from start to finish. One unit used to measure distance is the kilometer.\nElapsed time is the duration of the interval being compared, including any stops within that interval. One unit used to measure time is the hour.\nFor the same positive elapsed time, a greater total distance means a greater average speed, and a smaller distance means a smaller average speed. Average speed is total distance divided by elapsed time. This comparison concerns the whole interval. Being faster at just one moment does not by itself mean traveling farther overall. If each object maintains a constant speed, its average speed is also its speed at every moment.",
+      "reason": "Specify average speed, path length and common elapsed time instead of treating instantaneous speed as enough to rank total distances.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/2-3-time-velocity-and-speed",
+          "supports": "Distinguishes average speed over an interval from speed at one instant and from displacement-based velocity."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "f3a5eab6aa01281c72f5356cca1ef92e392f0337cff8ec00c7a9d5b573a4f58d",
+      "expected_records": 26,
+      "lecture_before": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance tells you how far the object has moved. One unit used to measure distance is the kilometer.\nTime tells you how long the object has spent moving. One unit used to measure time is the hour.\nThink about two objects moving for the same amount of time. The object that is moving faster will go a farther distance in that time. It is moving at a higher speed.",
+      "lecture_after": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance traveled means the total length of the path followed, not just the straight-line change from start to finish. One unit used to measure distance is the kilometer.\nElapsed time is the duration of the interval being compared, including any stops within that interval. One unit used to measure time is the hour.\nFor the same positive elapsed time, a greater total distance means a greater average speed, and a smaller distance means a smaller average speed. Average speed is total distance divided by elapsed time. This comparison concerns the whole interval. Being faster at just one moment does not by itself mean traveling farther overall. If each object maintains a constant speed, its average speed is also its speed at every moment.",
+      "reason": "Specify average speed, path length and common elapsed time instead of treating instantaneous speed as enough to rank total distances.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/2-3-time-velocity-and-speed",
+          "supports": "Distinguishes average speed over an interval from speed at one instant and from displacement-based velocity."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "52bef79b558a17e8c935a8f2bc0cd6fbd1ad39526c2fbce7eb68fbc8ecf35d05",
+      "expected_records": 23,
+      "lecture_before": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance tells you how far the object has moved. One unit used to measure distance is the mile.\nTime tells you how long the object has spent moving. One unit used to measure time is the hour.\nThink about two objects moving for the same amount of time. The object that is moving faster will go a farther distance in that time. It is moving at a higher speed.",
+      "lecture_after": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance traveled means the total length of the path followed, not just the straight-line change from start to finish. One unit used to measure distance is the mile.\nElapsed time is the duration of the interval being compared, including any stops within that interval. One unit used to measure time is the hour.\nFor the same positive elapsed time, a greater total distance means a greater average speed, and a smaller distance means a smaller average speed. Average speed is total distance divided by elapsed time. This comparison concerns the whole interval. Being faster at just one moment does not by itself mean traveling farther overall. If each object maintains a constant speed, its average speed is also its speed at every moment.",
+      "reason": "Specify average speed, path length and common elapsed time instead of treating instantaneous speed as enough to rank total distances.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/2-3-time-velocity-and-speed",
+          "supports": "Distinguishes average speed over an interval from speed at one instant and from displacement-based velocity."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "bbeb2ab03d3758adbe0c6e81d000cf9ad446cae15fb732bc1a04a70534c80514",
+      "expected_records": 21,
+      "lecture_before": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance tells you how far the object has moved. One unit used to measure distance is the mile.\nTime tells you how long the object has spent moving. One unit used to measure time is the hour.\nThink about objects moving for the same amount of time. The object that is moving the slowest will go the shortest distance in that time. It is moving at the lowest speed.",
+      "lecture_after": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance traveled means the total length of the path followed, not just the straight-line change from start to finish. One unit used to measure distance is the mile.\nElapsed time is the duration of the interval being compared, including any stops within that interval. One unit used to measure time is the hour.\nFor the same positive elapsed time, a greater total distance means a greater average speed, and a smaller distance means a smaller average speed. Average speed is total distance divided by elapsed time. This comparison concerns the whole interval. Being faster at just one moment does not by itself mean traveling farther overall. If each object maintains a constant speed, its average speed is also its speed at every moment.",
+      "reason": "Specify average speed, path length and common elapsed time instead of treating instantaneous speed as enough to rank total distances.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/2-3-time-velocity-and-speed",
+          "supports": "Distinguishes average speed over an interval from speed at one instant and from displacement-based velocity."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "fea4d709192213c14e5e2e2bf109e3a7a4dbb5487e30fccc685b6f8006887d3e",
+      "expected_records": 25,
+      "lecture_before": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance tells you how far the object has moved. One unit used to measure distance is the kilometer.\nTime tells you how long the object has spent moving. One unit used to measure time is the hour.\nThink about two objects moving for the same amount of time. The object that is moving slower will go a shorter distance in that time. It is moving at a lower speed.",
+      "lecture_after": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance traveled means the total length of the path followed, not just the straight-line change from start to finish. One unit used to measure distance is the kilometer.\nElapsed time is the duration of the interval being compared, including any stops within that interval. One unit used to measure time is the hour.\nFor the same positive elapsed time, a greater total distance means a greater average speed, and a smaller distance means a smaller average speed. Average speed is total distance divided by elapsed time. This comparison concerns the whole interval. Being faster at just one moment does not by itself mean traveling farther overall. If each object maintains a constant speed, its average speed is also its speed at every moment.",
+      "reason": "Specify average speed, path length and common elapsed time instead of treating instantaneous speed as enough to rank total distances.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/2-3-time-velocity-and-speed",
+          "supports": "Distinguishes average speed over an interval from speed at one instant and from displacement-based velocity."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "922c8aacb6cbdc722c4f0b6a9b34cd506be9eeae63ab72db3a86ba01c047848b",
+      "expected_records": 26,
+      "lecture_before": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance tells you how far the object has moved. One unit used to measure distance is the mile.\nTime tells you how long the object has spent moving. One unit used to measure time is the hour.\nThink about two objects moving for the same amount of time. The object that is moving slower will go a shorter distance in that time. It is moving at a lower speed.",
+      "lecture_after": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance traveled means the total length of the path followed, not just the straight-line change from start to finish. One unit used to measure distance is the mile.\nElapsed time is the duration of the interval being compared, including any stops within that interval. One unit used to measure time is the hour.\nFor the same positive elapsed time, a greater total distance means a greater average speed, and a smaller distance means a smaller average speed. Average speed is total distance divided by elapsed time. This comparison concerns the whole interval. Being faster at just one moment does not by itself mean traveling farther overall. If each object maintains a constant speed, its average speed is also its speed at every moment.",
+      "reason": "Specify average speed, path length and common elapsed time instead of treating instantaneous speed as enough to rank total distances.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/2-3-time-velocity-and-speed",
+          "supports": "Distinguishes average speed over an interval from speed at one instant and from displacement-based velocity."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "e069ed486caefa1c7003a043ead1a68d6c71d3e90476ea066b6827ed2ac3b0fc",
+      "expected_records": 22,
+      "lecture_before": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance tells you how far the object has moved. One unit used to measure distance is the kilometer.\nTime tells you how long the object has spent moving. One unit used to measure time is the hour.\nThink about objects moving for the same amount of time. The object that is moving the fastest will go the farthest distance in that time. It is moving at the highest speed.",
+      "lecture_after": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance traveled means the total length of the path followed, not just the straight-line change from start to finish. One unit used to measure distance is the kilometer.\nElapsed time is the duration of the interval being compared, including any stops within that interval. One unit used to measure time is the hour.\nFor the same positive elapsed time, a greater total distance means a greater average speed, and a smaller distance means a smaller average speed. Average speed is total distance divided by elapsed time. This comparison concerns the whole interval. Being faster at just one moment does not by itself mean traveling farther overall. If each object maintains a constant speed, its average speed is also its speed at every moment.",
+      "reason": "Specify average speed, path length and common elapsed time instead of treating instantaneous speed as enough to rank total distances.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/2-3-time-velocity-and-speed",
+          "supports": "Distinguishes average speed over an interval from speed at one instant and from displacement-based velocity."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "e92caca05e99fc914445270c58c37ffe0bd61b38494c402390ce934eb11b531f",
+      "expected_records": 25,
+      "lecture_before": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance tells you how far the object has moved. One unit used to measure distance is the mile.\nTime tells you how long the object has spent moving. One unit used to measure time is the hour.\nThink about objects moving for the same amount of time. The object that is moving the fastest will go the farthest distance in that time. It is moving at the highest speed.",
+      "lecture_after": "An object's speed tells you how fast the object is moving. Speed depends on both distance and time.\nDistance traveled means the total length of the path followed, not just the straight-line change from start to finish. One unit used to measure distance is the mile.\nElapsed time is the duration of the interval being compared, including any stops within that interval. One unit used to measure time is the hour.\nFor the same positive elapsed time, a greater total distance means a greater average speed, and a smaller distance means a smaller average speed. Average speed is total distance divided by elapsed time. This comparison concerns the whole interval. Being faster at just one moment does not by itself mean traveling farther overall. If each object maintains a constant speed, its average speed is also its speed at every moment.",
+      "reason": "Specify average speed, path length and common elapsed time instead of treating instantaneous speed as enough to rank total distances.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/2-3-time-velocity-and-speed",
+          "supports": "Distinguishes average speed over an interval from speed at one instant and from displacement-based velocity."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "ed4603fa2c9f3162cf0d9a4e02ae9324e195b341eb24363c680cc9df47f33256",
+      "expected_records": 66,
+      "lecture_before": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nTemperature can be written with units of degrees Fahrenheit (°F) or Celsius (°C). Use the list below to compare the two units.\n212°F | Water boils | 100°C\n98.6°F | Body temperature | 37°C\n68°F | Room temperature | 20°C\n32°F | Water freezes | 0°C",
+      "lecture_after": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nTemperature can be written with units of degrees Fahrenheit (°F) or Celsius (°C). The pairs below are unit conversions. Water phase-change values refer to pure water at approximately one atmosphere of pressure. Body and room temperatures are familiar reference examples, not fixed values for every person or room.\n212°F | Approximate normal boiling point of pure water | 100°C\n98.6°F | Common approximate body-temperature reference | 37°C\n68°F | Example room temperature | 20°C\n32°F | Approximate freezing/melting point of pure water | 0°C",
+      "reason": "Keep exact scale conversions distinct from approximate physical reference conditions.",
+      "references": [
+        {
+          "url": "https://www.nist.gov/pml/owm/si-units-temperature",
+          "supports": "Gives the Celsius/Fahrenheit conversion and labels familiar touchstone temperatures approximate."
+        },
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions",
+          "supports": "The boiling temperature varies with external pressure; the normal boiling point uses one atmosphere."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "a31d43eca54297456ad90072f7f3d9f81ffcde695bfea3f045b28351485fbc7f",
+      "expected_records": 16,
+      "lecture_before": "A thermometer is a tool that measures temperature. Temperature can be measured in degrees. The symbol for degrees is °.\nSome thermometers measure temperature in degrees Fahrenheit (°F). Fahrenheit is one scale used to measure temperature.\nThis is a tube thermometer. It has a tube filled with a red liquid.\nThere is a Fahrenheit scale along the right side of the tube. The top of the red liquid lines up with the number 80 on the scale. So, the temperature shown by this thermometer is 80°F.",
+      "lecture_after": "A thermometer is a tool that measures temperature. Temperature can be measured in degrees. The symbol for degrees is °.\nSome thermometers measure temperature in degrees Fahrenheit (°F). Fahrenheit is one scale used to measure temperature.\nTo read a liquid-in-glass thermometer, identify the scale and the value of each division, then read the level at the top of the liquid column. For example, if the top lines up with 80°F on a Fahrenheit scale, the reading is 80°F. This is a conditional example; it does not establish the reading of an unavailable picture.",
+      "reason": "Replace an unverified claim about a missing picture with an explicit conditional reading example; missing-figure flags remain.",
+      "references": [
+        {
+          "url": "https://www.nist.gov/pml/owm/si-units-temperature",
+          "supports": "Gives the Celsius/Fahrenheit conversion and labels familiar touchstone temperatures approximate."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "37a892985b5564b6ab55d3f45ef885f194d56a14bdc4c5c61f1d1a0901befab3",
+      "expected_records": 9,
+      "lecture_before": "A thermometer is a tool that measures temperature. Temperature can be measured in degrees. The symbol for degrees is °.\nSome thermometers measure temperature in degrees Celsius (°C). Celsius is one scale used to measure temperature.\nThis is a tube thermometer. It has a tube filled with a red liquid.\nThere is a Celsius scale along the right side of the tube. The top of the red liquid lines up with the number 30 on the scale. So, the temperature shown by this thermometer is 30°C.",
+      "lecture_after": "A thermometer is a tool that measures temperature. Temperature can be measured in degrees. The symbol for degrees is °.\nSome thermometers measure temperature in degrees Celsius (°C). Celsius is one scale used to measure temperature.\nTo read a liquid-in-glass thermometer, identify the scale and the value of each division, then read the level at the top of the liquid column. For example, if the top lines up with 30°C on a Celsius scale, the reading is 30°C. This is a conditional example; it does not establish the reading of an unavailable picture.",
+      "reason": "Replace an unverified claim about a missing picture with an explicit conditional reading example; missing-figure flags remain.",
+      "references": [
+        {
+          "url": "https://www.nist.gov/pml/owm/si-units-temperature",
+          "supports": "Gives the Celsius/Fahrenheit conversion and labels familiar touchstone temperatures approximate."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "13976cf853d2b63aa4bc57640f2d61985a45494b552b5811bc603b1bcaec0a8d",
+      "expected_records": 53,
+      "lecture_before": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nImagine being told that a pencil is 16 long. You might be thinking, 16 what? Is the pencil 16 centimeters long? 16 meters? 16 kilometers?\nThe number 16 on its own does not give you much information about the length of the pencil. That is because the units are missing.\nNow look at the drawing of the pencil and the ruler. The ruler shows that the units are centimeters. So, the length of the pencil is 16 centimeters.\nThere are 100 centimeters in 1 meter. So, 1 centimeter is much shorter than 1 meter.\nThere are 1,000 meters in 1 kilometer. So, 1 meter is much shorter than 1 kilometer.",
+      "lecture_after": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nImagine being told that a pencil is 16 long. You might be thinking, 16 what? Is the pencil 16 centimeters long? 16 meters? 16 kilometers?\nThe number 16 on its own does not give you much information about the length of the pencil. That is because the units are missing.\nFor a ruler example, suppose one end of the pencil is aligned with zero and the other end with 16 on a scale in centimeters. Under those conditions its length is 16 centimeters. If the first end is not at zero, subtract its reading from the other end. A missing picture cannot establish those endpoints.\nThere are 100 centimeters in 1 meter. So, 1 centimeter is much shorter than 1 meter.\nThere are 1,000 meters in 1 kilometer. So, 1 meter is much shorter than 1 kilometer.",
+      "reason": "Make ruler zero/endpoints and units explicit, without pretending an unavailable figure was inspected.",
+      "references": [
+        {
+          "url": "https://www.nist.gov/pml/owm/si-units-length",
+          "supports": "Identifies length units and their metric or customary conversion relationships."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "d2ee2e64b6f93fb41ad089edbb0d1c6d01219c7db4d53ced6c32b4a7dd274686",
+      "expected_records": 34,
+      "lecture_before": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nImagine being told that a pencil is 8 long. You might be thinking, 8 what? Is the pencil 8 inches long? 8 feet? 8 miles?\nThe number 8 on its own does not give you much information about the length of the pencil. That is because the units are missing.\nNow look at the drawing of the pencil and the ruler. The ruler shows that the units are inches. So, the length of the pencil is 8 inches.\nThere are 12 inches in 1 foot. So, 1 inch is much shorter than 1 foot.\nThere are 3 feet in 1 yard. So, 1 foot is shorter than 1 yard.",
+      "lecture_after": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nImagine being told that a pencil is 8 long. You might be thinking, 8 what? Is the pencil 8 inches long? 8 feet? 8 miles?\nThe number 8 on its own does not give you much information about the length of the pencil. That is because the units are missing.\nFor a ruler example, suppose one end of the pencil is aligned with zero and the other end with 8 on a scale in inches. Under those conditions its length is 8 inches. If the first end is not at zero, subtract its reading from the other end. A missing picture cannot establish those endpoints.\nThere are 12 inches in 1 foot. So, 1 inch is much shorter than 1 foot.\nThere are 3 feet in 1 yard. So, 1 foot is shorter than 1 yard.",
+      "reason": "Make ruler zero/endpoints and units explicit, without pretending an unavailable figure was inspected.",
+      "references": [
+        {
+          "url": "https://www.nist.gov/pml/owm/si-units-length",
+          "supports": "Identifies length units and their metric or customary conversion relationships."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "f40e8ad58bbade5f7af42ccdee5a9773aa6aaf3ace8e03884daa31f7f8f6f343",
+      "expected_records": 57,
+      "lecture_before": "A material is a type of matter. Wood, glass, metal, and plastic are common materials.\nSome objects are made of just one material.\nMost nails are made of metal.\nOther objects are made of more than one material.\nThis hammer is made of metal and wood.",
+      "lecture_after": "A material is a type of matter. Wood, glass, metal, and plastic are common materials.\nSome objects are made of just one material.\nMost nails are made of metal.\nOther objects are made of more than one material.\nFor example, a hammer with a metal head and a wooden handle contains both metal and wood. Other hammers may use different materials; an unavailable picture cannot establish a particular hammer's composition.",
+      "reason": "Turn an image-dependent statement into a fully specified material example.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+          "supports": "Introduces matter and material composition; familiar objects can contain several materials."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "616c7d503cb4f044cf92ab78b1f6cf94183ad5828f971da084003513ddb23909",
+      "expected_records": 92,
+      "lecture_before": "Every object is made of one or more materials. A material is a type of matter. Wood, glass, metal, and plastic are common materials.\nA material has different properties. A material's properties tell you how it looks, feels, tastes, or smells. Some examples of properties are shiny, hard, fragile, and stretchy.\nFor example, a shiny material reflects a lot of light. A fragile material breaks when you drop it.",
+      "lecture_after": "Every object is made of one or more materials. A material is a type of matter. Wood, glass, metal, and plastic are common materials.\nA material has different properties. A material's properties tell you how it looks, feels, tastes, or smells. Some examples of properties are shiny, hard, fragile, and stretchy.\nFor example, a shiny material reflects a lot of light. A fragile object can be damaged or broken easily. Whether a particular drop breaks it depends on the object and the impact; breakage is not guaranteed every time.",
+      "reason": "Replace certain breakage with susceptibility and conditions.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/fragile",
+          "supports": "Fragile describes susceptibility to damage or breakage, not a guarantee of breaking in every fall."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "0539e5246d07ad4b4fb3b711eafc8c2cf15ea6a0be7de8bd590faca9ad68ff1c",
+      "expected_records": 75,
+      "lecture_before": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart.\nThese pulls and pushes between magnets are called magnetic forces. The stronger the magnetic force between two magnets, the more strongly the magnets attract or repel each other.\nYou can change the strength of a magnetic force between two magnets by changing the distance between them. The magnetic force is stronger when the magnets are closer together.",
+      "lecture_after": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart.\nThese pulls and pushes between magnets are called magnetic forces. The stronger the magnetic force between two magnets, the more strongly the magnets attract or repel each other.\nIn a simple comparison using the same bar magnets, keep their orientation and the facing poles unchanged while changing their separation. Along that fixed arrangement, bringing them closer generally strengthens the attraction or repulsion, and moving them farther apart weakens it. Changing orientation or using different magnets changes the comparison, so distance alone is not a universal ranking rule.",
+      "reason": "State the controlled variables required for the elementary distance comparison.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/physics/pages/20-1-magnetic-fields-field-lines-and-force",
+          "supports": "Explains simple bar-magnet interactions, polarity and the influence of separation in a stated arrangement."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "11482f47c9a38c40df8aee564e08281d4db7ae0b8e5820784cd796735943e276",
+      "expected_records": 71,
+      "lecture_before": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart. These pulls and pushes between magnets are called magnetic forces.\nThe strength of a force is called its magnitude. The greater the magnitude of the magnetic force between two magnets, the more strongly the magnets attract or repel each other.\nYou can change the magnitude of a magnetic force between two magnets by changing the distance between them. The magnitude of the magnetic force is smaller when there is a greater distance between the magnets.",
+      "lecture_after": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart. These pulls and pushes between magnets are called magnetic forces.\nThe strength of a force is called its magnitude. The greater the magnitude of the magnetic force between two magnets, the more strongly the magnets attract or repel each other.\nIn a simple comparison using the same bar magnets, keep their orientation and the facing poles unchanged while changing their separation. Along that fixed arrangement, bringing them closer generally strengthens the attraction or repulsion, and moving them farther apart weakens it. Changing orientation or using different magnets changes the comparison, so distance alone is not a universal ranking rule.",
+      "reason": "State the controlled variables required for the elementary distance comparison.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/physics/pages/20-1-magnetic-fields-field-lines-and-force",
+          "supports": "Explains simple bar-magnet interactions, polarity and the influence of separation in a stated arrangement."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "a48b56a343171b50c4e9667b4d59fc88e9af363b46e410f97811bb95124f82b6",
+      "expected_records": 65,
+      "lecture_before": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart.\nThese pulls and pushes between magnets are called magnetic forces. The stronger the magnetic force between two magnets, the more strongly the magnets attract or repel each other.\nYou can change the strength of a magnetic force between two magnets by changing the distance between them. The magnetic force is weaker when the magnets are farther apart.",
+      "lecture_after": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart.\nThese pulls and pushes between magnets are called magnetic forces. The stronger the magnetic force between two magnets, the more strongly the magnets attract or repel each other.\nIn a simple comparison using the same bar magnets, keep their orientation and the facing poles unchanged while changing their separation. Along that fixed arrangement, bringing them closer generally strengthens the attraction or repulsion, and moving them farther apart weakens it. Changing orientation or using different magnets changes the comparison, so distance alone is not a universal ranking rule.",
+      "reason": "State the controlled variables required for the elementary distance comparison.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/physics/pages/20-1-magnetic-fields-field-lines-and-force",
+          "supports": "Explains simple bar-magnet interactions, polarity and the influence of separation in a stated arrangement."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "6b852df9ae5ae61c428768714cd53049c1feab8519eb6567230e51e90eabd1f4",
+      "expected_records": 83,
+      "lecture_before": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart. These pulls and pushes between magnets are called magnetic forces.\nThe strength of a force is called its magnitude. The greater the magnitude of the magnetic force between two magnets, the more strongly the magnets attract or repel each other.\nYou can change the magnitude of a magnetic force between two magnets by changing the distance between them. The magnitude of the magnetic force is greater when there is a smaller distance between the magnets.",
+      "lecture_after": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart. These pulls and pushes between magnets are called magnetic forces.\nThe strength of a force is called its magnitude. The greater the magnitude of the magnetic force between two magnets, the more strongly the magnets attract or repel each other.\nIn a simple comparison using the same bar magnets, keep their orientation and the facing poles unchanged while changing their separation. Along that fixed arrangement, bringing them closer generally strengthens the attraction or repulsion, and moving them farther apart weakens it. Changing orientation or using different magnets changes the comparison, so distance alone is not a universal ranking rule.",
+      "reason": "State the controlled variables required for the elementary distance comparison.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/physics/pages/20-1-magnetic-fields-field-lines-and-force",
+          "supports": "Explains simple bar-magnet interactions, polarity and the influence of separation in a stated arrangement."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "68d1a5db838e7cfa1ff1ab43604f83fe0c3b3720f99342425e4f274afd54def4",
+      "expected_records": 122,
+      "lecture_before": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart.\nWhether a magnet attracts or repels other magnets depends on the positions of its poles, or ends. Every magnet has two poles, called north and south.\nHere are some examples of magnets. The north pole of each magnet is marked N, and the south pole is marked S.\nIf different poles are closest to each other, the magnets attract. The magnets in the pair below attract.\nIf the same poles are closest to each other, the magnets repel. The magnets in both pairs below repel.",
+      "lecture_after": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart.\nThese examples concern simple bar or horseshoe magnets with one north pole region, labeled N, and one south pole region, labeled S. For two such magnets arranged with their poles facing, unlike poles attract and like poles repel. To classify a particular pair, identify the facing poles from the actual labels and arrangement. If a required diagram is missing, the pair cannot be identified from this general rule alone. More complex magnets can have multiple pole regions, so poles should not always be equated with the physical ends of every magnet.",
+      "reason": "Scope the two-pole model to simple magnets and remove claims that absent diagrams show particular pairs.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/physics/pages/20-1-magnetic-fields-field-lines-and-force",
+          "supports": "Explains simple bar-magnet interactions, polarity and the influence of separation in a stated arrangement."
+        },
+        {
+          "url": "https://static.nsta.org/pdfs/201110bookbeatdesigningscientifictestslearningandteachinginquiry.pdf",
+          "supports": "Describes flexible refrigerator magnets with repeating north/south regions instead of one single pair."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "35871c47e0935eae1e8ae537bc0f8a1ab861f88a989f9737e38b385667150124",
+      "expected_records": 97,
+      "lecture_before": "Magnets can pull or push on other magnets without touching them. When magnets attract, they pull together. When magnets repel, they push apart. These pulls and pushes are called magnetic forces.\nMagnetic forces are strongest at the magnets' poles, or ends. Every magnet has two poles: a north pole (N) and a south pole (S).\nHere are some examples of magnets. Their poles are shown in different colors and labeled.\nWhether a magnet attracts or repels other magnets depends on the positions of its poles.\nIf opposite poles are closest to each other, the magnets attract. The magnets in the pair below attract.\nIf the same, or like, poles are closest to each other, the magnets repel. The magnets in both pairs below repel.",
+      "lecture_after": "Magnets can pull or push on other magnets without touching them. When magnets attract, they pull together. When magnets repel, they push apart. These pulls and pushes are called magnetic forces.\nThese examples concern simple bar or horseshoe magnets with one north pole region, labeled N, and one south pole region, labeled S. For two such magnets arranged with their poles facing, unlike poles attract and like poles repel. To classify a particular pair, identify the facing poles from the actual labels and arrangement. If a required diagram is missing, the pair cannot be identified from this general rule alone. More complex magnets can have multiple pole regions, so poles should not always be equated with the physical ends of every magnet.",
+      "reason": "Scope the two-pole model to simple magnets and remove claims that absent diagrams show particular pairs.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/physics/pages/20-1-magnetic-fields-field-lines-and-force",
+          "supports": "Explains simple bar-magnet interactions, polarity and the influence of separation in a stated arrangement."
+        },
+        {
+          "url": "https://static.nsta.org/pdfs/201110bookbeatdesigningscientifictestslearningandteachinginquiry.pdf",
+          "supports": "Describes flexible refrigerator magnets with repeating north/south regions instead of one single pair."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "5de01aea7154eaea62b015b66a83957b507114739de4e7fc92e959c0a9bdfcd5",
+      "expected_records": 96,
+      "lecture_before": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart.\nWhether a magnet attracts or repels other magnets depends on the positions of its poles, or ends. Every magnet has two poles: north and south.\nHere are some examples of magnets. The north pole of each magnet is labeled N, and the south pole is labeled S.\nIf opposite poles are closest to each other, the magnets attract. The magnets in the pair below attract.\nIf the same, or like, poles are closest to each other, the magnets repel. The magnets in both pairs below repel.",
+      "lecture_after": "Magnets can pull or push on each other without touching. When magnets attract, they pull together. When magnets repel, they push apart.\nThese examples concern simple bar or horseshoe magnets with one north pole region, labeled N, and one south pole region, labeled S. For two such magnets arranged with their poles facing, unlike poles attract and like poles repel. To classify a particular pair, identify the facing poles from the actual labels and arrangement. If a required diagram is missing, the pair cannot be identified from this general rule alone. More complex magnets can have multiple pole regions, so poles should not always be equated with the physical ends of every magnet.",
+      "reason": "Scope the two-pole model to simple magnets and remove claims that absent diagrams show particular pairs.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/physics/pages/20-1-magnetic-fields-field-lines-and-force",
+          "supports": "Explains simple bar-magnet interactions, polarity and the influence of separation in a stated arrangement."
+        },
+        {
+          "url": "https://static.nsta.org/pdfs/201110bookbeatdesigningscientifictestslearningandteachinginquiry.pdf",
+          "supports": "Describes flexible refrigerator magnets with repeating north/south regions instead of one single pair."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

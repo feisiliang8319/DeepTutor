@@ -1,0 +1,709 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "IM G4 U3 存量转化 · 18道独立编写的分数运算讲解例题",
+  "items": [
+    {
+      "id": "im-g4-u3-l1-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B4.FRACTION_AS_MULTIPLE",
+      "item_type": "multi_step",
+      "prompt": "7个小瓶，每瓶装1/8升水。水共有多少升？写出连加式和乘法式，并解释分母为什么仍是8。",
+      "expected_answer": "1/8+1/8+1/8+1/8+1/8+1/8+1/8＝7×1/8＝7/8升。",
+      "explanation": "每组都是1个八分之一升，7组共有7个八分之一升。每小份的大小没有改变，改变的是小份的个数，因此只把分子从1变成7，分母仍是8。不能把7组相加写成7/56。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L1 | retained source line 11",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 1. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "771618b61c9c54a1ab23883a729b0293be9116b9753f15cf41012b9abe0677c6",
+        "source_lesson_family": "IM:G4:U3:L1",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "0c565dc3e27a540031471974ab5e0346c576d6056c6333686f5a63ca589699d8",
+        "source_span": {
+          "start": 218,
+          "end": 13937
+        },
+        "source_spans": [
+          {
+            "start": 218,
+            "end": 13937,
+            "sha256": "0c565dc3e27a540031471974ab5e0346c576d6056c6333686f5a63ca589699d8"
+          }
+        ],
+        "title_zh": "几组单位分数",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l2-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B4.MULTIPLY_BY_WHOLE",
+      "item_type": "multi_step",
+      "prompt": "一根绳子的长度单位是1米。在数轴上从0开始，每次向右走1/4米，连续走9次。写出最终位置，说明经过了几个完整的1米，还有多少米。",
+      "expected_answer": "9×1/4＝9/4米＝2又1/4米。",
+      "explanation": "每4次合成1米，9次可以分成4次、4次、1次。两个完整单位加一个四分之一，因此终点为2又1/4。也可以把每一个单位分4格，从0逐格数到第9格。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L2 | retained source line 380",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 2. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "80548ef8eb6189d04b136863d786029aca48e0eb04b9b70009c1801e44ae3cbb",
+        "source_lesson_family": "IM:G4:U3:L2",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "f41d4986df33453cd3f984e811c35babe56868a6bb6ed86feca52ca7a0b05d3f",
+        "source_span": {
+          "start": 13937,
+          "end": 27083
+        },
+        "source_spans": [
+          {
+            "start": 13937,
+            "end": 27083,
+            "sha256": "f41d4986df33453cd3f984e811c35babe56868a6bb6ed86feca52ca7a0b05d3f"
+          }
+        ],
+        "title_zh": "走过一个整体",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l3-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B4.FRACTION_AS_MULTIPLE",
+      "item_type": "multi_step",
+      "prompt": "把13/6写成“正整数×1/6”的形式。说明13/6里包含几个1/6，并把它写成带分数。",
+      "expected_answer": "13/6＝13×1/6，含13个1/6；等于2又1/6。",
+      "explanation": "分母6规定每份为1/6，分子13记录份数，所以有13份。每6份合为1，13份分成6+6+1，得到两个整体和一个六分之一。这里使用与原分母相同的单位分数1/6来解释。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L3 | retained source line 790",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 3. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "cdaf294578bde8d4d4f89aea17d3c88c53763cd41da3395c2dcce186514f5462",
+        "source_lesson_family": "IM:G4:U3:L3",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "ffe01291b709c32e5edb60861ac1919d44f731db95fdb99bb9a133e10088dd1d",
+        "source_span": {
+          "start": 27083,
+          "end": 41505
+        },
+        "source_spans": [
+          {
+            "start": 27083,
+            "end": 41505,
+            "sha256": "ffe01291b709c32e5edb60861ac1919d44f731db95fdb99bb9a133e10088dd1d"
+          }
+        ],
+        "title_zh": "分数是单位分数的倍数",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l4-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B4.MULTIPLY_BY_WHOLE",
+      "item_type": "multi_step",
+      "prompt": "5条丝带，每条长3/8米，首尾接在一起，不重叠也不损耗。总长多少米？先说明一共有多少个1/8，再写成带分数。",
+      "expected_answer": "共有15个1/8，总长15/8米＝1又7/8米。",
+      "explanation": "一条有3个1/8，5条有5×3=15个1/8。因此5×3/8=(5×3)/8=15/8。8个1/8组成1米，还剩7个1/8，所以为1又7/8米。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L4 | retained source line 1175",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 4. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "1b2d1eaf52e63f82f0706f195fa431927fbf2ca8d78c754650637b9b83963d14",
+        "source_lesson_family": "IM:G4:U3:L4",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "cae3b8bde92a85b588b5e06621ffdac5f20bea68b424982fd7bd57feb04b7f0b",
+        "source_span": {
+          "start": 41505,
+          "end": 59488
+        },
+        "source_spans": [
+          {
+            "start": 41505,
+            "end": 59488,
+            "sha256": "cae3b8bde92a85b588b5e06621ffdac5f20bea68b424982fd7bd57feb04b7f0b"
+          }
+        ],
+        "title_zh": "几组非单位分数",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l5-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B4.MULTIPLY_BY_WHOLE",
+      "item_type": "multi_step",
+      "prompt": "判断6×2/5、12×1/5、3×4/5是否相等，并求共同的值。有人把6×2/5算成(6×2)/(6×5)，指出错误。",
+      "expected_answer": "前三式都等于12/5＝2又2/5；错误式等于2/5，没有把原量扩大6倍。",
+      "explanation": "6组各2份、12组各1份、3组各4份，都一共有12个1/5。因此可改变分组但总量不变。把分子分母都乘6只是在写2/5的等值分数；乘以6应变为6倍，不能同时把每份大小又缩成原来的1/6。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L5 | retained source line 1600",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 5. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "181dab3a06a64de38219691a8bec488cd522ff647474dcd25e3e290494e03faa",
+        "source_lesson_family": "IM:G4:U3:L5",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "629f03d3cdb4dadfa35d147dea78b0ab58f92227ac4aa52963d7daa932cb53ab",
+        "source_span": {
+          "start": 59488,
+          "end": 72664
+        },
+        "source_spans": [
+          {
+            "start": 59488,
+            "end": 72664,
+            "sha256": "629f03d3cdb4dadfa35d147dea78b0ab58f92227ac4aa52963d7daa932cb53ab"
+          }
+        ],
+        "title_zh": "不同分组，同一个总量",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l6-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B4.WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "有6千克豆子，要装7袋，每袋3/4千克。不损耗。装完需要多少千克？原有豆子是否够用，剩下多少？",
+      "expected_answer": "需要21/4千克＝5又1/4千克；够用，剩3/4千克。",
+      "explanation": "先算7袋总量：7×3/4=21/4=5又1/4。把6写成24/4，24/4−21/4=3/4千克。检查：装入的21/4加剩下的3/4等于24/4，也就是原有6千克。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L6 | retained source line 2010",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 6. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "819f3fce75a01e754579cf917050c19805f8309a139f66d1f9a46cc86654d8f7",
+        "source_lesson_family": "IM:G4:U3:L6",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "6ad21e328bfb77e81a9096a65fde135e2f98e913a3c03aac1a7e351eaf375fa3",
+        "source_span": {
+          "start": 72664,
+          "end": 89997
+        },
+        "source_spans": [
+          {
+            "start": 72664,
+            "end": 89997,
+            "sha256": "6ad21e328bfb77e81a9096a65fde135e2f98e913a3c03aac1a7e351eaf375fa3"
+          }
+        ],
+        "title_zh": "分装与剩余",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l7-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B3.DECOMPOSE",
+      "item_type": "multi_step",
+      "prompt": "把9/8分成两个分母都是8、分子都是正整数的分数之和。交换两个加数视为同一种。列出全部拆法，再说明它如何分成9个单位分数之和。",
+      "expected_answer": "1/8+8/8、2/8+7/8、3/8+6/8、4/8+5/8；也等于9个1/8相加。",
+      "explanation": "相同分母下，分子之和必须是9。把较小分子记为a，另一个为9−a；要求a≤9−a且a≥1，所以a只能为1、2、3、4。四组已经覆盖所有正整数拆法。单位分数拆法则每份为1/8，一共取9份。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L7 | retained source line 2545",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 7. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "e15501ee0ea800ead4fe8c33f26e0fcf8b37bc65791385054fbfab52d6527744",
+        "source_lesson_family": "IM:G4:U3:L7",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "da686b70762add5038c071fb973a02729f1e5c44f2aa818dde2a09ef85fd5152",
+        "source_span": {
+          "start": 89997,
+          "end": 104879
+        },
+        "source_spans": [
+          {
+            "start": 89997,
+            "end": 104879,
+            "sha256": "da686b70762add5038c071fb973a02729f1e5c44f2aa818dde2a09ef85fd5152"
+          }
+        ],
+        "title_zh": "不遗漏的分数组合",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l8-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B3.SUM_OF_UNIT_FRACTIONS",
+      "item_type": "multi_step",
+      "prompt": "数轴上每一个单位分成6个相等小间隔，从5/6的位置向右移动4个这样的小间隔。到哪里？把结果写成假分数和带分数。",
+      "expected_answer": "5/6+4/6＝9/6＝1又3/6＝1又1/2。",
+      "explanation": "当前位置已有5个1/6，再增加4个1/6，一共9个1/6。走1格会到1，再走3格到1又3/6。分母6表示固定的小间隔长度，不能把两个6相加成12。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L8 | retained source line 2957",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 8. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "8d06071e4d54de00fc8c59a495d9336e45a86de47854bd1f0feb72cac627d2a4",
+        "source_lesson_family": "IM:G4:U3:L8",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "5604f2b0e69d273cc8c4f2bcb4be3efbce021064dd07488ec8068a42b972cf5b",
+        "source_span": {
+          "start": 104879,
+          "end": 122232
+        },
+        "source_spans": [
+          {
+            "start": 104879,
+            "end": 122232,
+            "sha256": "5604f2b0e69d273cc8c4f2bcb4be3efbce021064dd07488ec8068a42b972cf5b"
+          }
+        ],
+        "title_zh": "数轴上的分数相加",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l9-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B3.SUM_OF_UNIT_FRACTIONS",
+      "item_type": "multi_step",
+      "prompt": "数轴以1/8为一个小间隔。从11/8向左移动5个小间隔，终点是什么？11/8与5/8两点之间又相隔几个小间隔？解释两种问题如何使用同一个减法。",
+      "expected_answer": "终点为6/8＝3/4；两点相隔6个小间隔，距离6/8＝3/4。",
+      "explanation": "移动问题是从11个1/8减去5个1/8，剩6个1/8。距离问题则问5/8加多少能到11/8，差也为11/8−5/8=6/8。第一问移动了5格，第二问两点相距6格，不能把两个格数混淆。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L9 | retained source line 3403",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 9. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "6da505fde1b6bc880d7e92da8b0e0ecc59817b2e07d495a839708e5daa924b92",
+        "source_lesson_family": "IM:G4:U3:L9",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "47074ff41c8fef0bea6b6e46adda1dfdf1751675f0dfb4203f917475d2162803",
+        "source_span": {
+          "start": 122232,
+          "end": 140850
+        },
+        "source_spans": [
+          {
+            "start": 122232,
+            "end": 140850,
+            "sha256": "47074ff41c8fef0bea6b6e46adda1dfdf1751675f0dfb4203f917475d2162803"
+          }
+        ],
+        "title_zh": "数轴上的减少与距离",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l10-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B3.ADD_SUB_MIXED",
+      "item_type": "multi_step",
+      "prompt": "3米长的绳子剪掉7/10米，还剩多少米？分别用“把3改成十分之几”和“先从其中1米里减”的方法解释。",
+      "expected_answer": "剩23/10米＝2又3/10米。",
+      "explanation": "方法一：3=30/10，30/10−7/10=23/10。方法二：3=2+1，从1米中剪掉7/10，留下3/10，再加原来的2米，得2又3/10。两种方法都保留同样的十分之一米单位。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L10 | retained source line 3878",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 10. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "588740dbfee4d2a3636d87598758f898e13fe360ebad55b0b1b9c519f49eb46a",
+        "source_lesson_family": "IM:G4:U3:L10",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "84aa6d885b7c4bb3491b7578eac7328008b25ac89d322081594bc46d8c0f20d7",
+        "source_span": {
+          "start": 140850,
+          "end": 156714
+        },
+        "source_spans": [
+          {
+            "start": 140850,
+            "end": 156714,
+            "sha256": "84aa6d885b7c4bb3491b7578eac7328008b25ac89d322081594bc46d8c0f20d7"
+          }
+        ],
+        "title_zh": "整数减分数",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l11-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B3.ADD_SUB_MIXED",
+      "item_type": "multi_step",
+      "prompt": "计算4又1/6−2又5/6。不能把1/6减5/6直接说成4/6；请先重新分组，再用加回的方法验算。",
+      "expected_answer": "1又2/6＝1又1/3。",
+      "explanation": "从4个整体中拿出1个，4又1/6=3又7/6。现在减2又5/6，整体剩1，分数剩2/6，结果1又1/3。验算：(1又2/6)+(2又5/6)=3又7/6=4又1/6，回到原数。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L11 | retained source line 4344",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 11. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "4f878529959ce4fda5e581437398f83401a932977e54a10324833e38e064e97f",
+        "source_lesson_family": "IM:G4:U3:L11",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "cebb6a672bd38db5c661a72da443662285bff57e77bd7eaf5c91541c5130feff",
+        "source_span": {
+          "start": 156714,
+          "end": 173069
+        },
+        "source_spans": [
+          {
+            "start": 156714,
+            "end": 173069,
+            "sha256": "cebb6a672bd38db5c661a72da443662285bff57e77bd7eaf5c91541c5130feff"
+          }
+        ],
+        "title_zh": "带分数怎样重新分组",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l12-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B3.ADD_SUB_MIXED",
+      "item_type": "multi_step",
+      "prompt": "两桶颜料分别有2又3/8升、1又7/8升。合在一起后用掉2又5/8升，还剩多少升？先求合并总量，再求剩余，并验证守恒。",
+      "expected_answer": "合计4又2/8升＝4又1/4升；剩1又5/8升。",
+      "explanation": "先合并整数与分数：(2+1)+(3/8+7/8)=3+10/8=4又2/8。再重组为3又10/8，减2又5/8得1又5/8。用掉的2又5/8加剩下的1又5/8为3又10/8，即4又2/8，与总量一致。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L12 | retained source line 4782",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 12. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "6f66a4ae3933b1939ce7aa9d3351fa283b05b013914c027b7a429cdcf4d7fea5",
+        "source_lesson_family": "IM:G4:U3:L12",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "2af9380b38e83271d364dbe0490127dd0a33b46322f8405dadaf51bf71f0c3be",
+        "source_span": {
+          "start": 173069,
+          "end": 185546
+        },
+        "source_spans": [
+          {
+            "start": 173069,
+            "end": 185546,
+            "sha256": "2af9380b38e83271d364dbe0490127dd0a33b46322f8405dadaf51bf71f0c3be"
+          }
+        ],
+        "title_zh": "先合并，再使用",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l13-stock-example-v1",
+      "knowledge_node_code": "G4.MD.B4.LINE_PLOT",
+      "item_type": "multi_step",
+      "prompt": "6根小木条的长度（厘米）依次为1/2、3/4、1/2、1、3/4、3/4。若在数轴点图上每根木条用一个点表示，1/2、3/4、1各要画几个点？最长与最短相差多少厘米？6根总长多少？",
+      "expected_answer": "1/2处2点，3/4处3点，1处1点；极差1/2厘米；总长17/4厘米＝4又1/4厘米。",
+      "explanation": "先统计每个测量值出现次数，点图上同位置的多个点要竖着叠放，不能用一个点代表全部同长木条。最长1减最短1/2为1/2。总长2×1/2+3×3/4+1×1=1+9/4+1=17/4。点数之和2+3+1=6，与木条根数一致。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L13 | retained source line 5135",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 13. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "cdbd8ef41e8f51b9a4ad984202e48d604374c9426631e7f2ea68f189f5253d51",
+        "source_lesson_family": "IM:G4:U3:L13",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "ca8adfd57f6b489b187e8bfcda3bc3a8122003e69d337903ba468565a7a4216e",
+        "source_span": {
+          "start": 185546,
+          "end": 203737
+        },
+        "source_spans": [
+          {
+            "start": 185546,
+            "end": 203737,
+            "sha256": "ca8adfd57f6b489b187e8bfcda3bc3a8122003e69d337903ba468565a7a4216e"
+          }
+        ],
+        "title_zh": "测量数据的点数与总量",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l14-stock-example-v1",
+      "knowledge_node_code": "G4.MD.B4.LINE_PLOT",
+      "item_type": "multi_step",
+      "prompt": "一组测量记录：5/8米有2条，7/8米有3条，1又1/8米有1条。每条在点图上对应一个点。共有几条？总长度和最长最短的差各是多少？若移去一条7/8米的记录，新的总长是多少？",
+      "expected_answer": "共6条；总长5米；极差1/2米；移去一条后总长33/8米＝4又1/8米。",
+      "explanation": "总数2+3+1=6。总长2×5/8+3×7/8+9/8=(10+21+9)/8=40/8=5。极差9/8−5/8=4/8=1/2。移去一条7/8后，总长40/8−7/8=33/8，数量变为5条；“条数”与“米数”不能混算。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L14 | retained source line 5632",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 14. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "4c8c2e8329b4d77ac9137882a7f07b857af40d32c58e0248de3cb442909c1464",
+        "source_lesson_family": "IM:G4:U3:L14",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "5b658263360feb5d3eba78459397675ff55132f5fa0d2fd9f6b95937996115ee",
+        "source_span": {
+          "start": 203737,
+          "end": 219486
+        },
+        "source_spans": [
+          {
+            "start": 203737,
+            "end": 219486,
+            "sha256": "5b658263360feb5d3eba78459397675ff55132f5fa0d2fd9f6b95937996115ee"
+          }
+        ],
+        "title_zh": "从频数恢复测量总量",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l15-stock-example-v1",
+      "knowledge_node_code": "G4.NF.B3.WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "两杯水分别有3/4升、2/8升，把它们全部倒入容量为1升的空壶，不计损耗。是否正好装满？若倒入后又用掉3/8升，壶中剩多少？说明为什么相加前不能直接把分母相加。",
+      "expected_answer": "3/4+2/8＝6/8+2/8＝1升，正好装满；用后剩5/8升。",
+      "explanation": "四分之一升与八分之一升不是同样大的份，先把3/4改写为6/8，才能合并份数。8个1/8为1升。使用3个1/8后，剩5个1/8。分母记录份的大小，不能用(3+2)/(4+8)作为总量。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L15 | retained source line 6095",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 15. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "ff7ce0d925287a61a08a8f9f1fc081935781785ed49c5b601d18bc704230c458",
+        "source_lesson_family": "IM:G4:U3:L15",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "41358a1c90a909d22725375e59f8931611fa48ccfc0cfe4dc8326e8a1cf60a7a",
+        "source_span": {
+          "start": 219486,
+          "end": 234905
+        },
+        "source_spans": [
+          {
+            "start": 219486,
+            "end": 234905,
+            "sha256": "41358a1c90a909d22725375e59f8931611fa48ccfc0cfe4dc8326e8a1cf60a7a"
+          }
+        ],
+        "title_zh": "先换成同样大小的小份",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l16-stock-example-v1",
+      "knowledge_node_code": "G4.NF.C5.TENTHS_TO_HUNDREDTHS",
+      "item_type": "multi_step",
+      "prompt": "一瓶有3/10升果汁，另一瓶有27/100升，合起来多少升？先写成分母100的分数，再说明离1升还差多少。",
+      "expected_answer": "57/100升；离1升还差43/100升。",
+      "explanation": "把每个十分之一再平均分成10份，3/10=30/100。因此30/100+27/100=57/100。1=100/100，剩余差距100/100−57/100=43/100。十分位和百分位的份大小不同，必须先统一。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L16 | retained source line 6476",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 16. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "26ef2a25cd0f785625ff7c2f49ecbbd65957989bcffc4db624629ce272ecff0c",
+        "source_lesson_family": "IM:G4:U3:L16",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "107722a7b5233a1634289465a878d330389a9bc69e2d7cbeb33627b780f0d22c",
+        "source_span": {
+          "start": 234905,
+          "end": 248586
+        },
+        "source_spans": [
+          {
+            "start": 234905,
+            "end": 248586,
+            "sha256": "107722a7b5233a1634289465a878d330389a9bc69e2d7cbeb33627b780f0d22c"
+          }
+        ],
+        "title_zh": "十分之一与百分之一",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l17-stock-example-v1",
+      "knowledge_node_code": "G4.NF.C5.TENTHS_TO_HUNDREDTHS",
+      "item_type": "multi_step",
+      "prompt": "计算8/10+57/100，先写成假分数，再写成带分数。说明分子大于100为什么不意味着运算出错。",
+      "expected_answer": "137/100＝1又37/100。",
+      "explanation": "8/10=80/100，80+57=137，所以总共有137个百分之一。100个组成1个整体，其余37个为37/100。两个小于1的数相加可以超过1，分子大于分母是正常结果。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L17 | retained source line 6884",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 17. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "85b6d4312fed8a42525622aa1b0e256a90865b4d960578a474a736549b307d05",
+        "source_lesson_family": "IM:G4:U3:L17",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "efb622fb575ae6b407c95d2cc8c265be5c508d28c6f3c745bc427c60fea3724c",
+        "source_span": {
+          "start": 248586,
+          "end": 266034
+        },
+        "source_spans": [
+          {
+            "start": 248586,
+            "end": 266034,
+            "sha256": "efb622fb575ae6b407c95d2cc8c265be5c508d28c6f3c745bc427c60fea3724c"
+          }
+        ],
+        "title_zh": "超过一的十进分数和",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u3-l18-stock-example-v1",
+      "knowledge_node_code": "G4.NF.C5.TENTHS_TO_HUNDREDTHS",
+      "item_type": "multi_step",
+      "prompt": "计算4/10+35/100+6/10+45/100。给出“全部化成百分之一”和“先凑成整数”两种方法，结果写成带分数。",
+      "expected_answer": "180/100＝1又80/100＝1又4/5。",
+      "explanation": "方法一：40/100+35/100+60/100+45/100=180/100。方法二：4/10+6/10=1，35/100+45/100=80/100，再相加为1又80/100。相加可以交换顺序并重新分组，但每个原加数都必须出现一次。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-3/ | IM:G4:U3:L18 | retained source line 7424",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 3, lesson 18. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "4713b3cd467efcb634808789487ca9bbc72d513d42f19f57c1b1cefbbef501df",
+        "source_lesson_family": "IM:G4:U3:L18",
+        "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+        "source_raw_sha256": "4681ab7bfbf47481247a755bd85d6d71c69658624958f97c745843067ffa115c",
+        "source_span": {
+          "start": 266034,
+          "end": 281075
+        },
+        "source_spans": [
+          {
+            "start": 266034,
+            "end": 281075,
+            "sha256": "4681ab7bfbf47481247a755bd85d6d71c69658624958f97c745843067ffa115c"
+          }
+        ],
+        "title_zh": "多项相加与凑整",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    }
+  ]
+}

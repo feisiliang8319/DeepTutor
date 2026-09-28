@@ -1,0 +1,122 @@
+{
+  "source_sha256": "4893bc6fc6d78b47210b1c53ff46d93066f5a302696663bd7a96c0bbd9b8e0cc",
+  "source_file": "raw-stock/im-g4-full/raw/grade4-unit3-extending-operations-to-fractions.md",
+  "source_lesson_spans_verified": 20,
+  "verified_tasks": 18,
+  "package_sha256": "527c191fecf9e4c672b17db6eea423dc104c649eebabf64a15d1a70af9dc47b7",
+  "builder_sha256": "566a03a0027eeeaccbf3cc10913d30ba73b6100e75d8134f319367426dbda632",
+  "source_records": [
+    "771618b61c9c54a1ab23883a729b0293be9116b9753f15cf41012b9abe0677c6",
+    "80548ef8eb6189d04b136863d786029aca48e0eb04b9b70009c1801e44ae3cbb",
+    "cdaf294578bde8d4d4f89aea17d3c88c53763cd41da3395c2dcce186514f5462",
+    "1b2d1eaf52e63f82f0706f195fa431927fbf2ca8d78c754650637b9b83963d14",
+    "181dab3a06a64de38219691a8bec488cd522ff647474dcd25e3e290494e03faa",
+    "819f3fce75a01e754579cf917050c19805f8309a139f66d1f9a46cc86654d8f7",
+    "e15501ee0ea800ead4fe8c33f26e0fcf8b37bc65791385054fbfab52d6527744",
+    "8d06071e4d54de00fc8c59a495d9336e45a86de47854bd1f0feb72cac627d2a4",
+    "6da505fde1b6bc880d7e92da8b0e0ecc59817b2e07d495a839708e5daa924b92",
+    "588740dbfee4d2a3636d87598758f898e13fe360ebad55b0b1b9c519f49eb46a",
+    "4f878529959ce4fda5e581437398f83401a932977e54a10324833e38e064e97f",
+    "6f66a4ae3933b1939ce7aa9d3351fa283b05b013914c027b7a429cdcf4d7fea5",
+    "cdbd8ef41e8f51b9a4ad984202e48d604374c9426631e7f2ea68f189f5253d51",
+    "4c8c2e8329b4d77ac9137882a7f07b857af40d32c58e0248de3cb442909c1464",
+    "ff7ce0d925287a61a08a8f9f1fc081935781785ed49c5b601d18bc704230c458",
+    "26ef2a25cd0f785625ff7c2f49ecbbd65957989bcffc4db624629ce272ecff0c",
+    "85b6d4312fed8a42525622aa1b0e256a90865b4d960578a474a736549b307d05",
+    "4713b3cd467efcb634808789487ca9bbc72d513d42f19f57c1b1cefbbef501df"
+  ],
+  "checks": [
+    {
+      "lesson": 1,
+      "record_id": "771618b61c9c54a1ab23883a729b0293be9116b9753f15cf41012b9abe0677c6",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 2,
+      "record_id": "80548ef8eb6189d04b136863d786029aca48e0eb04b9b70009c1801e44ae3cbb",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 3,
+      "record_id": "cdaf294578bde8d4d4f89aea17d3c88c53763cd41da3395c2dcce186514f5462",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 4,
+      "record_id": "1b2d1eaf52e63f82f0706f195fa431927fbf2ca8d78c754650637b9b83963d14",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 5,
+      "record_id": "181dab3a06a64de38219691a8bec488cd522ff647474dcd25e3e290494e03faa",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 6,
+      "record_id": "819f3fce75a01e754579cf917050c19805f8309a139f66d1f9a46cc86654d8f7",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 7,
+      "record_id": "e15501ee0ea800ead4fe8c33f26e0fcf8b37bc65791385054fbfab52d6527744",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 8,
+      "record_id": "8d06071e4d54de00fc8c59a495d9336e45a86de47854bd1f0feb72cac627d2a4",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 9,
+      "record_id": "6da505fde1b6bc880d7e92da8b0e0ecc59817b2e07d495a839708e5daa924b92",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 10,
+      "record_id": "588740dbfee4d2a3636d87598758f898e13fe360ebad55b0b1b9c519f49eb46a",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 11,
+      "record_id": "4f878529959ce4fda5e581437398f83401a932977e54a10324833e38e064e97f",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 12,
+      "record_id": "6f66a4ae3933b1939ce7aa9d3351fa283b05b013914c027b7a429cdcf4d7fea5",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 13,
+      "record_id": "cdbd8ef41e8f51b9a4ad984202e48d604374c9426631e7f2ea68f189f5253d51",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 14,
+      "record_id": "4c8c2e8329b4d77ac9137882a7f07b857af40d32c58e0248de3cb442909c1464",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 15,
+      "record_id": "ff7ce0d925287a61a08a8f9f1fc081935781785ed49c5b601d18bc704230c458",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 16,
+      "record_id": "26ef2a25cd0f785625ff7c2f49ecbbd65957989bcffc4db624629ce272ecff0c",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 17,
+      "record_id": "85b6d4312fed8a42525622aa1b0e256a90865b4d960578a474a736549b307d05",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 18,
+      "record_id": "4713b3cd467efcb634808789487ca9bbc72d513d42f19f57c1b1cefbbef501df",
+      "exact_arithmetic_checked": true
+    }
+  ],
+  "optional_lessons": "19–20 retained classroom references; not converted in this batch",
+  "scope": "New worked examples aligned to18 retained lesson goals; original teacher responses and diagrams remain incomplete; teaching/grade/rights approval unchanged."
+}

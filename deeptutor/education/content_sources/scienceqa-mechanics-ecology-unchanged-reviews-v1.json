@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_linked_records": 427,
+  "reviews": [
+    {
+      "concept_id": "436b8c19f0dac8b1b8ab519e433f7ae4a7f4ba602a9971e8f287f3ec8905ba89",
+      "lecture": "Gravitational potential energy is stored between any two objects. So, for every object on or near Earth, there is gravitational potential energy stored between the object and Earth.\nThe amount of gravitational potential energy stored between an object and Earth depends on the mass of the object. The amount of gravitational potential energy also depends on the distance between the object and the center of Earth. This distance increases when the object moves higher and decreases when the object moves lower.\nIf the distance between an object and the center of Earth changes, the gravitational potential energy stored between the object and Earth will change. The table below shows how this change can happen.\nWhen an object's mass stays the same and its distance from the center of Earth... | Gravitational potential energy stored between the object and Earth...\nincreases | increases\ndecreases | decreases\nstays the same | stays the same",
+      "expected_records": 71,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "At fixed masses, U=-GMm/r increases as distance increases; the passage describes this relation for an object on or near Earth. Its text can be retained.",
+      "limitations": "The comparison uses the ordinary Newtonian Earth-object model and a fixed reference for potential energy; it is not a claim about arbitrary internal mass distributions. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/13-3-gravitational-potential-energy-and-total-energy",
+          "supports": "Outside a spherical source, gravitational potential is -GMm/r and rises toward zero as separation increases."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "de44a3f2ed9851a0a52019ba119eb788aa3217ff28c9b4273467ce0696cdc7e1",
+      "lecture": "According to Newton's third law, for every force, there is an equal and opposite force. This means that if one object is applying a force on a second object, the second object must also be applying a force on the first object, but in the opposite direction.\nFor example, if your hand is pushing down on a table, the table is also pushing up on your hand. Or, if you are pulling forward on a rope, the rope is also pulling back on you.",
+      "expected_records": 43,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "Both examples correctly place the two forces on two different objects, with equal magnitudes and opposite directions. No text correction is needed.",
+      "limitations": "Ordinary Newtonian mechanical interactions; the two forces must not be cancelled in a one-object force diagram. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/4-4-newtons-third-law-of-motion-symmetry-in-forces",
+          "supports": "Equal and opposite forces act on the interacting bodies, with table and contact-force examples."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "817755e6f1d3bb2d7be78ed653a5051883df736efac6fe851cce4e030f3b1490",
+      "lecture": "An object's velocity describes its speed and its direction.\nAn object has a constant velocity when neither its speed nor its direction is changing. So, an object has a constant velocity when the object is:\nmoving in a straight line at a constant speed, or\nremaining motionless.\nIf an object does not have a constant velocity, the object is accelerating. An object is accelerating when either its speed or its direction is changing. So, an object is accelerating when the object is:\nspeeding up,\nslowing down, or\nchanging direction.",
+      "expected_records": 20,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage correctly includes changes of speed or direction as acceleration, and uniform straight-line motion or rest as constant velocity.",
+      "limitations": "Velocity is described relative to one fixed reference frame; at rest the zero velocity vector has no distinguished direction. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/college-physics-2e/pages/2-4-acceleration",
+          "supports": "Acceleration is the change of a velocity vector, including a direction change without speed change."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "37fe855ec33a8b7deda59cfab1f90a0ca4d093e27904ab4b198d7b68a8c2ac8a",
+      "lecture": "An environment includes all of the biotic, or living, and abiotic, or nonliving, things in an area. An ecosystem is created by the relationships that form among the biotic and abiotic parts of an environment.\nThere are many different types of ecosystems. Here are some ways in which these ecosystems can differ from each other:\nthe pattern of weather, or climate\nthe type of soil or water\nthe organisms that live there",
+      "expected_records": 5,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage consistently distinguishes living and nonliving components and their interactions; population/community terminology, where present, agrees with introductory ecology.",
+      "limitations": "An introductory definition for the same place and time; the passage does not establish precise boundaries or measured conditions of a particular ecosystem. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/44-1-the-scope-of-ecology",
+          "supports": "Distinguishes organism, population, community and ecosystem and includes abiotic components such as soil and water."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "67d1ff6f9e9c038feaf14e090c2706bcec33d85f00ea8801f93c16061cc4d28b",
+      "lecture": "An environment includes all of the biotic, or living, and abiotic, or nonliving, things in an area. An ecosystem is created by the relationships that form among the biotic and abiotic parts of an environment.\nThere are many different types of terrestrial, or land-based, ecosystems. Here are some ways in which terrestrial ecosystems can differ from each other:\nthe pattern of weather, or climate\nthe type of soil\nthe organisms that live there",
+      "expected_records": 173,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage consistently distinguishes living and nonliving components and their interactions; population/community terminology, where present, agrees with introductory ecology.",
+      "limitations": "An introductory definition for the same place and time; the passage does not establish precise boundaries or measured conditions of a particular ecosystem. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/44-1-the-scope-of-ecology",
+          "supports": "Distinguishes organism, population, community and ecosystem and includes abiotic components such as soil and water."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "9d782bc92fb6ccd989995a4a558e675b780c7fa67cf97b94ac4eeb9eed15c8a9",
+      "lecture": "In an environment, organisms interact with each other and with their nonliving surroundings. To help describe these interactions, ecologists use specific terms for different types of groups.\nA single organism is an individual. Individuals of the same species that live in the same place are part of a population.\nMultiple populations of different species that live in the same place are part of a community.\nTogether, communities of living organisms and the nonliving parts of their environment make up an ecosystem.",
+      "expected_records": 19,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage consistently distinguishes living and nonliving components and their interactions; population/community terminology, where present, agrees with introductory ecology.",
+      "limitations": "An introductory definition for the same place and time; the passage does not establish precise boundaries or measured conditions of a particular ecosystem. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/44-1-the-scope-of-ecology",
+          "supports": "Distinguishes organism, population, community and ecosystem and includes abiotic components such as soil and water."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "c7fd5850805158822da307ce3f1e4df3d1a48251c7377b1110006358f98000a6",
+      "lecture": "Animals increase their reproductive success when they have offspring that survive to reproduce.\nAnimals can increase their chances of having offspring by behaving in ways that help them get partners to mate and reproduce with. These partners are called mates. For example, animals may make special sounds, perform specific dances, or show off bright colors to attract mates. Animals may also compete with each other for mates.\nAnimals can increase the chances that their offspring will survive to reproduce by caring for and protecting them. For example, animals may feed their offspring or guard them from predators. These behaviors increase the chances that the offspring will survive to adulthood, when they can reproduce.\nMany behaviors can increase the chances that animals will have offspring that survive to reproduce. But the behaviors cannot guarantee that the animals will have greater reproductive success. Animals that attract or compete for mates won't always successfully mate and reproduce, and offspring that are fed and protected won't always survive to adulthood.",
+      "expected_records": 9,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "Courtship, mate competition and parental care are described as possible contributors to reproductive success, and the passage explicitly avoids a guarantee of mating or survival.",
+      "limitations": "Examples apply to species with these behaviours; they do not imply all animals reproduce sexually or provide parental care, nor that every costly behaviour improves fitness. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/45-7-behavioral-biology-proximate-and-ultimate-causes-of-behavior",
+          "supports": "Describes mating displays, competition, care of offspring and the evolutionary costs and benefits of behaviour."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "b3526350f2fe32768c70c3261ffd5bc0ab021e8cf48fc32eb3bc09e9c9c71525",
+      "lecture": "A material is a type of matter. Wood, glass, metal, and plastic are common materials.",
+      "expected_records": 64,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The elementary material and pure-substance/mixture definitions agree with the ordinary matter-classification model; the examples name familiar material categories rather than chemical elements.",
+      "limitations": "Material categories such as metal and plastic are not claims of chemical purity; composition is considered at the introductory chemistry level. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+          "supports": "Distinguishes matter, pure substances of definite composition, and mixtures containing multiple substances."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "66fa29f831d145d247a2d1bbf929ae54f1387035560fff64c3a26bb6a61938b6",
+      "lecture": "A pure substance is made of only one type of matter.\nA mixture is made of two or more types of matter mixed together.",
+      "expected_records": 23,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The elementary material and pure-substance/mixture definitions agree with the ordinary matter-classification model; the examples name familiar material categories rather than chemical elements.",
+      "limitations": "Material categories such as metal and plastic are not claims of chemical purity; composition is considered at the introductory chemistry level. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+          "supports": "Distinguishes matter, pure substances of definite composition, and mixtures containing multiple substances."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    }
+  ]
+}

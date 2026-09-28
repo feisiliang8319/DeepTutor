@@ -226,6 +226,10 @@ def build(base: Path, recipe_path: Path, output: Path) -> dict:
         item['skills'].add(row['metadata'].get('skill',''))
         if key in combined_reviews:
             item.update(state='shared_lecture_corrected', lecture_revised=combined_reviews[key]['lecture_after'], review_scope='Not a review of individual questions, answers, diagrams, or grade suitability.')
+        elif assessment := row['metadata'].get('lecture_assessment'):
+            if assessment.get('concept_id') != key or assessment.get('lecture') != original or assessment.get('scope') != 'shared_lecture_only_not_question_or_answer_approval' or assessment.get('decision') != 'checked_unchanged':
+                raise ValueError('Previous unchanged-lecture assessment changed')
+            item.update(state='shared_lecture_checked_unchanged', review_scope=assessment['scope'], review_limitations=assessment['limitations'])
     queue = []
     for item in concepts.values():
         item['source_paths'] = sorted(item['source_paths']); item['skills'] = sorted(item['skills'])

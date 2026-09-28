@@ -3668,5 +3668,8 @@
   "teaching.选项": "Options",
   "teaching.知识背景": "Background knowledge",
   "teaching.来源定位": "Source location",
-  "teaching.原始年级和难度仅为来源标签，不代表学生定级或审核通过。": "Source grade and difficulty are metadata, not student placement or content approval."
+  "teaching.原始年级和难度仅为来源标签，不代表学生定级或审核通过。": "Source grade and difficulty are metadata, not student placement or content approval.",
+  "teaching.历史计量单位需转换": "Historical units need conversion",
+  "teaching.情境需适龄改编": "Context needs age-appropriate adaptation",
+  "teaching.操作活动无单独解答": "Activity has no separate solution"
 }

@@ -1,0 +1,553 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "旧书存量 · 14道独立核验的数学改编候选",
+  "items": [
+    {
+      "id": "historical-amusements-50-shared-ratios-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "三个小组分770颗计数珠。甲每分4颗，乙分3颗；甲每分6颗，丙分7颗。三个小组各分多少颗？说明两个关系如何同时满足。",
+      "expected_answer": "甲264颗，乙198颗，丙308颗。",
+      "explanation": "把两条关系中的甲都统一为12份，则甲、乙、丙为12、9、14份。总份数35，每份770÷35=22颗，得到264、198、308。检验总和770，264:198=4:3，264:308=6:7。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 50 | source line 1055",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 50. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "09ec241c34e873dc2f68692220a2274641a5a59826c5bdfe93b9e56824a84ce3",
+        "source_problem_family": "amusements:50",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 46412,
+            "end": 46843,
+            "sha256": "70cf67a73b5b5f66783020a879784a0498d2c8c6caa61f1dbe841ba650b5dccd"
+          },
+          {
+            "role": "solution",
+            "start": 542397,
+            "end": 542893,
+            "sha256": "08fdbb20547c848b165a933180694ead68959e0e9713ff83831691ba0d4413bc"
+          }
+        ],
+        "title_zh": "拼接比例关系",
+        "adaptation_note": "只选分配部分，删去年龄推断；可用分组计数讲解，不预设学生学过比例符号。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-amusements-58-time-backtrack-v1",
+      "knowledge_node_code": "G4.MD.A2.ELAPSED_TIME",
+      "item_type": "multi_step",
+      "prompt": "现在是下午某个时刻。50分钟前，距离15:00已经过去的分钟数，恰好等于现在距离18:00还剩分钟数的4倍。现在是几点几分？请检验。",
+      "expected_answer": "17:34。",
+      "explanation": "15:00到18:00共180分钟，扣去50分钟，剩130分钟分成“现在距18:00的1份”和“50分钟前距15:00的4份”，每份26分钟。现在18:00前26分钟，即17:34；50分钟前16:44，距15:00为104分钟，104=4×26。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 58 | source line 1314",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 58. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "8b7c7dfe0fa43e5c93fe47533bcd3a0b82eaab7aa47afdb0f587cd3f13e9f8f9",
+        "source_problem_family": "amusements:58",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 56980,
+            "end": 57119,
+            "sha256": "3290a75ba1cf28d1d29959d7a2c5c00199d452c0a9fa627c65d665be71b33477"
+          },
+          {
+            "role": "solution",
+            "start": 546240,
+            "end": 546283,
+            "sha256": "28d7e7c3952b21bcf7ed1a66d72917107b7bb473324dac7b0dc2711be3239552"
+          }
+        ],
+        "title_zh": "倒推时刻",
+        "adaptation_note": "保留数学结构，以完整中文条件重写；不依赖原图或历史叙事。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-amusements-67-average-speed-v1",
+      "knowledge_node_code": "G4.MD.A2.MEASURE_WORD_PROBLEMS",
+      "item_type": "multi_step",
+      "prompt": "一辆模型车从甲站到乙站，路程60米，速度每分钟10米；原路返回时速度每分钟15米，全程没有停留。平均速度定义为总路程除以总时间。往返平均速度是多少？为什么不能直接取10与15的平均数？",
+      "expected_answer": "每分钟12米。",
+      "explanation": "去程60÷10=6分钟，回程60÷15=4分钟，总路程120米，总时间10分钟，所以120÷10=12米/分钟。两个速度持续的时间不相同，不能各占一半直接平均。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 67 | source line 1447",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 67. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "f7fb62b0830b17b9adf9bcd899e5480439f400e9acb00e60a7a30850fa9c3302",
+        "source_problem_family": "amusements:67",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 62657,
+            "end": 63035,
+            "sha256": "fc4c2ac0463b9106fe5b1f2edbfb6df7df8f690080a58fc396a887eaa276278c"
+          },
+          {
+            "role": "solution",
+            "start": 553847,
+            "end": 554196,
+            "sha256": "10a3c2c81ca09fd4131ad012b6195faeaae87e019ccbe13bcd81cdf087eba016"
+          }
+        ],
+        "title_zh": "总路程与总时间",
+        "adaptation_note": "保留数学结构，以完整中文条件重写；不依赖原图或历史叙事。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-amusements-74-square-distances-v1",
+      "knowledge_node_code": "G4.OA.C5.PATTERN_FEATURES",
+      "item_type": "multi_step",
+      "prompt": "数轴上依次放10个筹码，第1个在原点，相邻间隔依次为1、3、5、7、9、11、13、15、17个长度单位。机器人从原点出发，每次只能取1个筹码并带回原点，直线往返；取走原点上的筹码不移动。取完全部筹码共走多少个长度单位？",
+      "expected_answer": "570。",
+      "explanation": "各筹码到原点的距离为0、1、4、9、16、25、36、49、64、81，即前若干连续奇数的和。距离合计285，每个非原点筹码都需来回，所以总路程2×285=570；取的先后顺序不改变总数。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 74 | source line 1543",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 74. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "16c4d73e2280913f4370f788abe4bbc1d1d61715337b6fe38fb71c3819c9f599",
+        "source_problem_family": "amusements:74",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 67257,
+            "end": 68057,
+            "sha256": "ccc1d1b6cb9e1bfcb27c89d3408660f6f37cfaca1540884ce70af50b61cb0b1e"
+          },
+          {
+            "role": "solution",
+            "start": 556179,
+            "end": 556555,
+            "sha256": "7e57dd99f6aa5468af07b7c68679c68af5d23cde01a24f1895e97ea9fda6df06"
+          }
+        ],
+        "title_zh": "奇数间隔与往返",
+        "adaptation_note": "把原书50个缩小为10个，所有间隔明确列出；不要求使用平方和公式。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-amusements-101-pair-weighings-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "5个盒子的质量互不相同。把它们两两组合称重，10个结果由小到大为110、112、113、114、115、116、117、118、120、121克。求每个盒子的质量，并说明为什么唯一。",
+      "expected_answer": "54、56、58、59、62克。",
+      "explanation": "10个结果的和为1156，每个盒子恰好出现4次，所以5盒总重289。按从轻到重记为甲乙丙丁戊，甲+乙=110，甲+丙=112，丁+戊=121，丙+戊=120。故丙=289−110−121=58，甲=54，乙=56，戊=62，丁=59。逐一加出全部10个两两和与题目完全相同；上述量被依次确定，因此解唯一。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 101 | source line 2052",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 101. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "336ed3992d354b8df309acdc15e1951888c709e2288be80f9a18b2bfcc72098e",
+        "source_problem_family": "amusements:101",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 89532,
+            "end": 90147,
+            "sha256": "397f101bafd198190195ab6fdb406c7da455d570f4f25df26983cad412c79f88"
+          },
+          {
+            "role": "solution",
+            "start": 584881,
+            "end": 585633,
+            "sha256": "d9863f19ce96160a211fc8aceba0f556600987bb0a8bf40efa6beef064c1c303"
+          }
+        ],
+        "title_zh": "由两两总重还原",
+        "adaptation_note": "纠正原书解答中把110识别成no的文字错误，保留原始文本作为证据。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-amusements-103-equal-shelves-v1",
+      "knowledge_node_code": "G4.OA.A3.MULTISTEP_EQUATION",
+      "item_type": "multi_step",
+      "prompt": "两排书架的盒子数相同，每排至少6个。甲先给第二排3个盒子贴标签，再去负责第一排；乙贴完第二排其余盒子，又去帮第一排贴了6个。每个盒子只贴一次，最后全部完成。谁贴得多，多几个？说明不需要知道每排总数的原因。",
+      "expected_answer": "乙多6个。",
+      "explanation": "以每排原有的盒子数为一份：甲负责第一排却少贴6个，另贴第二排3个，共比一排少3；乙贴第二排少3个，又贴第一排6个，共比一排多3。所以乙比甲多3+3=6，与每排总数无关。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 103 | source line 2083",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 103. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "4f5e36a31cffe6ba97af3525aa0ed4164c3c5b377b82cf0dc7cd91890c708131",
+        "source_problem_family": "amusements:103",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 91039,
+            "end": 91706,
+            "sha256": "515f2a4f9a5385db9096232ca32c56e287684e8714c5092c7e4b7996551d5527"
+          },
+          {
+            "role": "solution",
+            "start": 585813,
+            "end": 586105,
+            "sha256": "0c29b4518d06638b80e70aff606d227ccdc7f76c1ae147ba227adacfb23fc4cb"
+          }
+        ],
+        "title_zh": "转移工作量",
+        "adaptation_note": "保留数学结构，以完整中文条件重写；不依赖原图或历史叙事。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-amusements-110-seedling-budget-v1",
+      "knowledge_node_code": "G4.OA.A3.MULTISTEP_EQUATION",
+      "item_type": "multi_step",
+      "prompt": "买100株花苗共用100元。甲种每株3元，乙种每株2元，丙种每株0.5元，三种都买了，乙种株数是甲种的5倍。三种各买多少株？",
+      "expected_answer": "甲种5株，乙种25株，丙种70株。",
+      "explanation": "若100株全买丙种，只用50元，还需增加50元。每1株甲种与5株乙种为一组，用13元；同样6株丙种只用3元，每组增加10元。因此这样的组有5组：甲5株、乙25株，丙100−30=70株。检验5×3+25×2+70×0.5=100。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 110 | source line 2202",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 110. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "85311f56d34f630686634ec289d5349ebd1d5c5860c5f96f3ef3301fe8f86b8a",
+        "source_problem_family": "amusements:110",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 96293,
+            "end": 96966,
+            "sha256": "ffccb81cbe8e7a0b130fdc5b2fb1e968a5584e4e84521ae72c331a798e2276e8"
+          },
+          {
+            "role": "solution",
+            "start": 588522,
+            "end": 588829,
+            "sha256": "e1a59e19b4e4ee62bd87c41ea1b1ea06fcea90331432d0a48395089a2199291a"
+          }
+        ],
+        "title_zh": "三种花苗",
+        "adaptation_note": "移除原书人物身份和未经核实的历史归属，改写为花苗采购。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-amusements-263-round-table-edges-v1",
+      "knowledge_node_code": "PS.COUNTING.SYSTEMATIC_ENUM",
+      "item_type": "multi_step",
+      "prompt": "7位同学A至G围坐圆桌。每次每人有左右两个邻座，某两人只要相邻，就记一次，不区分左右。要求不同轮次不能出现同一对邻座。给出的三轮顺序为ABCDEFG、AFBDGEC、AEBGCFD，每行首尾也相邻。验证它们可行，并证明不可能安排第4轮。",
+      "expected_answer": "三轮可行，最多3轮。",
+      "explanation": "把每轮7对邻座写成无序对：第1轮AB、BC、CD、DE、EF、FG、AG；第2轮AF、BF、BD、DG、EG、CE、AC；第3轮AE、BE、BG、CG、CF、DF、AD。21对全部不同。每个人只有6位可能的邻座，每轮用2位，最多6÷2=3轮，所以三轮已达上限。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 263 | source line 6058",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 263. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "62fa7d9ec705ad9198dd660b6a2d7642eb3508af9191fe9f054b33b9eeced152",
+        "source_problem_family": "amusements:263",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 274305,
+            "end": 274925,
+            "sha256": "15680bad7ff0547177f166298fae6756394149d6f9b4f53d2a22bef379fc575b"
+          },
+          {
+            "role": "solution",
+            "start": 740160,
+            "end": 740602,
+            "sha256": "6f8f70e41e5ea9a8f2ab823e7762e367a42c7829ac95e91798430131cb6b25ba"
+          }
+        ],
+        "title_zh": "不重复的邻座",
+        "adaptation_note": "选取原题的不重复邻座条件，不要求原书另加的远近最优化。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-amusements-267-four-bags-v1",
+      "knowledge_node_code": "PS.COUNTING.SYSTEMATIC_ENUM",
+      "item_type": "multi_step",
+      "prompt": "A、B、C、D各有一个同名字母标记的袋子。把4个袋子分给4人，每人1个，要求每人都不拿自己的袋子。有多少种分法？可按A拿到的袋子分类，说明没有遗漏。",
+      "expected_answer": "9种。",
+      "explanation": "按A拿B、C、D分为互不重叠的3类。A拿B时，按B拿A、C、D，剩下人的袋子分别只能是CD→DC、CD→DA、CD→AC，得到按A、B、C、D领取顺序的BADC、BCDA、BDAC，共3种。另两类由交换字母得到，同样各3种，所以3×3=9。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 267 | source line 6112",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 267. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "bc32b7780403ca66b6b48e5e794eb89ad59ee9f74405b6f91bfc5a5b3bf9eb04",
+        "source_problem_family": "amusements:267",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 276544,
+            "end": 277734,
+            "sha256": "9e40f57d895c729764e5a7808af9ab22b235a9b3eed75197ff07d839999e4602"
+          },
+          {
+            "role": "solution",
+            "start": 742817,
+            "end": 743487,
+            "sha256": "c9be082e0e37ea1448d077b5a1717cc0c685ef0b1dffa43624648903ea304913"
+          }
+        ],
+        "title_zh": "全部拿错的方法数",
+        "adaptation_note": "把8人缩减为4人，改为袋子分配；不使用原书饮酒情境，不把计数改称概率。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-amusements-347-grid-rectangles-v1",
+      "knowledge_node_code": "PS.COUNTING.SYSTEMATIC_ENUM",
+      "item_type": "multi_step",
+      "prompt": "一张完整网格由4行5列单位正方形组成。只数边与网格线重合的长方形，其中包括正方形。共有多少个长方形？其中正方形多少个，非正方形多少个？解释计数方法。",
+      "expected_answer": "长方形150个，其中正方形40个，非正方形110个。",
+      "explanation": "5条水平线中选2条有4+3+2+1=10种，6条竖直线中选2条有5+4+3+2+1=15种；每组边界唯一对应一个长方形，共10×15=150。边长1、2、3、4的正方形分别有4×5、3×4、2×3、1×2个，共40，非正方形150−40=110。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 347 | source line 8567",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 347. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "ba65282dabd47eb7a3a4be6367c3edc46fa3a1f6af29396dfe951f4e2b4266ab",
+        "source_problem_family": "amusements:347",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 381433,
+            "end": 381726,
+            "sha256": "f347fb80e812eb326159ad5f34c489b3f96a9b2cebc2f65f4418cc9c6e41815e"
+          },
+          {
+            "role": "solution",
+            "start": 832618,
+            "end": 833128,
+            "sha256": "91bc615c7583360c3ebd11fab99f050315a88231a4e095daa998b624ec3df833"
+          }
+        ],
+        "title_zh": "网格里的长方形",
+        "adaptation_note": "将8×8棋盘改为4×5，并在题干给出完整网格定义，不依赖外部图片。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-amusements-418-stair-path-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "把地面记为0，8级台阶记为1至8，上层平台记为9。机器人从0出发，每次只能向相邻编号移动1格。要求到达9恰好两次，第二次到9时结束；离开起点后回到0恰好一次；到达1至8各位置的次数必须相同。至少移动多少次？给出路线和最少性的理由。",
+      "expected_answer": "19次。",
+      "explanation": "可走0→1→0→1→2→3→2→3→4→5→4→5→6→7→6→7→8→9→8→9，共19次。1至8各到达2次，离开起点后到0一次，到9两次。因为必须到9两次且只能相邻移动，8至少到达2次，故1至8每处至少2次，共至少16次；再加到0的1次及到9的2次，下限19，路线达到下限。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 418 | source line 11179",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 418. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "9b7ca7532bb515b594af02fd1ea65e2673eaa2c74098e152b674818e38ccc217",
+        "source_problem_family": "amusements:418",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 502146,
+            "end": 503103,
+            "sha256": "dac44161f23b0e5b3e6075d33177898e4cad9dbd06e7f5415ad989be1f4521ac"
+          },
+          {
+            "role": "solution",
+            "start": 910590,
+            "end": 911036,
+            "sha256": "b339a000beaf2d82f742c4e8bc6f43bd34e0b4ec220f6951d34ae26378dff950"
+          }
+        ],
+        "title_zh": "公平经过的阶梯路线",
+        "adaptation_note": "明确起点不计作一次返回，区分台阶与平台，给出下界证明。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-canterbury-88-whole-eggs-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "一篮鸡蛋依次卖给4位顾客。第1位拿走当时总数的1/2再加1/2个；第2位拿走余下的1/3再加1/3个；第3位拿走余下的1/4再加1/4个；第4位拿走余下的1/5再加1/5个。每次实际拿走的都是整数个鸡蛋，余下的恰好平均分给13人，每人至少1个。最初至少有多少个鸡蛋？",
+      "expected_answer": "719个。",
+      "explanation": "设最初为N个，每一步“余数+1”分别乘1/2、2/3、3/4、4/5，四步后余数为(N+1)/5−1=(N−4)/5。设最后每人分k个，N=65k+4。各步必须是整数，尤其第一步要求N为奇数，第二步要求N+1能被6整除，第三步要求N+1能被12整除，第四步要求N+1能被20整除；合在一起N+1必须是60的倍数。65k+5是60的倍数，等价13k+1是12的倍数，即k+1是12的倍数。最小正整数k=11，N=719。过程719→359→239→179→143，143÷13=11，每次卖出数均为整数。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/27635 | Problem 88 | source line 3701",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. The Canterbury Puzzles, problem 88. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 02aa60bc6c3b5982246b0e1ef68428a5b9a7b83980938ceb189df51f26a0762a.",
+      "rubric_json": {
+        "source_record_id": "8c96e6a11b68194eefb82e28e080460cac42c35d3cfaf285220c083fd0483236",
+        "source_problem_family": "canterbury:88",
+        "source_sha256": "02aa60bc6c3b5982246b0e1ef68428a5b9a7b83980938ceb189df51f26a0762a",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 168698,
+            "end": 169875,
+            "sha256": "df036e84ccb6c06f6ccc7556112133bd1fde0f6ed685acb7281b4876094190fb"
+          },
+          {
+            "role": "solution",
+            "start": 296379,
+            "end": 296822,
+            "sha256": "404da2abda892be1f89f5e7a37f115068b4860364fbe94579e253906ee72e7a4"
+          }
+        ],
+        "title_zh": "不切开的鸡蛋",
+        "adaptation_note": "补充每位朋友至少分1个，以及正整数最小性的完整推导。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-canterbury-105-cards-and-work-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "一个小组有若干名成员，另有1位访客。每位成员给其他每位成员各1张卡片；访客只与其中一部分成员互相各送1张卡片。送出的卡片共144张。所有成员完成一项任务需9天，每个人效率相同且固定；若与访客交换过卡片的成员全都不参加，其他人独立完成同一任务要多少天？",
+      "expected_answer": "18天。",
+      "explanation": "设成员n人，与访客交换的有s人，1≤s≤n，卡片总数n(n−1)+2s=144。n≤11时最多n(n+1)≤132；n≥13时成员间就至少156。因此n=12，s=(144−132)÷2=6。余下6人是原来的一半，完成相同工作需要9×2=18天。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/27635 | Problem 105 | source line 4147",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. The Canterbury Puzzles, problem 105. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 02aa60bc6c3b5982246b0e1ef68428a5b9a7b83980938ceb189df51f26a0762a.",
+      "rubric_json": {
+        "source_record_id": "a4dbb77daf5e0e8256deea99ae12db62825389fb988e9795a23e6f9591ff44e9",
+        "source_problem_family": "canterbury:105",
+        "source_sha256": "02aa60bc6c3b5982246b0e1ef68428a5b9a7b83980938ceb189df51f26a0762a",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 188870,
+            "end": 189621,
+            "sha256": "b9f16d321d4cd1fc01fe0fd9b58c367dc33305ac407f29ac7122eb8f1ec526e3"
+          },
+          {
+            "role": "solution",
+            "start": 309953,
+            "end": 311215,
+            "sha256": "2289286fad4ea21455677ff3b305aaa889200c21fdb3dbb0540fff81109a107e"
+          }
+        ],
+        "title_zh": "卡片交换与工作量",
+        "adaptation_note": "原故事情境改为卡片；工时改为整数天，明确固定相同效率。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    },
+    {
+      "id": "historical-canterbury-111-growing-grass-v1",
+      "knowledge_node_code": "G4.OA.A3.MULTISTEP_EQUATION",
+      "item_type": "multi_step",
+      "prompt": "理想化草场模型中，牛每天吃草量相同且固定，草每天均匀生长；各块草场开始时每公顷草量相同，每公顷每天新增草量也相同。10公顷草场供12头牛吃16天刚好吃完，或供18头牛吃8天刚好吃完。40公顷草场供多少头牛吃6天刚好吃完？",
+      "expected_answer": "88头。",
+      "explanation": "以一头牛一天吃的量为1份。10公顷16天提供12×16=192份，8天提供18×8=144份，多8天多长48份，每天新长6份；初始草量144−8×6=96份。40公顷初始有384份，每天长24份，6天总计384+24×6=528份，供528÷6=88头。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/27635 | Problem 111 | source line 4321",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. The Canterbury Puzzles, problem 111. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 02aa60bc6c3b5982246b0e1ef68428a5b9a7b83980938ceb189df51f26a0762a.",
+      "rubric_json": {
+        "source_record_id": "26767025a1595cf480633c17a62d607a44f472e85281fa8cc3d4722fee3ad0ab",
+        "source_problem_family": "canterbury:111",
+        "source_sha256": "02aa60bc6c3b5982246b0e1ef68428a5b9a7b83980938ceb189df51f26a0762a",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 196994,
+            "end": 197744,
+            "sha256": "e4e45d28218054bb8284c91b15d601acfe3fc2f3613e5eb48b825ee346b91948"
+          },
+          {
+            "role": "solution",
+            "start": 316557,
+            "end": 317632,
+            "sha256": "c395890783e05e0e64e151e5732860306a6a119396bce213b532d0bc37e43526"
+          }
+        ],
+        "title_zh": "一边增长一边消耗",
+        "adaptation_note": "使用明确的恒速增长理想模型，去掉历史人物归属；这是数学模型，不是现实养殖建议。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。"
+      }
+    }
+  ]
+}

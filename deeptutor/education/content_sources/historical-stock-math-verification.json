@@ -1,0 +1,225 @@
+{
+  "package_sha256": "bcd331780f2d3f11f398a92ecdcf97d6cc9ba569db38e897ba0073562c0df1fe",
+  "verified_tasks": 14,
+  "checks": [
+    {
+      "name": "shared-ratios",
+      "result": [
+        [
+          264,
+          198,
+          308
+        ]
+      ],
+      "method": "Enumerate all positive integer allocations satisfying both ratios and the total."
+    },
+    {
+      "name": "time-backtrack",
+      "result": [
+        1054
+      ],
+      "method": "All minute positions between 15:00 and 18:00."
+    },
+    {
+      "name": "average-speed",
+      "result": "12",
+      "method": "Exact total-distance/total-time fraction."
+    },
+    {
+      "name": "square-distances",
+      "result": 570,
+      "method": "Accumulate successive gaps and each separate round trip."
+    },
+    {
+      "name": "pair-weighings",
+      "result": [
+        [
+          54,
+          56,
+          58,
+          59,
+          62
+        ]
+      ],
+      "method": "Exhaust all positive sorted weights; smallest two pair sums determine b,c. Compare complete ten-sum multiset."
+    },
+    {
+      "name": "equal-shelves",
+      "result": [
+        6
+      ],
+      "method": "Check finite instances plus algebraic cancellation n+3-(n-3)=6 in authored proof."
+    },
+    {
+      "name": "seedling-budget",
+      "result": [
+        [
+          5,
+          25,
+          70
+        ]
+      ],
+      "method": "Exhaust every feasible positive quantity of first plant type using exact fractions."
+    },
+    {
+      "name": "round-table-edges",
+      "result": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "C"
+        ],
+        [
+          "A",
+          "D"
+        ],
+        [
+          "A",
+          "E"
+        ],
+        [
+          "A",
+          "F"
+        ],
+        [
+          "A",
+          "G"
+        ],
+        [
+          "B",
+          "C"
+        ],
+        [
+          "B",
+          "D"
+        ],
+        [
+          "B",
+          "E"
+        ],
+        [
+          "B",
+          "F"
+        ],
+        [
+          "B",
+          "G"
+        ],
+        [
+          "C",
+          "D"
+        ],
+        [
+          "C",
+          "E"
+        ],
+        [
+          "C",
+          "F"
+        ],
+        [
+          "C",
+          "G"
+        ],
+        [
+          "D",
+          "E"
+        ],
+        [
+          "D",
+          "F"
+        ],
+        [
+          "D",
+          "G"
+        ],
+        [
+          "E",
+          "F"
+        ],
+        [
+          "E",
+          "G"
+        ],
+        [
+          "F",
+          "G"
+        ]
+      ],
+      "method": "Every unordered pair occurs exactly once; 6 possible neighbours / 2 per round proves maximum 3."
+    },
+    {
+      "name": "four-bags",
+      "result": [
+        "BADC",
+        "BCDA",
+        "BDAC",
+        "CADB",
+        "CDAB",
+        "CDBA",
+        "DABC",
+        "DCAB",
+        "DCBA"
+      ],
+      "method": "Enumerate all 24 permutations, excluding any fixed point."
+    },
+    {
+      "name": "grid-rectangles",
+      "result": [
+        150,
+        40
+      ],
+      "method": "Enumerate unique horizontal and vertical boundary pairs, then compare side lengths."
+    },
+    {
+      "name": "stair-path",
+      "result": [
+        19,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "method": "Verify every transition and all arrival counts; 16 internal + 1 ground + 2 top arrivals proves lower bound 19."
+    },
+    {
+      "name": "whole-eggs",
+      "result": [
+        [
+          719,
+          359,
+          239,
+          179,
+          143
+        ]
+      ],
+      "method": "Enumerate every smaller positive initial count with exact fraction transactions; enforce whole eggs and positive equal shares."
+    },
+    {
+      "name": "cards-and-work",
+      "result": [
+        [
+          12,
+          6,
+          18
+        ]
+      ],
+      "method": "Exhaust member/subset pairs; confirm reduced-team work days."
+    },
+    {
+      "name": "growing-grass",
+      "result": 88,
+      "method": "Solve two initial-stock/linear-growth equations, scale area fourfold and divide by six days."
+    }
+  ],
+  "scope": "Mathematical correctness and self-contained conditions; difficulty/teaching review remains pending."
+}

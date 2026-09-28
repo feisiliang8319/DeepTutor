@@ -18,7 +18,7 @@ class TeachingPolicy(BaseModel):
     reasoning_model: ModelChoice | None = None
     instructions: str = Field(default="根据学生已有理解逐步讲解，遇到困难先提示；需要时深入研究并注明资料来源。", max_length=8000)
     tools: list[Literal["web_search", "paper_search", "reason"]] = Field(default_factory=lambda: ["web_search", "paper_search", "reason"])
-    material_engine: str = "llamaindex"
+    material_engine: str = "auto"
 
 
 _turn_policy: ContextVar[TeachingPolicy | None] = ContextVar("teaching_turn_policy", default=None)
@@ -41,6 +41,13 @@ def read() -> tuple[TeachingPolicy, int]:
     return (TeachingPolicy.model_validate_json(row[0]), row[1]) if row else (TeachingPolicy(), 0)
 
 
+def material_index_provider() -> str:
+    """Resolve the backend default for new family libraries; existing bindings stay intact."""
+    from deeptutor.services.rag.factory import DEFAULT_PROVIDER
+    policy, _ = read()
+    return DEFAULT_PROVIDER if policy.material_engine == "auto" else policy.material_engine
+
+
 def save(policy: TeachingPolicy, revision: int, actor_id: str) -> int:
     # Models must be real shared resources, never an operator's personal login.
     from .model_access import admin_catalog, _profile_by_id, _model_by_id, is_owner_bound
@@ -52,7 +59,7 @@ def save(policy: TeachingPolicy, revision: int, actor_id: str) -> int:
                 raise ValueError("Select an available shared model from the administrator catalog")
     # Provider validity is checked by the upload endpoint; keep configuration
     # constrained to a registered engine without changing engine internals.
-    if policy.material_engine not in {"llamaindex", "lightrag", "graphrag", "pageindex"}:
+    if policy.material_engine not in {"auto", "llamaindex", "lightrag", "graphrag", "pageindex"}:
         raise ValueError("Unsupported material engine")
     with identity.connect(write=True) as conn:
         row = conn.execute("SELECT revision FROM teaching_policy WHERE id=1").fetchone()

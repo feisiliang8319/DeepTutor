@@ -3395,5 +3395,11 @@
   "teaching.完成测试后，这里会显示成绩与晋级进展。": "Scores and advancement will appear here after an assessment.",
   "teaching.学习安排": "Learning plan",
   "teaching.目标、学校年级与各学科学习起点": "Goals, school grade and starting levels by subject",
-  "teaching.重试": "Retry"
+  "teaching.重试": "Retry",
+  "teaching.资料自动处理与检索": "Automatic material processing and search",
+  "teaching.上传后自动建立索引。导师会从学生获准使用的主库与家庭资料中统一查找、去重并注明出处。": "Uploads are indexed automatically. The tutor searches permitted main and family materials together, removes duplicates and cites sources.",
+  "teaching.高级维护设置": "Advanced maintenance settings",
+  "teaching.新家庭资料的索引引擎": "Index service for new family libraries",
+  "teaching.自动（推荐）": "Automatic (recommended)",
+  "teaching.自动模式使用平台默认索引服务。此设置只影响新建家庭资料库；已有索引保持原有服务，检索始终自动进行。": "Automatic mode uses the platform default index service. This setting applies to new family libraries; existing indexes keep their service. Retrieval is always automatic."
 }

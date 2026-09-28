@@ -243,6 +243,7 @@ class LlamaIndexPipeline:
     def _nodes_to_result(self, query: str, nodes: list[Any]) -> Dict[str, Any]:
         context_parts: list[str] = []
         sources: list[dict[str, Any]] = []
+        passages: list[dict[str, Any]] = []
         for i, node in enumerate(nodes):
             meta = node.node.metadata or {}
             status = meta.get("curriculum_content_status")
@@ -265,6 +266,7 @@ class LlamaIndexPipeline:
                 if status:
                     sources[-1]["content_status"] = status
                     sources[-1]["lesson_url"] = meta.get("curriculum_lesson_url", "")
+            passages.append({"text": prefix + node.node.text, "sources": [sources[-1]]})
 
         content = "\n\n".join(context_parts) if context_parts else ""
         return {
@@ -272,6 +274,7 @@ class LlamaIndexPipeline:
             "answer": content,
             "content": content,
             "sources": sources,
+            "passages": passages,
             "provider": "llamaindex",
         }
 

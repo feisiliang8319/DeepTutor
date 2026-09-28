@@ -1106,6 +1106,11 @@ class AgenticChatPipeline:
         query = (context.user_message or "").strip()
         if not kbs or not query:
             return ""
+        from deeptutor.multi_user.teaching_retrieval import automatic_retrieval_enabled
+        if automatic_retrieval_enabled():
+            # The teaching tool already searches all live authorized sources.
+            # One seed call avoids N copies of the same federated retrieval.
+            kbs = ["Authorized teaching materials"]
         if len(kbs) > KB_SEED_MAX_KBS:
             kbs = kbs[:KB_SEED_MAX_KBS]
         results = await asyncio.gather(*(self._seed_search_one_kb(kb, query, stream) for kb in kbs))
@@ -1138,6 +1143,8 @@ class AgenticChatPipeline:
         query: str,
         stream: StreamBus,
     ) -> tuple[str, list[dict[str, Any]]] | None:
+        from deeptutor.multi_user.teaching_retrieval import automatic_retrieval_enabled
+        automatic = automatic_retrieval_enabled()
         call_id = new_call_id("chat-kb-seed")
         retrieve_meta = build_trace_metadata(
             call_id=call_id,
@@ -1151,11 +1158,11 @@ class AgenticChatPipeline:
         )
         result = await self._execute_tool_call(
             "rag",
-            {"query": query, "kb_name": kb_name, "mode": "hybrid"},
+            {"query": query} if automatic else {"query": query, "kb_name": kb_name, "mode": "hybrid"},
             stream=stream,
             retrieve_meta=retrieve_meta,
         )
-        if not result.get("success"):
+        if not result.get("success") and not automatic:
             return None
         metadata = result.get("metadata") or {}
         if metadata.get("error_type") or metadata.get("needs_reindex"):
@@ -1163,8 +1170,9 @@ class AgenticChatPipeline:
         text = str(metadata.get("content") or metadata.get("answer") or "").strip()
         if not text:
             return None
-        if len(text) > KB_SEED_CHARS_PER_KB:
-            text = text[:KB_SEED_CHARS_PER_KB].rstrip() + "\n...[truncated]"
+        limit = KB_SEED_CHARS_PER_KB * KB_SEED_MAX_KBS if automatic else KB_SEED_CHARS_PER_KB
+        if len(text) > limit:
+            text = text[:limit].rstrip() + "\n...[truncated]"
         return text, list(result.get("sources") or [])
 
     # ---- emissions / context guard --------------------------------------
@@ -1415,6 +1423,8 @@ class AgenticChatPipeline:
         # pure-vault turn yields no coexisting KBs, so the note stays empty.
         rag_kbs = self._coexisting_rag_kbs(context)
         if rag_kbs:
+            from deeptutor.multi_user.teaching_retrieval import automatic_retrieval_enabled
+
             joined = ", ".join(rag_kbs)
             rag_note = (
                 f"用户已挂载知识库：{joined}。调用 rag 时，kb_name 必须从其中选一个。"
@@ -1424,6 +1434,14 @@ class AgenticChatPipeline:
                     "must be one of these names."
                 )
             )
+            if automatic_retrieval_enabled():
+                rag_note = (
+                    "Teaching materials are selected by the server. Call rag with query only; "
+                    "it searches the student's authorized main and family libraries together. "
+                    "Include relevant subject/concept context from the conversation. Do not ask "
+                    "the student to select a library or repeat the same query per library. "
+                    "Disclose partial retrieval and preserve pending-review source labels."
+                )
         return rag_note + self._kb_manifest_system_note() + self._pageindex_system_note()
 
     async def _prepare_kb_manifests(self, context: UnifiedContext) -> None:

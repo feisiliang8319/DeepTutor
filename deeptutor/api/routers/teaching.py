@@ -69,8 +69,7 @@ def set_goal(student_id: str, body: GoalUpdate, actor: TokenPayload = Depends(re
 def material_policy(actor: TokenPayload = Depends(require_teaching)):
     if actor.role not in {"parent", "admin"}:
         raise HTTPException(403, "Materials are managed by a parent or administrator")
-    policy, _ = teaching_policy.read()
-    return {"engine":policy.material_engine,"visibility":"family"}
+    return {"engine":teaching_policy.material_index_provider(),"visibility":"family","retrieval":"automatic"}
 
 
 from typing import Literal

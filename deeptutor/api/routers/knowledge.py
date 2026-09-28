@@ -2311,6 +2311,12 @@ async def create_knowledge_base(
         if name in manager.list_knowledge_bases():
             raise HTTPException(status_code=400, detail=f"Knowledge base '{name}' already exists")
 
+        from deeptutor.multi_user.context import get_current_user_or_none
+        from deeptutor.multi_user.teaching_identity import active as teaching_active
+        actor = get_current_user_or_none()
+        if actor and actor.role == "parent" and teaching_active():
+            from deeptutor.multi_user.teaching_policy import material_index_provider
+            rag_provider = material_index_provider()
         rag_provider = _validate_registered_provider(rag_provider)
         _assert_provider_ready(rag_provider)
         _enforce_provider_formats(rag_provider, files)

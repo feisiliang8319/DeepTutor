@@ -93,7 +93,32 @@ def _rag_sources(result: dict[str, Any], *, query: str, kb_name: str) -> list[di
 
 
 class RAGTool(_PromptHintsMixin, BaseTool):
+    @property
+    def name(self) -> str:
+        # Registration happens during runtime bootstrap, before user context
+        # imports finish. Only the per-turn schema needs that context.
+        return "rag"
+
+    def get_prompt_hints(self, language: str = "en"):
+        from deeptutor.multi_user.teaching_retrieval import automatic_retrieval_enabled
+        from deeptutor.core.tool_protocol import ToolPromptHints
+        if automatic_retrieval_enabled():
+            return ToolPromptHints(
+                short_description="Search the authorized main and family materials together.",
+                input_format='{"query": "concept or question, with relevant subject context"}',
+                guideline="Use course materials before external search. One call searches all authorized libraries. Cite returned sources and disclose incomplete retrieval.",
+                phase="exploration",
+            )
+        return super().get_prompt_hints(language)
+
     def get_definition(self) -> ToolDefinition:
+        from deeptutor.multi_user.teaching_retrieval import automatic_retrieval_enabled
+        if automatic_retrieval_enabled():
+            return ToolDefinition(
+                name="rag",
+                description="Search all currently authorized main and family teaching materials, with merged and ranked results. Include relevant subject and concept context in the query. No library selection is needed.",
+                parameters=[ToolParameter(name="query", type="string", description="The learning question or concept to look up.")],
+            )
         return ToolDefinition(
             name="rag",
             description=(
@@ -113,10 +138,15 @@ class RAGTool(_PromptHintsMixin, BaseTool):
 
     async def execute(self, **kwargs: Any) -> ToolResult:
         from deeptutor.tools.rag_tool import rag_search
+        from deeptutor.multi_user.teaching_retrieval import automatic_retrieval_enabled, search_authorized_materials
 
         query = str(kwargs.get("query") or "").strip()
         if not query:
             raise ValueError("RAG query must be a non-empty string.")
+        if automatic_retrieval_enabled():
+            result = await search_authorized_materials(query, event_sink=kwargs.get("event_sink"))
+            return ToolResult(content=result["content"], sources=result["sources"], metadata=result,
+                              success=result["status"] != "failed")
         kb_name = str(kwargs.get("kb_name") or "").strip()
         if not kb_name:
             raise ValueError("RAG requires an explicit kb_name.")

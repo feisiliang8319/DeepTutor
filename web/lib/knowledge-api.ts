@@ -539,12 +539,12 @@ function appendFilesWithPaths(form: FormData, files: File[]): void {
 
 export async function createKnowledgeBase(payload: {
   name: string;
-  provider: string;
+  provider?: string;
   files: File[];
 }): Promise<KnowledgeTaskResponse> {
   const form = new FormData();
   form.append("name", payload.name);
-  form.append("rag_provider", payload.provider);
+  if (payload.provider) form.append("rag_provider", payload.provider);
   appendFilesWithPaths(form, payload.files);
 
   const res = await apiFetch(apiUrl("/api/v1/knowledge/create"), {

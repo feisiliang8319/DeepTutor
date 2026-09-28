@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 357,
+  "reviews": [
+    {
+      "concept_id": "5a1af933ffd132ec9348aeea492689a23d7e4a2d14f51ffad0f0fcee25cc6218",
+      "expected_records": 15,
+      "lecture_before": "Amphibians have moist skin and begin their lives in water.",
+      "lecture_after": "Amphibians generally have permeable skin. Many species begin as aquatic larvae, but not all: some frogs, such as the coqui, develop directly in eggs on land.",
+      "reason": "Remove a universal life-cycle claim contradicted by direct-developing amphibians.",
+      "references": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29907000/",
+          "supports": "Research on coqui describes direct development on land, a counterexample to a universal aquatic beginning."
+        },
+        {
+          "url": "https://www.amnh.org/explore/ology/biodiversity/tree-of-life/amphibians",
+          "supports": "Amphibian traits and habitats vary across species."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "c0de5a30f37439a23aeb1a4e5c0398b08259767ae6fa2e7e385e8e846aaaa295",
+      "expected_records": 3,
+      "lecture_before": "To stay alive, animal cells must get water and oxygen. Animal cells also produce carbon dioxide, a waste that must be removed. An animal's respiratory and circulatory systems work together to do these jobs.\nAn animal's respiratory system is made up of organs that work together to bring in oxygen gas from the environment. The respiratory system also removes carbon dioxide gas from the animal's body. Some animals have lungs to exchange oxygen and carbon dioxide with the air. Other animals have gills to exchange oxygen and carbon dioxide with water.\nAn animal's circulatory system is made up of organs that work together to move blood through its body. The heart pumps blood through blood vessels throughout the body. As blood moves through blood vessels, it delivers oxygen, nutrients from food, and water to cells. Blood also absorbs waste, including carbon dioxide. When the blood is pumped into the lungs or gills, it releases carbon dioxide and absorbs oxygen.",
+      "lecture_after": "In the vertebrate body model used here, cells need water and nutrients, and oxygen supports aerobic respiration. Carbon dioxide from metabolism must be removed. Respiratory and circulatory systems work together to exchange and transport these materials. This is not a description of every animal: some simple animals exchange materials by diffusion without a circulatory system.\nIn this vertebrate model, the respiratory system is made up of organs that work together to bring in oxygen gas from the environment. The respiratory system also removes carbon dioxide gas from the animal's body. Some animals have lungs to exchange oxygen and carbon dioxide with the air. Other animals have gills to exchange oxygen and carbon dioxide with water.\nIn this vertebrate model, the circulatory system is made up of organs that work together to move blood through its body. The heart pumps blood through blood vessels throughout the body. As blood moves through blood vessels, it delivers oxygen, nutrients from food, and water to cells. Blood also absorbs waste, including carbon dioxide. When the blood is pumped into the lungs or gills, it releases carbon dioxide and absorbs oxygen.",
+      "reason": "Confine the heart, vessel and blood description to a vertebrate model instead of all animals.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology/pages/40-1-overview-of-the-circulatory-system",
+          "supports": "Vertebrates have closed circulation; other animals can use open circulation or diffusion without a circulatory system."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "2745d336e0d8f659c5b1cf4cc5aadb5bc9007949dab5a80dd6915c49940270af",
+      "expected_records": 25,
+      "lecture_before": "Solid, liquid, and gas are states of matter. Matter is anything that takes up space. Matter can come in different states, or forms.\nWhen matter is a solid, it has a shape of its own.\nSome solids can be bent or broken easily. Others are hard to bend or break.\nA glass cup is a solid. A sock is also a solid.\nWhen matter is a liquid, it takes the shape of its container.\nThink about pouring a liquid from a cup into a bottle. The shape of the liquid is different in the cup than in the bottle. But the liquid still takes up the same amount of space.\nJuice is a liquid. Honey is also a liquid.\nWhen matter is a gas, it spreads out to fill a space.\nMany gases are invisible. So, you can’t see them. Air is a gas.",
+      "lecture_after": "Solid, liquid, and gas are states of matter. Matter is anything that has mass and occupies space. Matter can come in different states, or forms.\nWhen matter is a solid, it has a shape of its own.\nSome solids can be bent or broken easily. Others are hard to bend or break.\nA glass cup is a solid. A sock is also a solid.\nWhen matter is a liquid, it takes the shape of its container.\nThink about pouring a liquid from a cup into a bottle. The shape of the liquid is different in the cup than in the bottle. For ordinary pouring without spilling, changing temperature, or changing pressure appreciably, the liquid keeps approximately the same volume.\nJuice is a liquid. Honey is also a liquid.\nWhen matter is a gas, it spreads out to fill a space.\nMany gases are invisible. So, you can’t see them. Air is a gas.",
+      "reason": "Complete the definition of matter and qualify volume conservation during ordinary pouring.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+          "supports": "Matter has both mass and volume; ordinary liquid behavior differs from gas expansion."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "b05207d4f3d847ee86a7a2407cd93f6ddad79e280a0d595c786a113492bb92a0",
+      "expected_records": 54,
+      "lecture_before": "Solid and liquid are states of matter. Matter is anything that takes up space. Matter can come in different states, or forms.\nWhen matter is a solid, it has a shape of its own.\nSome solids can be bent or broken easily. Others are hard to bend or break.\nA glass cup is a solid. A sock is also a solid.\nWhen matter is a liquid, it takes the shape of its container.\nThink about pouring a liquid from a cup into a bottle. The shape of the liquid is different in the cup than in the bottle. But the liquid still takes up the same amount of space.\nJuice is a liquid. Honey is also a liquid.",
+      "lecture_after": "Solid and liquid are states of matter. Matter is anything that has mass and occupies space. Matter can come in different states, or forms.\nWhen matter is a solid, it has a shape of its own.\nSome solids can be bent or broken easily. Others are hard to bend or break.\nA glass cup is a solid. A sock is also a solid.\nWhen matter is a liquid, it takes the shape of its container.\nThink about pouring a liquid from a cup into a bottle. The shape of the liquid is different in the cup than in the bottle. For ordinary pouring without spilling, changing temperature, or changing pressure appreciably, the liquid keeps approximately the same volume.\nJuice is a liquid. Honey is also a liquid.",
+      "reason": "Complete the definition of matter and qualify volume conservation during ordinary pouring.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/1-2-phases-and-classification-of-matter",
+          "supports": "Matter has both mass and volume; ordinary liquid behavior differs from gas expansion."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "f0db60c5770b720c300ff6a9a8f5fb60846e5e385851677493f4b66c5fcb5e5a",
+      "expected_records": 81,
+      "lecture_before": "In the past, scientists classified living organisms into two groups: plants and animals. Over the past 300 years, scientists have discovered many more types of organisms. Today, many scientists classify organisms into six broad groups, called kingdoms.\nOrganisms in each kingdom have specific traits. The table below shows some traits used to describe each kingdom.\n | Bacteria | Archaea | Protists | Fungi | Animals | Plants\nHow many cells do they have? | one | one | one or many | one or many | many | many\nDo their cells have a nucleus? | no | no | yes | yes | yes | yes\nCan their cells make food? | some species can | some species can | some species can | no | no | yes",
+      "lecture_after": "In the past, scientists classified living organisms into two groups: plants and animals. Over the past 300 years, scientists have discovered many more types of organisms. This exercise uses a six-kingdom classroom classification. Classification systems have changed and this table is not the only current scheme; domains and kingdoms are different ranks.\nThe table below summarizes typical traits in that classroom scheme. It is a guide for this exercise rather than a rule that every specialized cell or species must satisfy.\n | Bacteria | Archaea | Protists | Fungi | Animals | Plants\nHow many cells do they have? | one | one | one or many | one or many | many | many\nDo their cells have a nucleus? | no | no | yes | yes | yes | yes\nCan members synthesize their own organic food from inorganic sources? | some species can | some species can | some species can | no | no | most species can",
+      "reason": "Label the classification as a classroom model and retain nonphotosynthetic plant exceptions.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/concepts-biology/pages/1-1-themes-and-concepts-of-biology",
+          "supports": "Distinguishes domains from kingdoms and explains historical changes in classification."
+        },
+        {
+          "url": "https://www.nps.gov/prwi/learn/nature/ground-plants.htm",
+          "supports": "Ghost pipe lacks chlorophyll, showing photosynthesis is not universal among plants."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "e2ff14cb2cc462950196f816ed4f86501325fee4c3c9c5b2ade1d0938c415118",
+      "expected_records": 1,
+      "lecture_before": "Like all living things, plants need food to survive. Plants can make their own food.\nHow do plants make food? Plants use a process called photosynthesis to make sugar. They use this sugar as food.\nFor photosynthesis, a plant needs water, carbon dioxide, and energy from light. Most plants use energy from sunlight. The plant uses its roots to take in water. It uses its leaves to take in carbon dioxide from the air.\nDuring photosynthesis, chlorophyll in the plant's leaves traps energy from sunlight. The plant uses this energy to turn water and carbon dioxide into sugar. It then releases oxygen into the air as a waste product. The plant gets the energy it needs to live from the sugar.",
+      "lecture_after": "Like all living things, plants need food to survive. Most plants make their own organic food by photosynthesis, but some plants, such as ghost pipe, obtain it through other organisms.\nHow does a typical green plant make food? It uses photosynthesis to make sugars that can support its growth and metabolism. The following description concerns that photosynthetic plant model.\nFor photosynthesis, a plant needs water, carbon dioxide, and energy from light. Most plants use energy from sunlight. The plant uses its roots to take in water. It uses its leaves to take in carbon dioxide from the air.\nDuring photosynthesis, chlorophyll in the plant's leaves traps energy from sunlight. The plant uses this energy to turn water and carbon dioxide into sugar. It then releases oxygen into the air as a waste product. The plant gets the energy it needs to live from the sugar.",
+      "reason": "Distinguish a typical photosynthetic plant from all plants.",
+      "references": [
+        {
+          "url": "https://www.nps.gov/prwi/learn/nature/ground-plants.htm",
+          "supports": "Ghost pipe lacks chlorophyll and depends on other organisms for organic nutrition."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/8-1-overview-of-photosynthesis",
+          "supports": "Photosynthesis converts light energy into chemical energy stored in sugars."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "6942addf59b0072bf02764086c67aac8aa9b7501dfb6ef1578afa179742421c6",
+      "expected_records": 47,
+      "lecture_before": "A planet's volume tells you the size of the planet.\nThe primary composition of a planet is what the planet is made mainly of. In our solar system, planets are made mainly of rock, gas, or ice.\nThe volume of a planet is a very large quantity. Large quantities such as this are often written in scientific notation.\nFor example, the volume of Jupiter is 1,430,000,000,000,000 km^3. In scientific notation, Jupiter's volume is written as 1.43 x 10^15 km^3.\nTo compare two numbers written in scientific notation, first compare their exponents. The bigger the exponent is, the bigger the number is. For example:\n1.43 x 10^15 is larger than 1.43 x 10^12\nIf their exponents are equal, compare the first numbers. For example:\n1.43 x 10^15 is larger than 1.25 x 10^15\nTo multiply a number written in scientific notation by a power of 10, write the multiple of 10 as 10 raised to an exponent. Then, add the exponents. For example:\n1.43 x 10^15 · 1000\n= 1.43 x 10^15 · 10^3\n= 1.43 x 10^(15 + 3)\n= 1.43 x 10^18",
+      "lecture_after": "A planet's volume tells you the size of the planet.\nThe primary composition of a planet is what the planet is made mainly of. Planet descriptions often use the groups rocky planets, gas giants, and ice giants. These are simplified composition categories, not statements that a whole planet is in one physical state. In particular, ice giant does not mean an interior made of ordinary frozen ice; such interiors are hot and under high pressure, and their detailed composition remains uncertain.\nThe volume of a planet is a very large quantity. Large quantities such as this are often written in scientific notation.\nFor example, the volume of Jupiter is 1,430,000,000,000,000 km^3. In scientific notation, Jupiter's volume is written as 1.43 x 10^15 km^3.\nFor positive quantities such as volumes, write both numbers in the same units and normalized scientific notation, with coefficients at least 1 and less than 10. Then a larger exponent gives a larger value. This shortcut does not apply unchanged to negative numbers or unnormalized expressions. For example:\n1.43 x 10^15 is larger than 1.43 x 10^12\nIf their exponents are equal, compare the first numbers. For example:\n1.43 x 10^15 is larger than 1.25 x 10^15\nTo multiply a number written in scientific notation by a power of 10, write the multiple of 10 as 10 raised to an exponent. Then, add the exponents. For example:\n1.43 x 10^15 · 1000\n= 1.43 x 10^15 · 10^3\n= 1.43 x 10^(15 + 3)\n= 1.43 x 10^18",
+      "reason": "Separate composition labels from phase and state the comparison conditions used for positive normalized volumes.",
+      "references": [
+        {
+          "url": "https://science.nasa.gov/exoplanets/neptune-like/",
+          "supports": "Explains why Uranus and Neptune are called ice giants even though their interiors are not ordinarily frozen."
+        },
+        {
+          "url": "https://science.nasa.gov/neptune/neptune-facts/",
+          "supports": "Describes a hot dense interior and pressure-dependent material behavior, rather than solid surface ice."
+        },
+        {
+          "url": "https://openstax.org/books/college-algebra-2e/pages/1-2-exponents-and-scientific-notation",
+          "supports": "Scientific notation requires a normalized coefficient; sign matters when comparing actual values."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "ddbccf615f67470fbdffd1fce25ff5d2340863f782ba59c0e6824a6fc8b48c9f",
+      "expected_records": 105,
+      "lecture_before": "A planet's volume tells you the size of the planet.\nThe primary composition of a planet is what the planet is made mainly of. In our solar system, planets are made mainly of rock, gas, or ice.",
+      "lecture_after": "A planet's volume tells you the size of the planet.\nThe primary composition of a planet is what the planet is made mainly of. Planet descriptions often use the groups rocky planets, gas giants, and ice giants. These are simplified composition categories, not statements that a whole planet is in one physical state. In particular, ice giant does not mean an interior made of ordinary frozen ice; such interiors are hot and under high pressure, and their detailed composition remains uncertain.",
+      "reason": "Separate composition labels from phase and state the comparison conditions used for positive normalized volumes.",
+      "references": [
+        {
+          "url": "https://science.nasa.gov/exoplanets/neptune-like/",
+          "supports": "Explains why Uranus and Neptune are called ice giants even though their interiors are not ordinarily frozen."
+        },
+        {
+          "url": "https://science.nasa.gov/neptune/neptune-facts/",
+          "supports": "Describes a hot dense interior and pressure-dependent material behavior, rather than solid surface ice."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "40f8692216a9aef83c236926ab83ac7ea882f330752b6a288d8f2d4190fae95a",
+      "expected_records": 26,
+      "lecture_before": "A planet's volume tells you the size of the planet.\nThe primary composition of a planet is what the planet is made mainly of. In our solar system, planets are made mainly of rock, gas, or ice.\nThe volume of a planet is a very large quantity. Large quantities such as this are often written in scientific notation.\nFor example, the volume of Jupiter is 1,430,000,000,000,000 km^3. In scientific notation, Jupiter's volume is written as 1.43 x 10^15 km^3.\nTo compare two numbers written in scientific notation, compare their exponents. The bigger the exponent is, the bigger the number is. For example:\n1.43 x 10^15 is larger than 1.43 x 10^12\nIf their exponents are equal, compare the first numbers. For example:\n1.43 x 10^15 is larger than 1.25 x 10^15",
+      "lecture_after": "A planet's volume tells you the size of the planet.\nThe primary composition of a planet is what the planet is made mainly of. Planet descriptions often use the groups rocky planets, gas giants, and ice giants. These are simplified composition categories, not statements that a whole planet is in one physical state. In particular, ice giant does not mean an interior made of ordinary frozen ice; such interiors are hot and under high pressure, and their detailed composition remains uncertain.\nThe volume of a planet is a very large quantity. Large quantities such as this are often written in scientific notation.\nFor example, the volume of Jupiter is 1,430,000,000,000,000 km^3. In scientific notation, Jupiter's volume is written as 1.43 x 10^15 km^3.\nFor positive quantities such as volumes, write both numbers in the same units and normalized scientific notation, with coefficients at least 1 and less than 10. Then a larger exponent gives a larger value. This shortcut does not apply unchanged to negative numbers or unnormalized expressions. For example:\n1.43 x 10^15 is larger than 1.43 x 10^12\nIf their exponents are equal, compare the first numbers. For example:\n1.43 x 10^15 is larger than 1.25 x 10^15",
+      "reason": "Separate composition labels from phase and state the comparison conditions used for positive normalized volumes.",
+      "references": [
+        {
+          "url": "https://science.nasa.gov/exoplanets/neptune-like/",
+          "supports": "Explains why Uranus and Neptune are called ice giants even though their interiors are not ordinarily frozen."
+        },
+        {
+          "url": "https://science.nasa.gov/neptune/neptune-facts/",
+          "supports": "Describes a hot dense interior and pressure-dependent material behavior, rather than solid surface ice."
+        },
+        {
+          "url": "https://openstax.org/books/college-algebra-2e/pages/1-2-exponents-and-scientific-notation",
+          "supports": "Scientific notation requires a normalized coefficient; sign matters when comparing actual values."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

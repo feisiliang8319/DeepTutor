@@ -62,3 +62,45 @@ def test_missing_or_replaced_prior_ledger_is_rejected(tmp_path):
     with pytest.raises(ValueError,match='Prior adaptation ledger'):build(path,[(package,proof)],tmp_path/'missing')
     data=json.loads((path/'summary.json').read_text());data['historical_records_with_checked_adaptations']=0;(path/'summary.json').write_text(json.dumps(data))
     with pytest.raises(ValueError,match='Prior adaptation records'):build(path,[(package,proof)],tmp_path/'replaced')
+
+from deeptutor.education.application.historical_adaptation_links import build_lessons
+
+def lesson_fixture(tmp_path):
+    base,package,proof,row=fixture(tmp_path)
+    digest=lambda blob:hashlib.sha256(blob).hexdigest()
+    blob=(base/'objects'/(row['source_sha256']+'.txt')).read_bytes()
+    (base/'objects'/(row['source_sha256']+'.md')).write_bytes(blob)
+    span={'start':0,'end':len(blob.decode()),'sha256':digest(blob)}
+    row.update(library='im-g4-full',kind='lesson',family='IM:G4:U2:L1',start=0,end=len(blob.decode()),raw_sha256=digest(blob))
+    row['metadata']={'lesson_brief':{'teaching_adaptation':'pending'},'other_evidence':'preserved'}
+    row['issues']=['teacher_material_not_bundled']
+    with sqlite3.connect(base/'catalog.sqlite3') as db:
+        db.execute('update records set data_json=? where id=?',(json.dumps(row),row['id']))
+    summary=json.loads((base/'summary.json').read_text());summary['catalog_sha256']=digest((base/'catalog.sqlite3').read_bytes());(base/'summary.json').write_text(json.dumps(summary))
+    p=json.loads(package.read_text());p['items'][0]['rubric_json'].update(source_lesson_family=row['family'],source_spans=[span]);package.write_text(json.dumps(p))
+    proof.write_text(json.dumps({'package_sha256':digest(package.read_bytes()),'verified_tasks':1}))
+    return base,package,proof,row
+
+def test_lesson_links_preserve_unresolved_assets_approval_and_exact_crlf_spans(tmp_path):
+    base,package,proof,row=lesson_fixture(tmp_path)
+    result=build_lessons(base,[(package,proof)],tmp_path/'output');target=tmp_path/'output'/result['snapshot_id']
+    assert result['im_lessons_with_worked_examples']==1
+    with sqlite3.connect(target/'catalog.sqlite3') as db:saved=json.loads(db.execute('select data_json from records').fetchone()[0])
+    link=saved['metadata'].pop('checked_lesson_adaptation');assert saved==row
+    assert link['source_lesson_family']==row['family']
+    assert (target/'prior-queue.json').read_bytes()==(base/'prior-queue.json').read_bytes()
+    with pytest.raises(ValueError,match='already linked'):build_lessons(target,[(package,proof)],tmp_path/'again')
+    with pytest.raises(ValueError,match='Source provenance'):build(base,[(package,proof)],tmp_path/'wrong_processor')
+
+@pytest.mark.parametrize('field,value',[('source_lesson_family','IM:G4:U2:L2'),('source_spans',[{'start':1,'end':10,'sha256':'wrong'}])])
+def test_lesson_rejects_wrong_lesson_or_span_even_when_package_hash_matches(tmp_path,field,value):
+    base,package,proof,row=lesson_fixture(tmp_path)
+    p=json.loads(package.read_text());p['items'][0]['rubric_json'][field]=value;package.write_text(json.dumps(p))
+    proof.write_text(json.dumps({'package_sha256':hashlib.sha256(package.read_bytes()).hexdigest(),'verified_tasks':1}))
+    with pytest.raises(ValueError,match='Lesson provenance'):build_lessons(base,[(package,proof)],tmp_path/'output')
+
+def test_lesson_rejects_changed_prior_evidence(tmp_path):
+    base,package,proof,row=lesson_fixture(tmp_path)
+    result=build_lessons(base,[(package,proof)],tmp_path/'output');target=tmp_path/'output'/result['snapshot_id']
+    (target/'lesson-adaptation-evidence'/proof.name).write_text('tampered')
+    with pytest.raises(ValueError,match='Prior adaptation evidence'):build_lessons(target,[],tmp_path/'again')

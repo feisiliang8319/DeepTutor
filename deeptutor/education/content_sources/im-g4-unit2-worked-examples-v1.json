@@ -1,0 +1,631 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "IM G4 U2 存量转化 · 16道独立编写的分数讲解例题",
+  "items": [
+    {
+      "id": "im-g4-u2-l1-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A1.EQUIVALENT_MODEL",
+      "item_type": "multi_step",
+      "prompt": "把一条24厘米长的纸带看作一个整体，平均分成8段。每段是整个纸带的几分之几、长多少厘米？取其中5段，共是整体的几分之几、长多少厘米？说明“平均分”为什么重要。",
+      "expected_answer": "每段1/8、3厘米；5段是5/8、15厘米。",
+      "explanation": "分母8说明同一个整体被分成8个相等部分，每段就是1/8。24÷8=3厘米，所以5段共5×3=15厘米，是5个1/8，即5/8。只有各段相等，才能把每段都叫作这个整体的1/8；只切成8段但长短不同并不够。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L1 | retained source line 11",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 1. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "4b568ea4a61304b2a13ca225fbae59a58510d920cb6dd648ee1fcfe942366859",
+        "source_lesson_family": "IM:G4:U2:L1",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "31d1cb8e5864dd3a4d0fb904823610527e0631731ea9d97f9d75f554bc72e7b3",
+        "source_span": {
+          "start": 220,
+          "end": 14221
+        },
+        "source_spans": [
+          {
+            "start": 220,
+            "end": 14221,
+            "sha256": "31d1cb8e5864dd3a4d0fb904823610527e0631731ea9d97f9d75f554bc72e7b3"
+          }
+        ],
+        "title_zh": "一个整体与单位分数",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l2-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A1.EQUIVALENT_MODEL",
+      "item_type": "multi_step",
+      "prompt": "把一条固定长度的纸带作为单位“1”。现在有11小段，每段长1/6个单位。把它们首尾接起来，总长度是多少个单位？写成带分数，并说明它在数轴的哪两个相邻整数之间。",
+      "expected_answer": "11/6＝1又5/6，位于1与2之间。",
+      "explanation": "6段1/6刚好组成1个单位；11段可以分成6段和5段，因此总长11/6=6/6+5/6=1又5/6。11/6大于6/6而小于12/6，所以位于1和2之间。分子可以大于分母，分数不只表示一个整体以内的量。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L2 | retained source line 415",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 2. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "d5ec0806bec695a22e167103ef6efebb89194c04b447354af50d436669f408ef",
+        "source_lesson_family": "IM:G4:U2:L2",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "1c0595b75ce80d2a5a543b369a3288f466cbed271d4c9cd836f44d51e723e593",
+        "source_span": {
+          "start": 14221,
+          "end": 29167
+        },
+        "source_spans": [
+          {
+            "start": 14221,
+            "end": 29167,
+            "sha256": "1c0595b75ce80d2a5a543b369a3288f466cbed271d4c9cd836f44d51e723e593"
+          }
+        ],
+        "title_zh": "分数也能大于一",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l3-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A2.COMPARE_UNLIKE",
+      "item_type": "multi_step",
+      "prompt": "每组分数都以同样大小的整体为单位。比较5/8与3/8、3/5与3/8，在中间填入<、=或>，并分别解释。",
+      "expected_answer": "5/8>3/8；3/5>3/8。",
+      "explanation": "第一组每份都是1/8，5份比3份多，所以5/8>3/8。第二组取的都是3份，但同一个整体平均分5份时，每份大于平均分8份时的一份，所以3个1/5大于3个1/8。比较分数要同时看份数和每份大小。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L3 | retained source line 891",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 3. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "8f7f49000709b074f57d99ca22022145071428e20879a2fe13b8dfa8829950b9",
+        "source_lesson_family": "IM:G4:U2:L3",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "5087566ac903d101730621f350d3caa9be7177ca70af8d69ec7cb8b4f74a66d3",
+        "source_span": {
+          "start": 29167,
+          "end": 41881
+        },
+        "source_spans": [
+          {
+            "start": 29167,
+            "end": 41881,
+            "sha256": "5087566ac903d101730621f350d3caa9be7177ca70af8d69ec7cb8b4f74a66d3"
+          }
+        ],
+        "title_zh": "分子相同与分母相同",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l4-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A1.EQUIVALENT_MODEL",
+      "item_type": "multi_step",
+      "prompt": "对同一个单位，写出1/2分别用分母4、8、12表示的等值分数，并说明理由。再判断：12厘米纸带的一半与8厘米纸带的一半是否一样长？为什么这不与等值分数矛盾？",
+      "expected_answer": "1/2＝2/4＝4/8＝6/12；两条纸带的一半分别为6厘米、4厘米，不一样长。",
+      "explanation": "把原来的每一半再平均分成2、4、6小份，整体分别有4、8、12份，被选中的半条就分别占2、4、6份。因此分数数值相等。两条长度不同的纸带使用了不同的实际整体，半条的长度分别是12×1/2=6与8×1/2=4厘米；分数相同比例相同，并不保证所代表的实际长度相同。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L4 | retained source line 1262",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 4. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "a69d5d2bea4d2532f78506e11aae3722d4bf8e104491bf666ae7f0fa699c513f",
+        "source_lesson_family": "IM:G4:U2:L4",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "8160fe98afccb2d0eb53abd13f617e386868d213d61c198139d2aa9a73fb453c",
+        "source_span": {
+          "start": 41881,
+          "end": 56368
+        },
+        "source_spans": [
+          {
+            "start": 41881,
+            "end": 56368,
+            "sha256": "8160fe98afccb2d0eb53abd13f617e386868d213d61c198139d2aa9a73fb453c"
+          }
+        ],
+        "title_zh": "等值分数必须指向同一单位",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l5-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A1.EQUIVALENT_MODEL",
+      "item_type": "multi_step",
+      "prompt": "一条数轴从0到2，每一个单位长度都平均分成8个小间隔，从0向右按小间隔计数。3/4、9/8、3/2分别在第几个小间隔的终点？再把三个数都写成分母16的分数。",
+      "expected_answer": "依次在第6、9、12个小间隔的终点；分别为12/16、18/16、24/16。",
+      "explanation": "每个小间隔长1/8。3/4=6/8，所以从0走6格；9/8走9格；3/2=12/8走12格。若每格再分成两份，单位有16份，三个位置不变，计数分别变成12、18、24。0到2共有16个八分之一小间隔，不能误把整段0到2当成单位1。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L5 | retained source line 1672",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 5. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "0f6ca8ac728beb9cd76ac14c5a97ffd63eb598d83e28dc6005081a4ec5035c4e",
+        "source_lesson_family": "IM:G4:U2:L5",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "169f216704941261aa1ce2b7de2b2a1d222f8d6c973f19d69ba94ce3b30ca680",
+        "source_span": {
+          "start": 56368,
+          "end": 70366
+        },
+        "source_spans": [
+          {
+            "start": 56368,
+            "end": 70366,
+            "sha256": "169f216704941261aa1ce2b7de2b2a1d222f8d6c973f19d69ba94ce3b30ca680"
+          }
+        ],
+        "title_zh": "数轴上的位置",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l6-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A2.JUSTIFY_COMPARISON",
+      "item_type": "multi_step",
+      "prompt": "把3/8、5/6、7/6分别放入“0与1/2之间”“1/2与1之间”“大于1”三类。再判断7/12更接近1/2还是1，并说明理由。",
+      "expected_answer": "3/8在0与1/2之间，5/6在1/2与1之间，7/6大于1；7/12更接近1/2。",
+      "explanation": "1/2=4/8，3/8<4/8；1/2=3/6，故3/6<5/6<6/6；7/6>6/6=1。把1/2写成6/12、1写成12/12，7/12比一半多1个1/12，离1还差5个1/12，因此更接近一半。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L6 | retained source line 2058",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 6. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "f69a4bf083e1d80938db8dbb472dd5eaf3b727c65a1e5639dc250595b2c4270d",
+        "source_lesson_family": "IM:G4:U2:L6",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "27124e9844dd5e03205e1481b4054909949bb94c0c1b2602075e50cd17388cf7",
+        "source_span": {
+          "start": 70366,
+          "end": 88312
+        },
+        "source_spans": [
+          {
+            "start": 70366,
+            "end": 88312,
+            "sha256": "27124e9844dd5e03205e1481b4054909949bb94c0c1b2602075e50cd17388cf7"
+          }
+        ],
+        "title_zh": "用一半和一作参照",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l7-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A1.GENERATE_EQUIVALENT",
+      "item_type": "multi_step",
+      "prompt": "把2/3分别改写成分母为6、12、18的等值分数。有人把分子和分母都加2，写成4/5，并说它也等于2/3，这个说法正确吗？解释。",
+      "expected_answer": "2/3＝4/6＝8/12＝12/18；4/5不等于2/3。",
+      "explanation": "把每一份再平均分成相同份数，分子和分母要同时乘同一个正整数。分母3变成6、12、18分别乘2、4、6，所以分子2变成4、8、12。加同一个数没有这种等分依据；2/3=10/15，而4/5=12/15，两者不同。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L7 | retained source line 2570",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 7. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "ff59fe9fd56e19e4b10a151501bd14047acb595ec1ee56ad1752064b4e23516c",
+        "source_lesson_family": "IM:G4:U2:L7",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "4df3542f026b1f597a5c94851674254a969f4a2ca13b2c2c9f8109d0a9bf1165",
+        "source_span": {
+          "start": 88312,
+          "end": 101015
+        },
+        "source_spans": [
+          {
+            "start": 88312,
+            "end": 101015,
+            "sha256": "4df3542f026b1f597a5c94851674254a969f4a2ca13b2c2c9f8109d0a9bf1165"
+          }
+        ],
+        "title_zh": "生成等值分数",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l8-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A1.EQUIVALENT_MODEL",
+      "item_type": "multi_step",
+      "prompt": "数轴以0到1的长度为一个单位，P位于4/6，Q位于9/12。把P写成分母12的分数，判断P、Q谁在右边，两个位置相差多少个1/12？",
+      "expected_answer": "P＝8/12，Q在右边，两点相差1个1/12。",
+      "explanation": "把六分之一的小间隔再平均分成两份，就成为十二分之一；原来的4份变成8份，位置不变，所以4/6=8/12。9/12比8/12多1/12，故Q在P右边，相差一个十二分之一单位。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L8 | retained source line 2934",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 8. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "36fc2bdbdb32ef9661cc069132318c9602588c802e9bc9f55b83168e08a86eef",
+        "source_lesson_family": "IM:G4:U2:L8",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "b4b24bdecc7e8c7d33f1d8c3601b5ef95862d334fde0b32ac346d679033de9e3",
+        "source_span": {
+          "start": 101015,
+          "end": 117442
+        },
+        "source_spans": [
+          {
+            "start": 101015,
+            "end": 117442,
+            "sha256": "b4b24bdecc7e8c7d33f1d8c3601b5ef95862d334fde0b32ac346d679033de9e3"
+          }
+        ],
+        "title_zh": "同一点的不同分数名称",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l9-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A1.EQUIVALENT_MODEL",
+      "item_type": "multi_step",
+      "prompt": "甲说“3/4＝6/8，因为把每个四分之一再平分”。乙说“3/4＝5/6，因为分子和分母都加2”。分别判断两人的说法，用等分或同分母的方法说明。",
+      "expected_answer": "甲正确，乙错误；3/4＝6/8，但3/4≠5/6。",
+      "explanation": "甲把整体4份各平分成2份，整体变8份，原选中的3份变6份，所以数量保持不变。乙使用了没有保持比例的加法。用共同分母12检验：3/4=9/12，而5/6=10/12，相差1/12，故不相等。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L9 | retained source line 3325",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 9. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "ce7c510c95105702860ebd0f777694c3c85d407eea59c5d14af08fc97b376083",
+        "source_lesson_family": "IM:G4:U2:L9",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "6b4ef5cf5c043bacf25eddb7f6aec0de217070304c40bb600400169881ec9cea",
+        "source_span": {
+          "start": 117442,
+          "end": 129417
+        },
+        "source_spans": [
+          {
+            "start": 117442,
+            "end": 129417,
+            "sha256": "6b4ef5cf5c043bacf25eddb7f6aec0de217070304c40bb600400169881ec9cea"
+          }
+        ],
+        "title_zh": "解释等值，辨别错误规则",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l10-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A1.GENERATE_EQUIVALENT",
+      "item_type": "multi_step",
+      "prompt": "只用“分子与分母同时乘同一个正整数”的方法，从5/6生成等值分数。要求新分母不超过30，乘1也算。列出所有结果，并解释为什么没有遗漏。",
+      "expected_answer": "5/6、10/12、15/18、20/24、25/30。",
+      "explanation": "设同时乘正整数k，结果为5k/(6k)。分母限制6k≤30，所以k只能取1、2、3、4、5，分别得到所列5个分数。每一个都保持比值5/6，所有允许的正整数倍数都已列完。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L10 | retained source line 3729",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 10. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "902fc9e57485dd067dafdcee780a89b60e2efb6ed4bd8e38075e0319293de0cd",
+        "source_lesson_family": "IM:G4:U2:L10",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "cf47b92ca212cdbfc04a643a007fa2470435b494ac50febd7a79820f00087dc3",
+        "source_span": {
+          "start": 129417,
+          "end": 142621
+        },
+        "source_spans": [
+          {
+            "start": 129417,
+            "end": 142621,
+            "sha256": "cf47b92ca212cdbfc04a643a007fa2470435b494ac50febd7a79820f00087dc3"
+          }
+        ],
+        "title_zh": "用倍数列出全部结果",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l11-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A1.GENERATE_EQUIVALENT",
+      "item_type": "multi_step",
+      "prompt": "从18/24开始，把分子和分母同时除以同一个正整数，且相除后的分子分母仍为整数；除以1也算。列出这种方法能得到的所有结果，指出其中的最简分数。",
+      "expected_answer": "18/24、9/12、6/8、3/4；最简为3/4。",
+      "explanation": "允许的除数必须同时整除18和24，即它们的公因数1、2、3、6。分别相除得到四个结果。3和4没有大于1的公因数，所以3/4最简。题目限制“一次同时除以一个正整数”；它并没有要求列出所有等于3/4且分母不超过24的分数，例如12/16也等值，但不是这次相除方法所得。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L11 | retained source line 4090",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 11. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "051ab9daac4a8fff273a6cf61e7008d4f6f11da5e610ee2da2b33a3d1fdd3ef9",
+        "source_lesson_family": "IM:G4:U2:L11",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "61cbfcad83a30c0205754ebe7a13d89ea334488595cacfdbc935e26faddd522f",
+        "source_span": {
+          "start": 142621,
+          "end": 156564
+        },
+        "source_spans": [
+          {
+            "start": 142621,
+            "end": 156564,
+            "sha256": "61cbfcad83a30c0205754ebe7a13d89ea334488595cacfdbc935e26faddd522f"
+          }
+        ],
+        "title_zh": "用公因数约分",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l12-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A2.JUSTIFY_COMPARISON",
+      "item_type": "multi_step",
+      "prompt": "不必先通分，比较2/5与1/2、7/8与5/6。说明各自可以选用什么参照量。各分数都按同一个单位比较。",
+      "expected_answer": "2/5<1/2；7/8>5/6。",
+      "explanation": "2个2/5合起来是4/5，还不到1，所以2/5不到一半。第二组都接近1：7/8离1差1/8，5/6离1差1/6。同一个整体的1/8小于1/6，缺少得更少的7/8更接近1，因此7/8较大。也可通分验证，但不能只看分子或分母谁大。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L12 | retained source line 4506",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 12. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "f3975fed22bc49edd74939ff052b041f67b917f90077fd570a421c62792a0b01",
+        "source_lesson_family": "IM:G4:U2:L12",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "ce11fbcf37580f697d9aea801249eeab691b82ec3f27bf8778fb5e4fb0266770",
+        "source_span": {
+          "start": 156564,
+          "end": 170695
+        },
+        "source_spans": [
+          {
+            "start": 156564,
+            "end": 170695,
+            "sha256": "ce11fbcf37580f697d9aea801249eeab691b82ec3f27bf8778fb5e4fb0266770"
+          }
+        ],
+        "title_zh": "选择省力的比较方法",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l13-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A2.COMPARE_UNLIKE",
+      "item_type": "multi_step",
+      "prompt": "比较3/4与7/12、5/6与9/12。每组只改写其中一个分数，使两个分母相同，再写出比较结果。",
+      "expected_answer": "3/4＝9/12>7/12；5/6＝10/12>9/12。",
+      "explanation": "第一组分母4乘3成为12，分子3也乘3成为9；9个1/12比7个多。第二组分母6乘2成为12，分子5也乘2成为10；10个1/12比9个多。等值改写保持原数值，之后只需比较相同大小的小份数。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L13 | retained source line 4977",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 13. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "77e0f8586314775c343351e18196747ca8be43cffceb748371d652680819dbc6",
+        "source_lesson_family": "IM:G4:U2:L13",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "4ec2274374c26933277664c33e0254406f2c851b7b3ed8f89e02935f38a9e256",
+        "source_span": {
+          "start": 170695,
+          "end": 183257
+        },
+        "source_spans": [
+          {
+            "start": 170695,
+            "end": 183257,
+            "sha256": "4ec2274374c26933277664c33e0254406f2c851b7b3ed8f89e02935f38a9e256"
+          }
+        ],
+        "title_zh": "只改写一个分数",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l14-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A2.JUSTIFY_COMPARISON",
+      "item_type": "multi_step",
+      "prompt": "两本书各有120页，甲读了第一本的3/5，乙读了第二本的5/8。谁读的页数更多，多几页？另有一本80页的书，丙读了它的3/4；丁读了120页书的2/3。虽然3/4>2/3，能否据此说丙读的页数更多？算出页数说明。",
+      "expected_answer": "乙读75页，甲读72页，乙多3页；丙读60页、丁读80页，丁更多，不能只比较比例。",
+      "explanation": "相同120页整体下，120÷5×3=72，120÷8×5=75，因此乙多3页。后一组整体不同：80÷4×3=60，120÷3×2=80。较大的分数乘上较小的整体，实际页数仍可能较少；只有明确单位和整体，才能把分数比较用于实际数量。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L14 | retained source line 5338",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 14. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "661b5bfcb93933a3e3c84134fe13cfd85a8a346c1d5eed7d080a06ec8fa7e09b",
+        "source_lesson_family": "IM:G4:U2:L14",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "6a027bceea6b6b7833993e9c892d1fde23d95f0ee2988151e42adb5fef70026c",
+        "source_span": {
+          "start": 183257,
+          "end": 198693
+        },
+        "source_spans": [
+          {
+            "start": 183257,
+            "end": 198693,
+            "sha256": "6a027bceea6b6b7833993e9c892d1fde23d95f0ee2988151e42adb5fef70026c"
+          }
+        ],
+        "title_zh": "比较比例，也要看整体",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l15-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A2.COMPARE_UNLIKE",
+      "item_type": "multi_step",
+      "prompt": "比较5/6与7/8。找出最小的正共同分母，写出两个等值分数，并说明它们相差多少。有人说共同分母可以取6+8=14，这种做法为什么不成立？",
+      "expected_answer": "共同分母24；5/6＝20/24，7/8＝21/24，所以5/6<7/8，相差1/24。14不是6和8的公倍数。",
+      "explanation": "6的倍数为6、12、18、24……，8的倍数为8、16、24……，首次相同为24。分子随分母同时乘4或3，得到20/24和21/24。相同小份下后一数多1份。14既不是6的整数倍，也不是8的整数倍，不能通过分子分母同时乘正整数把它们改写成分母14的整数分数。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L15 | retained source line 5792",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 15. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "0930c21626561af124723dd1ea20df834433a67fb2b81c02e868d0ebf1d59d53",
+        "source_lesson_family": "IM:G4:U2:L15",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "fb9ceb068dbd58b460a28074492b7a326e59bf8fc5a83ee39e2098684c409856",
+        "source_span": {
+          "start": 198693,
+          "end": 212308
+        },
+        "source_spans": [
+          {
+            "start": 198693,
+            "end": 212308,
+            "sha256": "fb9ceb068dbd58b460a28074492b7a326e59bf8fc5a83ee39e2098684c409856"
+          }
+        ],
+        "title_zh": "共同分母不是分母相加",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    },
+    {
+      "id": "im-g4-u2-l16-stock-example-v1",
+      "knowledge_node_code": "G4.NF.A2.COMPARE_UNLIKE",
+      "item_type": "multi_step",
+      "prompt": "把3/4、5/6、7/12、2/3、9/8从小到大排列，并给出一种能检查全部比较的理由。它们都表示同一个单位下的数。",
+      "expected_answer": "7/12<2/3<3/4<5/6<9/8。",
+      "explanation": "共同分母可以取24。按题目原顺序，它们分别是18/24、20/24、14/24、16/24、27/24。比较同样大小的二十四分之一的份数，14<16<18<20<27，得到所列顺序。最后9/8>1，而其余都小于1，也与结果一致。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-2/ | IM:G4:U2:L16 | retained source line 6162",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 2, lesson 16. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "8e9e0999873a8afe050ca82edf9ac881c095816b19f890b6c27056796e190492",
+        "source_lesson_family": "IM:G4:U2:L16",
+        "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+        "source_raw_sha256": "31a610d09a732d6dd257b99d6f309767b27c04c987875b41f1ec5fa047d1f513",
+        "source_span": {
+          "start": 212308,
+          "end": 224605
+        },
+        "source_spans": [
+          {
+            "start": 212308,
+            "end": 224605,
+            "sha256": "31a610d09a732d6dd257b99d6f309767b27c04c987875b41f1ec5fa047d1f513"
+          }
+        ],
+        "title_zh": "给一组分数排序",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ]
+      }
+    }
+  ]
+}

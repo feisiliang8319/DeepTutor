@@ -1,0 +1,110 @@
+{
+  "source_sha256": "4ca1086b856c5660c3c6873d76ccc6dd57fe26bc884db59d5b19e188a1b23f2c",
+  "source_file": "raw-stock/im-g4-full/raw/grade4-unit2-fraction-equivalence-and-comparison.md",
+  "source_lesson_spans_verified": 17,
+  "verified_tasks": 16,
+  "package_sha256": "df5fe9e07d59bdc352a18ccdf230229a4eeb00b31198fe40bb8a27ab9931bd0f",
+  "builder_sha256": "47b8a1ad0d997456bd2387bb5f4b21923d574de54c16da49755f71d1727c022e",
+  "source_records": [
+    "4b568ea4a61304b2a13ca225fbae59a58510d920cb6dd648ee1fcfe942366859",
+    "d5ec0806bec695a22e167103ef6efebb89194c04b447354af50d436669f408ef",
+    "8f7f49000709b074f57d99ca22022145071428e20879a2fe13b8dfa8829950b9",
+    "a69d5d2bea4d2532f78506e11aae3722d4bf8e104491bf666ae7f0fa699c513f",
+    "0f6ca8ac728beb9cd76ac14c5a97ffd63eb598d83e28dc6005081a4ec5035c4e",
+    "f69a4bf083e1d80938db8dbb472dd5eaf3b727c65a1e5639dc250595b2c4270d",
+    "ff59fe9fd56e19e4b10a151501bd14047acb595ec1ee56ad1752064b4e23516c",
+    "36fc2bdbdb32ef9661cc069132318c9602588c802e9bc9f55b83168e08a86eef",
+    "ce7c510c95105702860ebd0f777694c3c85d407eea59c5d14af08fc97b376083",
+    "902fc9e57485dd067dafdcee780a89b60e2efb6ed4bd8e38075e0319293de0cd",
+    "051ab9daac4a8fff273a6cf61e7008d4f6f11da5e610ee2da2b33a3d1fdd3ef9",
+    "f3975fed22bc49edd74939ff052b041f67b917f90077fd570a421c62792a0b01",
+    "77e0f8586314775c343351e18196747ca8be43cffceb748371d652680819dbc6",
+    "661b5bfcb93933a3e3c84134fe13cfd85a8a346c1d5eed7d080a06ec8fa7e09b",
+    "0930c21626561af124723dd1ea20df834433a67fb2b81c02e868d0ebf1d59d53",
+    "8e9e0999873a8afe050ca82edf9ac881c095816b19f890b6c27056796e190492"
+  ],
+  "checks": [
+    {
+      "lesson": 1,
+      "record_id": "4b568ea4a61304b2a13ca225fbae59a58510d920cb6dd648ee1fcfe942366859",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 2,
+      "record_id": "d5ec0806bec695a22e167103ef6efebb89194c04b447354af50d436669f408ef",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 3,
+      "record_id": "8f7f49000709b074f57d99ca22022145071428e20879a2fe13b8dfa8829950b9",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 4,
+      "record_id": "a69d5d2bea4d2532f78506e11aae3722d4bf8e104491bf666ae7f0fa699c513f",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 5,
+      "record_id": "0f6ca8ac728beb9cd76ac14c5a97ffd63eb598d83e28dc6005081a4ec5035c4e",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 6,
+      "record_id": "f69a4bf083e1d80938db8dbb472dd5eaf3b727c65a1e5639dc250595b2c4270d",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 7,
+      "record_id": "ff59fe9fd56e19e4b10a151501bd14047acb595ec1ee56ad1752064b4e23516c",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 8,
+      "record_id": "36fc2bdbdb32ef9661cc069132318c9602588c802e9bc9f55b83168e08a86eef",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 9,
+      "record_id": "ce7c510c95105702860ebd0f777694c3c85d407eea59c5d14af08fc97b376083",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 10,
+      "record_id": "902fc9e57485dd067dafdcee780a89b60e2efb6ed4bd8e38075e0319293de0cd",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 11,
+      "record_id": "051ab9daac4a8fff273a6cf61e7008d4f6f11da5e610ee2da2b33a3d1fdd3ef9",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 12,
+      "record_id": "f3975fed22bc49edd74939ff052b041f67b917f90077fd570a421c62792a0b01",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 13,
+      "record_id": "77e0f8586314775c343351e18196747ca8be43cffceb748371d652680819dbc6",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 14,
+      "record_id": "661b5bfcb93933a3e3c84134fe13cfd85a8a346c1d5eed7d080a06ec8fa7e09b",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 15,
+      "record_id": "0930c21626561af124723dd1ea20df834433a67fb2b81c02e868d0ebf1d59d53",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 16,
+      "record_id": "8e9e0999873a8afe050ca82edf9ac881c095816b19f890b6c27056796e190492",
+      "exact_arithmetic_checked": true
+    }
+  ],
+  "optional_lesson_17": "retained classroom activity, no independent quiz conversion",
+  "scope": "New worked examples aligned to16 retained lesson goals; original teacher responses and diagrams remain incomplete; teaching/grade/rights approval unchanged."
+}

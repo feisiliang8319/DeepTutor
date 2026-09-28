@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 79,
+  "reviews": [
+    {
+      "concept_id": "195c5aa754ebe15d6b5492ceee20dedd158d48aedf89d3b6ef9a96b0c74dfdc9",
+      "expected_records": 18,
+      "lecture_before": "Many plants have flowers. These plants can use their flowers to reproduce, or make new plants like themselves. How do plants use their flowers to reproduce?\nFirst, the male part of the flower makes pollen, and the female part makes eggs. Animals, wind, or water can move pollen. Pollination is what happens when pollen is moved to the female part of the flower.\nAfter pollination, sperm from the pollen can combine with the eggs. This is called fertilization. The fertilized eggs grow into seeds. The fruit grows around the seeds. Later, a seed can fall out of the fruit. It can germinate, or start to grow into a new plant.",
+      "lecture_after": "Many plants have flowers. These plants can use their flowers to reproduce, or make new plants like themselves. How do plants use their flowers to reproduce?\nFirst, the male part of the flower makes pollen, and the female part makes eggs. Animals, wind, or water can move pollen. Pollination is what happens when pollen is moved to the female part of the flower.\nAfter pollination, sperm from the pollen can combine with the eggs. This is called fertilization. The fertilized egg becomes an embryo within the developing seed. The whole ovule develops into a seed, which also includes protective tissues and a food supply. The fruit grows around the seeds. Later, a seed can fall out of the fruit. It can germinate, or start to grow into a new plant.",
+      "reason": "Correct the conflation of a fertilized egg with the entire seed; retain the remaining source lecture.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization",
+          "supports": "Distinguishes the zygote-derived embryo from the ovule-derived seed."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "59704ad7a3b0d9084767f862cdeae1dff60831f6126d6e4c5a7141cc3f0ac8a6",
+      "expected_records": 20,
+      "lecture_before": "Conifers are plants that grow cones. Conifers use their cones to reproduce, or make new plants like themselves. How do conifers use their cones to reproduce?\nConifers can grow male and female cones. Male cones make pollen, and female cones make eggs. Pollination is what happens when wind blows pollen from male cones onto female cones. After pollination, sperm from the pollen can combine with eggs. This is called fertilization. The fertilized eggs grow into seeds.\nThe seeds can fall out of the cones and land on the ground. When a seed lands on the ground, it can germinate, or start to grow into a new plant.",
+      "lecture_after": "Conifers are plants that grow cones. Conifers use their cones to reproduce, or make new plants like themselves. How do conifers use their cones to reproduce?\nConifers can grow male and female cones. Male cones make pollen, and female cones make eggs. Pollination is what happens when wind blows pollen from male cones onto female cones. After pollination, sperm from the pollen can combine with eggs. This is called fertilization. The fertilized egg becomes an embryo within the developing seed. The whole ovule develops into a seed, which also includes protective tissues and a food supply.\nThe seeds can fall out of the cones and land on the ground. When a seed lands on the ground, it can germinate, or start to grow into a new plant.",
+      "reason": "Correct the conflation of a fertilized egg with the entire seed; retain the remaining source lecture.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+          "supports": "Gymnosperm zygote develops into the embryo; the seed also contains other ovule tissues."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "4db01b0bd5a458d2ad0d71e98420f6abf551662c218149d4f97ab01fc7b7d7b7",
+      "expected_records": 7,
+      "lecture_before": "Gymnosperms are plants that have seeds but not flowers. Conifers are a type of a gymnosperm. Instead of flowers, conifers have cones. Conifers use their cones for sexual reproduction.\nMost conifer trees have both male and female cones. The male cones produce pollen. The female cones produce eggs and a sticky substance on the edge of the cone.\nMale cones release pollen into the wind. Pollination happens when pollen lands on and sticks to the female cones. Self-pollination happens when pollen sticks to a female cone on the same tree. Cross-pollination happens when pollen sticks to a female cone on a different tree.\nAfter pollination, sperm from the pollen fuse with eggs at the base of the female cone's scales. This is called fertilization.\nThe fertilized eggs grow into seeds inside the female cone. Conifer seeds are released from the fertilized cones. Many conifer seeds have wing-like structures. They can be carried long distances by the wind. When a seed lands on the ground, it can germinate and grow into a new plant.\nThe new plant can grow cones and begin the conifer life cycle again.",
+      "lecture_after": "Gymnosperms are plants that have seeds but not flowers. Conifers are a type of a gymnosperm. Instead of flowers, conifers have cones. Conifers use their cones for sexual reproduction.\nMost conifer trees have both male and female cones. The male cones produce pollen. The female cones produce eggs and a sticky substance on the edge of the cone.\nMale cones release pollen into the wind. Pollination happens when pollen lands on and sticks to the female cones. Self-pollination happens when pollen sticks to a female cone on the same tree. Cross-pollination happens when pollen sticks to a female cone on a different tree.\nAfter pollination, sperm from the pollen fuse with eggs at the base of the female cone's scales. This is called fertilization.\nThe fertilized egg becomes an embryo within the developing seed. The whole ovule develops into a seed, which also includes protective tissues and a food supply. In conifers, these seeds develop on the female cone scales. Conifer seeds are released from the fertilized cones. Many conifer seeds have wing-like structures. They can be carried long distances by the wind. When a seed lands on the ground, it can germinate and grow into a new plant.\nThe new plant can grow cones and begin the conifer life cycle again.",
+      "reason": "Distinguish embryo development from seed development in conifers.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+          "supports": "Gymnosperm zygote develops into the embryo; the seed also contains other ovule tissues."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "ee9fd49f2ec70925151c3ae51ec17ea63a7fc0c087c7c4317ef1f4a288868e86",
+      "expected_records": 8,
+      "lecture_before": "Flowering plants, called angiosperms, use their flowers for sexual reproduction.\nFlowers can have male parts, female parts, or both! The male part is called the stamen, and the female part is called the pistil.\nBoth the male and female parts are needed for sexual reproduction. The female part produces eggs, and the male part produces pollen. Pollen contains cells that become sperm.\nPollination happens when pollen lands on top of the pistil. Self-pollination happens when a plant with both male and female parts pollinates itself. Cross-pollination happens when pollen from one plant lands on the pistil of a flower on a different plant. Animals, including birds and insects, can be pollinators. Many pollinators come to flowers to get food. As a pollinator feeds, it moves pollen from one flower to another.\nAfter pollination, sperm from the pollen fuse with eggs. This is called fertilization. The fertilized eggs then grow into seeds. When a seed lands on the ground, it can germinate and grow into a new plant.\nThe new plant can grow flowers and begin the angiosperm plant life cycle again.",
+      "lecture_after": "Flowering plants, called angiosperms, use their flowers for sexual reproduction.\nFlowers can have male parts, female parts, or both! The male part is called the stamen, and the female part is called the pistil.\nBoth the male and female parts are needed for sexual reproduction. The female part produces eggs, and the male part produces pollen. Pollen contains cells that become sperm.\nPollination happens when pollen lands on top of the pistil. Self-pollination happens when a plant with both male and female parts pollinates itself. Cross-pollination happens when pollen from one plant lands on the pistil of a flower on a different plant. Animals, including birds and insects, can be pollinators. Many pollinators come to flowers to get food. As a pollinator feeds, it moves pollen from one flower to another.\nAfter pollination, sperm from the pollen fuse with eggs. This is called fertilization. The fertilized egg becomes an embryo within the developing seed. The whole ovule develops into a seed, which also includes protective tissues and a food supply. When a seed lands on the ground, it can germinate and grow into a new plant.\nThe new plant can grow flowers and begin the angiosperm plant life cycle again.",
+      "reason": "Distinguish embryo development from seed development in flowering plants.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization",
+          "supports": "Distinguishes the zygote-derived embryo from the ovule-derived seed."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "335baf1832cf78d20eadce8651b06041ad964330f7eaaddfde5e2528baa6b05e",
+      "expected_records": 8,
+      "lecture_before": "Moss plants reproduce using both asexual reproduction and sexual reproduction.\nMoss plants use their male and female parts for sexual reproduction. The male parts produce sperm. Moss live in damp environments, and moss sperm can travel through water to the female parts.\nThe sperm fuse with eggs in the female part. This is called fertilization. Self-fertilization happens when a sperm from a moss plant fertilizes an egg from the same plant. Cross-fertilization happens when a sperm from one moss plant fertilizes an egg from a different moss plant.\nThe fertilized egg grows into a thin brown stalk on top of the female part. Each stalk has a small spore capsule at the top. Moss plants use asexual reproduction to make small spores in the capsules. When the capsules open, the spores are released.\nWhen the spores land on the ground, they may germinate and grow into a new moss plant. This new moss plant can produce eggs and sperm and begin the moss life cycle again.",
+      "lecture_after": "Moss plants reproduce using both asexual reproduction and sexual reproduction.\nMoss plants use their male and female parts for sexual reproduction. The male parts produce sperm. Moss live in damp environments, and moss sperm can travel through water to the female parts.\nThe sperm fuse with eggs in the female part. This is called fertilization. Self-fertilization happens when a sperm from a moss plant fertilizes an egg from the same plant. Cross-fertilization happens when a sperm from one moss plant fertilizes an egg from a different moss plant.\nThe fertilized egg grows into a thin brown stalk on top of the female part. Each stalk has a small spore capsule at the top. The capsule belongs to the diploid sporophyte. Meiosis inside it produces haploid spores, forming one stage of alternation of generations. This is different from cloning through vegetative reproduction. When the capsules open, the spores are released.\nWhen the spores land on the ground, they may germinate and grow into a new moss plant. This new moss plant can produce eggs and sperm and begin the moss life cycle again.",
+      "reason": "Clarify that meiotic moss spores are part of alternation of generations, not vegetative cloning.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/25-3-bryophytes",
+          "supports": "Moss sporophyte forms haploid spores by meiosis and depends on the gametophyte."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "be83a3c708486ac9d9d27b89df7c8e9630c2cfa5b1947362cbfdce1c968170c6",
+      "expected_records": 10,
+      "lecture_before": "Fern plants reproduce using both asexual reproduction and sexual reproduction.\nMature ferns have flat leaves called fronds. Ferns have structures that look like small dots on the underside of their fronds. These structures are called spore cases. The mature ferns use asexual reproduction to make spores. When the spore cases open, the spores are released.\nWhen a spore lands on the ground and germinates, it grows into a small heart-shaped plant. The heart-shaped plant begins the fern's sexual reproduction stage by making eggs and sperm. Ferns live in damp environments, and sperm can swim though small water drops. Self-fertilization happens when a sperm swims to an egg on the same heart-shaped plant. Cross-fertilization happens when the sperm swims to an egg on a nearby plant.\nFertilization happens when a sperm and an egg fuse. The fertilized egg germinates and grows into a mature fern.\nThe mature fern can make spores and begin the fern life cycle again.",
+      "lecture_after": "Fern plants reproduce using both asexual reproduction and sexual reproduction.\nMature ferns have flat leaves called fronds. In many familiar ferns, the visible dots on the undersides of fronds are clusters called sori, containing sporangia (spore cases). The mature fern is the diploid sporophyte; meiosis in its sporangia produces haploid spores. This stage is part of alternation of generations, distinct from vegetative cloning. When the spore cases open, the spores are released.\nWhen a spore lands on the ground and germinates, it grows into a gametophyte, often a small heart-shaped plant in the familiar fern life cycle shown here. The heart-shaped plant begins the fern's sexual reproduction stage by making eggs and sperm. Ferns live in damp environments, and sperm can swim though small water drops. Self-fertilization happens when a sperm swims to an egg on the same heart-shaped plant. Cross-fertilization happens when the sperm swims to an egg on a nearby plant.\nFertilization happens when a sperm and an egg fuse. The fertilized egg (zygote) divides into an embryo that develops into a new fern sporophyte.\nThe mature fern can make spores and begin the fern life cycle again.",
+      "reason": "Separate sori from sporangia, distinguish meiotic spores from cloning, and describe zygote development accurately.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/25-4-seedless-vascular-plants",
+          "supports": "Fern sporophytes have sori containing sporangia; meiosis makes spores, spores grow into gametophytes, and fertilization produces the next sporophyte."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "3cb08141122d132763c35cb06cb70f40e614dfdfc498aff4ccb35277c637a35e",
+      "expected_records": 5,
+      "lecture_before": "The outer layer of Earth is broken up into many pieces called tectonic plates, or simply plates. The breaks between plates are called plate boundaries. Plate boundaries are classified by the way the plates are moving relative to each other:\nAt a divergent boundary, two plates are moving away from each other.\nAt a transform boundary, two plates are sliding past each other.\nAt a convergent boundary, two plates are moving toward each other.\nocean-continent subduction zone\nOne type of convergent boundary is an ocean-continent subduction zone, which forms when a plate with oceanic crust and a plate with continental crust move toward each other. The oceanic crust subducts, or sinks, below the continental crust.\nAs the oceanic crust subducts, a deep-sea trench forms at the plate boundary. Some rock in the subducting plate melts into magma and rises toward the surface. The magma cools and hardens to create a string of volcanoes called a volcanic arc.",
+      "lecture_after": "The outer layer of Earth is broken up into many pieces called tectonic plates, or simply plates. The breaks between plates are called plate boundaries. Plate boundaries are classified by the way the plates are moving relative to each other:\nAt a divergent boundary, two plates are moving away from each other.\nAt a transform boundary, two plates are sliding past each other.\nAt a convergent boundary, two plates are moving toward each other.\nocean-continent subduction zone\nOne type of convergent boundary is an ocean-continent subduction zone, which forms when a plate with oceanic crust and a plate with continental crust move toward each other. The oceanic crust subducts, or sinks, below the continental crust.\nAs the oceanic crust subducts, a deep-sea trench forms at the plate boundary. Water-rich fluids released from the descending plate enter the overlying mantle. The fluids lower the melting temperature, causing some of this mantle rock to melt. The resulting magma can rise toward the surface; this is the usual explanation for subduction-zone arc volcanism. The magma cools and hardens to create a string of volcanoes called a volcanic arc.",
+      "reason": "Replace the misleading universal picture of the slab itself melting with fluid-triggered partial melting in the overlying mantle.",
+      "references": [
+        {
+          "url": "https://pubs.usgs.gov/imap/2800/TDPback-screen.pdf",
+          "supports": "Fluids released by the descending slab trigger partial melting of the hot mantle above it."
+        },
+        {
+          "url": "https://www.usgs.gov/faqs/are-tectonic-plates-floating-magma",
+          "supports": "The mantle is mostly solid; subducted water allows local melting at lower temperature."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "d09955dcc77e93e900f945b909adba7e8878e314d2627d26334d1afa1de07c32",
+      "expected_records": 3,
+      "lecture_before": "The outer layer of Earth is broken up into many pieces called tectonic plates, or simply plates. The breaks between plates are called plate boundaries. Plate boundaries are classified by the way the plates are moving relative to each other:\nAt a divergent boundary, two plates are moving away from each other.\nAt a transform boundary, two plates are sliding past each other.\nAt a convergent boundary, two plates are moving toward each other.\nOne type of convergent boundary is an ocean-ocean subduction zone, which forms when two plates with oceanic crust move toward each other. One of the plates subducts, or sinks, below the other.\nWhen one of the plates subducts, a deep-sea trench forms at the plate boundary. Some rock in the subducting plate melts into magma and rises toward the surface. The magma cools and hardens to create a string of volcanoes in the ocean called a volcanic island arc.",
+      "lecture_after": "The outer layer of Earth is broken up into many pieces called tectonic plates, or simply plates. The breaks between plates are called plate boundaries. Plate boundaries are classified by the way the plates are moving relative to each other:\nAt a divergent boundary, two plates are moving away from each other.\nAt a transform boundary, two plates are sliding past each other.\nAt a convergent boundary, two plates are moving toward each other.\nOne type of convergent boundary is an ocean-ocean subduction zone, which forms when two plates with oceanic crust move toward each other. One of the plates subducts, or sinks, below the other.\nWhen one of the plates subducts, a deep-sea trench forms at the plate boundary. Water-rich fluids released from the descending plate enter the overlying mantle. The fluids lower the melting temperature, causing some of this mantle rock to melt. The resulting magma can rise toward the surface; this is the usual explanation for subduction-zone arc volcanism. The magma cools and hardens to create a string of volcanoes in the ocean called a volcanic island arc.",
+      "reason": "Replace the misleading universal picture of the slab itself melting with fluid-triggered partial melting in the overlying mantle.",
+      "references": [
+        {
+          "url": "https://pubs.usgs.gov/imap/2800/TDPback-screen.pdf",
+          "supports": "Fluids released by the descending slab trigger partial melting of the hot mantle above it."
+        },
+        {
+          "url": "https://www.usgs.gov/faqs/are-tectonic-plates-floating-magma",
+          "supports": "The mantle is mostly solid; subducted water allows local melting at lower temperature."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

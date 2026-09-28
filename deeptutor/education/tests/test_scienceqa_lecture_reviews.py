@@ -70,6 +70,9 @@ def test_later_batch_keeps_prior_fix_in_same_document(tmp_path):
     base=tmp_path/'source-snapshot';base.mkdir();(base/'objects').mkdir()
     source_sha=sha(text);(base/'objects'/(source_sha+'.md')).write_text(text)
     (base/'sources.json').write_text('[]')
+    (base/'newspaper-page-queue.json').write_text('{"pages": []}')
+    (base/'math-figure-review-assets').mkdir()
+    (base/'math-figure-review-assets/checked.svg').write_text('<svg/>')
     with sqlite3.connect(base/'catalog.sqlite3') as c:
         c.execute('create table records(id text primary key, library text, data_json text)')
         for i,row in enumerate(parse_file('scienceqa','fixture.md',text)):
@@ -83,6 +86,8 @@ def test_later_batch_keeps_prior_fix_in_same_document(tmp_path):
         return tmp_path/'snapshots'/result['snapshot_id']
     first=run(base,'One old lecture.','First correction.','first')
     second=run(first,'Another old lecture.','Second correction.','second')
+    assert (second/'newspaper-page-queue.json').read_bytes()==(base/'newspaper-page-queue.json').read_bytes()
+    assert (second/'math-figure-review-assets/checked.svg').read_bytes()==(base/'math-figure-review-assets/checked.svg').read_bytes()
     latest=(second/'revised-documents/fixture.md').read_text()
     assert 'First correction.' in latest and 'Second correction.' in latest
     assert 'old lecture.' not in latest

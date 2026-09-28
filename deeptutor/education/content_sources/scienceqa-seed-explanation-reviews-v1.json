@@ -1,0 +1,261 @@
+{
+  "library": "scienceqa",
+  "records": [
+    {
+      "record_id": "118790630320cba9e39928c5e39ec3be07f6795d70069904273552b843237d83",
+      "source_title": "biology · grade4 · Q19481",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "c830bdd02eba2f1a81e6de382ab0b55eea36a2913f68c66a3980bc1ac235e7d8",
+      "explanation_before": "Pollen helps the flower make seeds. After pollination, sperm cells from the pollen can combine with the eggs. These fertilized eggs can grow into seeds.\nPollen does not help a plant make flowers or grow roots.",
+      "explanation_after": "Pollen helps the flower make seeds. After pollination, sperm cells from the pollen can combine with the eggs. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nPollen does not help a plant make flowers or grow roots.",
+      "answer_before": "make seeds",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "2673ab7574d76847ac72517828c19c4d740bd8b3dd0b0ac08b2da0ce26a11ddd",
+      "source_title": "biology · grade4 · Q12798",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "787d4b0ec5c63ef78ad71646622a74a043fb5109dfe239800357d4dbf7d0ff20",
+      "explanation_before": "Fertilized eggs grow into seeds.\nA seed can grow into a new plant, which can grow pollen and cones. But a fertilized egg does not become pollen or a cone.",
+      "explanation_after": "SOURCE ANSWER ON HOLD: This question conflates a fertilized egg with the entire seed. A fertilized egg (zygote) develops into the embryo inside the seed; the ovule develops into the whole seed. The stored dataset choice is not an approved assessment answer. Rewrite the question and its options before teaching or scoring it. The original source choice is retained only for traceability.",
+      "answer_before": "a seed",
+      "answer_on_hold": true,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "2f59e1482785eb489ff01180d7914a725481d6d5573ce6f106b2509a9037a53a",
+      "source_title": "biology · grade8 · Q17819",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-middle-g6-8.md",
+      "source_sha256": "8598e84d0e8aa403da3a9bea10455d0d24146e979671a405de284834f8a63685",
+      "raw_sha256": "9cdfe7e80a6b519a1e7f5f709b76e52a12a8a788f1d67494129d2254d297acfd",
+      "explanation_before": "Fertilized eggs grow into seeds inside a fertilized cone.\nPollen grows inside male cones, not fertilized cones.",
+      "explanation_after": "Inside the female cone, fertilized eggs develop into embryos; each surrounding ovule develops into a seed.\nPollen grows inside male cones, not fertilized cones.",
+      "answer_before": "seeds",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "3b204a9845dcb08de3f301a9f606cf8a8a02d9a333a2900c0b6cafc915b325e4",
+      "source_title": "biology · grade4 · Q1126",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "a5fbfbe3f8aedd22d8ae548e4b26126d9a6f2f9fcf3b3e714f5c2a9f2752d880",
+      "explanation_before": "Pollen helps the flower make seeds. After pollination, sperm cells from the pollen can combine with the eggs. These fertilized eggs can grow into seeds.\nPollen does not help a plant grow bigger or grow leaves.",
+      "explanation_after": "Pollen helps the flower make seeds. After pollination, sperm cells from the pollen can combine with the eggs. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nPollen does not help a plant grow bigger or grow leaves.",
+      "answer_before": "make seeds",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "3cb0aad4b3517785590e2edb2d22f0feae78a7a02866f32f85c7dae12b63673d",
+      "source_title": "biology · grade4 · Q20747",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "c086d777423f1585d382ccd65fa51080d968b999cc45c1c5ae9d2bce89237cd9",
+      "explanation_before": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized eggs grow into seeds.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "explanation_after": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "answer_before": "the flowers",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "51a0858476eb1baa2dfbf4df6f48d071b0a2da3970ff0622b02a5f125fc2aa34",
+      "source_title": "biology · grade8 · Q12931",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-middle-g6-8.md",
+      "source_sha256": "8598e84d0e8aa403da3a9bea10455d0d24146e979671a405de284834f8a63685",
+      "raw_sha256": "fc4173f4871cc510573c5a31b7949f3141d01b4f3fcd8326a310a02de3b9b65c",
+      "explanation_before": "A pine tree's cones make seeds. Sperm from pollen fuses with an egg inside the female cone. This is called fertilization. The fertilized egg grows into a seed.\nA pine tree's needles are its leaves! The needles make most of the food for the tree using photosynthesis. They do not make the seeds.",
+      "explanation_after": "A pine tree's cones make seeds. Sperm from pollen fuses with an egg inside the female cone. This is called fertilization. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nA pine tree's needles are its leaves! The needles make most of the food for the tree using photosynthesis. They do not make the seeds.",
+      "answer_before": "the cones",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "58466ceefb73cb8809f90fd3308e071578196913d2bb1b91264edfaee4ea760c",
+      "source_title": "biology · grade4 · Q2739",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "930e9ecdac7b3152d25a000557435709b51d702c05d5d534659265cf397534bd",
+      "explanation_before": "Fertilized eggs grow into seeds. An egg cannot become a seed until after it is fertilized.\nA seed can grow into a new plant, which can grow cones. But a fertilized egg does not become a cone.",
+      "explanation_after": "SOURCE ANSWER ON HOLD: This question conflates a fertilized egg with the entire seed. A fertilized egg (zygote) develops into the embryo inside the seed; the ovule develops into the whole seed. The stored dataset choice is not an approved assessment answer. Rewrite the question and its options before teaching or scoring it. The original source choice is retained only for traceability.",
+      "answer_before": "After . . . seed",
+      "answer_on_hold": true,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "689d7b51c2d0f3ad8694edb5d0f9bdc1e0a479a030fa5ec2740eb78d989117ba",
+      "source_title": "biology · grade4 · Q9975",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "5e14bd51bfbd6840b1af113c6658f01e1243e0c89efb483742c389e4a1ae0056",
+      "explanation_before": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized eggs grow into seeds.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "explanation_after": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "answer_before": "A plant's flowers make seeds.",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "76003f7b2c9a3eff2fca24b6465067248c56b5457f605b71d98e5d7867675b36",
+      "source_title": "biology · grade4 · Q4009",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "d24efca648a4836ef449298fce9a477f5265745ee3b20470ccd4ab0be53baf7e",
+      "explanation_before": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized eggs grow into seeds.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "explanation_after": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "answer_before": "the flowers",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "782a60adc5515d409d52d927380e167e8f4c12f52f5fa94d6796ad91ae296cf0",
+      "source_title": "biology · grade4 · Q12259",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "d43fc40fb55c525cd647406fffcbf3630811cffcb6d8ba943028127a29b60cd3",
+      "explanation_before": "Pollen helps the flower make seeds. After pollination, sperm cells from the pollen can combine with the eggs. These fertilized eggs can grow into seeds.\nPollen does not help a plant make flowers or grow roots.",
+      "explanation_after": "Pollen helps the flower make seeds. After pollination, sperm cells from the pollen can combine with the eggs. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nPollen does not help a plant make flowers or grow roots.",
+      "answer_before": "make seeds",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "91fe66e9a4b576de7676e3bcc7198fd49714af64e4b59f5b1038f1a954f75180",
+      "source_title": "biology · grade4 · Q8012",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "7df094a3159bebec8a2cc5d07bf4965b4e8643cc4ac90cda9d004f5bd9b75344",
+      "explanation_before": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized eggs grow into seeds.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "explanation_after": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "answer_before": "A plant's flowers make seeds.",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "aacd21e1cba9d10e70f62706ad8c1061da27cecf938be4c4adb60c0efc9d3602",
+      "source_title": "biology · grade8 · Q1969",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-middle-g6-8.md",
+      "source_sha256": "8598e84d0e8aa403da3a9bea10455d0d24146e979671a405de284834f8a63685",
+      "raw_sha256": "56c74426225905d305ca5d473e06f8a3f54727bc87ce8e79fc57c1b595278965",
+      "explanation_before": "An apple tree's flowers can make seeds. Inside a flower, a sperm cell and an egg fuse to make a fertilized egg. The fertilized egg grows into a seed.\nThe fruit grows from the ovary around the seeds. But the fruit does not make the seeds.",
+      "explanation_after": "An apple tree's flowers can make seeds. Inside a flower, a sperm cell and an egg fuse to make a fertilized egg. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nThe fruit grows from the ovary around the seeds. But the fruit does not make the seeds.",
+      "answer_before": "the flowers",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "b22884106adf908ef049ca5be1c6bcabe2dfa8b4a51b5141b0cd3cb9332b0e0e",
+      "source_title": "biology · grade4 · Q18350",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "d2dea5fc1056802d045e634725b8ffc560efd1bd2009b3c7d0cefdd8e1875cc6",
+      "explanation_before": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized eggs grow into seeds.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "explanation_after": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "answer_before": "A plant's flowers make seeds.",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "b3ccbc142c1c2f0f8935fa75e5d9dccb5123a5939072c93c7a16c6fc6bbe244f",
+      "source_title": "biology · grade4 · Q15471",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "fc4fd57d0867185c73c6df59dedb1d86d0337bd90e2ee13f57f07cbd095d9f0b",
+      "explanation_before": "Pollen helps the flower make seeds. After pollination, sperm cells from the pollen can combine with the eggs. These fertilized eggs can grow into seeds.\nPollen does not help a plant grow bigger or grow leaves.",
+      "explanation_after": "Pollen helps the flower make seeds. After pollination, sperm cells from the pollen can combine with the eggs. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nPollen does not help a plant grow bigger or grow leaves.",
+      "answer_before": "make seeds",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "bb183a6039fba894d358888053776c458480ece5ccddf8be62ad2751af362765",
+      "source_title": "biology · grade4 · Q31",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "412049a3eed8b580eb768f6d6eda4f55f4eb4fc9008b9ea5ef7a6f0f2b0eed94",
+      "explanation_before": "Pollen helps the flower make seeds. After pollination, sperm cells from the pollen can combine with the eggs. These fertilized eggs can grow into seeds.\nPollen does not help a plant grow bigger or grow leaves.",
+      "explanation_after": "Pollen helps the flower make seeds. After pollination, sperm cells from the pollen can combine with the eggs. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nPollen does not help a plant grow bigger or grow leaves.",
+      "answer_before": "make seeds",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    },
+    {
+      "record_id": "e40362fe0e7f1e0d58f5d04be5bc2d3445256203d4eab5705b0b4a1eb64e4633",
+      "source_title": "biology · grade4 · Q20656",
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "a4e0f7c82fee01f52c4a7e28355da6193349d8ec547c5d4d7c627e5fff5290aa",
+      "explanation_before": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized eggs grow into seeds.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "explanation_after": "Flowers make seeds. After a flower is pollinated, male cells from the pollen combine with eggs. This is called fertilization. The fertilized egg develops into the embryo inside a seed; the whole ovule develops into the seed.\nThe fruit can grow around the seeds. But the fruit does not make seeds. Both the fruit and the seeds grow from parts of the flower.",
+      "answer_before": "the flowers",
+      "answer_on_hold": false,
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/32-1-reproductive-development-and-structure",
+        "https://openstax.org/books/biology-2e/pages/32-2-pollination-and-fertilization"
+      ],
+      "scope": "Exact explanation correction; original question/options/answer and rights/grade approval remain unchanged."
+    }
+  ]
+}

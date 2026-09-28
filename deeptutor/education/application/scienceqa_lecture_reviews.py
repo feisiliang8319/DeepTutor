@@ -117,6 +117,19 @@ def build(base: Path, recipe_path: Path, output: Path) -> dict:
     target.mkdir(parents=True, exist_ok=False)
     shutil.copytree(base / 'objects', target / 'objects')
     shutil.copy2(base / 'sources.json', target / 'sources.json')
+    # A later subject batch must retain other subjects' repair queues/assets.
+    rebuilt = {'objects', 'sources.json', 'catalog.sqlite3', 'summary.json',
+               'revised-documents', 'revised-documents.json',
+               'scienceqa-lecture-reviews.json', 'scienceqa-concept-queue.json'}
+    for item in base.iterdir():
+        if item.name in rebuilt:
+            continue
+        if item.is_symlink():
+            raise ValueError('Unexpected symlink in immutable snapshot')
+        if item.is_dir():
+            shutil.copytree(item, target / item.name)
+        else:
+            shutil.copy2(item, target / item.name)
     corrected = target / 'revised-documents'
     corrected.mkdir()
     manifest = []

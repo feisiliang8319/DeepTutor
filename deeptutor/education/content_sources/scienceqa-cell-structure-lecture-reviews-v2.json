@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 181,
+  "reviews": [
+    {
+      "concept_id": "bdcd4adad33e3cb4dce69e0bfe1ab8648c4f15753ab49547200b27e7afff8e6d",
+      "expected_records": 10,
+      "lecture_before": "Plant cells are made up of many different parts. Each cell part has a function that helps the cell survive and grow.\nSome cell parts are called organelles. Organelles are cell structures that are surrounded by their own membranes. Here are some of the organelles in plant cells:\nChloroplasts and mitochondria work together to help the cell get the energy it needs. The chloroplasts use photosynthesis to make sugar. The mitochondria break down this sugar and release energy that the cell can use for all of its activities.\nThe nucleus directs cell activities by sending instructions to different parts of the cell. The nucleus contains structures called chromosomes. The chromosomes are made mostly of hereditary material called DNA. DNA contains information that the cell uses for growth and activities. These instructions tell ribosomes how to build molecules called proteins, which make up cell structures and help chemical reactions happen in the cell.\nThe endoplasmic reticulum is an organelle that helps ribosomes build proteins. The nucleus sends instructions for making proteins to ribosomes. Ribosomes can attach to the endoplamic reticulum. The endoplasmic reticulum and ribosomes use these instructions to make proteins that the cell needs to survive and grow.\nAfter proteins are made in the endoplasmic reticulum, they can be transferred to the Golgi. The Golgi is an organelle made up of flat, stacked membranes. The Golgi sorts and packages proteins and other substances. Then, the Golgi sends these substances to different parts of the cell. Some of these substances are sent to the cell membrane and released from the cell.\nIn plant cells, the vacuole stores waste, water, and nutrients such as sugar. Most plant cells have one vacuole.\nOther cell parts are not surrounded by their own membranes. These cell parts are not organelles.\nThe cell wall is the cell's tough outer covering. It gives the cell strength and stiffness and helps the cell keep its shape.\nOn the inside of the cell wall is a thin layer called the cell membrane. This layer is a membrane, but it does not have a membrane surrounding it, so it is not an organelle. The cell membrane controls which substances enter and leave the cell.\nThe cytoplasm is a thick liquid that fills the space inside the cell. The cytoplasm also helps the cell keep its shape and supports the other cell parts.",
+      "lecture_after": "Plant cells are made up of many different parts. Each cell part has a function that helps the cell survive and grow.\nSome cell parts are called organelles. Many organelles have their own membranes. Some textbooks use organelle more broadly to include nonmembranous structures such as ribosomes. Here, membrane-bound organelle means the narrower group. Here are some of the organelles in plant cells:\nChloroplasts and mitochondria work together to help the cell get the energy it needs. The chloroplasts use photosynthesis to make sugar. The mitochondria break down this sugar and release energy that the cell can use for all of its activities.\nThe nucleus directs cell activities by sending instructions to different parts of the cell. The nucleus contains structures called chromosomes. The chromosomes are made mostly of hereditary material called DNA. DNA contains information that the cell uses for growth and activities. These instructions tell ribosomes how to build molecules called proteins, which make up cell structures and help chemical reactions happen in the cell.\nRibosomes attached to rough endoplasmic reticulum make proteins; the rough ER helps process and transport them. Smooth ER lacks attached ribosomes and has other roles, including lipid synthesis. The nucleus sends instructions for making proteins to ribosomes. Ribosomes can attach to the endoplasmic reticulum. The endoplasmic reticulum and ribosomes use these instructions to make proteins that the cell needs to survive and grow.\nAfter proteins are made in the endoplasmic reticulum, they can be transferred to the Golgi. The Golgi is an organelle made up of flat, stacked membranes. The Golgi sorts and packages proteins and other substances. Then, the Golgi sends these substances to different parts of the cell. Some of these substances are sent to the cell membrane and released from the cell.\nIn plant cells, the vacuole stores waste, water, and nutrients such as sugar. Most plant cells have one vacuole.\nSome other cell structures lack their own enclosing membranes. They are not membrane-bound organelles.\nThe cell wall is the cell's tough outer covering. It gives the cell strength and stiffness and helps the cell keep its shape.\nOn the inside of the cell wall is a thin layer called the cell membrane. This layer is a membrane, but it does not have a membrane surrounding it, so it is not an organelle. The cell membrane controls which substances enter and leave the cell.\nThe fluid component is the cytosol. In this description of a typical plant or animal cell, cytoplasm includes the cytosol and structures outside the nucleus. The cytoplasm also helps the cell keep its shape and supports the other cell parts.",
+      "reason": "Clarify the scope of organelle terminology, separate cytosol from cytoplasm, and distinguish rough from smooth ER.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles",
+          "supports": "Distinguishes cytosol from cytoplasm; describes ribosomes as organelles and the roles of rough/smooth ER."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/4-4-the-endomembrane-system-and-proteins",
+          "supports": "Ribosomes on rough ER synthesize proteins; smooth ER has different functions."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "626894a2e5643f55f80b55d87b5ef12ae02a05ae92e8191afdb23d023724069d",
+      "expected_records": 3,
+      "lecture_before": "Animal cells are made up of many different parts. Each cell part has a function that helps the cell survive and grow.\nSome cell parts are called organelles. Organelles are cell structures that are surrounded by their own membranes. Here are some of the organelles in animal cells:\nMitochondria help the cell get the energy it needs. Mitochondria break down sugar and release energy that the cell can use for all of its activities.\nThe nucleus directs cell activities by sending instructions to different parts of the cell. The nucleus contains structures called chromosomes. The chromosomes are made mostly of hereditary material called DNA. DNA contains information that the cell uses for growth and activities. These instructions tell ribosomes how to build molecules called proteins, which make up cell structures and help chemical reactions happen in the cell.\nThe endoplasmic reticulum is an organelle that helps ribosomes build proteins. The nucleus sends instructions for making proteins to ribosomes. Ribosomes can attach to the endoplamic reticulum. The endoplasmic reticulum and ribosomes use these instructions to make proteins that the cell needs to survive and grow.\nAfter proteins are made in the endoplasmic reticulum, they can be transferred to the Golgi. The Golgi is an organelle made up of flat, stacked membranes. The Golgi sorts and packages proteins and other substances. Then, the Golgi sends these substances to different parts of the cell. Some of these substances are sent to the cell membrane and released from the cell.\nAnimal cells also have organelles for storage and waste removal. The vacuoles store sugar and other nutrients. The lysosomes break down worn-out cell parts and other waste. Animal cells usually have several vacuoles and lysosomes.\nOther cell parts are not surrounded by their own membranes. These cell parts are not organelles.\nThe cell membrane is a thin layer that surrounds and protects the cell. This layer is a membrane, but it does not have a membrane surrounding it, so it is not an organelle. The cell membrane controls which substances enter and leave the cell.\nThe cytoplasm is a thick liquid that fills the space inside the cell. The cytoplasm also helps the cell keep its shape and supports the other cell parts.",
+      "lecture_after": "Animal cells are made up of many different parts. Each cell part has a function that helps the cell survive and grow.\nSome cell parts are called organelles. Many organelles have their own membranes. Some textbooks use organelle more broadly to include nonmembranous structures such as ribosomes. Here, membrane-bound organelle means the narrower group. Here are some of the organelles in animal cells:\nMitochondria help the cell get the energy it needs. Mitochondria break down sugar and release energy that the cell can use for all of its activities.\nThe nucleus directs cell activities by sending instructions to different parts of the cell. The nucleus contains structures called chromosomes. The chromosomes are made mostly of hereditary material called DNA. DNA contains information that the cell uses for growth and activities. These instructions tell ribosomes how to build molecules called proteins, which make up cell structures and help chemical reactions happen in the cell.\nRibosomes attached to rough endoplasmic reticulum make proteins; the rough ER helps process and transport them. Smooth ER lacks attached ribosomes and has other roles, including lipid synthesis. The nucleus sends instructions for making proteins to ribosomes. Ribosomes can attach to the endoplasmic reticulum. The endoplasmic reticulum and ribosomes use these instructions to make proteins that the cell needs to survive and grow.\nAfter proteins are made in the endoplasmic reticulum, they can be transferred to the Golgi. The Golgi is an organelle made up of flat, stacked membranes. The Golgi sorts and packages proteins and other substances. Then, the Golgi sends these substances to different parts of the cell. Some of these substances are sent to the cell membrane and released from the cell.\nAnimal cells also have organelles for storage and waste removal. The vacuoles store sugar and other nutrients. The lysosomes break down worn-out cell parts and other waste. Animal cells usually have several vacuoles and lysosomes.\nSome other cell structures lack their own enclosing membranes. They are not membrane-bound organelles.\nThe cell membrane is a thin layer that surrounds and protects the cell. This layer is a membrane, but it does not have a membrane surrounding it, so it is not an organelle. The cell membrane controls which substances enter and leave the cell.\nThe fluid component is the cytosol. In this description of a typical plant or animal cell, cytoplasm includes the cytosol and structures outside the nucleus. The cytoplasm also helps the cell keep its shape and supports the other cell parts.",
+      "reason": "Clarify the scope of organelle terminology, separate cytosol from cytoplasm, and distinguish rough from smooth ER.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles",
+          "supports": "Distinguishes cytosol from cytoplasm; describes ribosomes as organelles and the roles of rough/smooth ER."
+        },
+        {
+          "url": "https://openstax.org/books/biology-2e/pages/4-4-the-endomembrane-system-and-proteins",
+          "supports": "Ribosomes on rough ER synthesize proteins; smooth ER has different functions."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "59de88b5871f8d313e2c2119f3d452a52b69fe4d91f62e52d8f0968bb3314e58",
+      "expected_records": 6,
+      "lecture_before": "The cell membrane controls which substances enter and leave the cell. The cell membrane also protects the cell from the outside environment.\nThe cytoplasm is made up of a thick liquid that fills the space inside the cell membrane. The cytoplasm supports the other cell parts and holds them in place. Many important chemical reactions happen in the cytoplasm.\nThe mitochondria break down sugar to release energy that the cell can use.\nThe vacuoles store nutrients, such as sugar, in the cell. Vacuoles also store water and waste.\nThe nucleus directs cell activities. It does this by sending instructions to different parts of the cell.\nThe chromosomes contain the information that the cell uses for growth and activities. In animal and plant cells, the chromosomes are inside the nucleus.",
+      "lecture_after": "The cell membrane controls which substances enter and leave the cell. The cell membrane also protects the cell from the outside environment.\nIn typical plant and animal cells, cytoplasm includes cytosol and cellular structures outside the nucleus. Cytosol is its fluid component. The cytoplasm supports the other cell parts and holds them in place. Many important chemical reactions happen in the cytoplasm.\nThe mitochondria break down sugar to release energy that the cell can use.\nThe vacuoles store nutrients, such as sugar, in the cell. Vacuoles also store water and waste.\nThe nucleus directs cell activities. It does this by sending instructions to different parts of the cell.\nThe chromosomes contain the information that the cell uses for growth and activities. In animal and plant cells, the chromosomes are inside the nucleus.",
+      "reason": "Distinguish cytoplasm from its fluid component.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles",
+          "supports": "Distinguishes cytosol from cytoplasm; describes ribosomes as organelles and the roles of rough/smooth ER."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "1e1074d1dcfba7527204cba27d7774aee56fbd2af3cc7e6ac32d42020a1f1613",
+      "expected_records": 93,
+      "lecture_before": "Vertebrates and invertebrates are both groups of animals.\nA vertebrate has a backbone. The backbone is made of many bones in an animal's back. A vertebrate's backbone helps connect the different parts of its body. In the drawings below, each vertebrate's backbone is colored orange.\nAn invertebrate does not have a backbone. In fact, invertebrates do not have any bones! Some invertebrates have an outer cover on their body called an exoskeleton. Other invertebrates have a soft body.",
+      "lecture_after": "Vertebrates and invertebrates are both groups of animals.\nA vertebrate has a backbone. The backbone is a series of vertebrae. In most familiar vertebrates these are bony, but sharks and rays have cartilaginous skeletons. They are still vertebrates. A vertebrate's backbone helps connect the different parts of its body. In the drawings below, each vertebrate's backbone is colored orange.\nAn invertebrate does not have a backbone. In fact, invertebrates do not have any bones! Some invertebrates have an outer cover on their body called an exoskeleton. Other invertebrates have a soft body.",
+      "reason": "Do not classify an animal as an invertebrate simply because its skeleton is cartilage rather than bone.",
+      "references": [
+        {
+          "url": "https://www.fisheries.noaa.gov/feature-story/shark-discovery-may-help-people-bone-disease",
+          "supports": "Shark spinal columns contain cartilage rather than bone."
+        },
+        {
+          "url": "https://www.fisheries.noaa.gov/feature-story/12-shark-facts-may-surprise-you",
+          "supports": "Sharks, rays, and skates have cartilaginous skeletons."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "ceb4c606c8079e94d40253d2495594556d5d8497889f7d5fe293c436581722a8",
+      "expected_records": 16,
+      "lecture_before": "Vertebrates and invertebrates are both groups of animals.\nA vertebrate has a backbone. The backbone is made of many bones in an animal's back. A vertebrate's backbone helps connect the different parts of its body. In the drawings below, each vertebrate's backbone is colored orange.\nAn invertebrate does not have a backbone. In fact, invertebrates do not have any bones! Some invertebrates have a hard outer cover on their body. Other invertebrates have a soft body.",
+      "lecture_after": "Vertebrates and invertebrates are both groups of animals.\nA vertebrate has a backbone. The backbone is a series of vertebrae. In most familiar vertebrates these are bony, but sharks and rays have cartilaginous skeletons. They are still vertebrates. A vertebrate's backbone helps connect the different parts of its body. In the drawings below, each vertebrate's backbone is colored orange.\nAn invertebrate does not have a backbone. In fact, invertebrates do not have any bones! Some invertebrates have a hard outer cover on their body. Other invertebrates have a soft body.",
+      "reason": "Do not classify an animal as an invertebrate simply because its skeleton is cartilage rather than bone.",
+      "references": [
+        {
+          "url": "https://www.fisheries.noaa.gov/feature-story/shark-discovery-may-help-people-bone-disease",
+          "supports": "Shark spinal columns contain cartilage rather than bone."
+        },
+        {
+          "url": "https://www.fisheries.noaa.gov/feature-story/12-shark-facts-may-surprise-you",
+          "supports": "Sharks, rays, and skates have cartilaginous skeletons."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "367e0d73b312e1ffa51d4f1b21aa673bad0f17727f90edf8529597fcce18750d",
+      "expected_records": 53,
+      "lecture_before": "Some animals have a backbone. The backbone is made of many bones in an animal's back. An animal's backbone helps connect the different parts of its body. In the drawings below, each animal's backbone is colored orange.\nOther animals do not have a backbone. In fact, these animals don't have any bones! Some animals without backbones have a hard outer cover. Other animals have a soft body.",
+      "lecture_after": "Some animals have a backbone. The backbone is a series of vertebrae. In most familiar vertebrates these are bony, but sharks and rays have cartilaginous skeletons. They are still vertebrates. An animal's backbone helps connect the different parts of its body. In the drawings below, each animal's backbone is colored orange.\nOther animals do not have a backbone. In fact, these animals don't have any bones! Some animals without backbones have a hard outer cover. Other animals have a soft body.",
+      "reason": "Do not classify an animal as an invertebrate simply because its skeleton is cartilage rather than bone.",
+      "references": [
+        {
+          "url": "https://www.fisheries.noaa.gov/feature-story/shark-discovery-may-help-people-bone-disease",
+          "supports": "Shark spinal columns contain cartilage rather than bone."
+        },
+        {
+          "url": "https://www.fisheries.noaa.gov/feature-story/12-shark-facts-may-surprise-you",
+          "supports": "Sharks, rays, and skates have cartilaginous skeletons."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

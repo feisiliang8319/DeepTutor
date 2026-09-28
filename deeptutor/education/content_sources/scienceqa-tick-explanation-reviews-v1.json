@@ -1,0 +1,183 @@
+{
+  "library": "scienceqa",
+  "expected_changed_records": 11,
+  "expected_answers_on_hold": 0,
+  "records": [
+    {
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "cef674e309fb27530a2ee885955ad5a953c6db4f8c5cb88701b55c056a492a02",
+      "record_id": "e6e0fc001500603654b17a1d76f487c3d4fc8d54f559f1d57b7294bd7a3cd03f",
+      "source_title": "biology · grade4 · Q474",
+      "answer_before": "woodpecker",
+      "explanation_before": "A woodpecker is a bird. Like other birds, a woodpecker is a vertebrate. It has a backbone.\nA grasshopper is an insect. Like other insects, a grasshopper is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA red-spotted purple butterfly is an insect. Like other insects, a red-spotted purple butterfly is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA castor bean tick is an insect. Like other insects, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.",
+      "explanation_after": "A woodpecker is a bird. Like other birds, a woodpecker is a vertebrate. It has a backbone.\nA grasshopper is an insect. Like other insects, a grasshopper is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA red-spotted purple butterfly is an insect. Like other insects, a red-spotted purple butterfly is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA castor bean tick is an arachnid, not an insect. Like other arachnids, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.",
+      "answer_on_hold": false,
+      "reason": "Correct tick classification; retain the distinction between vertebrates and invertebrates. Other explanation details and image evidence remain unreviewed.",
+      "references": [
+        "https://www.cdcfoundation.org/stories/4th-annual-tick-workshop"
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "50c7c23660bd57703888b1520774a0e9c87d0df29fba54c6378c4d5234bc8c34",
+      "record_id": "ca84e5243890ae1fa920a9106a029db5cfdea55b4988cfd24e40c36f52bd839a",
+      "source_title": "biology · grade2 · Q510",
+      "answer_before": "castor bean tick",
+      "explanation_before": "A castor bean tick is an insect. Like other insects, a castor bean tick does not have a backbone. It has a hard outer cover.\nA toucan is a bird. Like other birds, a toucan has a backbone.",
+      "explanation_after": "A castor bean tick is an arachnid, not an insect. Like other arachnids, a castor bean tick does not have a backbone. It has a hard outer cover.\nA toucan is a bird. Like other birds, a toucan has a backbone.",
+      "answer_on_hold": false,
+      "reason": "Correct tick classification; retain the distinction between vertebrates and invertebrates. Other explanation details and image evidence remain unreviewed.",
+      "references": [
+        "https://www.cdcfoundation.org/stories/4th-annual-tick-workshop"
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "a0d77f863e0c88c7bc164ac7ebfacdc4b3d0d51fbd1a0f611433adb715c1e489",
+      "record_id": "1725d17210f12217a41b2430908a89e6b564a5e4ae191224495b235aae948fda",
+      "source_title": "biology · grade5 · Q1563",
+      "answer_before": "red-tailed hawk",
+      "explanation_before": "Like other tarantulas, a red-kneed tarantula is an invertebrate. It does not have a backbone. It has an exoskeleton.\nLike other octopuses, a giant octopus is an invertebrate. It does not have a backbone. It has a soft body.\nA castor bean tick is an insect. Like other insects, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA red-tailed hawk is a bird. Like other birds, a red-tailed hawk is a vertebrate. It has a backbone.",
+      "explanation_after": "Like other tarantulas, a red-kneed tarantula is an invertebrate. It does not have a backbone. It has an exoskeleton.\nLike other octopuses, a giant octopus is an invertebrate. It does not have a backbone. It has a soft body.\nA castor bean tick is an arachnid, not an insect. Like other arachnids, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA red-tailed hawk is a bird. Like other birds, a red-tailed hawk is a vertebrate. It has a backbone.",
+      "answer_on_hold": false,
+      "reason": "Correct tick classification; retain the distinction between vertebrates and invertebrates. Other explanation details and image evidence remain unreviewed.",
+      "references": [
+        "https://www.cdcfoundation.org/stories/4th-annual-tick-workshop"
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "8a934313f048cc4527ee25dcda70769314c4e2d436a9524ae17137201931ded0",
+      "record_id": "c111ae1877effdfa44eff48b64b9dd3ea93fb13edfa90d92d04241719771176d",
+      "source_title": "biology · grade2 · Q3280",
+      "answer_before": "goldfish",
+      "explanation_before": "A castor bean tick is an insect. Like other insects, a castor bean tick does not have a backbone. It has a hard outer cover.\nA goldfish is a fish. Like other fish, a goldfish has a backbone.",
+      "explanation_after": "A castor bean tick is an arachnid, not an insect. Like other arachnids, a castor bean tick does not have a backbone. It has a hard outer cover.\nA goldfish is a fish. Like other fish, a goldfish has a backbone.",
+      "answer_on_hold": false,
+      "reason": "Correct tick classification; retain the distinction between vertebrates and invertebrates. Other explanation details and image evidence remain unreviewed.",
+      "references": [
+        "https://www.cdcfoundation.org/stories/4th-annual-tick-workshop"
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "2672e9df3f50498f432cf2726b64780bc004bbd81c1dd131b6e75da280dbd198",
+      "record_id": "9131b17c4a175d536a8f718c2d8d49d908b8c05f1d7284fb2e133250484fc56d",
+      "source_title": "biology · grade3 · Q4807",
+      "answer_before": "porcupine",
+      "explanation_before": "A castor bean tick is an insect. Like other insects, a castor bean tick is an invertebrate. It does not have a backbone. It has a hard outer cover.\nA porcupine is a mammal. Like other mammals, a porcupine is a vertebrate. It has a backbone.",
+      "explanation_after": "A castor bean tick is an arachnid, not an insect. Like other arachnids, a castor bean tick is an invertebrate. It does not have a backbone. It has a hard outer cover.\nA porcupine is a mammal. Like other mammals, a porcupine is a vertebrate. It has a backbone.",
+      "answer_on_hold": false,
+      "reason": "Correct tick classification; retain the distinction between vertebrates and invertebrates. Other explanation details and image evidence remain unreviewed.",
+      "references": [
+        "https://www.cdcfoundation.org/stories/4th-annual-tick-workshop"
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "25e019c9e3ba834b72ab9c872ea313d8394041c840fc05d15f37ca3ed0f8915f",
+      "record_id": "048462bf41ec9fb6a513cc3b4cc8625674b4ce62bd567d581e05e971c00a494a",
+      "source_title": "biology · grade5 · Q14298",
+      "answer_before": "castor bean tick",
+      "explanation_before": "A zebra dove is a bird. Like other birds, a zebra dove is a vertebrate. It has a backbone.\nA harvest mouse is a mammal. Like other mammals, a harvest mouse is a vertebrate. It has a backbone.\nA Solomon leaf frog is an amphibian. Like other amphibians, a Solomon leaf frog is a vertebrate. It has a backbone.\nA castor bean tick is an insect. Like other insects, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.",
+      "explanation_after": "A zebra dove is a bird. Like other birds, a zebra dove is a vertebrate. It has a backbone.\nA harvest mouse is a mammal. Like other mammals, a harvest mouse is a vertebrate. It has a backbone.\nA Solomon leaf frog is an amphibian. Like other amphibians, a Solomon leaf frog is a vertebrate. It has a backbone.\nA castor bean tick is an arachnid, not an insect. Like other arachnids, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.",
+      "answer_on_hold": false,
+      "reason": "Correct tick classification; retain the distinction between vertebrates and invertebrates. Other explanation details and image evidence remain unreviewed.",
+      "references": [
+        "https://www.cdcfoundation.org/stories/4th-annual-tick-workshop"
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "993e835ee317ea4adb0ef67a38deed01b781d3116b31154e04974c8441b3324d",
+      "record_id": "3e70f28ca183c0ea3e374ce72c1cd85fa1665af6d3c597ff4400c65e6b2b5f3b",
+      "source_title": "biology · grade2 · Q15720",
+      "answer_before": "goose",
+      "explanation_before": "A castor bean tick is an insect. Like other insects, a castor bean tick does not have a backbone. It has a hard outer cover.\nA goose is a bird. Like other birds, a goose has a backbone.",
+      "explanation_after": "A castor bean tick is an arachnid, not an insect. Like other arachnids, a castor bean tick does not have a backbone. It has a hard outer cover.\nA goose is a bird. Like other birds, a goose has a backbone.",
+      "answer_on_hold": false,
+      "reason": "Correct tick classification; retain the distinction between vertebrates and invertebrates. Other explanation details and image evidence remain unreviewed.",
+      "references": [
+        "https://www.cdcfoundation.org/stories/4th-annual-tick-workshop"
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "5e817a35932295cd9ecbefb82958d78a1cc7f2a941eae36c4368598cc4307dd4",
+      "record_id": "877790e118e70a6919003005be6f65cd31bb78babfb55484f4e63dd91cdaa768",
+      "source_title": "biology · grade4 · Q18126",
+      "answer_before": "coral snake",
+      "explanation_before": "A monarch butterfly is an insect. Like other insects, a monarch butterfly is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA coral snake is a reptile. Like other reptiles, a coral snake is a vertebrate. It has a backbone.\nA castor bean tick is an insect. Like other insects, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.\nLike other spiders, a black widow spider is an invertebrate. It does not have a backbone. It has an exoskeleton.",
+      "explanation_after": "A monarch butterfly is an insect. Like other insects, a monarch butterfly is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA coral snake is a reptile. Like other reptiles, a coral snake is a vertebrate. It has a backbone.\nA castor bean tick is an arachnid, not an insect. Like other arachnids, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.\nLike other spiders, a black widow spider is an invertebrate. It does not have a backbone. It has an exoskeleton.",
+      "answer_on_hold": false,
+      "reason": "Correct tick classification; retain the distinction between vertebrates and invertebrates. Other explanation details and image evidence remain unreviewed.",
+      "references": [
+        "https://www.cdcfoundation.org/stories/4th-annual-tick-workshop"
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "3522507aa7626e3c6889712064a47af993556ddc7a29eaf414f808104c0ea4ad",
+      "record_id": "65c39f04c22f3a397b07e7cfde07a95677e0d59b1406daf23c26f345014ee570",
+      "source_title": "biology · grade4 · Q19419",
+      "answer_before": "European green toad",
+      "explanation_before": "A grasshopper is an insect. Like other insects, a grasshopper is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA European green toad is an amphibian. Like other amphibians, a European green toad is a vertebrate. It has a backbone.\nA castor bean tick is an insect. Like other insects, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA luna moth is an insect. Like other insects, a luna moth is an invertebrate. It does not have a backbone. It has an exoskeleton.",
+      "explanation_after": "A grasshopper is an insect. Like other insects, a grasshopper is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA European green toad is an amphibian. Like other amphibians, a European green toad is a vertebrate. It has a backbone.\nA castor bean tick is an arachnid, not an insect. Like other arachnids, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA luna moth is an insect. Like other insects, a luna moth is an invertebrate. It does not have a backbone. It has an exoskeleton.",
+      "answer_on_hold": false,
+      "reason": "Correct tick classification; retain the distinction between vertebrates and invertebrates. Other explanation details and image evidence remain unreviewed.",
+      "references": [
+        "https://www.cdcfoundation.org/stories/4th-annual-tick-workshop"
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "61823224bdc66fbb076b8f1b64ce796d65ce1f3bd7da1d79e2c859a1d3246199",
+      "record_id": "2d84e81a8c72a9337325a167b3fbc961e8a97d4e8eadec572db757f3460dadf5",
+      "source_title": "biology · grade2 · Q20010",
+      "answer_before": "American crocodile",
+      "explanation_before": "A castor bean tick is an insect. Like other insects, a castor bean tick does not have a backbone. It has a hard outer cover.\nAn American crocodile is a reptile. Like other reptiles, an American crocodile has a backbone.",
+      "explanation_after": "A castor bean tick is an arachnid, not an insect. Like other arachnids, a castor bean tick does not have a backbone. It has a hard outer cover.\nAn American crocodile is a reptile. Like other reptiles, an American crocodile has a backbone.",
+      "answer_on_hold": false,
+      "reason": "Correct tick classification; retain the distinction between vertebrates and invertebrates. Other explanation details and image evidence remain unreviewed.",
+      "references": [
+        "https://www.cdcfoundation.org/stories/4th-annual-tick-workshop"
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "source_path": "scienceqa/raw/scienceqa-natural-science-elementary-g1-5.md",
+      "source_sha256": "e95e7e8459f4ee3cf60ef24a8466244d38894fac31038966fa745067ba836006",
+      "raw_sha256": "8e18472f3c2ad309422c8113aa73b9162b218e80710b5d5f65675645b7c470d3",
+      "record_id": "cb280ec50a0c69f4ff011c762a605a827d8fb2ec7d3991b9ddbae9c44dd59276",
+      "source_title": "biology · grade5 · Q20916",
+      "answer_before": "common ostrich",
+      "explanation_before": "Like other jellyfishes, a moon jellyfish is an invertebrate. It does not have a backbone. It has a soft body.\nA castor bean tick is an insect. Like other insects, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA fireworm is a worm. Like other worms, a fireworm is an invertebrate. It does not have a backbone. It has a soft body.\nA common ostrich is a bird. Like other birds, a common ostrich is a vertebrate. It has a backbone.",
+      "explanation_after": "Like other jellyfishes, a moon jellyfish is an invertebrate. It does not have a backbone. It has a soft body.\nA castor bean tick is an arachnid, not an insect. Like other arachnids, a castor bean tick is an invertebrate. It does not have a backbone. It has an exoskeleton.\nA fireworm is a worm. Like other worms, a fireworm is an invertebrate. It does not have a backbone. It has a soft body.\nA common ostrich is a bird. Like other birds, a common ostrich is a vertebrate. It has a backbone.",
+      "answer_on_hold": false,
+      "reason": "Correct tick classification; retain the distinction between vertebrates and invertebrates. Other explanation details and image evidence remain unreviewed.",
+      "references": [
+        "https://www.cdcfoundation.org/stories/4th-annual-tick-workshop"
+      ],
+      "reviewed_on": "2026-09-28"
+    }
+  ]
+}

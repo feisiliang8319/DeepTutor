@@ -62,7 +62,8 @@ def test_unknown_concepts_are_unchanged():
     assert after==TEXT and not counts
     assert validate_roundtrip('fixture.md',TEXT,after,{})==0
 
-def test_later_batch_keeps_prior_fix_in_same_document(tmp_path):
+@pytest.mark.parametrize("with_explanation", [False, True])
+def test_later_batch_keeps_prior_fix_in_same_document(tmp_path, with_explanation):
     import json,sqlite3
     from deeptutor.education.application.content_stock import parse_file
     from deeptutor.education.application.scienceqa_lecture_reviews import build,sha
@@ -85,7 +86,26 @@ def test_later_batch_keeps_prior_fix_in_same_document(tmp_path):
         result=build(source,path,tmp_path/'snapshots')
         return tmp_path/'snapshots'/result['snapshot_id']
     first=run(base,'One old lecture.','First correction.','first')
+    if with_explanation:
+        # An intervening individual correction must survive subsequent lectures.
+        doc=first/'revised-documents/fixture.md'
+        doc.write_text(doc.read_text().replace('Played ends in -ed.', 'SOURCE ANSWER ON HOLD: revised explanation.'))
+        with sqlite3.connect(first/'catalog.sqlite3') as db:
+            row=json.loads(db.execute("select data_json from records where id='0'").fetchone()[0])
+            review={'record_id':'0','source_title':row['title'],'source_path':row['source_path'],
+                    'source_sha256':row['source_sha256'],'raw_sha256':row['raw_sha256'],
+                    'answer_before':row['answer'],'explanation_before':row['explanation'],
+                    'explanation_after':'SOURCE ANSWER ON HOLD: revised explanation.','answer_on_hold':True}
+            row['explanation']=review['explanation_after'];row['state']='needs_fact_check'
+            row['metadata']['individual_explanation_review']=review
+            db.execute("update records set data_json=? where id='0'",(json.dumps(row),))
+        meta=json.loads((first/'summary.json').read_text())
+        meta['catalog_sha256']=sha((first/'catalog.sqlite3').read_bytes())
+        (first/'summary.json').write_text(json.dumps(meta))
     second=run(first,'Another old lecture.','Second correction.','second')
+    if with_explanation:
+        assert 'SOURCE ANSWER ON HOLD: revised explanation.' in (second/'revised-documents/fixture.md').read_text()
+        assert 'Played ends in -ed.' not in (second/'revised-documents/fixture.md').read_text()
     assert (second/'newspaper-page-queue.json').read_bytes()==(base/'newspaper-page-queue.json').read_bytes()
     assert (second/'math-figure-review-assets/checked.svg').read_bytes()==(base/'math-figure-review-assets/checked.svg').read_bytes()
     latest=(second/'revised-documents/fixture.md').read_text()

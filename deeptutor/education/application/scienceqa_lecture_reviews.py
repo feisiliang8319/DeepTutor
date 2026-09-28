@@ -15,6 +15,7 @@ import shutil
 import sqlite3
 
 from .content_stock import parse_file
+from .scienceqa_explanation_reviews import patch_document as patch_explanations
 
 
 def sha(value: str | bytes) -> str:
@@ -100,6 +101,16 @@ def build(base: Path, recipe_path: Path, output: Path) -> dict:
         if key in prior_reviews and prior_reviews[key] != normalized:
             raise ValueError('Conflicting prior lecture reviews')
         prior_reviews[key] = normalized
+    prior_explanations = {}
+    for row in rows:
+        prior = row['metadata'].get('individual_explanation_review')
+        if not prior:
+            continue
+        if any(prior.get(k) != row[k] for k in ('source_path', 'source_sha256', 'raw_sha256')) or prior.get('record_id') != row['id'] or prior.get('source_title') != row['title'] or prior.get('answer_before') != row['answer'] or prior.get('explanation_after') != row['explanation']:
+            raise ValueError('Previous individual explanation provenance changed')
+        if prior.get('answer_on_hold') and row['state'] not in {'needs_fact_check', 'duplicate'}:
+            raise ValueError('Previous answer hold was cleared')
+        prior_explanations.setdefault(row['source_path'], []).append(prior)
     if reviews.keys() & prior_reviews.keys():
         raise ValueError('Concept already reviewed; preserve its history instead of reapplying')
     def original_lecture(row):
@@ -146,6 +157,12 @@ def build(base: Path, recipe_path: Path, output: Path) -> dict:
         text = blob.decode('utf-8')
         before, _ = patch_document(text, prior_reviews)
         after, combined_counts = patch_document(text, combined_reviews)
+        # Rebuild both sides from immutable source and the complete prior ledger.
+        # The expected-current hash must describe the live corrected document.
+        if source_path in prior_explanations:
+            selected_explanations = prior_explanations[source_path]
+            before = patch_explanations(Path(source_path).name, before, selected_explanations)
+            after = patch_explanations(Path(source_path).name, after, selected_explanations)
         linked = Counter({k:v for k,v in combined_counts.items() if k in reviews})
         all_counts.update(linked)
         if not linked:

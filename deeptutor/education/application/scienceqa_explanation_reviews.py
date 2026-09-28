@@ -44,7 +44,8 @@ def build(base,recipe_path,output):
     base=Path(base).resolve();recipe_path=Path(recipe_path);summary=json.loads((base/'summary.json').read_text())
     if base.name!=summary['snapshot_id'] or sha((base/'catalog.sqlite3').read_bytes())!=summary['catalog_sha256']:raise ValueError('Base changed')
     recipe=json.loads(recipe_path.read_text());reviews={r['record_id']:r for r in recipe['records']}
-    if recipe['library']!='scienceqa' or len(reviews)!=16 or sum(r['answer_on_hold'] for r in reviews.values())!=2:raise ValueError('Unexpected seed-review population')
+    expected=recipe.get('expected_changed_records',16);expected_holds=recipe.get('expected_answers_on_hold',2)
+    if recipe['library']!='scienceqa' or not 0 < expected <= 1000 or len(reviews)!=len(recipe['records']) or len(reviews)!=expected or any(type(r['answer_on_hold']) is not bool for r in reviews.values()) or sum(r['answer_on_hold'] for r in reviews.values())!=expected_holds:raise ValueError('Unexpected review population')
     with sqlite3.connect((base/'catalog.sqlite3').as_uri()+'?mode=ro',uri=True) as db:
         rows={key:json.loads(db.execute('select data_json from records where id=?',(key,)).fetchone()[0]) for key in reviews}
     for key,row in rows.items():
@@ -76,9 +77,14 @@ def build(base,recipe_path,output):
                 if a==b:continue
                 changed+=1
                 if a['id'] not in rows or not {k for k in a.keys()|b.keys() if a.get(k)!=b.get(k)}<={'metadata','state','explanation'} or {k:v for k,v in b['metadata'].items() if k!='individual_explanation_review'}!=a['metadata']:raise ValueError('Unrelated data changed')
-        if changed!=16:raise ValueError('Changed population mismatch')
+        if changed!=expected:raise ValueError('Changed population mismatch')
+        total_reviewed=total_held=0
+        for raw, in db.execute("select data_json from records where library='scienceqa'"):
+            prior=json.loads(raw)['metadata'].get('individual_explanation_review')
+            if prior:
+                total_reviewed+=1;total_held+=bool(prior['answer_on_hold'])
         for lib in summary['libraries']:
             if lib['library']=='scienceqa':lib['states']=dict(db.execute("select state,count(*) from records where library='scienceqa' group by state"))
-    report={**summary,'snapshot_id':identity,'base_snapshot_id':base.name,'created_at':datetime.now(timezone.utc).isoformat(),'catalog_sha256':sha((target/'catalog.sqlite3').read_bytes()),'committed_batches':summary['committed_batches']+1,'scienceqa_individual_explanations_corrected':16,'scienceqa_source_answers_on_hold':2}
-    (target/'summary.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');(target/'revised-documents.json').write_text(json.dumps(manifest,indent=2)+'\n');(target/'scienceqa-seed-explanation-reviews.json').write_bytes(recipe_path.read_bytes())
-    return {'snapshot_id':identity,'changed_lectures':summary['scienceqa_batch_linked_lectures_corrected'],'changed_explanations':16,'answers_on_hold':2,'changed_documents':manifest,'question_or_answer_changes':0,'formal_items_created':0}
+    report={**summary,'snapshot_id':identity,'base_snapshot_id':base.name,'created_at':datetime.now(timezone.utc).isoformat(),'catalog_sha256':sha((target/'catalog.sqlite3').read_bytes()),'committed_batches':summary['committed_batches']+1,'scienceqa_individual_explanations_corrected':total_reviewed,'scienceqa_source_answers_on_hold':total_held,'scienceqa_batch_individual_explanations_corrected':expected,'scienceqa_batch_source_answers_on_hold':expected_holds}
+    (target/'summary.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');(target/'revised-documents.json').write_text(json.dumps(manifest,indent=2)+'\n');(target/recipe_path.name).write_bytes(recipe_path.read_bytes())
+    return {'snapshot_id':identity,'changed_lectures':summary['scienceqa_batch_linked_lectures_corrected'],'changed_explanations':expected,'answers_on_hold':expected_holds,'changed_documents':manifest,'question_or_answer_changes':0,'formal_items_created':0}

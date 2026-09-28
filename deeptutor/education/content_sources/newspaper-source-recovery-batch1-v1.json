@@ -1,0 +1,465 @@
+{
+  "requested": 25,
+  "recovered": 12,
+  "passages": 45,
+  "remaining_in_selected_batch": 13,
+  "stop_reason": "Remote HTTP bodies were repeatedly shorter than advertised Content-Length; incomplete pages were not accepted.",
+  "pages": [
+    {
+      "page_id": "0a311278e027191e2579e8a6449ab543f36cbeacffc84df266337019decaa665",
+      "page_key": "sn83025881/1800-02-07/ed-1/seq-2",
+      "published": "1800-02-07",
+      "lccn": "sn83025881",
+      "edition": 1,
+      "sequence": 2,
+      "resource_url": "https://www.loc.gov/resource/sn83025881/1800-02-07/ed-1/?sp=2&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn83025881/1800-02-07/ed-1/seq-2.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800020701/0002.xml",
+      "title": "Gazette of the United States, & Philadelphia daily advertiser (Philadelphia [Pa.]), February 7, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn83025881/1800-02-07/ed-1/?sp=2&fo=json",
+          "bytes": 52188,
+          "sha256": "a44effa19c5b51b906e27a5ac52de5046de5b88bd327de7a4c681bfed196dbf1"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800020701/0002.xml",
+          "bytes": 783101,
+          "sha256": "b70add15afc036b185fd7172da895ec5bc2fa63f944dc60ade52768ca3256566"
+        }
+      },
+      "diagnostics": {
+        "words": 4305,
+        "lines": 137,
+        "blocks": 1,
+        "page_width": 16796.0,
+        "page_height": 25904.0,
+        "lines_wider_than_70_percent": 122,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    },
+    {
+      "page_id": "0f432797b7b0a0ba03796b62fce73985848bb56cfc15fba6e94b0fbbabe19c98",
+      "page_key": "sn83025881/1800-02-07/ed-1/seq-4",
+      "published": "1800-02-07",
+      "lccn": "sn83025881",
+      "edition": 1,
+      "sequence": 4,
+      "resource_url": "https://www.loc.gov/resource/sn83025881/1800-02-07/ed-1/?sp=4&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn83025881/1800-02-07/ed-1/seq-4.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800020701/0004.xml",
+      "title": "Gazette of the United States, & Philadelphia daily advertiser (Philadelphia [Pa.]), February 7, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn83025881/1800-02-07/ed-1/?sp=4&fo=json",
+          "bytes": 51831,
+          "sha256": "d7e0f4b656ba4c2a4cdbcc9f66c347ce9bd8402e01560fb997fc13dc91941936"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800020701/0004.xml",
+          "bytes": 794745,
+          "sha256": "d17527632fafcc812d445ec992c87b489053455b72ee5dc59d662c335b9a0a8b"
+        }
+      },
+      "diagnostics": {
+        "words": 4369,
+        "lines": 146,
+        "blocks": 1,
+        "page_width": 16796.0,
+        "page_height": 25904.0,
+        "lines_wider_than_70_percent": 126,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    },
+    {
+      "page_id": "15304a4b88fb998a27ff142655946ba9bff26a8bafc662743040b1a74bd0ac9d",
+      "page_key": "sn84026272/1800-08-02/ed-1/seq-1",
+      "published": "1800-08-02",
+      "lccn": "sn84026272",
+      "edition": 1,
+      "sequence": 1,
+      "resource_url": "https://www.loc.gov/resource/sn84026272/1800-08-02/ed-1/?sp=1&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn84026272/1800-08-02/ed-1/seq-1.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_ocicat_ver01/data/sn84026272/print/1800080201/0001.xml",
+      "title": "Gazette of the United States, & daily advertiser (Philadelphia [Pa.]), August 2, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn84026272/1800-08-02/ed-1/?sp=1&fo=json",
+          "bytes": 51940,
+          "sha256": "1215bc8d0ef2bedd9c54beadbb6e597fea4c2d4b70ab07661d314798660cdaca"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_ocicat_ver01/data/sn84026272/print/1800080201/0001.xml",
+          "bytes": 628414,
+          "sha256": "33187d0963699f6f48c6b0262869a65eccc55b266d98390f224e85e36e9cdbc2"
+        }
+      },
+      "diagnostics": {
+        "words": 3151,
+        "lines": 638,
+        "blocks": 115,
+        "page_width": 16456.0,
+        "page_height": 24612.0,
+        "lines_wider_than_70_percent": 0,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    },
+    {
+      "page_id": "374b79c744ac658b8e59a6b8623aaa1fa5b01d0cf58561e6cf14734999494871",
+      "page_key": "sn83025881/1800-02-21/ed-1/seq-1",
+      "published": "1800-02-21",
+      "lccn": "sn83025881",
+      "edition": 1,
+      "sequence": 1,
+      "resource_url": "https://www.loc.gov/resource/sn83025881/1800-02-21/ed-1/?sp=1&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn83025881/1800-02-21/ed-1/seq-1.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800022101/0001.xml",
+      "title": "Gazette of the United States, & Philadelphia daily advertiser (Philadelphia [Pa.]), February 21, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn83025881/1800-02-21/ed-1/?sp=1&fo=json",
+          "bytes": 51740,
+          "sha256": "7bd27916b65ce0d5fffbcaf03264bbf038ca8b82e91c71237e4a6458d1edd2c5"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800022101/0001.xml",
+          "bytes": 880224,
+          "sha256": "d47ebe22dd0de798200aaaa6fc4bc9326cb832481767753b0ecc42dc1f036a7c"
+        }
+      },
+      "diagnostics": {
+        "words": 4435,
+        "lines": 734,
+        "blocks": 161,
+        "page_width": 17092.0,
+        "page_height": 25760.0,
+        "lines_wider_than_70_percent": 0,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    },
+    {
+      "page_id": "4db0e3d8e4fefd56578ac46fbac895b87e1a20569ec6d71615e99a7d0d0434ce",
+      "page_key": "sn83025881/1800-03-08/ed-1/seq-4",
+      "published": "1800-03-08",
+      "lccn": "sn83025881",
+      "edition": 1,
+      "sequence": 4,
+      "resource_url": "https://www.loc.gov/resource/sn83025881/1800-03-08/ed-1/?sp=4&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn83025881/1800-03-08/ed-1/seq-4.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800030801/0004.xml",
+      "title": "Gazette of the United States, & Philadelphia daily advertiser (Philadelphia [Pa.]), March 8, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn83025881/1800-03-08/ed-1/?sp=4&fo=json",
+          "bytes": 51996,
+          "sha256": "9264d2283a5bed6c529c1897dd9c89b3e6a7950b0e630e4f6614eafdfe8028db"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800030801/0004.xml",
+          "bytes": 851896,
+          "sha256": "dd8ade3dfff98eba15b30e9bd3d40852d6b0b34bfc02a97c0cad9b856127981f"
+        }
+      },
+      "diagnostics": {
+        "words": 4477,
+        "lines": 605,
+        "blocks": 124,
+        "page_width": 15920.0,
+        "page_height": 23276.0,
+        "lines_wider_than_70_percent": 0,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    },
+    {
+      "page_id": "622778a28bf9cb357796fdfa749f23f79b8c9d0712c1b19e1c20f40015ef5046",
+      "page_key": "sn84026272/1800-08-30/ed-1/seq-2",
+      "published": "1800-08-30",
+      "lccn": "sn84026272",
+      "edition": 1,
+      "sequence": 2,
+      "resource_url": "https://www.loc.gov/resource/sn84026272/1800-08-30/ed-1/?sp=2&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn84026272/1800-08-30/ed-1/seq-2.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_ocicat_ver01/data/sn84026272/print/1800083001/0002.xml",
+      "title": "Gazette of the United States, & daily advertiser (Philadelphia [Pa.]), August 30, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn84026272/1800-08-30/ed-1/?sp=2&fo=json&at=item,pagination,page,segment_id",
+          "bytes": 13186,
+          "sha256": "915741a590ca3e890adee232a19692bea1b9105ed26a68bf756e7c3f4dccda76"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_ocicat_ver01/data/sn84026272/print/1800083001/0002.xml",
+          "bytes": 954061,
+          "sha256": "e3218009e2e80c63803617fab769eb0a8b30c8a5dfecf2c6436ee6bc1beea94c"
+        }
+      },
+      "diagnostics": {
+        "words": 4933,
+        "lines": 666,
+        "blocks": 64,
+        "page_width": 16408.0,
+        "page_height": 24704.0,
+        "lines_wider_than_70_percent": 0,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    },
+    {
+      "page_id": "b9ebe14c69c1f0b9bf41e8da5ad3aeeec7ec32a6be431e19cc224f4693ad939c",
+      "page_key": "sn83025881/1800-04-17/ed-1/seq-2",
+      "published": "1800-04-17",
+      "lccn": "sn83025881",
+      "edition": 1,
+      "sequence": 2,
+      "resource_url": "https://www.loc.gov/resource/sn83025881/1800-04-17/ed-1/?sp=2&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn83025881/1800-04-17/ed-1/seq-2.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800041701/0002.xml",
+      "title": "Gazette of the United States, & Philadelphia daily advertiser (Philadelphia [Pa.]), April 17, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn83025881/1800-04-17/ed-1/?sp=2&fo=json",
+          "bytes": 52255,
+          "sha256": "bb722672f38876895e6f86ba08c5b9b0a6a3139f2bfea04a59afcc3a849b3ab9"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800041701/0002.xml",
+          "bytes": 817079,
+          "sha256": "524f29f983a20a8061065a06d531f4ce091f782505390b76489eb84a603a3300"
+        }
+      },
+      "diagnostics": {
+        "words": 4102,
+        "lines": 697,
+        "blocks": 160,
+        "page_width": 16016.0,
+        "page_height": 23516.0,
+        "lines_wider_than_70_percent": 0,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    },
+    {
+      "page_id": "c3fcb6d67f9b605d1b5168d5249681739c432c4e7a3d05c3005464c81035e3a8",
+      "page_key": "sn84026272/1800-07-26/ed-1/seq-2",
+      "published": "1800-07-26",
+      "lccn": "sn84026272",
+      "edition": 1,
+      "sequence": 2,
+      "resource_url": "https://www.loc.gov/resource/sn84026272/1800-07-26/ed-1/?sp=2&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn84026272/1800-07-26/ed-1/seq-2.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_ocicat_ver01/data/sn84026272/print/1800072601/0002.xml",
+      "title": "Gazette of the United States, & daily advertiser (Philadelphia [Pa.]), July 26, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn84026272/1800-07-26/ed-1/?sp=2&fo=json",
+          "bytes": 52331,
+          "sha256": "d2e5019604543560d3f81a39560aaa4cccb9f5457e20a8dd46f3ef807aa5812f"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_ocicat_ver01/data/sn84026272/print/1800072601/0002.xml",
+          "bytes": 977014,
+          "sha256": "0cb978b607c2be47d8409b4a6ea1bc0ecc403087f36e9ef28623712341303fa5"
+        }
+      },
+      "diagnostics": {
+        "words": 5052,
+        "lines": 673,
+        "blocks": 39,
+        "page_width": 16264.0,
+        "page_height": 24516.0,
+        "lines_wider_than_70_percent": 0,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    },
+    {
+      "page_id": "c767d9df626122ab851c7834385281e8ebc992b8947790e9291ac6e7ae6bc769",
+      "page_key": "sn83025881/1800-04-18/ed-1/seq-3",
+      "published": "1800-04-18",
+      "lccn": "sn83025881",
+      "edition": 1,
+      "sequence": 3,
+      "resource_url": "https://www.loc.gov/resource/sn83025881/1800-04-18/ed-1/?sp=3&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn83025881/1800-04-18/ed-1/seq-3.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800041801/0003.xml",
+      "title": "Gazette of the United States, & Philadelphia daily advertiser (Philadelphia [Pa.]), April 18, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn83025881/1800-04-18/ed-1/?sp=3&fo=json",
+          "bytes": 52233,
+          "sha256": "8daaa480ee21d83fede296e395d3a4742856ee3cb7f3581981c3f9e5dec7fe8e"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800041801/0003.xml",
+          "bytes": 745071,
+          "sha256": "c73c64d03ddcc2d9eb3ffedca7ed793656b736f0c55974bbf1cd0ae1f02a33df"
+        }
+      },
+      "diagnostics": {
+        "words": 3735,
+        "lines": 684,
+        "blocks": 177,
+        "page_width": 15776.0,
+        "page_height": 23564.0,
+        "lines_wider_than_70_percent": 0,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    },
+    {
+      "page_id": "df7d12169a3c22aa26fd10f44d68f2f6c2b510e60d4566327650178281dae8b3",
+      "page_key": "sn83025881/1800-01-01/ed-1/seq-4",
+      "published": "1800-01-01",
+      "lccn": "sn83025881",
+      "edition": 1,
+      "sequence": 4,
+      "resource_url": "https://www.loc.gov/resource/sn83025881/1800-01-01/ed-1/?sp=4&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn83025881/1800-01-01/ed-1/seq-4.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800010101/0004.xml",
+      "title": "Gazette of the United States, & Philadelphia daily advertiser (Philadelphia [Pa.]), January 1, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn83025881/1800-01-01/ed-1/?sp=4&fo=json",
+          "bytes": 51941,
+          "sha256": "0e4547a31d4e1e48cb7628a808615ab96a0051965eae7c125f10273286dbc39c"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800010101/0004.xml",
+          "bytes": 946634,
+          "sha256": "8484b71bd7558e552eefe1ed592429f486aec94a5f7e8dd07542391aea7d8b00"
+        }
+      },
+      "diagnostics": {
+        "words": 5203,
+        "lines": 160,
+        "blocks": 1,
+        "page_width": 17184.0,
+        "page_height": 25420.0,
+        "lines_wider_than_70_percent": 135,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    },
+    {
+      "page_id": "e13e475b3dcbfba4cab13391350c32692b270474b61aa5d8101a9bd0c0737e15",
+      "page_key": "sn84026272/1800-09-03/ed-1/seq-4",
+      "published": "1800-09-03",
+      "lccn": "sn84026272",
+      "edition": 1,
+      "sequence": 4,
+      "resource_url": "https://www.loc.gov/resource/sn84026272/1800-09-03/ed-1/?sp=4&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn84026272/1800-09-03/ed-1/seq-4.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_ocicat_ver01/data/sn84026272/print/1800090301/0004.xml",
+      "title": "Gazette of the United States, & daily advertiser (Philadelphia [Pa.]), September 3, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn84026272/1800-09-03/ed-1/?sp=4&fo=json&at=item,pagination,page,segment_id",
+          "bytes": 13062,
+          "sha256": "0dfd25abb2c3554e9d0c13d48e04c5a23139be2ee8a31e1c51cc58be10871c3f"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_ocicat_ver01/data/sn84026272/print/1800090301/0004.xml",
+          "bytes": 742011,
+          "sha256": "5eb8c80dd2c8f2d6368a37fe3a949e4daeeec4ca14f0734c7beac1439ec3f032"
+        }
+      },
+      "diagnostics": {
+        "words": 3739,
+        "lines": 687,
+        "blocks": 133,
+        "page_width": 16348.0,
+        "page_height": 24748.0,
+        "lines_wider_than_70_percent": 0,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    },
+    {
+      "page_id": "fa16388b7561e393964c4d90caeacec13bd2adfe560f6a6b6166f1579be22316",
+      "page_key": "sn83025881/1800-01-16/ed-1/seq-2",
+      "published": "1800-01-16",
+      "lccn": "sn83025881",
+      "edition": 1,
+      "sequence": 2,
+      "resource_url": "https://www.loc.gov/resource/sn83025881/1800-01-16/ed-1/?sp=2&fo=json",
+      "original_url": "https://chroniclingamerica.loc.gov/lccn/sn83025881/1800-01-16/ed-1/seq-2.json",
+      "alto_url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800011601/0002.xml",
+      "title": "Gazette of the United States, & Philadelphia daily advertiser (Philadelphia [Pa.]), January 16, 1800",
+      "files": {
+        "page.json": {
+          "url": "https://www.loc.gov/resource/sn83025881/1800-01-16/ed-1/?sp=2&fo=json",
+          "bytes": 52247,
+          "sha256": "dd1558127abe23f341f7152d1ca987b38a1a5ca14863633ce2c1efa6da5937ad"
+        },
+        "page.xml": {
+          "url": "https://tile.loc.gov/storage-services/service/sgp/sgpbatches/batch_dlc_laperm_ver01/data/sn83025881/print/1800011601/0002.xml",
+          "bytes": 795241,
+          "sha256": "407a82b459cf6b194bef1160ab34342079675f8cf24f7e3d5cc14575c35317dd"
+        }
+      },
+      "diagnostics": {
+        "words": 4068,
+        "lines": 689,
+        "blocks": 96,
+        "page_width": 17324.0,
+        "page_height": 25040.0,
+        "lines_wider_than_70_percent": 0,
+        "layout_review_required": true,
+        "character_accuracy": "not_measured",
+        "article_boundaries": "not_verified",
+        "scan_comparison": "pending"
+      },
+      "recovery_status": "original_page_recovered_ocr_pending",
+      "student_approval": "unchanged"
+    }
+  ]
+}

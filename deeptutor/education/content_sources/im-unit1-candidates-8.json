@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "IM G4 U1 存量转化 · 8道完整课时例题与两题条件修订",
+  "items": [
+    {
+      "id": "im-g4-u1-l1-stock-example-v1",
+      "knowledge_node_code": "G4.OA.B4.MULTIPLE_OF_FACTORS",
+      "item_type": "multi_step",
+      "prompt": "用单位正方形拼长方形，宽固定为4个单位，长必须是正整数。列出不超过40平方单位的所有可能面积与对应长度。38平方单位可行吗？再给出两个超过40的可行面积。",
+      "expected_answer": "长1至10依次对应面积4、8、12、16、20、24、28、32、36、40；38不可行；超过40如44和48。",
+      "explanation": "面积=4×长。要求正整数长且面积≤40，得到长只能为1到10，因此列表没有遗漏。38除以4余2，不能用整数长实现；大于40的正倍数仍可行，例如长11、12时面积44、48。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-1/ | IM:G4:U1:L1 | retained source line 11",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 1, lesson 1. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "2d60f541407d8860e832225fbbdd4a1c9fb6dee0e1d6839356be5a56def7c0cb",
+        "source_lesson_family": "IM:G4:U1:L1",
+        "source_sha256": "90cd05d49a44c68932e9938239bd2f170e10f1429195a2579125a4ba6ebda971",
+        "source_raw_sha256": "016c0c3f432c5cf1257e7a7e9a277781c5f17fd01710a1ddf1064a49db838a89",
+        "source_span": {
+          "start": 206,
+          "end": 15316
+        },
+        "source_spans": [
+          {
+            "start": 206,
+            "end": 15316,
+            "sha256": "016c0c3f432c5cf1257e7a7e9a277781c5f17fd01710a1ddf1064a49db838a89"
+          }
+        ],
+        "title_zh": "固定宽度能拼哪些面积",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": false
+      }
+    },
+    {
+      "id": "im-g4-u1-l2-stock-example-v1",
+      "knowledge_node_code": "G4.OA.B4.FACTOR_PAIRS",
+      "item_type": "multi_step",
+      "prompt": "用36个单位正方形无空隙、无重叠地拼长方形，两边长度为正整数。旋转视为同一种。列出全部边长方案，说明为什么找完较短边后就不必继续。",
+      "expected_answer": "1×36、2×18、3×12、4×9、6×6，共5种。",
+      "explanation": "较短边不超过6，因为两边都大于6时面积就超过36。逐个检查1、2、3、4、5、6，只有1、2、3、4、6能整除36，对应所列因数对。超过6的因数只是把较长边与较短边互换，不能重复计数。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-1/ | IM:G4:U1:L2 | retained source line 458",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 1, lesson 2. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "02e48edba62f3c059542c67ade728e1ba7384f59b06c2c9f9272eeb3c8d66b5d",
+        "source_lesson_family": "IM:G4:U1:L2",
+        "source_sha256": "90cd05d49a44c68932e9938239bd2f170e10f1429195a2579125a4ba6ebda971",
+        "source_raw_sha256": "58e0253654e92861a7f7bd174e1922c59b82c5782b3b123ffc85fcd4ced80f5f",
+        "source_span": {
+          "start": 15316,
+          "end": 28313
+        },
+        "source_spans": [
+          {
+            "start": 15316,
+            "end": 28313,
+            "sha256": "58e0253654e92861a7f7bd174e1922c59b82c5782b3b123ffc85fcd4ced80f5f"
+          }
+        ],
+        "title_zh": "面积与因数对",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": false
+      }
+    },
+    {
+      "id": "im-g4-u1-l3-stock-example-v1",
+      "knowledge_node_code": "G4.OA.B4.PRIME_COMPOSITE",
+      "item_type": "multi_step",
+      "prompt": "Use positive whole-number side lengths measured in unit lengths, and count rotations as the same rectangle. For each area 2, 10, 48, 11, 21, 23, 60, 32, 42, 31 and 56 square units, find the number of distinct rectangles and decide whether the area number is prime or composite. List factor pairs to show that none are missing.",
+      "expected_answer": "2: 1 rectangle(s), prime; 10: 2 rectangle(s), composite; 48: 5 rectangle(s), composite; 11: 1 rectangle(s), prime; 21: 2 rectangle(s), composite; 23: 1 rectangle(s), prime; 60: 6 rectangle(s), composite; 32: 3 rectangle(s), composite; 42: 4 rectangle(s), composite; 31: 1 rectangle(s), prime; 56: 4 rectangle(s), composite.",
+      "explanation": "Use positive whole-number side lengths and count a rotated rectangle only once. For each area n, test potential shorter sides from 1 through floor(√n); a divisor d gives exactly one pair (d,n/d). The complete pairs are: 2: 1×2; 10: 1×10, 2×5; 48: 1×48, 2×24, 3×16, 4×12, 6×8; 11: 1×11; 21: 1×21, 3×7; 23: 1×23; 60: 1×60, 2×30, 3×20, 4×15, 5×12, 6×10; 32: 1×32, 2×16, 4×8; 42: 1×42, 2×21, 3×14, 6×7; 31: 1×31; 56: 1×56, 2×28, 4×14, 7×8. A prime number greater than 1 has only the pair 1×n; a composite number has another factor pair.",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-1/ | IM:G4:U1:L3 | retained source line 871",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 1, lesson 3. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "cb716cb3f3eb3d441a603195a597047710731ba871b9fc0e532a45991b9b3ec0",
+        "source_lesson_family": "IM:G4:U1:L3",
+        "source_sha256": "90cd05d49a44c68932e9938239bd2f170e10f1429195a2579125a4ba6ebda971",
+        "source_raw_sha256": "6db422cec550c98cdcc9834683f28c0e2b9d74d25d4d4d2406c0ddc8480bd819",
+        "source_span": {
+          "start": 28313,
+          "end": 43394
+        },
+        "source_spans": [
+          {
+            "start": 28313,
+            "end": 43394,
+            "sha256": "6db422cec550c98cdcc9834683f28c0e2b9d74d25d4d4d2406c0ddc8480bd819"
+          }
+        ],
+        "title_zh": "矩形计数必须限定整数边长",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "corrects_missing_condition": "Previous derived candidate omitted positive integer side lengths; the original statement admitted infinitely many real-valued rectangles.",
+        "optional_source_lesson": false
+      },
+      "derived_from_item_id": "im-g4u1-l3-activity2-prime-or-composite-stock-r1"
+    },
+    {
+      "id": "im-g4-u1-l4-stock-example-v1",
+      "knowledge_node_code": "G4.NBT.B5.EXPLAIN_MODELS",
+      "item_type": "multi_step",
+      "prompt": "已知8×6＝48，求9×6、7×8、9×8。说明怎样用相邻的组数增加或减少一组，而不是每次从头数。",
+      "expected_answer": "54、56、72。",
+      "explanation": "9组6比8组6多一组，所以48+6=54。7组8可由6组8的48再加8得到56。9组8可由10组8的80减一组8得到72。利用交换律把8×6与6×8联系，再按实际份数调整。",
+      "difficulty": 2,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-1/ | IM:G4:U1:L4 | retained source line 1289",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 1, lesson 4. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "12d6e99db9c736024d7f8368919417079d48259747acb7f19a79caefe49bea3c",
+        "source_lesson_family": "IM:G4:U1:L4",
+        "source_sha256": "90cd05d49a44c68932e9938239bd2f170e10f1429195a2579125a4ba6ebda971",
+        "source_raw_sha256": "bc9e80d7015f7e5c96dc1550e1b130217a42630b6351924efc8b6b7fd3a4779c",
+        "source_span": {
+          "start": 43394,
+          "end": 54368
+        },
+        "source_spans": [
+          {
+            "start": 43394,
+            "end": 54368,
+            "sha256": "bc9e80d7015f7e5c96dc1550e1b130217a42630b6351924efc8b6b7fd3a4779c"
+          }
+        ],
+        "title_zh": "用已知乘积支持邻近乘积",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": true
+      }
+    },
+    {
+      "id": "im-g4-u1-l5-stock-example-v1",
+      "knowledge_node_code": "G4.OA.B4.MULTIPLE_TEST",
+      "item_type": "multi_step",
+      "prompt": "一种盒子每盒6枚徽章，另一种每盒8枚。若只选一种盒子并且每盒装满，30枚能分别用哪一种？另一个独立问题：总徽章数至少30枚，要求既能用6枚盒装满、也能用8枚盒装满，最少总数是多少？",
+      "expected_answer": "30枚可用5个6枚盒，不能恰用8枚盒；独立问题最少48枚。",
+      "explanation": "30能被6整除，不能被8整除。两种包装都恰好装满的总数是6与8的公倍数，最小正公倍数为24。独立问题还要求至少30，所以24不够，下一公倍数48符合。条件“至少30”不能在求公倍数时丢掉。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-1/ | IM:G4:U1:L5 | retained source line 1654",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 1, lesson 5. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "5f277a4ebd06bb10a36d195c1e88818a01e23553f792d9e067256c130257ec36",
+        "source_lesson_family": "IM:G4:U1:L5",
+        "source_sha256": "90cd05d49a44c68932e9938239bd2f170e10f1429195a2579125a4ba6ebda971",
+        "source_raw_sha256": "9337c82e1830d3d5afe2baf4e8a5401cb8c5511618ee2b1cea933d366fedce8e",
+        "source_span": {
+          "start": 54368,
+          "end": 68923
+        },
+        "source_spans": [
+          {
+            "start": 54368,
+            "end": 68923,
+            "sha256": "9337c82e1830d3d5afe2baf4e8a5401cb8c5511618ee2b1cea933d366fedce8e"
+          }
+        ],
+        "title_zh": "恰好装满与同时满足两个包装",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": false
+      }
+    },
+    {
+      "id": "im-g4-u1-l6-stock-example-v1",
+      "knowledge_node_code": "G4.OA.B4.FACTOR_PAIRS",
+      "item_type": "multi_step",
+      "prompt": "There are 20 lockers numbered 1 through 20 and 20 students numbered 1 through 20. All lockers start closed. Students take turns in numerical order. Student d visits exactly the lockers whose numbers are positive multiples of d (starting at locker d), touching each such locker once; every touch changes a closed locker to open or an open locker to closed. Which lockers do students 3 and 5 touch? How many students touch locker 17? Which lockers are touched exactly twice, exactly three times, and the greatest number of times? Explain using factors. Optional: which lockers remain open after student 20?",
+      "expected_answer": "Student 3: 3,6,9,12,15,18. Student 5: 5,10,15,20. Locker 17: two students (1 and 17). Exactly two touches: 2,3,5,7,11,13,17,19. Exactly three touches: 4,9. Most touches: 12,18,20, each six times. Optional final answer: 1,4,9,16 remain open.",
+      "explanation": "Student d touches exactly the locker numbers divisible by d. Therefore a locker n is touched once for each positive divisor of n. Primes have two divisors. 4 has divisors 1,2,4 and 9 has 1,3,9. The complete divisor counts for 1–20 show a maximum of six for 12,18,20. All lockers start closed and every touch toggles the state, so an odd number of divisors leaves a locker open. Divisors pair as d and n/d except at a square root, so precisely the perfect squares 1,4,9,16 stay open.",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-1/ | IM:G4:U1:L6 | retained source line 2012",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 1, lesson 6. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "9a8b385f94de1fe78700ecf78b6cb74982a84b95e6b48bdc7d04fe4e3f264692",
+        "source_lesson_family": "IM:G4:U1:L6",
+        "source_sha256": "90cd05d49a44c68932e9938239bd2f170e10f1429195a2579125a4ba6ebda971",
+        "source_raw_sha256": "56a4bdbb6397a16620322e3818dff3ef38738d9e133fd09003fd5019a9ae3894",
+        "source_span": {
+          "start": 68923,
+          "end": 82911
+        },
+        "source_spans": [
+          {
+            "start": 68923,
+            "end": 82911,
+            "sha256": "56a4bdbb6397a16620322e3818dff3ef38738d9e133fd09003fd5019a9ae3894"
+          }
+        ],
+        "title_zh": "更衣柜游戏：把规则完整交给解题者",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "The final open-locker question is optional; do not penalize omission. All other answers must follow the complete rules now included in the prompt.",
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "corrects_missing_condition": "Previous derived candidate gave answers that depended on an unstated numbering/multiple rule, initial closed state and touch-toggle operation.",
+        "optional_source_lesson": false
+      },
+      "derived_from_item_id": "im-g4u1-l6-activity2-an-open-and-shut-case-stock-r1"
+    },
+    {
+      "id": "im-g4-u1-l7-stock-example-v1",
+      "knowledge_node_code": "G4.OA.B4.MULTIPLE_OF_FACTORS",
+      "item_type": "multi_step",
+      "prompt": "列出24的所有正因数及前5个正倍数。选一个因数写出两句互相对应的“因数”和“倍数”陈述，并说明为什么不能直接颠倒两词。",
+      "expected_answer": "因数1、2、3、4、6、8、12、24；倍数24、48、72、96、120。例如3是24的因数，24是3的倍数，因为3×8＝24。",
+      "explanation": "因数能把24整分，用因数对1×24、2×12、3×8、4×6列完。倍数来自24乘正整数1至5。3是24的因数不意味着3是24的倍数；关系方向由乘法等式决定，1和24本身也都是24的因数。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-1/ | IM:G4:U1:L7 | retained source line 2392",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 1, lesson 7. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "023e670ada2bc54370f35327242732c7ed587ec2c3a4a87ffc754e662e6c913a",
+        "source_lesson_family": "IM:G4:U1:L7",
+        "source_sha256": "90cd05d49a44c68932e9938239bd2f170e10f1429195a2579125a4ba6ebda971",
+        "source_raw_sha256": "9472a19c5b140cfc33cf970d30effc087a06f83637baa53020726529796bc5a2",
+        "source_span": {
+          "start": 82911,
+          "end": 95387
+        },
+        "source_spans": [
+          {
+            "start": 82911,
+            "end": 95387,
+            "sha256": "9472a19c5b140cfc33cf970d30effc087a06f83637baa53020726529796bc5a2"
+          }
+        ],
+        "title_zh": "因数与倍数的方向",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": false
+      }
+    },
+    {
+      "id": "im-g4-u1-l8-stock-example-v1",
+      "knowledge_node_code": "G4.MD.A3.AREA_PERIMETER_FORMULA",
+      "item_type": "multi_step",
+      "prompt": "一张12厘米乘8厘米的长方形画纸，用一条与8厘米边平行的直线分为宽5厘米和宽7厘米的两个长方形。求两块面积、总面积和原画纸周长。切分线是否应加到原画纸的外周长中？",
+      "expected_answer": "两块面积40、56平方厘米，总面积96平方厘米；外周长40厘米；内部切分线不计入外周长。",
+      "explanation": "两块共用高度8，面积5×8=40、7×8=56，总面积96与12×8一致，体现(5+7)×8。外周长2×(12+8)=40厘米。切分改变内部图案，不改变外边界；不能因多画一条线就增加外周长。",
+      "difficulty": 3,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://curriculum.illustrativemathematics.org/k5/teachers/grade-4/unit-1/ | IM:G4:U1:L8 | retained source line 2811",
+      "license_note": "Original worked example by DeepTutor aligned to goals in retained IM K–5 Math v.I (2021) source, which states CC BY 4.0. Attribution retained; no source logos or third-party figures used.",
+      "attribution_text": "Learning-goal reference: Illustrative Mathematics K–5 Math v.I (2021), Grade 4 Unit 1, lesson 8. DeepTutor authored the Chinese task and independently calculated explanation; not an official IM answer key or endorsement.",
+      "rubric_json": {
+        "source_record_id": "d7bf955d3da83ceabd29bd4833d0d34ef6bbba99d21506986e5bbef5ee8c534f",
+        "source_lesson_family": "IM:G4:U1:L8",
+        "source_sha256": "90cd05d49a44c68932e9938239bd2f170e10f1429195a2579125a4ba6ebda971",
+        "source_raw_sha256": "7441d1dea56eb8c66670fbacdae8841778618579380bfbd361d0df99ad4d75e8",
+        "source_span": {
+          "start": 95387,
+          "end": 108365
+        },
+        "source_spans": [
+          {
+            "start": 95387,
+            "end": 108365,
+            "sha256": "7441d1dea56eb8c66670fbacdae8841778618579380bfbd361d0df99ad4d75e8"
+          }
+        ],
+        "title_zh": "矩形拼画中的总量",
+        "teaching_review": "pending",
+        "grade_assignment_note": "参照存量四年级课时目标编写；知识点对应、难度和正式测试资格仍须教学审核。",
+        "adaptation_scope": "New complete worked example aligned to the retained lesson goal; does not fill or certify omitted official teacher answers or original diagrams.",
+        "judging_rules": [
+          "接受等值分数和其他正确推导；按题目指定顺序核对每个子问。",
+          "例题可供Chat讲解；Chat不发起测试。正式测试必须经过独立题库审核。"
+        ],
+        "optional_source_lesson": true
+      }
+    }
+  ]
+}

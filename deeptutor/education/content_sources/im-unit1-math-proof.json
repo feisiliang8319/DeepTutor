@@ -1,0 +1,96 @@
+{
+  "source_sha256": "90cd05d49a44c68932e9938239bd2f170e10f1429195a2579125a4ba6ebda971",
+  "source_file": "raw-stock/im-g4-full/raw/grade4-unit1-factors-and-multiples.md",
+  "source_lesson_spans_verified": 8,
+  "verified_tasks": 8,
+  "package_sha256": "096c6eb6ef54abd0cd8f2b7200f99011acb494f69b862c1c3cca26cbce26b01f",
+  "builder_sha256": "b8042482f13a3e32f446fb9f7f3e76a50613dd7e06c036059e6c601f28e43333",
+  "source_records": [
+    "2d60f541407d8860e832225fbbdd4a1c9fb6dee0e1d6839356be5a56def7c0cb",
+    "02e48edba62f3c059542c67ade728e1ba7384f59b06c2c9f9272eeb3c8d66b5d",
+    "cb716cb3f3eb3d441a603195a597047710731ba871b9fc0e532a45991b9b3ec0",
+    "12d6e99db9c736024d7f8368919417079d48259747acb7f19a79caefe49bea3c",
+    "5f277a4ebd06bb10a36d195c1e88818a01e23553f792d9e067256c130257ec36",
+    "9a8b385f94de1fe78700ecf78b6cb74982a84b95e6b48bdc7d04fe4e3f264692",
+    "023e670ada2bc54370f35327242732c7ed587ec2c3a4a87ffc754e662e6c913a",
+    "d7bf955d3da83ceabd29bd4833d0d34ef6bbba99d21506986e5bbef5ee8c534f"
+  ],
+  "checks": [
+    {
+      "lesson": 1,
+      "record_id": "2d60f541407d8860e832225fbbdd4a1c9fb6dee0e1d6839356be5a56def7c0cb",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 2,
+      "record_id": "02e48edba62f3c059542c67ade728e1ba7384f59b06c2c9f9272eeb3c8d66b5d",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 3,
+      "record_id": "cb716cb3f3eb3d441a603195a597047710731ba871b9fc0e532a45991b9b3ec0",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 4,
+      "record_id": "12d6e99db9c736024d7f8368919417079d48259747acb7f19a79caefe49bea3c",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 5,
+      "record_id": "5f277a4ebd06bb10a36d195c1e88818a01e23553f792d9e067256c130257ec36",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 6,
+      "record_id": "9a8b385f94de1fe78700ecf78b6cb74982a84b95e6b48bdc7d04fe4e3f264692",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 7,
+      "record_id": "023e670ada2bc54370f35327242732c7ed587ec2c3a4a87ffc754e662e6c913a",
+      "exact_arithmetic_checked": true
+    },
+    {
+      "lesson": 8,
+      "record_id": "d7bf955d3da83ceabd29bd4833d0d34ef6bbba99d21506986e5bbef5ee8c534f",
+      "exact_arithmetic_checked": true
+    }
+  ],
+  "replaced_candidates": [
+    "im-g4u1-l3-activity2-prime-or-composite-stock-r1",
+    "im-g4u1-l6-activity2-an-open-and-shut-case-stock-r1"
+  ],
+  "legacy_package_sha256": "7b5a20ad225c5c57791a1debe9f4a92d7bede125eb2f08b56596ac3f3e280ef0",
+  "locker_rule_simulation": {
+    "touch_counts": {
+      "1": 1,
+      "2": 2,
+      "3": 2,
+      "4": 3,
+      "5": 2,
+      "6": 4,
+      "7": 2,
+      "8": 4,
+      "9": 3,
+      "10": 4,
+      "11": 2,
+      "12": 6,
+      "13": 2,
+      "14": 4,
+      "15": 4,
+      "16": 5,
+      "17": 2,
+      "18": 6,
+      "19": 2,
+      "20": 6
+    },
+    "open_lockers": [
+      1,
+      4,
+      9,
+      16
+    ]
+  },
+  "scope": "8 complete worked examples; two derived candidates with omitted premises are superseded, originals retained. Source diagrams and teaching/grade/rights approval unchanged."
+}

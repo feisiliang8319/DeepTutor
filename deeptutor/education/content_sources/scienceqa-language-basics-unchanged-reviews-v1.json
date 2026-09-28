@@ -1,0 +1,328 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_linked_records": 1668,
+  "reviews": [
+    {
+      "concept_id": "68864b133adc678f7b5c350bf3ab608165221eaae1ab2db2cdccc6a71e86bf1c",
+      "lecture": "Guide words appear on each page of a dictionary. They tell you the first word and last word on the page. The other words on the page come between the guide words in alphabetical order.\nTo put words in alphabetical order, put them in order by their first letters. If the first letters are the same, look at the second letters. If the second letters are the same, look at the third letters, and so on.\nIf one word is shorter, and there are no more letters to compare, then the shorter word comes first in alphabetical order. For example, be comes before bed.",
+      "expected_records": 598,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The guide-word and letter-by-letter ordering explanation is correct for the printed-dictionary exercises represented here; the prefix example be before bed is valid.",
+      "limitations": "This scope is ordinary lowercase English alphabetical order in print dictionaries using guide words, not a claim about every digital interface or multilingual collation. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://oslis.org/secondary/learn-to-research/plan/plan-possible-sources/dictionaries/student_view",
+          "supports": "Guide words locate entries in a printed dictionary."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "6db1fc2affa619d5e0e5d493f6a975c7fd5dd7288c61fece3b5f794ce6278c9f",
+      "lecture": "Guide words appear on each page of a dictionary. They tell you the first word and last word on the page. The other words on the page come between the guide words in alphabetical order.\nTo put words in alphabetical order, put them in order by their first letters. If the first letters are the same, look at the second letters. If the second letters are the same, look at the third letters, and so on.",
+      "expected_records": 99,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The guide-word and letter-by-letter ordering explanation is correct for the printed-dictionary exercises represented here; the prefix example be before bed is valid.",
+      "limitations": "This scope is ordinary lowercase English alphabetical order in print dictionaries using guide words, not a claim about every digital interface or multilingual collation. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://oslis.org/secondary/learn-to-research/plan/plan-possible-sources/dictionaries/student_view",
+          "supports": "Guide words locate entries in a printed dictionary."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "c02ed15be437f58fd2c1bf680610f7e10a48e6af3299baa95ba0efd8058cec1f",
+      "lecture": "Writers can organize their ideas in different ways. These ways of organizing writing are called text structures. When you can tell how a text is organized, it's easier to understand how the writer's ideas go together. You can also use these text structures to organize your own writing.\n | Text structure | Where you might find it | Words and phrases to look for\nA sequential structure tells you about events that happen in a certain order. | a recipe for how to make a blueberry pie | first, until, second, after, next, then, before, finally, during\nA cause-effect structure shows the causes and the effects, or results, of an event. | an essay about how recycling helps the environment | because, led to, since, as a result, due to, so, reason\nA problem-solution structure explains a problem and offers possible solutions. | an article about ways to get more people to vote | issue, suggest, question, puzzle, fix, answer\nA compare-contrast structure shows how two (or more) things are the same or different. | a chapter about the differences between whales and sharks | like, unlike, too, on the other hand, both, while, same, instead, common, different, as well as, however\nA descriptive structure tells you a list of details about an object, scene, or topic. | a paragraph about what Tyrannosaurus rex looked like| for example, near, for instance beside, such as, most important, also",
+      "expected_records": 5,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The descriptions correctly distinguish sequence, cause/effect, comparison and problem/solution; description is also correct where included. Signal phrases are presented as clues.",
+      "limitations": "Structures may coexist in one text; a single signal word cannot prove which relationship the author actually establishes. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://ies.ed.gov/ncee/rel/reading-comprehension-k-3/teacher-pd-module2-refinetsg",
+          "supports": "Identifies common text structures and their use in reading comprehension."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "b7f584d78d5dd4f502ad0f42901e55862629319e947ec5490eef63a13aca1b03",
+      "lecture": "Authors use different text structures to organize their ideas in writing. Learning to identify these structures will help you to understand the relationships between ideas in informational texts. You can also use these structures to organize your own writing.\nA cause-effect structure presents the causes and the effects of a particular event, trend, or situation. This structure often uses words and phrases such as because, since, as a result, due to, or consequently.\nA compare-contrast structure presents similarities (comparisons) and differences (contrasts) between two or more things. This structure often uses words and phrases such as like, similarly, or in the same way (for comparing) or on the other hand, in contrast, or unlike (for contrasting).\nA problem-solution structure presents a problem and suggests one or more possible solutions. This structure often uses words such as issue, question, puzzle, propose, and answer.\nA sequential structure describes a series of events that happens in a certain order. This structure often uses specific dates and times or words such as first, next, during, finally, and while.",
+      "expected_records": 4,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The descriptions correctly distinguish sequence, cause/effect, comparison and problem/solution; description is also correct where included. Signal phrases are presented as clues.",
+      "limitations": "Structures may coexist in one text; a single signal word cannot prove which relationship the author actually establishes. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://ies.ed.gov/ncee/rel/reading-comprehension-k-3/teacher-pd-module2-refinetsg",
+          "supports": "Identifies common text structures and their use in reading comprehension."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "d925ed4c7a6a2e9c173c0efe778536503a34f92b5f1533b52dc598d30a62fa6d",
+      "lecture": "During peer review, you read and respond to a fellow student's writing. While there are many methods and strategies that you can use for reviewing a text, it is generally helpful to frame your suggestions in concrete and constructive ways and to consider the following areas for revision:\nIdeas and development: Does the writer express a clear idea and develop it with evidence, examples, or analysis?\nOrganization: Does the writer order ideas in a clear, logical way so that they build on one another and are easy to follow?\nVoice: Does the writer maintain an appropriate voice, such as a formal and objective voice in an academic essay or an engaging and expressive voice in a narrative essay?\nSentence fluency: Does the writer use sentences that vary in structure and length to create a sense of rhythm and flow within and between sentences, or does the writing sound choppy, rambling, or repetitive?\nWord choice: Does the writer use words accurately and precisely to create clear, effective, and engaging writing?\nGrammar and mechanics: Does the writer follow appropriate conventions, using accurate spelling, punctuation, and grammar to create writing that is correct and easy to read?",
+      "expected_records": 47,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The review questions are concrete and cover ideas, organization, sentence flow, wording and conventions; they are offered as guidance rather than an exhaustive mandatory rubric.",
+      "limitations": "Feedback should fit the assignment, audience and stage of drafting; review questions alone do not establish a measured learning effect. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.montana.edu/writingcenter/writing_resources/feedback.html",
+          "supports": "Specific, meaningful feedback should address the writer needs and stage of revision."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "f05ec18c2dace63fa1fb6ee45e4d11eaeda30c318f534129fdf4cc0554c43595",
+      "lecture": "When you review a fellow student's writing, try to make your feedback clear and specific. You can use questions such as the following to guide your feedback:\nIdeas and development: Does the writer express a clear main idea and develop it with evidence, examples, and analysis?\nOrganization: Does the writer order ideas in a clear, logical way so that the ideas build on one another and are easy to follow?\nSentence fluency: Do the writer's sentences vary in structure and length, or does the writing sound choppy, rambling, or repetitive?\nWord choice: Does the writer use words accurately and precisely, avoiding excessive repetition or inappropriate language to create clear, effective, and engaging writing?\nGrammar and mechanics: Does the writer use accurate spelling, punctuation, and grammar to create writing that is correct and easy to read?",
+      "expected_records": 9,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The review questions are concrete and cover ideas, organization, sentence flow, wording and conventions; they are offered as guidance rather than an exhaustive mandatory rubric.",
+      "limitations": "Feedback should fit the assignment, audience and stage of drafting; review questions alone do not establish a measured learning effect. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.montana.edu/writingcenter/writing_resources/feedback.html",
+          "supports": "Specific, meaningful feedback should address the writer needs and stage of revision."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "d4702dea2591ac4259dadbbc410d6d96a9fbf04f9cf22ef1911664e99e3a54d6",
+      "lecture": "Personification is giving human characteristics to nonhuman things. It is a figure of speech that can be used to make writing more interesting or to emphasize a point.\nThe trees danced in the wind.\nThe word danced describes the trees as if they were people. Unlike people, however, trees can't actually dance. Instead, the personification suggests that the trees are moving.",
+      "expected_records": 105,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "Describing trees as dancing is a clear illustration of giving human behaviour to a nonhuman subject. The explanation distinguishes figurative movement from literal human dancing.",
+      "limitations": "This is one conventional interpretation of the stated example, not a claim that personification has only one possible effect. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/personification",
+          "supports": "Defines personification through human treatment of a nonhuman subject."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "b2ba0e2bd788ee88f5521b0fe9dc4f7b785631720cc4d8409916ad91cef8f094",
+      "lecture": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nPersonification is giving human characteristics to nonhuman things.\nThe trees danced in the wind.",
+      "expected_records": 19,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "Describing trees as dancing is a clear illustration of giving human behaviour to a nonhuman subject. The explanation distinguishes figurative movement from literal human dancing.",
+      "limitations": "This is one conventional interpretation of the stated example, not a claim that personification has only one possible effect. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/personification",
+          "supports": "Defines personification through human treatment of a nonhuman subject."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "681fc3dfa29faed7e622312e52a439adea3cbba3aad2ad8530cd01997682e2a6",
+      "lecture": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nVerbal irony involves saying one thing but implying something very different. People often use verbal irony when they are being sarcastic.\nOlivia seems thrilled that her car keeps breaking down.\nEach breakdown is as enjoyable as a punch to the face.",
+      "expected_records": 89,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The definition and deliberately incongruous positive language about repeated breakdowns correctly illustrate verbal irony.",
+      "limitations": "The intended meaning depends on the supplied context and tone; the same isolated words need not always be ironic. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/irony",
+          "supports": "Irony distinguishes surface wording from contextually intended meaning."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "dc0e050d56dcbfe24442c5761ef3ebb45df2060546d8a98832cf93af3276a881",
+      "lecture": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nAn idiom is an expression that cannot be understood literally. Its meaning must be learned.\nThe assignment was a piece of cake.",
+      "expected_records": 62,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The assignment described as a piece of cake uses a learned nonliteral meaning, namely ease, and matches the idiom definition.",
+      "limitations": "Idioms may also have literal readings in other contexts; this is a judgment about the assignment example. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/english/piece-of-cake",
+          "supports": "The expression means an easy task."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "aa3a8b29580daf312d6ed7f1294e07924021aa0ae9135cb66b4a332e6c5555ed",
+      "lecture": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nAn allusion is a brief reference to something or someone well known, often from history or literature.\n\"I'd better get home before I turn into a pumpkin!\" Lila remarked.",
+      "expected_records": 43,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The pumpkin remark illustrates a brief recognizable story reference rather than retelling the story.",
+      "limitations": "The interpretation assumes familiarity with the conventional Cinderella coach transformation; it is not a claim about all story variants. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/allusion",
+          "supports": "Defines a short intentional reference to a literary work or event."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "d55650954827ab2224c68e3fe0a1a16d817714188dd2e7f7400e352a021c485f",
+      "lecture": "Figures of speech are words or phrases that use language in a nonliteral or unusual way. They can make writing more expressive.\nHyperbole is an obvious exaggeration that is not meant to be taken literally.\nI ate so much that I think I might explode!",
+      "expected_records": 17,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The stated overeating example is deliberate nonliteral exaggeration and matches the definition of hyperbole.",
+      "limitations": "Interpret the rhetorical example as figurative, not a literal physical or medical claim. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.poetryfoundation.org/education/glossary/hyperbole",
+          "supports": "Defines emphatic exaggeration as a figure of speech."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "45c5cae2ea173500ab5398ed3019558363c045110f3aa1c388f34373eaddd0d1",
+      "lecture": "A graphic organizer is a chart or picture that shows how ideas, facts, or topics are related to one another.\nWhen you read, look for graphic organizers included in the text. You can use these images to find key information. You can also create your own graphic organizers with information that you've read. Doing this can help you think about the ideas in the text and easily review them.\nWhen you write, you can use graphic organizers to organize your thoughts and plan your writing.",
+      "expected_records": 49,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The description of an organizer as a visual representation of relationships, and its use in planning and reviewing ideas, is consistent with actual organizer tools.",
+      "limitations": "It describes a possible support, not a guarantee of improved learning or proof that a missing chart has been recovered. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.readwritethink.org/classroom-resources/student-interactives/essay",
+          "supports": "The Essay Map organizes main ideas, supporting detail and conclusions visually."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "8819da0a8fc6a7debf44db2d748a90ec0d3cf9c7ae3eb136b23c5fb9c1b9a5cc",
+      "lecture": "When you write, you can use sensory details. These sense words help your reader understand what something looks, sounds, tastes, smells, or feels like.\nSensory Category | Description\nSight | These are words like bright, clean, and purple. A reader can imagine looking at these details.\nSound | These are words like hissing, buzzing, and ringing. A reader can imagine hearing these details.\nTaste | These are words like juicy, sweet, and burnt. A reader can imagine tasting these details.\nSmell | These are words like fruity, sweet, and stinky. A reader can imagine smelling these details.\nTouch | These are words like fuzzy, wet, and soft. A reader can imagine feeling these details.\nMany sense words can describe more than one sense. For example, soft can describe a touch or a sound. And sweet can describe a taste or a smell.",
+      "expected_records": 16,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The examples match the named senses and explicitly acknowledge that words such as soft and sweet can describe more than one sense.",
+      "limitations": "These are descriptive-language examples rather than instructions to sample unknown substances or a claim that humans have only five physiological senses. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/academic_writing/essay_writing/descriptive_essays.html",
+          "supports": "Descriptive writing uses specific sensory language to evoke an experience."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "bf5e0574a68a5c8f99d0b580d31185abcd216fe95a7afda147fb8c73e1084b0d",
+      "lecture": "Informational texts include many facts, examples, and details. Authors don't always directly state how these things connect to each other. So, you may need to make guesses, or inferences, to understand how the ideas from the text fit together. Inferences can help you understand the whole text and draw conclusions about the information. Be sure to base your inferences on details found in the text as well as things you already know.",
+      "expected_records": 2,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage grounds inferences in text details and relevant prior knowledge, distinguishing them from directly stated information.",
+      "limitations": "The word guesses is qualified by the evidence requirement; inferences remain revisable and are not automatically factual conclusions. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://ies.ed.gov/ncee/rel/reading-comprehension-k-3/teacher-pd-module1",
+          "supports": "Inferencing connects text clues with existing knowledge to construct meaning."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "aeb55fce73ab2483dd4f718a74927ea7b29821cce50bb2d31deb1dd904461b24",
+      "lecture": "Some words are alike. They go together in a group.\nRed, blue, and green go together. They are colors.\nMom, dad, grandma, and grandpa go together. They are people in a family.",
+      "expected_records": 32,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The color words and the named family members are valid examples of grouping words by a shared meaning category.",
+      "limitations": "The family list is an example, not a required family structure or an exhaustive category. Other valid groupings depend on the task. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://www.readwritethink.org/classroom-resources/lesson-plans/sort-hunt-write-weekly",
+          "supports": "Word sorting uses explicit shared characteristics to define categories; the actual semantic examples here are checked directly."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "c3cfe9d52ec45cafde398b82a7094bda6715fd9de49e52f12ece0b1797a5573a",
+      "lecture": "A strong argument uses valid reasoning and logic in support of a claim. When an argument or claim introduces irrelevant information or misrepresents the issues at hand, it may be committing a logical fallacy. Logical fallacies can hurt a writer's credibility and can lead readers to draw false conclusions.\nA logical fallacy may present irrelevant information:\nFallacy | Description\nad hominem | an attack against the person making the argument, rather than the argument itself\nappeal to nature | an argument that assumes the natural choice is always the best choice\nbandwagon fallacy | an argument that assumes the popular choice is always the best choice\ncircular reasoning | an argument that supports a claim with the claim itself\nguilt by association | an unfair negative association with another person or group that is intended to discredit someone or something\nA logical fallacy may misrepresent the issues at hand:\nFallacy | Description\nfalse causation | the assumption that because two things happened together, one caused the other\nfalse dichotomy | an argument that presents only two choices when more options exist\nhasty generalization | a broad claim based on too few observations\nslippery slope fallacy | the false assumption that a small first step will necessarily lead to extreme consequences\nstraw man | a misrepresentation of an opponent's position that makes it easier to argue against",
+      "expected_records": 192,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage correctly treats irrelevant personal attacks, circular support, forced choices, insufficient generalization and distorted opposing positions as reasoning defects in the stated argumentative context.",
+      "limitations": "Labels alone do not refute a conclusion; actual evidence and relevance must be checked. A supported causal chain is not automatically a slippery-slope fallacy, and relevant credibility evidence is not automatically ad hominem. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/academic_writing/logic_in_argumentative_writing/fallacies.html",
+          "supports": "Describes common reasoning failures involving irrelevant or unsupported premises."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "e9fa83cd43ae960461aaae88a7b7574d06b7821c5a633af11ecb3deeb0818b59",
+      "lecture": "A strong argument uses valid reasoning and logic in support of a claim. When an argument or claim introduces irrelevant information or misrepresents the issues at hand, it may be committing a logical fallacy. Logical fallacies can hurt a writer's credibility and can lead readers to draw false conclusions.\nA logical fallacy may present irrelevant information:\nFallacy | Description\nad hominem | a personal attack meant to discredit one's opponent\nappeal to nature | an argument that assumes the natural choice is always the best choice\nbandwagon fallacy | an argument that assumes the popular choice is always the best choice\ncircular reasoning | an argument that supports a claim with the claim itself\nguilt by association | an unfair negative association with another person or group that is intended to discredit someone or something\nred herring | the use of a completely unrelated topic in support of a claim\nA logical fallacy may misrepresent the issues at hand:\nFallacy | Description\nfalse causation | the assumption that because two things happened together, one caused the other\nfalse dichotomy | an argument that presents only two choices when more options exist\nhasty generalization | a very broad claim based on very little evidence\nstraw man | a misrepresentation of an opponent's position that makes it easier to argue against",
+      "expected_records": 181,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage correctly treats irrelevant personal attacks, circular support, forced choices, insufficient generalization and distorted opposing positions as reasoning defects in the stated argumentative context.",
+      "limitations": "Labels alone do not refute a conclusion; actual evidence and relevance must be checked. A supported causal chain is not automatically a slippery-slope fallacy, and relevant credibility evidence is not automatically ad hominem. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/academic_writing/logic_in_argumentative_writing/fallacies.html",
+          "supports": "Describes common reasoning failures involving irrelevant or unsupported premises."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "e3d68f2589c875310d12668c1836ca8d981fcd03ba061893d526131a86d1e427",
+      "lecture": "Authors write texts for different purposes, or reasons. Common purposes for writing are to persuade, to inform, or to entertain readers.\nAuthors persuade by convincing readers to believe or do something.\nAn advertisement tries to convince readers to buy a product.\nA political poster tries to convince readers to vote for someone.\nAuthors inform by telling readers about a topic or process.\nA news article explains something that happened.\nA recipe describes how to cook a dish.\nAuthors entertain by giving readers something to enjoy.\nA joke tries to make readers laugh.\nA poem tries to please readers.",
+      "expected_records": 3,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "Informing, persuading and entertaining are correctly described as common purposes with simple illustrative examples.",
+      "limitations": "A text may combine purposes, and a particular poem or advertisement requires contextual interpretation; the examples are not exclusive genre rules. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://fcrr.org/sites/g/files/upcbnu2836/files/media/projects/essentials-for-reading-success/instructional-routines/Comprehension-3-Authors-Purpose.pdf",
+          "supports": "Teaches common author purposes and uses the whole text to infer persuasive intent."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    },
+    {
+      "concept_id": "5bc171a48b36936b91895746fea14939c96cb050a2498b7a6bd5990e4a9e595f",
+      "lecture": "Informal writing is typically used in casual situations or when communicating with someone you know well. Informal language often expresses familiarity and tends to sound more like speech. It uses more conversational language, such as slang, idioms, abbreviations, imprecise language, and contractions.\nFormal writing is typically used in academic and business writing or when writing directly to an authority figure. It tends to be more courteous and impersonal, avoiding overly familiar or conversational language.\nCompare the following sentences.\nInformal: Yeah, ostriches can't fly, but I think they're awesome.\nMore formal: Ostriches may be flightless, but they're remarkable runners.\nMost formal: Though flightless, ostriches are remarkable runners.",
+      "expected_records": 96,
+      "decision": "checked_unchanged",
+      "scope": "shared_lecture_only_not_question_or_answer_approval",
+      "reason": "The passage uses typically and tends to characterize register and illustrates a continuum rather than asserting one absolute ban on contractions.",
+      "limitations": "Formality depends on audience, genre and setting; courteous writing is possible in either register, and the sample ranking is contextual. Individual questions, original answers, diagrams, rights and grade suitability are not certified.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/us/grammar/british-grammar/formal-and-informal-language",
+          "supports": "Formal and informal registers involve common vocabulary and grammar choices."
+        }
+      ],
+      "reviewed_on": "2026-09-28"
+    }
+  ]
+}

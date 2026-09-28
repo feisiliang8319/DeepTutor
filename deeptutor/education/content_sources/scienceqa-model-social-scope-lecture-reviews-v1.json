@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 714,
+  "reviews": [
+    {
+      "concept_id": "1561f8995a8d97cca5693b95aeda11f95daacba33d05dd0b8646f9a95557d41e",
+      "expected_records": 128,
+      "lecture_before": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nWhen you are using metric units, length can be written with units of millimeters, centimeters, meters, or kilometers. One meter contains 100 centimeters or 1,000 millimeters. So, 1 meter is larger than 1 centimeter, and 1 centimeter is larger than 1 millimeter.\nThe tip of the pencil shown here is only 1 millimeter wide, but the pencil is about 16 centimeters long.\nA red fox is about 1 meter long. The Sydney Harbour Bridge in Australia is about 1,000 meters, or 1 kilometer, in length.",
+      "lecture_after": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nWhen you are using metric units, length can be written with units of millimeters, centimeters, meters, or kilometers. One meter contains 100 centimeters or 1,000 millimeters. So, 1 meter is larger than 1 centimeter, and 1 centimeter is larger than 1 millimeter.\nAs a size example, a pencil tip might be about 1 millimeter wide and a pencil about 16 centimeters long. Those are illustrative measurements, not readings from a missing picture.\nA red fox is about 1 meter long. The Sydney Harbour Bridge in Australia is about 1,000 meters, or 1 kilometer, in length.",
+      "reason": "Keep the approximate scale example without pretending a missing pencil figure has been measured.",
+      "references": [
+        {
+          "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+          "supports": "Milli and centi are decimal prefixes; the existing meter conversions are preserved."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "ea1348866b01d0582c610c50831eb8087322920164d0f7e3ce3a5d9c7feab0fd",
+      "expected_records": 12,
+      "lecture_before": "Fish live underwater. They have fins, not limbs.",
+      "lecture_after": "Fish are aquatic vertebrates with gills and typically fins. Most spend their lives in water, but some, such as mudskippers, can also spend time out of water. In these elementary comparisons, fins are distinguished from the legs of land animals; this is not a claim that every fish stays submerged or that fins lack an evolutionary relationship to limbs.",
+      "reason": "Replace the absolute underwater rule with a scoped body-plan description and a documented exception.",
+      "references": [
+        {
+          "url": "https://australian.museum/learn/animals/fishes/what-is-a-fish/",
+          "supports": "Explains limitations of simple popular fish definitions."
+        },
+        {
+          "url": "https://media.australian.museum/media/dd/documents/AGNPY21_exhibition-guide.4909a29.pdf",
+          "supports": "Describes amphibious mudskippers emerging from underwater burrows."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "1ac9bdf8a0e03082912ce6891b356c717761d7493d327e3c1924f32e94af258d",
+      "expected_records": 79,
+      "lecture_before": "Everything you can buy is either a good or a service.\nA good is something you can touch or hold in your hands. For example, a hammer is a good.\nA service is a job you pay someone else to do. For example, cooking food in a restaurant is a service.",
+      "lecture_after": "These exercises compare familiar physical goods with services. Real purchases can combine both.\nA physical good is an object you can touch, such as a hammer. This simple comparison does not cover every digital product or purchase arrangement.\nA service is work or an activity provided for someone, such as preparing or serving a meal. A restaurant purchase can include both the food and the service.",
+      "reason": "Avoid defining every purchasable product as tangible or treating a combined purchase as a single universal category.",
+      "references": [
+        {
+          "url": "https://www.stlouisfed.org/education/economic-lowdown-podcast-series/episode-2-factors-of-production",
+          "supports": "Economic production includes goods and services; the tangible examples here remain a scoped introductory comparison."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "4eb6292c4a32e86e03195a100654ed9e4b19ffaf3980737c3e5d24d228076c96",
+      "expected_records": 86,
+      "lecture_before": "Overall supply is the total amount of a good or service that producers make and sell. There are several things that can make overall supply go up or down. The table below shows how changes to these things might affect overall supply.\n | Resources | Number of producers or suppliers | Expected change in demand\nSupply goes up | when resources cost less or are easier to get | when there are more producers or suppliers | when demand is expected to go up\nSupply goes down | when resources cost more or are harder to get | when there are fewer producers or suppliers | when demand is expected to go down\nProducers are people or companies that make goods or provide services. Suppliers are people or companies that sell goods or services. New inventions or technologies can also help workers produce goods and services more quickly. As a result of these changes, the supply of a good or service will often go up.",
+      "lecture_after": "Supply describes how much producers are willing and able to offer at different prices over a stated time period. Quantity supplied is the amount at one particular price. This is different from counting only what has already been sold.\nHolding other relevant conditions fixed, lower production costs or more producers can increase the quantity offered at each price. Higher costs or fewer producers can reduce it. Technology can also change production costs and capacity.\nExpectations about future demand can affect production plans, but they do not guarantee that current supply rises or falls in one direction. The effect depends on the time period, available capacity and decisions about inventories. A change in the product's own price changes quantity supplied along a given supply curve; it is not by itself a shift of that curve.",
+      "reason": "Replace an underspecified overall-supply table with the price/time scope and separate current supply from conditional future production plans.",
+      "references": [
+        {
+          "url": "https://www.federalreserveeducation.org/teaching-resources/economics/markets/supply-video",
+          "supports": "Defines supply across possible prices and distinguishes supply-curve shifts from quantity-supplied changes."
+        },
+        {
+          "url": "https://openstax.org/books/principles-economics-3e/pages/3-2-shifts-in-demand-and-supply-for-goods-and-services",
+          "supports": "Explains input costs, technology and holding other factors constant."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "d3bb012155d4dcd929e0cb83ff288c5d7400856ead18a6e793f6247d0f745289",
+      "expected_records": 44,
+      "lecture_before": "A fact is something that can be proved to be true. Facts can be proved by observing, measuring, or studying information.\nThe flag of the United States has 13 stripes.\nThis is a fact. It can be proved by looking at the flag and counting the number of stripes.\nAn opinion is something that a person believes, thinks, or feels. An opinion cannot be proved true.\nThe flag of the United States is easy to draw.\nThis is an opinion. People may have different opinions about what makes a flag \"easy\" to draw.",
+      "lecture_after": "A fact is something that can be proved to be true. Facts can be proved by observing, measuring, or studying information.\nThe flag of the United States has 13 stripes.\nThis is a fact. It can be proved by looking at the flag and counting the number of stripes.\nIn this comparison, an opinion is a judgment or preference, such as whether something is easy or better. People can support it with reasons, but its evaluation depends partly on criteria or values. Not every belief is an opinion: a person can believe a factual claim that evidence supports or disproves.\nThe flag of the United States is easy to draw.\nThis is an opinion. People may have different opinions about what makes a flag \"easy\" to draw.",
+      "reason": "Avoid classifying every belief as an untestable opinion; retain the original concrete fact/judgment examples.",
+      "references": [
+        {
+          "url": "https://writing.colostate.edu/guides/teaching/co300man/pop12d.cfm",
+          "supports": "Distinguishes factual claims from judgments and opinions."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "2c3c04bfed87bffe29fd8af47470e01a9d7e999400c02be991a669cb8e858942",
+      "expected_records": 17,
+      "lecture_before": "A fact is something that can be proved true by research or observation.\nGeorge Washington became president of the United States in 1789.\nThis statement is a fact. It can be proved by researching what year George Washington was inaugurated president.\nAn opinion is something that a person believes, thinks, or feels. An opinion can be supported by evidence, but it cannot be proved true.\nGeorge Washington was a better president than Thomas Jefferson.\nThis statement is an opinion. People can have different ideas about what makes someone a \"better\" president, so the statement cannot be proved.",
+      "lecture_after": "A fact is something that can be proved true by research or observation.\nGeorge Washington became president of the United States in 1789.\nThis statement is a fact. It can be proved by researching what year George Washington was inaugurated president.\nIn this comparison, an opinion is a judgment or preference, such as whether something is easy or better. People can support it with reasons, but its evaluation depends partly on criteria or values. Not every belief is an opinion: a person can believe a factual claim that evidence supports or disproves.\nGeorge Washington was a better president than Thomas Jefferson.\nThis statement is an opinion. People can have different ideas about what makes someone a \"better\" president, so the statement cannot be proved.",
+      "reason": "Avoid classifying every belief as an untestable opinion; retain the original concrete fact/judgment examples.",
+      "references": [
+        {
+          "url": "https://writing.colostate.edu/guides/teaching/co300man/pop12d.cfm",
+          "supports": "Distinguishes factual claims from judgments and opinions."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "73ad3944a6aa74ab1f0969d3e81b6a2d6a6e7dc2fd0516cdde0aab2eb611f332",
+      "expected_records": 20,
+      "lecture_before": "There is a surplus if there is too much for sale at a given price.\nThere is a shortage if there is not enough for sale at a given price.\nSurpluses and shortages usually happen when people who are selling goods or services charge too much or too little.\nWhen the price is too high, consumers will not want to buy much of the good or service. The quantity demanded will be less than the quantity supplied. So, there will be a surplus.\nWhen the price is too low, too many consumers will want to buy the good or service. The quantity demanded will be more than the quantity supplied. So, there will be a shortage.",
+      "lecture_after": "There is a surplus if there is too much for sale at a given price.\nThere is a shortage if there is not enough for sale at a given price.\nIn a simple supply-demand model, compare the current price with the equilibrium price for the stated conditions. Demand or production conditions can also change, so a shortage or surplus does not by itself prove that a seller made a mistake.\nIn this model, when the price is above equilibrium, consumers will not want to buy much of the good or service. The quantity demanded will be less than the quantity supplied. So, there will be a surplus.\nIn this model, when the price is below equilibrium, too many consumers will want to buy the good or service. The quantity demanded will be more than the quantity supplied. So, there will be a shortage.",
+      "reason": "Scope high/low to model equilibrium and avoid attributing every shortage or surplus to seller mispricing.",
+      "references": [
+        {
+          "url": "https://www.federalreserveeducation.org/teaching-resources/economics/markets/equilibrium",
+          "supports": "Relates shortages and surpluses to the quantities supplied and demanded at a price under stated market conditions."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "ff51abe99edeb9bc619128a45334853c6ab40946677cb01908eb0a08e925da04",
+      "expected_records": 12,
+      "lecture_before": "People around the world live in three main kinds of places: urban areas, suburban areas, and rural areas.\nAn urban area is a city. It has many people and businesses. The buildings are close to each other. The buildings are often tall and have many floors. Since there are so many people, traffic is usually bad. People will walk or take the bus, train, or subway to avoid traffic.\nA suburban area, or suburb, is near a city. It is quieter and less crowded than an urban area. People usually live in houses with yards. Most people drive to get places.\nA rural area is less crowded than both urban and suburban areas. Houses are much more spread out. People usually have to drive to get places. People in rural areas often live on farms or ranches.\nSome places, like small towns, don't really fit into any of the types. A small town does not have as many people as an urban area, but it has more people than a rural area. It is not near a city, so it is not called a suburb.",
+      "lecture_after": "Urban, suburban and rural describe common settlement patterns. Their official definitions depend on the country, agency and purpose of classification.\nUrban areas generally have a concentration of people and development. Building heights, transport and traffic vary between places.\nSuburban areas are commonly associated with a city or metropolitan area outside its central core. They can include different kinds of housing, businesses and transport; a detached house, yard or car is not a required feature.\nRural areas are generally less densely settled. They can include villages, small towns, farms and other kinds of work and housing. Not everyone in a rural area lives on a farm or drives.\nWhen classifying a specific place, use the definition and evidence given in the question rather than treating these examples as three rigid worldwide categories.",
+      "reason": "Remove culturally narrow transport and housing generalizations and clarify varying classification rules.",
+      "references": [
+        {
+          "url": "https://www.census.gov/programs-surveys/international-programs/events/training/select-topics-in-international-censuses/mapping/urban-stic.html",
+          "supports": "Explains that no single urban/rural definition applies to all countries."
+        },
+        {
+          "url": "https://www.census.gov/newsroom/blogs/random-samplings/2022/12/redefining-urban-areas-following-2020-census.html",
+          "supports": "Explains changing statistical criteria rather than a universal housing/transport definition."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "dfb0744f2a3360c75e48a994c0b0357406379744531278e206932315496211e0",
+      "expected_records": 1,
+      "lecture_before": "To learn about the past, historians look at many different sources. Sources are books, documents, pictures, or other materials that provide evidence about the past.\nThe sources that historians use fall into two categories: primary sources and secondary sources. The category for a source can change depending on what the historian is trying to learn, who created the source, and when it was created.\nThe table below shows some common characteristics of primary and secondary sources.\n | Primary source | Secondary sources\nDescription | firsthand accounts of a historical event that the historian is studying | secondhand accounts of a historical event that the historian is studying; sources that interpret or analyze many primary sources\nAuthor | usually created or used by a person who participated in the event | usually created by someone who did not participate in the event\nDate | usually created at or around the time of the event | usually created after the event\nCommon examples | speeches; diaries; letters; photographs; artifacts such as household objects; exact copies of sources or artifacts; | textbooks; history books; documentary (non-fiction) films; articles by historians; museum exhibits\nSome sources are neither primary nor secondary sources because they do not provide historical information about the topic being studied. For example, a historian would not use a historical novel to learn about an event. Other sources may not relate to a historian's goal.",
+      "lecture_after": "To learn about the past, historians look at many different sources. Sources are books, documents, pictures, or other materials that provide evidence about the past.\nThe sources that historians use fall into two categories: primary sources and secondary sources. The category for a source can change depending on what the historian is trying to learn, who created the source, and when it was created.\nThe table below shows some common characteristics of primary and secondary sources.\n | Primary source | Secondary sources\nDescription | firsthand accounts of a historical event that the historian is studying | secondhand accounts of a historical event that the historian is studying; sources that interpret or analyze many primary sources\nAuthor | usually created or used by a person who participated in the event | usually created by someone who did not participate in the event\nDate | usually created at or around the time of the event | usually created after the event\nCommon examples | speeches; diaries; letters; photographs; artifacts such as household objects; exact copies of sources or artifacts; | textbooks; history books; documentary (non-fiction) films; articles by historians; museum exhibits\nSome sources are neither primary nor secondary sources because they do not provide historical information about the topic being studied. For example, a historical novel should not be treated as direct factual proof that every depicted event happened. It can still be useful evidence for questions about its author, culture, audience or how a later period represented the past. Other sources may not relate to a historian's goal.",
+      "reason": "Distinguish factual corroboration from other historical uses of fiction rather than banning novels as evidence.",
+      "references": [
+        {
+          "url": "https://blogs.loc.gov/international-collections/2024/04/now-online-south-asian-digital-collection/",
+          "supports": "Includes novels and plays in a primary-source collection relevant to colonial representations."
+        },
+        {
+          "url": "https://blogs.loc.gov/teachers/2011/10/what-makes-a-primary-source-a-primary-source/",
+          "supports": "Explains that source classification depends on the question and historical context."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "685c0f0e797ee27ac1f6bb154218037670d215bfb23132727968a976e8878114",
+      "expected_records": 27,
+      "lecture_before": "When a scientist identifies a new organism, he or she chooses its scientific name.\nSometimes, an organism is named after the place where it was first found. Other times, an organism is named after the scientist who first identified it. Or, the scientific name might describe the organism's physical traits.\nMany of the words that make up scientific names are based on words from old languages, like Latin and classical Greek. Sometimes, English words are changed to make them sound more like Latin or Greek. The new words are then used in an organism's scientific name.",
+      "lecture_after": "A scientist who formally describes a newly recognized animal species may propose its scientific name following the applicable naming rules. Finding or identifying an individual organism does not automatically create a new species name.\nSometimes, an organism is named after the place where it was first found. Other times, an organism is named after the scientist who first identified it. Or, the scientific name might describe the organism's physical traits.\nMany of the words that make up scientific names are based on words from old languages, like Latin and classical Greek. Sometimes, English words are changed to make them sound more like Latin or Greek. The new words are then used in an organism's scientific name.",
+      "reason": "Distinguish identifying an individual from formally describing and naming a new species.",
+      "references": [
+        {
+          "url": "https://www.iczn.org/outreach/guidelines-for-authors-and-editors/whats-in-a-name/",
+          "supports": "Explains formal description and publication of new animal species and the construction of scientific names."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "3fdae78401a6ec3054fd86b2a7339aff5fc6d69e1c40de204a28ee2aa4abaa51",
+      "expected_records": 92,
+      "lecture_before": "An organism's common name is the name that people normally call the organism. Common names often contain words you know.\nAn organism's scientific name is the name scientists use to identify the organism. Scientific names often contain words that are not used in everyday English.\nScientific names are written in italics, but common names are usually not. The first word of the scientific name is capitalized, and the second word is not. For example, the common name of the animal below is giant panda. Its scientific name is Ailuropoda melanoleuca.",
+      "lecture_after": "An organism's common name is the name that people normally call the organism. Common names often contain words you know.\nAn organism's scientific name is the name scientists use to identify the organism. Scientific names often contain words that are not used in everyday English.\nFor the two-part species names used here, scientific names are conventionally written in italics, while common names are usually not. The first word of the scientific name is capitalized, and the second word is not. For example, giant panda is a common name, and Ailuropoda melanoleuca is its two-part scientific name. This naming example does not identify an animal in an unavailable picture.",
+      "reason": "Scope the formatting rule to binomial species names and remove a claim to identify an absent animal image.",
+      "references": [
+        {
+          "url": "https://www.iczn.org/outreach/guidelines-for-authors-and-editors/whats-in-a-name/",
+          "supports": "Explains formal description and publication of new animal species and the construction of scientific names."
+        },
+        {
+          "url": "https://nationalzoo.si.edu/animals/giant-panda",
+          "supports": "Gives the giant panda species name Ailuropoda melanoleuca."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "47f324fc04a157c5e9a4a395bac71037b44fdef3e5d57d0c391849bc2b692970",
+      "expected_records": 21,
+      "lecture_before": "All substances are made of one or more chemical elements, or types of atoms. Substances that are made of only one chemical element are elementary substances. Substances that are made of two or more chemical elements bonded together are compounds.\nEvery chemical element is represented by its own symbol. For some elements, the symbol is one capital letter. For other elements, the symbol is one capital letter and one lowercase letter. For example, the symbol for the chemical element boron is B, and the symbol for the chemical element chlorine is Cl.\nScientists can use models to represent molecules. A ball-and-stick model of a molecule is shown below. This model represents a molecule of the compound boron trichloride.\nIn a ball-and-stick model, the balls represent atoms, and the sticks represent chemical bonds. Notice how each ball is labeled with a symbol for a chemical element. The ball represents one atom of that element.",
+      "lecture_after": "All substances are made of one or more chemical elements, or types of atoms. Substances that are made of only one chemical element are elementary substances. Substances that are made of two or more chemical elements bonded together are compounds.\nEvery chemical element is represented by its own symbol. For some elements, the symbol is one capital letter. For other elements, the symbol is one capital letter and one lowercase letter. For example, the symbol for the chemical element boron is B, and the symbol for the chemical element chlorine is Cl.\nScientists can use models to represent molecules. For example, a ball-and-stick model of boron trichloride can represent one boron atom bonded to three chlorine atoms.\nIn a ball-and-stick model, the balls represent atoms, and the sticks represent chemical bonds. When a ball is labeled with an element symbol, that label identifies the represented atom. Check the actual labels or legend; a missing model cannot be reconstructed from assumed colors.",
+      "reason": "Use a text-complete model example without asserting that the absent figure or its labels were observed.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-4-chemical-formulas",
+          "supports": "Explains model representations, symbols, composition and the distinction between empirical formulas and molecular structures."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "3e87dffc81b5661446a07d9f878dd9f8b2e738258e0fd7d83467450645b47c29",
+      "expected_records": 7,
+      "lecture_before": "There are more than 100 different chemical elements, or types of atoms. Chemical elements make up all of the substances around you.\nA substance may be composed of one chemical element or multiple chemical elements. Substances that are composed of only one chemical element are elementary substances. Substances that are composed of multiple chemical elements bonded together are compounds.\nEvery chemical element is represented by its own atomic symbol. An atomic symbol may consist of one capital letter, or it may consist of a capital letter followed by a lowercase letter. For example, the atomic symbol for the chemical element fluorine is F, and the atomic symbol for the chemical element beryllium is Be.\nScientists use different types of models to represent substances whose atoms are bonded in different ways. One type of model is a ball-and-stick model. The ball-and-stick model below represents the compound pyrite.\nIn a ball-and-stick model, the balls represent atoms, and the sticks represent bonds. Notice that the balls in the model above are not all the same color. Each color represents a different chemical element. The legend shows the color and the atomic symbol for each chemical element in the substance.",
+      "lecture_after": "There are more than 100 different chemical elements, or types of atoms. Chemical elements make up all of the substances around you.\nA substance may be composed of one chemical element or multiple chemical elements. Substances that are composed of only one chemical element are elementary substances. Substances that are composed of multiple chemical elements bonded together are compounds.\nEvery chemical element is represented by its own atomic symbol. An atomic symbol may consist of one capital letter, or it may consist of a capital letter followed by a lowercase letter. For example, the atomic symbol for the chemical element fluorine is F, and the atomic symbol for the chemical element beryllium is Be.\nScientists use different types of models to represent substances whose atoms are bonded in different ways. One type of model is a ball-and-stick model. A ball-and-stick model can be used to represent the structure of a compound such as pyrite.\nIn a ball-and-stick model, the balls represent atoms, and the sticks represent bonds. When a model uses colors for elements, read its legend to determine what each color represents. Colors are conventions, not the actual colors of individual atoms. Without the original model and legend, its specific arrangement cannot be verified.",
+      "reason": "Preserve model-reading principles while making missing-image observations conditional.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-4-chemical-formulas",
+          "supports": "Explains model representations, symbols, composition and the distinction between empirical formulas and molecular structures."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "c8420c4bcf0bf8d9f079df5d7cdeaa388f32ac68329aad23ba8c296ddd1812c4",
+      "expected_records": 105,
+      "lecture_before": "There are more than 100 different chemical elements, or types of atoms. Chemical elements make up all of the substances around you.\nA substance may be composed of one chemical element or multiple chemical elements. Substances that are composed of only one chemical element are elementary substances. Substances that are composed of multiple chemical elements bonded together are compounds.\nEvery chemical element is represented by its own atomic symbol. An atomic symbol may consist of one capital letter, or it may consist of a capital letter followed by a lowercase letter. For example, the atomic symbol for the chemical element boron is B, and the atomic symbol for the chemical element chlorine is Cl.\nScientists use different types of models to represent substances whose atoms are bonded in different ways. One type of model is a ball-and-stick model. The ball-and-stick model below represents a molecule of the compound boron trichloride.\nIn a ball-and-stick model, the balls represent atoms, and the sticks represent bonds. Notice that the balls in the model above are not all the same color. Each color represents a different chemical element. The legend shows the color and the atomic symbol for each chemical element in the substance.",
+      "lecture_after": "There are more than 100 different chemical elements, or types of atoms. Chemical elements make up all of the substances around you.\nA substance may be composed of one chemical element or multiple chemical elements. Substances that are composed of only one chemical element are elementary substances. Substances that are composed of multiple chemical elements bonded together are compounds.\nEvery chemical element is represented by its own atomic symbol. An atomic symbol may consist of one capital letter, or it may consist of a capital letter followed by a lowercase letter. For example, the atomic symbol for the chemical element boron is B, and the atomic symbol for the chemical element chlorine is Cl.\nScientists use different types of models to represent substances whose atoms are bonded in different ways. One type of model is a ball-and-stick model. A ball-and-stick model of boron trichloride can represent one boron atom bonded to three chlorine atoms.\nIn a ball-and-stick model, the balls represent atoms, and the sticks represent bonds. When a model uses colors for elements, read its legend to determine what each color represents. Colors are conventions, not the actual colors of individual atoms. Without the original model and legend, its specific arrangement cannot be verified.",
+      "reason": "Preserve model-reading principles while making missing-image observations conditional.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-4-chemical-formulas",
+          "supports": "Explains model representations, symbols, composition and the distinction between empirical formulas and molecular structures."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "4edc6d5aa1a00eb83c1a3a6f6deec076179b7e8d8a28ed68539c2994e1afb7ba",
+      "expected_records": 8,
+      "lecture_before": "There are more than 100 different chemical elements, or types of atoms. Chemical elements make up all of the substances around you.\nA substance may be composed of one chemical element or multiple chemical elements. Substances that are composed of only one chemical element are elementary substances. Substances that are composed of multiple chemical elements bonded together are compounds.\nEvery chemical element is represented by its own atomic symbol. An atomic symbol may consist of one capital letter, or it may consist of a capital letter followed by a lowercase letter. For example, the atomic symbol for the chemical element fluorine is F, and the atomic symbol for the chemical element beryllium is Be.\nScientists use different types of models to represent substances whose atoms are bonded in different ways. One type of model is a space-filling model. The space-filling model below represents the elementary substance copper.\nIn a space-filling model, the balls represent atoms that are bonded together. The color of a ball represents a specific chemical element. The atomic symbol for that chemical element is shown in the legend.",
+      "lecture_after": "There are more than 100 different chemical elements, or types of atoms. Chemical elements make up all of the substances around you.\nA substance may be composed of one chemical element or multiple chemical elements. Substances that are composed of only one chemical element are elementary substances. Substances that are composed of multiple chemical elements bonded together are compounds.\nEvery chemical element is represented by its own atomic symbol. An atomic symbol may consist of one capital letter, or it may consist of a capital letter followed by a lowercase letter. For example, the atomic symbol for the chemical element fluorine is F, and the atomic symbol for the chemical element beryllium is Be.\nScientists use different types of models to represent substances whose atoms are bonded in different ways. One type of model is a space-filling model. A space-filling model can be used to represent the arrangement of atoms in an elementary substance such as copper.\nIn a space-filling model, the balls represent atoms that are bonded together. If colors distinguish elements in a model, use the actual legend to identify them. These colors are representational choices, not the actual colors of atoms. A missing model cannot be identified or counted by guessing its legend.",
+      "reason": "Keep the elemental model example without claiming the missing diagram was examined.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-4-chemical-formulas",
+          "supports": "Explains model representations, symbols, composition and the distinction between empirical formulas and molecular structures."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "520d900bade91fbbc62c94d14fc42603ff0f37d812d50666364351426eb27ffb",
+      "expected_records": 7,
+      "lecture_before": "There are more than 100 different chemical elements, or types of atoms. Chemical elements make up all of the substances around you.\nA substance may be composed of one chemical element or multiple chemical elements. Substances that are composed of only one chemical element are elementary substances. Substances that are composed of multiple chemical elements bonded together are compounds.\nEvery chemical element is represented by its own atomic symbol. An atomic symbol may consist of one capital letter, or it may consist of a capital letter followed by a lowercase letter. For example, the atomic symbol for the chemical element fluorine is F, and the atomic symbol for the chemical element beryllium is Be.\nScientists use different types of models to represent substances whose atoms are bonded in different ways. One type of model is a space-filling model. The space-filling model below represents the elementary substance zirconium.\nIn a space-filling model, the balls represent atoms that are bonded together. The color of a ball represents a specific chemical element. The atomic symbol for that chemical element is shown in the legend.",
+      "lecture_after": "There are more than 100 different chemical elements, or types of atoms. Chemical elements make up all of the substances around you.\nA substance may be composed of one chemical element or multiple chemical elements. Substances that are composed of only one chemical element are elementary substances. Substances that are composed of multiple chemical elements bonded together are compounds.\nEvery chemical element is represented by its own atomic symbol. An atomic symbol may consist of one capital letter, or it may consist of a capital letter followed by a lowercase letter. For example, the atomic symbol for the chemical element fluorine is F, and the atomic symbol for the chemical element beryllium is Be.\nScientists use different types of models to represent substances whose atoms are bonded in different ways. One type of model is a space-filling model. A space-filling model can be used to represent the arrangement of atoms in an elementary substance such as zirconium.\nIn a space-filling model, the balls represent atoms that are bonded together. If colors distinguish elements in a model, use the actual legend to identify them. These colors are representational choices, not the actual colors of atoms. A missing model cannot be identified or counted by guessing its legend.",
+      "reason": "Keep the elemental model example without claiming the missing diagram was examined.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/chemistry-2e/pages/2-4-chemical-formulas",
+          "supports": "Explains model representations, symbols, composition and the distinction between empirical formulas and molecular structures."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "30752e5bbef7736551d16d170ccc16a395fa11139244dea09458cee51d755d3d",
+      "expected_records": 48,
+      "lecture_before": "Offspring genotypes: homozygous or heterozygous?\nHow do you determine whether an organism is homozygous or heterozygous for a gene? Look at the alleles in the organism's genotype for that gene.\nAn organism with two identical alleles for a gene is homozygous for that gene.\nIf both alleles are dominant, the organism is homozygous dominant for the gene.\nIf both alleles are recessive, the organism is homozygous recessive for the gene.\nAn organism with two different alleles for a gene is heterozygous for that gene.\nIn a Punnett square, each box represents a different outcome, or result. Each of the four outcomes is equally likely to happen. Each box represents one way the parents' alleles can combine to form an offspring's genotype. \nBecause there are four boxes in the Punnett square, there are four possible outcomes.\nAn event is a set of one or more outcomes. The probability of an event is a measure of how likely the event is to happen. This probability is a number between 0 and 1, and it can be written as a fraction:\nprobability of an event = number of ways the event can happen / number of equally likely outcomes\nYou can use a Punnett square to calculate the probability that a cross will produce certain offspring. For example, the Punnett square below has two boxes with the genotype Ff. It has one box with the genotype FF and one box with the genotype ff. This means there are two ways the parents' alleles can combine to form Ff. There is one way they can combine to form FF and one way they can combine to form ff.\n | F | f\nF | FF | Ff\nf | Ff | ff\nConsider an event in which this cross produces an offspring with the genotype ff. The probability of this event is given by the following fraction:\nnumber of ways the event can happen / number of equally likely outcomes = number of boxes with the genotype ff / total number of boxes = 1 / 4",
+      "lecture_after": "Offspring genotypes: homozygous or heterozygous?\nHow do you determine whether an organism is homozygous or heterozygous for a gene? Look at the alleles in the organism's genotype for that gene.\nAn organism with two identical alleles for a gene is homozygous for that gene.\nIf both alleles are dominant, the organism is homozygous dominant for the gene.\nIf both alleles are recessive, the organism is homozygous recessive for the gene.\nAn organism with two different alleles for a gene is heterozygous for that gene.\nIn the Ff × Ff monohybrid example below, assume each parent contributes F or f with probability 1/2 and the two contributions combine independently. Under these assumptions, each of the four boxes represents an equally likely gamete combination. \nThere are four equally likely gamete combinations in this square, but only three distinct genotypes: FF, Ff and ff. Other crosses or inheritance models can require different assumptions.\nAn event is a set of one or more outcomes. The probability of an event is a measure of how likely the event is to happen. This probability is a number between 0 and 1, and it can be written as a fraction:\nprobability of an event = number of ways the event can happen / number of equally likely outcomes\nYou can use a Punnett square to calculate the probability that a cross will produce certain offspring. For example, the Punnett square below has two boxes with the genotype Ff. It has one box with the genotype FF and one box with the genotype ff. This means there are two ways the parents' alleles can combine to form Ff. There is one way they can combine to form FF and one way they can combine to form ff.\n | F | f\nF | FF | Ff\nf | Ff | ff\nConsider an event in which this cross produces an offspring with the genotype ff. The probability of this event is given by the following fraction:\nnumber of ways the event can happen / number of equally likely outcomes = number of boxes with the genotype ff / total number of boxes = 1 / 4",
+      "reason": "State the equal-probability assumptions and distinguish four gamete combinations from three distinct genotypes.",
+      "references": [
+        {
+          "url": "https://openstax.org/books/concepts-biology/pages/8-2-laws-of-inheritance",
+          "supports": "Describes Mendelian monohybrid crosses, gametes and probabilities in Punnett squares."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

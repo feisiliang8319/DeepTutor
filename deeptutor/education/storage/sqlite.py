@@ -134,6 +134,9 @@ def check_trigger_integrity(conn: sqlite3.Connection) -> frozenset[str]:
     required = REQUIRED_TRIGGERS
     if _table_exists(conn, "task_set_submissions"):
         required = required | {"task_set_submissions_no_update", "task_set_submissions_no_delete"}
+    for table in ("exam_score_reviews", "promotion_events", "placement_events", "competition_foundation_choices"):
+        if _table_exists(conn, table):
+            required = required | {table + "_no_update", table + "_no_delete"}
     return frozenset(required - present)
 
 
@@ -191,8 +194,16 @@ def apply_migration(conn: sqlite3.Connection, sql_path: Path) -> None:
         return
     sql_text = sql_path.read_text(encoding="utf-8")
     statements = list(_iter_statements(sql_text))
-    conn.execute("BEGIN IMMEDIATE")
+    # SQLite requires FK enforcement to be suspended BEFORE a table rebuild
+    # transaction. Only this reviewed migration needs the exception. Integrity
+    # is checked before commit and enforcement is restored on every exit.
+    rebuild = sql_path.name == "010_competition_foundation.sql"
+    if rebuild:
+        if conn.in_transaction:
+            raise MigrationError("table rebuild cannot run inside an existing transaction")
+        conn.execute("PRAGMA foreign_keys = OFF")
     try:
+        conn.execute("BEGIN IMMEDIATE")
         for statement in statements:
             conn.execute(statement)
         # Ledger row goes in the SAME transaction as the DDL: if the script
@@ -208,17 +219,22 @@ def apply_migration(conn: sqlite3.Connection, sql_path: Path) -> None:
             f"INSERT OR IGNORE INTO {_MIGRATIONS_TABLE} (filename) VALUES (?)",
             (sql_path.name,),
         )
+        if rebuild and conn.execute("PRAGMA foreign_key_check").fetchone():
+            raise MigrationError("table rebuild left invalid foreign-key references")
         missing = check_trigger_integrity(conn)
         if missing:
             raise MigrationError(
                 f"migration {sql_path.name} left required triggers missing: "
                 f"{sorted(missing)}"
             )
-    except BaseException:
-        conn.execute("ROLLBACK")
-        raise
-    else:
         conn.execute("COMMIT")
+    except BaseException:
+        if conn.in_transaction:
+            conn.execute("ROLLBACK")
+        raise
+    finally:
+        if rebuild:
+            conn.execute("PRAGMA foreign_keys = ON")
 
 
 def open_database(db_path: Path, *, migrations_dir: Path | None = None) -> sqlite3.Connection:

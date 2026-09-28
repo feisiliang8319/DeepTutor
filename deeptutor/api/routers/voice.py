@@ -101,13 +101,41 @@ async def text_to_speech(payload: TTSRequest) -> Response:
     )
 
 
+def _teaching_voice_access(language: str | None):
+    from deeptutor.multi_user.teaching_identity import active
+    if not active():
+        return None, language
+    from deeptutor.multi_user.context import get_current_user
+    from deeptutor.multi_user.teaching_grants import effective
+    from deeptutor.multi_user.model_access import admin_catalog
+    actor = get_current_user()
+    if actor.role != "admin" and (actor.role != "student" or "chat" not in effective(actor.id).features):
+        raise HTTPException(403, "Voice input requires active Chat access")
+    if language not in {None, "en", "zh", "zh-Hant"}:
+        raise HTTPException(400, "Only Chinese and English are supported")
+    return admin_catalog(), "zh" if language == "zh-Hant" else language
+
+
+@router.get("/status")
+def voice_status():
+    catalog, _ = _teaching_voice_access(None)
+    from deeptutor.services.config.provider_runtime import resolve_stt_runtime_config
+    try:
+        config = resolve_stt_runtime_config(catalog=catalog)
+        configured = bool(config.model and config.base_url and config.api_key)
+    except (ValueError, KeyError):
+        configured = False
+    return {"configured": configured, "languages": ["en", "zh", "zh-Hant"]}
+
+
 @router.post("/stt")
 async def speech_to_text(
     file: UploadFile = File(...),
     language: str | None = Form(default=None),
 ) -> dict[str, str]:
     """Transcribe an uploaded audio clip using the active STT provider."""
-    audio = await file.read()
+    catalog, language = _teaching_voice_access(language)
+    audio = await file.read(_MAX_AUDIO_BYTES + 1)
     if not audio:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Empty audio upload.")
     if len(audio) > _MAX_AUDIO_BYTES:
@@ -121,6 +149,7 @@ async def speech_to_text(
             filename=file.filename or "audio.webm",
             content_type=file.content_type or "application/octet-stream",
             language=language,
+            **({"catalog": catalog} if catalog is not None else {}),
         )
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc

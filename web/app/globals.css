@@ -911,6 +911,7 @@ body[data-picker-open] .dt-mark-pulse {
 
 /* A quiet study: motion responds once to entry or a deliberate interaction. */
 .teaching-theme { min-height: 100dvh; }
+.teaching-theme :is(input[type="checkbox"],input[type="radio"]) { accent-color:var(--primary); }
 .teaching-display { font-family: Georgia, "Songti SC", "Songti TC", serif; letter-spacing: -.035em; font-weight: 500; }
 .teaching-welcome { position: relative; padding-right: 135px; }
 .teaching-companion { position: absolute; right: 4px; top: 52px; width: 116px; height: 136px; border-radius: 50% 50% 42% 45%; background: #e5d9b6; color: #686544; display:flex; align-items:center; justify-content:center; transform: rotate(5deg); }

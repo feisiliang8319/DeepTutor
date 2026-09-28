@@ -32,6 +32,8 @@ def authorize(path: str, method: str, role: str) -> None:
         if (method == "GET" and (rest in {"", "/list", "/upload-policy"} or re.fullmatch(r"/[^/]+/(?:files(?:/.*)?|progress)", rest))) or (method == "POST" and (rest == "/create" or re.fullmatch(r"/[^/]+/upload", rest))):
             return  # Existing write guards resolve to the parent's own workspace.
     if role == "student":
+        if (path, method) in {("/api/v1/voice/status", "GET"), ("/api/v1/voice/stt", "POST")}:
+            return  # Voice router rechecks current Chat access.
         if path == "/api/v1/ws" or under(path, "/api/attachments"):
             return
         if under(path, "/api/v1/sessions"):

@@ -26,7 +26,21 @@ def handoff(conn, learner_id: str, set_id: str, results: list[dict], *, event_id
         "zh-Hant":("Quiz 講解與訂正","題目、原始作答和批改結果已自動帶到這裡，可以接著討論不理解的地方。","題目","你的原始作答","批改結果","參考答案","知識點","講解來源","等待複核","正確","需要訂正","此題暫無已核准的講解。我們可以根據題目和批改結果逐步分析。"),
     }[language if language in {"en","zh","zh-Hant"} else "en"]
     heading = ({"en":"Grading review update","zh":"批改复核更新","zh-Hant":"批改複核更新"}.get(language,"Grading review update") if event_id else labels[0])
+    formal=conn.execute('SELECT kind,grade,result_json FROM formal_exams WHERE set_id=?',(set_id,)).fetchone()
+    formal_result=json.loads(formal['result_json']) if formal and formal['result_json'] else None
     lines = ["## "+heading, "", labels[1]]
+    if formal and formal['kind']=='foundation':
+        copy={
+            'en':('Foundation check', 'This optional check covers Grade {grade}. It identifies learning gaps and does not change earned advancement.', 'Focus for follow-up learning'),
+            'zh':('基础补测', '本次可选补测覆盖 {grade} 年级，用于发现知识缺口，不改变已经获得的晋级。', '后续补弱重点'),
+            'zh-Hant':('基礎補測', '本次可選補測涵蓋 {grade} 年級，用於發現知識缺口，不改變已經獲得的晉級。', '後續補強重點'),
+        }.get(language,('Foundation check','This optional check covers Grade {grade}. It identifies learning gaps and does not change earned advancement.','Focus for follow-up learning'))
+        lines.extend(['', '## '+copy[0], '', copy[1].format(grade=formal['grade'])])
+        if formal_result and formal_result.get('status')=='final':
+            gaps=[unit for unit,value in formal_result.get('core',{}).items() if value['count']<2 or value['percent']<80]
+            if gaps:
+                titles=[row[0] for unit in gaps for row in conn.execute('SELECT title FROM knowledge_nodes WHERE id=?',(unit,))]
+                lines.extend(['', '**'+copy[2]+':** '+', '.join(titles)])
     for index, result in enumerate(results, 1):
         verdict = labels[8] if result["is_correct"] is None else labels[9] if result["is_correct"] else labels[10]
         lines.extend(["", f"### {labels[2]} {index}", "", result["prompt"], "",
@@ -38,7 +52,7 @@ def handoff(conn, learner_id: str, set_id: str, results: list[dict], *, event_id
         lines.extend(["", result.get("explanation") or labels[11]])
         if result.get("explanation_source"):
             lines.extend(["", f"**{labels[7]}:** " + str(result["explanation_source"])])
-    evidence = {"set_id": set_id, "learner_id": learner_id, "results": results}
+    evidence = {"set_id": set_id, "learner_id": learner_id, "results": results, "assessment":formal_result}
     store = SQLiteSessionStore(db_path=path, migrate_legacy=False)
     session_id = store.receive_quiz_explanation(set_id, "\n".join(lines), evidence, title=labels[0],event_id=event_id)
     return {"session_id": session_id, "href": "/home/" + session_id}

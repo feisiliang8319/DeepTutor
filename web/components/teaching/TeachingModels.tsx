@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
-import { Brain, Database, Search, ArrowUpRight } from "lucide-react";
+import { Brain, Database, Search, Mic, ArrowUpRight } from "lucide-react";
 import { t, useTeachingLocale } from "./teaching-i18n";
 export default function TeachingModels() {
   useTeachingLocale();
   const entries = [
+    { href: "/settings/stt", icon: Mic, title: t("语音输入"), detail: t("将学生的语音转成可编辑文字，由学生确认后发送。") },
     { href: "/settings/llm", icon: Brain, title: t("教学模型"), detail: t("配置可供导师调用、并可分配给家长的语言模型。") },
     { href: "/settings/embedding", icon: Database, title: t("资料检索模型"), detail: t("为教材建立索引，学生无需配置。") },
     { href: "/settings/search", icon: Search, title: t("研究搜索服务"), detail: t("在获准的研究范围内扩展知识并引用来源。") },

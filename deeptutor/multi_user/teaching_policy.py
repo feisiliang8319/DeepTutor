@@ -76,6 +76,8 @@ def require_student_access():
     access = effective(user.id)
     if "chat" not in access.features:
         raise RuntimeError("Chat access has not been enabled by your parent")
+    from .teaching_evidence import assert_no_active_assessment
+    assert_no_active_assessment(user.id)
     return access
 
 

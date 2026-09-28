@@ -6,7 +6,7 @@ function teachingPath(role: string | undefined, pathname: string): boolean {
   if (pathname === "/profile") return true;
   if (role === "student") return /^\/(home(?:\/|$)|quiz(?:\/|$))/.test(pathname);
   if (role === "parent") return /^\/parent(?:\/|$)/.test(pathname);
-  if (role === "admin") return /^\/(admin(?:\/|$)|knowledge(?:\/|$)|settings\/(?:models|llm|embedding|search)(?:\/|$))/.test(pathname);
+  if (role === "admin") return /^\/(admin(?:\/|$)|knowledge(?:\/|$)|settings\/(?:models|llm|embedding|search|stt)(?:\/|$))/.test(pathname);
   return false;
 }
 

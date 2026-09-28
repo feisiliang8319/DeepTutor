@@ -510,3 +510,133 @@ def test_review_appends_chat_and_recovers_delivery_without_regrading(family_clie
         assert conn.execute("SELECT response,is_correct FROM student_attempts WHERE id=?",(attempt_id,)).fetchone() == ("43",0)
     with sqlite3.connect(path) as chat:
         assert chat.execute("SELECT count(*) FROM messages").fetchone()[0] == 3
+
+
+def test_formal_assessment_routes_preserve_delegation(family_client,web_db):
+    from deeptutor.education.application import assessment_engine as engine
+    from deeptutor.education.storage.sqlite import open_database
+    from deeptutor.multi_user.teaching_grants import Access
+    client,headers=family_client
+    with store.connect(write=True) as conn:
+        conn.execute("INSERT INTO teaching_grants VALUES(?,?,?)",('u_parent_a',Access(features=['quiz','chat']).model_dump_json(),'u_admin'))
+    blueprint={'curriculum_key':'test','grade':4,'units':['node-A','node-B'],'competition_domain':'mathematics'}
+    route='/api/edu/assessment-admin/courses/'+CV
+    for name in ('parent_a','student_a','parent_b'):
+        assert client.put(route,json=blueprint,headers=headers(name)).status_code==403
+    assert client.put(route,json=blueprint,headers=headers('admin')).status_code==200
+    plan={'course_version_id':CV,'grade':4,'school_grade':3,'entry_level':'extension','revision':0}
+    planroute='/api/edu/students/u_student_a/learning-plan'
+    for name in ('admin','student_a','parent_b'):
+        assert client.put(planroute,json=plan,headers=headers(name)).status_code==403
+    assert client.put(planroute,json=plan,headers=headers('parent_a')).status_code==200
+    assert client.put(planroute,json=plan,headers=headers('parent_a')).status_code==409
+    catalog='/api/edu/assessments/catalog?learner_id='+LEARNER
+    assert client.get(catalog,headers=headers('student_b')).status_code==403
+    assert client.get(catalog,headers=headers('student_a')).json()['courses'][0]['learning_grade']==4
+    request={'learner_id':LEARNER,'course_version_id':CV,'kind':'competition'}
+    for name in ('admin','parent_a','parent_b','student_b'):
+        assert client.post('/api/edu/assessments',json=request,headers=headers(name)).status_code==403
+    # There are no reviewed competition items: trial mode cannot silently fill.
+    assert client.post('/api/edu/assessments',json=request,headers=headers('student_a')).status_code==409
+    with store.connect(write=True) as conn:
+        conn.execute('UPDATE teaching_grants SET grant_json=? WHERE user_id=?',(Access(features=['chat']).model_dump_json(),'u_parent_a'))
+    assert client.get(catalog,headers=headers('student_a')).status_code==403
+
+
+def test_voice_uses_current_chat_grant_and_supported_language(teaching,as_user,monkeypatch):
+    from deeptutor.api.routers.voice import _teaching_voice_access,voice_status
+    from deeptutor.multi_user.teaching_grants import Access
+    from deeptutor.multi_user import model_access
+    from fastapi import HTTPException
+    activate(teaching)
+    catalog={'services':{}}
+    monkeypatch.setattr(model_access,'admin_catalog',lambda:catalog)
+    with store.connect(write=True) as conn:
+        conn.execute('INSERT INTO teaching_grants VALUES(?,?,?)',('u_parent_a',Access(features=['chat']).model_dump_json(),'u_admin'))
+    with as_user('u_student_a',role='student'):
+        assert _teaching_voice_access('zh-Hant')==(catalog,'zh')
+        with pytest.raises(HTTPException):_teaching_voice_access('fr')
+        assert voice_status()['configured'] is False
+    with as_user('u_parent_a',role='parent'):
+        with pytest.raises(HTTPException):_teaching_voice_access('en')
+    with store.connect(write=True) as conn:
+        conn.execute('UPDATE teaching_grants SET grant_json=? WHERE user_id=?',(Access().model_dump_json(),'u_parent_a'))
+    with as_user('u_student_a',role='student'):
+        with pytest.raises(HTTPException):_teaching_voice_access('en')
+
+
+def test_previous_practice_is_recoverable_in_new_quiz(family_client):
+    from deeptutor.multi_user.teaching_grants import Access
+    client,headers=family_client
+    with store.connect(write=True) as conn:
+        conn.execute('INSERT INTO teaching_grants VALUES(?,?,?)',('u_parent_a',Access(features=['quiz','chat']).model_dump_json(),'u_admin'))
+    issued=client.post('/api/edu/set',params={'learner_id':LEARNER,'course_version_id':CV},headers=headers('student_a')).json()
+    active=client.get('/api/edu/assessments/active',params={'learner_id':LEARNER},headers=headers('student_a')).json()
+    assert active['exam'] is None and active['legacy_task']['set_id']==issued['set_id']
+    response=client.post('/api/edu/set/submit',json={'set_id':issued['set_id'],'learner_id':LEARNER,'course_version_id':CV,'answers':[{'item_id':i['id'],'response':'42'} for i in issued['items']]},headers=headers('student_a'))
+    assert response.status_code==200,response.text
+    assert response.json()['chat_handoff']['session_id']
+    assert client.get('/api/edu/assessments/active',params={'learner_id':LEARNER},headers=headers('student_a')).json()=={'exam':None,'legacy_task':None}
+
+
+from deeptutor.education.tests.test_formal_assessment import formal
+
+
+def test_competition_followup_and_numeric_review_are_family_scoped(family_client,formal,web_db,monkeypatch):
+    monkeypatch.setenv("TEACHING_EDUCATION_DB",str(web_db))
+    from deeptutor.education.application import assessment_engine as engine
+    from deeptutor.education.storage.repositories import AssessmentItemRepository
+    from deeptutor.multi_user.teaching_grants import Access
+    client,headers=family_client;conn,_=formal
+    with store.connect(write=True) as users:
+        users.execute('INSERT INTO teaching_grants VALUES(?,?,?)',('u_parent_a',Access(features=['quiz','chat']).model_dump_json(),'u_admin'))
+    paper=engine.issue(conn,LEARNER,CV,'competition')
+    answers=[{'item_id':i['id'],'response':AssessmentItemRepository(conn).get(i['id']).expected_answer if n<14 else '-999'} for n,i in enumerate(paper['items'])]
+    response=client.post('/api/edu/set/submit',json={'learner_id':LEARNER,'course_version_id':CV,'set_id':paper['set_id'],'answers':answers},headers=headers('student_a'))
+    assert response.status_code==200,response.text
+    assert response.json()['assessment']['promotion']['to_grade']==5
+    route='/api/edu/assessments/'+paper['set_id']+'/foundation-choice'
+    for name in ('admin','parent_a','parent_b','student_b'):
+        assert client.post(route,json={'choice':'yes'},headers=headers(name)).status_code==403
+    active=client.get('/api/edu/assessments/active',params={'learner_id':LEARNER},headers=headers('student_a')).json()
+    assert active['exam']['set_id']==paper['set_id'] and active['exam']['submitted']
+    started=client.post(route,json={'choice':'yes'},headers=headers('student_a'))
+    assert started.status_code==200,started.text
+    foundation=started.json()['exam'];assert foundation['kind']=='foundation'
+    assert client.post(route,json={'choice':'yes'},headers=headers('student_a')).json()['exam']['set_id']==foundation['set_id']
+    review='/api/edu/assessments/'+paper['set_id']+'/review'
+    payload={'item_id':paper['items'][-1]['id'],'points':2.5,'note':'Checked the original working and awarded partial credit.'}
+    for name in ('admin','student_a','parent_b','student_b'):
+        assert client.get(review,headers=headers(name)).status_code==403
+        assert client.post(review,json=payload,headers=headers(name)).status_code==403
+    result=client.post(review,json=payload,headers=headers('parent_a'))
+    assert result.status_code==200,result.text
+    assert result.json()['assessment']['percent']==72.5
+    attempt=conn.execute('SELECT response,is_correct FROM student_attempts WHERE id=?',(paper['set_id']+':'+paper['items'][-1]['id'],)).fetchone()
+    assert tuple(attempt)==('-999',0)
+    assert conn.execute('SELECT COUNT(*) FROM promotion_events').fetchone()[0]==1
+    school='/api/edu/students/u_student_a/school-grade'
+    assert client.put(school,json={'grade':6},headers=headers('admin')).status_code==403
+    assert client.put(school,json={'grade':6},headers=headers('parent_a')).status_code==200
+    plan=client.get('/api/edu/students/u_student_a/learning-plan',headers=headers('parent_a')).json()
+    assert plan['school_grade']==6 and plan['courses'][0]['learning_grade']==5
+    competition=next(e for e in plan['exams'] if e['kind']=='competition')
+    assert competition['result']['foundation_followup']['status']=='in_progress'
+    # A low foundation score goes to Chat and teaching evidence without undoing advancement.
+    response=client.post('/api/edu/set/submit',json={'learner_id':LEARNER,'course_version_id':CV,'set_id':foundation['set_id'],'answers':[{'item_id':i['id'],'response':'-999'} for i in foundation['items']]},headers=headers('student_a'))
+    assert response.status_code==200,response.text
+    from deeptutor.multi_user import teaching_evidence
+    evidence=teaching_evidence.read('u_student_a')
+    diagnostic=next(e for e in evidence['assessments'] if e['kind']=='foundation')
+    assert diagnostic['diagnostic_only'] and diagnostic['percent']==0
+    competition=next(e for e in evidence['assessments'] if e['kind']=='competition')
+    assert competition['promotion']['to_grade']==5 and competition['foundation_followup']['status']=='completed'
+    from deeptutor.multi_user.paths import scope_for_user,get_path_service_for_scope
+    import sqlite3
+    chat_path=get_path_service_for_scope(scope_for_user('u_student_a',is_admin=False)).get_chat_history_db()
+    with sqlite3.connect(chat_path) as chat:
+        content=chat.execute('SELECT content FROM messages WHERE session_id=?',(response.json()['chat_handoff']['session_id'],)).fetchone()[0]
+    assert 'Foundation check' in content and 'Focus for follow-up learning' in content and 'Node A' in content
+    with store.connect(write=True) as users:
+        users.execute('UPDATE teaching_grants SET grant_json=? WHERE user_id=?',(Access(features=['chat']).model_dump_json(),'u_parent_a'))
+    assert client.post(route,json={'choice':'yes'},headers=headers('student_a')).status_code==403

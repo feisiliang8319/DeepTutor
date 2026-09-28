@@ -479,6 +479,8 @@ def create_app(
         try:
             require_learner(conn, payload.learner_id, request, write=True)
             require_enrollment(conn, payload.learner_id, payload.course_version_id)
+            if conn.execute('SELECT 1 FROM formal_exams WHERE set_id=?',(payload.set_id,)).fetchone():
+                raise HTTPException(409,'正式测试不能跳过；请提交已完成的作答。')
             with edu_sqlite.transaction(conn):
                 changed = conn.execute(
                     'UPDATE task_sets SET skipped_at=? WHERE id=? AND learner_id=? AND course_version_id=? '
@@ -567,6 +569,8 @@ def create_app(
         conn = connect()
         try:
             reviewer = require_parent(request, conn)
+            if conn.execute("SELECT 1 FROM formal_exams f JOIN student_attempts a ON a.id=f.set_id || ':' || a.assessment_item_id WHERE a.id=?",(payload.attempt_id,)).fetchone():
+                raise HTTPException(409,"正式测试请使用分值复核，注明评分依据。")
             if payload.reviewer != reviewer:
                 raise HTTPException(
                     status_code=403, detail="只有家长账号可以裁定作答"
@@ -756,6 +760,8 @@ def create_app(
                 (learner_id, course_version_id),
             ).fetchone()
             if open_set is not None:
+                if conn.execute('SELECT 1 FROM formal_exams WHERE set_id=?',(open_set['id'],)).fetchone():
+                    raise HTTPException(409,'请从 Quiz 继续当前正式测试。')
                 items_repo = AssessmentItemRepository(conn)
                 nodes = {n.id: n for n in
                          KnowledgeGraphRepository(conn).list_nodes(course_version_id)}
@@ -978,6 +984,8 @@ def create_app(
             # （回读按 learner_id + submitted_at 精确匹配，时间戳对不上）。
             # 双击提交按钮就能触发，不需要恶意脚本。
             with edu_sqlite.transaction(conn):
+                from deeptutor.education.application.assessment_engine import validate_submission
+                payload = validate_submission(conn, payload)
                 claimed = conn.execute(
                     "UPDATE task_sets SET submitted_at = ? WHERE id = ? "
                     "AND submitted_at IS NULL AND skipped_at IS NULL",
@@ -1132,6 +1140,8 @@ def create_app(
                     "due_at": review.due_at, "reps": review.reps, "lapses": review.lapses,
                 }
 
+            from deeptutor.education.application.assessment_engine import finalize
+            formal_result = finalize(conn, payload.set_id)
             chat_handoff = None
             if teaching_mode():
                 from deeptutor.education.application.quiz_chat import handoff
@@ -1144,6 +1154,7 @@ def create_app(
                 for row in results]
             return {
                 "results": public_results,
+                **({"assessment": formal_result} if formal_result else {}),
                 **({"chat_handoff": chat_handoff} if chat_handoff else {}),
                 "summary": {
                     "answered": len(results),
@@ -1204,4 +1215,7 @@ def create_app(
         """
         return FileResponse(STATIC_DIR / "index.html")
 
+    from deeptutor.education.api.assessments import register
+    register(app, connect=connect, require_learner=require_learner, require_enrollment=require_enrollment,
+             require_linked_parent=require_linked_parent, teaching_mode=teaching_mode, judge_available=judge is not None)
     return app

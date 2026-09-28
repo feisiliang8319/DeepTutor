@@ -1,0 +1,335 @@
+{
+  "schema_version": 1,
+  "course_version_id": "cv-ccss-g4-1.0.0",
+  "source_name": "旧书存量 · 第四批8道精确推理改编候选",
+  "items": [
+    {
+      "id": "historical-amusements-1-three-sticker-prices-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "甲、乙、丙三种贴纸每张分别需要4、2、5积分。用120积分恰好买完，三种都至少买1张，且乙种张数是甲种的6倍。各买了多少张？请证明只有一种买法。",
+      "expected_answer": "甲5张、乙30张、丙8张。",
+      "explanation": "设甲x张，乙6x张，丙z张。总价为4x+2×6x+5z=120，即16x+5z=120。按除以5的余数看，x必须是5的倍数；又因x、z均为正整数，1≤x≤7，所以只能x=5。于是z=(120−80)/5=8，乙30张。代回20+60+40=120，三种均为正数，所以答案存在且唯一。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 1 | source line 297",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 1. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "1efa782ad00248377efe1f80d5b56ef294ad76b162bf2a25df9e35c32e085b25",
+        "source_problem_family": "amusements:1",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 11719,
+            "end": 12317,
+            "sha256": "f0853af361482a4865d7c8bdbb1a156adff4a85c75fc81e5a9d7710f7eb15cfc"
+          },
+          {
+            "role": "solution",
+            "start": 518162,
+            "end": 518375,
+            "sha256": "0d79102babf26a15d6c87246eddc2b10d30230faa1322996c0f8e2f8848a2e01"
+          }
+        ],
+        "title_zh": "三种贴纸恰好用完积分",
+        "adaptation_note": "将旧币值全部同比放大成整数积分，并明确三种张数均为正整数。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "aac9739f9960b6b1f25ef0145c9f7d2bed9d0cbb848d5e9b689df22998083f62",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-3-independent-swaps-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "甲、乙、丙三个小组各有一些积木。以下每个设想都从原来的数量单独开始，不能接着上一个设想做。①乙给甲6块，同时甲给乙1块，之后甲的数量是乙的2倍。②丙给乙14块，同时乙给丙1块，之后乙的数量是丙的3倍。③甲给丙4块，同时丙给甲1块，之后丙的数量是甲的6倍。求三个小组原来各有多少块，并核对每次交换都确实拿得出积木。",
+      "expected_answer": "甲7块、乙11块、丙21块。",
+      "explanation": "用J、H、D表示甲、乙、丙的原数。三句话给出J+5=2(H−5)、H+13=3(D−13)、D+3=6(J−3)。因此H=(J+15)/2，D=6J−21。代入第二式得(J+15)/2=18J−115，于是35J=245，J=7，H=11，D=21。三次分别得到(甲12,乙6)、(乙24,丙8)、(丙24,甲4)，均满足倍数关系；原来乙有11≥6、丙有21≥14、甲有7≥4，另一个小组也都能拿出1块。线性代入确定唯一解。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 3 | source line 333",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 3. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "9b823bb409ad0d87bd0958725457aa882437287471661af1770b74e2db78ddb8",
+        "source_problem_family": "amusements:3",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 13430,
+            "end": 14176,
+            "sha256": "f72cfbe8bcb22c90cacf0c7224a505480e66a4aac4224a5e22dc07571dc0c049"
+          },
+          {
+            "role": "solution",
+            "start": 518537,
+            "end": 518704,
+            "sha256": "5035c2035710c65f3b364f177f325cce67a6acc28dd04620b172833918f2a46e"
+          }
+        ],
+        "title_zh": "三个独立的交换设想",
+        "adaptation_note": "移除牲畜种类的隐含库存条件，明确三个设想相互独立。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "aac9739f9960b6b1f25ef0145c9f7d2bed9d0cbb848d5e9b689df22998083f62",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-5-seven-robot-transfers-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "7台机器人按1至7号顺序各操作一次。轮到某台时，它把其他每台当时拥有的能量球数再各送给对方一次，使其他6台的球数各翻倍；所送的球全部从它自己的库存扣除，不产生新球。所有数量都是非负整数，操作中不能欠球。7轮结束后，每台都有128个球。求每台开始时的球数，说明倒推为什么唯一，并正向验证。",
+      "expected_answer": "1至7号依次为449、225、113、57、29、15、8。",
+      "explanation": "从最终状态倒推一轮：除本轮赠送者外，其他6台操作前的球数各是操作后的二分之一；赠送者操作前的球数等于它操作后的球数，加上其他6台刚求出的操作前球数之和。因此每一轮都可唯一倒推。按7号至1号倒推，得到449、225、113、57、29、15、8。总数896保持不变。正向7轮中，各轮赠送者付出后依次剩2、4、8、16、32、64、128个球，其他台各翻倍；最终全部128，过程中没有负数。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 5 | source line 359",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 5. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "255f8160c7666ab68bbc000c08ee2533840ad21b176f872229e6148a75aecbd9",
+        "source_problem_family": "amusements:5",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 14615,
+            "end": 15393,
+            "sha256": "364b2686f2dec4871cb36886efb0c6ab9eb5697020e393b0526fadcbcb8ec6ec"
+          },
+          {
+            "role": "solution",
+            "start": 519034,
+            "end": 519706,
+            "sha256": "edc154db36dd7ba18aecb3086b860b7b27e9a430183bb4bd7bbd4a5bca7df712"
+          }
+        ],
+        "title_zh": "七台机器人轮流分配",
+        "adaptation_note": "用守恒的能量球转移替代赌博叙事；显式规定库存非负及顺序。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "aac9739f9960b6b1f25ef0145c9f7d2bed9d0cbb848d5e9b689df22998083f62",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-6-bounded-packet-counts-v1",
+      "knowledge_node_code": "PS.COUNTING.SYSTEMATIC_ENUM",
+      "item_type": "multi_step",
+      "prompt": "A材料包每包3积分，B材料包每包5积分。恰好花110积分，至少买1包A且至少买2包B。共有多少种购买数量组合？请全部列出并证明没有遗漏。",
+      "expected_answer": "6种：(A,B)＝(5,19)、(10,16)、(15,13)、(20,10)、(25,7)、(30,4)。",
+      "explanation": "设购买a包A、b包B，有3a+5b=110，a≥1，b≥2。除以5看余数可知a是5的倍数；由b≥2可得3a≤100，所以1≤a≤33。可行a只能为5、10、15、20、25、30，对应b为19、16、13、10、7、4。这6组全部符合条件，因此无遗漏。若题目允许B只有1包，还会多出(35,1)，所以不能靠日常语言的单复数暗猜数量限制。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 6 | source line 374",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 6. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "41c0131dbe6875636adeb1ef1c5decd1922b762c96cf2196f61d2dab3f397bd2",
+        "source_problem_family": "amusements:6",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 15393,
+            "end": 15866,
+            "sha256": "7b1c30f329b9762b61816b1259db1ee77338cc2648b218610abdc40b663cb34d"
+          },
+          {
+            "role": "solution",
+            "start": 519706,
+            "end": 520109,
+            "sha256": "89b0cb5615674f55039cf7fc5a3c2bf2457ad057a0907ae26767343195eb0bae"
+          }
+        ],
+        "title_zh": "两种材料包的完整清单",
+        "adaptation_note": "把原解依赖“men”为复数的隐藏条件明确写成B至少2包。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "aac9739f9960b6b1f25ef0145c9f7d2bed9d0cbb848d5e9b689df22998083f62",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-8-three-half-transfers-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "一个材料盒中原来有若干颗珠子。第一次取走当时的一半再多1颗，第二次取走余下的一半再多2颗，第三次取走余下的一半再多3颗，最后剩1颗。每次都只能取整数颗，不能取走超过库存的数量。原来有多少颗？三次各取走多少颗？请用倒推和正向计算各检查一次。",
+      "expected_answer": "原来42颗；依次取走22、12、7颗。",
+      "explanation": "若一次操作后剩r颗，而且操作时“多取k颗”，那么操作前的一半是r+k，操作前总数为2(r+k)。从最后1颗倒推：第三次前2(1+3)=8；第二次前2(8+2)=20；第一次前2(20+1)=42。正向：42−(21+1)=20，20−(10+2)=8，8−(4+3)=1；取出的数量为22、12、7，均为整数且不超库存。每一步逆运算只有一个结果，所以起始数唯一。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 8 | source line 394",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 8. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "f9def982d62ce4b6cfbced7f95d78d17ef1af619b46547fdba475e127da01b34",
+        "source_problem_family": "amusements:8",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 16180,
+            "end": 16743,
+            "sha256": "df66d949e7b59dd5bc10cd4a40705b19ef9b552bf94ac3f743e9153459fc131e"
+          },
+          {
+            "role": "solution",
+            "start": 520212,
+            "end": 520318,
+            "sha256": "54e7097d949cfe659cd5a26832d8782ca25fe5d16802e32c61ed2b475ac662f0"
+          }
+        ],
+        "title_zh": "三次分出一半再多一些",
+        "adaptation_note": "保留数学结构，以完整中文条件重写；不依赖原图或历史叙事。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "aac9739f9960b6b1f25ef0145c9f7d2bed9d0cbb848d5e9b689df22998083f62",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-9-equal-sale-different-bases-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "两件器材各以600元售出。第一件的售价比它自己的买入价高20%，第二件的售价比它自己的买入价低20%；忽略所有其他费用。合起来赚了还是亏了，金额是多少，占总买入价的百分之几？进阶：若每件售价都为S，两件分别按自己的买入价赚p、亏p，其中S>0、0<p<1，求总亏损率。",
+      "expected_answer": "亏50元，占总买入价的4%；一般总亏损率为p²。",
+      "explanation": "第一件成本600÷1.2=500元；第二件成本600÷0.8=750元。合计成本1250元，收入1200元，亏50元，亏损率50/1250=4%。一般成本合计S/(1+p)+S/(1−p)=2S/(1−p²)，收入为2S，所以亏损率为1−[2S÷(2S/(1−p²))]=p²。两个20%的基数不同，不能直接抵消。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 9 | source line 406",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 9. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "a7c40d8107fb63376964c0919dc3068e24ea7cab9cfe9aca6606ef7ffeaf0140",
+        "source_problem_family": "amusements:9",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 16743,
+            "end": 17085,
+            "sha256": "8156b0d25a77d0ca414afe722f1bf778e6795e3585e493cf45fa3ed584b4e1a3"
+          },
+          {
+            "role": "solution",
+            "start": 520318,
+            "end": 520497,
+            "sha256": "018a890f3b30c2ef062a2bb1ef16607940d9afa267db19e986bb34e2465e5354"
+          }
+        ],
+        "title_zh": "同价卖出的两件器材",
+        "adaptation_note": "明确盈亏百分数各以该件成本为基数；加入一般情形，避免只记住算例。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "aac9739f9960b6b1f25ef0145c9f7d2bed9d0cbb848d5e9b689df22998083f62",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-11-fixed-cost-sharing-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "一次活动的材料总费用固定为80元，原计划由所有参加者均摊。后来有2人退出，费用仍是80元，其余人重新均摊后，每人比原计划多付2元。原计划有多少人？请说明为什么不会有另一组正整数人数。",
+      "expected_answer": "原计划10人；原来每人8元，后来8人各付10元。",
+      "explanation": "设原来n人，其中n>2。条件为80/(n−2)−80/n=2，整理得n(n−2)=80，即(n−1)²=81。因n>2，n−1为正数，只能n−1=9，故n=10。代回80/10=8、80/8=10，差2元。负平方根会给出n=−8，不是人数，所以正整数解唯一。",
+      "difficulty": 4,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 11 | source line 428",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 11. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "8a3f33f653256d72f94bd6e229b3ff607b8a2ac1d595dc246db427c827478be4",
+        "source_problem_family": "amusements:11",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 17729,
+            "end": 18453,
+            "sha256": "5ae50ec0233b968323924b1e7b5a4bb747c288fe366cd0bd9548bd9c81240841"
+          },
+          {
+            "role": "solution",
+            "start": 520589,
+            "end": 520773,
+            "sha256": "87a8f4632522689f729c5d4be7e239a1f6c8e22c88a7c652bfc58e32d01dbebe"
+          }
+        ],
+        "title_zh": "固定费用由谁分担",
+        "adaptation_note": "把逃单叙事改为退出后仍须承担固定材料费用，保留均摊结构。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "aac9739f9960b6b1f25ef0145c9f7d2bed9d0cbb848d5e9b689df22998083f62",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    },
+    {
+      "id": "historical-amusements-14-quarter-grid-sum-product-v1",
+      "knowledge_node_code": "PS.LOGIC.CONSTRAINT_MATCH",
+      "item_type": "multi_step",
+      "prompt": "两个正数x、y都是1/4的整数倍，且x+y=xy，交换x、y视为同一组。已知x=y=2时和与积都为4。求比4更大的最小共同结果，并证明不存在介于4与它之间的结果。请列出符合条件的全部数对。",
+      "expected_answer": "最小的下一结果是9/2＝4.5，对应(3/2,3)。全部数对是(2,2)、(3/2,3)、(5/4,5)。",
+      "explanation": "由x+y=xy可得(x−1)(y−1)=1。x、y都必须大于1：若0<x≤1，则y(x−1)=x的左边不大于0而右边大于0，矛盾。令a=4x−4、b=4y−4，则a、b是正整数且ab=16。忽略顺序，正因数对只有(1,16)、(2,8)、(4,4)，对应(x,y)为(5/4,5)、(3/2,3)、(2,2)，共同结果依次为25/4、9/2、4。枚举的是16的全部因数对，所以没有遗漏，4之后最小是9/2。",
+      "difficulty": 5,
+      "content_scope": "BUNDLED",
+      "explanation_source": "derived",
+      "source_ref": "https://www.gutenberg.org/ebooks/16713 | Problem 14 | source line 467",
+      "license_note": "Independent Chinese mathematical adaptation of an already-local historical text. Source identifies the underlying work as public domain in the United States; retain source attribution and edition evidence. No claim of universal rights clearance.",
+      "attribution_text": "Henry Ernest Dudeney. Amusements in Mathematics, problem 14. DeepTutor independently rewritten mathematical task and explanation; original narrative and illustrations not reproduced. Source SHA256 7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3.",
+      "rubric_json": {
+        "source_record_id": "65de6f3e139986d7aa01fa26b5102166094e6906f072d3d00a899b010bdbdaf5",
+        "source_problem_family": "amusements:14",
+        "source_sha256": "7e52015850ff1a25cbba577911e2648d7ee200d2f15adbe05c8adf65776543d3",
+        "source_spans": [
+          {
+            "role": "prompt",
+            "start": 19348,
+            "end": 20205,
+            "sha256": "6baab684d4dfe08a0e27fab65aeaef1a9d79c6246defd6517b3a41552edba316"
+          },
+          {
+            "role": "solution",
+            "start": 521201,
+            "end": 521319,
+            "sha256": "5d7b56bff31cf605e52fcc8f0a542dd7abec66b42dd89b965daf6833ef3e67ea"
+          }
+        ],
+        "title_zh": "和与积恰好相等",
+        "adaptation_note": "移除货币相乘的量纲歧义，改成无量纲正数并明确四分之一网格。",
+        "intended_use": "advanced_extension",
+        "difficulty_calibration": "pending",
+        "teaching_review": "pending",
+        "verification_note": "逐题复算并使用独立枚举或精确算术核验；未自动发布正式测试。",
+        "verification_script_sha256": "aac9739f9960b6b1f25ef0145c9f7d2bed9d0cbb848d5e9b689df22998083f62",
+        "grade_assignment_note": "候选暂存于现有数学课程容器；难度及适用年级需审定，未自动获得四年级正式测试资格。"
+      }
+    }
+  ]
+}

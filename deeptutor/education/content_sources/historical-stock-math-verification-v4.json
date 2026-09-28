@@ -1,0 +1,172 @@
+{
+  "source_records": [
+    "1efa782ad00248377efe1f80d5b56ef294ad76b162bf2a25df9e35c32e085b25",
+    "9b823bb409ad0d87bd0958725457aa882437287471661af1770b74e2db78ddb8",
+    "255f8160c7666ab68bbc000c08ee2533840ad21b176f872229e6148a75aecbd9",
+    "41c0131dbe6875636adeb1ef1c5decd1922b762c96cf2196f61d2dab3f397bd2",
+    "f9def982d62ce4b6cfbced7f95d78d17ef1af619b46547fdba475e127da01b34",
+    "a7c40d8107fb63376964c0919dc3068e24ea7cab9cfe9aca6606ef7ffeaf0140",
+    "8a3f33f653256d72f94bd6e229b3ff607b8a2ac1d595dc246db427c827478be4",
+    "65de6f3e139986d7aa01fa26b5102166094e6906f072d3d00a899b010bdbdaf5"
+  ],
+  "source_numbers": [
+    1,
+    3,
+    5,
+    6,
+    8,
+    9,
+    11,
+    14
+  ],
+  "stamps": [
+    [
+      5,
+      30,
+      8
+    ]
+  ],
+  "initial_group_counts": [
+    7,
+    11,
+    21
+  ],
+  "seven_transfer_states": [
+    [
+      449,
+      225,
+      113,
+      57,
+      29,
+      15,
+      8
+    ],
+    [
+      2,
+      450,
+      226,
+      114,
+      58,
+      30,
+      16
+    ],
+    [
+      4,
+      4,
+      452,
+      228,
+      116,
+      60,
+      32
+    ],
+    [
+      8,
+      8,
+      8,
+      456,
+      232,
+      120,
+      64
+    ],
+    [
+      16,
+      16,
+      16,
+      16,
+      464,
+      240,
+      128
+    ],
+    [
+      32,
+      32,
+      32,
+      32,
+      32,
+      480,
+      256
+    ],
+    [
+      64,
+      64,
+      64,
+      64,
+      64,
+      64,
+      512
+    ],
+    [
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128
+    ]
+  ],
+  "packet_combinations": [
+    [
+      5,
+      19
+    ],
+    [
+      10,
+      16
+    ],
+    [
+      15,
+      13
+    ],
+    [
+      20,
+      10
+    ],
+    [
+      25,
+      7
+    ],
+    [
+      30,
+      4
+    ]
+  ],
+  "reverse_spending_remainders": [
+    42,
+    20,
+    8,
+    1
+  ],
+  "gifts": [
+    22,
+    12,
+    7
+  ],
+  "equal_resale_costs": [
+    "500",
+    "750"
+  ],
+  "resale_loss": "50",
+  "resale_loss_rate": "1/25",
+  "people": [
+    10
+  ],
+  "quarter_grid_pairs": [
+    [
+      "5/4",
+      "5"
+    ],
+    [
+      "3/2",
+      "3"
+    ],
+    [
+      "2",
+      "2"
+    ]
+  ],
+  "script_sha256": "aac9739f9960b6b1f25ef0145c9f7d2bed9d0cbb848d5e9b689df22998083f62",
+  "scope": "Exact mathematics under rewritten explicit conditions; no grade, rights or formal assessment approval.",
+  "package_sha256": "e4cfb657914d2c083151d4546bd184b4fee609f634ebed40c046a3db63ee5c40",
+  "verified_tasks": 8
+}

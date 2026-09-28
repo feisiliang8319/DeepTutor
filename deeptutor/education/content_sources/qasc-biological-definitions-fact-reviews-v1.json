@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "library": "qasc",
+  "expected_records": 9060,
+  "expected_changed_records": 53,
+  "reviews": [
+    {
+      "fact_id": "c46ca9c1c85b0b3a072b660899edce6fecd773e737479e5812c85fbee50f2a0e",
+      "fact_before": "Antigens are molecules that the immune system recognizes as foreign to the body.",
+      "correction": "Antigens are targets of specific immune recognition and can be foreign or self-derived. Recognition does not automatically imply harmfulness, rejection, or an antibody response. Simply being foreign to the body does not prove that a material is an antigen.",
+      "reason": "A simplified foreign-only definition is used as a reversible classification and an automatic rejection rule.",
+      "references": [
+        "https://openstax.org/books/concepts-biology/pages/17-3-adaptive-immunity"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 15
+    },
+    {
+      "fact_id": "4ddcdc5980c6d9f27db1b0560af8823ef89a8f5c801e04454b7ea53441c7f55c",
+      "fact_before": "Lymph is a fluid that leaks out of capillaries into spaces between cells.",
+      "correction": "Fluid in the spaces between tissue cells is interstitial fluid. It is called lymph after entering lymphatic capillaries. Blood capillaries and lymphatic capillaries have different roles; these names should not be interchanged.",
+      "reason": "The source labels interstitial fluid as lymph before it enters the lymphatic vessels and propagates a reversed flow description.",
+      "references": [
+        "https://openstax.org/books/anatomy-and-physiology/pages/21-1-anatomy-of-the-lymphatic-and-immune-systems"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 13
+    },
+    {
+      "fact_id": "ed497c0598fb806142a8100cc1fe892ee1d08fd979ec2777067b0fa474f38e43",
+      "fact_before": "crossing two living things with recessive traits causes their offspring to have that recessive trait",
+      "correction": "In a specified single-locus Mendelian model, crossing aa with aa gives offspring with genotype aa. A shared visible trait alone does not establish that model or identical causal genes. Recessive variants at different genes can complement one another, so the source cannot guarantee the same phenotype for every pair of parents.",
+      "reason": "The missing locus and inheritance assumptions are applied to several complex or heterogeneous human traits.",
+      "references": [
+        "https://www.ncbi.nlm.nih.gov/books/NBK26818/",
+        "https://www.ncbi.nlm.nih.gov/books/NBK19726/?report=printable"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 13
+    },
+    {
+      "fact_id": "85244461e93566fc1ec4ac4c7f8b6976ed0e76cfd30765a12c7ce47c75723f05",
+      "fact_before": "Roots grow in length and width from primary and secondary meristem.",
+      "correction": "Root apical meristems contribute to primary growth in length. Typical secondary thickening requires lateral meristems and is not shared by every root; most monocots lack ordinary vascular-cambium secondary growth. Root elongation should not be attributed to shoot meristems.",
+      "reason": "A duplicate version of the already corrected universal root-growth claim still supports faulty linked inferences.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/30-2-stems"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 12
+    },
+    {
+      "fact_id": "575e83c7648191f34032c648b19070dc5f445e6ee80a0301b3f3a5036b3e90eb",
+      "fact_before": "Vascular cambium is a primary meristem.",
+      "correction": "The vascular cambium is a lateral meristem involved in secondary growth, producing secondary xylem and phloem. It should not be classified as the apical meristem responsible for primary elongation.",
+      "reason": "The source incorrectly classifies the vascular cambium as a primary meristem.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/30-2-stems"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "8f97c8436c543241d4979d5135d029fe27741eef5cfc010a1f6cc72d0566246c",
+      "fact_before": "Primary growth results primarily from activity of the lateral meristems.",
+      "correction": "Primary elongation of roots and shoots is associated with apical meristems and subsequent cell elongation. Lateral meristems are associated with secondary thickening. The source reverses these roles.",
+      "reason": "Primary and secondary growth are interchanged.",
+      "references": [
+        "https://openstax.org/books/biology-2e/pages/30-2-stems"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "e1a357315f1f5daa1a4adab99933f531d264cbd07e74054c7aaba2a0d64ee9d2",
+      "fact_before": "Freckles are an autosomal recessive trait.",
+      "correction": "Freckling has genetic influences involving multiple loci. It is not a reliable example of one simple autosomal recessive trait, and parental freckles do not establish a guaranteed single-gene outcome for a child.",
+      "reason": "The source uses a complex pigmentation feature as a deterministic single-locus recessive trait.",
+      "references": [
+        "https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2022.967684/full"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 4
+    },
+    {
+      "fact_id": "4441888ea6ecfc43554f2bd1d081ccd5089a1ac26fc60f071e72a1152b02e3af",
+      "fact_before": "Some characteristics are recessive, for example blue eyes.",
+      "correction": "Human eye color is influenced by multiple genes. The familiar blue-recessive/brown-dominant rule is an oversimplification; two blue-eyed parents can have a brown-eyed child. Eye color alone is insufficient to infer a single-locus genotype.",
+      "reason": "A simplified classroom model is treated as a universal prediction of human eye color.",
+      "references": [
+        "https://medlineplus.gov/genetics/understanding/traits/eyecolor/"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "7b3c724cab0760d806c97ac232d33d0301a493cb8f47221ba22503788ad20c8a",
+      "fact_before": "Albinism in humans is inherited as a simple recessive trait.",
+      "correction": "Albinism includes genetically distinct conditions. Oculocutaneous albinism can result from variants in several different genes. A prediction about offspring requires the relevant genetic cause and inheritance model; the label albinism alone does not justify the source guarantee.",
+      "reason": "Genetic heterogeneity is omitted before asserting that all offspring of two affected parents must share the phenotype.",
+      "references": [
+        "https://medlineplus.gov/genetics/condition/oculocutaneous-albinism/",
+        "https://www.ncbi.nlm.nih.gov/books/NBK19726/?report=printable"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "0a708717220d6e9a20d6fdc82554b6429ee27bb2a7d1a5edfcfc745ee7889d2d",
+      "fact_before": "Attached ear lobes is a recessive trait.",
+      "correction": "Earlobe attachment has a polygenic basis and varies across a range of forms. It should not be taught as a reliable single-gene recessive trait or used for a guaranteed aa-by-aa prediction based only on appearance.",
+      "reason": "The original item relies on an unsupported single-locus account of earlobe shape.",
+      "references": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5812923/"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    }
+  ]
+}

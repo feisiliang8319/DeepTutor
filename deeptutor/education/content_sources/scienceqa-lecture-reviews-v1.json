@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 629,
+  "reviews": [
+    {
+      "concept_id": "e76559e0311f67ba07af9fb9715d3edecaee5b9a67704e38118f9e44f32a3fdd",
+      "expected_records": 251,
+      "lecture_before": "Present tense verbs tell you about something that is happening now.\nMost present-tense verbs are regular. They have no ending, or they end in -s or -es.\nTwo verbs are irregular in the present tense, to be and to have. You must remember their forms.\nPast tense verbs tell you about something that has already happened.\nMost past-tense verbs are regular. They end in -ed.\nSome verbs are irregular in the past tense. You must remember their past-tense forms.\nFuture tense verbs tell you about something that is going to happen.\nAll future-tense verbs use the word will.\nPresent | Past | Future\nwalk, walks | walked | will walk\ngo, goes | went | will go",
+      "lecture_after": "This exercise uses the school labels present, past, and future to compare simple verb forms. Choose from the forms in the question; these labels do not cover every way English expresses time.\nThe simple present often describes habits or general facts, not only an action happening now. Regular forms use the base verb, with -s or -es for he, she, or it. Common irregular forms include be (am, is, are), have (has), and do (does).\nThe simple past usually describes a completed past event. Regular verbs take -ed; irregular forms must be learned, such as go → went.\nIn these exercises, will followed by the base verb is the future form. For example: play / plays, played, will play; go / goes, went, will go.\nEnglish can also refer to future time with be going to, the present continuous, or a scheduled simple present. For example, “We are meeting tomorrow” refers to the future. Therefore, a future meaning does not always require will.",
+      "reason": "Remove absolute claims about will, present-time meaning, and the number of irregular verbs.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/grammar/british-grammar/future",
+          "supports": "English has several constructions referring to future time; will is not required for every future meaning."
+        },
+        {
+          "url": "https://dictionary.cambridge.org/grammar/british-grammar/simple-present",
+          "supports": "Simple present includes habitual/general meanings and irregular present forms."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "7272799babe57d693b05ba1e843714a1934a8eec6df637959973766e239e3ae8",
+      "expected_records": 114,
+      "lecture_before": "A simple sentence is a sentence with only one subject and predicate.\nThe pitcher threw the ball to first base.\nA compound sentence is two simple sentences joined by a comma and a conjunction such as and, but, or, or so.\nThe pitcher threw the ball, and the batter hit it.\nSome simple sentences have a compound subject or a compound predicate, but they are not compound sentences.\nAnna and James will watch the fireworks tonight.\nThis simple sentence has a compound subject, Anna and James.\nThe singers bowed and walked off the stage.\nThis simple sentence has a compound predicate, bowed and walked off the stage.\nSome simple sentences have introductory phrases, but they are not compound sentences. The introductory phrase is part of the predicate.\nIn the winter, Farmer Ben wears his heavy coat.\nThis is a simple sentence. There is one subject, Farmer Ben, and one predicate, wears his heavy coat in the winter.",
+      "lecture_after": "A simple sentence contains one independent clause and no dependent clauses. An independent clause can stand as a complete sentence. Count clauses, not just nouns or verbs.\nA simple sentence may have a compound subject: “Mia and Leo read quietly.” It may also have a compound predicate: “Mia reads and takes notes.” Neither example has a second independent clause.\nA compound sentence contains at least two independent clauses and no dependent clauses. The clauses can be joined with a comma and a coordinating conjunction, or with a semicolon: “Mia reads, and Leo draws.” “Mia reads; Leo draws.”\nAn introductory phrase does not by itself add a clause: “After lunch, Mia reads quietly.” Here, “after lunch” has no subject–verb clause. Compare “After Mia eats lunch, she reads quietly,” which includes a dependent clause and is complex.",
+      "reason": "Define sentence types by clauses and include compound subjects/predicates and semicolons.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/grammar/british-grammar/sentence-types",
+          "supports": "Simple, compound, and complex sentences are defined by their main and subordinate clauses, including two or more / one or more clauses."
+        },
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/punctuation/commas/commas_vs_semicolons.html",
+          "supports": "Independent clauses can be joined by a semicolon without a coordinating conjunction."
+        },
+        {
+          "url": "https://owl.purdue.edu/owl/graduate_writing/introduction_to_writing/documents/revising-and-editing/sentence-types-transcript.pdf",
+          "supports": "Compound-complex has multiple independent clauses and at least one dependent clause."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "608606a2d242a934c2fcc2e97c3164518c10f2122869a0b306b215e179df577c",
+      "expected_records": 130,
+      "lecture_before": "A clause is a group of words that contains both a subject and a predicate.\nAn independent clause is a complete thought. It can stand alone as a sentence. A dependent clause is not a complete thought. It cannot stand alone as a sentence.\nthe oranges on our tree are ripe\nThe clause can stand alone. It is independent.\nafter we pick up Kevin from work\nThe clause cannot stand alone. It is dependent.\nA simple sentence is made up of a single independent clause.\nBen and I spent all day relaxing by the pool.\nSome simple sentences have introductory phrases, but the introductory phrase is part of the predicate.\nIn the winter, Ben usually wears his heavy coat.\nBen usually wears his heavy coat in the winter.\nA compound sentence is made up of two independent clauses joined by a coordinating conjunction such as and, but, or, or so.\nWe saw a flash of lightning, and seconds later we heard the rumble of thunder.\nA complex sentence is made up of an independent clause and a dependent clause. The dependent clause usually begins with a subordinating conjunction such as after, although, as, because, before, if, since, unless, until, when, or while.\nIf she ever gets the chance, Terri would love to visit the Egyptian pyramids.",
+      "lecture_after": "In the sentence patterns used in this exercise, a clause has a subject and a verb with its predicate. An independent clause can stand as a complete sentence. A dependent clause cannot stand alone in standard written English.\nA simple sentence has one independent clause and no dependent clauses. It may have a compound subject or predicate: “Mia and Leo read and take notes.” A phrase such as “after lunch” does not add a clause.\nA compound sentence has at least two independent clauses and no dependent clauses: “Mia reads, and Leo draws.” Independent clauses can also be joined with a semicolon: “Mia reads; Leo draws.” A coordinating conjunction alone does not prove that there are two clauses.\nA complex sentence has one independent clause and at least one dependent clause: “Mia reads because she enjoys stories.” Dependent clauses may begin with a subordinating conjunction or a relative word: “The book that Mia chose has maps.”\nA compound-complex sentence has at least two independent clauses and at least one dependent clause: “While Mia reads, Leo draws, and Sam writes.”\nFor classification, identify each clause and whether it is independent or dependent. Do not assume that a compound sentence has exactly two clauses or that a complex sentence has exactly one dependent clause.",
+      "reason": "Correct exactly-two/one restrictions and distinguish phrases from dependent clauses.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/grammar/british-grammar/sentence-types",
+          "supports": "Simple, compound, and complex sentences are defined by their main and subordinate clauses, including two or more / one or more clauses."
+        },
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/punctuation/commas/commas_vs_semicolons.html",
+          "supports": "Independent clauses can be joined by a semicolon without a coordinating conjunction."
+        },
+        {
+          "url": "https://owl.purdue.edu/owl/graduate_writing/introduction_to_writing/documents/revising-and-editing/sentence-types-transcript.pdf",
+          "supports": "Compound-complex has multiple independent clauses and at least one dependent clause."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "a46a1614c9fa0f16fa3462bc0eafe56a511b81500df426c7e6ba93a6cec419c0",
+      "expected_records": 134,
+      "lecture_before": "A clause is a group of words that contains both a subject and a predicate.\nAn independent clause is a complete thought that can stand alone as a sentence. A dependent clause (or subordinate clause) is not a complete thought and cannot stand alone as a sentence.\nthe oranges on our tree are ripe\nThe clause can stand alone. It is independent.\nafter we pick up Kevin from work\nThe clause cannot stand alone. It is dependent.\nA simple sentence is made up of a single independent clause.\nBen and I spent all day relaxing by the pool.\nSome simple sentences have introductory phrases, but the introductory phrase is part of the predicate.\nIn the winter, Ben usually wears his heavy coat.\nBen usually wears his heavy coat in the winter.\nA compound sentence is made up of two independent clauses joined by a coordinating conjunction such as and, but, or, or so.\nWe saw the flash of lightning, and seconds later we heard a rumble of thunder.\nA complex sentence is made up of an independent clause and a dependent clause. The dependent clause in a complex sentence usually begins with a subordinating conjunction or relative pronoun. Subordinating conjunctions include after, although, as, because, before, if, since, unless, until, when, and while. Relative pronouns include that, which, who, whom, or whose.\nIf she ever gets the chance, Terri would love to visit the Egyptian pyramids.\nDuring his trip to Italy, Tony visited the Trevi Fountain, which is in Rome.\nA compound-complex sentence is made up of two or more independent clauses and one or more dependent clauses.\nAfter Samantha left work, she stopped at the bank, and then she went to the gym.\nSometimes a dependent clause in a complex or compound-complex sentence can interrupt an independent clause.\nOrcas that are kept in captivity often have bent dorsal fins.",
+      "lecture_after": "In the sentence patterns used in this exercise, a clause has a subject and a verb with its predicate. An independent clause can stand as a complete sentence. A dependent clause cannot stand alone in standard written English.\nA simple sentence has one independent clause and no dependent clauses. It may have a compound subject or predicate: “Mia and Leo read and take notes.” A phrase such as “after lunch” does not add a clause.\nA compound sentence has at least two independent clauses and no dependent clauses: “Mia reads, and Leo draws.” Independent clauses can also be joined with a semicolon: “Mia reads; Leo draws.” A coordinating conjunction alone does not prove that there are two clauses.\nA complex sentence has one independent clause and at least one dependent clause: “Mia reads because she enjoys stories.” Dependent clauses may begin with a subordinating conjunction or a relative word: “The book that Mia chose has maps.”\nA compound-complex sentence has at least two independent clauses and at least one dependent clause: “While Mia reads, Leo draws, and Sam writes.”\nFor classification, identify each clause and whether it is independent or dependent. Do not assume that a compound sentence has exactly two clauses or that a complex sentence has exactly one dependent clause.",
+      "reason": "Correct clause-count restrictions while retaining compound-complex classification.",
+      "references": [
+        {
+          "url": "https://dictionary.cambridge.org/grammar/british-grammar/sentence-types",
+          "supports": "Simple, compound, and complex sentences are defined by their main and subordinate clauses, including two or more / one or more clauses."
+        },
+        {
+          "url": "https://owl.purdue.edu/owl/general_writing/punctuation/commas/commas_vs_semicolons.html",
+          "supports": "Independent clauses can be joined by a semicolon without a coordinating conjunction."
+        },
+        {
+          "url": "https://owl.purdue.edu/owl/graduate_writing/introduction_to_writing/documents/revising-and-editing/sentence-types-transcript.pdf",
+          "supports": "Compound-complex has multiple independent clauses and at least one dependent clause."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

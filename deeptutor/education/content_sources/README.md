@@ -94,3 +94,10 @@ IM adaptations; `im-stock-lesson-only-11.json` records why eleven classroom-depe
 or missing-asset tasks stay in lesson references. None of these packages approves
 formal exam use. Old item bodies remain immutable and retired versions retain
 history links. Do not rerun one-time operator retirement scripts blindly.
+
+
+### Existing CEMC booklet stock (2026-09-28)
+
+Three already-downloaded A24/A25/B25 booklets contain 90 distinct paired source problems. `cemc-stock-disposition.json` accounts for all 90: 39 previously adapted, 46 additional source-bound candidates in the three `cemc-*-stock.recipe.json` maps, and 5 teaching extensions under `lessons/stock-cemc-*.md`. These counts describe source coverage, not approval or full coverage of every subproblem. No external acquisition is needed to rebuild this batch: call `stage` with a getter returning the existing PDF bytes, then `build_package`. Preserve the original PDF hash check.
+
+Year and content hash distinguish the two different “What Number Am I?” problems. The A25 socks adaptation consistently uses 56 pairs / 112 individual socks; original source wording mixed those units. Diagram information was either checked and fully written into the adapted prompt, or retained as a teaching extension. Original source grade bands remain metadata; they do not authorize grade promotion. All new items remain candidates pending teaching review and exam classification.

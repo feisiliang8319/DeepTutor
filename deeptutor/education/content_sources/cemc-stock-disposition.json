@@ -1,0 +1,823 @@
+{
+  "schema_version": 1,
+  "unique_source_problems": 90,
+  "already_adapted": 39,
+  "new_adaptations": 46,
+  "teaching_extensions": 5,
+  "cross_year_same_title_preserved": [
+    "A24: What Number Am I? = 821",
+    "A25: What Number Am I? = 1357"
+  ],
+  "records": [
+    {
+      "source": "A24",
+      "title": "Tapping to Success",
+      "page": 5,
+      "text_sha256": "2b37b50ec647c6387b3c1d41ebd44c45bc375e696cb2ee55be8b99878782103b",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Balancing Act",
+      "page": 7,
+      "text_sha256": "d21bcaa150fb451d4421c9d96986299d6ddd72fa1eda5617aff73dece7a29f21",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Delivery Dilemma",
+      "page": 9,
+      "text_sha256": "9259cdaf91d660f71fea27d9b3d4ee6391168f3642b86ba27d04ce6212113fa1",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Circular Calculations",
+      "page": 12,
+      "text_sha256": "e4be807d5513b58061035d6f1526e399ebcf54c2b330b98a0fb898907a75b8fe",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Stacking Shapes",
+      "page": 16,
+      "text_sha256": "768089b53838734ee2921610c7d5b5ab765cc4412692591aa1ddd243cd25555a",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "What Number Am I?",
+      "page": 18,
+      "text_sha256": "fce53476d9f303944ae69517d57454b59725f504edafde5f725465bebcf13803",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Entry Code",
+      "page": 20,
+      "text_sha256": "4b0c29593062ec84817aff0faf45d08135a4babe5721bde2bf72f49278c8c223",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Amazing Navigation",
+      "page": 23,
+      "text_sha256": "43ff5ccf0cf3e6806e3b63ce51ea2abc76a9557741441ac31d99dd96b51806e2",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Picture Pixels",
+      "page": 26,
+      "text_sha256": "ba12fa06307f35c43811576d9c6ed8d128551e898eba59edb7b1a3b67d0cff2a",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Books, Books, Books",
+      "page": 34,
+      "text_sha256": "4ea580cba0d2198aaa3a33c88a3e680d04b1343e300aed1747a2c3cbfa368315",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Tracking Temperatures",
+      "page": 36,
+      "text_sha256": "92b137223b6c723ba0518f335969cd8ab5bc1fdc7c2f5a63f04da57498ceada5",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Summer Selections",
+      "page": 38,
+      "text_sha256": "e88745cf37a8049b295a83fcafdff2f1d06e7964b28825bc3fff45aebf46e8eb",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "School Clean Up",
+      "page": 44,
+      "text_sha256": "fead7967dcc67407c8ae9ba7812d992fc451b111710e90f51d48ba037340e266",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Time After Time",
+      "page": 47,
+      "text_sha256": "f885f28444e8c3e4ca105697189a67f8050d613f83f0d0def509ea9b69483617",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Fencepost Problem",
+      "page": 52,
+      "text_sha256": "28f1aca8b865dc84918b7c7aa93816f6631c3a87469a992d010fc792fe61e66b",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Quilting Puzzle",
+      "page": 55,
+      "text_sha256": "6ac5ad5e9accf7343338a4ed53f1ec6440b6d695a4602526294bca08b9531aa3",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Video Viewing",
+      "page": 57,
+      "text_sha256": "b15bf7041b5e63aac39bd911d66c1842cb02357f63ebf820ba2145a0c9994d19",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Movie Magic",
+      "page": 60,
+      "text_sha256": "ea820bd1b363f7b4f2396f01d21cf0cd49757b44eb28f60b475e0d7e9751f91e",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Better Deal?",
+      "page": 62,
+      "text_sha256": "9ce579dbe5cf51398c4e08c89ba3ba0347d883e4dcc37d4f29c4405af4e3edb1",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Beaded Bracelets",
+      "page": 64,
+      "text_sha256": "5a29c87d827df8254e6aac81c16861c8722569705f79bfc7f8430585da013e1e",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Cross Training",
+      "page": 66,
+      "text_sha256": "f4571a76e81df9245f18fd1a14f4d3a3870755396c1123507c553baeee8ea7c0",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Holiday Cheer",
+      "page": 69,
+      "text_sha256": "992c73c2498356a738424c8cc4932cd56c314bb4a837d553d6eade3b4b4f09b8",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Calculator Catastrophe",
+      "page": 71,
+      "text_sha256": "93b3511212a2439f578bca5157247b8e66f6d732037c9a856c7953f7c051f20f",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Gym Budgets",
+      "page": 78,
+      "text_sha256": "8fc74e54966f8bdca0d479c0b41225358f43367e7db97f892cf931f766769caf",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Apple Picking",
+      "page": 81,
+      "text_sha256": "76ca094f59abc014b291d1173bc5b2db2f925bf8255b445a94c3e9570fe666f5",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Fishing Frenzy",
+      "page": 84,
+      "text_sha256": "e08fff1b175640ff722670870220940ab3077d4b3c30604c12e15d93ccdd4684",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Bus Stops",
+      "page": 88,
+      "text_sha256": "33625df0af1a0fa20ae9a3fce325bab429be09dfbebebf6b1ee24f7367ce5c43",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Bright Beautiful Banners",
+      "page": 90,
+      "text_sha256": "bf1623a4d76daadb09c6244fe482a01b028a3778773753471c8a0c82178dc1f6",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Savings",
+      "page": 95,
+      "text_sha256": "40c69fac9d6b7272696ef16fd8e1148ce0a8bc5ea1eefa3d733b0772e0e01803",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A24",
+      "title": "Can You Kayak?",
+      "page": 104,
+      "text_sha256": "86451067a2464245dffbfe3f2ebb13d25db565ea4dcc5fc8c2f8f0c3e6ad4e01",
+      "pdf_sha256": "c29ffadea7d58273ff439ce34909fb86ed3084ca71e8102cc22db3aced2eb5a9",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Colouring Box",
+      "page": 5,
+      "text_sha256": "f19ce3bd8a450be404e7be83510aecf6eeda31ec43add89837cfd7f44fe44b5d",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Gathering Flowers",
+      "page": 9,
+      "text_sha256": "0e099c375c4767a14124394c95e2cf77ddab9a6ced560facebb929504c7185d3",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Puzzling Predicament",
+      "page": 11,
+      "text_sha256": "6dab2183740216b41dec73e176cf1ca1cd5894f979c43bd4a94001a56a65a559",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Storage Unit",
+      "page": 14,
+      "text_sha256": "4d8ec9154441b5163c335bcf65c666090e75acf4dbb94d0835f7b36f375e68cf",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Team Tournament",
+      "page": 16,
+      "text_sha256": "d0219083fe8c6f41f7adcda70980cca1e8a1e475df926aabe729ae5ce39d6cbc",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Pencil Pyramid",
+      "page": 18,
+      "text_sha256": "71c2831f576cc7066f68b83fbf9a39d54a152583ec7ed70dbb98fbcd95781d44",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Shape Sums",
+      "page": 22,
+      "text_sha256": "711d1eaa454745a0bbbe024fde1dcd24d21a2872f0e83217f4c306af672411c2",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Cribbage Scoring",
+      "page": 26,
+      "text_sha256": "0aec0fa6305debc91c7caca5178dd645542e0d6006618f3d9eb115f2a1ad9f44",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "What Number Am I?",
+      "page": 30,
+      "text_sha256": "f5bfb6e54c171b898b56f6518fd35c84abf88ad4b7859f6a6c6458f61a6ec39d",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Follow the Rules",
+      "page": 32,
+      "text_sha256": "2d4b30e28b86f690870b36478c08264d6dfb8efecec6c95b668597bf5153a408",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Secret Message",
+      "page": 34,
+      "text_sha256": "4e92caf9bb3db1ac0b32a04411aa4797e28182e42346736d20094c26b754a9e3",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Just Filling In",
+      "page": 38,
+      "text_sha256": "bec4e256c82bea2d9f8bade03eeefbc73787bd5d3956b6f3cde2b5a6ede34ef3",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Park Paths",
+      "page": 42,
+      "text_sha256": "8e6c8b3793a44718337ecff56452ab123dffc800f8b6f5e6f9e144a39fd8a2d6",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Tents Situation",
+      "page": 45,
+      "text_sha256": "49828b07c0f41124618537ebb7acdd4ca172afc5d0acc38e6b86f24b9bf63f45",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Comparing Communications",
+      "page": 49,
+      "text_sha256": "c95a03467f3d18d9f54c48a44eabbddd650910e4fe3d3c8730a39beb20161b8b",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Probably",
+      "page": 51,
+      "text_sha256": "19479e532fa6d4b120c81f8c2acd7662225e64e5f8ae420197f6deecbcfca15b",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Test Results",
+      "page": 56,
+      "text_sha256": "a99dba5d29758fcf30cfe8d87a0fc0a965e3aa5b11fdfe2a7c76a8f45ea1255b",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Birthday Mode",
+      "page": 59,
+      "text_sha256": "d6cf21fc408a9fa22894b9c7286d491ca2c07599a943005ec8f7f66fbd4c7b1c",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "teaching_extension",
+      "note": "生日数据的众数：当前四年级课程没有统计集中趋势节点，先整理为拓展讲解，不伪造课程映射。"
+    },
+    {
+      "source": "A25",
+      "title": "Missing Cookies",
+      "page": 61,
+      "text_sha256": "2c3dfdd090fed5ea4cb24c5d4f3b7770164f5bec0693b4f54e9262b30cc872e0",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "The Metric Argument",
+      "page": 65,
+      "text_sha256": "3e8950184bb12a1dcd9c9ea974b6303327ccf0355526553e319cca0898cf4f92",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Cupcake Bonanza",
+      "page": 72,
+      "text_sha256": "27c848b0adfd52be7321f841432487f64e1513781bf49275b0f6e2db31087162",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Fund Raising",
+      "page": 75,
+      "text_sha256": "86be45ece8463d8617662bc3980c7abd8d1082d022438dd3ad9c3359b78a86e2",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Zookeeper",
+      "page": 78,
+      "text_sha256": "1beb8fb269925bcdd332eae7178383ee3b436743902c9751b62037f54c8cbce1",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Paper Folding",
+      "page": 81,
+      "text_sha256": "334208ca788cd78db09061fd9b434a1c2b479d623242acff98c75f51985060e5",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Diﬀerence of Numbers",
+      "page": 88,
+      "text_sha256": "fca7b704a047b85ea4a2f5a1e3038b345a22eb3a1f501bbc3a8d951f082effd4",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Candy Crunch",
+      "page": 94,
+      "text_sha256": "c14d227de49ca20ed53c15b869fda18b7acc716b624168fa770b1e731ba010e4",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Bussing Business",
+      "page": 96,
+      "text_sha256": "9bc7778b5d3714d1589709754b2ff67d0ceff173a76644a1a27755fef4552523",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Food Bank Challenge",
+      "page": 98,
+      "text_sha256": "902ff237aeb4a4ac7f732cd1c9bc300a4d320082420ae7c86f0f98dd7dad7327",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Intervals",
+      "page": 103,
+      "text_sha256": "df3c9b16d9ac13f6b906a83a7deff8f614b6c3d236557bc6741b639821223f8c",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "A25",
+      "title": "Sorting Socks",
+      "page": 129,
+      "text_sha256": "fc71a97ec25f6289571dcbd10fe4f677e00e1f6cb45e54efdbe4f06b83bfda14",
+      "pdf_sha256": "959eea3b4744a3b9f219992a1d7df9a54b092ca24c99b78856ea97cf9ec85415",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Smoothie Choices",
+      "page": 5,
+      "text_sha256": "4e7deae58c20b07e887d5bdc07f65b4520a106ac20ce97c03c415d1f65e52b7b",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Grain Guess",
+      "page": 8,
+      "text_sha256": "8afd07a2fb1162db8148f4cb81605bc8c16ece871056cdd5553aaf01380f28f0",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Stamp it Out",
+      "page": 10,
+      "text_sha256": "2555bba3c31b8903ea736a61b329a3cfac457b8c12c84b15cc89995e371a0c66",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Playing to the Beat",
+      "page": 13,
+      "text_sha256": "aaf49db99ec52cb26a128eba7cbbf436e41f791067c4c7ad158ed9acb4f765e5",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Symbolic Shapes",
+      "page": 16,
+      "text_sha256": "1a6164f92305d7ebacc3946f34a6ca62dfd9396fd24daf0cbd30a02680ed1376",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Flowers for Sarah",
+      "page": 19,
+      "text_sha256": "6694b42ab44ba75094b8073a93dfe1e6502d260bc5f05b2a4c12827f85f63ed2",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Help Send Freddy Home",
+      "page": 22,
+      "text_sha256": "02b6e67b2e29e72fb645208392752b999e0e16ed27a38f5c8f15545c1f4e8e27",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "teaching_extension",
+      "note": "完整机器人迷宫的路径任务需要可交互或完整图形资产；先保留路线推理讲解，原PDF图与解答已核对。"
+    },
+    {
+      "source": "B25",
+      "title": "Coding Figures",
+      "page": 24,
+      "text_sha256": "e4a466c3ba52a73eba98e5831c10ad262c7278d37410db1047672eaeef7ab9f2",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Hidden Fractions",
+      "page": 27,
+      "text_sha256": "8d1830f09b8a1ca63be9d28a2d016c2b2bf79727cd1e2354814cf0b6649eff57",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Who Wins the Best Lane?",
+      "page": 30,
+      "text_sha256": "86f5fa948a92fd7ab49a0961239cfd14db6164c23b19ee916284a8dfc19f218e",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Means `a la Mode",
+      "page": 33,
+      "text_sha256": "698ec2b44b40bcef3dc1256115609b87ab777159516416ce0b3643fac29cb39d",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "teaching_extension",
+      "note": "平均数、中位数、众数比较：作为统计拓展讲解，等待合适课程节点。"
+    },
+    {
+      "source": "B25",
+      "title": "Dicey Products",
+      "page": 36,
+      "text_sha256": "3cf231e379f51e3628a23bf72d62e5e889d7a6b255b2185eddcda6c1dede221c",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Three Coins in a Toss",
+      "page": 39,
+      "text_sha256": "409016bae1a2ef1fb1b28dd7d47b96963bc5debefed5bd797ea7fcc23e27b06b",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Welcome to Shape City Park",
+      "page": 42,
+      "text_sha256": "b6b6c2abfb661ce0384cb06976a2b28d84743a13048b3aaebc143c8b6c5dbe90",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "teaching_extension",
+      "note": "三角形和梯形面积：作为面积分解拓展讲解，不冒充矩形面积考点。"
+    },
+    {
+      "source": "B25",
+      "title": "Frank Mixes Things Up",
+      "page": 44,
+      "text_sha256": "d6265908137cb5b82b7552e0207f0f512b427576d9e7ef462e142d39d217594d",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Icy Star Rings",
+      "page": 52,
+      "text_sha256": "0576b45c9da022a1b570c3be435a5896745034360a7643ccf50d3ab79ab21ea7",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "teaching_extension",
+      "note": "相似缩放与三角形面积：作为面积拓展讲解，等待前置知识映射。"
+    },
+    {
+      "source": "B25",
+      "title": "Gregorian Calendars",
+      "page": 55,
+      "text_sha256": "15dea35bcf24c7a5272ff8b5b11d5f3ec698e31a303fc8570124168990fa1a18",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "A Capital Transformation",
+      "page": 60,
+      "text_sha256": "176d499d73b3dc9437ca2871f35bbfbec6e9f8395c4ecd0b744f5a4d284603c7",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "The Long and the Short of It",
+      "page": 63,
+      "text_sha256": "fcf7dec9435b737668c7d6a8c3d947ab8073e5caa5759223deda243318ff5975",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Doggy Drinking",
+      "page": 67,
+      "text_sha256": "4296053b804e237cc8023968ede9be4298ea68e8e5bd25cbabac778357133e12",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "What’s Arkie’s Angle?",
+      "page": 69,
+      "text_sha256": "a50f59397835be4d5d5d8aa9cc6fd768bf25eceb49d8585f3e02b31a3bd392a2",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Loose Change",
+      "page": 73,
+      "text_sha256": "2c0146713fb5a908ffc7e8fba901e67175d690b5b3dcf956f0ea6c19cf374d7f",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Composed or Decomposed",
+      "page": 78,
+      "text_sha256": "5cfe5bbb8b98209494a3989ba666364161599e9f03388e88e27748089ee9aa07",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Let’s Get These Numbers in Order",
+      "page": 81,
+      "text_sha256": "7b7fc5ddcd6f08bd8463c15591c3eb9388c1c481d079136b095a628e3311e2dd",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Fun and Games",
+      "page": 83,
+      "text_sha256": "c28be2df96ea7d1335201427e744f14cb264d776918413515532adfbb69daa92",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Not a Big Diﬀerence",
+      "page": 86,
+      "text_sha256": "b24c4a26e9dc489d758c6a602adfd31aa3a3ab0beb88adcbd212ec23572befee",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Sticky Keys",
+      "page": 92,
+      "text_sha256": "1106275f92c148e9395c88400987ea556b148213a963eaf4ec826840f065e299",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "On the Rebound",
+      "page": 94,
+      "text_sha256": "fb704169b859c249b10d6c0d3ef9baada65df4fdadc4cada9413b170f593ea06",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Maybe Equals, Maybe Not",
+      "page": 110,
+      "text_sha256": "07e2f424462289278205068ae4c6a6e26849be4705cb87b48b2e1910695bf84d",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "new_candidate",
+      "note": ""
+    },
+    {
+      "source": "B25",
+      "title": "Otters in a Happy Space",
+      "page": 113,
+      "text_sha256": "f07a7ddfa902fb7f3dfe24df38044755320aa525213d687679fff7f922469584",
+      "pdf_sha256": "8e28ee3f9f982016bdff501d77842fb6c50fbf3efd5e322241569d2a267e542f",
+      "state": "existing_candidate",
+      "note": ""
+    }
+  ]
+}

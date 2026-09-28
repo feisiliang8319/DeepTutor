@@ -1,0 +1,112 @@
+{
+  "library": "harp-competition",
+  "scope": "Source-bound reasoning corrections only; answer, diagram, rights and curriculum approval unchanged.",
+  "records": [
+    {
+      "id": "05f3cc856bac3c742101469d74fca780ab463c031b1f6ac76826c691dc0febf3",
+      "title": "Counting And Probability · Level 2 · AMC 8 2013 Problem 22",
+      "source_path": "harp-competition/raw/harp-counting-and-probability.md",
+      "source_sha256": "a768bfd8ccb22fe9b981d08e74d3918d24b82d5c07f952ac016da3963df7526b",
+      "raw_sha256": "7ce1269887eb9cd0c18683360de8200753c5aa1d941fcf4a5420cd0cf448ccb3",
+      "answer_before": "$3932$",
+      "explanation_before": "There are $61$ vertical columns with a length of $32$ toothpicks, and there are $33$ horizontal rows with a length of $60$ toothpicks. You can verify this by trying a smaller case, i.e. a $3 \\times 4$ grid of toothpicks, with $3 \\times 3$ and $2 \\times 4$.\nThus, our answer is $61\\cdot 32 + 33 \\cdot 60 = \\boxed{3932}$.\n\nWith a quick mental calculation, 60 * 30 yields 1800, which is roughly where 4 of our 5 answer choices lie in. However, we can tell that each square would require at least 2 toothpicks that uniquely belong to itself, so the answer would be $60\\cdot 30 \\cdot 2$ which would be roughly $\\boxed{3932}$.",
+      "explanation_after": "There are $61$ vertical columns with a length of $32$ toothpicks, and there are $33$ horizontal rows with a length of $60$ toothpicks. A smaller grid of 3 columns and 4 rows of unit squares has $4\\cdot4+5\\cdot3=31$ toothpicks.\nThus, our answer is $61\\cdot 32 + 33 \\cdot 60 = \\boxed{3932}$.\n\nDeepTutor reviewed correction: A rough estimate cannot establish the exact answer. Count the bottom and left edge of every unit square: these are distinct and contribute 2*60*32=3840 toothpicks. The top boundary contributes 60 more and the right boundary contributes 32 more. Therefore the exact total is 3840+60+32=3932. This agrees with counting the 61 vertical columns and 33 horizontal rows.",
+      "reason": "Replace an invalid small-grid check and an estimate presented as an exact proof."
+    },
+    {
+      "id": "fe14843bdeebe18faa6feabaed3ea777a5f2ef89d5af093b531925524d1cf23c",
+      "title": "Counting And Probability · Level 1 · AJHSME 1998 Problem 6",
+      "source_path": "harp-competition/raw/harp-counting-and-probability.md",
+      "source_sha256": "a768bfd8ccb22fe9b981d08e74d3918d24b82d5c07f952ac016da3963df7526b",
+      "raw_sha256": "3db79381bde7c117cdaaa90258928942912d12abe03e700757ff8a812a974689",
+      "answer_before": "$6$",
+      "explanation_before": "We could count the area contributed by each square on the $3 \\times 3$ grid:\nTop-left: $0$\nTop: Triangle with area $\\frac{1}{2}$\nTop-right: $0$\nLeft: Square with area $1$\nCenter: Square with area $1$\nRight: Square with area $1$\nBottom-left: Square with area $1$\nBottom: Triangle with area $\\frac{1}{2}$\nBottom-right: Square with area $1$\nAdding all of these together, we get $6$ which is the same as $\\boxed{6}$\n\nBy Pick's Theorem, we get the formula, $A=I+\\frac{b}{2}-1$ where $I$ is the number of lattice points in the interior and $b$ being the number of lattice points on the boundary. In this problem, we can see that $I=1$ and $B=12$. Substituting gives us $A=1+\\frac{12}{2}-1=6$ Thus, the answer is $\\boxed{6}$\n\nNotice that the extra triangle on the top with area $1$ can be placed (like a jigsaw puzzle) at the bottom of the grid where there is a triangular hole, also with area $1$. This creates a $2*3$ rectangle, with a area of $6$. The answer is $\\boxed{6}$",
+      "explanation_after": "We could count the area contributed by each square on the $3 \\times 3$ grid:\nTop-left: $0$\nTop: Triangle with area $\\frac{1}{2}$\nTop-right: $0$\nLeft: Square with area $1$\nCenter: Square with area $1$\nRight: Square with area $1$\nBottom-left: Square with area $1$\nBottom: Triangle with area $\\frac{1}{2}$\nBottom-right: Square with area $1$\nAdding all of these together, we get $6$ which is the same as $\\boxed{6}$\n\nBy Pick's Theorem, we get the formula, $A=I+\\frac{b}{2}-1$ where $I$ is the number of lattice points in the interior and $b$ being the number of lattice points on the boundary. In this problem, we can see that $I=1$ and $B=12$. Substituting gives us $A=1+\\frac{12}{2}-1=6$ Thus, the answer is $\\boxed{6}$\n\nDeepTutor reviewed correction: The protruding top triangle and the missing bottom triangle each have perpendicular legs of length 1, so each has area 1/2 square unit, not 1. Move the top triangle into the congruent bottom gap. The result is a 3 by 2 rectangle, whose area is 6 square units. Independent shoelace evaluation of the ten source vertices also gives 6.",
+      "reason": "Correct the two triangle areas while preserving the two other valid solutions."
+    },
+    {
+      "id": "c80d97de5b7ce797a2c76a117bdaffb878869c48f681a921ed2e0421a365010d",
+      "title": "Counting And Probability · Level 1 · AMC 8 2007 Problem 13",
+      "source_path": "harp-competition/raw/harp-counting-and-probability.md",
+      "source_sha256": "a768bfd8ccb22fe9b981d08e74d3918d24b82d5c07f952ac016da3963df7526b",
+      "raw_sha256": "3553bd879d44be58b7fbc737ed3d5315c57bffcaf560d080ffb02c129d0a13ce",
+      "answer_before": "$1504$",
+      "explanation_before": "Let $x$ be the number of elements in $A$ and $B$ which is equal. \nThen we could form equation \n$2x-1001 = 2007$\n$2x = 3008$\n$x = 1504$. \nThe answer is $\\boxed{1504}$\n\nLet $x$ be the number of elements in $A$ not including the intersection. $2007-1001=1006$ total elements excluding the intersection. Since we know that $A=B$, we can find that $x=\\frac{1006}2=503$. Now we need to add the intersection. $503+1001=\\boxed{1504}$.",
+      "explanation_after": "Let $x$ be the number of elements in $A$ and $B$ which is equal. \nThen we could form equation \n$2x-1001 = 2007$\n$2x = 3008$\n$x = 1504$. \nThe answer is $\\boxed{1504}$\n\nLet $x$ be the number of elements in $A$ not including the intersection. $2007-1001=1006$ total elements excluding the intersection. Since $|A|=|B|$, the two exclusive regions have equal size, we can find that $x=\\frac{1006}2=503$. Now we need to add the intersection. $503+1001=\\boxed{1504}$.",
+      "reason": "Equal cardinalities do not imply identical sets; the stated intersection and union rule out A=B."
+    }
+  ],
+  "verification": {
+    "toothpick_grids": [
+      {
+        "grid": [
+          3,
+          4
+        ],
+        "enumerated_distinct_edges": 31
+      },
+      {
+        "grid": [
+          60,
+          32
+        ],
+        "enumerated_distinct_edges": 3932
+      }
+    ],
+    "polygon": {
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "shoelace_area": "6",
+      "boundary_lattice_points": 12,
+      "interior_lattice_points": 1,
+      "each_moved_triangle_area": "1/2"
+    },
+    "sets": {
+      "A_size": 1504,
+      "B_size": 1504,
+      "union": 2007,
+      "intersection": 1001,
+      "identical_sets": false
+    }
+  }
+}

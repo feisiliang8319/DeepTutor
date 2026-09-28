@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "library": "scienceqa",
+  "expected_total_records": 21208,
+  "expected_changed_records": 713,
+  "reviews": [
+    {
+      "concept_id": "e49ebd9c94ca56e718965d9e112a1f90ec832c59629aee8005b9f965d4f6c533",
+      "expected_records": 83,
+      "lecture_before": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nVolume is a measurement of how much space something takes up.\nThere are many different units of volume. When you are using customary units, volume may be written in units of fluid ounces, cups, or gallons.\nAs the diagram shows, there are 8 fluid ounces in 1 cup and 16 cups in 1 gallon. So, 1 fluid ounce is less than 1 cup and much less than 1 gallon.\nA glass of milk has a volume of about 8 fluid ounces, or 1 cup. A jug of milk has a volume of 1 gallon.",
+      "lecture_after": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nVolume is a measurement of how much space something takes up.\nThere are many different units of volume. In the US customary liquid-volume system, volume may be written in US fluid ounces, US cups, or US gallons. A fluid ounce measures volume, not the mass measured by an ounce. The conversions below use US units; similarly named units in other systems can differ.\nAs the diagram shows, there are 8 fluid ounces in 1 cup and 16 cups in 1 gallon. So, 1 fluid ounce is less than 1 cup and much less than 1 gallon.\nA glass of milk has a volume of about 8 fluid ounces, or 1 cup. A jug of milk has a volume of 1 gallon.",
+      "reason": "Specify the US system and distinguish fluid volume from mass rather than universalizing customary-unit names.",
+      "references": [
+        {
+          "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=912434",
+          "supports": "Appendix E gives US customary volume relations, including 8 fluid ounces per measuring cup."
+        },
+        {
+          "url": "https://www.nist.gov/pml/owm/metric-si/unit-conversion/approximate-conversions-us-customary-measures-metric",
+          "supports": "Separates volume from mass units and identifies the US short ton as 2000 pounds."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "21ba5f398e45ad460d0eadd24e0467b558e5fa13a1ea2f3c7004048939ecf1a1",
+      "expected_records": 91,
+      "lecture_before": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nMass is a measurement of how much matter something contains.\nThere are many different units of mass. When you are using customary units, mass may be written with units of ounces, pounds, or tons.\nThere are 16 ounces in 1 pound and 2,000 pounds in 1 ton.\nSo, 1 ounce is less than 1 pound and much less than 1 ton.\nA slice of bread has a mass of about 1 ounce, while a can of beans has a mass of about 1 pound. A small car has a mass of about 1 ton.",
+      "lecture_after": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nMass is a measurement of how much matter something contains.\nThere are many different units of mass. In the US customary avoirdupois system, mass may be written in ounces, pounds, or short tons. An ounce here is a mass unit, not a fluid ounce of volume.\nThere are 16 avoirdupois ounces in 1 pound and 2,000 pounds in 1 US short ton. A British long ton is different, and a metric tonne is 1,000 kilograms. In the comparisons below, ton means US short ton.\nSo, 1 ounce is less than 1 pound and much less than 1 ton.\nA slice of bread has a mass of about 1 ounce, while a can of beans has a mass of about 1 pound. A small car has a mass of about 1 ton.",
+      "reason": "Disambiguate mass ounces and the short-ton convention; preserve the original magnitude examples.",
+      "references": [
+        {
+          "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=912434",
+          "supports": "Appendix E gives US customary volume relations, including 8 fluid ounces per measuring cup."
+        },
+        {
+          "url": "https://www.nist.gov/pml/owm/metric-si/unit-conversion/approximate-conversions-us-customary-measures-metric",
+          "supports": "Separates volume from mass units and identifies the US short ton as 2000 pounds."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "dd752f7dff291463d976e5e26c2ace3199913ca9ac36df31d5941520285cef57",
+      "expected_records": 111,
+      "lecture_before": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nWhen you are using customary units, length may be written with units of inches, feet, yards, or miles.\nThere are 12 inches in 1 foot, and 3 feet in 1 yard. There are 5,280 feet in 1 mile.\nA football is about 1 foot long. A football field is 100 yards long.",
+      "lecture_after": "Measurements are written with both a number and a unit. The unit comes after the number. The unit shows what the number means.\nWhen you are using customary units, length may be written with units of inches, feet, yards, or miles.\nThere are 12 inches in 1 foot, and 3 feet in 1 yard. There are 5,280 feet in 1 mile.\nAn American football is about 1 foot long. An NFL field measures 100 yards between its goal lines. Including the two 10-yard end zones, its full length is 120 yards.",
+      "reason": "Distinguish the 100-yard playing portion from total field length and identify American football.",
+      "references": [
+        {
+          "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook",
+          "supports": "Rule 1 distinguishes field of play from two end zones; 360-foot overall field."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "4fc63c5baf3f3fa685360d86f9643a3ce9f7979998f35f4f801f243aa591ac57",
+      "expected_records": 294,
+      "lecture_before": "The atmosphere is the layer of air that surrounds Earth. Both weather and climate tell you about the atmosphere.\nWeather is what the atmosphere is like at a certain place and time. Weather can change quickly. For example, the temperature outside your house might get higher throughout the day.\nClimate is the pattern of weather in a certain place. For example, summer temperatures in New York are usually higher than winter temperatures.",
+      "lecture_after": "The atmosphere is the layer of air that surrounds Earth. Both weather and climate tell you about the atmosphere.\nWeather is what the atmosphere is like at a certain place and time. Weather can change quickly. For example, the temperature outside your house might get higher throughout the day.\nClimate describes the long-term patterns and variability of weather in a place. Climate summaries need a stated reference period; conventional climate normals commonly use 30 years. For example, summer temperatures in New York are usually higher than winter temperatures.",
+      "reason": "Make the long-term reference period explicit so a short weather episode is not mistaken for climate.",
+      "references": [
+        {
+          "url": "https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals",
+          "supports": "Conventional climate normals summarize a defined 30-year reference period."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "c0147daffc77ec22b3d832c2671b4badcede5b2ba0afe47c244b8c8036ef7921",
+      "expected_records": 41,
+      "lecture_before": "Scientists record climate data from places around the world. Precipitation, or rain and snow, is one type of climate data. Scientists collect data over many years. They can use this data to calculate the average precipitation for each month. The average precipitation can be used to describe the climate of a location.\nA bar graph can be used to show the average amount of precipitation each month. Months with taller bars have more precipitation on average.",
+      "lecture_after": "Scientists record climate data from places around the world. Precipitation includes rain and snow as well as other falling liquid or frozen water, such as hail and ice pellets. Climate summaries describe precipitation over a stated period of many years; conventional normals commonly use 30 years. Scientists collect data over many years. They can use this data to calculate the average precipitation for each month. The average precipitation can be used to describe the climate of a location.\nA bar graph can be used to show the average amount of precipitation each month. Months with taller bars have more precipitation on average.",
+      "reason": "Rain and snow are examples rather than an exhaustive definition; preserve the graph-reading instruction.",
+      "references": [
+        {
+          "url": "https://www.nesdis.noaa.gov/about/k-12-education/atmosphere/what-precipitation",
+          "supports": "Precipitation includes liquid and solid forms beyond rain and snow, such as hail and ice pellets."
+        },
+        {
+          "url": "https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals",
+          "supports": "Conventional climate normals summarize a defined 30-year reference period."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "fab08c90305fd404634321502e027415bad1232b15ee85d7203f71032df228b2",
+      "expected_records": 41,
+      "lecture_before": "Scientists record climate data from places around the world. Precipitation, or rain and snow, is one type of climate data.\nA bar graph can be used to show the average amount of precipitation each month. Months with taller bars have more precipitation on average.",
+      "lecture_after": "Scientists record climate data from places around the world. Precipitation includes rain and snow as well as other falling liquid or frozen water, such as hail and ice pellets. Climate summaries describe precipitation over a stated period of many years; conventional normals commonly use 30 years.\nA bar graph can be used to show the average amount of precipitation each month. Months with taller bars have more precipitation on average.",
+      "reason": "Rain and snow are examples rather than an exhaustive definition; preserve the graph-reading instruction.",
+      "references": [
+        {
+          "url": "https://www.nesdis.noaa.gov/about/k-12-education/atmosphere/what-precipitation",
+          "supports": "Precipitation includes liquid and solid forms beyond rain and snow, such as hail and ice pellets."
+        },
+        {
+          "url": "https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals",
+          "supports": "Conventional climate normals summarize a defined 30-year reference period."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "f2111963dae4c2d79eb9d5409c7256da072ea49fa4b71b39ad81b30505be746d",
+      "expected_records": 17,
+      "lecture_before": "Igneous rock is formed when melted rock cools and hardens into solid rock. This type of change can occur at Earth's surface or below it.\nSedimentary rock is formed when layers of sediment are pressed together to make rock. This type of change occurs below Earth's surface.\nMetamorphic rock is formed when a rock is changed by heating and squeezing. This type of change often occurs deep below Earth's surface. Over time, the old rock becomes a new rock with different properties.",
+      "lecture_after": "Igneous rock is formed when melted rock cools and hardens into solid rock. This type of change can occur at Earth's surface or below it.\nSedimentary rock can form when accumulated grains are compacted and cemented together, when minerals crystallize from water, or when biological material accumulates and becomes rock. Compaction during burial is one pathway, not a requirement for every sedimentary rock.\nMetamorphic rock forms when existing rock is altered by heat, pressure, chemically active fluids, or a combination of these factors, while remaining largely solid. Heating near an intrusion can cause metamorphism without extra squeezing. This type of change often occurs deep below Earth's surface. Over time, the old rock becomes a new rock with different properties.",
+      "reason": "Replace the compaction-only definition and compulsory heat-plus-pressure account with their actual scope.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/what-are-sedimentary-rocks",
+          "supports": "Distinguishes compacted and cemented clastic grains, biological material and minerals precipitated from water."
+        },
+        {
+          "url": "https://www.usgs.gov/faqs/what-are-metamorphic-rocks",
+          "supports": "Heat, pressure and fluids alter existing rock without wholesale melting; contact metamorphism need not add pressure."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "c80a9fa3dba99898f0b97eec902ac89e106767e9f8e0497aa7ea536be6604524",
+      "expected_records": 27,
+      "lecture_before": "Igneous rock is formed when melted rock cools and hardens into solid rock. This type of change can occur at Earth's surface or below it.\nSedimentary rock is formed when layers of sediment are pressed together, or compacted, to make rock. This type of change occurs below Earth's surface.\nMetamorphic rock is formed when a rock is changed by very high temperature and pressure. This type of change often occurs deep below Earth's surface. Over time, the old rock becomes a new rock with different properties.",
+      "lecture_after": "Igneous rock is formed when melted rock cools and hardens into solid rock. This type of change can occur at Earth's surface or below it.\nSedimentary rock can form when accumulated grains are compacted and cemented together, when minerals crystallize from water, or when biological material accumulates and becomes rock. Compaction during burial is one pathway, not a requirement for every sedimentary rock.\nMetamorphic rock forms when existing rock is altered by heat, pressure, chemically active fluids, or a combination of these factors, while remaining largely solid. Heating near an intrusion can cause metamorphism without extra squeezing. This type of change often occurs deep below Earth's surface. Over time, the old rock becomes a new rock with different properties.",
+      "reason": "Replace the compaction-only definition and compulsory heat-plus-pressure account with their actual scope.",
+      "references": [
+        {
+          "url": "https://www.usgs.gov/faqs/what-are-sedimentary-rocks",
+          "supports": "Distinguishes compacted and cemented clastic grains, biological material and minerals precipitated from water."
+        },
+        {
+          "url": "https://www.usgs.gov/faqs/what-are-metamorphic-rocks",
+          "supports": "Heat, pressure and fluids alter existing rock without wholesale melting; contact metamorphism need not add pressure."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    },
+    {
+      "concept_id": "f7a8ce4a1abac63c7b2233f211b578005fb819503fa9d7a2be1580465aab5db2",
+      "expected_records": 8,
+      "lecture_before": "The outer layer of Earth is broken up into many pieces called tectonic plates, or simply plates. The breaks between plates are called plate boundaries. Plate boundaries are classified by the way the plates are moving relative to each other:\nAt a transform boundary, two plates are sliding past each other.\nAt a convergent boundary, two plates are moving toward each other.\nAt a divergent boundary, two plates are moving away from each other.\ndivergent plate boundary\nWhen plates at a divergent boundary move apart, cracks form in the crust along the boundary. Melted rock rises from below the crust to fill these cracks. As the melted rock cools and hardens, it becomes new oceanic crust.\nNewer oceanic crust weighs less than older oceanic crust. So, the crust on either side of the boundary rises up higher than the older crust that is farther from the boundary. This difference in elevation creates a mid-ocean ridge, or underwater mountain chain. Between the two plates, there may be a deep rift valley.",
+      "lecture_after": "The outer layer of Earth is broken up into many pieces called tectonic plates, or simply plates. The breaks between plates are called plate boundaries. Plate boundaries are classified by the way the plates are moving relative to each other:\nAt a transform boundary, two plates are sliding past each other.\nAt a convergent boundary, two plates are moving toward each other.\nAt a divergent boundary, two plates are moving away from each other.\ndivergent plate boundary\nAt an oceanic spreading boundary, plates move apart and magma rises into the opening. Cooling magma forms new oceanic crust. Divergent boundaries can also develop within continents, so the oceanic-ridge description is one setting.\nThe young oceanic lithosphere near a spreading ridge is hotter and more buoyant than older lithosphere farther away. As the plate moves away, it loses heat, contracts, and becomes denser, and the seafloor generally subsides. The relevant comparison is thermal state and density of the lithosphere, not the unspecified total weight of two pieces of crust. This difference in elevation creates a mid-ocean ridge, or underwater mountain chain. Between the two plates, there may be a deep rift valley.",
+      "reason": "Replace unsupported total-weight comparison with thermal contraction and density of the oceanic lithosphere.",
+      "references": [
+        {
+          "url": "https://volcanoes.usgs.gov/about/edu/dynamicplanet/nutshell.php",
+          "supports": "Oceanic spreading creates new lithosphere; older oceanic plates cool and become denser."
+        },
+        {
+          "url": "https://www.whoi.edu/oceanus/feature/hannah-mark/",
+          "supports": "An oceanic plate includes crust and uppermost mantle and cools, densifies and contracts."
+        },
+        {
+          "url": "https://www.whoi.edu/oceanus/feature/the-big-melt/",
+          "supports": "Seafloor subsides as it cools and moves away from a ridge."
+        }
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "shared_lecture_only_not_question_or_answer_approval"
+    }
+  ]
+}

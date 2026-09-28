@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "library": "qasc",
+  "expected_records": 9060,
+  "expected_changed_records": 52,
+  "reviews": [
+    {
+      "fact_id": "7f09bde8c985d5d94bbb3299b0d54ac7dd9d66e5eb9e8f4b72b6139500c361f0",
+      "fact_before": "if a neutral atom loses an electron then an atom with a negative charge will be formed",
+      "correction": "Removing one electron from a neutral atom leaves a positive ion with charge +1, called a cation. Gaining an electron instead produces a negative ion. The original premise reverses the sign.",
+      "reason": "The source gives the wrong charge and propagates it into several answers.",
+      "references": [
+        "https://openstax.org/books/chemistry/pages/7-1-ionic-bonding"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 11
+    },
+    {
+      "fact_id": "9ae02ef6b2985552be8a698447b518edbdce9b43f7767e8efc6320eeb16797c3",
+      "fact_before": "Ions are neutral atoms.",
+      "correction": "An ion has a nonzero net electric charge; it is not a neutral atom. It may be a charged atom or a charged group of atoms.",
+      "reason": "The source contradicts the definition of an ion.",
+      "references": [
+        "https://openstax.org/books/chemistry/pages/7-1-ionic-bonding"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 2
+    },
+    {
+      "fact_id": "b27b51a016bc3a86196736fcc8689e5f899b04cab64f37e389cb03ae69ccd2e3",
+      "fact_before": "if two balanced forces act on an object in opposite directions then that object will remain stationary",
+      "correction": "Zero net external force means constant velocity in an inertial frame. An object initially at rest stays at rest, while an object already moving can continue at constant speed in a straight line. Balanced forces do not prove that an object is stationary.",
+      "reason": "The initial motion and other external forces are omitted. The original stationary conclusion is not established.",
+      "references": [
+        "https://www.grc.nasa.gov/WWW/K-12/WindTunnel/Activities/first2nd_lawsf_motion.html"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 11
+    },
+    {
+      "fact_id": "d097d2b9f507bc0ccc985180d09b94a3e2adbb688316f117b751efef7aeb5c0d",
+      "fact_before": "if gas is heated then that gas will expand",
+      "correction": "For a fixed amount of ideal gas at constant pressure, raising the kelvin temperature increases its volume. In a rigid sealed container, volume stays fixed and heating instead raises pressure. Heating does not always imply expansion.",
+      "reason": "The gas law requires fixed amount and specified pressure or volume constraints.",
+      "references": [
+        "https://openstax.org/books/chemistry/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 9
+    },
+    {
+      "fact_id": "425ad09b131aa11c4da06c02e6d7810407172992420bb9041a5b0eae19c02d42",
+      "fact_before": "An increase in temperature causes a gas to expand.",
+      "correction": "For a fixed amount of ideal gas at constant pressure, raising the kelvin temperature increases its volume. In a rigid sealed container, volume stays fixed and heating instead raises pressure. Heating does not always imply expansion.",
+      "reason": "The gas law requires fixed amount and specified pressure or volume constraints.",
+      "references": [
+        "https://openstax.org/books/chemistry/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "ebd7a22a188bfeec4854e3bfcae6618897f775c805bba38f36ef4fbd406d4dff",
+      "fact_before": "If a material is heated, it expands and the density decreases.",
+      "correction": "A decrease in density follows an increase in volume only when mass remains fixed. Heating does not guarantee expansion: gas in a rigid sealed container keeps the same volume and mass while its pressure rises.",
+      "reason": "The source turns a conditional expansion model into a universal material law.",
+      "references": [
+        "https://openstax.org/books/chemistry/pages/9-2-relating-pressure-volume-amount-and-temperature-the-ideal-gas-law"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 2
+    },
+    {
+      "fact_id": "fb9dd91f1b266aab94c2f25fb0d46c2b257f43f0dd7b735edc8bda45321cb227",
+      "fact_before": "All times are measured in seconds.",
+      "correction": "The second is the SI unit of time interval. Time intervals may also be expressed in minutes, hours, days, and other appropriate units. A particular instrument must be checked for its actual scale and resolution.",
+      "reason": "An SI base unit is not the only unit used to measure time.",
+      "references": [
+        "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-8",
+        "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-5-units-outside-si"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 4
+    },
+    {
+      "fact_id": "0666ca0048fd8b79ff7303824f547d9d099b325c677ee549d87d733ffdb29621",
+      "fact_before": "All temperatures are measures of heat energy.",
+      "correction": "Temperature is not the total energy of an object and is not a quantity of heat. Heat denotes energy transfer due to a temperature difference; internal energy also depends on the amount and properties of matter.",
+      "reason": "The source equates distinct physical quantities and can misstate phase changes.",
+      "references": [
+        "https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 4
+    },
+    {
+      "fact_id": "2903f1966287c53b21a840ee8b4898bcb1151c53692357091ed2d92f045f22df",
+      "fact_before": "Heat is present in all matter.",
+      "correction": "A body has internal energy. Heat is energy transferred because of a temperature difference, not a substance or a stored amount present in every object.",
+      "reason": "Stored internal energy and energy transfer are conflated.",
+      "references": [
+        "https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "9d60fbb646d9e34fdb58ae6f9ade0e0864f25e2c467a994509fbe86835286e0c",
+      "fact_before": "Heat energy is the amount of energy in a substance.",
+      "correction": "A body has internal energy. Heat is energy transferred because of a temperature difference, not a substance or a stored amount present in every object.",
+      "reason": "Stored internal energy and energy transfer are conflated.",
+      "references": [
+        "https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "c9d791b83cd6f75118b8de30e276caad7ff63382fbadb9be5c691eac719689e1",
+      "fact_before": "Liquids are always measured accurately by volume.",
+      "correction": "Liquid volume can be measured with suitable graduated equipment, but the result has measurement uncertainty. Accuracy depends on calibration, scale resolution, and reading technique; using volume units alone does not ensure an accurate result.",
+      "reason": "The universal accuracy claim ignores measurement uncertainty.",
+      "references": [
+        "https://openstax.org/books/chemistry-2e/pages/1-5-measurement-uncertainty-accuracy-and-precision"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 3
+    },
+    {
+      "fact_id": "3bf8c02ac516642d4f3f73a0422de636695fc95a76b106cd8977ced22e6e594a",
+      "fact_before": "All substances are composed of molecules.",
+      "correction": "Not every substance consists of discrete molecules. Solid sodium chloride, for example, is an extended arrangement of sodium and chloride ions. Distinguish atoms, molecules, and ionic structures when describing matter.",
+      "reason": "A molecular description has been applied to every kind of substance.",
+      "references": [
+        "https://openstax.org/books/chemistry/pages/7-1-ionic-bonding"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 2
+    },
+    {
+      "fact_id": "e0cbc25160e1e1f1e14de7a8a36b32523d234c101f9376cfc854c22efb6112b2",
+      "fact_before": "All matter is made of molecules.",
+      "correction": "Not every substance consists of discrete molecules. Solid sodium chloride, for example, is an extended arrangement of sodium and chloride ions. Distinguish atoms, molecules, and ionic structures when describing matter.",
+      "reason": "A molecular description has been applied to every kind of substance.",
+      "references": [
+        "https://openstax.org/books/chemistry/pages/7-1-ionic-bonding"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "2f24a4d71bd2fe414aaa328473d0b86ce4fc96aa566326b5936e3758796b4e64",
+      "fact_before": "All rockets generate thrust by igniting an mixture of fuel and 'oxidiser'.",
+      "correction": "Many chemical rockets burn fuel with an oxidizer, but this is not the only way to produce rocket thrust. An ion thruster uses electrical energy to accelerate expelled ions.",
+      "reason": "The premise excludes demonstrated electric propulsion.",
+      "references": [
+        "https://science.nasa.gov/mission/dawn/technology/ion-propulsion/"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "54139a94cd8868f719eee65953081a8aebc288d549ae69faebdfdd56804cb09d",
+      "fact_before": "Water includes all liquids.",
+      "correction": "Water is one chemical substance, not the name for all liquids. Ethanol is a different substance that is also liquid under ordinary room conditions. Liquid describes a state of matter, not a single chemical identity.",
+      "reason": "The premise confuses a specific substance with a phase of matter.",
+      "references": [
+        "https://openstax.org/books/chemistry-atoms-first/pages/10-2-properties-of-liquids?modal=MH"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "e78907e2245df1a729fd5d25c41b326ab5e0bbb98f0eabfd9ffb5b8b04add974",
+      "fact_before": "Ultimately, all energy on the earth comes from the sun.",
+      "correction": "Sunlight is a major energy input to Earth, but not every energy source on Earth comes from the Sun. Natural radioactive decay contributes to geothermal energy inside Earth.",
+      "reason": "The universal solar-origin claim excludes an independent energy source.",
+      "references": [
+        "https://www.energy.gov/hgeo/geothermal/geothermal-faqs"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "de61db79ac4f5d51e9dbbf9cf62e4d739e3b8e05391f435277c3e8fdb45781c3",
+      "fact_before": "Natural magnets are permanent magnets that never lose their magnetism.",
+      "correction": "Permanent does not mean indestructible magnetization. Heating or mechanical shock can reduce a magnet's magnetization; sufficiently high temperature destroys ferromagnetic order.",
+      "reason": "The source incorrectly claims permanent magnets can never lose magnetism.",
+      "references": [
+        "https://openstax.org/books/college-physics-2e/pages/22-2-ferromagnets-and-electromagnets"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    },
+    {
+      "fact_id": "46b928d9b01f01376c4d570e4c501f1382551123cd767e49b8968ced35466c61",
+      "fact_before": "All objects, even wooden tables, are made up of molecules which vibrate to create their mass.",
+      "correction": "Molecular vibrations are part of microscopic motion, but do not create the ordinary mass of a wooden table. Its mass is largely associated with atomic nuclei; most proton and neutron mass comes from the energy of their quarks and gluons.",
+      "reason": "The source supplies a false origin of mass and an unrelated premise for sanding wood.",
+      "references": [
+        "https://home.cern/other-99/"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval",
+      "expected_records": 1
+    }
+  ]
+}

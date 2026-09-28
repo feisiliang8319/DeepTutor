@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "library": "qasc",
+  "expected_records": 9060,
+  "expected_changed_records": 62,
+  "reviews": [
+    {
+      "fact_id": "44c48e85093d35995fba755445d1fa45d9517e2c2141c2f7ecd831032ca4a6c4",
+      "fact_before": "pollination requires pollinators",
+      "correction": "Pollination can be carried out by animals or by nonliving agents such as wind or water, depending on the plant. The word pollinator is often used for an animal that moves pollen. Evidence that a plant needs pollination alone does not establish that it needs bees or another particular animal.",
+      "reason": "The premise omits non-animal pollen transfer and cannot identify a particular pollinating species.",
+      "expected_records": 9,
+      "references": [
+        "https://www.nps.gov/articles/scientist-spotlight-pollinator-researchers-helping-parks.htm"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "149d77bc8919b00f769a3da50ed72fa1468477b84fe3b3b888038da7e9d835aa",
+      "fact_before": "hydropower requires damming a river",
+      "correction": "Some hydropower facilities use a dam and reservoir; others use diversion or run-of-river designs that may operate without a dam. A general statement about hydropower does not imply that a reservoir, or a beaver-built dam, is required.",
+      "reason": "The premise turns one facility design into a universal requirement and is used in at least one invalid beaver-dam inference.",
+      "expected_records": 9,
+      "references": [
+        "https://www.energy.gov/cmei/water/types-hydropower-plants"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "62c506a80723a1f9925e61ab9b22fd8b7655528e0521f275f5cb9d7b71a2d1d0",
+      "fact_before": "a plant requires photosynthesis to grow",
+      "correction": "Most familiar green plants make organic food through photosynthesis, but some plants do not photosynthesize. Ghost pipe (Monotropa uniflora), for example, lacks chlorophyll and obtains its carbon from other organisms. Specify the plant and its nutrition rather than assigning photosynthesis to every plant.",
+      "reason": "A rule about typical green plants is incorrectly generalized to all plants.",
+      "expected_records": 9,
+      "references": [
+        "https://www.nps.gov/prwi/learn/nature/ground-plants.htm"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "94d5502ec01221e02e471cc08fdf39d77eb8fd118aedd38d1c8a183b91794224",
+      "fact_before": "a plant requires sunlight to grow",
+      "correction": "A photosynthetic plant needs suitable light, which can come from the Sun or from artificial growing lights. Requirements vary by species and growth conditions. Some plants, such as ghost pipe, do not photosynthesize themselves, so direct sunlight is not a universal requirement for plant growth.",
+      "reason": "The premise confuses suitable light with sunlight and omits nonphotosynthetic plants.",
+      "expected_records": 13,
+      "references": [
+        "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/lighting-for-indoor-plants",
+        "https://www.nps.gov/prwi/learn/nature/ground-plants.htm"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "d886c1a0a022b996939fa9183778eac2094b1f9e645917bc1b596f453685ced6",
+      "fact_before": "an animal requires air for survival",
+      "correction": "Many animals obtain oxygen from air, but many aquatic animals, including gill-breathing fish, take up oxygen dissolved in water. Needing oxygen does not mean that an animal must breathe atmospheric air. Identify the animal and its respiratory system before using this premise.",
+      "reason": "Air and oxygen are not interchangeable; the source overgeneralizes terrestrial breathing.",
+      "expected_records": 13,
+      "references": [
+        "https://www.fisheries.noaa.gov/national/outreach-and-education/fun-facts-about-fascinating-fish"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    },
+    {
+      "fact_id": "2f566b609c20f771a63022956e932a876034c3aa6ab17f0eab409593644adedc",
+      "fact_before": "force causes the speed of an object to increase",
+      "correction": "The net force changes an object's velocity. Depending on its direction relative to the motion, it can increase speed, decrease speed, or change direction. Individual forces can also balance, giving zero net force. Pushing or pulling does not by itself establish an increase in speed.",
+      "reason": "The source omits net force and direction and incorrectly equates acceleration with speeding up.",
+      "expected_records": 9,
+      "references": [
+        "https://www.grc.nasa.gov/www/k-12/rocket/TRCRocket/rocket_principles",
+        "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/side-forces/"
+      ],
+      "reviewed_on": "2026-09-28",
+      "scope": "corrected_background_and_withdrawn_inference_not_answer_approval"
+    }
+  ]
+}
